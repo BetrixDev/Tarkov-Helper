@@ -21,7 +21,7 @@ client.once('ready', () => {
     console.log('Tarkov Helper Ready')
 })
 
-client.on('message', message =>{
+client.on('message', async message =>{
     if(!message.content.startsWith(prefix) || message.author.bot) return;
  
     const args = message.content.slice(prefix.length).split(/ +/);
@@ -30,6 +30,10 @@ client.on('message', message =>{
     if(command === 'help'){
         client.commands.get('help').execute(message, args, Discord);
     } 
+    else if(command === 'bitcoinfarm')
+    {
+        client.commands.get('bitcoinfarm').execute(message, args, Discord);
+    }
 });
 
 
