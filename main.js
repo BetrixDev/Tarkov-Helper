@@ -28,15 +28,18 @@ client.on('message', async message =>{
  
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
- 
-    if(command === 'help'){
-        client.commands.get('help').execute(message, args, Discord);
-    } 
-    else if(command === 'bitcoinfarm')
-    {
-        client.commands.get('bitcoinfarm').execute(message, args, Discord);
+    
+    switch(command) {
+        case 'help' :
+            client.commands.get('help').execute(message, args, Discord);
+        break;
+        case 'bitcoinfarm' :
+            client.commands.get('bitcoinfarm').execute(message, args, Discord);
+        break;
+        case 'map' :
+            client.commands.get('map').execute(message, args, Discord);
+        break;
     }
 });
-
 
 client.login(process.env.BOT_TOKEN);
