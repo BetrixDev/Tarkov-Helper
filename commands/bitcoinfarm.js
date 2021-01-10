@@ -15,9 +15,7 @@ module.exports = {
         const SelectedGPUS = args[0];
         const BitcoinPriceTarkov = PriceValue.data.amount;
         const BTCPerDay = (24 / Math.pow((0.04137931 - 0) + ((SelectedGPUS - 1) - 1) / ( 49 - 0)* (0.10386397 - 0), -1));
-        const RUBPerDay = BTCPerDay * BitcoinPriceTarkov;
-        console.log(BTCPerDay)
-        console.log(BitcoinPriceTarkov)
+        const RUBPerDay = (Math.floor((24 / Math.pow((0.04137931 - 0) + ((args[0] - 1) - 1) / ( 49 - 0)* (0.10386397 - 0), -1)))*Math.floor(PriceValue.data.amount));
         if (isNaN(SelectedGPUS) === true)
         {
             const ErrorMessage = new Discord.MessageEmbed()
