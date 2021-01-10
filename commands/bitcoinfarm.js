@@ -12,11 +12,12 @@ module.exports = {
         }
         let PriceValue = await getPrice();
         console.log(PriceValue);
-        
+
         const newEmbed = new Discord.MessageEmbed()
+        .setColor('#cecdc3')
         .setAuthor('Tarkov Helper', 'https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/Logo50x50SmallText.png?token=AMYPLRE73XI3MEKDQDCTJX277JKCK')
-        .setTitle('Help')
-        .setDescription('All of the commands currently supported by Tarkov Helper')
+        .setTitle('Bitcoin Farm Calculator')
+        .setThumbnail('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/BitcoinFarmLogo200x200.png?token=AMYPLRBCXFTE3RQSFYRYLGC77JSOI')
         .addFields(
             {name: '!BitcoinFarm {AmountOfGPUS}', value: 'Returns the amount of Bitcoins and Roubles made per day from a Bitcoin farm.'}
         )
