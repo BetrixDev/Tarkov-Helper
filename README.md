@@ -6,7 +6,8 @@
  
  # Commands
  **The commmands for the bot include**
- - !bitcoinfarm {GPUS}
+ - !bitcoinfarm {GPUS} ex: !bitcoinfarm 50
+ - !map {MAP} {SPECIFIC MAP} ex: !map customs spawns
  - More coming soon
 
 # Deployment
