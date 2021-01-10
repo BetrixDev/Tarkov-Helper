@@ -13,17 +13,16 @@ module.exports = {
         let PriceValue = await getPrice();
         const BitcoinPriceTarkov =  Math.floor((PriceValue.data.amount * 0.19));
         const SelectedGPUS = args[0];
-        if (SelectedGPUS > 50 || SelectedGPUS.isInteger() === false)
+        if (SelectedGPUS > 50 || isNaN(SelectedGPUS) === true)
         {
             const ErrorMessage = new Discord.MessageEmbed()
             .setColor('RED')
             .setAuthor('Tarkov Helper', 'https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/Logo50x50SmallText.png?token=AMYPLRE73XI3MEKDQDCTJX277JKCK')
             .setTitle('Error!')
-            .setThumbnail('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/BitcoinFarmLogo128x128.png?token=AMYPLRCWRRTB6UWB7CV7JKC77JS66')
+            .setThumbnail('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/ErrorLogo200x200.png?token=AMYPLRHITJTAM63PDKRMBX277JUYC')
             .addFields(
                 {name: 'Error 1:', value: 'The input was not a number'},
                 {name: 'Error 2:' , value: 'The input was over the maximum amount of GPUS possible in a Bitcoin Farm (50)'}
-
             )
             message.channel.send(ErrorMessage);
         }
@@ -37,7 +36,6 @@ module.exports = {
             .addFields(
                 {name: 'Bitcoin Price:', value: `₽${BitcoinPriceTarkov.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`},
                 {name: 'Amount of GPUS:' , value: `${SelectedGPUS}`}
-
             )
             message.channel.send(newEmbed);
         }
