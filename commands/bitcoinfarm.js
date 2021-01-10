@@ -11,16 +11,35 @@ module.exports = {
             return Price;
         }
         let PriceValue = await getPrice();
-        console.log(PriceValue);
+        const BitcoinPriceTarkov =  Math.floor((PriceValue.data.amount * 0.19));
+        const SelectedGPUS = args[0];
+        if (SelectedGPUS > 50 || SelectedGPUS.isInteger() === false)
+        {
+            const ErrorMessage = new Discord.MessageEmbed()
+            .setColor('RED')
+            .setAuthor('Tarkov Helper', 'https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/Logo50x50SmallText.png?token=AMYPLRE73XI3MEKDQDCTJX277JKCK')
+            .setTitle('Error!')
+            .setThumbnail('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/BitcoinFarmLogo128x128.png?token=AMYPLRCWRRTB6UWB7CV7JKC77JS66')
+            .addFields(
+                {name: 'Error 1:', value: 'The input was not a number'},
+                {name: 'Error 2:' , value: 'The input was over the maximum amount of GPUS possible in a Bitcoin Farm (50)'}
 
-        const newEmbed = new Discord.MessageEmbed()
-        .setColor('#cecdc3')
-        .setAuthor('Tarkov Helper', 'https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/Logo50x50SmallText.png?token=AMYPLRE73XI3MEKDQDCTJX277JKCK')
-        .setTitle('Bitcoin Farm Calculator')
-        .setThumbnail('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/BitcoinFarmLogo200x200.png?token=AMYPLRBCXFTE3RQSFYRYLGC77JSOI')
-        .addFields(
-            {name: '!BitcoinFarm {AmountOfGPUS}', value: 'Returns the amount of Bitcoins and Roubles made per day from a Bitcoin farm.'}
-        )
-        message.channel.send(newEmbed);
+            )
+            message.channel.send(ErrorMessage);
+        }
+        else
+        {
+            const newEmbed = new Discord.MessageEmbed()
+            .setColor('#cecdc3')
+            .setAuthor('Tarkov Helper', 'https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/Logo50x50SmallText.png?token=AMYPLRE73XI3MEKDQDCTJX277JKCK')
+            .setTitle('Bitcoin Farm Calculator')
+            .setThumbnail('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/BitcoinFarmLogo128x128.png?token=AMYPLRCWRRTB6UWB7CV7JKC77JS66')
+            .addFields(
+                {name: 'Bitcoin Price:', value: `₽${BitcoinPriceTarkov.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`},
+                {name: 'Amount of GPUS:' , value: `${SelectedGPUS}`}
+
+            )
+            message.channel.send(newEmbed);
+        }
     }
 }
