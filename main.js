@@ -8,6 +8,9 @@ const prefix = '!'
 
 const fs = require('fs');
 
+require('dotenv').config();
+console.log(process.env);
+
 client.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
@@ -37,4 +40,4 @@ client.on('message', async message =>{
 });
 
 
-client.login('Nzk3NjAwMjM4NDQ5NTkwMzM0.X_o1Gw.bNESF0vM89P4L6BLunyv3lRL1xQ');
+client.login(process.env.BOT_TOKEN);
