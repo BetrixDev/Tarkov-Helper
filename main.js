@@ -9,7 +9,6 @@ const prefix = '!'
 const fs = require('fs');
 
 require('dotenv').config();
-console.log(process.env);
 
 client.commands = new Discord.Collection();
 
