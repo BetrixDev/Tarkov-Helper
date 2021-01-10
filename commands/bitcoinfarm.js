@@ -11,9 +11,13 @@ module.exports = {
             return Price;
         }
         let PriceValue = await getPrice();
-        const BitcoinPriceTarkov =  Math.floor((PriceValue.data.amount * 0.19)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        const BitcoinPriceTarkovFormat =  Math.floor((PriceValue.data.amount * 0.19)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         const SelectedGPUS = args[0];
+        const BitcoinPriceTarkov = PriceValue.data.amount;
         const BTCPerDay = (24 / Math.pow((0.04137931 - 0) + ((SelectedGPUS - 1) - 1) / ( 49 - 0)* (0.10386397 - 0), -1));
+        const RUBPerDay = BTCPerDay * BitcoinPriceTarkov;
+        console.log(BTCPerDay)
+        console.log(BitcoinPriceTarkov)
         if (isNaN(SelectedGPUS) === true)
         {
             const ErrorMessage = new Discord.MessageEmbed()
@@ -42,9 +46,10 @@ module.exports = {
             .setTitle('Bitcoin Farm Calculator')
             .setThumbnail('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/BitcoinFarmLogo128x128.png?token=AMYPLRCWRRTB6UWB7CV7JKC77JS66')
             .addFields(
-                {name: 'Bitcoin Price:', value: `₽${BitcoinPriceTarkov}`},
+                {name: 'Bitcoin Price:', value: `₽${BitcoinPriceTarkovFormat}`},
                 {name: 'Amount of GPUS:' , value: `${SelectedGPUS}`},
-                {name: 'Bitcoins Per Day:', value: `${BTCPerDay}`}
+                {name: 'Bitcoins Per Day:', value: `${BTCPerDay}`},
+                {name: 'Roubles Per Day:', value: `${RUBPerDay}`}
             )
             message.channel.send(newEmbed);
         }
