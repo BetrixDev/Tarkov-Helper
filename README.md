@@ -1,3 +1,4 @@
+
 ![TarkovHelperBanner](https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/Banner3000x1000.png?token=AMYPLRDPOYU7KCU3PFKQI3C77JL3W)
 
 # Description
@@ -5,7 +6,7 @@
  - Since most players use Discord as a way to communicate, having a discord bot to access information within the game will help with having to open a browser and searching which will take more resources with the potential of lag in-game instead, now by typing in a command in a Discord server/channel, a simple alt-tab to an already open program will be much more efficient. Aswell as having extra useful features such as a **Bitcoin Farm Calculator**
  
  # Commands
- **The commmands for the bot include**
+ **The commmands for the bot include [Refer here to see responses](https://github.com/BetrixEdits/Tarkov-Helper/tree/master/Assets/Reponses)**
  - !bitcoinfarm {GPUS} ex: !bitcoinfarm 50
  - !map {MAP} {SPECIFIC MAP} ex: !map customs spawns
  - More coming soon
