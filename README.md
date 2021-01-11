@@ -1,3 +1,4 @@
+
 ![TarkovHelperBanner](https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/Banner3000x1000.png?token=AMYPLRDPOYU7KCU3PFKQI3C77JL3W)
 
 # Description
@@ -6,7 +7,10 @@
  
  # Commands
  **The commmands for the bot include**
- - !bitcoinfarm {GPUS} ex: !bitcoinfarm 50
+ - !bitcoinfarm {GPUS} ex: !bitcoinfarm 50 <details><summary>**Response**</summary>
+
+![Bitcoinfarm Response](https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Reponses/Bitcoinfarm.png?raw=true)
+</details>
  - !map {MAP} {SPECIFIC MAP} ex: !map customs spawns
  - More coming soon
 
