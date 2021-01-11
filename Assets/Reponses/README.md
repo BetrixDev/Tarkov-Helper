@@ -5,3 +5,6 @@
 
 # !Bitcoinfarm {GPUS}
 ![BitcoinfarmResponse](https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Reponses/Bitcoinfarm.png?raw=true)
+
+# !Bitcoinfarm Compare {GPUS} {GPUS2}
+![BitcoinfarmCompareResponse](https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Reponses/Bitcoinfarm%20Compare.png?raw=true)
