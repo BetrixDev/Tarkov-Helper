@@ -1,6 +1,5 @@
 const axios = require('axios');
 
-
 module.exports = {
     name: 'bitcoinfarm',
     description: "Get help with how to use commands. Sytax: !COMMAND {CUSTOM USER INPUT FIELD}",
@@ -13,9 +12,8 @@ module.exports = {
         let PriceValue = await getPrice();
         const BitcoinPriceTarkovFormat =  Math.floor((PriceValue.data.amount * 0.19)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         const SelectedGPUS = args[0];
-        const BitcoinPriceTarkov = PriceValue.data.amount;
         const BTCPerDay = (24 / Math.pow((0.04137931 - 0) + ((SelectedGPUS - 1) - 1) / ( 49 - 0)* (0.10386397 - 0), -1));
-        const RUBPerDay = (Math.floor((24 / Math.pow((0.04137931 - 0) + ((args[0] - 1) - 1) / ( 49 - 0)* (0.10386397 - 0), -1)))*Math.floor(PriceValue.data.amount));
+        const RUBPerDay = Math.floor((BTCPerDay * Math.floor((PriceValue.data.amount * 0.19)))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
         if (isNaN(SelectedGPUS) === true)
         {
             const ErrorMessage = new Discord.MessageEmbed()
@@ -47,7 +45,7 @@ module.exports = {
                 {name: 'Bitcoin Price:', value: `₽${BitcoinPriceTarkovFormat}`},
                 {name: 'Amount of GPUS:' , value: `${SelectedGPUS}`},
                 {name: 'Bitcoins Per Day:', value: `${BTCPerDay}`},
-                {name: 'Roubles Per Day:', value: `${RUBPerDay}`}
+                {name: 'Roubles Per Day:', value: `₽${RUBPerDay}`}
             )
             message.channel.send(newEmbed);
         }
