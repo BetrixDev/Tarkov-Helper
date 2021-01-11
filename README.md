@@ -19,3 +19,10 @@
 ![TarkovHelperBanner](https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Media/DiscordBotConnection.png?raw=true)
 
 # Building Yourself
+
+**Requirements**
+- [A code editor](https://code.visualstudio.com)
+- [Node.js](https://nodejs.org/en/) 
+- Discord.js: ```npm install discord.js```
+- Axios: ```npm install axios```
+- Dotenv: ```npm install dotenv```
