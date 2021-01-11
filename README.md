@@ -7,9 +7,7 @@
  
  # Commands
  **The commmands for the bot include**
- - !bitcoinfarm {GPUS} ex: !bitcoinfarm 50 <details><summary>**Response**</summary>
-<img src="https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Reponses/Bitcoinfarm.png?raw=true">
-</details>
+ - !bitcoinfarm {GPUS} ex: !bitcoinfarm 50
  - !map {MAP} {SPECIFIC MAP} ex: !map customs spawns
  - More coming soon
 
