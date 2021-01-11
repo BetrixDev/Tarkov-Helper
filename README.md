@@ -8,8 +8,8 @@
  # Commands
  **The commmands for the bot include [Refer here to see responses](https://github.com/BetrixEdits/Tarkov-Helper/tree/master/Assets/Reponses)**
  **Most commands feature a shorter "alias" command aswell**
- - *!bitcoinfarm {GPUS}* - **short:** *!bf {GPUS}* - **ex:** *!bitcoinfarm 50*
- - !map {MAP} {SPECIFIC MAP} - short: !m  {MAP} {SPECIFIC MAP} - ex: !map customs spawns
+ - *!bitcoinfarm* {GPUS} - **short:** *!bf* {GPUS} - **ex:** *!bitcoinfarm 50*
+ - *!map* {MAP} {SPECIFIC MAP} - **short:** *!m*  {MAP} {SPECIFIC MAP} - **ex:** *!map customs spawns*
  - More coming soon
 
 # Deployment
