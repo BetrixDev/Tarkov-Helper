@@ -30,5 +30,5 @@
 **Setup**
 - Open CMD and type: ```cd DIRECTORY_OF_PROJECT``` ex: "cd Desktop/Discordbot"
 - Follow setup in CMD and there should be a ```package.json``` file in the directory now
-- Type in CMD: ```npm install PACKAGE``` to install the three above mentioned packages needed to run this application
+- Type in CMD: ```npm install PACKAGE_NAME``` to install the three above mentioned packages needed to run this application
 - Download this repository by typing in CMD ```git clone https://github.com/BetrixEdits/Tarkov-Helper.git``` or use any other way provided by GitHub
