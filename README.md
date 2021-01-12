@@ -26,7 +26,7 @@
 # Building Yourself
 
 **Requirements**
-- [A code editor](https://code.visualstudio.com)
+- [A code editor](https://code.visualstudio.com/download)
 - [Node.js](https://nodejs.org/en/) 
 - Discord.js: ```npm install discord.js```
 - Axios: ```npm install axios```
