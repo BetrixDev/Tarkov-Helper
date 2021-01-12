@@ -12,9 +12,13 @@
  - !bitcoinfarm compare *{GPUS1} {GPUS2}* - **short:** !bf c *{GPUS} {GPUS2}* - **ex:** !bitcoinfarm compare 1 10
  - !map *{MAP} {SPECIFIC MAP}* - **short:** !m  {MAP} {SPECIFIC MAP} - **ex:** !map customs spawns
  - !price *{ITEM}* - Coming Soon
+ 
  ### Stat Commands
  - !boss *{BOSS_NAME}* - Coming Soon
  - More coming soon
+ 
+ ### Admin Commands
+ !channellock - Coming Soon
 
 # Deployment
 [**Click Here**](https://discord.com/oauth2/authorize?client_id=797600238449590334&scope=bot&permissions=511040) then **select a server** and hit **continue** to be able to add Tarkov Helper to your server.
