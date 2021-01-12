@@ -12,7 +12,7 @@
  - !bitcoinfarm compare *{GPUS1} {GPUS2}* - **short:** !bf c *{GPUS} {GPUS2}* - **ex:** !bitcoinfarm compare 1 10
  - !map *{MAP} {SPECIFIC MAP}* - **short:** !m  {MAP} {SPECIFIC MAP} - **ex:** !map customs spawns
  - !price *{ITEM}* - Coming Soon
- ## Stat Commands
+ ### Stat Commands
  - !boss *{BOSS_NAME}* - Coming Soon
  - More coming soon
 
