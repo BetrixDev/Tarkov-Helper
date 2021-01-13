@@ -1,16 +1,10 @@
-//Bot Website: https://discord.com/developers/applications/797600238449590334/bot
-//Add Bot Link: https://discord.com/oauth2/authorize?client_id=797600238449590334&scope=bot&permissions=67624000
 const Discord = require('discord.js');
-
 const client = new Discord.Client();
-
-const prefix = '!'
-
 const fs = require('fs');
-
 require('dotenv').config();
-
 client.commands = new Discord.Collection();
+
+const prefix = '!'  //Character required before command to tell the bot that it is a command
 
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
 for(const file of commandFiles){
@@ -19,8 +13,8 @@ for(const file of commandFiles){
     client.commands.set(command.name, command);
 }
 
-client.once('ready', () => {
-    console.log('Tarkov Helper Ready')
+client.once('ready', () => { 
+    console.log('Tarkov Helper Initialized')    // Log to console when bot is ready (not needed)
 })
 
 client.on('message', async message =>{
@@ -29,17 +23,24 @@ client.on('message', async message =>{
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
     
-    switch(command) {
+    switch(command) {   // Add commands here
         case 'help' :
+        case 'h' :
             client.commands.get('help').execute(message, args, Discord);
         break;
         case 'bitcoinfarm' :
+        case 'bf' :
             client.commands.get('bitcoinfarm').execute(message, args, Discord);
         break;
         case 'map' :
+        case 'm' :
             client.commands.get('map').execute(message, args, Discord);
+        break;
+        case 'price' :
+        case 'p' :
+            client.commands.get('price').execute(message, args, Discord);
         break;
     }
 });
 
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN); // Make an enviroment variable called "BOT_TOKEN=*YOUR_TOKEN_HERE*" inside of a .env file
