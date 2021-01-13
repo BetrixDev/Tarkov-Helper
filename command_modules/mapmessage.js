@@ -1,12 +1,13 @@
 const Discord = require('discord.js');
+const Responses = require('../settings.json')
 
-const Thumbnail = "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/MapLogo128x128.png"
-const AuthorImage = "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/Logo50x50SmallText.png?token=AMYPLRE73XI3MEKDQDCTJX277JKCK"
-const FooterText = "Map image taken from the EFT WIKI"
+const Thumbnail = Responses.Images.Thumbnails.Map
+const AuthorImage = Responses.Images.Author
+const FooterText = Responses.Text.Map.FooterText
 
 const MapMessage = (Title, Image, FullRes, message) => {
     const newEmbed = new Discord.MessageEmbed()
-        .setColor('#cecdc3')
+        .setColor(Responses.BotSettings.Color)
         .setAuthor('Tarkov Helper', AuthorImage)
         .setTitle(Title)
         .setThumbnail(Thumbnail)

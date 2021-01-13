@@ -1,0 +1,23 @@
+{
+    "BotSettings": {
+        "Color": "#cecdc3",
+        "ErrorColor": "#ff2424"
+    },
+    "Images": {
+        "Author": "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/Logo50x50SmallText.png?token=AMYPLRE73XI3MEKDQDCTJX277JKCK",
+        "Thumbnails": {
+            "Error": "https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Media/ErrorLogo128x128.png?raw=true",
+            "Map": "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/MapLogo128x128.png",
+            "BitcoinFarm": "https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Media/BitcoinFarmLogo128x128.png?raw=true",
+            "Settings": "https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Media/SettingsLogo128x128.png?raw=true"
+        }
+    },
+    "Text": {
+        "Map": {
+            "FooterText": "Map image taken from the EFT WIKI"
+        }
+    },
+    "Maps": {
+
+    }
+}

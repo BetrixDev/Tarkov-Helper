@@ -31,6 +31,7 @@ module.exports = {
                     case 'extractions':
                     case 'e':
                         MapMessage('Reserve Extractions', 'https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Maps/Reserve/Extractions.png?raw=true', 'https://escapefromtarkov.gamepedia.com/File:3D_Map_by_loweffortsaltbox.png', message)
+                        break;
                     case 'keys':
                     case 'k':
                         MapMessage('Reserve Keys', 'https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Maps/Reserve/Keys.png?raw=true', 'https://escapefromtarkov.gamepedia.com/File:Keys_and_doors_v3.png', message)

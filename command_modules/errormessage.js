@@ -1,12 +1,13 @@
 const Discord = require('discord.js');
+const Responses = require('../settings.json')
 
 const ErrorMessage = (Description, message) => {
     const NewMessage = new Discord.MessageEmbed()
-        .setColor('RED')
-        .setAuthor('Tarkov Helper', 'https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/Logo50x50SmallText.png?token=AMYPLRE73XI3MEKDQDCTJX277JKCK')
+        .setColor(Responses.BotSettings.ErrorColor)
+        .setAuthor('Tarkov Helper', Responses.Images.Author)
         .setTitle('Error!')
         .setDescription(Description)
-        .setThumbnail('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/ErrorLogo128x128.png?token=AMYPLRFFVREOV35APX7JGJC77JVEU')
+        .setThumbnail(Responses.Images.Thumbnails.Error)
     message.channel.send(NewMessage);
 }
 
