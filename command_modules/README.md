@@ -1,0 +1,4 @@
+![CommandModulesBanner](https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Media/CommandModulesBanner3000x1000.png?raw=true)
+
+# Description
+Using seperate files for recurring functions or functions that require specific modules helps to beautify the overall structure of the project, aswell as to help when making changes to those recurring functions without having to copy and paste every time they are called.
