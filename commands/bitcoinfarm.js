@@ -8,13 +8,13 @@ module.exports = {
         const PriceValue = await GetBitcoinPrice()
         if (args[0] === 'c' || args[0] === 'compare') // Comparing mode (Needs some work)
         {
-            const BitcoinPriceTarkovFormat = Math.floor((PriceValue.data.amount * 0.19)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-            const SelectedGPUS = args[1]
-            const BTCPerDay = (24 / Math.pow((0.04137931 - 0) + ((SelectedGPUS - 1) - 1) / (49 - 0) * (0.10386397 - 0), -1));
-            const RUBPerDay = Math.floor((BTCPerDay * Math.floor((PriceValue.data.amount * 0.19)))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-            const SelectedGPUSComp = args[2]
-            const BTCPerDayComp = (24 / Math.pow((0.04137931 - 0) + ((SelectedGPUSComp - 1) - 1) / (49 - 0) * (0.10386397 - 0), -1));
-            const RUBPerDayComp = Math.floor((BTCPerDayComp * Math.floor((PriceValue.data.amount * 0.19)))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            let BitcoinPriceTarkovFormat = Math.floor((PriceValue.data.amount * 0.19)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            let SelectedGPUS = args[1]
+            let BTCPerDay = (24 / Math.pow((0.04137931 - 0) + ((SelectedGPUS - 1) - 1) / (49 - 0) * (0.10386397 - 0), -1));
+            let RUBPerDay = Math.floor((BTCPerDay * Math.floor((PriceValue.data.amount * 0.19)))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            let SelectedGPUSComp = args[2]
+            let BTCPerDayComp = (24 / Math.pow((0.04137931 - 0) + ((SelectedGPUSComp - 1) - 1) / (49 - 0) * (0.10386397 - 0), -1));
+            let RUBPerDayComp = Math.floor((BTCPerDayComp * Math.floor((PriceValue.data.amount * 0.19)))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
             if (isNaN(SelectedGPUS) === true || isNaN(SelectedGPUSComp) === true) {
                 ErrorMessage('The input was not a number', message)
             } else if (SelectedGPUS > 50 || SelectedGPUSComp > 50) {
