@@ -4,6 +4,8 @@
 **Tarkov Helper** is a Discord bot aimed to give users all kinds of information in an easy and read and use format. <br /> <br />
  - Since most players use Discord as a way to communicate, having a discord bot to access information within the game will help with having to not open a browser and searching which will take more resources and time with the potential of lag in-game instead, now by typing in a command in a Discord server/channel, a simple alt-tab to an already open program will be much more efficient. Aswell as having extra useful features such as a **Bitcoin Farm Calculator**
  
+ - Tarkov Helper is not affiliated with BattleState Games in any way 
+ 
  # Commands - More Coming Soon!
  **The commmands for the bot include [Refer here to see responses](https://github.com/BetrixEdits/Tarkov-Helper/tree/master/Assets/Reponses)**
  **Most commands feature a shorter "alias" command aswell**
@@ -33,6 +35,7 @@
 
 **Setup**
 - Open CMD and type: ```cd DIRECTORY_OF_PROJECT``` ex: "cd Desktop/Discordbot"
+- Then type: ```npm init```
 - Follow setup in CMD and there should be a ```package.json``` file in the directory now
 - Type in CMD: ```npm install PACKAGE_NAME``` to install the three above mentioned packages needed to run this application
 - Download this repository by typing in CMD ```git clone https://github.com/BetrixEdits/Tarkov-Helper.git``` or use any other way provided by GitHub
