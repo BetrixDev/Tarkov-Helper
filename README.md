@@ -16,6 +16,8 @@
  
  ### Stat Commands
  - !boss *{BOSS_NAME}* - Coming Soon
+ - !dealer *{DEALER_NAME}* - Coming Soon
+ - !stats *{ITEM_NAME}* - Coming Soon
  
  ### Admin Commands
  - !prefixset *{PREFIX}* - **ex:** !prefixset #
