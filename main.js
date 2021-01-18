@@ -3,7 +3,8 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
 require('dotenv').config();
-const Config = require('./config.json')
+const Config = require('./config.json');
+const { GetItems } = require("./command_modules/getdata");
 
 
 client.commands = new Discord.Collection();
@@ -13,6 +14,8 @@ for (const file of commandFiles) {
 
     client.commands.set(command.name, command);
 }
+
+GetItems()
 
 client.once('ready', () => {
     console.log('Tarkov Helper Initialized')
@@ -25,7 +28,7 @@ client.on('message', async message => {
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
-    switch (command) { // Add commands here
+    switch (command) {
         case 'help':
         case 'h':
             client.commands.get('help').execute(message, args, Discord);
@@ -44,6 +47,10 @@ client.on('message', async message => {
             break;
         case 'prefixset':
             client.commands.get('prefix').execute(message, args, Discord);
+            break;
+        case 'stats':
+        case 's':
+            client.commands.get('stat').execute(message, args, Discord);
             break;
     }
 });
