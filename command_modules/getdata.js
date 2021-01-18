@@ -2,6 +2,7 @@ const fs = require('fs')
 var Filter = require('../game_data/itemfilter.json')
 
 const GetItems = () => {
+    let images = fs.readdirSync('./game_data/images/')
     fs.writeFileSync('./game_data/itemnames.json', JSON.stringify({}))
     fs.readFile('./game_data/items.json', (err, data) => {
         let NewJSON = {}
