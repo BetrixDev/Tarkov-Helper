@@ -4,6 +4,7 @@ const fs = require('fs');
 var ItemNames = require('../game_data/itemnames.json')
 var Items = require('../game_data/items.json');
 const urlExist = require('url-exist');
+var Templates = require('../game_data/text/templates.json')
 
 module.exports = {
     name: 'stat',
@@ -15,10 +16,11 @@ module.exports = {
         }
         if (SearchItem !== undefined) {
             for (const Item in ItemNames) {
-                if (Item.includes(SearchItem)) {
+                if (Item.toLowerCase().includes(SearchItem.toLowerCase())) {
                     let ItemID = ItemNames[Item].ID
                     let ItemFullName = Items[ItemID]._name
                     let ItemData = Items[ItemID]._props
+                    let ItemDescription = Templates[ItemID].Description
                     if (ItemFullName.includes('patron_') === true) {
                         let ImageThumbnail = ``
                         if (await urlExist(`https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/game_data/images/${ItemFullName}.png`)) {
@@ -31,10 +33,10 @@ module.exports = {
                         const newEmbed = new Discord.MessageEmbed()
                             .setColor('#cecdc3')
                             .setAuthor('Tarkov Helper', 'https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/Logo50x50SmallText.png?token=AMYPLRE73XI3MEKDQDCTJX277JKCK')
-                            .setTitle(ItemData.casingName.split("_").join(" ").split("patron"))
+                            .setTitle(Templates[ItemID].Name)
                             .setThumbnail(ImageThumbnail)
-                            .setDescription('ITEM DESCRIPTION')
-                            .addFields({ name: 'Damage: ', value: `${ItemData.Damage}` }, { name: 'Penetration:', value: `${ItemData.PenetrationPower}` }, { name: 'Armor Damage:', value: `${ItemData.ArmorDamage}` }, { name: 'Projectile Speed:', value: `${ItemData.InitialSpeed}` })
+                            .setDescription(ItemDescription)
+                            .addFields({ name: 'Damage: ', value: `${ItemData.Damage}` }, { name: 'Penetration:', value: `${ItemData.PenetrationPower}` }, { name: 'Armor Damage:', value: `${ItemData.ArmorDamage}` }, { name: 'Projectile Speed:', value: `${ItemData.InitialSpeed}m/s` })
                         message.channel.send(newEmbed);
                     }
                 }

@@ -1343,7 +1343,7 @@
     "Name": "muzzle_glock_alpha_wolf_thread_protector_9x19",
     "ID": "5a6b585a8dc32e5a9c28b4f1"
   },
-  "muzzle sks weapon tuning wt0032 1 762x39": {
+  "muzzle sks tuning wt0032 1 762x39": {
     "Name": "muzzle_sks_weapon_tuning_wt0032_1_762x39",
     "ID": "5cf67cadd7f00c065a5abab7"
   },
@@ -1407,7 +1407,7 @@
     "Name": "muzzle_saiga12_silencerco_salvo_adaper_12g",
     "ID": "5b363e1b5acfc4771e1c5e80"
   },
-  "muzzle mosin weapon tuning wt1052 multi": {
+  "muzzle mosin tuning wt1052 multi": {
     "Name": "muzzle_mosin_weapon_tuning_wt1052_multi",
     "ID": "5cf67a1bd7f00c06585fb6f3"
   },
@@ -5427,7 +5427,7 @@
     "Name": "reciever_mp9_bt_mp9_upper_std_fde",
     "ID": "5e0090f7e9dc277128008b93"
   },
-  "reciever ak texas weapon systems dog leg rail gen 3": {
+  "reciever ak texas systems dog leg rail gen 3": {
     "Name": "reciever_ak_texas_weapon_systems_dog_leg_rail_gen_3",
     "ID": "5d2c772c48f0355d95672c25"
   },
@@ -5879,347 +5879,347 @@
     "Name": "item_container_secured_kappa",
     "ID": "5c093ca986f7740a1867ab12"
   },
-  "weapon molot op sks 762x39": {
+  "molot op sks 762x39": {
     "Name": "weapon_molot_op_sks_762x39",
     "ID": "587e02ff24597743df3deaeb"
   },
-  "weapon toz sks 762x39": {
+  "toz sks 762x39": {
     "Name": "weapon_toz_sks_762x39",
     "ID": "574d967124597745970e7c94"
   },
-  "weapon tochmash val 9x39": {
+  "tochmash val 9x39": {
     "Name": "weapon_tochmash_val_9x39",
     "ID": "57c44b372459772d2b39b8ce"
   },
-  "weapon molot vepr hunter vpo-101 762x51": {
+  "molot vepr hunter vpo-101 762x51": {
     "Name": "weapon_molot_vepr_hunter_vpo-101_762x51",
     "ID": "5c501a4d2e221602b412b540"
   },
-  "weapon remington r11 rsass 762x51": {
+  "remington r11 rsass 762x51": {
     "Name": "weapon_remington_r11_rsass_762x51",
     "ID": "5a367e5dc4a282000e49738f"
   },
-  "weapon izhmash svd s 762x54": {
+  "izhmash svd s 762x54": {
     "Name": "weapon_izhmash_svd_s_762x54",
     "ID": "5c46fbd72e2216398b5a8c9c"
   },
-  "weapon kac sr25 762x51": {
+  "kac sr25 762x51": {
     "Name": "weapon_kac_sr25_762x51",
     "ID": "5df8ce05b11454561e39243b"
   },
-  "weapon tochmash vss 9x39": {
+  "tochmash vss 9x39": {
     "Name": "weapon_tochmash_vss_9x39",
     "ID": "57838ad32459774a17445cd2"
   },
-  "weapon kel tec rfb 762x51": {
+  "kel tec rfb 762x51": {
     "Name": "weapon_kel_tec_rfb_762x51",
     "ID": "5f2a9575926fd9352339381f"
   },
-  "weapon springfield m1a 762x51": {
+  "springfield m1a 762x51": {
     "Name": "weapon_springfield_m1a_762x51",
     "ID": "5aafa857e5b5b00018480968"
   },
-  "weapon remington model 870 12g": {
+  "remington model 870 12g": {
     "Name": "weapon_remington_model_870_12g",
     "ID": "5a7828548dc32e5a9c28b516"
   },
-  "weapon izhmash saiga12k 10 12g": {
+  "izhmash saiga12k 10 12g": {
     "Name": "weapon_izhmash_saiga12k_10_12g",
     "ID": "576165642459773c7a400233"
   },
-  "weapon izhmeh mr153 12g": {
+  "izhmeh mr153 12g": {
     "Name": "weapon_izhmeh_mr153_12g",
     "ID": "56dee2bdd2720bc8328b4567"
   },
-  "weapon toz toz-106 20g": {
+  "toz toz-106 20g": {
     "Name": "weapon_toz_toz-106_20g",
     "ID": "5a38e6bac4a2826c6e06d79b"
   },
-  "weapon izhmeh mr133 12g": {
+  "izhmeh mr133 12g": {
     "Name": "weapon_izhmeh_mr133_12g",
     "ID": "54491c4f4bdc2db1078b4568"
   },
-  "weapon mossberg 590a1 12g": {
+  "mossberg 590a1 12g": {
     "Name": "weapon_mossberg_590a1_12g",
     "ID": "5e870397991fd70db46995c8"
   },
-  "weapon toz ks23m 23x75": {
+  "toz ks23m 23x75": {
     "Name": "weapon_toz_ks23m_23x75",
     "ID": "5e848cc2988a8701445df1e8"
   },
-  "weapon fn 40gl s": {
+  "fn 40gl s": {
     "Name": "weapon_fn_40gl_s",
     "ID": "5e81ebcd8e146c7080625e15"
   },
-  "weapon izhmash mosin infantry 762x54": {
+  "izhmash mosin infantry 762x54": {
     "Name": "weapon_izhmash_mosin_infantry_762x54",
     "ID": "5bfd297f0db834001a669119"
   },
-  "weapon izhmash mosin rifle 762x54": {
+  "izhmash mosin rifle 762x54": {
     "Name": "weapon_izhmash_mosin_rifle_762x54",
     "ID": "5ae08f0a5acfc408fb1398a1"
   },
-  "weapon izhmash sv-98 762x54r": {
+  "izhmash sv-98 762x54r": {
     "Name": "weapon_izhmash_sv-98_762x54r",
     "ID": "55801eed4bdc2d89578b4588"
   },
-  "weapon molot vpo 215 366tkm": {
+  "molot vpo 215 366tkm": {
     "Name": "weapon_molot_vpo_215_366tkm",
     "ID": "5de652c31b7e3716273428be"
   },
-  "weapon orsis t5000 762x51": {
+  "orsis t5000 762x51": {
     "Name": "weapon_orsis_t5000_762x51",
     "ID": "5df24cf80dee1b22f862e9bc"
   },
-  "weapon lobaev dvl-10 308": {
+  "lobaev dvl-10 308": {
     "Name": "weapon_lobaev_dvl-10_308",
     "ID": "588892092459774ac91d4b11"
   },
-  "weapon remington model 700 762x51": {
+  "remington model 700 762x51": {
     "Name": "weapon_remington_model_700_762x51",
     "ID": "5bfea6e90db834001b7347f3"
   },
-  "weapon glock glock 18c gen3 9x19": {
+  "glock glock 18c gen3 9x19": {
     "Name": "weapon_glock_glock_18c_gen3_9x19",
     "ID": "5b1fa9b25acfc40018633c01"
   },
-  "weapon izhmeh mp443 9x19": {
+  "izhmeh mp443 9x19": {
     "Name": "weapon_izhmeh_mp443_9x19",
     "ID": "576a581d2459771e7b1bc4f1"
   },
-  "weapon fn five seven 57x28": {
+  "fn five seven 57x28": {
     "Name": "weapon_fn_five_seven_57x28",
     "ID": "5d3eb3b0a4b93615055e84d2"
   },
-  "weapon glock glock 17 gen3 9x19": {
+  "glock glock 17 gen3 9x19": {
     "Name": "weapon_glock_glock_17_gen3_9x19",
     "ID": "5a7ae0c351dfba0017554310"
   },
-  "weapon izhmeh pm treaded 9x18pm": {
+  "izhmeh pm treaded 9x18pm": {
     "Name": "weapon_izhmeh_pm_treaded_9x18pm",
     "ID": "579204f224597773d619e051"
   },
-  "weapon colt m45a1 1143x23": {
+  "colt m45a1 1143x23": {
     "Name": "weapon_colt_m45a1_1143x23",
     "ID": "5f36a0e5fbf956000b716b65"
   },
-  "weapon toz tt 762x25tt": {
+  "toz tt 762x25tt": {
     "Name": "weapon_toz_tt_762x25tt",
     "ID": "571a12c42459771f627b58a0"
   },
-  "weapon colt m1911a1 1143x23": {
+  "colt m1911a1 1143x23": {
     "Name": "weapon_colt_m1911a1_1143x23",
     "ID": "5e81c3cbac2bb513793cdc75"
   },
-  "weapon toz apb 9x18pm": {
+  "toz apb 9x18pm": {
     "Name": "weapon_toz_apb_9x18pm",
     "ID": "5abccb7dd8ce87001773e277"
   },
-  "weapon fn five seven 57x28 fde": {
+  "fn five seven 57x28 fde": {
     "Name": "weapon_fn_five_seven_57x28_fde",
     "ID": "5d67abc1a4b93614ec50137f"
   },
-  "weapon tochmash sr1mp 9x21": {
+  "tochmash sr1mp 9x21": {
     "Name": "weapon_tochmash_sr1mp_9x21",
     "ID": "59f98b4986f7746f546d2cef"
   },
-  "weapon toz tt 762x25tt gold": {
+  "toz tt 762x25tt gold": {
     "Name": "weapon_toz_tt_762x25tt_gold",
     "ID": "5b3b713c5acfc4330140bd8d"
   },
-  "weapon izhmeh pm 9x18pm": {
+  "izhmeh pm 9x18pm": {
     "Name": "weapon_izhmeh_pm_9x18pm",
     "ID": "5448bd6b4bdc2dfc2f8b4569"
   },
-  "weapon tochmash pb 9x18pm": {
+  "tochmash pb 9x18pm": {
     "Name": "weapon_tochmash_pb_9x18pm",
     "ID": "56e0598dd2720bb5668b45a6"
   },
-  "weapon molot aps 9x18pm": {
+  "molot aps 9x18pm": {
     "Name": "weapon_molot_aps_9x18pm",
     "ID": "5a17f98cfcdbcb0980087290"
   },
-  "weapon beretta m9a3 9x19": {
+  "beretta m9a3 9x19": {
     "Name": "weapon_beretta_m9a3_9x19",
     "ID": "5cadc190ae921500103bb3b6"
   },
-  "weapon sig p226r 9x19": {
+  "sig p226r 9x19": {
     "Name": "weapon_sig_p226r_9x19",
     "ID": "56d59856d2720bd8418b456a"
   },
-  "weapon izhmash akms 762x39": {
+  "izhmash akms 762x39": {
     "Name": "weapon_izhmash_akms_762x39",
     "ID": "59ff346386f77477562ff5e2"
   },
-  "weapon izhmash ak105 545x39": {
+  "izhmash ak105 545x39": {
     "Name": "weapon_izhmash_ak105_545x39",
     "ID": "5ac66d9b5acfc4001633997a"
   },
-  "weapon izhmash ak103 762x39": {
+  "izhmash ak103 762x39": {
     "Name": "weapon_izhmash_ak103_762x39",
     "ID": "5ac66d2e5acfc43b321d4b53"
   },
-  "weapon hk 416a5 556x45": {
+  "hk 416a5 556x45": {
     "Name": "weapon_hk_416a5_556x45",
     "ID": "5bb2475ed4351e00853264e3"
   },
-  "weapon izhmash ak104 762x39": {
+  "izhmash ak104 762x39": {
     "Name": "weapon_izhmash_ak104_762x39",
     "ID": "5ac66d725acfc43b321d4b60"
   },
-  "weapon izhmash aks74 545x39": {
+  "izhmash aks74 545x39": {
     "Name": "weapon_izhmash_aks74_545x39",
     "ID": "5bf3e0490db83400196199af"
   },
-  "weapon izhmash ak74m 545x39": {
+  "izhmash ak74m 545x39": {
     "Name": "weapon_izhmash_ak74m_545x39",
     "ID": "5ac4cd105acfc40016339859"
   },
-  "weapon izhmash ak101 556x45": {
+  "izhmash ak101 556x45": {
     "Name": "weapon_izhmash_ak101_556x45",
     "ID": "5ac66cb05acfc40198510a10"
   },
-  "weapon izhmash akm 762x39": {
+  "izhmash akm 762x39": {
     "Name": "weapon_izhmash_akm_762x39",
     "ID": "59d6088586f774275f37482f"
   },
-  "weapon ckib ash 12 127x55": {
+  "ckib ash 12 127x55": {
     "Name": "weapon_ckib_ash_12_127x55",
     "ID": "5cadfbf7ae92152ac412eeef"
   },
-  "weapon dt mdr 556x45": {
+  "dt mdr 556x45": {
     "Name": "weapon_dt_mdr_556x45",
     "ID": "5c488a752e221602b412af63"
   },
-  "weapon dt mdr 762x51": {
+  "dt mdr 762x51": {
     "Name": "weapon_dt_mdr_762x51",
     "ID": "5dcbd56fdbd3d91b3e5468d5"
   },
-  "weapon molot akm vpo 209 366 TKM": {
+  "molot akm vpo 209 366 TKM": {
     "Name": "weapon_molot_akm_vpo_209_366_TKM",
     "ID": "59e6687d86f77411d949b251"
   },
-  "weapon colt m4a1 556x45": {
+  "colt m4a1 556x45": {
     "Name": "weapon_colt_m4a1_556x45",
     "ID": "5447a9cd4bdc2dbd208b4567"
   },
-  "weapon izhmash ak74 545x39": {
+  "izhmash ak74 545x39": {
     "Name": "weapon_izhmash_ak74_545x39",
     "ID": "5bf3e03b0db834001d2c4a9c"
   },
-  "weapon izhmash akmsn 762x39": {
+  "izhmash akmsn 762x39": {
     "Name": "weapon_izhmash_akmsn_762x39",
     "ID": "5abcbc27d8ce8700182eceeb"
   },
-  "weapon izhmash ak74n 545x39": {
+  "izhmash ak74n 545x39": {
     "Name": "weapon_izhmash_ak74n_545x39",
     "ID": "5644bd2b4bdc2d3b4c8b4572"
   },
-  "weapon dsa sa58 762x51": {
+  "dsa sa58 762x51": {
     "Name": "weapon_dsa_sa58_762x51",
     "ID": "5b0bbe4e5acfc40dc528a72d"
   },
-  "weapon izhmash akmn 762x39": {
+  "izhmash akmn 762x39": {
     "Name": "weapon_izhmash_akmn_762x39",
     "ID": "5a0ec13bfcdbcb00165aa685"
   },
-  "weapon molot vepr km vpo 136 762x39": {
+  "molot vepr km vpo 136 762x39": {
     "Name": "weapon_molot_vepr_km_vpo_136_762x39",
     "ID": "59e6152586f77473dc057aa1"
   },
-  "weapon izhmash ak102 556x45": {
+  "izhmash ak102 556x45": {
     "Name": "weapon_izhmash_ak102_556x45",
     "ID": "5ac66d015acfc400180ae6e4"
   },
-  "weapon izhmash aks74n 545x39": {
+  "izhmash aks74n 545x39": {
     "Name": "weapon_izhmash_aks74n_545x39",
     "ID": "5ab8e9fcd8ce870019439434"
   },
-  "weapon adar 2-15 556x45": {
+  "adar 2-15 556x45": {
     "Name": "weapon_adar_2-15_556x45",
     "ID": "5c07c60e0db834002330051f"
   },
-  "weapon izhmash aks74u 545x39": {
+  "izhmash aks74u 545x39": {
     "Name": "weapon_izhmash_aks74u_545x39",
     "ID": "57dc2fa62459775949412633"
   },
-  "weapon izhmash aks74ub 545x39": {
+  "izhmash aks74ub 545x39": {
     "Name": "weapon_izhmash_aks74ub_545x39",
     "ID": "5839a40f24597726f856b511"
   },
-  "weapon izhmash aks74un 545x39": {
+  "izhmash aks74un 545x39": {
     "Name": "weapon_izhmash_aks74un_545x39",
     "ID": "583990e32459771419544dd2"
   },
-  "weapon lone star tx15 designated marksman 556x45": {
+  "lone star tx15 designated marksman 556x45": {
     "Name": "weapon_lone_star_tx15_designated_marksman_556x45",
     "ID": "5d43021ca4b9362eab4b5e25"
   },
-  "weapon izhmash saiga 9 9x19": {
+  "izhmash saiga 9 9x19": {
     "Name": "weapon_izhmash_saiga_9_9x19",
     "ID": "59f9cabd86f7743a10721f46"
   },
-  "weapon zmz pp-91 9x18pm": {
+  "zmz pp-91 9x18pm": {
     "Name": "weapon_zmz_pp-91_9x18pm",
     "ID": "57d14d2524597714373db789"
   },
-  "weapon zis ppsh41 762x25": {
+  "zis ppsh41 762x25": {
     "Name": "weapon_zis_ppsh41_762x25",
     "ID": "5ea03f7400685063ec28bfa8"
   },
-  "weapon bt mp9n 9x19": {
+  "bt mp9n 9x19": {
     "Name": "weapon_bt_mp9n_9x19",
     "ID": "5de7bd7bfd6b4e6e2276dc25"
   },
-  "weapon zmz pp-9 9x18pmm": {
+  "zmz pp-9 9x18pmm": {
     "Name": "weapon_zmz_pp-9_9x18pmm",
     "ID": "57f4c844245977379d5c14d1"
   },
-  "weapon hk mp5 navy3 9x19": {
+  "hk mp5 navy3 9x19": {
     "Name": "weapon_hk_mp5_navy3_9x19",
     "ID": "5926bb2186f7744b1c6c6e60"
   },
-  "weapon hk mp7a2 46x30": {
+  "hk mp7a2 46x30": {
     "Name": "weapon_hk_mp7a2_46x30",
     "ID": "5bd70322209c4d00d7167b8f"
   },
-  "weapon hk mp5 kurtz 9x19": {
+  "hk mp5 kurtz 9x19": {
     "Name": "weapon_hk_mp5_kurtz_9x19",
     "ID": "5d2f0d8048f0356c925bc3b0"
   },
-  "weapon sig mpx 9x19": {
+  "sig mpx 9x19": {
     "Name": "weapon_sig_mpx_9x19",
     "ID": "58948c8e86f77409493f7266"
   },
-  "weapon zmz pp-91-01 9x18pm": {
+  "zmz pp-91-01 9x18pm": {
     "Name": "weapon_zmz_pp-91-01_9x18pm",
     "ID": "57f3c6bd24597738e730fa2f"
   },
-  "weapon izhmash pp-19-01 9x19": {
+  "izhmash pp-19-01 9x19": {
     "Name": "weapon_izhmash_pp-19-01_9x19",
     "ID": "59984ab886f7743e98271174"
   },
-  "weapon fn p90 57x28": {
+  "fn p90 57x28": {
     "Name": "weapon_fn_p90_57x28",
     "ID": "5cc82d76e24e8d00134b4b83"
   },
-  "weapon hk mp7a1 46x30": {
+  "hk mp7a1 46x30": {
     "Name": "weapon_hk_mp7a1_46x30",
     "ID": "5ba26383d4351e00334c93d9"
   },
-  "weapon bt mp9 9x19": {
+  "bt mp9 9x19": {
     "Name": "weapon_bt_mp9_9x19",
     "ID": "5e00903ae9dc277128008b87"
   },
-  "weapon ckib nsv utes 127x108": {
+  "ckib nsv utes 127x108": {
     "Name": "weapon_ckib_nsv_utes_127x108",
     "ID": "5cdeb229d7f00c000e7ce174"
   },
-  "weapon zid ags30 30x29": {
+  "zid ags30 30x29": {
     "Name": "weapon_zid_ags30_30x29",
     "ID": "5d52cc5ba4b9367408500062"
   },
-  "weapon izhmash rpk16 545x39": {
+  "izhmash rpk16 545x39": {
     "Name": "weapon_izhmash_rpk16_545x39",
     "ID": "5beed0f50db834001c062b12"
   },
@@ -8795,51 +8795,51 @@
     "Name": "ER Bayonet",
     "ID": "54491bb74bdc2d09088b4567"
   },
-  "weapon crash axe": {
+  "crash axe": {
     "Name": "weapon_crash_axe",
     "ID": "5bffe7930db834001b734a39"
   },
-  "weapon gf crowbar": {
+  "gf crowbar": {
     "Name": "weapon_gf_crowbar",
     "ID": "5c07df7f0db834001b73588a"
   },
-  "weapon red rebel axe": {
+  "red rebel axe": {
     "Name": "weapon_red_rebel_axe",
     "ID": "5c0126f40db834002a125382"
   },
-  "weapon bars a-2607 95x18": {
+  "bars a-2607 95x18": {
     "Name": "weapon_bars_a-2607_95x18",
     "ID": "57e26fc7245977162a14b800"
   },
-  "weapon izhmash 6x5": {
+  "izhmash 6x5": {
     "Name": "weapon_izhmash_6x5",
     "ID": "5bffdc370db834001d23eca8"
   },
-  "weapon bars a-2607 damask": {
+  "bars a-2607 damask": {
     "Name": "weapon_bars_a-2607_damask",
     "ID": "57e26ea924597715ca604a09"
   },
-  "weapon miller bros m-2": {
+  "miller bros m-2": {
     "Name": "weapon_miller_bros_m-2",
     "ID": "5bffdd7e0db834001b734a1a"
   },
-  "weapon sp-8": {
+  "sp-8": {
     "Name": "weapon_sp-8",
     "ID": "5c010e350db83400232feec7"
   },
-  "weapon utility axe": {
+  "utility axe": {
     "Name": "weapon_utility_axe",
     "ID": "5c012ffc0db834001d23f03f"
   },
-  "weapon wyccaxe": {
+  "wyccaxe": {
     "Name": "weapon_valuable_wyccaxe",
     "ID": "5bc9c1e2d4351e00367fbcf0"
   },
-  "weapon tactical tomahawk": {
+  "tactical tomahawk": {
     "Name": "weapon_tactical_tomahawk",
     "ID": "57cd379a24597778e7682ecf"
   },
-  "weapon voentorg mpl-40": {
+  "voentorg mpl-40": {
     "Name": "weapon_voentorg_mpl-40",
     "ID": "5bead2e00db834001c062938"
   },
@@ -9039,27 +9039,27 @@
     "Name": "Drugs",
     "ID": "5448f3a14bdc2d27728b4569"
   },
-  "weapon grenade zarya": {
+  "grenade zarya": {
     "Name": "weapon_grenade_zarya",
     "ID": "5a0c27731526d80618476ac4"
   },
-  "weapon grenade rdg2": {
+  "grenade rdg2": {
     "Name": "weapon_grenade_rdg2",
     "ID": "5a2a57cfc4a2826c6e06d44a"
   },
-  "weapon grenade chattabka vog17": {
+  "grenade chattabka vog17": {
     "Name": "weapon_grenade_chattabka_vog17",
     "ID": "5e32f56fcb6d5863cc5e5ee4"
   },
-  "weapon grenade chattabka vog25": {
+  "grenade chattabka vog25": {
     "Name": "weapon_grenade_chattabka_vog25",
     "ID": "5e340dcdcb6d5863cc5e5efb"
   },
-  "weapon grenade f1": {
+  "grenade f1": {
     "Name": "weapon_grenade_f1",
     "ID": "5710c24ad2720bc3458b45a3"
   },
-  "weapon grenade m67": {
+  "grenade m67": {
     "Name": "weapon_grenade_m67",
     "ID": "58d3db5386f77426186285a0"
   },
