@@ -15,6 +15,9 @@
     "Text": {
         "Map": {
             "FooterText": "Map image taken from the EFT WIKI"
+        },
+        "Stats" : {
+            "FooterText": "Statistics may be slightly out of date"
         }
     },
     "Maps": {

@@ -163,7 +163,7 @@
     "Name": "item_barter_valuable_gp",
     "ID": "5d235b4d86f7742e017bc88a"
   },
-  "nyball red": {
+  "nybred": {
     "Name": "item_barter_valuable_nyball_red",
     "ID": "5df8a6a186f77412640e2e80"
   },
@@ -183,7 +183,7 @@
     "Name": "item_barter_valuable_chicken",
     "ID": "5bc9bc53d4351e00367fbcee"
   },
-  "nyball violet": {
+  "nybviolet": {
     "Name": "item_barter_valuable_nyball_violet",
     "ID": "5df8a77486f77412672a1e3f"
   },
@@ -191,7 +191,7 @@
     "Name": "item_barter_valuable_raven",
     "ID": "5e54f62086f774219b0f1937"
   },
-  "nyball silver": {
+  "nybsilver": {
     "Name": "item_barter_valuable_nyball_silver",
     "ID": "5df8a72c86f77412640e2e83"
   },
@@ -787,7 +787,7 @@
     "Name": "muzzle_sv-98_izhmash_std_762x54r",
     "ID": "560e620e4bdc2d724b8b456b"
   },
-  "muzzle all taccom carbine brake multi": {
+  "muzzle taccom carbine brake multi": {
     "Name": "muzzle_all_taccom_carbine_brake_multi",
     "ID": "5cf6935bd7f00c06585fb791"
   },
@@ -863,7 +863,7 @@
     "Name": "muzzle_ar15_sai_jail_break_556x45",
     "ID": "5c78f2882e22165df16b832e"
   },
-  "muzzle ak spike tactical ak dynacomp 762x39": {
+  "muzzle ak spike ak dynacomp 762x39": {
     "Name": "muzzle_ak_spike_tactical_ak_dynacomp_762x39",
     "ID": "5a9ea27ca2750c00137fa672"
   },
@@ -975,15 +975,15 @@
     "Name": "muzzle_glock_carver_custom_decelerator_3_port_gen_3_9x19",
     "ID": "5a7037338dc32e000d46d257"
   },
-  "muzzle m1a smith enterprise socom 16 threaded gas lock 762x51": {
+  "muzzle m1a smith enterprise socom 16 threaded lock 762x51": {
     "Name": "muzzle_m1a_smith_enterprise_socom_16_threaded_gas_lock_762x51",
     "ID": "5ab3afb2d8ce87001660304d"
   },
-  "muzzle m14 jp enterprises tactical compensator 762x51": {
+  "muzzle m14 jp enterprises compensator 762x51": {
     "Name": "muzzle_m14_jp_enterprises_tactical_compensator_762x51",
     "ID": "5addbb825acfc408fb139400"
   },
-  "muzzle all kel tec rfb std 762x51": {
+  "muzzle kel tec rfb std 762x51": {
     "Name": "muzzle_all_kel_tec_rfb_std_762x51",
     "ID": "5f2aa4559b44de6b1b4e68d1"
   },
@@ -995,7 +995,7 @@
     "Name": "muzzle_ar10_odin_works_atlas_7_muzzle_brake_762x51",
     "ID": "5bbdb8bdd4351e4502011460"
   },
-  "muzzle all yankee hill anihilator flash hider multi": {
+  "muzzle yankee hill anihilator flash hider multi": {
     "Name": "muzzle_all_yankee_hill_anihilator_flash_hider_multi",
     "ID": "5b3a16655acfc40016387a2a"
   },
@@ -1139,7 +1139,7 @@
     "Name": "silencer_ak_hexagon_dtkp_762x39",
     "ID": "5e208b9842457a4a7a33d074"
   },
-  "all rotor 43 v2 366TKM": {
+  "rotor 43 v2 366TKM": {
     "Name": "silencer_all_rotor_43_v2_366TKM",
     "ID": "5a9fbb74a2750c0032157181"
   },
@@ -1147,7 +1147,7 @@
     "Name": "silencer_apb_toz_apb_std_9x18pm",
     "ID": "5abcc328d8ce8700194394f3"
   },
-  "all silencerco osprey 9 9x19": {
+  "silencerco osprey 9 9x19": {
     "Name": "silencer_all_silencerco_osprey_9_9x19",
     "ID": "5a32a064c4a28200741e22de"
   },
@@ -1171,7 +1171,7 @@
     "Name": "silencer_wave_dd_wave_qd_supressor_multi",
     "ID": "5cff9e84d7ad1a049e54ed55"
   },
-  "all rotor 43 v1 9x19": {
+  "rotor 43 v1 9x19": {
     "Name": "silencer_all_rotor_43_v1_9x19",
     "ID": "5a9fb739a2750c003215717f"
   },
@@ -1215,7 +1215,7 @@
     "Name": "silencer_pp-91-01_zmz_kedr_b_std_9x18pm",
     "ID": "57f3c8cc2459773ec4480328"
   },
-  "all aac illusion 9 9x19": {
+  "aac illusion 9 9x19": {
     "Name": "silencer_all_aac_illusion_9_9x19",
     "ID": "5c7e8fab2e22165df16b889b"
   },
@@ -1243,7 +1243,7 @@
     "Name": "silencer_mp7_bt_rotex_2_46x30",
     "ID": "5ba26ae8d4351e00367f9bdb"
   },
-  "all rotor 43 v2 762x39": {
+  "rotor 43 v2 762x39": {
     "Name": "silencer_all_rotor_43_v2_762x39",
     "ID": "5a9fbacda2750c00141e080f"
   },
@@ -1251,7 +1251,7 @@
     "Name": "silencer_ash12_ckib_ash12_std_127x55",
     "ID": "5caf187cae92157c28402e43"
   },
-  "all alpha dog alpha 9 9x19": {
+  "alpha dog alpha 9 9x19": {
     "Name": "silencer_all_alpha_dog_alpha_9_9x19",
     "ID": "5a33a8ebc4a282000c5a950d"
   },
@@ -1263,7 +1263,7 @@
     "Name": "silencer_mp9_bt_supressor_9x19",
     "ID": "5de8f2d5b74cd90030650c72"
   },
-  "all rotor 43 v2 556x45": {
+  "rotor 43 v2 556x45": {
     "Name": "silencer_all_rotor_43_v2_556x45",
     "ID": "5a9fbb84a2750c00137fa685"
   },
@@ -1291,7 +1291,7 @@
     "Name": "silencer_val_tochmash_std_9x39",
     "ID": "57c44dd02459772d2e0ae249"
   },
-  "all sig srd 9 9x19": {
+  "sig srd 9 9x19": {
     "Name": "silencer_all_sig_srd_9_9x19",
     "ID": "5c6165902e22160010261b28"
   },
@@ -1355,7 +1355,7 @@
     "Name": "muzzle_saiga12_css_monster_caw_large_12g",
     "ID": "59fb137a86f7740adb646af1"
   },
-  "muzzle all gemtech direct multi": {
+  "muzzle gemtech direct multi": {
     "Name": "muzzle_all_gemtech_direct_mount_multi",
     "ID": "5c7954d52e221600106f4cc7"
   },
@@ -1395,11 +1395,11 @@
     "Name": "muzzle_m9_beretta_m9a3_protector_std_9x19",
     "ID": "5cadc390ae921500126a77f1"
   },
-  "muzzle all kel tec thread spacer 762x51": {
+  "muzzle kel tec thread spacer 762x51": {
     "Name": "muzzle_all_kel_tec_thread_spacer_762x51",
     "ID": "5f2aa43ba9b91d26f20ae6d2"
   },
-  "muzzle 12g remington tactical 12": {
+  "muzzle 12g remington 12": {
     "Name": "muzzle_12g_remington_tactical_12",
     "ID": "560838c94bdc2d77798b4569"
   },
@@ -1411,7 +1411,7 @@
     "Name": "muzzle_mosin_weapon_tuning_wt1052_multi",
     "ID": "5cf67a1bd7f00c06585fb6f3"
   },
-  "muzzle all silencerco hybrid 46 direct thread multi": {
+  "muzzle silencerco hybrid 46 direct thread multi": {
     "Name": "muzzle_all_silencerco_hybrid_46_direct_thread_multi",
     "ID": "59bffc1f86f77435b128b872"
   },
@@ -1419,7 +1419,7 @@
     "Name": "muzzle_glock_salient_arms_thread_protector_9x19",
     "ID": "5a6b59a08dc32e000b452fb7"
   },
-  "muzzle all kel tec thread protector 762x51": {
+  "muzzle kel tec thread protector 762x51": {
     "Name": "muzzle_all_kel_tec_thread_protector_762x51",
     "ID": "5f2aa4464b50c14bcf07acdb"
   },
@@ -1451,7 +1451,7 @@
     "Name": "ThermalVision",
     "ID": "5d21f59b6dbe99052b54ef83"
   },
-  "scope all flir rs32 225 9x 35 60hz": {
+  "scope flir rs32 225 9x 35 60hz": {
     "Name": "scope_all_flir_rs32_225_9x_35_60hz",
     "ID": "5d1b5e94d7ad1a2b865a96b0"
   },
@@ -1487,11 +1487,11 @@
     "Name": "scope_base_trijicon_rmr",
     "ID": "5a32aa8bc4a2826c6e06d737"
   },
-  "scope all belomo pk 06": {
+  "scope belomo pk 06": {
     "Name": "scope_all_belomo_pk_06",
     "ID": "57ae0171245977343c27bfcf"
   },
-  "sight rear all ckib ash12 std": {
+  "sight rear ckib ash12 std": {
     "Name": "sight_rear_all_ckib_ash12_std",
     "ID": "5caf1691ae92152ac412efb9"
   },
@@ -1515,7 +1515,7 @@
     "Name": "sight_rear_ar15_colt_a2",
     "ID": "55d5f46a4bdc2d1b198b4567"
   },
-  "sight front all magpul mbus gen2 fde": {
+  "sight front magpul mbus gen2 fde": {
     "Name": "sight_front_all_magpul_mbus_gen2_fde",
     "ID": "5c18b90d2e2216152142466b"
   },
@@ -1531,7 +1531,7 @@
     "Name": "sight_rear_sv-98_izhmash_std",
     "ID": "56083e1b4bdc2dc8488b4572"
   },
-  "sight front all ckib ash12 std": {
+  "sight front ckib ash12 std": {
     "Name": "sight_front_all_ckib_ash12_std",
     "ID": "5caf16a2ae92152ac412efbc"
   },
@@ -1563,7 +1563,7 @@
     "Name": "sight_rear_mp5_hk_drum",
     "ID": "5926d2be86f774134d668e4e"
   },
-  "sight rear all izhmash rpk16 std": {
+  "sight rear izhmash rpk16 std": {
     "Name": "sight_rear_all_izhmash_rpk16_std",
     "ID": "5beec9450db83400970084fd"
   },
@@ -1575,11 +1575,11 @@
     "Name": "sight_rear_vss_tochmash_vss_std",
     "ID": "57838e1b2459774a256959b1"
   },
-  "sight rear all kac folding micro sight": {
+  "sight rear kac folding micro sight": {
     "Name": "sight_rear_all_kac_folding_micro_sight",
     "ID": "5dfa3d7ac41b2312ea33362a"
   },
-  "sight front all kac folding micro sight": {
+  "sight front kac folding micro sight": {
     "Name": "sight_front_all_kac_folding_micro_sight",
     "ID": "5dfa3d950dee1b22f862eae0"
   },
@@ -1587,7 +1587,7 @@
     "Name": "sight_rear_vepr_molot_vpo-101_std",
     "ID": "5c503b1c2e221602b21d6e9d"
   },
-  "sight front all magpul mbus gen2": {
+  "sight front magpul mbus gen2": {
     "Name": "sight_front_all_magpul_mbus_gen2",
     "ID": "5bc09a30d4351e00367fb7c8"
   },
@@ -1607,7 +1607,7 @@
     "Name": "sight_rear_glock_truglo_tfx_glock_sight",
     "ID": "5a7d912f159bd400165484f3"
   },
-  "sight front all hk mp7 std": {
+  "sight front hk mp7 std": {
     "Name": "sight_front_all_hk_mp7_std",
     "ID": "5ba26b01d4351e0085325a51"
   },
@@ -1631,11 +1631,11 @@
     "Name": "sight_rear_ar15_colt_carry_hande_std",
     "ID": "5ae30bad5acfc400185c2dc4"
   },
-  "sight front ar15 utg low gas block a2": {
+  "sight front ar15 utg low a2": {
     "Name": "sight_front_ar15_utg_low_gas_block_a2",
     "ID": "55d4af3a4bdc2d972f8b456f"
   },
-  "sight front all sig mpx std": {
+  "sight front sig mpx std": {
     "Name": "sight_front_all_sig_mpx_std",
     "ID": "5894a73486f77426d259076c"
   },
@@ -1651,7 +1651,7 @@
     "Name": "sight_rear_val_tochmash_val_std",
     "ID": "57c44e7b2459772d28133248"
   },
-  "sight rear all sig mpx std": {
+  "sight rear sig mpx std": {
     "Name": "sight_rear_all_sig_mpx_std",
     "ID": "5894a81786f77427140b8347"
   },
@@ -1691,7 +1691,7 @@
     "Name": "sight_rear_ak_izhmash_akmp",
     "ID": "5a0ed824fcdbcb0176308b0d"
   },
-  "sight rear all hk mp7 std": {
+  "sight rear hk mp7 std": {
     "Name": "sight_rear_all_hk_mp7_std",
     "ID": "5ba26b17d4351e00367f9bdd"
   },
@@ -1703,7 +1703,7 @@
     "Name": "sight_rear_sa58_ds_arms_metric_holand_type_rear_sight",
     "ID": "5b0bc22d5acfc47a8607f085"
   },
-  "sight rear all magpul mbus gen2": {
+  "sight rear magpul mbus gen2": {
     "Name": "sight_rear_all_magpul_mbus_gen2",
     "ID": "5bc09a18d4351e003562b68e"
   },
@@ -1719,11 +1719,11 @@
     "Name": "sight_front_aps_molot_aps_std",
     "ID": "5aba62f8d8ce87001943946b"
   },
-  "sight rear all magpul mbus gen2 fde": {
+  "sight rear magpul mbus gen2 fde": {
     "Name": "sight_rear_all_magpul_mbus_gen2_fde",
     "ID": "5c18b9192e2216398b5a8104"
   },
-  "sight rear all hk 416 flip up": {
+  "sight rear hk 416 flip up": {
     "Name": "sight_rear_all_hk_416_flip_up",
     "ID": "5bb20e49d4351e3bac1212de"
   },
@@ -1735,7 +1735,7 @@
     "Name": "sight_front_590_mossberg_ghost_ring_sight_kit",
     "ID": "5e8708d4ae379e67d22e0102"
   },
-  "sight front all kac folding sight": {
+  "sight front kac folding sight": {
     "Name": "sight_front_all_kac_folding_sight",
     "ID": "5c17804b2e2216152006c02f"
   },
@@ -1763,7 +1763,7 @@
     "Name": "sight_rear_ak_izhmash_rpk16_rear_sight_std",
     "ID": "5bf3f59f0db834001a6fa060"
   },
-  "sight rear all kac folding sight": {
+  "sight rear kac folding sight": {
     "Name": "sight_rear_all_kac_folding_sight",
     "ID": "5c1780312e221602b66cc189"
   },
@@ -1795,15 +1795,15 @@
     "Name": "sight_rear_m1911_novak_lomount_rear_sight",
     "ID": "5f3e7897ddc4f03b010e204a"
   },
-  "scope all elcan specter dr 1-4 fde": {
+  "scope elcan specter dr 1-4 fde": {
     "Name": "scope_all_elcan_specter_dr_1-4_fde",
     "ID": "57aca93d2459771f2c7e26db"
   },
-  "scope all leupold mark4 hamr": {
+  "scope leupold mark4 hamr": {
     "Name": "scope_all_leupold_mark4_hamr",
     "ID": "544a3a774bdc2d3a388b4567"
   },
-  "scope all sig bravo4 4x30": {
+  "scope sig bravo4 4x30": {
     "Name": "scope_all_sig_bravo4_4x30",
     "ID": "57adff4f24597737f373b6e6"
   },
@@ -1815,15 +1815,15 @@
     "Name": "scope_base_trijicon_acog_ta11_3,5x35",
     "ID": "59db7e1086f77448be30ddf3"
   },
-  "scope all elcan specter dr 1-4": {
+  "scope elcan specter dr 1-4": {
     "Name": "scope_all_elcan_specter_dr_1-4",
     "ID": "57ac965c24597706be5f975c"
   },
-  "scope all monstrum compact prism scope 2x32": {
+  "scope monstrum compact prism scope 2x32": {
     "Name": "scope_all_monstrum_compact_prism_scope_2x32",
     "ID": "5d2dc3e548f035404a1a4798"
   },
-  "scope all valday ps320": {
+  "scope valday ps320": {
     "Name": "scope_all_valday_ps320",
     "ID": "5c0517910db83400232ffee5"
   },
@@ -1835,59 +1835,59 @@
     "Name": "scope_base_trijicon_acog_ta01nsn_4x32_tan",
     "ID": "5c052a900db834001a66acbd"
   },
-  "scope all aksion ekp 8 18": {
+  "scope aksion ekp 8 18": {
     "Name": "scope_all_aksion_ekp_8_18",
     "ID": "591c4efa86f7741030027726"
   },
-  "scope all ekb okp7": {
+  "scope ekb okp7": {
     "Name": "scope_all_ekb_okp7",
     "ID": "570fd79bd2720bc7458b4583"
   },
-  "scope all eotech 553": {
+  "scope eotech 553": {
     "Name": "scope_all_eotech_553",
     "ID": "570fd6c2d2720bc6458b457f"
   },
-  "scope all eotech exps3": {
+  "scope eotech exps3": {
     "Name": "scope_all_eotech_exps3",
     "ID": "558022b54bdc2dac148b458d"
   },
-  "scope all eotech hhs 1": {
+  "scope eotech hhs 1": {
     "Name": "scope_all_eotech_hhs_1",
     "ID": "5c07dd120db834001c39092d"
   },
-  "scope all eotech hhs 1 tan": {
+  "scope eotech hhs 1 tan": {
     "Name": "scope_all_eotech_hhs_1_tan",
     "ID": "5c0a2cec0db834001b7ce47d"
   },
-  "scope all eotech xps3-0": {
+  "scope eotech xps3-0": {
     "Name": "scope_all_eotech_xps3-0",
     "ID": "58491f3324597764bc48fa02"
   },
-  "scope all eotech xps3-2": {
+  "scope eotech xps3-2": {
     "Name": "scope_all_eotech_xps3-2",
     "ID": "584924ec24597768f12ae244"
   },
-  "scope all holosun hs401g5": {
+  "scope holosun hs401g5": {
     "Name": "scope_all_holosun_hs401g5",
     "ID": "5b30b0dc5acfc400153b7124"
   },
-  "scope all trijicon srs 02": {
+  "scope trijicon srs 02": {
     "Name": "scope_all_trijicon_srs_02",
     "ID": "5d2da1e948f035477b1ce2ba"
   },
-  "scope all valday 1p87": {
+  "scope valday 1p87": {
     "Name": "scope_all_valday_1p87",
     "ID": "5c0505e00db834001b735073"
   },
-  "scope all vomz pilad p1x42 weaver": {
+  "scope vomz pilad p1x42 weaver": {
     "Name": "scope_all_vomz_pilad_p1x42_weaver",
     "ID": "584984812459776a704a82a6"
   },
-  "scope all vortex razor amg uh-1": {
+  "scope vortex razor amg uh-1": {
     "Name": "scope_all_vortex_razor_amg_uh-1",
     "ID": "59f9d81586f7744c7506ee62"
   },
-  "scope all walther mrs": {
+  "scope walther mrs": {
     "Name": "scope_all_walther_mrs",
     "ID": "570fd721d2720bc5458b4596"
   },
@@ -1911,7 +1911,7 @@
     "Name": "scope_34mm_nightforce_atacr_7_35x56",
     "ID": "5aa66be6e5b5b0214e506e97"
   },
-  "scope all ncstar advance dual optic 3 9x 42": {
+  "scope ncstar advance dual optic 3 9x 42": {
     "Name": "scope_all_ncstar_advance_dual_optic_3_9x_42",
     "ID": "5dfe6104585a0c3e995c7b82"
   },
@@ -1951,7 +1951,7 @@
     "Name": "scope_30mm_leupold_mark4_lr_6,5_20x50",
     "ID": "5a37cb10c4a282329a73b4e7"
   },
-  "scope 30mm march tactical 3-24x42": {
+  "scope 30mm march 3-24x42": {
     "Name": "scope_30mm_march_tactical_3-24x42",
     "ID": "57c5ac0824597754771e88a9"
   },
@@ -1975,67 +1975,67 @@
     "Name": "bipod_sv-98_izhmash_bipod_std",
     "ID": "56ea8222d2720b69698b4567"
   },
-  "bipod all harris hbr": {
+  "bipod harris hbr": {
     "Name": "bipod_all_harris_hbr",
     "ID": "5888961624597754281f93f3"
   },
-  "tactical all holosun ls321": {
+  "holosun ls321": {
     "Name": "tactical_all_holosun_ls321",
     "ID": "57fd23e32459772d0805bcf1"
   },
-  "tactical all insight anpeq15": {
+  "insight anpeq15": {
     "Name": "tactical_all_insight_anpeq15",
     "ID": "544909bb4bdc2d6f028b4577"
   },
-  "tactical all steiner las tac 2": {
+  "steiner las tac 2": {
     "Name": "tactical_all_steiner_las_tac_2",
     "ID": "5b07dd285acfc4001754240d"
   },
-  "tactical all zenit 2p kleh vis laser": {
+  "zenit 2p kleh vis laser": {
     "Name": "tactical_all_zenit_2p_kleh_vis_laser",
     "ID": "560d657b4bdc2da74d8b4572"
   },
-  "tactical all zenit 2irs kleh lam": {
+  "zenit 2irs kleh lam": {
     "Name": "tactical_all_zenit_2irs_kleh_lam",
     "ID": "5a5f1ce64f39f90b401987bc"
   },
-  "tactical all insight anpeq2": {
+  "insight anpeq2": {
     "Name": "tactical_all_insight_anpeq2",
     "ID": "5d10b49bd7ad1a1a560708b0"
   },
-  "tactical all ncstar tactical blue laser": {
+  "ncstar blue laser": {
     "Name": "tactical_all_ncstar_tactical_blue_laser",
     "ID": "5cc9c20cd7f00c001336c65d"
   },
-  "tactical all glock gl 21 vis lam": {
+  "glock gl 21 vis lam": {
     "Name": "tactical_all_glock_gl_21_vis_lam",
     "ID": "5a800961159bd4315e3a1657"
   },
-  "tactical all insight la5": {
+  "insight la5": {
     "Name": "tactical_all_insight_la5",
     "ID": "5c06595c0db834001a66af6c"
   },
-  "tactical all steiner 9021 dbal pl": {
+  "steiner 9021 dbal pl": {
     "Name": "tactical_all_steiner_9021_dbal_pl",
     "ID": "5d2369418abbc306c62e0c80"
   },
-  "tactical all surefire x400 vis laser": {
+  "surefire x400 vis laser": {
     "Name": "tactical_all_surefire_x400_vis_laser",
     "ID": "56def37dd2720bec348b456a"
   },
-  "tactical all surefire xc1": {
+  "surefire xc1": {
     "Name": "tactical_all_surefire_xc1",
     "ID": "5a7b483fe899ef0016170d15"
   },
-  "tactical all zenit 2u kleh": {
+  "zenit 2u kleh": {
     "Name": "tactical_all_zenit_2u_kleh",
     "ID": "5b3a337e5acfc4704b4a19a0"
   },
-  "tactical all zenit perst 3": {
+  "zenit perst 3": {
     "Name": "tactical_all_zenit_perst_3",
     "ID": "5c5952732e2216398b5abda2"
   },
-  "tactical tt dlp tactical precision laser sight": {
+  "tt dlp precision laser sight": {
     "Name": "tactical_tt_dlp_tactical_precision_laser_sight",
     "ID": "5c079ed60db834001a66b372"
   },
@@ -2047,239 +2047,239 @@
     "Name": "flashlight_ultrafire_WF-501B",
     "ID": "57d17c5e2459775a5c57d17d"
   },
-  "foregrip all magpul afg fde": {
+  "magpul afg fde": {
     "Name": "foregrip_all_magpul_afg_fde",
     "ID": "588226dd24597767ad33f789"
   },
-  "foregrip all magpul afg fg": {
+  "magpul afg fg": {
     "Name": "foregrip_all_magpul_afg_fg",
     "ID": "588226e62459776e3e094af7"
   },
-  "foregrip all magpul afg od": {
+  "magpul afg od": {
     "Name": "foregrip_all_magpul_afg_od",
     "ID": "588226ef24597767af46e39c"
   },
-  "foregrip m-lok magpul m-lok afg sg": {
+  "m-lok magpul m-lok afg sg": {
     "Name": "foregrip_m-lok_magpul_m-lok_afg_sg",
     "ID": "57cffce524597763b31685d8"
   },
-  "foregrip m-lok magpul m-lok afg od": {
+  "m-lok magpul m-lok afg od": {
     "Name": "foregrip_m-lok_magpul_m-lok_afg_od",
     "ID": "57cffcdd24597763f5110006"
   },
-  "foregrip m-lok magpul m-lok afg fde": {
+  "m-lok magpul m-lok afg fde": {
     "Name": "foregrip_m-lok_magpul_m-lok_afg_fde",
     "ID": "57cffcd624597763133760c5"
   },
-  "foregrip all bcm mod 3": {
+  "bcm mod 3": {
     "Name": "foregrip_all_bcm_mod_3",
     "ID": "5c7fc87d2e221644f31c0298"
   },
-  "foregrip all ckib ash12 std": {
+  "ckib ash12 std": {
     "Name": "foregrip_all_ckib_ash12_std",
     "ID": "5cda9bcfd7f00c0c0b53e900"
   },
-  "foregrip all kac vertical grip": {
+  "kac vertical grip": {
     "Name": "foregrip_all_kac_vertical_grip",
     "ID": "5c87ca002e221600114cb150"
   },
-  "foregrip all magpul afg blk": {
+  "magpul afg blk": {
     "Name": "foregrip_all_magpul_afg_blk",
     "ID": "588226d124597767ad33f787"
   },
-  "foregrip all zenit rk 2": {
+  "zenit rk 2": {
     "Name": "foregrip_all_zenit_rk_2",
     "ID": "5c1bc5af2e221602b412949b"
   },
-  "foregrip all zenit rk 4": {
+  "zenit rk 4": {
     "Name": "foregrip_all_zenit_rk_4",
     "ID": "5c1bc5fb2e221602b1779b32"
   },
-  "foregrip all zenit rk 1": {
+  "zenit rk 1": {
     "Name": "foregrip_all_zenit_rk_1",
     "ID": "5c1bc5612e221602b5429350"
   },
-  "foregrip mp9 bt mp9 std": {
+  "mp9 bt mp9 std": {
     "Name": "foregrip_mp9_bt_mp9_std",
     "ID": "5de8fbad2fbe23140d3ee9c4"
   },
-  "foregrip all zenit rk 6": {
+  "zenit rk 6": {
     "Name": "foregrip_all_zenit_rk_6",
     "ID": "5c1bc7752e221602b1779b34"
   },
-  "foregrip all zenit rk 0": {
+  "zenit rk 0": {
     "Name": "foregrip_all_zenit_rk_0",
     "ID": "5c1bc4812e22164bef5cfde7"
   },
-  "foregrip t5000 orsis t5000m pad std": {
+  "t5000 orsis t5000m pad std": {
     "Name": "foregrip_t5000_orsis_t5000m_pad_std",
     "ID": "5df36948bb49d91fb446d5ad"
   },
-  "foregrip all fortis shift": {
+  "fortis shift": {
     "Name": "foregrip_all_fortis_shift",
     "ID": "59f8a37386f7747af3328f06"
   },
-  "foregrip all hera arms cqr grip": {
+  "hera arms cqr grip": {
     "Name": "foregrip_all_hera_arms_cqr_grip",
     "ID": "5a7dbfc1159bd40016548fde"
   },
-  "foregrip all rtm pillau": {
+  "rtm pillau": {
     "Name": "foregrip_all_rtm_pillau",
     "ID": "5cf4fb76d7f00c065703d3ac"
   },
-  "foregrip all stark se 5 express grip": {
+  "stark se 5 express grip": {
     "Name": "foregrip_all_stark_se_5_express_grip",
     "ID": "5b057b4f5acfc4771e1bd3e9"
   },
-  "foregrip all strike industries cobra tactical": {
+  "strike industries cobra tactical": {
     "Name": "foregrip_all_strike_industries_cobra_tactical",
     "ID": "5c791e872e2216001219c40a"
   },
-  "foregrip all tango down stubby bgv mk46k blk": {
+  "tango down stubby bgv mk46k blk": {
     "Name": "foregrip_all_tango_down_stubby_bgv_mk46k_blk",
     "ID": "558032614bdc2de7118b4585"
   },
-  "foregrip all tango down stubby bgv mk46k fde": {
+  "tango down stubby bgv mk46k fde": {
     "Name": "foregrip_all_tango_down_stubby_bgv_mk46k_fde",
     "ID": "58c157be86f77403c74b2bb6"
   },
-  "foregrip all tango down stubby bgv mk46k fg": {
+  "tango down stubby bgv mk46k fg": {
     "Name": "foregrip_all_tango_down_stubby_bgv_mk46k_fg",
     "ID": "58c157c886f774032749fb06"
   },
-  "foregrip all vtac uvg": {
+  "vtac uvg": {
     "Name": "foregrip_all_vtac_uvg",
     "ID": "591af28e86f77414a27a9e1d"
   },
-  "foregrip all zenit b25u rk 1": {
+  "zenit b25u rk 1": {
     "Name": "foregrip_all_zenit_b25u_rk_1",
     "ID": "5c1cd46f2e22164bef5cfedb"
   },
-  "foregrip all zenit rk 5": {
+  "zenit rk 5": {
     "Name": "foregrip_all_zenit_rk_5",
     "ID": "5c1bc7432e221602b412949d"
   },
-  "foregrip m-lok magpul m-lok afg blk": {
+  "m-lok magpul m-lok afg blk": {
     "Name": "foregrip_m-lok_magpul_m-lok_afg_blk",
     "ID": "57cffb66245977632f391a99"
   },
-  "foregrip all magpul rvg blk": {
+  "magpul rvg blk": {
     "Name": "foregrip_all_magpul_rvg_blk",
     "ID": "59fc48e086f77463b1118392"
   },
-  "foregrip all td aluminum skeletonized": {
+  "td aluminum skeletonized": {
     "Name": "foregrip_all_td_aluminum_skeletonized",
     "ID": "5f6340d3ca442212f4047eb2"
   },
-  "gas block ar15 dd mk12 low profile": {
+  "ar15 dd mk12 low profile": {
     "Name": "gas_block_ar15_dd_mk12_low_profile",
     "ID": "56eabcd4d2720b66698b4574"
   },
-  "gas block ak molot vepr km vpo 136": {
-    "Name": "gas_block_ak_molot_vepr_km_vpo_136",
-    "ID": "59e649f986f77411d949b246"
+  "ak molot vepr km vpo 136": {
+    "Name": "stock_ak_molot_vepr_km_vpo_136",
+    "ID": "59e6227d86f77440d64f5dc2"
   },
-  "gas block ar15 colt m4 front sight gas block std": {
+  "ar15 colt m4 front sight std": {
     "Name": "gas_block_ar15_colt_m4_front_sight_gas_block_std",
     "ID": "5ae30e795acfc408fb139a0b"
   },
-  "gas block ak vs vs 33c": {
+  "ak vs vs 33c": {
     "Name": "gas_block_ak_vs_vs_33c",
     "ID": "5cf656f2d7f00c06585fb6eb"
   },
-  "gas block aksu izhmash aksu std": {
+  "aksu izhmash aksu std": {
     "Name": "gas_block_aksu_izhmash_aksu_std",
     "ID": "59d36a0086f7747e673f3946"
   },
-  "gas block ak izhmash akm std": {
+  "ak izhmash akm std": {
     "Name": "gas_block_ak_izhmash_akm_std",
     "ID": "59d64ec286f774171d1e0a42"
   },
-  "gas block ak vs vs 33c wht": {
+  "ak vs vs 33c wht": {
     "Name": "gas_block_ak_vs_vs_33c_wht",
     "ID": "5d4aab30a4b9365435358c55"
   },
-  "gas block vepr molot vpo-101 std": {
+  "vepr molot vpo-101 std": {
     "Name": "gas_block_vepr_molot_vpo-101_std",
     "ID": "5c5039be2e221602b177c9ff"
   },
-  "gas block ak custom ak cut": {
+  "ak custom ak cut": {
     "Name": "gas_block_ak_custom_ak_cut",
     "ID": "5a01ad4786f77450561fda02"
   },
-  "gas block 416 hk 416a5 std": {
+  "416 hk 416a5 std": {
     "Name": "gas_block_416_hk_416a5_std",
     "ID": "5bb20dcad4351e3bac1212da"
   },
-  "gas block ak izhmash pp-19-01 std": {
+  "ak izhmash pp-19-01 std": {
     "Name": "gas_block_ak_izhmash_pp-19-01_std",
     "ID": "59ccd11386f77428f24a488f"
   },
-  "gas block ar15 jp jpgs5b": {
+  "ar15 jp jpgs5b": {
     "Name": "gas_block_ar15_jp_jpgs5b",
     "ID": "5d00ec68d7ad1a04a067e5be"
   },
-  "gas block ar15 windham weaponry rail gas block": {
+  "ar15 windham weaponry rail block": {
     "Name": "gas_block_ar15_windham_weaponry_rail_gas_block",
     "ID": "56ea8d2fd2720b7c698b4570"
   },
-  "gas block ak troy top bottom vent hole combo": {
+  "ak troy top bottom vent hole combo": {
     "Name": "gas_block_ak_troy_top_bottom_vent_hole_combo",
     "ID": "5b237e425acfc4771e1be0b6"
   },
-  "gas block ar10 jp jpgs6": {
+  "ar10 jp jpgs6": {
     "Name": "gas_block_ar10_jp_jpgs6",
     "ID": "5a34fbadc4a28200741e230a"
   },
-  "gas block ak izhmash ak74 std": {
+  "ak izhmash ak74 std": {
     "Name": "gas_block_ak_izhmash_ak74_std",
     "ID": "59c6633186f7740cf0493bb9"
   },
-  "gas block svd izhmash svd s std": {
+  "svd izhmash svd s std": {
     "Name": "gas_block_svd_izhmash_svd_s_std",
     "ID": "5c471c842e221615214259b5"
   },
-  "gas block ak ultimak m1b": {
+  "ak ultimak m1b": {
     "Name": "gas_block_ak_ultimak_m1b",
     "ID": "59ccfdba86f7747f2109a587"
   },
-  "gas block ar10 kac low profile": {
+  "ar10 kac low profile": {
     "Name": "gas_block_ar10_kac_low_profile",
     "ID": "5dfa3d45dfc58d14537c20b0"
   },
-  "tactical 870 fab defence agr 870 cap": {
+  "870 fab defence agr 870 cap": {
     "Name": "tactical_870_fab_defence_agr_870_cap",
     "ID": "5bfe86bd0db83400232fe959"
   },
-  "tactical ekp killflash": {
+  "ekp killflash": {
     "Name": "tactical_ekp_killflash",
     "ID": "591c4e1186f77410354b316e"
   },
-  "tactical sv98 izhmash heat shield std": {
+  "sv98 izhmash heat shield std": {
     "Name": "tactical_sv98_izhmash_silencer_heat_shield_std",
     "ID": "5c4eecde2e221602b3140418"
   },
-  "tactical glock zev tech rmr adapter plate": {
+  "glock zev tech rmr adapter plate": {
     "Name": "tactical_glock_zev_tech_rmr_adapter_plate",
     "ID": "5a71e1868dc32e00094b97f3"
   },
-  "tactical sv-98 izhmash heat ribbon": {
+  "sv-98 izhmash heat ribbon": {
     "Name": "tactical_sv-98_izhmash_heat_ribbon",
     "ID": "56083eab4bdc2d26448b456a"
   },
-  "tactical urx kac panel long fde": {
+  "urx kac panel long fde": {
     "Name": "tactical_urx_kac_panel_long_fde",
     "ID": "5d124c0ed7ad1a10d168dd9b"
   },
-  "tactical urx kac panel short fde": {
+  "urx kac panel short fde": {
     "Name": "tactical_urx_kac_panel_short_fde",
     "ID": "5d124c01d7ad1a115c7d59fb"
   },
-  "tactical urx kac panel short": {
+  "urx kac panel short": {
     "Name": "tactical_urx_kac_panel_short",
     "ID": "5d123a3cd7ad1a004e476058"
   },
-  "tactical urx kac panel long": {
+  "urx kac panel long": {
     "Name": "tactical_urx_kac_panel_long",
     "ID": "5d123b70d7ad1a0ee35e0754"
   },
@@ -2287,11 +2287,11 @@
     "Name": "trigger_m1911_colt_m1911a1_std",
     "ID": "5e81c6a2ac2bb513793cdc7f"
   },
-  "tactical urx kac panel hand stop": {
+  "urx kac panel hand stop": {
     "Name": "tactical_urx_kac_panel_hand_stop",
     "ID": "5d123b7dd7ad1a004f01b262"
   },
-  "tactical urx kac panel hand stop fde": {
+  "urx kac panel hand stop fde": {
     "Name": "tactical_urx_kac_panel_hand_stop_fde",
     "ID": "5d124c1ad7ad1a12227c53a7"
   },
@@ -2331,27 +2331,27 @@
     "Name": "hammer_m1911_colt_m45a1_std",
     "ID": "5f3e76d86cda304dcc634054"
   },
-  "tactical 1p29 npz eyecup": {
+  "1p29 npz eyecup": {
     "Name": "tactical_1p29_npz_eyecup",
     "ID": "5cf639aad7f00c065703d455"
   },
-  "tactical 1p59 kmz eyecup": {
+  "1p59 kmz eyecup": {
     "Name": "tactical_1p59_kmz_eyecup",
     "ID": "5d0b5cd3d7ad1a3fe32ad263"
   },
-  "tactical nspum npz eyecup": {
+  "nspum npz eyecup": {
     "Name": "tactical_nspum_npz_eyecup",
     "ID": "5ba36f85d4351e0085325c81"
   },
-  "tactical pso belomo eyecup": {
+  "pso belomo eyecup": {
     "Name": "tactical_pso_belomo_eyecup",
     "ID": "57f3a5ae2459772b0e0bf19e"
   },
-  "tactical reap-ir trijicon eyecup": {
+  "reap-ir trijicon eyecup": {
     "Name": "tactical_reap-ir_trijicon_eyecup",
     "ID": "5a1eacb3fcdbcb09800872be"
   },
-  "tactical vulcan armasight eyecup": {
+  "vulcan armasight eyecup": {
     "Name": "tactical_vulcan_armasight_eyecup",
     "ID": "5b3cbc235acfc4001863ac44"
   },
@@ -2403,559 +2403,555 @@
     "Name": "OpticScope",
     "ID": "55818ae44bdc2dde698b456c"
   },
-  "stock toz-106 toz full std": {
+  "toz-106 toz full std": {
     "Name": "stock_toz-106_toz_full_std",
     "ID": "5adf23995acfc400185c2aeb"
   },
-  "stock ar15 lmt sopmod": {
+  "ar15 lmt sopmod": {
     "Name": "stock_ar15_lmt_sopmod",
     "ID": "5ae30c9a5acfc408fb139a03"
   },
-  "stock ak molot vpo 209": {
+  "ak molot vpo 209": {
     "Name": "stock_ak_molot_vpo_209",
     "ID": "59e89d0986f77427600d226e"
   },
-  "stock ar15 troy m7a1 pdw blk": {
+  "ar15 troy m7a1 pdw blk": {
     "Name": "stock_ar15_troy_m7a1_pdw_blk",
     "ID": "591aef7986f774139d495f03"
   },
-  "stock ar15 adar wood v1": {
+  "ar15 adar wood v1": {
     "Name": "stock_ar15_adar_wood_v1",
     "ID": "5c0e2ff6d174af02a1659d4a"
   },
-  "stock ak zenit pt 1 lock fixed": {
+  "ak zenit pt 1 lock fixed": {
     "Name": "stock_ak_zenit_pt_1_lock_fixed",
     "ID": "5b222d335acfc4771e1be099"
   },
-  "stock aps toz apb wire": {
+  "aps toz apb wire": {
     "Name": "stock_aps_toz_apb_wire",
     "ID": "5a17fb9dfcdbcbcae6687291"
   },
-  "stock fal magpul prs 2": {
+  "fal magpul prs 2": {
     "Name": "stock_fal_magpul_prs_2",
     "ID": "5b7d63b75acfc400170e2f8a"
   },
-  "stock ar15 hk e1": {
+  "ar15 hk e1": {
     "Name": "stock_ar15_hk_e1",
     "ID": "5c87a07c2e2216001219d4a2"
   },
-  "stock ak zenit pt 1": {
+  "ak zenit pt 1": {
     "Name": "stock_ak_zenit_pt_1",
     "ID": "5b222d405acfc400153af4fe"
   },
-  "stock sks toz sks std wood": {
+  "sks toz sks std wood": {
     "Name": "stock_sks_toz_sks_std_wood",
     "ID": "574dad8024597745964bf05c"
   },
-  "stock sks molot op sks std": {
-    "Name": "stock_sks_molot_op_sks_std",
-    "ID": "587e0531245977466077a0f7"
+  "sks molot op sks std": {
+    "Name": "mount_sks_molot_op_sks_std",
+    "ID": "587e08ee245977446b4410cf"
   },
-  "stock 590 magpul sga": {
+  "590 magpul sga": {
     "Name": "stock_590_magpul_sga",
     "ID": "5eea217fc64c5d0dfc05712a"
   },
-  "stock mr133 std long": {
+  "mr133 std long": {
     "Name": "stock_mr133_std_long",
     "ID": "56083cba4bdc2de22e8b456f"
   },
-  "stock ak fab defense uas ak p": {
+  "ak fab defense uas ak p": {
     "Name": "stock_ak_fab_defense_uas_ak_p",
     "ID": "5b04473a5acfc40018632f70"
   },
-  "stock ar15 hk slim line": {
+  "ar15 hk slim line": {
     "Name": "stock_ar15_hk_slim_line",
     "ID": "5bb20e70d4351e0035629f8f"
   },
-  "stock ar15 hera arms cqr": {
+  "ar15 hera arms cqr": {
     "Name": "stock_ar15_hera_arms_cqr",
     "ID": "5a33e75ac4a2826c6e06d759"
   },
-  "stock ar15 mft bus": {
+  "ar15 mft bus": {
     "Name": "stock_ar15_mft_bus",
     "ID": "5947c73886f7747701588af5"
   },
-  "stock ar15 colt stock tube std": {
+  "ar15 colt tube std": {
     "Name": "stock_ar15_colt_stock_tube_std",
     "ID": "5649be884bdc2d79388b4577"
   },
-  "stock akms izhmash akms std": {
+  "akms izhmash akms std": {
     "Name": "stock_akms_izhmash_akms_std",
     "ID": "59ff3b6a86f77477562ff5ed"
   },
-  "stock mr133 plastic long": {
+  "mr133 plastic long": {
     "Name": "stock_mr133_plastic_long",
     "ID": "56083be64bdc2d20478b456f"
   },
-  "stock mp7 hk a2 std": {
+  "mp7 hk a2 std": {
     "Name": "stock_mp7_hk_a2_std",
     "ID": "5bd704e7209c4d00d7167c31"
   },
-  "stock ak caa akts": {
+  "ak caa akts": {
     "Name": "stock_ak_caa_akts",
     "ID": "5cf518cfd7f00c065b422214"
   },
-  "stock ak caa akts ak74": {
+  "ak caa akts ak74": {
     "Name": "stock_ak_caa_akts_ak74",
     "ID": "5cf50fc5d7f00c056c53f83c"
   },
-  "stock m14 sage ebr m14alcs": {
+  "m14 sage ebr m14alcs": {
     "Name": "stock_m14_sage_ebr_m14alcs",
     "ID": "5addc7005acfc4001669f275"
   },
-  "stock ar15 magpul prs gen2 fde": {
+  "ar15 magpul prs gen2 fde": {
     "Name": "stock_ar15_magpul_prs_gen2_fde",
     "ID": "5a33cae9c4a28232980eb086"
   },
-  "stock ak izhmash 6g15u butt pad": {
+  "ak izhmash 6g15u butt pad": {
     "Name": "stock_ak_izhmash_6g15u_butt_pad",
     "ID": "5a0c59791526d8dba737bba7"
   },
-  "stock ak molot vepr km vpo 136": {
-    "Name": "stock_ak_molot_vepr_km_vpo_136",
-    "ID": "59e6227d86f77440d64f5dc2"
-  },
-  "stock svd s izhmash svd s std": {
+  "svd s izhmash svd s std": {
     "Name": "stock_svd_s_izhmash_svd_s_std",
     "ID": "5c471b5d2e221602b21d4e14"
   },
-  "stock ar15 izhmash ak12 std": {
+  "ar15 izhmash ak12 std": {
     "Name": "stock_ar15_izhmash_ak12_std",
     "ID": "5beec8c20db834001d2c465c"
   },
-  "stock all sig folding knuckle": {
+  "sig folding knuckle": {
     "Name": "stock_all_sig_folding_knuckle",
     "ID": "58ac1bf086f77420ed183f9f"
   },
-  "stock m14 troy sass chassis": {
+  "m14 troy sass chassis": {
     "Name": "stock_m14_troy_sass_chassis",
     "ID": "5ab372a310e891001717f0d8"
   },
-  "stock 870 magpul sga": {
+  "870 magpul sga": {
     "Name": "stock_870_magpul_sga",
     "ID": "5a78813bc5856700186c4abe"
   },
-  "stock mp5 hk a2 std": {
+  "mp5 hk a2 std": {
     "Name": "stock_mp5_hk_a2_std",
     "ID": "5926d3c686f77410de68ebc8"
   },
-  "stock mp5 hk a3 std": {
+  "mp5 hk a3 std": {
     "Name": "stock_mp5_hk_a3_std",
     "ID": "5926d40686f7740f152b6b7e"
   },
-  "stock mpx pmm ulss": {
+  "mpx pmm ulss": {
     "Name": "stock_mpx_pmm_ulss",
     "ID": "5c5db6f82e2216003a0fe914"
   },
-  "stock p90 fn ps90 std": {
+  "p90 fn ps90 std": {
     "Name": "stock_p90_fn_ps90_std",
     "ID": "5cebec10d7f00c065703d185"
   },
-  "stock ak zenit pt-3": {
+  "ak zenit pt-3": {
     "Name": "stock_ak_zenit_pt-3",
     "ID": "59ecc3dd86f7746dc827481c"
   },
-  "stock ar15 vltor emod": {
+  "ar15 vltor emod": {
     "Name": "stock_ar15_vltor_emod",
     "ID": "5b39f8db5acfc40016387a1b"
   },
-  "stock ar15 troy m7a1 pdw fde": {
+  "ar15 troy m7a1 pdw fde": {
     "Name": "stock_ar15_troy_m7a1_pdw_fde",
     "ID": "591af10186f774139d495f0e"
   },
-  "stock ar15 magpul ubr gen2 fde": {
+  "ar15 magpul ubr gen2 fde": {
     "Name": "stock_ar15_magpul_ubr_gen2_fde",
     "ID": "5947eab886f77475961d96c5"
   },
-  "stock p90 fn p90 std": {
+  "p90 fn p90 std": {
     "Name": "stock_p90_fn_p90_std",
     "ID": "5cc700b9e4a949000f0f0f25"
   },
-  "stock aks74 izhmash aks74 std": {
+  "aks74 izhmash aks74 std": {
     "Name": "stock_aks74_izhmash_aks74_std",
     "ID": "5ab626e4d8ce87272e4c6e43"
   },
-  "stock mp7 hk a1 std": {
+  "mp7 hk a1 std": {
     "Name": "stock_mp7_hk_a1_std",
     "ID": "5bcf0213d4351e0085327c17"
   },
-  "stock ar15 colt stock tube com": {
+  "ar15 colt tube com": {
     "Name": "stock_ar15_colt_stock_tube_com",
     "ID": "5c0faeddd174af02a962601f"
   },
-  "stock ar15 high standart m4ss": {
+  "ar15 high standart m4ss": {
     "Name": "stock_ar15_high_standart_m4ss",
     "ID": "55d4ae6c4bdc2d8b2f8b456e"
   },
-  "stock ar15 magpul moe carbine fde": {
+  "ar15 magpul moe carbine fde": {
     "Name": "stock_ar15_magpul_moe_carbine_fde",
     "ID": "58d2946386f774496974c37e"
   },
-  "stock mp5k hk kurtz end cap": {
+  "mp5k hk kurtz end cap": {
     "Name": "stock_mp5k_hk_kurtz_end_cap",
     "ID": "5d2f25bc48f03502573e5d85"
   },
-  "stock ak hexagon kocherga red": {
+  "ak hexagon kocherga red": {
     "Name": "stock_ak_hexagon_kocherga_red",
     "ID": "5e217ba4c1434648c13568cd"
   },
-  "stock sa58 ds arms para brs": {
+  "sa58 ds arms para brs": {
     "Name": "stock_sa58_ds_arms_para_brs",
     "ID": "5b7d64555acfc4001876c8e2"
   },
-  "stock mr133 pistol plastic": {
+  "mr133 pistol plastic": {
     "Name": "stock_mr133_pistol_plastic",
     "ID": "56083a334bdc2dc8488b4571"
   },
-  "stock ar15 magpul moe carbine fg": {
+  "ar15 magpul moe carbine fg": {
     "Name": "stock_ar15_magpul_moe_carbine_fg",
     "ID": "58d2946c86f7744e271174b5"
   },
-  "stock akms izhmash akmsn std": {
+  "akms izhmash akmsn std": {
     "Name": "stock_akms_izhmash_akmsn_std",
     "ID": "5abcd472d8ce8700166032ae"
   },
-  "stock mp9 bt mp9 folding stock std": {
+  "mp9 bt mp9 folding std": {
     "Name": "stock_mp9_bt_mp9_folding_stock_std",
     "ID": "5de910da8b6c4240ba2651b5"
   },
-  "stock all sig mpx mcx early type": {
+  "sig mpx mcx early type": {
     "Name": "stock_all_sig_mpx_mcx_early_type",
     "ID": "5894a13e86f7742405482982"
   },
-  "stock sks tapco intrafuse buffer tube": {
+  "sks tapco intrafuse buffer tube": {
     "Name": "stock_sks_tapco_intrafuse_buffer_tube",
     "ID": "5afd7e095acfc40017541f61"
   },
-  "stock sa58 ds arms para spr stock": {
+  "sa58 ds arms para spr stock": {
     "Name": "stock_sa58_ds_arms_para_spr_stock",
     "ID": "5b7d63de5acfc400170e2f8d"
   },
-  "stock mosin izhmash mosin std wood": {
+  "mosin izhmash mosin std wood": {
     "Name": "stock_mosin_izhmash_mosin_std_wood",
     "ID": "5ae096d95acfc400185c2c81"
   },
-  "stock ks23 toz ks23 std metal": {
+  "ks23 toz ks23 std metal": {
     "Name": "stock_ks23_toz_ks23_std_metal",
     "ID": "5e848dc4e4dbc5266a4ec63d"
   },
-  "stock ar15 fab defense glr 16 s": {
+  "ar15 fab defense glr 16 s": {
     "Name": "stock_ar15_fab_defense_glr_16_s",
     "ID": "5bfe86df0db834001b734685"
   },
-  "stock ace double star ace recoil pad 05": {
+  "ace double star ace recoil pad 05": {
     "Name": "stock_ace_double_star_ace_recoil_pad_05",
     "ID": "5d120a28d7ad1a1c8962e295"
   },
-  "stock m700 abarms mod x side folder": {
+  "m700 abarms mod x side folder": {
     "Name": "stock_m700_abarms_mod_x_side_folder",
     "ID": "5cde77a9d7f00c000f261009"
   },
-  "stock ppsh zis ppsh41 std wood": {
+  "ppsh zis ppsh41 std wood": {
     "Name": "stock_ppsh_zis_ppsh41_std_wood",
     "ID": "5ea03e9400685063ec28bfa4"
   },
-  "stock mp5 hk pistol end cap": {
+  "mp5 hk pistol end cap": {
     "Name": "stock_mp5_hk_pistol_end_cap",
     "ID": "5c07c9660db834001a66b588"
   },
-  "stock glock fab defence glr 17": {
+  "glock fab defence glr 17": {
     "Name": "stock_glock_fab_defence_glr_17",
     "ID": "5d1c702ad7ad1a632267f429"
   },
-  "stock ar15 magpul ctr carbine": {
+  "ar15 magpul ctr carbine": {
     "Name": "stock_ar15_magpul_ctr_carbine",
     "ID": "5d135e83d7ad1a21b83f42d8"
   },
-  "stock m700 ai at aics chasiss": {
+  "m700 ai at aics chasiss": {
     "Name": "stock_m700_ai_at_aics_chasiss",
     "ID": "5d25d0ac8abbc3054f3e61f7"
   },
-  "stock ak74 izhmash ak74 std plastic": {
+  "ak74 izhmash ak74 std plastic": {
     "Name": "stock_ak74_izhmash_ak74_std_plastic",
     "ID": "5649b0fc4bdc2d17108b4588"
   },
-  "stock mosin ati monte carlo": {
+  "mosin ati monte carlo": {
     "Name": "stock_mosin_ati_monte_carlo",
     "ID": "5bbdb870d4351e00367fb67d"
   },
-  "stock ak magpul zhukov s": {
+  "ak magpul zhukov s": {
     "Name": "stock_ak_magpul_zhukov_s",
     "ID": "5b0e794b5acfc47a877359b2"
   },
-  "stock ar15 magpul moe carbine sg": {
+  "ar15 magpul moe carbine sg": {
     "Name": "stock_ar15_magpul_moe_carbine_sg",
     "ID": "58d2947e86f77447aa070d53"
   },
-  "stock sks fab defence uas sks": {
+  "sks fab defence uas sks": {
     "Name": "stock_sks_fab_defence_uas_sks",
     "ID": "5d0236dad7ad1a0940739d29"
   },
-  "stock p90 fn p90 butt pad std": {
+  "p90 fn p90 butt pad std": {
     "Name": "stock_p90_fn_p90_butt_pad_std",
     "ID": "5cc700cae4a949035e43ba72"
   },
-  "stock ar15 magpul prs gen3 gry": {
+  "ar15 magpul prs gen3 gry": {
     "Name": "stock_ar15_magpul_prs_gen3_gry",
     "ID": "5d4406a8a4b9361e4f6eb8b7"
   },
-  "stock ak74m izhmash ak74m std": {
+  "ak74m izhmash ak74m std": {
     "Name": "stock_ak74m_izhmash_ak74m_std",
     "ID": "5ac50c185acfc400163398d4"
   },
-  "stock ks23 toz ks23 std wood": {
+  "ks23 toz ks23 std wood": {
     "Name": "stock_ks23_toz_ks23_std_wood",
     "ID": "5e848db4681bea2ada00daa9"
   },
-  "stock dvl-10 lobaev dvl-10 std": {
+  "dvl-10 lobaev dvl-10 std": {
     "Name": "stock_dvl-10_lobaev_dvl-10_std",
     "ID": "58889d0c2459775bc215d981"
   },
-  "stock ar15 magpul prs gen3": {
+  "ar15 magpul prs gen3": {
     "Name": "stock_ar15_magpul_prs_gen3",
     "ID": "5d44069ca4b9361ebd26fc37"
   },
-  "stock vss tochmash vss std wood": {
+  "vss tochmash vss std wood": {
     "Name": "stock_vss_tochmash_vss_std_wood",
     "ID": "578395e82459774a0e553c7b"
   },
-  "stock 870 mesa leo stock adapter": {
+  "870 mesa leo adapter": {
     "Name": "stock_870_mesa_leo_stock_adapter",
     "ID": "5ae35b315acfc4001714e8b0"
   },
-  "stock ar15 armacon baskak": {
+  "ar15 armacon baskak": {
     "Name": "stock_ar15_armacon_baskak",
     "ID": "57ade1442459771557167e15"
   },
-  "stock ar15 fab defense gl shock": {
+  "ar15 fab defense gl shock": {
     "Name": "stock_ar15_fab_defense_gl_shock",
     "ID": "5a9eb32da2750c00171b3f9c"
   },
-  "stock aks74u izhmash aks74u std": {
+  "aks74u izhmash aks74u std": {
     "Name": "stock_aks74u_izhmash_aks74u_std",
     "ID": "57dc347d245977596754e7a1"
   },
-  "stock toz-106 pafnuch mosin custom": {
+  "toz-106 pafnuch mosin custom": {
     "Name": "stock_toz-106_pafnuch_mosin_custom",
     "ID": "5c99f3592e221644fc633070"
   },
-  "stock ar15 magpul ubr gen2 blk": {
+  "ar15 magpul ubr gen2 blk": {
     "Name": "stock_ar15_magpul_ubr_gen2_blk",
     "ID": "5947e98b86f774778f1448bc"
   },
-  "stock ak zenit pt-3 lock": {
+  "ak zenit pt-3 lock": {
     "Name": "stock_ak_zenit_pt-3_lock",
     "ID": "59ecc28286f7746d7a68aa8c"
   },
-  "stock 590 mossberg 590a1 std": {
+  "590 mossberg 590a1 std": {
     "Name": "stock_590_mossberg_590a1_std",
     "ID": "5e87116b81c4ed43e83cefdd"
   },
-  "stock mpx maxim defence cqb stock": {
+  "mpx maxim defence cqb stock": {
     "Name": "stock_mpx_maxim_defence_cqb_stock",
     "ID": "5c5db6ee2e221600113fba54"
   },
-  "stock ar15 magpul rubber butt pad": {
+  "ar15 magpul rubber butt pad": {
     "Name": "stock_ar15_magpul_rubber_butt_pad",
     "ID": "58d2912286f7744e27117493"
   },
-  "stock pp-19-01 izhmash vityaz std": {
+  "pp-19-01 izhmash vityaz std": {
     "Name": "stock_pp-19-01_izhmash_vityaz_std",
     "ID": "599851db86f77467372f0a18"
   },
-  "stock 870 remington sps 12g": {
+  "870 remington sps 12g": {
     "Name": "stock_870_remington_sps_12g",
     "ID": "5a7880d0c5856700142fdd9d"
   },
-  "stock m1a promag archangel prs": {
+  "m1a promag archangel prs": {
     "Name": "stock_m1a_promag_archangel_prs",
     "ID": "5addbf175acfc408fb13965b"
   },
-  "stock val tochmash val std": {
+  "val tochmash val std": {
     "Name": "stock_val_tochmash_val_std",
     "ID": "57c450252459772d28133253"
   },
-  "stock sa58 ds arms para folding stock": {
+  "sa58 ds arms para folding stock": {
     "Name": "stock_sa58_ds_arms_para_folding_stock",
     "ID": "5b7d63cf5acfc4001876c8df"
   },
-  "stock ar15 colt stock tube A2": {
+  "ar15 colt tube A2": {
     "Name": "stock_ar15_colt_stock_tube_A2",
     "ID": "5a33ca0fc4a282000d72292f"
   },
-  "stock ar15 ergo f93 pro stock": {
+  "ar15 ergo f93 pro stock": {
     "Name": "stock_ar15_ergo_f93_pro_stock",
     "ID": "5b0800175acfc400153aebd4"
   },
-  "stock ak utg sfs adapter": {
+  "ak utg sfs adapter": {
     "Name": "stock_ak_utg_sfs_adapter",
     "ID": "5649b2314bdc2d79388b4576"
   },
-  "stock ak zenit pt-3m lock": {
+  "ak zenit pt-3m lock": {
     "Name": "stock_ak_zenit_pt-3m_lock",
     "ID": "5ac78eaf5acfc4001926317a"
   },
-  "stock ak izhmash akm std wood": {
+  "ak izhmash akm std wood": {
     "Name": "stock_ak_izhmash_akm_std_wood",
     "ID": "59d6514b86f774171a068a08"
   },
-  "stock t5000 orsis t5000 se chassis": {
+  "t5000 orsis t5000 se chassis": {
     "Name": "stock_t5000_orsis_t5000_se_chassis",
     "ID": "5df35e59c41b2312ea3334d5"
   },
-  "stock mosin aim sports buttpad extended": {
+  "mosin aim sports buttpad extended": {
     "Name": "stock_mosin_aim_sports_buttpad_extended",
     "ID": "5bbde409d4351e003562b036"
   },
-  "stock vepr molot vpo-101 std wood": {
+  "vepr molot vpo-101 std wood": {
     "Name": "stock_vepr_molot_vpo-101_std_wood",
     "ID": "5c503af12e221602b177ca02"
   },
-  "stock m700 hogue overmolded ghillie green pillar bedded stock": {
+  "m700 hogue overmolded ghillie green pillar bedded stock": {
     "Name": "stock_m700_hogue_overmolded_ghillie_green_pillar_bedded_stock",
     "ID": "5bfeb32b0db834001a6694d9"
   },
-  "stock sa58 ds arms para folding buffer tube adapter": {
+  "sa58 ds arms para folding buffer tube adapter": {
     "Name": "stock_sa58_ds_arms_para_folding_buffer_tube_adapter",
     "ID": "5b099bf25acfc4001637e683"
   },
-  "stock p90 damage industries butt pad": {
+  "p90 damage industries butt pad": {
     "Name": "stock_p90_damage industries_butt_pad",
     "ID": "5cc700d4e4a949000f0f0f28"
   },
-  "stock ar15 mesa crosshair hydraulic buffer tube": {
+  "ar15 mesa crosshair hydraulic buffer tube": {
     "Name": "stock_ar15_mesa_crosshair_hydraulic_buffer_tube",
     "ID": "5ef1ba28c64c5d0dfc0571a5"
   },
-  "stock ar15 strike industries advanced receiver extension red": {
+  "ar15 strike industries advanced receiver extension red": {
     "Name": "stock_ar15_strike_industries_advanced_receiver_extension_red",
     "ID": "5c793fc42e221600114ca25d"
   },
-  "stock mosin izhmash mosin sniper sawn off wood": {
+  "mosin izhmash mosin sniper sawn off wood": {
     "Name": "stock_mosin_izhmash_mosin_sniper_sawn_off_wood",
     "ID": "5bfd36290db834001966869a"
   },
-  "stock ar15 hk enhanced stock tube": {
+  "ar15 hk enhanced tube": {
     "Name": "stock_ar15_hk_enhanced_stock_tube",
     "ID": "5bb20e58d4351e00320205d7"
   },
-  "stock sks tapco intrafuse sks railed": {
+  "sks tapco intrafuse sks railed": {
     "Name": "stock_sks_tapco_intrafuse_sks_railed",
     "ID": "5afd7ded5acfc40017541f5e"
   },
-  "stock ar15 strike industries viper mod 1": {
+  "ar15 strike industries viper mod 1": {
     "Name": "stock_ar15_strike_industries_viper_mod_1",
     "ID": "5c793fde2e221601da358614"
   },
-  "stock m1a springfield armory socom 16": {
+  "m1a springfield armory socom 16": {
     "Name": "stock_m1a_springfield_armory_socom_16",
     "ID": "5aaf8e43e5b5b00015693246"
   },
-  "stock mosin izhmash mosin infantry wood": {
+  "mosin izhmash mosin infantry wood": {
     "Name": "stock_mosin_izhmash_mosin_infantry_wood",
     "ID": "5bfd35380db83400232fe5cc"
   },
-  "stock ar15 magpul moe carbine od": {
+  "ar15 magpul moe carbine od": {
     "Name": "stock_ar15_magpul_moe_carbine_od",
     "ID": "58d2947686f774485c6a1ee5"
   },
-  "stock 590 mesa leo stock adapter gen1": {
+  "590 mesa leo adapter gen1": {
     "Name": "stock_590_mesa_leo_stock_adapter_gen1",
     "ID": "5ef1b9f0c64c5d0dfc0571a1"
   },
-  "stock saiga12 izhmash saiga12 fold ak type": {
+  "saiga12 izhmash saiga12 fold ak type": {
     "Name": "stock_saiga12_izhmash_saiga12_fold_ak_type",
     "ID": "57616ca52459773c69055192"
   },
-  "stock ak74 izhmash ak74 std wood": {
+  "ak74 izhmash ak74 std wood": {
     "Name": "stock_ak74_izhmash_ak74_std_wood",
     "ID": "5649b1c04bdc2d16268b457c"
   },
-  "stock vepr pflevsha svd type walnut": {
+  "vepr pflevsha svd type walnut": {
     "Name": "stock_vepr_pflevsha_svd_type_walnut",
     "ID": "5f63405df5750b524b45f114"
   },
-  "stock mosin promag archangel opfor prs": {
+  "mosin promag archangel opfor prs": {
     "Name": "stock_mosin_promag_archangel_opfor_prs",
     "ID": "5bae13bad4351e00320204af"
   },
-  "stock ar15 magpul moe carbine blk": {
+  "ar15 magpul moe carbine blk": {
     "Name": "stock_ar15_magpul_moe_carbine_blk",
     "ID": "56eabf3bd2720b75698b4569"
   },
-  "stock t5000 orsis t5000 se folding stock std": {
+  "t5000 orsis t5000 se folding std": {
     "Name": "stock_t5000_orsis_t5000_se_folding_stock_std",
     "ID": "5df35ddddfc58d14537c2036"
   },
-  "stock rpk16 izhmash rpk stock tube": {
+  "rpk16 izhmash rpk tube": {
     "Name": "stock_rpk16_izhmash_rpk_stock_tube",
     "ID": "5beec8b20db834001961942a"
   },
-  "stock sa58 ds arms humpback stock": {
+  "sa58 ds arms humpback stock": {
     "Name": "stock_sa58_ds_arms_humpback_stock",
     "ID": "5b7d645e5acfc400170e2f90"
   },
-  "stock vpo215 molot vpo 215 std wood": {
+  "vpo215 molot vpo 215 std wood": {
     "Name": "stock_vpo215_molot_vpo_215_std_wood",
     "ID": "5de655be4a9f347bc92edb88"
   },
-  "stock ar15 magpul ctr carbine fde": {
+  "ar15 magpul ctr carbine fde": {
     "Name": "stock_ar15_magpul_ctr_carbine_fde",
     "ID": "5d135ecbd7ad1a21c176542e"
   },
-  "stock m700 abarms mrs mod x gen 3": {
+  "m700 abarms mrs mod x gen 3": {
     "Name": "stock_m700_abarms_mrs_mod_x_gen_3",
     "ID": "5cde739cd7f00c0010373bd3"
   },
-  "stock m700 magpul pro 700 folding stock": {
+  "m700 magpul pro 700 folding stock": {
     "Name": "stock_m700_magpul_pro_700_folding_stock",
     "ID": "5cdeac42d7f00c000d36ba73"
   },
-  "stock ar15 strike industries advanced receiver extension": {
+  "ar15 strike industries advanced receiver extension": {
     "Name": "stock_ar15_strike_industries_advanced_receiver_extension",
     "ID": "5c793fb92e221644f31bfb64"
   },
-  "stock mosin izhmash mosin carabine sniper cut wood": {
+  "mosin izhmash mosin carabine sniper cut wood": {
     "Name": "stock_mosin_izhmash_mosin_carabine_sniper_cut_wood",
     "ID": "5bfd37c80db834001d23e842"
   },
-  "stock toz-106 toz short std wood": {
+  "toz-106 toz short std wood": {
     "Name": "stock_toz-106_toz_short_std_wood",
     "ID": "5a38ef1fc4a282000b1521f6"
   },
-  "stock 870 shockwave technologies raptor grip": {
+  "870 shockwave technologies raptor grip": {
     "Name": "stock_870_shockwave_technologies_raptor_grip",
     "ID": "5a788169c5856700142fdd9e"
   },
-  "stock mosin izhmash mosin carabine wood": {
+  "mosin izhmash mosin carabine wood": {
     "Name": "stock_mosin_izhmash_mosin_carabine_wood",
     "ID": "5bfd384c0db834001a6691d3"
   },
-  "stock m700 promag archangel precision stock": {
+  "m700 promag archangel precision stock": {
     "Name": "stock_m700_promag_archangel_precision_stock",
     "ID": "5cf13123d7f00c1085616a50"
   },
-  "stock ar15 double star ace socom gen 4": {
+  "ar15 double star ace socom gen 4": {
     "Name": "stock_ar15_double_star_ace_socom_gen_4",
     "ID": "5d120a10d7ad1a4e1026ba85"
   },
-  "stock ak74 izhmash ak74 std plum": {
+  "ak74 izhmash ak74 std plum": {
     "Name": "stock_ak74_izhmash_ak74_std_plum",
     "ID": "5cbdb1b0ae9215000d50e105"
   },
-  "stock m700 magpul pro 700 chasiss": {
+  "m700 magpul pro 700 chasiss": {
     "Name": "stock_m700_magpul_pro_700_chasiss",
     "ID": "5cdeac22d7f00c000f26168f"
   },
-  "stock m14 sage ebr m14alcs buttstock": {
+  "m14 sage ebr m14alcs buttstock": {
     "Name": "stock_m14_sage_ebr_m14alcs_buttstock",
     "ID": "5addc7ac5acfc400194dbd90"
   },
-  "stock mosin izhmash mosin carabine sawn off wood": {
+  "mosin izhmash mosin carabine sawn off wood": {
     "Name": "stock_mosin_izhmash_mosin_carabine_sawn_off_wood",
     "ID": "5bfd36ad0db834001c38ef66"
   },
-  "stock 870 fab defense agr 870 stock tube": {
+  "870 fab defense agr 870 tube": {
     "Name": "stock_870_fab_defense_agr_870_stock_tube",
     "ID": "5bfe89510db834001808a127"
   },
@@ -2963,7 +2959,7 @@
     "Name": "charge_ar15_hk_extended_latch_charging_handle",
     "ID": "5bb20dbcd4351e44f824c04e"
   },
-  "charge ar15 badger ordnance tactical latch": {
+  "charge ar15 badger ordnance latch": {
     "Name": "charge_ar15_badger_ordnance_tactical_latch",
     "ID": "56ea7165d2720b6e518b4583"
   },
@@ -3039,7 +3035,7 @@
     "Name": "mount_590_bat_rb7m",
     "ID": "5eeb2ff5ea4f8b73c827350b"
   },
-  "all iea kh f 34mm": {
+  "iea kh f 34mm": {
     "Name": "mount_all_iea_kh_f_34mm",
     "ID": "5c86592b2e2216000e69e77c"
   },
@@ -3051,11 +3047,11 @@
     "Name": "mount_vss_zenit_b3",
     "ID": "57a3459f245977764a01f703"
   },
-  "all trijicon ta51": {
+  "trijicon ta51": {
     "Name": "mount_all_trijicon_ta51",
     "ID": "59db7eed86f77461f8380365"
   },
-  "all ncstar mpr45": {
+  "ncstar mpr45": {
     "Name": "mount_all_ncstar_mpr45",
     "ID": "5649a2464bdc2d91118b45a8"
   },
@@ -3063,7 +3059,7 @@
     "Name": "mount_svd_caa_drg_l_1",
     "ID": "5e569a132642e66b0b68015c"
   },
-  "all trijicon rm33": {
+  "trijicon rm33": {
     "Name": "mount_all_trijicon_rm33",
     "ID": "5a33b2c9c4a282000c5a9511"
   },
@@ -3071,11 +3067,11 @@
     "Name": "mount_7mm_etmi_019",
     "ID": "5dfe14f30b92095fd441edaf"
   },
-  "all zenit b18": {
+  "zenit b18": {
     "Name": "mount_all_zenit_b18",
     "ID": "57ffb0062459777a045af529"
   },
-  "all unv dloc ird": {
+  "unv dloc ird": {
     "Name": "mount_all_unv_dloc_ird",
     "ID": "5a1ead28fcdbcb001912fa9f"
   },
@@ -3107,7 +3103,7 @@
     "Name": "mount_mpx_2_inch_rail",
     "ID": "58a56f8d86f774651579314c"
   },
-  "all zenit b12": {
+  "zenit b12": {
     "Name": "mount_all_zenit_b12",
     "ID": "57ffaea724597779f52b3a4d"
   },
@@ -3115,11 +3111,11 @@
     "Name": "mount_acog_trijicon_rm35",
     "ID": "5a33bab6c4a28200741e22f8"
   },
-  "all utg rings 25 4mm": {
+  "utg rings 25 4mm": {
     "Name": "mount_all_utg_rings_25_4mm",
     "ID": "5dff77c759400025ea5150cf"
   },
-  "all noname 25mm ring": {
+  "noname 25mm ring": {
     "Name": "mount_all_noname_25mm_ring",
     "ID": "57d17e212459775a1179a0f5"
   },
@@ -3147,7 +3143,7 @@
     "Name": "nvg_norotos_dual_dovetail_mount",
     "ID": "5a16b93dfcdbcbcae6687261"
   },
-  "all aimpoint lrp mount": {
+  "aimpoint lrp mount": {
     "Name": "mount_all_aimpoint_lrp_mount",
     "ID": "5c7d55f52e221644f31bff6a"
   },
@@ -3171,7 +3167,7 @@
     "Name": "mount_vss_zenit_b3_combo",
     "ID": "5a9fc7e6a2750c0032157184"
   },
-  "all trijicon ac32062": {
+  "trijicon ac32062": {
     "Name": "mount_all_trijicon_ac32062",
     "ID": "5a33b652c4a28232996e407c"
   },
@@ -3191,7 +3187,7 @@
     "Name": "mount_sr1mp_tochmash_std_1_rail",
     "ID": "5a27b281c4a28200741e1e52"
   },
-  "all kmz 1p69 mount": {
+  "kmz 1p69 mount": {
     "Name": "mount_all_kmz_1p69_mount",
     "ID": "5d0a29fed7ad1a002769ad08"
   },
@@ -3219,13 +3215,9 @@
     "Name": "nvg_norotos_tatm_universal",
     "ID": "5a16b8a9fcdbcb00165aa6ca"
   },
-  "all aimpoint h1 t1 weaver": {
+  "aimpoint h1 t1 weaver": {
     "Name": "mount_all_aimpoint_h1_t1_weaver",
     "ID": "58d39d3d86f77445bb794ae7"
-  },
-  "sks molot op sks std": {
-    "Name": "mount_sks_molot_op_sks_std",
-    "ID": "587e08ee245977446b4410cf"
   },
   "sks utg socom rail": {
     "Name": "mount_sks_utg_socom_rail",
@@ -3243,11 +3235,11 @@
     "Name": "mount_mp9_bt_mp9_bottom_rail",
     "ID": "5de8fbf2b74cd90030650c79"
   },
-  "all lobaev dvl std": {
+  "lobaev dvl std": {
     "Name": "mount_all_lobaev_dvl_std",
     "ID": "57c69dd424597774c03b7bbc"
   },
-  "all custom top rail 13": {
+  "custom top rail 13": {
     "Name": "mount_all_custom_top_rail_13",
     "ID": "55d48a634bdc2d8b2f8b456a"
   },
@@ -3267,7 +3259,7 @@
     "Name": "mount_mr133_tactica_tula_12003",
     "ID": "5bfe7fb30db8340018089fed"
   },
-  "all leupold deltapoint weaver": {
+  "leupold deltapoint weaver": {
     "Name": "mount_all_leupold_deltapoint_weaver",
     "ID": "58d2664f86f7747fec5834f6"
   },
@@ -3275,7 +3267,7 @@
     "Name": "mount_t5000_orsis_scope_mount_rail_std",
     "ID": "5df35e970b92095fd441e4d2"
   },
-  "all primary arms compact scope mount": {
+  "primary arms compact scope mount": {
     "Name": "mount_all_primary_arms_compact_scope_mount",
     "ID": "5c1cdd302e221602b3137250"
   },
@@ -3315,7 +3307,7 @@
     "Name": "mount_m700_remington_integral_scope_mount",
     "ID": "5bfebc5e0db834001a6694e5"
   },
-  "all burris ar p e p r 30mm": {
+  "burris ar p e p r 30mm": {
     "Name": "mount_all_burris_ar_p_e_p_r_30mm",
     "ID": "5b2389515acfc4771e1be0c0"
   },
@@ -3327,7 +3319,7 @@
     "Name": "mount_casv_vltor_2_inch_picatinny_rail_section",
     "ID": "5b7be4575acfc400161d0832"
   },
-  "12g mesa tactical magazine clamp": {
+  "12g mesa magazine clamp": {
     "Name": "mount_12g_mesa_tactical_magazine_clamp",
     "ID": "5a789261c5856700186c65d3"
   },
@@ -3367,11 +3359,11 @@
     "Name": "mount_m14_amega_mounts_mini_scout_mount",
     "ID": "5addbfd15acfc40015621bde"
   },
-  "all jp enterprises ftsm 30mm": {
+  "jp enterprises ftsm 30mm": {
     "Name": "mount_all_jp_enterprises_ftsm_30mm",
     "ID": "5a37ca54c4a282000d72296a"
   },
-  "all sig romeo 4 base weaver": {
+  "sig romeo 4 base weaver": {
     "Name": "mount_all_sig_romeo_4_base_weaver",
     "ID": "5b31163c5acfc400153b71cb"
   },
@@ -3391,7 +3383,7 @@
     "Name": "mount_mp9_bt_mp9_side_rail",
     "ID": "5de8fc0b205ddc616a6bc51b"
   },
-  "glock um tactical um3 sight mount": {
+  "glock um um3 sight mount": {
     "Name": "mount_glock_um_tactical_um3_sight_mount",
     "ID": "5a7b4900e899ef197b331a2a"
   },
@@ -3411,7 +3403,7 @@
     "Name": "mount_dovetail_pilad_043_02",
     "ID": "57acb6222459771ec34b5cb0"
   },
-  "all burris fast fire weaver": {
+  "burris fast fire weaver": {
     "Name": "mount_all_burris_fast_fire_weaver",
     "ID": "577d128124597739d65d0e56"
   },
@@ -3419,7 +3411,7 @@
     "Name": "helmet_ops_core_single_clamp_rail_adapter",
     "ID": "5a398ab9c4a282000c5a9842"
   },
-  "all armasight un nv ir qd mount": {
+  "armasight un nv ir qd mount": {
     "Name": "mount_all_armasight_un_nv_ir_qd_mount",
     "ID": "5b3b6dc75acfc47a8773fb1e"
   },
@@ -3439,7 +3431,7 @@
     "Name": "mount_rfb_ket_tec_rfb_scope_mount_std",
     "ID": "5f2aa49f9b44de6b1b4e68d4"
   },
-  "all nightforce x treme duty ultralite one piece magmulti34mm": {
+  "nightforce x treme duty ultralite one piece magmulti34mm": {
     "Name": "mount_all_nightforce_x_treme_duty_ultralite_one_piece_magmount_multimount_34mm",
     "ID": "5aa66c72e5b5b00016327c93"
   },
@@ -3503,15 +3495,15 @@
     "Name": "mount_m1911_ncstar_1911_trigger_guard_mount",
     "ID": "5ef369b08cef260c0642acaf"
   },
-  "all nightforce x treme duty ultralite one piece mag34mm": {
+  "nightforce x treme duty ultralite one piece mag34mm": {
     "Name": "mount_all_nightforce_x_treme_duty_ultralite_one_piece_magmount_34mm",
     "ID": "5aa66a9be5b5b0214e506e89"
   },
-  "all nightforce x treme duty ultralite 30mm": {
+  "nightforce x treme duty ultralite 30mm": {
     "Name": "mount_all_nightforce_x_treme_duty_ultralite_30mm",
     "ID": "5b3b99265acfc4704b4a1afb"
   },
-  "all larue picatinny raiser qd lt101": {
+  "larue picatinny raiser qd lt101": {
     "Name": "mount_all_larue_picatinny_raiser_qd_lt101",
     "ID": "5c064c400db834001d23f468"
   },
@@ -4727,7 +4719,7 @@
     "Name": "pistolgrip_ar15_hogue_overmolded_gg",
     "ID": "57c55f112459772d28133310"
   },
-  "pistolgrip p226 axelson tactical mk25": {
+  "pistolgrip p226 axelson mk25": {
     "Name": "pistolgrip_p226_axelson_tactical_mk25",
     "ID": "5bffec120db834001c38f5fa"
   },
@@ -4739,7 +4731,7 @@
     "Name": "pistolgrip_ar15_hogue_overmolded_fde",
     "ID": "57af48872459771f0b2ebf11"
   },
-  "pistolgrip glock pachmayr tactical rubber grip": {
+  "pistolgrip glock pachmayr rubber grip": {
     "Name": "pistolgrip_glock_pachmayr_tactical_rubber_grip",
     "ID": "5a7b4960e899ef197b331a2d"
   },
@@ -4835,7 +4827,7 @@
     "Name": "pistolgrip_ak_izhmash_aks74u_std",
     "ID": "57e3dba62459770f0c32322b"
   },
-  "pistolgrip ar15 tactical dynamics skeletonized anodized": {
+  "pistolgrip ar15 dynamics skeletonized anodized": {
     "Name": "pistolgrip_ar15_tactical_dynamics_skeletonized_anodized",
     "ID": "5b07db875acfc40dc528a5f6"
   },
@@ -5443,7 +5435,7 @@
     "Name": "reciever_glock_lone_wolf_alphawolf",
     "ID": "5a702d198dc32e000b452fc3"
   },
-  "reciever p226 axelson tactical mk25": {
+  "reciever p226 axelson mk25": {
     "Name": "reciever_p226_axelson_tactical_mk25",
     "ID": "5bffe7c50db834001d23ece1"
   },
@@ -5659,15 +5651,15 @@
     "Name": "Jacket",
     "ID": "578f8778245977358849a9b5"
   },
-  "equipment rig tv110": {
+  "rig tv110": {
     "Name": "item_equipment_rig_tv110",
     "ID": "5c0e746986f7741453628fe5"
   },
-  "equipment rig bankrobber": {
+  "rig bankrobber": {
     "Name": "item_equipment_rig_bankrobber",
     "ID": "5e4abc1f86f774069619fbaa"
   },
-  "equipment rig d3crx": {
+  "rig d3crx": {
     "Name": "item_equipment_rig_d3crx",
     "ID": "5d5d85c586f774279a21cbdb"
   },
@@ -5679,35 +5671,35 @@
     "Name": "ana_tactical",
     "ID": "592c2d1a86f7746dbe2af32a"
   },
-  "equipment rig 6b5 khaki": {
+  "rig 6b5 khaki": {
     "Name": "item_equipment_rig_6b5_khaki",
     "ID": "5c0e3eb886f7742015526062"
   },
-  "equipment rig commando black": {
+  "rig commando black": {
     "Name": "item_equipment_rig_commando_black",
     "ID": "5c0e9f2c86f77432297fe0a3"
   },
-  "equipment rig tarzan": {
+  "rig tarzan": {
     "Name": "item_equipment_rig_tarzan",
     "ID": "5e4abfed86f77406a2713cf7"
   },
-  "equipment rig beltab": {
+  "rig beltab": {
     "Name": "item_equipment_rig_beltab",
     "ID": "5c0e6a1586f77404597b4965"
   },
-  "equipment rig bearing": {
+  "rig bearing": {
     "Name": "item_equipment_rig_bearing",
     "ID": "5e9db13186f7742f845ee9d3"
   },
-  "equipment rig m1": {
+  "rig m1": {
     "Name": "item_equipment_rig_m1",
     "ID": "5c0e722886f7740458316a57"
   },
-  "equipment armor 6b3": {
+  "armor 6b3": {
     "Name": "item_equipment_armor_6b3",
     "ID": "5d5d646386f7742797261fd9"
   },
-  "equipment rig micro": {
+  "rig micro": {
     "Name": "item_equipment_rig_micro",
     "ID": "5d5d8ca986f7742798716522"
   },
@@ -5715,7 +5707,7 @@
     "Name": "bearRig",
     "ID": "5648a69d4bdc2ded0b8b457b"
   },
-  "equipment rig commando": {
+  "rig commando": {
     "Name": "item_equipment_rig_commando",
     "ID": "5b44c8ea86f7742d1627baf1"
   },
@@ -5723,15 +5715,15 @@
     "Name": "bear_rig_6h112",
     "ID": "5929a2a086f7744f4b234d43"
   },
-  "equipment armor a18": {
+  "armor a18": {
     "Name": "item_equipment_armor_a18",
     "ID": "5d5d87f786f77427997cfaef"
   },
-  "equipment rig triton": {
+  "rig triton": {
     "Name": "item_equipment_rig_triton",
     "ID": "5ca20abf86f77418567a43f2"
   },
-  "equipment armor arscpc": {
+  "armor arscpc": {
     "Name": "item_equipment_armor_arscpc",
     "ID": "5e4ac41886f77406a511c9a8"
   },
@@ -5743,15 +5735,15 @@
     "Name": "wartech_mk3",
     "ID": "5ab8dab586f77441cd04f2a2"
   },
-  "equipment rig 6b5 flora": {
+  "rig 6b5 flora": {
     "Name": "item_equipment_rig_6b5_flora",
     "ID": "5c0e446786f7742013381639"
   },
-  "equipment rig carrierTactec": {
+  "rig carrierTactec": {
     "Name": "item_equipment_rig_carrierTactec",
     "ID": "5b44cad286f77402a54ae7e5"
   },
-  "ana tactical m2": {
+  "ana m2": {
     "Name": "ana_tactical_m2",
     "ID": "5ab8dced86f774646209ec87"
   },
@@ -5759,27 +5751,27 @@
     "Name": "wartech_vest",
     "ID": "59e7643b86f7742cbf2c109a"
   },
-  "equipment rig multipurpose": {
+  "rig multipurpose": {
     "Name": "item_equipment_rig_multipurpose",
     "ID": "5df8a42886f77412640e2e75"
   },
-  "equipment rig thunderbolt": {
+  "rig thunderbolt": {
     "Name": "item_equipment_rig_thunderbolt",
     "ID": "5f5f41f56760b4138443b352"
   },
-  "equipment backpack blackjack": {
+  "blackjack": {
     "Name": "item_equipment_backpack_blackjack",
     "ID": "5c0e774286f77468413cc5b2"
   },
-  "backpack vkboarmy": {
+  "vkboarmy": {
     "Name": "backpack_vkboarmy",
     "ID": "5ab8ee7786f7742d8f33f0b9"
   },
-  "tactical backpack": {
+  "backpack": {
     "Name": "tactical_backpack",
     "ID": "56e33680d2720be2748b4576"
   },
-  "equipment backpack redfox": {
+  "redfox": {
     "Name": "item_equipment_backpack_redfox",
     "ID": "5f5e45cc5021ce62144be7aa"
   },
@@ -5787,27 +5779,27 @@
     "Name": "endlessBackpack",
     "ID": "56e294cdd2720b603a8b4575"
   },
-  "backpack molle": {
+  "molle": {
     "Name": "backpack_molle",
     "ID": "5ab8f04f86f774585f4237d8"
   },
-  "equipment backpack betav2": {
+  "betav2": {
     "Name": "item_equipment_backpack_betav2",
     "ID": "5b44c6ae86f7742d1627baea"
   },
-  "backpack sso attack2": {
+  "sso attack2": {
     "Name": "backpack_sso_attack2",
     "ID": "5ab8ebf186f7742d8b372e80"
   },
-  "backpack Raid 6SH118": {
+  "Raid 6SH118": {
     "Name": "backpack_Raid_6SH118",
     "ID": "5df8a4d786f77412672a1e3b"
   },
-  "equipment backpack medpack": {
+  "medpack": {
     "Name": "item_equipment_backpack_medpack",
     "ID": "5e4abc6786f77406812bd572"
   },
-  "backpack pilgrim": {
+  "pilgrim": {
     "Name": "backpack_pilgrim",
     "ID": "59e763f286f7742ee57895da"
   },
@@ -5815,31 +5807,31 @@
     "Name": "forward_backpack",
     "ID": "56e33634d2720bd8058b456b"
   },
-  "equipment backpack f5switchblade": {
+  "f5switchblade": {
     "Name": "item_equipment_backpack_f5switchblade",
     "ID": "5f5e467b0bc58666c37e7821"
   },
-  "equipment backpack mech": {
+  "mech": {
     "Name": "item_equipment_backpack_mech",
     "ID": "5d5d940f86f7742797262046"
   },
-  "equipment backpack paratus": {
+  "paratus": {
     "Name": "item_equipment_backpack_paratus",
     "ID": "5c0e805e86f774683f3dd637"
   },
-  "equipment backpack daypack14": {
+  "daypack14": {
     "Name": "item_equipment_backpack_daypack14",
     "ID": "5e9dcf5986f7746c417435b3"
   },
-  "backpack sanitar medbag": {
+  "sanitar medbag": {
     "Name": "backpack_sanitar_medbag",
     "ID": "5e997f0b86f7741ac73993e2"
   },
-  "backpack wild": {
+  "wild": {
     "Name": "backpack_wild",
     "ID": "56e335e4d2720b6c058b456d"
   },
-  "equipment backpack wartech": {
+  "wartech": {
     "Name": "item_equipment_backpack_wartech",
     "ID": "5ca20d5986f774331e7c9602"
   },
@@ -5851,7 +5843,7 @@
     "Name": "bigBackpack",
     "ID": "545cdae64bdc2d39198b4568"
   },
-  "equipment backpack f4terminator": {
+  "f4terminator": {
     "Name": "item_equipment_backpack_f4terminator",
     "ID": "5f5e46b96bdad616ad46d613"
   },
@@ -6291,79 +6283,79 @@
     "Name": "helmet_zsh_1-2m_v1_face_shield",
     "ID": "5aa7e3abe5b5b000171d064d"
   },
-  "equipment helmet crye airframe chops": {
+  "helmet crye airframe chops": {
     "Name": "item_equipment_helmet_crye_airframe_chops",
     "ID": "5c178a942e22164bef5ceca3"
   },
-  "equipment helmet crye airframe ears": {
+  "helmet crye airframe ears": {
     "Name": "item_equipment_helmet_crye_airframe_ears",
     "ID": "5c1793902e221602b21d3de2"
   },
-  "equipment helmet diamond age bastion shield": {
+  "helmet diamond age bastion shield": {
     "Name": "item_equipment_helmet_diamond_age_bastion_shield",
     "ID": "5ea18c84ecf1982c7712d9a2"
   },
-  "equipment helmet galvion applique": {
+  "helmet galvion applique": {
     "Name": "item_equipment_helmet_galvion_applique",
     "ID": "5f60b85bbdb8e27dee3dc985"
   },
-  "equipment helmet galvion fixed arm visor": {
+  "helmet galvion fixed arm visor": {
     "Name": "item_equipment_helmet_galvion_fixed_arm_visor",
     "ID": "5f60bf4558eff926626a60f2"
   },
-  "equipment helmet galvion mandible": {
+  "helmet galvion mandible": {
     "Name": "item_equipment_helmet_galvion_mandible",
     "ID": "5f60c076f2bcbb675b00dac2"
   },
-  "equipment helmet gentex slaap tan": {
+  "helmet gentex slaap tan": {
     "Name": "item_equipment_helmet_gentex_slaap_tan",
     "ID": "5c0e66e2d174af02a96252f4"
   },
-  "equipment helmet k1c shield": {
+  "helmet k1c shield": {
     "Name": "item_equipment_helmet_k1c_shield",
     "ID": "5ac4c50d5acfc40019262e87"
   },
-  "equipment helmet kiverm shield": {
+  "helmet kiverm shield": {
     "Name": "item_equipment_helmet_kiverm_shield",
     "ID": "5b46238386f7741a693bcf9c"
   },
-  "equipment helmet lshz2dtm aventail": {
+  "helmet lshz2dtm aventail": {
     "Name": "item_equipment_helmet_lshz2dtm_aventail",
     "ID": "5d6d3be5a4b9361bc73bc763"
   },
-  "equipment helmet lshz2dtm damper": {
+  "helmet lshz2dtm damper": {
     "Name": "item_equipment_helmet_lshz2dtm_damper",
     "ID": "5d6d3943a4b9360dbc46d0cc"
   },
-  "equipment helmet lshz2dtm shield": {
+  "helmet lshz2dtm shield": {
     "Name": "item_equipment_helmet_lshz2dtm_shield",
     "ID": "5d6d3829a4b9361bc8618943"
   },
-  "equipment helmet maska 1sh shield": {
+  "helmet maska 1sh shield": {
     "Name": "item_equipment_helmet_maska_1sh_shield",
     "ID": "5c0919b50db834001b7ce3b9"
   },
-  "equipment helmet maska 1sh shield killa": {
+  "helmet maska 1sh shield killa": {
     "Name": "item_equipment_helmet_maska_1sh_shield_killa",
     "ID": "5c0e842486f77443a74d2976"
   },
-  "equipment helmet rys t shield": {
+  "helmet rys t shield": {
     "Name": "item_equipment_helmet_rys_t_shield",
     "ID": "5f60c85b58eff926626a60f7"
   },
-  "equipment helmet team wendy exfil face shield": {
+  "helmet team wendy exfil face shield": {
     "Name": "item_equipment_helmet_team_wendy_exfil_face_shield",
     "ID": "5e00cdd986f7747473332240"
   },
-  "equipment helmet team wendy exfil face shield coyote": {
+  "helmet team wendy exfil face shield coyote": {
     "Name": "item_equipment_helmet_team_wendy_exfil_face_shield_coyote",
     "ID": "5e01f37686f774773c6f6c15"
   },
-  "equipment helmet tk heavy trooper": {
+  "helmet tk heavy trooper": {
     "Name": "item_equipment_helmet_tk_heavy_trooper",
     "ID": "5ea058e01dbce517f324b3e2"
   },
-  "equipment helmet vulkan shield": {
+  "helmet vulkan shield": {
     "Name": "item_equipment_helmet_vulkan_shield",
     "ID": "5ca2113f86f7740b2547e1d2"
   },
@@ -6379,75 +6371,75 @@
     "Name": "heavy",
     "ID": "545cdb794bdc2d3a198b456a"
   },
-  "equipment armor 6b13 digital": {
+  "armor 6b13 digital": {
     "Name": "item_equipment_armor_6b13_digital",
     "ID": "5c0e53c886f7747fa54205c7"
   },
-  "equipment armor 6b13 flora": {
+  "armor 6b13 flora": {
     "Name": "item_equipment_armor_6b13_flora",
     "ID": "5c0e51be86f774598e797894"
   },
-  "equipment armor 6b13 killa": {
+  "armor 6b13 killa": {
     "Name": "item_equipment_armor_6b13_killa",
     "ID": "5c0e541586f7747fa54205c9"
   },
-  "equipment armor 6b2": {
+  "armor 6b2": {
     "Name": "item_equipment_armor_6b2",
     "ID": "5df8a2ca86f7740bfe6df777"
   },
-  "equipment armor 6b23 digital": {
+  "armor 6b23 digital": {
     "Name": "item_equipment_armor_6b23_digital",
     "ID": "5c0e5bab86f77461f55ed1f3"
   },
-  "equipment armor 6b23 mflora": {
+  "armor 6b23 mflora": {
     "Name": "item_equipment_armor_6b23_mflora",
     "ID": "5c0e57ba86f7747fa141986d"
   },
-  "equipment armor defender2": {
+  "armor defender2": {
     "Name": "item_equipment_armor_defender2",
     "ID": "5e9dacf986f774054d6b89f4"
   },
-  "equipment armor iotv": {
+  "armor iotv": {
     "Name": "item_equipment_armor_iotv",
     "ID": "5b44cd8b86f774503d30cba2"
   },
-  "equipment armor iotv 1": {
+  "armor iotv 1": {
     "Name": "item_equipment_armor_iotv_1",
     "ID": "5b44cf1486f77431723e3d05"
   },
-  "equipment armor iotv 2": {
+  "armor iotv 2": {
     "Name": "item_equipment_armor_iotv_2",
     "ID": "5b44d0de86f774503d30cba8"
   },
-  "equipment armor kirasa": {
+  "armor kirasa": {
     "Name": "item_equipment_armor_kirasa",
     "ID": "5b44d22286f774172b0c9de8"
   },
-  "equipment armor korundvm": {
+  "armor korundvm": {
     "Name": "item_equipment_armor_korundvm",
     "ID": "5f5f41476bdad616ad46d631"
   },
-  "equipment armor redut m": {
+  "armor redut m": {
     "Name": "item_equipment_armor_redut_m",
     "ID": "5ca2151486f774244a3b8d30"
   },
-  "equipment armor redut t": {
+  "armor redut t": {
     "Name": "item_equipment_armor_redut_t",
     "ID": "5ca21c6986f77479963115a7"
   },
-  "equipment armor slick": {
+  "armor slick": {
     "Name": "item_equipment_armor_slick",
     "ID": "5e4abb5086f77406975c9342"
   },
-  "equipment armor trooper": {
+  "armor trooper": {
     "Name": "item_equipment_armor_trooper",
     "ID": "5c0e655586f774045612eeb2"
   },
-  "equipment armor zhuk3": {
+  "armor zhuk3": {
     "Name": "item_equipment_armor_zhuk3",
     "ID": "5c0e5edb86f77461f55ed1f7"
   },
-  "equipment armor zhuk6a": {
+  "armor zhuk6a": {
     "Name": "item_equipment_armor_zhuk6a",
     "ID": "5c0e625a86f7742d77340f62"
   },
@@ -6479,59 +6471,59 @@
     "Name": "item_beard",
     "ID": "5c1a1e3f2e221602b66cc4c2"
   },
-  "equipment facecover HALLOWEEN Jason": {
+  "facecover HALLOWEEN Jason": {
     "Name": "item_equipment_facecover_HALLOWEEN_Jason",
     "ID": "5bd071d786f7747e707b93a3"
   },
-  "equipment facecover HALLOWEEN Micheal": {
+  "facecover HALLOWEEN Micheal": {
     "Name": "item_equipment_facecover_HALLOWEEN_Micheal",
     "ID": "5bd0716d86f774171822ef4b"
   },
-  "equipment facecover HALLOWEEN Slander": {
+  "facecover HALLOWEEN Slander": {
     "Name": "item_equipment_facecover_HALLOWEEN_Slander",
     "ID": "5bd06f5d86f77427101ad47c"
   },
-  "equipment facecover gasmask GP5": {
+  "facecover gasmask GP5": {
     "Name": "item_equipment_facecover_gasmask_GP5",
     "ID": "5b432c305acfc40019478128"
   },
-  "equipment facecover nomexBalaclava": {
+  "facecover nomexBalaclava": {
     "Name": "item_equipment_facecover_nomexBalaclava",
     "ID": "5b432f3d5acfc4704b4a1dfb"
   },
-  "equipment facecover pestily": {
+  "facecover pestily": {
     "Name": "item_equipment_facecover_pestily",
     "ID": "5e54f79686f7744022011103"
   },
-  "equipment facecover redflame": {
+  "facecover redflame": {
     "Name": "item_equipment_facecover_redflame",
     "ID": "5b4326435acfc433000ed01d"
   },
-  "equipment facecover redflame twitch": {
+  "facecover redflame twitch": {
     "Name": "item_equipment_facecover_redflame_twitch",
     "ID": "5e71f6be86f77429f2683c44"
   },
-  "equipment facecover shatteredmask": {
+  "facecover shatteredmask": {
     "Name": "item_equipment_facecover_shatteredmask",
     "ID": "5b432b2f5acfc4771e1c6622"
   },
-  "equipment facecover shemagh 02": {
+  "facecover shemagh 02": {
     "Name": "item_equipment_facecover_shemagh_02",
     "ID": "5b4325355acfc40019478126"
   },
-  "equipment facecover shroud": {
+  "facecover shroud": {
     "Name": "item_equipment_facecover_shroud",
     "ID": "5e54f76986f7740366043752"
   },
-  "equipment facecover skullmask": {
+  "facecover skullmask": {
     "Name": "item_equipment_facecover_skullmask",
     "ID": "5b432b6c5acfc4001a599bf0"
   },
-  "equipment facecover twitch": {
+  "facecover twitch": {
     "Name": "item_equipment_facecover_twitch",
     "ID": "5e71fad086f77422443d4604"
   },
-  "equipment mustache": {
+  "mustache": {
     "Name": "item_equipment_mustache",
     "ID": "5bd073a586f7747e6f135799"
   },
@@ -6663,127 +6655,127 @@
     "Name": "helmet_zsh_1-2m_v2",
     "ID": "5aa7e4a4e5b5b000137b76f2"
   },
-  "equipment facecover devtac": {
+  "facecover devtac": {
     "Name": "item_equipment_facecover_devtac",
     "ID": "5b4329f05acfc47a86086aa1"
   },
-  "equipment head bandana": {
+  "head bandana": {
     "Name": "item_equipment_head_bandana",
     "ID": "5b43271c5acfc432ff4dce65"
   },
-  "equipment head bear black": {
+  "head bear black": {
     "Name": "item_equipment_head_bear_black",
     "ID": "5b40e5e25acfc4001a599bea"
   },
-  "equipment head beret blk": {
+  "head beret blk": {
     "Name": "item_equipment_head_beret_blk",
     "ID": "5f60e6403b85f6263c14558c"
   },
-  "equipment head beret blue": {
+  "head beret blue": {
     "Name": "item_equipment_head_beret_blue",
     "ID": "5f60e7788adaa7100c3adb49"
   },
-  "equipment head beret od": {
+  "head beret od": {
     "Name": "item_equipment_head_beret_od",
     "ID": "5f60e784f2bcbb675b00dac7"
   },
-  "equipment head doorkicker": {
+  "head doorkicker": {
     "Name": "item_equipment_head_doorkicker",
     "ID": "5d96141523f0ea1b7f2aacab"
   },
-  "equipment head kotton": {
+  "head kotton": {
     "Name": "item_equipment_head_kotton",
     "ID": "5bd073c986f7747f627e796c"
   },
-  "equipment head panama": {
+  "head panama": {
     "Name": "item_equipment_head_panama",
     "ID": "5b4327aa5acfc400175496e0"
   },
-  "equipment head pompon": {
+  "head pompon": {
     "Name": "item_equipment_head_pompon",
     "ID": "5b4329075acfc400153b78ff"
   },
-  "equipment head usec black": {
+  "head usec black": {
     "Name": "item_equipment_head_usec_black",
     "ID": "5b40e61f5acfc4001a599bec"
   },
-  "equipment helmet ACHHC black": {
+  "helmet ACHHC black": {
     "Name": "item_equipment_helmet_ACHHC_black",
     "ID": "5b40e3f35acfc40016388218"
   },
-  "equipment helmet ACHHC green": {
+  "helmet ACHHC green": {
     "Name": "item_equipment_helmet_ACHHC_green",
     "ID": "5b40e4035acfc47a87740943"
   },
-  "equipment helmet LSHZ": {
+  "helmet LSHZ": {
     "Name": "item_equipment_helmet_LSHZ",
     "ID": "5b432d215acfc4771e1c6624"
   },
-  "equipment helmet ULACH black": {
+  "helmet ULACH black": {
     "Name": "item_equipment_helmet_ULACH_black",
     "ID": "5b40e1525acfc4771e1c6611"
   },
-  "equipment helmet ULACH coyote": {
+  "helmet ULACH coyote": {
     "Name": "item_equipment_helmet_ULACH_coyote",
     "ID": "5b40e2bc5acfc40016388216"
   },
-  "equipment helmet crye airframe tan": {
+  "helmet crye airframe tan": {
     "Name": "item_equipment_helmet_crye_airframe_tan",
     "ID": "5c17a7ed2e2216152142459c"
   },
-  "equipment helmet diamond age bastion": {
+  "helmet diamond age bastion": {
     "Name": "item_equipment_helmet_diamond_age_bastion",
     "ID": "5ea17ca01412a1425304d1c0"
   },
-  "equipment helmet galvion caiman": {
+  "helmet galvion caiman": {
     "Name": "item_equipment_helmet_galvion_caiman",
     "ID": "5f60b34a41e30a4ab12a6947"
   },
-  "equipment helmet hops core fast": {
+  "helmet hops core fast": {
     "Name": "item_equipment_helmet_hops_core_fast",
     "ID": "5ea05cf85ad9772e6624305d"
   },
-  "equipment helmet lshz2dtm": {
+  "helmet lshz2dtm": {
     "Name": "item_equipment_helmet_lshz2dtm",
     "ID": "5d6d3716a4b9361bc8618872"
   },
-  "equipment helmet maska 1sh": {
+  "helmet maska 1sh": {
     "Name": "item_equipment_helmet_maska_1sh",
     "ID": "5c091a4e0db834001d5addc8"
   },
-  "equipment helmet maska 1sh killa": {
+  "helmet maska 1sh killa": {
     "Name": "item_equipment_helmet_maska_1sh_killa",
     "ID": "5c0e874186f7745dc7616606"
   },
-  "equipment helmet psh97 jeta": {
+  "helmet psh97 jeta": {
     "Name": "item_equipment_helmet_psh97_jeta",
     "ID": "5c0d2727d174af02a012cf58"
   },
-  "equipment helmet rys t": {
+  "helmet rys t": {
     "Name": "item_equipment_helmet_rys_t",
     "ID": "5f60c74e3b85f6263c145586"
   },
-  "equipment helmet shpm": {
+  "helmet shpm": {
     "Name": "item_equipment_helmet_shpm",
     "ID": "5c08f87c0db8340019124324"
   },
-  "equipment helmet ssh-68": {
+  "helmet ssh-68": {
     "Name": "item_equipment_helmet_ssh-68",
     "ID": "5c06c6a80db834001b735491"
   },
-  "equipment helmet tc800": {
+  "helmet tc800": {
     "Name": "item_equipment_helmet_tc800",
     "ID": "5e4bfc1586f774264f7582d3"
   },
-  "equipment helmet team wendy exfil": {
+  "helmet team wendy exfil": {
     "Name": "item_equipment_helmet_team_wendy_exfil",
     "ID": "5e00c1ad86f774747333222c"
   },
-  "equipment helmet team wendy exfil coyote": {
+  "helmet team wendy exfil coyote": {
     "Name": "item_equipment_helmet_team_wendy_exfil_coyote",
     "ID": "5e01ef6886f77445f643baa4"
   },
-  "equipment helmet vulkan5": {
+  "helmet vulkan5": {
     "Name": "item_equipment_helmet_vulkan5",
     "ID": "5ca20ee186f774799474abc2"
   },
@@ -6811,35 +6803,35 @@
     "Name": "glasses_Rayban",
     "ID": "5aa2b9aee5b5b00015693121"
   },
-  "equipment glasses 6B34": {
+  "glasses 6B34": {
     "Name": "item_equipment_glasses_6B34",
     "ID": "5b432be65acfc433000ed01f"
   },
-  "equipment glasses aviator": {
+  "glasses aviator": {
     "Name": "item_equipment_glasses_aviator",
     "ID": "5d6d2ef3a4b93618084f58bd"
   },
-  "equipment glasses ess": {
+  "glasses ess": {
     "Name": "item_equipment_glasses_ess",
     "ID": "5d5fca1ea4b93635fd598c07"
   },
-  "equipment glasses gascan": {
+  "glasses gascan": {
     "Name": "item_equipment_glasses_gascan",
     "ID": "5d6d2e22a4b9361bd5780d05"
   },
-  "equipment glasses gascan twitch": {
+  "glasses gascan twitch": {
     "Name": "item_equipment_glasses_gascan_twitch",
     "ID": "5e71f70186f77429ee09f183"
   },
-  "equipment glasses m frame": {
+  "glasses m frame": {
     "Name": "item_equipment_glasses_m_frame",
     "ID": "5c1a1cc52e221602b3136e3d"
   },
-  "equipment glasses proximity": {
+  "glasses proximity": {
     "Name": "item_equipment_glasses_proximity",
     "ID": "5c0d32fcd174af02a1659c75"
   },
-  "tactical glass": {
+  "glass": {
     "Name": "tactical_glass",
     "ID": "59e770b986f7742cbd762754"
   },
@@ -6859,19 +6851,19 @@
     "Name": "helmet_ops_core_rac_headset",
     "ID": "5a16b9fffcdbcb0176308b34"
   },
-  "equipment headset gsh01": {
+  "headset gsh01": {
     "Name": "item_equipment_headset_gsh01",
     "ID": "5b432b965acfc47a8774094e"
   },
-  "equipment headset tactical sport": {
+  "headset sport": {
     "Name": "item_equipment_headset_tactical_sport",
     "ID": "5c165d832e2216398b5a7e36"
   },
-  "equipment headset walkers razor": {
+  "headset walkers razor": {
     "Name": "item_equipment_headset_walkers_razor",
     "ID": "5e4d34ca86f774264f758330"
   },
-  "equipment headset xcel": {
+  "headset xcel": {
     "Name": "item_equipment_headset_xcel",
     "ID": "5f60cd6cf2bcbb675b00dac6"
   },
@@ -7203,19 +7195,19 @@
     "Name": "squashspread",
     "ID": "57347d8724597744596b4e76"
   },
-  "Key Shopping Mall office 1": {
+  "Key Shopping Moffice 1": {
     "Name": "Key_Shopping_Mall_office_1",
     "ID": "5ad5ccd186f774446d5706e9"
   },
-  "Key Shopping Mall office 2": {
+  "Key Shopping Moffice 2": {
     "Name": "Key_Shopping_Mall_office_2",
     "ID": "5ad5cfbd86f7742c825d6104"
   },
-  "Key Shopping Mall mchs": {
+  "Key Shopping Mmchs": {
     "Name": "Key_Shopping_Mall_mchs",
     "ID": "5ad5db3786f7743568421cce"
   },
-  "Key Shopping Mall storeroom OLI": {
+  "Key Shopping Mstoreroom OLI": {
     "Name": "Key_Shopping_Mall_storeroom_OLI",
     "ID": "5ad5d20586f77449be26d877"
   },
@@ -7223,7 +7215,7 @@
     "Name": "Key_cash_machine_OLI",
     "ID": "5ad7217186f7746744498875"
   },
-  "Key Shopping Mall KIBA 2": {
+  "Key Shopping MKIBA 2": {
     "Name": "Key_Shopping_Mall_KIBA_2",
     "ID": "5addaffe86f77470b455f900"
   },
@@ -7231,7 +7223,7 @@
     "Name": "Factory office",
     "ID": "57a349b2245977762b199ec7"
   },
-  "Key Shopping Mall KIBA": {
+  "Key Shopping MKIBA": {
     "Name": "Key_Shopping_Mall_KIBA",
     "ID": "5ad5d7d286f77450166e0a89"
   },
@@ -7239,7 +7231,7 @@
     "Name": "Key_boss_koj",
     "ID": "5d08d21286f774736e7c94c3"
   },
-  "Key Shopping Mall pharmacy": {
+  "Key Shopping Mpharmacy": {
     "Name": "Key_Shopping_Mall_pharmacy",
     "ID": "5ad5d64486f774079b080af8"
   },
@@ -7251,7 +7243,7 @@
     "Name": "Key_cash_machine_IDEA",
     "ID": "5ad7242b86f7740a6a3abd43"
   },
-  "Key Shopping Mall storeroom": {
+  "Key Shopping Mstoreroom": {
     "Name": "Key_Shopping_Mall_storeroom",
     "ID": "5ad5d49886f77455f9731921"
   },
@@ -8835,7 +8827,7 @@
     "Name": "weapon_valuable_wyccaxe",
     "ID": "5bc9c1e2d4351e00367fbcf0"
   },
-  "tactical tomahawk": {
+  "tomahawk": {
     "Name": "weapon_tactical_tomahawk",
     "ID": "57cd379a24597778e7682ecf"
   },

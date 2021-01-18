@@ -43,7 +43,7 @@ client.on('message', async message => {
             break;
         case 'price':
         case 'p':
-            client.commands.get('price').execute(message, args, Discord);
+            //client.commands.get('price').execute(message, args, Discord);
             break;
         case 'prefixset':
             client.commands.get('prefix').execute(message, args, Discord);
