@@ -15,7 +15,7 @@ const GetItems = () => {
             }
             NewJSON[name] = NewJsonEntry
         }
-        fs.writeFileSync('./game_data/itemnames.json', JSON.stringify(NewJSON))
+        fs.writeFileSync('./game_data/itemnames.json', JSON.stringify(NewJSON, null, 2))
     })
 }
 
