@@ -94,10 +94,6 @@ function SendMessage(Fields, Name, Description, Thumbnail, Discord, message) {
     const EmbededMessage = {
         color: Settings.BotSettings.Color,
         title: Name,
-        author: {
-            name: 'Tarkov Helper',
-            icon_url: Settings.Images.Author,
-        },
         description: Description,
         thumbnail: {
             url: Thumbnail,
