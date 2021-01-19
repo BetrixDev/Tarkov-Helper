@@ -735,371 +735,371 @@
     "Name": "item_other_filter",
     "ID": "590c595c86f7747884343ad7"
   },
-  "muzzle rpk16 izhmash rpk16 std 545x39": {
+  "rpk16 izhmash rpk16 std 545x39": {
     "Name": "muzzle_rpk16_izhmash_rpk16_std_545x39",
     "ID": "5beec3420db834001b095429"
   },
-  "muzzle ak molot vpo 209 366TKM": {
+  "ak molot vpo 209 366TKM": {
     "Name": "muzzle_ak_molot_vpo_209_366TKM",
     "ID": "59e8a00d86f7742ad93b569c"
   },
-  "muzzle p226 tj compensator 9x19": {
+  "p226 tj compensator 9x19": {
     "Name": "muzzle_p226_tj_compensator_9x19",
     "ID": "5c6beec32e221601da3578f2"
   },
-  "muzzle sv-98 srw dtk jet mk2 762x54r": {
+  "sv-98 srw dtk jet mk2 762x54r": {
     "Name": "muzzle_sv-98_srw_dtk_jet_mk2_762x54r",
     "ID": "5c4ee3d62e2216152006f302"
   },
-  "muzzle mosin tacfire tanker style 762x54r": {
+  "mosin tacfire tanker style 762x54r": {
     "Name": "muzzle_mosin_tacfire_tanker_style_762x54r",
     "ID": "5bbdb83fd4351e44f824c44b"
   },
-  "muzzle ar15 dd wave muzzle brake 556x45": {
+  "ar15 dd wave brake 556x45": {
     "Name": "muzzle_ar15_dd_wave_muzzle_brake_556x45",
     "ID": "5cff9e5ed7ad1a09407397d4"
   },
-  "muzzle ak jmac rrd 4c 762x39": {
+  "ak jmac rrd 4c 762x39": {
     "Name": "muzzle_ak_jmac_rrd_4c_762x39",
     "ID": "5f633f68f5750b524b45f112"
   },
-  "muzzle glock strike industries g4 slide compensator 9x19": {
+  "glock strike industries g4 slide compensator 9x19": {
     "Name": "muzzle_glock_strike_industries_g4_slide_compensator_9x19",
     "ID": "5a7b32a2e899ef00135e345a"
   },
-  "muzzle ak izhmash akm std 762x39": {
+  "ak izhmash akm std 762x39": {
     "Name": "muzzle_ak_izhmash_akm_std_762x39",
     "ID": "59d64fc686f774171b243fe2"
   },
-  "muzzle ar10 dd wave muzzle brake 762x51": {
+  "ar10 dd wave brake 762x51": {
     "Name": "muzzle_ar10_dd_wave_muzzle_brake_762x51",
     "ID": "5d1f819086f7744b355c219b"
   },
-  "muzzle ar15 adar 2 15 std 556x45": {
+  "ar15 adar 2 15 std 556x45": {
     "Name": "muzzle_ar15_adar_2_15_std_556x45",
     "ID": "5c0fafb6d174af02a96260ba"
   },
-  "muzzle pp-19-01 izhmash vityaz std 9x19": {
-    "Name": "muzzle_pp-19-01_izhmash_vityaz_std_9x19",
-    "ID": "5998597786f77414ea6da093"
+  "pp-19-01 izhmash vityaz std 9x19": {
+    "Name": "silencer_pp-19-01_izhmash_vityaz_std_9x19",
+    "ID": "59bfc5c886f7743bf6794e62"
   },
-  "muzzle sv-98 izhmash std 762x54r": {
+  "sv-98 izhmash std 762x54r": {
     "Name": "muzzle_sv-98_izhmash_std_762x54r",
     "ID": "560e620e4bdc2d724b8b456b"
   },
-  "muzzle taccom carbine brake multi": {
+  "taccom carbine brake multi": {
     "Name": "muzzle_all_taccom_carbine_brake_multi",
     "ID": "5cf6935bd7f00c06585fb791"
   },
-  "muzzle p90 fn p90 std 57x28": {
+  "p90 fn p90 std 57x28": {
     "Name": "muzzle_p90_fn_p90_std_57x28",
     "ID": "5cc82796e24e8d000f5859a8"
   },
-  "muzzle t5000 orsis t5000m std 762x51": {
+  "t5000 orsis t5000m std 762x51": {
     "Name": "muzzle_t5000_orsis_t5000m_std_762x51",
     "ID": "5df35e7f2a78646d96665dd4"
   },
-  "muzzle ak74 izhmash std 545x39": {
+  "ak74 izhmash std 545x39": {
     "Name": "muzzle_ak74_izhmash_std_545x39",
     "ID": "5649aa744bdc2ded0b8b457e"
   },
-  "muzzle glock lone wolf compensator 9 9x19": {
+  "glock lone wolf compensator 9 9x19": {
     "Name": "muzzle_glock_lone_wolf_compensator_9_9x19",
     "ID": "5a7ad1fb51dfba0013379715"
   },
-  "muzzle ar15 colt usgi a2 556x45": {
+  "ar15 colt usgi a2 556x45": {
     "Name": "muzzle_ar15_colt_usgi_a2_556x45",
     "ID": "544a38634bdc2d58388b4568"
   },
-  "muzzle ak74 izhmash ak102 std 556x45": {
+  "ak74 izhmash ak102 std 556x45": {
     "Name": "muzzle_ak74_izhmash_ak102_std_556x45",
     "ID": "5ac72e725acfc400180ae701"
   },
-  "muzzle mp5 hk noveske style 3 lug 9x19": {
+  "mp5 hk noveske style 3 lug 9x19": {
     "Name": "muzzle_mp5_hk_noveske_style_3_lug_9x19",
     "ID": "5c07c5ed0db834001b73571c"
   },
-  "muzzle mp7 hk a1 std 46x30": {
+  "mp7 hk a1 std 46x30": {
     "Name": "muzzle_mp7_hk_a1_std_46x30",
     "ID": "5ba26acdd4351e003562908e"
   },
-  "muzzle ar15 kac qd compensator 556x45": {
+  "ar15 kac qd compensator 556x45": {
     "Name": "muzzle_ar15_kac_qd_compensator_556x45",
     "ID": "56ea8180d2720bf2698b456a"
   },
-  "muzzle ak zenit dtk1 762x39 545x39": {
+  "ak zenit dtk1 762x39 545x39": {
     "Name": "muzzle_ak_zenit_dtk1_762x39_545x39",
     "ID": "5649ab884bdc2ded0b8b457f"
   },
-  "muzzle ak izhmash akml 762x39": {
+  "ak izhmash akml 762x39": {
     "Name": "muzzle_ak_izhmash_akml_762x39",
     "ID": "5a0d716f1526d8000d26b1e2"
   },
-  "muzzle mosin tpp clamp on muzzle brake 762x54r": {
+  "mosin tpp clamp on brake 762x54r": {
     "Name": "muzzle_mosin_tpp_clamp_on_muzzle_brake_762x54r",
     "ID": "5bc5a351d4351e003477a414"
   },
-  "muzzle m1a springfield armory socom 16 762x51": {
+  "m1a springfield armory socom 16 762x51": {
     "Name": "muzzle_m1a_springfield_armory_socom_16_762x51",
     "ID": "5aafa1c2e5b5b00015042a56"
   },
-  "muzzle tt pm laser dtk tt": {
+  "tt pm laser dtk tt": {
     "Name": "muzzle_tt_pm_laser_dtk_tt",
     "ID": "5bffd7ed0db834001d23ebf9"
   },
-  "muzzle ar15 dt mdr std 556x45": {
+  "ar15 dt mdr std 556x45": {
     "Name": "muzzle_ar15_dt_mdr_std_556x45",
     "ID": "5c48a2a42e221602b66d1e07"
   },
-  "muzzle glock carver custom 4 port gen 3 9x19": {
+  "glock carver custom 4 port gen 3 9x19": {
     "Name": "muzzle_glock_carver_custom_4_port_gen_3_9x19",
     "ID": "5a7ad0c451dfba0013379712"
   },
-  "muzzle saiga 9 izhmash saiga 9 std 9x19": {
+  "saiga 9 izhmash saiga 9 std 9x19": {
     "Name": "muzzle_saiga_9_izhmash_saiga_9_std_9x19",
     "ID": "5998598e86f7740b3f498a86"
   },
-  "muzzle ar15 sai jail break 556x45": {
+  "ar15 sai jail break 556x45": {
     "Name": "muzzle_ar15_sai_jail_break_556x45",
     "ID": "5c78f2882e22165df16b832e"
   },
-  "muzzle ak spike ak dynacomp 762x39": {
+  "ak spike ak dynacomp 762x39": {
     "Name": "muzzle_ak_spike_tactical_ak_dynacomp_762x39",
     "ID": "5a9ea27ca2750c00137fa672"
   },
-  "muzzle ak molot vepr km vpo 136 762x39": {
+  "ak molot vepr km vpo 136 762x39": {
     "Name": "muzzle_ak_molot_vepr_km_vpo_136_762x39",
     "ID": "59e61eb386f77440d64f5daf"
   },
-  "muzzle ar10 fortis red brake 762x51": {
+  "ar10 fortis red brake 762x51": {
     "Name": "muzzle_ar10_fortis_red_brake_762x51",
     "ID": "5d026791d7ad1a04a067ea63"
   },
-  "muzzle ak74 izhmash ak74m std 545x39": {
+  "ak74 izhmash ak74m std 545x39": {
     "Name": "muzzle_ak74_izhmash_ak74m_std_545x39",
     "ID": "5ac7655e5acfc40016339a19"
   },
-  "muzzle aks74u izhmash std 545x39": {
+  "aks74u izhmash std 545x39": {
     "Name": "muzzle_aks74u_izhmash_std_545x39",
     "ID": "57dc324a24597759501edc20"
   },
-  "muzzle svd izhmash svd s std 762x54": {
+  "svd izhmash svd s std 762x54": {
     "Name": "muzzle_svd_izhmash_svd_s_std_762x54",
     "ID": "5c471bfc2e221602b21d4e17"
   },
-  "muzzle glock double diamond 9x19": {
+  "glock double diamond 9x19": {
     "Name": "muzzle_glock_double_diamond_9x19",
     "ID": "5a70366c8dc32e001207fb06"
   },
-  "muzzle ar15 noveske kx3 556x45": {
+  "ar15 noveske kx3 556x45": {
     "Name": "muzzle_ar15_noveske_kx3_556x45",
     "ID": "56ea6fafd2720b844b8b4593"
   },
-  "muzzle ak74 pws cqb74 545x39": {
+  "ak74 pws cqb74 545x39": {
     "Name": "muzzle_ak74_pws_cqb74_545x39",
     "ID": "5943eeeb86f77412d6384f6b"
   },
-  "muzzle ar10 dt mdr std 762x51": {
+  "ar10 dt mdr std 762x51": {
     "Name": "muzzle_ar10_dt_mdr_std_762x51",
     "ID": "5dcbe965e4ed22586443a79d"
   },
-  "muzzle ak74 izhmash ak104 std 762x39": {
+  "ak74 izhmash ak104 std 762x39": {
     "Name": "muzzle_ak74_izhmash_ak104_std_762x39",
     "ID": "5ac72e895acfc43b321d4bd5"
   },
-  "muzzle ash12 ckib ash12 std 127x55": {
-    "Name": "muzzle_ash12_ckib_ash12_std_127x55",
-    "ID": "5caf17c9ae92150b30006be1"
+  "ash12 ckib ash12 std 127x55": {
+    "Name": "silencer_ash12_ckib_ash12_std_127x55",
+    "ID": "5caf187cae92157c28402e43"
   },
-  "muzzle dvl-10 lobaev dvl-10 std 308": {
+  "dvl-10 lobaev dvl-10 std 308": {
     "Name": "muzzle_dvl-10_lobaev_dvl-10_std_308",
     "ID": "58889c7324597754281f9439"
   },
-  "muzzle ar15 pws cqb 556x45": {
+  "ar15 pws cqb 556x45": {
     "Name": "muzzle_ar15_pws_cqb_556x45",
     "ID": "5943ee5a86f77413872d25ec"
   },
-  "muzzle dvl-10 lobaev dvl-10 m2 std 308": {
+  "dvl-10 lobaev dvl-10 m2 std 308": {
     "Name": "muzzle_dvl-10_lobaev_dvl-10_m2_std_308",
     "ID": "5888996c24597754281f9419"
   },
-  "muzzle ar15 surefire warcomp 556 556x45": {
+  "ar15 surefire warcomp 556 556x45": {
     "Name": "muzzle_ar15_surefire_warcomp_556_556x45",
     "ID": "5c6d710d2e22165df16b81e7"
   },
-  "muzzle ak74 izhmash ak103 std 762x39": {
+  "ak74 izhmash ak103 std 762x39": {
     "Name": "muzzle_ak74_izhmash_ak103_std_762x39",
     "ID": "5ac72e7d5acfc40016339a02"
   },
-  "muzzle ak74 izhmash ak101 std 556x45": {
+  "ak74 izhmash ak101 std 556x45": {
     "Name": "muzzle_ak74_izhmash_ak101_std_556x45",
     "ID": "5ac72e615acfc43f67248aa0"
   },
-  "muzzle mpx sig mpx a2 9x19": {
+  "mpx sig mpx a2 9x19": {
     "Name": "muzzle_mpx_sig_mpx_a2_9x19",
     "ID": "58949dea86f77409483e16a8"
   },
-  "muzzle glock lone wolf alphawolf bullnosed 9x19": {
+  "glock lone wolf alphawolf bullnosed 9x19": {
     "Name": "muzzle_glock_lone_wolf_alphawolf_bullnosed_9x19",
     "ID": "5a705e128dc32e000d46d258"
   },
-  "muzzle ak74 izhmash ak105 std 545x39": {
+  "ak74 izhmash ak105 std 545x39": {
     "Name": "muzzle_ak74_izhmash_ak105_std_545x39",
     "ID": "5ac72e945acfc43f3b691116"
   },
-  "muzzle ak srvv mbrfhmb 762 762x39": {
+  "ak srvv mbrfhmb 762 762x39": {
     "Name": "muzzle_ak_srvv_mbrfhmb_762_762x39",
     "ID": "5cc9ad73d7f00c000e2579d4"
   },
-  "muzzle ak74 srvv mbr jet 545 545x39": {
+  "ak74 srvv mbr jet 545 545x39": {
     "Name": "muzzle_ak74_srvv_mbr_jet_545_545x39",
     "ID": "5cc9a96cd7f00c011c04e04a"
   },
-  "muzzle ak74 jmac rrd 4c multi": {
+  "ak74 jmac rrd 4c multi": {
     "Name": "muzzle_ak74_jmac_rrd_4c_multi",
     "ID": "5f633f791b231926f2329f13"
   },
-  "muzzle ar10 nordic corvette compensator 762x51": {
+  "ar10 nordic corvette compensator 762x51": {
     "Name": "muzzle_ar10_nordic_corvette_compensator_762x51",
     "ID": "5d02677ad7ad1a04a15c0f95"
   },
-  "muzzle sv98 izhmash thread muzzle adapter 762x54": {
+  "sv98 izhmash thread adapter 762x54": {
     "Name": "muzzle_sv98_izhmash_thread_muzzle_adapter_762x54",
     "ID": "5c4eec9b2e2216398b5aaba2"
   },
-  "muzzle ar10 2a x3 titanium compensator 762x51": {
+  "ar10 2a x3 titanium compensator 762x51": {
     "Name": "muzzle_ar10_2a_x3_titanium_compensator_762x51",
     "ID": "5b7d693d5acfc43bca706a3d"
   },
-  "muzzle glock carver custom decelerator 3 port gen 3 9x19": {
+  "glock carver custom decelerator 3 port gen 3 9x19": {
     "Name": "muzzle_glock_carver_custom_decelerator_3_port_gen_3_9x19",
     "ID": "5a7037338dc32e000d46d257"
   },
-  "muzzle m1a smith enterprise socom 16 threaded lock 762x51": {
+  "m1a smith enterprise socom 16 threaded lock 762x51": {
     "Name": "muzzle_m1a_smith_enterprise_socom_16_threaded_gas_lock_762x51",
     "ID": "5ab3afb2d8ce87001660304d"
   },
-  "muzzle m14 jp enterprises compensator 762x51": {
+  "m14 jp enterprises compensator 762x51": {
     "Name": "muzzle_m14_jp_enterprises_tactical_compensator_762x51",
     "ID": "5addbb825acfc408fb139400"
   },
-  "muzzle kel tec rfb std 762x51": {
+  "kel tec rfb std 762x51": {
     "Name": "muzzle_all_kel_tec_rfb_std_762x51",
     "ID": "5f2aa4559b44de6b1b4e68d1"
   },
-  "muzzle m1911 anarchy outdoors 1911 muzzle brake 1143x23": {
+  "m1911 anarchy outdoors 1911 brake 1143x23": {
     "Name": "muzzle_m1911_anarchy_outdoors_1911_muzzle_brake_1143x23",
     "ID": "5ef61964ec7f42238c31e0c1"
   },
-  "muzzle ar10 odin works atlas 7 muzzle brake 762x51": {
+  "ar10 odin works atlas 7 brake 762x51": {
     "Name": "muzzle_ar10_odin_works_atlas_7_muzzle_brake_762x51",
     "ID": "5bbdb8bdd4351e4502011460"
   },
-  "muzzle yankee hill anihilator flash hider multi": {
+  "yankee hill anihilator flash hider multi": {
     "Name": "muzzle_all_yankee_hill_anihilator_flash_hider_multi",
     "ID": "5b3a16655acfc40016387a2a"
   },
-  "muzzle m1a springfield armory national match flash suppressor 762x51": {
+  "m1a springfield armory national match flash suppressor 762x51": {
     "Name": "muzzle_m1a_springfield_armory_national_match_flash_suppressor_762x51",
     "ID": "5addbb6e5acfc408fb1393fd"
   },
-  "muzzle ak lantac dgnak47b muzzle brake 762x39": {
+  "ak lantac dgnak47b brake 762x39": {
     "Name": "muzzle_ak_lantac_dgnak47b_muzzle_brake_762x39",
     "ID": "5c878ebb2e2216001219d48a"
   },
-  "muzzle ar10 thunder beast 30cb muzzle brake 762x51": {
+  "ar10 thunder beast 30cb brake 762x51": {
     "Name": "muzzle_ar10_thunder_beast_30cb_muzzle_brake_762x51",
     "ID": "5d443f8fa4b93678dd4a01aa"
   },
-  "muzzle mosin witt machine custom clamp on muzzle brake 762x54r": {
+  "mosin witt machine custom clamp on brake 762x54r": {
     "Name": "muzzle_mosin_witt_machine_custom_clamp_on_muzzle_brake_762x54r",
     "ID": "5bc5a35cd4351e450201232f"
   },
-  "muzzle ar15 nordic corvette compensator 556x45": {
+  "ar15 nordic corvette compensator 556x45": {
     "Name": "muzzle_ar15_nordic_corvette_compensator_556x45",
     "ID": "5d02676dd7ad1a049e54f6dc"
   },
-  "muzzle ar15 surefire sf4p fh556rc flash hider 556x45": {
+  "ar15 surefire sf4p fh556rc flash hider 556x45": {
     "Name": "muzzle_ar15_surefire_sf4p_fh556rc_flash_hider_556x45",
     "ID": "5ea172e498dacb342978818e"
   },
-  "muzzle ak venom antidote muzzle brake multi": {
+  "ak venom antidote brake multi": {
     "Name": "muzzle_ak_venom_antidote_muzzle_brake_multi",
     "ID": "5c7951452e221644f31bfd5c"
   },
-  "muzzle ar10 precision armament m11 severe duty muzzle brake 762x51": {
+  "ar10 precision armament m11 severe duty brake 762x51": {
     "Name": "muzzle_ar10_precision_armament_m11_severe_duty_muzzle_brake_762x51",
     "ID": "5cdd7693d7f00c0010373aa5"
   },
-  "muzzle base lantac blast mitigation device 762x51": {
+  "base lantac blast mitigation device 762x51": {
     "Name": "muzzle_base_lantac_blast_mitigation_device_762x51",
     "ID": "5cf78720d7f00c06595bc93e"
   },
-  "muzzle m14 smith enterprise vortex dc flash eliminator 762x51": {
+  "m14 smith enterprise vortex dc flash eliminator 762x51": {
     "Name": "muzzle_m14_smith_enterprise_vortex_dc_flash_eliminator_762x51",
     "ID": "5addbba15acfc400185c2854"
   },
-  "muzzle m14 smith enterprise good iron muzzle brake 762x51": {
+  "m14 smith enterprise good iron brake 762x51": {
     "Name": "muzzle_m14_smith_enterprise_good_iron_muzzle_brake_762x51",
     "ID": "5addbb945acfc4001a5fc44e"
   },
-  "muzzle sa58 ds arms 3 prong trident flash hider 762x51": {
+  "sa58 ds arms 3 prong trident flash hider 762x51": {
     "Name": "muzzle_sa58_ds_arms_3_prong_trident_flash_hider_762x51",
     "ID": "5b099b7d5acfc400186331e4"
   },
-  "muzzle ar10 aac blackout 51t flash hider 762x51": {
+  "ar10 aac blackout 51t flash hider 762x51": {
     "Name": "muzzle_ar10_aac_blackout_51t_flash_hider_762x51",
     "ID": "5a34fd2bc4a282329a73b4c5"
   },
-  "muzzle ferfrans ferfrans crd 556x45": {
+  "ferfrans ferfrans crd 556x45": {
     "Name": "muzzle_ferfrans_ferfrans_crd_556x45",
     "ID": "5f6339d53ada5942720e2dc3"
   },
-  "muzzle ar15 ferfrans muzzle brake 556x45": {
+  "ar15 ferfrans brake 556x45": {
     "Name": "muzzle_ar15_ferfrans_muzzle_brake_556x45",
     "ID": "5f6372e2865db925d54f3869"
   },
-  "muzzle ar15 bulletec st 6012 muzzle brake 556x45": {
+  "ar15 bulletec st 6012 brake 556x45": {
     "Name": "muzzle_ar15_bulletec_st_6012_muzzle_brake_556x45",
     "ID": "5cf6937cd7f00c056c53fb39"
   },
-  "muzzle ar15 surefire sf3p flash hider 556x45": {
+  "ar15 surefire sf3p flash hider 556x45": {
     "Name": "muzzle_ar15_surefire_sf3p_flash_hider_556x45",
     "ID": "5c7fb51d2e2216001219ce11"
   },
-  "muzzle ar10 keeno arms shrewd muzzle brake 762x51": {
+  "ar10 keeno arms shrewd brake 762x51": {
     "Name": "muzzle_ar10_keeno_arms_shrewd_muzzle_brake_762x51",
     "ID": "5cdd7685d7f00c000f260ed2"
   },
-  "muzzle ar15 troy claymore muzzle brake 556 556x45": {
+  "ar15 troy claymore brake 556 556x45": {
     "Name": "muzzle_ar15_troy_claymore_muzzle_brake_556_556x45",
     "ID": "5cc9b815d7f00c000e2579d6"
   },
-  "muzzle ar15 aac blackout 51t flash hider 556x45": {
+  "ar15 aac blackout 51t flash hider 556x45": {
     "Name": "muzzle_ar15_aac_blackout_51t_flash_hider_556x45",
     "ID": "5c7e5f112e221600106f4ede"
   },
-  "muzzle fal ds arms austrian style muzzle brake long 762x51": {
+  "fal ds arms austrian style brake long 762x51": {
     "Name": "muzzle_fal_ds_arms_austrian_style_muzzle_brake_long_762x51",
     "ID": "5b7d68af5acfc400170e30c3"
   },
-  "muzzle ar10 lantac dgn762b muzzle brake 762x51": {
+  "ar10 lantac dgn762b brake 762x51": {
     "Name": "muzzle_ar10_lantac_dgn762b_muzzle_brake_762x51",
     "ID": "5c878e9d2e2216000f201903"
   },
-  "muzzle m14 yankee hill phantom qd flash hider 762x51": {
+  "m14 yankee hill phantom qd flash hider 762x51": {
     "Name": "muzzle_m14_yankee_hill_phantom_qd_flash_hider_762x51",
     "ID": "5addbbb25acfc40015621bd9"
   },
-  "muzzle ar10 kac qdc flash supressor kit 762x51": {
+  "ar10 kac qdc flash supressor kit 762x51": {
     "Name": "muzzle_ar10_kac_qdc_flash_supressor_kit_762x51",
     "ID": "5dfa3cd1b33c0951220c079b"
   },
-  "muzzle ar15 vendetta precision vp 09 556x45": {
+  "ar15 vendetta precision vp 09 556x45": {
     "Name": "muzzle_ar15_vendetta_precision_vp_09_556x45",
     "ID": "5a7c147ce899ef00150bd8b8"
   },
-  "muzzle ar15 thunder beast 223cb muzzle brake 556x45": {
+  "ar15 thunder beast 223cb brake 556x45": {
     "Name": "muzzle_ar15_thunder_beast_223cb_muzzle_brake_556x45",
     "ID": "5d440625a4b9361eec4ae6c5"
   },
@@ -1203,10 +1203,6 @@
     "Name": "silencer_base_silencerco_salvo_12g",
     "ID": "5b363dd25acfc4001a598fd2"
   },
-  "pp-19-01 izhmash vityaz std 9x19": {
-    "Name": "silencer_pp-19-01_izhmash_vityaz_std_9x19",
-    "ID": "59bfc5c886f7743bf6794e62"
-  },
   "socom surefire socom556 monster 556x45": {
     "Name": "silencer_socom_surefire_socom556_monster_556x45",
     "ID": "55d614004bdc2d86028b4568"
@@ -1247,10 +1243,6 @@
     "Name": "silencer_all_rotor_43_v2_762x39",
     "ID": "5a9fbacda2750c00141e080f"
   },
-  "ash12 ckib ash12 std 127x55": {
-    "Name": "silencer_ash12_ckib_ash12_std_127x55",
-    "ID": "5caf187cae92157c28402e43"
-  },
   "alpha dog alpha 9 9x19": {
     "Name": "silencer_all_alpha_dog_alpha_9_9x19",
     "ID": "5a33a8ebc4a282000c5a950d"
@@ -1260,8 +1252,8 @@
     "ID": "59fb257e86f7742981561852"
   },
   "mp9 bt supressor 9x19": {
-    "Name": "silencer_mp9_bt_supressor_9x19",
-    "ID": "5de8f2d5b74cd90030650c72"
+    "Name": "muzzle_mp9_bt_supressor_mount_9x19",
+    "ID": "5de8f237bbaf010b10528a70"
   },
   "rotor 43 v2 556x45": {
     "Name": "silencer_all_rotor_43_v2_556x45",
@@ -1299,127 +1291,123 @@
     "Name": "silencer_glock_fischer_development_fd917_9x19",
     "ID": "5a7ad74e51dfba0015068f45"
   },
-  "muzzle vpo215 molot vpo 215 thread protector std 366tkm": {
+  "vpo215 molot vpo 215 thread protector std 366tkm": {
     "Name": "muzzle_vpo215_molot_vpo_215_thread_protector_std_366tkm",
     "ID": "5de6556a205ddc616a6bc4f7"
   },
-  "muzzle 12g me muzzle adapter cylinder 12g": {
+  "12g me adapter cylinder 12g": {
     "Name": "muzzle_12g_me_muzzle_adapter_cylinder_12g",
     "ID": "5c0111ab0db834001966914d"
   },
-  "muzzle svd rotor43 svd s dtk adapter 762x54": {
+  "svd rotor43 svd s dtk adapter 762x54": {
     "Name": "muzzle_svd_rotor43_svd_s_dtk_adapter_762x54",
     "ID": "5e01e9e273d8eb11426f5bc3"
   },
-  "muzzle ak tactica tula ak adapter 762x39": {
+  "ak tactica tula ak adapter 762x39": {
     "Name": "muzzle_ak_tactica_tula_ak_adapter_762x39",
     "ID": "5a0abb6e1526d8000a025282"
   },
-  "muzzle mp5 hk lug adapter 9x19": {
+  "mp5 hk lug adapter 9x19": {
     "Name": "muzzle_mp5_hk_lug_adapter_9x19",
     "ID": "5926e16e86f7742f5a0f7ecb"
   },
-  "muzzle m700 remington stainless thread protector 762x51": {
+  "m700 remington stainless thread protector 762x51": {
     "Name": "muzzle_m700_remington_stainless_thread_protector_762x51",
     "ID": "5d270ca28abbc31ee25ee821"
   },
-  "muzzle ak cnc warrior ar15 thread adapter 556x45": {
+  "ak cnc warrior ar15 thread adapter 556x45": {
     "Name": "muzzle_ak_cnc_warrior_ar15_thread_adapter_556x45",
     "ID": "5e21ca18e4d47f0da15e77dd"
   },
-  "muzzle m700 remington thread protector 762x51": {
+  "m700 remington thread protector 762x51": {
     "Name": "muzzle_m700_remington_thread_protector_762x51",
     "ID": "5d270b3c8abbc3105335cfb8"
   },
-  "muzzle 12g silencerco salvo adaper 12g": {
+  "12g silencerco salvo adaper 12g": {
     "Name": "muzzle_12g_silencerco_salvo_adaper_12g",
     "ID": "5b363dea5acfc4771e1c5e7e"
   },
-  "muzzle mosin tiger rock muzzle brake adapter multi": {
+  "mosin tiger rock brake adapter multi": {
     "Name": "muzzle_mosin_tiger_rock_muzzle_brake_adapter_multi",
     "ID": "5cf79599d7f00c10875d9212"
   },
-  "muzzle glock alpha wolf thread protector 9x19": {
+  "glock alpha wolf thread protector 9x19": {
     "Name": "muzzle_glock_alpha_wolf_thread_protector_9x19",
     "ID": "5a6b585a8dc32e5a9c28b4f1"
   },
-  "muzzle sks tuning wt0032 1 762x39": {
+  "sks tuning wt0032 1 762x39": {
     "Name": "muzzle_sks_weapon_tuning_wt0032_1_762x39",
     "ID": "5cf67cadd7f00c065a5abab7"
   },
-  "muzzle mosin noname custom thread adapter multi": {
+  "mosin noname custom thread adapter multi": {
     "Name": "muzzle_mosin_noname_custom_thread_adapter_multi",
     "ID": "5cf79389d7f00c10941a0c4d"
   },
-  "muzzle saiga12 css monster caw large 12g": {
+  "saiga12 css monster caw large 12g": {
     "Name": "muzzle_saiga12_css_monster_caw_large_12g",
     "ID": "59fb137a86f7740adb646af1"
   },
-  "muzzle gemtech direct multi": {
+  "gemtech direct multi": {
     "Name": "muzzle_all_gemtech_direct_mount_multi",
     "ID": "5c7954d52e221600106f4cc7"
   },
-  "muzzle pp-91-01 zmz std 9x18pm": {
+  "pp-91-01 zmz std 9x18pm": {
     "Name": "muzzle_pp-91-01_zmz_std_9x18pm",
     "ID": "57f3c7e024597738ea4ba286"
   },
-  "muzzle glock double diamond thread protector 9x19": {
+  "glock double diamond thread protector 9x19": {
     "Name": "muzzle_glock_double_diamond_thread_protector_9x19",
     "ID": "5a6b592c8dc32e00094b97bf"
   },
-  "muzzle mp9 bt supressor 9x19": {
-    "Name": "muzzle_mp9_bt_supressor_mount_9x19",
-    "ID": "5de8f237bbaf010b10528a70"
-  },
-  "muzzle p226 sig thread protector std 9x19": {
+  "p226 sig thread protector std 9x19": {
     "Name": "muzzle_p226_sig_thread_protector_std_9x19",
     "ID": "587de5ba2459771c0f1e8a58"
   },
-  "muzzle mp5 hk navy style 3 lug supressor adapter 9x19": {
+  "mp5 hk navy style 3 lug supressor adapter 9x19": {
     "Name": "muzzle_mp5_hk_navy_style_3_lug_supressor_adapter_9x19",
     "ID": "5c0000c00db834001a6697fc"
   },
-  "muzzle saiga12 izhmash saiga12 std 12g": {
+  "saiga12 izhmash saiga12 std 12g": {
     "Name": "muzzle_saiga12_izhmash_saiga12_std_12g",
     "ID": "576167ab2459773cad038c43"
   },
-  "muzzle ar10 lantac bmd adapter a3 762x51": {
+  "ar10 lantac bmd adapter a3 762x51": {
     "Name": "muzzle_ar10_lantac_bmd_adapter_a3_762x51",
     "ID": "5cf78496d7f00c065703d6ca"
   },
-  "muzzle 12g red heat gk-02 12g": {
+  "12g red heat gk-02 12g": {
     "Name": "muzzle_12g_red_heat_gk-02_12g",
     "ID": "58272d7f2459774f6311ddfd"
   },
-  "muzzle m9 beretta m9a3 protector std 9x19": {
+  "m9 beretta m9a3 protector std 9x19": {
     "Name": "muzzle_m9_beretta_m9a3_protector_std_9x19",
     "ID": "5cadc390ae921500126a77f1"
   },
-  "muzzle kel tec thread spacer 762x51": {
+  "kel tec thread spacer 762x51": {
     "Name": "muzzle_all_kel_tec_thread_spacer_762x51",
     "ID": "5f2aa43ba9b91d26f20ae6d2"
   },
-  "muzzle 12g remington 12": {
+  "12g remington 12": {
     "Name": "muzzle_12g_remington_tactical_12",
     "ID": "560838c94bdc2d77798b4569"
   },
-  "muzzle saiga12 silencerco salvo adaper 12g": {
+  "saiga12 silencerco salvo adaper 12g": {
     "Name": "muzzle_saiga12_silencerco_salvo_adaper_12g",
     "ID": "5b363e1b5acfc4771e1c5e80"
   },
-  "muzzle mosin tuning wt1052 multi": {
+  "mosin tuning wt1052 multi": {
     "Name": "muzzle_mosin_weapon_tuning_wt1052_multi",
     "ID": "5cf67a1bd7f00c06585fb6f3"
   },
-  "muzzle silencerco hybrid 46 direct thread multi": {
+  "silencerco hybrid 46 direct thread multi": {
     "Name": "muzzle_all_silencerco_hybrid_46_direct_thread_multi",
     "ID": "59bffc1f86f77435b128b872"
   },
-  "muzzle glock salient arms thread protector 9x19": {
+  "glock salient arms thread protector 9x19": {
     "Name": "muzzle_glock_salient_arms_thread_protector_9x19",
     "ID": "5a6b59a08dc32e000b452fb7"
   },
-  "muzzle kel tec thread protector 762x51": {
+  "kel tec thread protector 762x51": {
     "Name": "muzzle_all_kel_tec_thread_protector_762x51",
     "ID": "5f2aa4464b50c14bcf07acdb"
   },
@@ -3803,7 +3791,7 @@
     "Name": "mag_ash12_ckib_ash12_std_127x55_10",
     "ID": "5caf1041ae92157c28402e3f"
   },
-  "mag fal sarco fal l1a1 orig 762x51 30": {
+  "mag fal sarco fal l1a1 o762x51 30": {
     "Name": "mag_fal_sarco_fal_l1a1_orig_762x51_30",
     "ID": "5b7d37845acfc400170e2f87"
   },
@@ -5651,15 +5639,15 @@
     "Name": "Jacket",
     "ID": "578f8778245977358849a9b5"
   },
-  "rig tv110": {
+  "tv110": {
     "Name": "item_equipment_rig_tv110",
     "ID": "5c0e746986f7741453628fe5"
   },
-  "rig bankrobber": {
+  "bankrobber": {
     "Name": "item_equipment_rig_bankrobber",
     "ID": "5e4abc1f86f774069619fbaa"
   },
-  "rig d3crx": {
+  "d3crx": {
     "Name": "item_equipment_rig_d3crx",
     "ID": "5d5d85c586f774279a21cbdb"
   },
@@ -5671,27 +5659,27 @@
     "Name": "ana_tactical",
     "ID": "592c2d1a86f7746dbe2af32a"
   },
-  "rig 6b5 khaki": {
+  "6b5 khaki": {
     "Name": "item_equipment_rig_6b5_khaki",
     "ID": "5c0e3eb886f7742015526062"
   },
-  "rig commando black": {
+  "commando black": {
     "Name": "item_equipment_rig_commando_black",
     "ID": "5c0e9f2c86f77432297fe0a3"
   },
-  "rig tarzan": {
+  "tarzan": {
     "Name": "item_equipment_rig_tarzan",
     "ID": "5e4abfed86f77406a2713cf7"
   },
-  "rig beltab": {
+  "beltab": {
     "Name": "item_equipment_rig_beltab",
     "ID": "5c0e6a1586f77404597b4965"
   },
-  "rig bearing": {
+  "bearing": {
     "Name": "item_equipment_rig_bearing",
     "ID": "5e9db13186f7742f845ee9d3"
   },
-  "rig m1": {
+  "m1": {
     "Name": "item_equipment_rig_m1",
     "ID": "5c0e722886f7740458316a57"
   },
@@ -5699,7 +5687,7 @@
     "Name": "item_equipment_armor_6b3",
     "ID": "5d5d646386f7742797261fd9"
   },
-  "rig micro": {
+  "micro": {
     "Name": "item_equipment_rig_micro",
     "ID": "5d5d8ca986f7742798716522"
   },
@@ -5707,11 +5695,11 @@
     "Name": "bearRig",
     "ID": "5648a69d4bdc2ded0b8b457b"
   },
-  "rig commando": {
+  "commando": {
     "Name": "item_equipment_rig_commando",
     "ID": "5b44c8ea86f7742d1627baf1"
   },
-  "bear rig 6h112": {
+  "bear 6h112": {
     "Name": "bear_rig_6h112",
     "ID": "5929a2a086f7744f4b234d43"
   },
@@ -5719,7 +5707,7 @@
     "Name": "item_equipment_armor_a18",
     "ID": "5d5d87f786f77427997cfaef"
   },
-  "rig triton": {
+  "triton": {
     "Name": "item_equipment_rig_triton",
     "ID": "5ca20abf86f77418567a43f2"
   },
@@ -5735,11 +5723,11 @@
     "Name": "wartech_mk3",
     "ID": "5ab8dab586f77441cd04f2a2"
   },
-  "rig 6b5 flora": {
+  "6b5 flora": {
     "Name": "item_equipment_rig_6b5_flora",
     "ID": "5c0e446786f7742013381639"
   },
-  "rig carrierTactec": {
+  "carrierTactec": {
     "Name": "item_equipment_rig_carrierTactec",
     "ID": "5b44cad286f77402a54ae7e5"
   },
@@ -5751,11 +5739,11 @@
     "Name": "wartech_vest",
     "ID": "59e7643b86f7742cbf2c109a"
   },
-  "rig multipurpose": {
+  "multipurpose": {
     "Name": "item_equipment_rig_multipurpose",
     "ID": "5df8a42886f77412640e2e75"
   },
-  "rig thunderbolt": {
+  "thunderbolt": {
     "Name": "item_equipment_rig_thunderbolt",
     "ID": "5f5f41f56760b4138443b352"
   },

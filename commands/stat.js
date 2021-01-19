@@ -13,6 +13,9 @@ module.exports = {
         for (let Arg in args) {
             SearchItem = SearchItem + " " + args[Arg]
         }
+        let SearchItemArray = SearchItem.split(" ")
+        SearchItemArray.shift()
+        SearchItem = SearchItemArray.join(" ")
         if (SearchItem !== undefined && SearchItem.length > 2) {
             let SearchResults = new Array()
             let ItemResults = new Array()
@@ -49,12 +52,35 @@ module.exports = {
                     AmmoMessage(ItemData.Damage, ItemData.PenetrationPower, ItemData.ArmorDamage, ItemData.InitialSpeed, Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
                 } else if (ItemFullName.includes('foregrip_') === true || ItemFullName.includes('silencer_') === true || ItemFullName.includes('handguard_') === true || ItemFullName.includes('stock_') === true) {
                     AttachmentMessage(ItemData.Recoil, ItemData.Ergonomics, Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
+                } else if (ItemFullName.includes('weapon_') === true) {
+                    WeaponMessage(ItemData.RecoilForceBack, ItemData.RecoilForceUp, ItemData.ammoCaliber, ItemData.bFirerate, ItemData.Ergonomics, Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
+                } else if (ItemFullName.includes('item_equipment_rig_') === true || ItemFullName.includes('rig') === true) {
+                    let ContainerSize = 0
+                    for (Grid in ItemData.Grids) {
+                        let GridSize = ItemData.Grids[Grid]._props.cellsH * ItemData.Grids[Grid]._props.cellsV
+                        ContainerSize = ContainerSize + GridSize
+                    }
+                    let Size = ItemData.Width * ItemData.Height
+                    let SpaceEfficiency = Math.round(10 * (ContainerSize / Size)) / 10
+                    RigMessage(Size, ContainerSize, SpaceEfficiency, Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
                 }
             }
         } else {
             ErrorMessage('Please enter an item to search', message)
         }
     }
+}
+
+function RigMessage(Size, ContainerSize, SpaceEfficiency, Name, Description, Thumbnail, Discord, message) {
+    const newEmbed = new Discord.MessageEmbed()
+        .setColor('#cecdc3')
+        .setAuthor('Tarkov Helper', Settings.Images.Author)
+        .setTitle(Name)
+        .setThumbnail(Thumbnail)
+        .setDescription(Description)
+        .addFields({ name: 'Size: ', value: `${Size}` }, { name: 'ContainerSize:', value: `${ContainerSize}` }, { name: 'Space Efficiency:', value: `${SpaceEfficiency}` })
+        .setFooter(Settings.Text.Stats.FooterText)
+    message.channel.send(newEmbed);
 }
 
 function AmmoMessage(Damage, Penetration, ArmorDamage, BulletSpeed, Name, Description, Thumbnail, Discord, message) {
@@ -77,6 +103,18 @@ function AttachmentMessage(Recoil, Ergonomics, Name, Description, Thumbnail, Dis
         .setThumbnail(Thumbnail)
         .setDescription(Description)
         .addFields({ name: 'Recoil Reduction: ', value: `${Recoil}%` }, { name: 'Ergonomics:', value: `${Ergonomics}` })
+        .setFooter(Settings.Text.Stats.FooterText)
+    message.channel.send(newEmbed);
+}
+
+function WeaponMessage(RecoilForceBack, RecoilForceUp, Caliber, Firerate, Ergonomics, Name, Description, Thumbnail, Discord, message) {
+    const newEmbed = new Discord.MessageEmbed()
+        .setColor('#cecdc3')
+        .setAuthor('Tarkov Helper', Settings.Images.Author)
+        .setTitle(Name)
+        .setThumbnail(Thumbnail)
+        .setDescription(Description)
+        .addFields({ name: 'Vertical Recoil: ', value: `${RecoilForceUp}` }, { name: 'Horizontal Recoil', value: `${RecoilForceBack}` }, { name: "Ergonomics", value: `${Ergonomics}` }, { name: "FireRate:", value: `${Firerate}RPM` })
         .setFooter(Settings.Text.Stats.FooterText)
     message.channel.send(newEmbed);
 }

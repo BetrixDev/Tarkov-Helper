@@ -12,8 +12,6 @@
         "axios": "^0.21.1",
         "discord.js": "^12.5.1",
         "dotenv": "^8.2.0",
-        "json-to-table": "^4.2.1",
-        "serialize-json": "^1.0.3",
         "url-exist": "^2.0.2"
     }
 }
