@@ -49,11 +49,24 @@ module.exports = {
                     ImageThumbnail = 'https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/QuestionLogo128x128.png'
                 }
                 if (ItemFullName.includes('patron_') === true) {
-                    AmmoMessage(ItemData.Damage, ItemData.PenetrationPower, ItemData.ArmorDamage, ItemData.InitialSpeed, Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
+                    SendMessage([
+                        { name: "Damage", value: ItemData.Damage },
+                        { name: "Penetration", value: ItemData.PenetrationPower },
+                        { name: "Armor Damage", value: ItemData.ArmorDamage },
+                        { name: "Bullet Velocity", value: `${ItemData.InitialSpeed}m/s` }
+                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
                 } else if (ItemFullName.includes('foregrip_') === true || ItemFullName.includes('silencer_') === true || ItemFullName.includes('handguard_') === true || ItemFullName.includes('stock_') === true) {
-                    AttachmentMessage(ItemData.Recoil, ItemData.Ergonomics, Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
+                    SendMessage([
+                        { name: "Recoil", value: ItemData.Recoil },
+                        { name: "Ergonomics", value: ItemData.Ergonomics },
+                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
                 } else if (ItemFullName.includes('weapon_') === true) {
-                    WeaponMessage(ItemData.RecoilForceBack, ItemData.RecoilForceUp, ItemData.ammoCaliber, ItemData.bFirerate, ItemData.Ergonomics, Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
+                    SendMessage([
+                        { name: "Vertical Recoil", value: ItemData.RecoilForceUp },
+                        { name: "Horizontal Recoil", value: ItemData.RecoilForceBack },
+                        { name: "Firerate", value: `${ItemData.bFirerate}RPM` },
+                        { name: "Ergonomics", value: ItemData.Ergonomics }
+                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
                 } else if (ItemFullName.includes('item_equipment_rig_') === true || ItemFullName.includes('rig') === true) {
                     let ContainerSize = 0
                     for (Grid in ItemData.Grids) {
@@ -62,7 +75,13 @@ module.exports = {
                     }
                     let Size = ItemData.Width * ItemData.Height
                     let SpaceEfficiency = Math.round(10 * (ContainerSize / Size)) / 10
-                    RigMessage(Size, ContainerSize, SpaceEfficiency, Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
+                    SendMessage([
+                        { name: "Size", value: Size },
+                        { name: "Container", value: ContainerSize },
+                        { name: "Space Efficiency", value: SpaceEfficiency }
+                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
+                } else {
+                    SendMessage([], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
                 }
             }
         } else {
@@ -71,50 +90,22 @@ module.exports = {
     }
 }
 
-function RigMessage(Size, ContainerSize, SpaceEfficiency, Name, Description, Thumbnail, Discord, message) {
-    const newEmbed = new Discord.MessageEmbed()
-        .setColor('#cecdc3')
-        .setAuthor('Tarkov Helper', Settings.Images.Author)
-        .setTitle(Name)
-        .setThumbnail(Thumbnail)
-        .setDescription(Description)
-        .addFields({ name: 'Size: ', value: `${Size}` }, { name: 'ContainerSize:', value: `${ContainerSize}` }, { name: 'Space Efficiency:', value: `${SpaceEfficiency}` })
-        .setFooter(Settings.Text.Stats.FooterText)
-    message.channel.send(newEmbed);
-}
-
-function AmmoMessage(Damage, Penetration, ArmorDamage, BulletSpeed, Name, Description, Thumbnail, Discord, message) {
-    const newEmbed = new Discord.MessageEmbed()
-        .setColor('#cecdc3')
-        .setAuthor('Tarkov Helper', Settings.Images.Author)
-        .setTitle(Name)
-        .setThumbnail(Thumbnail)
-        .setDescription(Description)
-        .addFields({ name: 'Damage: ', value: `${Damage}` }, { name: 'Penetration:', value: `${Penetration}` }, { name: 'Armor Damage:', value: `${ArmorDamage}` }, { name: 'Projectile Speed:', value: `${BulletSpeed}m/s` })
-        .setFooter(Settings.Text.Stats.FooterText)
-    message.channel.send(newEmbed);
-}
-
-function AttachmentMessage(Recoil, Ergonomics, Name, Description, Thumbnail, Discord, message) {
-    const newEmbed = new Discord.MessageEmbed()
-        .setColor('#cecdc3')
-        .setAuthor('Tarkov Helper', Settings.Images.Author)
-        .setTitle(Name)
-        .setThumbnail(Thumbnail)
-        .setDescription(Description)
-        .addFields({ name: 'Recoil Reduction: ', value: `${Recoil}%` }, { name: 'Ergonomics:', value: `${Ergonomics}` })
-        .setFooter(Settings.Text.Stats.FooterText)
-    message.channel.send(newEmbed);
-}
-
-function WeaponMessage(RecoilForceBack, RecoilForceUp, Caliber, Firerate, Ergonomics, Name, Description, Thumbnail, Discord, message) {
-    const newEmbed = new Discord.MessageEmbed()
-        .setColor('#cecdc3')
-        .setAuthor('Tarkov Helper', Settings.Images.Author)
-        .setTitle(Name)
-        .setThumbnail(Thumbnail)
-        .setDescription(Description)
-        .addFields({ name: 'Vertical Recoil: ', value: `${RecoilForceUp}` }, { name: 'Horizontal Recoil', value: `${RecoilForceBack}` }, { name: "Ergonomics", value: `${Ergonomics}` }, { name: "FireRate:", value: `${Firerate}RPM` })
-        .setFooter(Settings.Text.Stats.FooterText)
-    message.channel.send(newEmbed);
+function SendMessage(Fields, Name, Description, Thumbnail, Discord, message) {
+    const EmbededMessage = {
+        color: Settings.BotSettings.Color,
+        title: Name,
+        author: {
+            name: 'Tarkov Helper',
+            icon_url: Settings.Images.Author,
+        },
+        description: Description,
+        thumbnail: {
+            url: Thumbnail,
+        },
+        fields: Fields,
+        footer: {
+            text: Settings.Text.Stats.FooterText,
+        },
+    }
+    message.channel.send({ embed: EmbededMessage })
 }
