@@ -6647,43 +6647,43 @@
     "Name": "item_equipment_facecover_devtac",
     "ID": "5b4329f05acfc47a86086aa1"
   },
-  "head bandana": {
+  "bandana": {
     "Name": "item_equipment_head_bandana",
     "ID": "5b43271c5acfc432ff4dce65"
   },
-  "head bear black": {
+  "bear black": {
     "Name": "item_equipment_head_bear_black",
     "ID": "5b40e5e25acfc4001a599bea"
   },
-  "head beret blk": {
+  "beret blk": {
     "Name": "item_equipment_head_beret_blk",
     "ID": "5f60e6403b85f6263c14558c"
   },
-  "head beret blue": {
+  "beret blue": {
     "Name": "item_equipment_head_beret_blue",
     "ID": "5f60e7788adaa7100c3adb49"
   },
-  "head beret od": {
+  "beret od": {
     "Name": "item_equipment_head_beret_od",
     "ID": "5f60e784f2bcbb675b00dac7"
   },
-  "head doorkicker": {
+  "doorkicker": {
     "Name": "item_equipment_head_doorkicker",
     "ID": "5d96141523f0ea1b7f2aacab"
   },
-  "head kotton": {
+  "kotton": {
     "Name": "item_equipment_head_kotton",
     "ID": "5bd073c986f7747f627e796c"
   },
-  "head panama": {
+  "panama": {
     "Name": "item_equipment_head_panama",
     "ID": "5b4327aa5acfc400175496e0"
   },
-  "head pompon": {
+  "pompon": {
     "Name": "item_equipment_head_pompon",
     "ID": "5b4329075acfc400153b78ff"
   },
-  "head usec black": {
+  "usec black": {
     "Name": "item_equipment_head_usec_black",
     "ID": "5b40e61f5acfc4001a599bec"
   },
