@@ -40,6 +40,7 @@
 
 **Requirements**
 - [A code editor](https://code.visualstudio.com/download)
+- [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/en/) 
 - Discord.js: ```npm install discord.js```
 - Axios: ```npm install axios```
