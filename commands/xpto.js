@@ -17,11 +17,11 @@ module.exports = {
                 { name: "Experience Gap", value: XPGap },
             ], Discord, message)
         } else if (args[0] === args[1]) {
-            ErrorMessage('Both inputs are equal, nothing to compare')
+            ErrorMessage('Both inputs are equal, nothing to compare', message)
         } else if (args[0] > 70 && args[0] < 1000) {
-            ErrorMessage('Input is to high to be a level and too low to be an experience value')
+            ErrorMessage('Input is to high to be a level and too low to be an experience value', message)
         } else if (args[1] > 70 && args[1] < 1000) {
-            ErrorMessage('Input is to high to be a level and too low to be an experience value')
+            ErrorMessage('Input is to high to be a level and too low to be an experience value', message)
         }
     }
 }
