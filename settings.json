@@ -9,7 +9,8 @@
             "Error": "https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Media/ErrorLogo128x128.png?raw=true",
             "Map": "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/MapLogo128x128.png",
             "BitcoinFarm": "https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Media/BitcoinFarmLogo128x128.png?raw=true",
-            "Settings": "https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Media/SettingsLogo128x128.png?raw=true"
+            "Settings": "https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Media/SettingsLogo128x128.png?raw=true",
+            "Experience": "https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Media/ExperienceLogo128x128.png?raw=true"
         }
     },
     "Text": {
@@ -18,6 +19,9 @@
         },
         "Stats" : {
             "FooterText": "Statistics may be slightly out of date"
+        },
+        "Experience": {
+            "FooterText": "Experience data may be slightly out of date"
         }
     },
     "Maps": {

@@ -52,6 +52,10 @@ client.on('message', async message => {
         case 's':
             client.commands.get('stat').execute(message, args, Discord);
             break;
+        case 'xpto':
+        case 'xp':
+            client.commands.get('xpto').execute(message, args, Discord);
+            break;
     }
 });
 
