@@ -4,43 +4,31 @@ var ItemNames = require('../game_data/itemnames.json')
 var Items = require('../game_data/items.json');
 const urlExist = require('url-exist');
 var Templates = require('../game_data/text/templates.json')
-var MaterialDestructibility = require('../game_data/materialdestructibility.json')
+var MaterialDestructibility = require('../game_data/materialdestructibility.json');
+const { SearchEngine } = require('../command_modules/searchengine');
 
 module.exports = {
     name: 'stat',
     description: "Returns the stats of the item specified",
     async execute(message, args, Discord) {
-        let SearchItem = ""
-        for (let Arg in args) {
-            SearchItem = SearchItem + " " + args[Arg]
-        }
-        let SearchItemArray = SearchItem.split(" ")
-        SearchItemArray.shift()
-        SearchItem = SearchItemArray.join(" ")
+        let EngineResult = SearchEngine(args)
+        let SearchItem = EngineResult[0]
+        let SearchResults = EngineResult[1]
+        let ItemResults = EngineResult[2]
         if (SearchItem !== undefined && SearchItem.length > 2) {
-            let SearchResults = new Array()
-            let ItemResults = new Array()
-            for (const Item in ItemNames) {
-                if (SearchResults[0] === 'FoundExact') {
-
-                } else if (SearchItem.toLocaleLowerCase() === ItemNames[Item].ShortName.toLocaleLowerCase()) {
-                    SearchResults = []
-                    SearchResults = ['FoundExact']
-                    ItemResults.push(Item)
-                } else if (Item.toLowerCase().includes(SearchItem.toLowerCase())) {
-                    SearchResults.push(ItemNames[Item].ShortName)
-                    ItemResults.push(Item)
-                }
-            }
             if (SearchResults.length > 1) {
-                const NewMessage = new Discord.MessageEmbed()
-                    .setColor(Settings.BotSettings.ErrorColor)
-                    .setAuthor('Tarkov Helper', Settings.Images.Author)
-                    .setTitle('Error!')
-                    .setDescription('The search result came back with multiple items, please be more specific')
-                    .addFields({ name: 'Results:', value: SearchResults })
-                    .setThumbnail(Settings.Images.Thumbnails.Error)
-                message.channel.send(NewMessage);
+                if (SearchResults.length < 16) {
+                    const NewMessage = new Discord.MessageEmbed()
+                        .setColor(Settings.BotSettings.ErrorColor)
+                        .setAuthor('Tarkov Helper', Settings.Images.Author)
+                        .setTitle('Error!')
+                        .setDescription('The search result came back with multiple items, please be more specific')
+                        .addFields({ name: 'Results:', value: SearchResults })
+                        .setThumbnail(Settings.Images.Thumbnails.Error)
+                    message.channel.send(NewMessage);
+                } else {
+                    ErrorMessage(`Search came back with ${SearchResults.length} results, please more specific`, message)
+                }
             } else if (SearchResults.length === 1) {
                 let Item = ItemResults[0]
                 let ItemID = ItemNames[Item].ID
@@ -58,14 +46,15 @@ module.exports = {
                         { name: "Damage", value: ItemData.Damage },
                         { name: "Penetration", value: ItemData.PenetrationPower },
                         { name: "Armor Damage", value: ItemData.ArmorDamage },
-                        { name: "Bullet Velocity", value: `${ItemData.InitialSpeed}m/s` }
+                        { name: "Bullet Velocity", value: `${ItemData.InitialSpeed}m/s` },
+                        { name: "Fragmentation Chance", value: parseFloat(ItemData.FragmentationChance * 100).toFixed(2) + "%" }
                     ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
                 } else if (ItemFullName.includes('foregrip_') === true || ItemFullName.includes('silencer_') === true || ItemFullName.includes('handguard_') === true || ItemFullName.includes('stock_') === true || ItemFullName.includes('scope_') === true) {
                     SendMessage([
                         { name: "Recoil", value: ItemData.Recoil },
                         { name: "Ergonomics", value: ItemData.Ergonomics },
                     ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
-                } else if (ItemFullName.includes('weapon_') === true) {
+                } else if (ItemFullName.includes('weapon_') === true && ItemData.ItemSound.includes('knife') === false) {
                     SendMessage([
                         { name: "Vertical Recoil", value: ItemData.RecoilForceUp },
                         { name: "Horizontal Recoil", value: ItemData.RecoilForceBack },
@@ -127,6 +116,23 @@ module.exports = {
                         { name: "Armor Areas", value: ItemData.armorZone, inline: true },
                         { name: "Material", value: ItemData.ArmorMaterial, inline: true },
                         { name: "Weight", value: `${ItemData.Weight}kg`, inline: true }
+                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
+                } else if (ItemFullName.includes('container_') === true) {
+                    let ContainerSize = 0
+                    for (Grid in ItemData.Grids) {
+                        let GridSize = ItemData.Grids[Grid]._props.cellsH * ItemData.Grids[Grid]._props.cellsV
+                        ContainerSize = ContainerSize + GridSize
+                    }
+                    let Size = ItemData.Width * ItemData.Height
+                    let SpaceEfficiency = Math.round(10 * (ContainerSize / Size)) / 10
+                    SendMessage([
+                        { name: "Size", value: Size, inline: true },
+                        { name: "Container", value: ContainerSize, inline: true },
+                        { name: "Space Efficiency", value: SpaceEfficiency, inline: true },
+                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
+                } else if (ItemFullName.includes('weapon_') === true && ItemData.ItemSound.includes('knife') === false) {
+                    SendMessage([
+                        { name: "Stab Damage Slash/Stab", value: `${ItemData.knifeHitSlashDam}/${ItemData.knifeHitStabDam}`, inline: true }
                     ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
                 } else {
                     SendMessage([], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
