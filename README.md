@@ -1,6 +1,6 @@
 ![TarkovHelperBanner](https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/Banner3000x1000.png?token=AMYPLRDPOYU7KCU3PFKQI3C77JL3W)
 
-# Description
+# Description (This Project Is Not Yet Finished)
 **Tarkov Helper** is a Discord bot aimed to give users all kinds of information in an easy and read and use format. <br /> <br />
  - Since most players use Discord as a way to communicate, having a discord bot to access information within the game will help with having to not open a browser and searching which will take more resources and time with the potential of lag in-game instead, now by typing in a command in a Discord server/channel, a simple alt-tab to an already open program will be much more efficient. Aswell as having extra useful features such as a **Bitcoin Farm Calculator**
  
