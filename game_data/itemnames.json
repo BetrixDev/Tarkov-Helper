@@ -3311,7 +3311,7 @@
     "Name": "mount_12g_mesa_tactical_magazine_clamp",
     "ID": "5a789261c5856700186c65d3"
   },
-  "helmet ops core picatinny rail adapter": {
+  "ops core picatinny rail adapter": {
     "Name": "helmet_ops_core_picatinny_rail_adapter",
     "ID": "5a398b75c4a282000a51a266"
   },
@@ -3395,7 +3395,7 @@
     "Name": "mount_all_burris_fast_fire_weaver",
     "ID": "577d128124597739d65d0e56"
   },
-  "helmet ops core single clamp rail adapter": {
+  "ops core single clamp rail adapter": {
     "Name": "helmet_ops_core_single_clamp_rail_adapter",
     "ID": "5a398ab9c4a282000c5a9842"
   },
@@ -6239,111 +6239,111 @@
     "Name": "Visors",
     "ID": "5448e5724bdc2ddf718b4568"
   },
-  "helmet altyn face shield": {
+  "altyn face shield": {
     "Name": "helmet_altyn_face_shield",
     "ID": "5aa7e373e5b5b000137b76f0"
   },
-  "helmet ops core fast gunsight mandible": {
+  "ops core fast gunsight mandible": {
     "Name": "helmet_ops_core_fast_gunsight_mandible",
     "ID": "5a16ba61fcdbcb098008728a"
   },
-  "helmet ops core fast side armor": {
+  "ops core fast side armor": {
     "Name": "helmet_ops_core_fast_side_armor",
     "ID": "5a16badafcdbcb001865f72d"
   },
-  "helmet ops core fast visor": {
+  "ops core fast visor": {
     "Name": "helmet_ops_core_fast_visor",
     "ID": "5a16b672fcdbcb001912fa83"
   },
-  "helmet ops core handgun face shield": {
+  "ops core handgun face shield": {
     "Name": "helmet_ops_core_handgun_face_shield",
     "ID": "5a16b7e1fcdbcb00165aa6c9"
   },
-  "helmet team wendy exfil ear covers": {
+  "team wendy exfil ear covers": {
     "Name": "helmet_team_wendy_exfil_ear_covers",
     "ID": "5e00cfa786f77469dc6e5685"
   },
-  "helmet team wendy exfil ear covers coyote": {
+  "team wendy exfil ear covers coyote": {
     "Name": "helmet_team_wendy_exfil_ear_covers_coyote",
     "ID": "5e01f31d86f77465cf261343"
   },
-  "helmet zsh 1-2m v1 face shield": {
+  "zsh 1-2m v1 face shield": {
     "Name": "helmet_zsh_1-2m_v1_face_shield",
     "ID": "5aa7e3abe5b5b000171d064d"
   },
-  "helmet crye airframe chops": {
+  "crye airframe chops": {
     "Name": "item_equipment_helmet_crye_airframe_chops",
     "ID": "5c178a942e22164bef5ceca3"
   },
-  "helmet crye airframe ears": {
+  "crye airframe ears": {
     "Name": "item_equipment_helmet_crye_airframe_ears",
     "ID": "5c1793902e221602b21d3de2"
   },
-  "helmet diamond age bastion shield": {
+  "diamond age bastion shield": {
     "Name": "item_equipment_helmet_diamond_age_bastion_shield",
     "ID": "5ea18c84ecf1982c7712d9a2"
   },
-  "helmet galvion applique": {
+  "galvion applique": {
     "Name": "item_equipment_helmet_galvion_applique",
     "ID": "5f60b85bbdb8e27dee3dc985"
   },
-  "helmet galvion fixed arm visor": {
+  "galvion fixed arm visor": {
     "Name": "item_equipment_helmet_galvion_fixed_arm_visor",
     "ID": "5f60bf4558eff926626a60f2"
   },
-  "helmet galvion mandible": {
+  "galvion mandible": {
     "Name": "item_equipment_helmet_galvion_mandible",
     "ID": "5f60c076f2bcbb675b00dac2"
   },
-  "helmet gentex slaap tan": {
+  "gentex slaap tan": {
     "Name": "item_equipment_helmet_gentex_slaap_tan",
     "ID": "5c0e66e2d174af02a96252f4"
   },
-  "helmet k1c shield": {
+  "k1c shield": {
     "Name": "item_equipment_helmet_k1c_shield",
     "ID": "5ac4c50d5acfc40019262e87"
   },
-  "helmet kiverm shield": {
+  "kiverm shield": {
     "Name": "item_equipment_helmet_kiverm_shield",
     "ID": "5b46238386f7741a693bcf9c"
   },
-  "helmet lshz2dtm aventail": {
+  "lshz2dtm aventail": {
     "Name": "item_equipment_helmet_lshz2dtm_aventail",
     "ID": "5d6d3be5a4b9361bc73bc763"
   },
-  "helmet lshz2dtm damper": {
+  "lshz2dtm damper": {
     "Name": "item_equipment_helmet_lshz2dtm_damper",
     "ID": "5d6d3943a4b9360dbc46d0cc"
   },
-  "helmet lshz2dtm shield": {
+  "lshz2dtm shield": {
     "Name": "item_equipment_helmet_lshz2dtm_shield",
     "ID": "5d6d3829a4b9361bc8618943"
   },
-  "helmet maska 1sh shield": {
+  "maska 1sh shield": {
     "Name": "item_equipment_helmet_maska_1sh_shield",
     "ID": "5c0919b50db834001b7ce3b9"
   },
-  "helmet maska 1sh shield killa": {
+  "maska 1sh shield killa": {
     "Name": "item_equipment_helmet_maska_1sh_shield_killa",
     "ID": "5c0e842486f77443a74d2976"
   },
-  "helmet rys t shield": {
+  "rys t shield": {
     "Name": "item_equipment_helmet_rys_t_shield",
     "ID": "5f60c85b58eff926626a60f7"
   },
-  "helmet team wendy exfil face shield": {
+  "team wendy exfil face shield": {
     "Name": "item_equipment_helmet_team_wendy_exfil_face_shield",
     "ID": "5e00cdd986f7747473332240"
   },
-  "helmet team wendy exfil face shield coyote": {
+  "team wendy exfil face shield coyote": {
     "Name": "item_equipment_helmet_team_wendy_exfil_face_shield_coyote",
     "ID": "5e01f37686f774773c6f6c15"
   },
-  "helmet tk heavy trooper": {
+  "tk heavy trooper": {
     "Name": "item_equipment_helmet_tk_heavy_trooper",
     "ID": "5ea058e01dbce517f324b3e2"
   },
-  "helmet vulkan shield": {
+  "vulkan shield": {
     "Name": "item_equipment_helmet_vulkan_shield",
     "ID": "5ca2113f86f7740b2547e1d2"
   },
@@ -6583,63 +6583,63 @@
     "Name": "helmet",
     "ID": "5645bc214bdc2d363b8b4571"
   },
-  "helmet 6B47 cover": {
+  "6B47 cover": {
     "Name": "helmet_6B47_cover",
     "ID": "5aa7cfc0e5b5b00015693143"
   },
-  "helmet altyn": {
+  "altyn": {
     "Name": "helmet_altyn",
     "ID": "5aa7e276e5b5b000171d0647"
   },
-  "helmet armasight nvg googles mask": {
+  "armasight nvg googles mask": {
     "Name": "helmet_armasight_nvg_googles_mask",
     "ID": "5c066ef40db834001966a595"
   },
-  "helmet crew": {
+  "crew": {
     "Name": "helmet_crew",
     "ID": "5df8a58286f77412631087ed"
   },
-  "helmet k1c": {
+  "k1c": {
     "Name": "helmet_k1c",
     "ID": "59e7711e86f7746cae05fbe1"
   },
-  "helmet mich2001 od": {
+  "mich2001 od": {
     "Name": "helmet_mich2001_od",
     "ID": "5d5e7d28a4b936645d161203"
   },
-  "helmet mich2002 od": {
+  "mich2002 od": {
     "Name": "helmet_mich2002_od",
     "ID": "5d5e9c74a4b9364855191c40"
   },
-  "helmet ops core fast": {
+  "ops core fast": {
     "Name": "helmet_ops_core_fast",
     "ID": "5a154d5cfcdbcb001a3b00da"
   },
-  "helmet ops core fast tan": {
+  "ops core fast tan": {
     "Name": "helmet_ops_core_fast_tan",
     "ID": "5ac8d6885acfc400180ae7b0"
   },
-  "helmet ratnik 6B47": {
+  "ratnik 6B47": {
     "Name": "helmet_ratnik_6B47",
     "ID": "5a7c4850e899ef00150be885"
   },
-  "helmet sphera-C": {
+  "sphera-C": {
     "Name": "helmet_sphera-C",
     "ID": "5aa7d193e5b5b000171d063f"
   },
-  "helmet un": {
+  "un": {
     "Name": "helmet_un",
     "ID": "5aa7d03ae5b5b00016327db5"
   },
-  "helmet wilcox skull lock": {
+  "wilcox skull lock": {
     "Name": "helmet_wilcox_skull_lock",
     "ID": "5a16bb52fcdbcb001a3b00dc"
   },
-  "helmet zsh 1-2m v1": {
+  "zsh 1-2m v1": {
     "Name": "helmet_zsh_1-2m_v1",
     "ID": "5aa7e454e5b5b0214e506fa2"
   },
-  "helmet zsh 1-2m v2": {
+  "zsh 1-2m v2": {
     "Name": "helmet_zsh_1-2m_v2",
     "ID": "5aa7e4a4e5b5b000137b76f2"
   },
@@ -6687,83 +6687,83 @@
     "Name": "item_equipment_head_usec_black",
     "ID": "5b40e61f5acfc4001a599bec"
   },
-  "helmet ACHHC black": {
+  "ACHHC black": {
     "Name": "item_equipment_helmet_ACHHC_black",
     "ID": "5b40e3f35acfc40016388218"
   },
-  "helmet ACHHC green": {
+  "ACHHC green": {
     "Name": "item_equipment_helmet_ACHHC_green",
     "ID": "5b40e4035acfc47a87740943"
   },
-  "helmet LSHZ": {
+  "LSHZ": {
     "Name": "item_equipment_helmet_LSHZ",
     "ID": "5b432d215acfc4771e1c6624"
   },
-  "helmet ULACH black": {
+  "ULACH black": {
     "Name": "item_equipment_helmet_ULACH_black",
     "ID": "5b40e1525acfc4771e1c6611"
   },
-  "helmet ULACH coyote": {
+  "ULACH coyote": {
     "Name": "item_equipment_helmet_ULACH_coyote",
     "ID": "5b40e2bc5acfc40016388216"
   },
-  "helmet crye airframe tan": {
+  "crye airframe tan": {
     "Name": "item_equipment_helmet_crye_airframe_tan",
     "ID": "5c17a7ed2e2216152142459c"
   },
-  "helmet diamond age bastion": {
+  "diamond age bastion": {
     "Name": "item_equipment_helmet_diamond_age_bastion",
     "ID": "5ea17ca01412a1425304d1c0"
   },
-  "helmet galvion caiman": {
+  "galvion caiman": {
     "Name": "item_equipment_helmet_galvion_caiman",
     "ID": "5f60b34a41e30a4ab12a6947"
   },
-  "helmet hops core fast": {
+  "hops core fast": {
     "Name": "item_equipment_helmet_hops_core_fast",
     "ID": "5ea05cf85ad9772e6624305d"
   },
-  "helmet lshz2dtm": {
+  "lshz2dtm": {
     "Name": "item_equipment_helmet_lshz2dtm",
     "ID": "5d6d3716a4b9361bc8618872"
   },
-  "helmet maska 1sh": {
+  "maska 1sh": {
     "Name": "item_equipment_helmet_maska_1sh",
     "ID": "5c091a4e0db834001d5addc8"
   },
-  "helmet maska 1sh killa": {
+  "maska 1sh killa": {
     "Name": "item_equipment_helmet_maska_1sh_killa",
     "ID": "5c0e874186f7745dc7616606"
   },
-  "helmet psh97 jeta": {
+  "psh97 jeta": {
     "Name": "item_equipment_helmet_psh97_jeta",
     "ID": "5c0d2727d174af02a012cf58"
   },
-  "helmet rys t": {
+  "rys t": {
     "Name": "item_equipment_helmet_rys_t",
     "ID": "5f60c74e3b85f6263c145586"
   },
-  "helmet shpm": {
+  "shpm": {
     "Name": "item_equipment_helmet_shpm",
     "ID": "5c08f87c0db8340019124324"
   },
-  "helmet ssh-68": {
+  "ssh-68": {
     "Name": "item_equipment_helmet_ssh-68",
     "ID": "5c06c6a80db834001b735491"
   },
-  "helmet tc800": {
+  "tc800": {
     "Name": "item_equipment_helmet_tc800",
     "ID": "5e4bfc1586f774264f7582d3"
   },
-  "helmet team wendy exfil": {
+  "team wendy exfil": {
     "Name": "item_equipment_helmet_team_wendy_exfil",
     "ID": "5e00c1ad86f774747333222c"
   },
-  "helmet team wendy exfil coyote": {
+  "team wendy exfil coyote": {
     "Name": "item_equipment_helmet_team_wendy_exfil_coyote",
     "ID": "5e01ef6886f77445f643baa4"
   },
-  "helmet vulkan5": {
+  "vulkan5": {
     "Name": "item_equipment_helmet_vulkan5",
     "ID": "5ca20ee186f774799474abc2"
   },
@@ -6835,7 +6835,7 @@
     "Name": "headphones_MSA",
     "ID": "5aa2ba71e5b5b000137b758f"
   },
-  "helmet ops core rac headset": {
+  "ops core rac headset": {
     "Name": "helmet_ops_core_rac_headset",
     "ID": "5a16b9fffcdbcb0176308b34"
   },
