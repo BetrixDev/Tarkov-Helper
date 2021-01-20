@@ -21,7 +21,14 @@ module.exports = {
             let SearchResults = new Array()
             let ItemResults = new Array()
             for (const Item in ItemNames) {
-                if (Item.toLowerCase().includes(SearchItem.toLowerCase())) {
+                let FoundExact = false
+                if (SearchItem.toLocaleLowerCase() === ItemNames[Item].ShortName.toLocaleLowerCase()) {
+                    FoundExact = true
+                    SearchResults = []
+                    SearchResults.push(Item.toLowerCase())
+                    ItemResults = []
+                    ItemResults.push(Item)
+                } else if (Item.toLowerCase().includes(SearchItem.toLowerCase()) && FoundExact === false) {
                     SearchResults.push(Item.toLowerCase())
                     ItemResults.push(Item)
                 }
@@ -54,7 +61,7 @@ module.exports = {
                         { name: "Armor Damage", value: ItemData.ArmorDamage },
                         { name: "Bullet Velocity", value: `${ItemData.InitialSpeed}m/s` }
                     ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
-                } else if (ItemFullName.includes('foregrip_') === true || ItemFullName.includes('silencer_') === true || ItemFullName.includes('handguard_') === true || ItemFullName.includes('stock_') === true) {
+                } else if (ItemFullName.includes('foregrip_') === true || ItemFullName.includes('silencer_') === true || ItemFullName.includes('handguard_') === true || ItemFullName.includes('stock_') === true || ItemFullName.includes('scope_') === true) {
                     SendMessage([
                         { name: "Recoil", value: ItemData.Recoil },
                         { name: "Ergonomics", value: ItemData.Ergonomics },
