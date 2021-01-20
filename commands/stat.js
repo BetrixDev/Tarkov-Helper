@@ -28,7 +28,7 @@ module.exports = {
                     SearchResults = ['FoundExact']
                     ItemResults.push(Item)
                 } else if (Item.toLowerCase().includes(SearchItem.toLowerCase())) {
-                    SearchResults.push(Item.toLowerCase())
+                    SearchResults.push(ItemNames[Item].ShortName)
                     ItemResults.push(Item)
                 }
             }
