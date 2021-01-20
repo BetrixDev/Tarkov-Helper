@@ -68,7 +68,7 @@ module.exports = {
                         { name: "Firerate", value: `${ItemData.bFirerate}RPM` },
                         { name: "Ergonomics", value: ItemData.Ergonomics }
                     ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
-                } else if (ItemFullName.includes('item_equipment_rig_') === true || ItemFullName.includes('rig') === true) {
+                } else if (ItemFullName.includes('rig_') === true || ItemFullName.includes('rig') === true) {
                     let ContainerSize = 0
                     for (Grid in ItemData.Grids) {
                         let GridSize = ItemData.Grids[Grid]._props.cellsH * ItemData.Grids[Grid]._props.cellsV
@@ -76,20 +76,43 @@ module.exports = {
                     }
                     let Size = ItemData.Width * ItemData.Height
                     let SpaceEfficiency = Math.round(10 * (ContainerSize / Size)) / 10
+                    let MessageArray = new Array()
+                    if (ItemData.armorClass === NaN) {
+                        MessageArray = [
+                            { name: "Size", value: Size },
+                            { name: "Container", value: ContainerSize },
+                            { name: "Space Efficiency", value: SpaceEfficiency }
+                        ]
+                    } else {
+                        MessageArray = [
+                            { name: "Size", value: Size, inline: true },
+                            { name: "Container", value: ContainerSize, inline: true },
+                            { name: "Space Efficiency", value: SpaceEfficiency, inline: true },
+                            { name: "Armor Level", value: ItemData.armorClass, inline: true },
+                            { name: "Durability", value: ItemData.MaxDurability, inline: true },
+                            { name: "Effective Durability", value: Math.floor(ItemData.MaxDurability / MaterialDestructibility[ItemData.ArmorMaterial]), inline: true },
+                            { name: "Speed Penalty", value: `${ItemData.speedPenaltyPercent}%`, inline: true },
+                            { name: "Mouse Penalty", value: `${ItemData.mousePenalty}%`, inline: true },
+                            { name: "Ergonomic Penalty", value: ItemData.weaponErgonomicPenalty, inline: true },
+                            { name: "Armor Areas", value: ItemData.armorZone, inline: true },
+                            { name: "Material", value: ItemData.ArmorMaterial, inline: true },
+                            { name: "Weight", value: `${ItemData.Weight}kg`, inline: true }
+                        ]
+                    }
+                    SendMessage(MessageArray, Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
+                } else if (ItemFullName.includes('helmet_') === true) {
                     SendMessage([
-                        { name: "Size", value: Size },
-                        { name: "Container", value: ContainerSize },
-                        { name: "Space Efficiency", value: SpaceEfficiency }
+                        { name: "Armor Level", value: ItemData.armorClass, inline: true },
+                        { name: "Durability", value: ItemData.MaxDurability, inline: true },
+                        { name: "Effective Durability", value: Math.floor(ItemData.MaxDurability / MaterialDestructibility[ItemData.ArmorMaterial]), inline: true },
+                        { name: "Speed Penalty", value: `${ItemData.speedPenaltyPercent}%`, inline: true },
+                        { name: "Mouse Penalty", value: `${ItemData.mousePenalty}%`, inline: true },
+                        { name: "Ergonomic Penalty", value: ItemData.weaponErgonomicPenalty, inline: true },
+                        { name: "Armor Areas", value: ItemData.headSegments, inline: true },
+                        { name: "Material", value: ItemData.ArmorMaterial, inline: true },
+                        { name: "Weight", value: `${ItemData.Weight}kg`, inline: true }
                     ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
-                } else if (ItemFullName.includes('item_equipment_helmet_') === true) {
-                    SendMessage([
-                        { name: "Armor Level", value: ItemData.armorClass },
-                        { name: "Durability", value: ItemData.Durability },
-                        { name: "Effective Durability", value: (ItemData.Durability / MaterialDestructibility[ItemData.ArmorMaterial]) },
-                        { name: "Material", value: ItemData.ArmorMaterial },
-                        { name: "Armor Areas", value: ItemData.headSegments }
-                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
-                } else if (ItemFullName.includes('item_equipment_armor_') === true) {
+                } else if (ItemFullName.includes('armor_') === true) {
                     SendMessage([
                         { name: "Armor Level", value: ItemData.armorClass, inline: true },
                         { name: "Durability", value: ItemData.MaxDurability, inline: true },
@@ -99,7 +122,7 @@ module.exports = {
                         { name: "Ergonomic Penalty", value: ItemData.weaponErgonomicPenalty, inline: true },
                         { name: "Armor Areas", value: ItemData.armorZone, inline: true },
                         { name: "Material", value: ItemData.ArmorMaterial, inline: true },
-                        { name: "Weight", value: ItemData.Weight, inline: true }
+                        { name: "Weight", value: `${ItemData.Weight}kg`, inline: true }
                     ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
                 } else {
                     SendMessage([], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
