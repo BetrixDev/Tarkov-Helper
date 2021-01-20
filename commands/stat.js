@@ -4,6 +4,7 @@ var ItemNames = require('../game_data/itemnames.json')
 var Items = require('../game_data/items.json');
 const urlExist = require('url-exist');
 var Templates = require('../game_data/text/templates.json')
+var MaterialDestructibility = require('../game_data/materialdestructibility.json')
 
 module.exports = {
     name: 'stat',
@@ -79,6 +80,26 @@ module.exports = {
                         { name: "Size", value: Size },
                         { name: "Container", value: ContainerSize },
                         { name: "Space Efficiency", value: SpaceEfficiency }
+                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
+                } else if (ItemFullName.includes('item_equipment_helmet_') === true) {
+                    SendMessage([
+                        { name: "Armor Level", value: ItemData.armorClass },
+                        { name: "Durability", value: ItemData.Durability },
+                        { name: "Effective Durability", value: (ItemData.Durability / MaterialDestructibility[ItemData.ArmorMaterial]) },
+                        { name: "Material", value: ItemData.ArmorMaterial },
+                        { name: "Armor Areas", value: ItemData.headSegments }
+                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
+                } else if (ItemFullName.includes('item_equipment_armor_') === true) {
+                    SendMessage([
+                        { name: "Armor Level", value: ItemData.armorClass, inline: true },
+                        { name: "Durability", value: ItemData.MaxDurability, inline: true },
+                        { name: "Effective Durability", value: Math.floor(ItemData.MaxDurability / MaterialDestructibility[ItemData.ArmorMaterial]), inline: true },
+                        { name: "Speed Penalty", value: `${ItemData.speedPenaltyPercent}%`, inline: true },
+                        { name: "Mouse Penalty", value: `${ItemData.mousePenalty}%`, inline: true },
+                        { name: "Ergonomic Penalty", value: ItemData.weaponErgonomicPenalty, inline: true },
+                        { name: "Armor Areas", value: ItemData.armorZone, inline: true },
+                        { name: "Material", value: ItemData.ArmorMaterial, inline: true },
+                        { name: "Weight", value: ItemData.Weight, inline: true }
                     ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
                 } else {
                     SendMessage([], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
