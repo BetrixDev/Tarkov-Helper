@@ -21,14 +21,13 @@ module.exports = {
             let SearchResults = new Array()
             let ItemResults = new Array()
             for (const Item in ItemNames) {
-                let FoundExact = false
-                if (SearchItem.toLocaleLowerCase() === ItemNames[Item].ShortName.toLocaleLowerCase()) {
-                    FoundExact = true
+                if (SearchResults[0] === 'FoundExact') {
+
+                } else if (SearchItem.toLocaleLowerCase() === ItemNames[Item].ShortName.toLocaleLowerCase()) {
                     SearchResults = []
-                    SearchResults.push(Item.toLowerCase())
-                    ItemResults = []
+                    SearchResults = ['FoundExact']
                     ItemResults.push(Item)
-                } else if (Item.toLowerCase().includes(SearchItem.toLowerCase()) && FoundExact === false) {
+                } else if (Item.toLowerCase().includes(SearchItem.toLowerCase())) {
                     SearchResults.push(Item.toLowerCase())
                     ItemResults.push(Item)
                 }
