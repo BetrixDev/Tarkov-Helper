@@ -23,10 +23,6 @@
  - Return information about the inputted quest
  
  ## Stat Commands
- #### !boss *{BOSS_NAME}* - Coming Soon
- - Returns information about the Scav Boss specified
- #### !dealer *{DEALER_NAME}* - Coming Soon
- - Returns information about the dealer specified
  #### !stats *{ITEM_NAME}* - Coming Soon
  - Returns important values of the item specified
  
