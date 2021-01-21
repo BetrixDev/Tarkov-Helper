@@ -19,6 +19,8 @@
  - Returns the current price of the selected item on the flea market
  #### !xpto *{LVL} {CURRENT LVL}* - **short:** !xp *{LVL} {CURRENT LVL}* - **ex:** !xpto 40 30
  - Returns the amount of Experience needed to go from the Current Level to the Selected Level. Can also use Current Experience to Selected Level for more a accurate calculation
+ #### !quest *{QUEST NAME}* - **short:** !q *{QUEST NAME}* - **ex:** !quest Debut
+ - Return information about the inputted quest
  
  ## Stat Commands
  #### !boss *{BOSS_NAME}* - Coming Soon
