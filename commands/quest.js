@@ -1,4 +1,5 @@
 const { QuestSearchEngine } = require("../command_modules/questsearchengine")
+const { ErrorMessage } = require('../command_modules/errormessage')
 const urlExist = require('url-exist');
 var Settings = require('../settings.json')
 var Quests = require('../game_data/quest.json')
@@ -14,50 +15,28 @@ module.exports = {
         let EngineResult = QuestSearchEngine(args)
         let SearchItem = EngineResult[0]
         let SearchResults = EngineResult[1]
+
         if (SearchItem !== undefined && SearchItem.length > 2) {
-            if (SearchResults.length > 1) {
-                console.log(SearchResults.length)
-                if (SearchResults.length < 16) {
-                    const NewMessage = new Discord.MessageEmbed()
-                        .setColor(Settings.BotSettings.ErrorColor)
-                        .setAuthor('Tarkov Helper', Settings.Images.Author)
-                        .setTitle('Error!')
-                        .setDescription('The search result came back with multiple quests, please be more specific')
-                        .addFields({ name: 'Results:', value: SearchResults })
-                        .setThumbnail(Settings.Images.Thumbnails.Error)
-                    message.channel.send(NewMessage);
-                }
+            if (SearchResults.length > 1 && SearchResults.length < 16) {
+
+                ErrorMessage('The search result came back with multiple quests, please be more specific', message, [{ name: 'Results:', value: SearchResults }])
+
             } else if (SearchResults.length === 1) {
                 let Quest = SearchResults[0]
-                let QuestID = QuestNames[Quest].ID
-                let QuestData = Quests[QuestID]
-                let QuestLocation = "Any"
-                let QuestDescription = Mail[Quests[QuestID].description]
-                let WikiLink = `https://escapefromtarkov.gamepedia.com/${QuestData.name.replace(' ', '_')}`
-                console.log(WikiLink)
-                if (QuestData.location === "any") {
-                    QuestLocation = "Any"
-                } else {
-                    QuestLocation = Locations[QuestData.location].Name
-                }
-                let FieldConditions = new Array()
-                for (const Condition in QuestData.conditions) {
-                    if (QuestData.conditions[Condition] !== '') {
-                        FieldConditions.push(QuestData.conditions[Condition])
-                    }
-                }
+                let QuestData = Quests[QuestNames[Quest].ID]
+
+                let QuestLocation = GetQuestLocation(QuestData)
+                let FieldConditions = GetConditions(QuestData)
+
                 let QuestJsonPos = null
-                for (const QuestPos in QuestJsonData) { if (QuestJsonData[QuestPos]._id === QuestID) { QuestJsonPos = QuestPos } }
+                for (const QuestPos in QuestJsonData) { if (QuestJsonData[QuestPos]._id === QuestNames[Quest].ID) { QuestJsonPos = QuestPos } }
                 let QuestData2 = QuestJsonData[QuestJsonPos]
                 let QuestImageID = QuestData2.image.replace('/files/quest/icon/', '')
-                let ImageThumbnail = 'https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/QuestionLogo128x128.png'
-                if (await urlExist(`https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/game_data/images/${QuestImageID}`)) {
-                    ImageThumbnail = `https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/game_data/images/${QuestImageID}`
-                }
+                let ImageThumbnail = `https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/game_data/images/${QuestImageID}`
                 SendMessage([
                     { name: "Location", value: QuestLocation, inline: true },
                     { name: "Conditions", value: FieldConditions }
-                ], QuestData.name, `${QuestDescription}\n[Wiki Link To Quest](https://escapefromtarkov.gamepedia.com/${QuestData.name.replace(' ', '_')})`, ImageThumbnail, Discord, message)
+                ], QuestData.name, `[Wiki Link To Quest](https://escapefromtarkov.gamepedia.com/${QuestData.name.replace('. ', '_-_').replace(' ', '_').split(' ').join('_')})`, ImageThumbnail, Discord, message)
             }
         }
     }
@@ -73,8 +52,28 @@ function SendMessage(Fields, Name, Description, Thumbnail, Discord, message) {
         },
         fields: Fields,
         footer: {
-            text: Settings.Text.Stats.FooterText,
+            text: Settings.Text.Quest.FooterText,
         },
     }
     message.channel.send({ embed: EmbededMessage })
+}
+
+function GetQuestLocation(QuestData) {
+    let QuestLocation = "Any"
+    if (QuestData.location === "any") {
+        QuestLocation = "Any"
+    } else {
+        QuestLocation = Locations[QuestData.location].Name
+    }
+    return QuestLocation
+}
+
+function GetConditions(QuestData) {
+    let FieldConditions = new Array()
+    for (const Condition in QuestData.conditions) {
+        if (QuestData.conditions[Condition] !== '') {
+            FieldConditions.push(QuestData.conditions[Condition])
+        }
+    }
+    return FieldConditions
 }

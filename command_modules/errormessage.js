@@ -1,14 +1,17 @@
 const Discord = require('discord.js');
 const Responses = require('../settings.json')
 
-const ErrorMessage = (Description, message) => {
-    const NewMessage = new Discord.MessageEmbed()
-        .setColor(Responses.BotSettings.ErrorColor)
-        .setAuthor('Tarkov Helper', Responses.Images.Author)
-        .setTitle('Error!')
-        .setDescription(Description)
-        .setThumbnail(Responses.Images.Thumbnails.Error)
-    message.channel.send(NewMessage);
+const ErrorMessage = (Description, message, Fields) => {
+    const EmbededMessage = {
+        color: Responses.BotSettings.ErrorColor,
+        title: 'Error!',
+        description: Description,
+        thumbnail: {
+            url: Responses.Images.Thumbnails.Error
+        },
+        fields: Fields,
+    }
+    message.channel.send({ embed: EmbededMessage })
 }
 
 exports.ErrorMessage = ErrorMessage;

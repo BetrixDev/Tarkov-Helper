@@ -22,6 +22,9 @@
         },
         "Experience": {
             "FooterText": "Experience data may be slightly out of date"
+        },
+        "Quest": {
+            "FooterText": "Quest data may be slightly out of date"
         }
     },
     "Maps": {
