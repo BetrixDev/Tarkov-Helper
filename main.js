@@ -5,6 +5,7 @@ const fs = require('fs');
 require('dotenv').config();
 const Config = require('./config.json');
 const { GetItems } = require("./command_modules/getdata");
+const { GetQuests } = require("./command_modules/getquests");
 
 
 client.commands = new Discord.Collection();
@@ -15,7 +16,10 @@ for (const file of commandFiles) {
     client.commands.set(command.name, command);
 }
 
-GetItems()
+function CacheData() {
+    GetItems()
+    GetQuests()
+}
 
 client.once('ready', () => {
     console.log('Tarkov Helper Initialized')
@@ -56,7 +60,12 @@ client.on('message', async message => {
         case 'xp':
             client.commands.get('xpto').execute(message, args, Discord);
             break;
+        case 'quest':
+        case 'q':
+            client.commands.get('quest').execute(message, args, Discord);
+            break;
     }
 });
 
+CacheData()
 client.login(process.env.BOT_TOKEN);

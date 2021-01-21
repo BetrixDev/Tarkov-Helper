@@ -1,6 +1,6 @@
-var ItemNames = require('../game_data/itemnames.json')
+var QuestNames = require('../game_data/questnames.json')
 
-const SearchEngine = (Input) => {
+const QuestSearchEngine = (Input) => {
     let SearchItem = ""
     for (let Arg in Input) {
         SearchItem = SearchItem + " " + Input[Arg]
@@ -11,20 +11,20 @@ const SearchEngine = (Input) => {
     if (SearchItem !== undefined && SearchItem.length > 2) {
         let SearchResults = new Array()
         let ItemResults = new Array()
-        for (const Item in ItemNames) {
+        for (const Item in QuestNames) {
             if (SearchResults[0] === 'FoundExact') {
 
-            } else if (SearchItem.toLocaleLowerCase() === ItemNames[Item].ShortName.toLocaleLowerCase()) {
+            } else if (SearchItem.toLocaleLowerCase() === QuestNames[Item].Name.toLocaleLowerCase()) {
                 SearchResults = []
-                SearchResults = ['FoundExact']
+                SearchResults = [QuestNames[Item].Name]
                 ItemResults.push(Item)
             } else if (Item.toLowerCase().includes(SearchItem.toLowerCase())) {
-                SearchResults.push(ItemNames[Item].ShortName)
+                SearchResults.push(QuestNames[Item].Name)
                 ItemResults.push(Item)
             }
         }
-        return [SearchItem, SearchResults, ItemResults]
+        return [SearchItem, SearchResults]
     }
 }
 
-exports.SearchEngine = SearchEngine;
+exports.QuestSearchEngine = QuestSearchEngine;
