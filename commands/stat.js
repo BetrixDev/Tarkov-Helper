@@ -41,6 +41,8 @@ module.exports = {
                 } else if (await urlExist(`https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/game_data/images/${ItemID}.png`)) {
                     ImageThumbnail = `https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/game_data/images/${ItemID}.png`
                 }
+                let WikiLink = `https://escapefromtarkov.gamepedia.com/${Templates[ItemID].Name.replace('. ', '_-_').replace(' ', '_').split(' ').join('_')}`
+                console.log(WikiLink)
                 if (ItemFullName.includes('patron_') === true) {
                     SendMessage([
                         { name: "Damage", value: ItemData.Damage },
@@ -48,19 +50,19 @@ module.exports = {
                         { name: "Armor Damage", value: ItemData.ArmorDamage },
                         { name: "Bullet Velocity", value: `${ItemData.InitialSpeed}m/s` },
                         { name: "Fragmentation Chance", value: parseFloat(ItemData.FragmentationChance * 100).toFixed(2) + "%" }
-                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
+                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message, WikiLink)
                 } else if (ItemFullName.includes('foregrip_') === true || ItemFullName.includes('silencer_') === true || ItemFullName.includes('handguard_') === true || ItemFullName.includes('stock_') === true || ItemFullName.includes('scope_') === true) {
                     SendMessage([
                         { name: "Recoil", value: ItemData.Recoil },
                         { name: "Ergonomics", value: ItemData.Ergonomics },
-                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
+                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message, WikiLink)
                 } else if (ItemFullName.includes('weapon_') === true && ItemData.ItemSound.includes('knife') === false) {
                     SendMessage([
                         { name: "Vertical Recoil", value: ItemData.RecoilForceUp },
                         { name: "Horizontal Recoil", value: ItemData.RecoilForceBack },
                         { name: "Firerate", value: `${ItemData.bFirerate}RPM` },
                         { name: "Ergonomics", value: ItemData.Ergonomics }
-                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
+                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message, WikiLink)
                 } else if (ItemFullName.includes('rig_') === true || ItemFullName.includes('rig') === true) {
                     let ContainerSize = 0
                     for (Grid in ItemData.Grids) {
@@ -92,7 +94,7 @@ module.exports = {
                             { name: "Weight", value: `${ItemData.Weight}kg`, inline: true }
                         ]
                     }
-                    SendMessage(MessageArray, Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
+                    SendMessage(MessageArray, Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message, WikiLink)
                 } else if (ItemFullName.includes('helmet_') === true) {
                     SendMessage([
                         { name: "Armor Level", value: ItemData.armorClass, inline: true },
@@ -104,7 +106,7 @@ module.exports = {
                         { name: "Armor Areas", value: ItemData.headSegments, inline: true },
                         { name: "Material", value: ItemData.ArmorMaterial, inline: true },
                         { name: "Weight", value: `${ItemData.Weight}kg`, inline: true }
-                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
+                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message, WikiLink)
                 } else if (ItemFullName.includes('armor_') === true) {
                     SendMessage([
                         { name: "Armor Level", value: ItemData.armorClass, inline: true },
@@ -116,7 +118,7 @@ module.exports = {
                         { name: "Armor Areas", value: ItemData.armorZone, inline: true },
                         { name: "Material", value: ItemData.ArmorMaterial, inline: true },
                         { name: "Weight", value: `${ItemData.Weight}kg`, inline: true }
-                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
+                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message, WikiLink)
                 } else if (ItemFullName.includes('container_') === true) {
                     let ContainerSize = 0
                     for (Grid in ItemData.Grids) {
@@ -129,13 +131,13 @@ module.exports = {
                         { name: "Size", value: Size, inline: true },
                         { name: "Container", value: ContainerSize, inline: true },
                         { name: "Space Efficiency", value: SpaceEfficiency, inline: true },
-                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
+                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message, WikiLink)
                 } else if (ItemFullName.includes('weapon_') === true && ItemData.ItemSound.includes('knife') === false) {
                     SendMessage([
                         { name: "Stab Damage Slash/Stab", value: `${ItemData.knifeHitSlashDam}/${ItemData.knifeHitStabDam}`, inline: true }
-                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
+                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message, WikiLink)
                 } else {
-                    SendMessage([], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message)
+                    SendMessage([], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message, WikiLink)
                 }
             }
         } else {
@@ -144,11 +146,11 @@ module.exports = {
     }
 }
 
-function SendMessage(Fields, Name, Description, Thumbnail, Discord, message) {
+function SendMessage(Fields, Name, Description, Thumbnail, Discord, message, WikiLink) {
     const EmbededMessage = {
         color: Settings.BotSettings.Color,
         title: Name,
-        description: Description,
+        description: `${Description}\n[Wiki Link To Item](${WikiLink})`,
         thumbnail: {
             url: Thumbnail,
         },
