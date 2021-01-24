@@ -6,6 +6,7 @@ require('dotenv').config();
 const Config = require('./config.json');
 const { GetItems } = require("./command_modules/getdata");
 const { GetQuests } = require("./command_modules/getquests");
+const { GetCalibers } = require("./command_modules/getcalibers");
 
 
 client.commands = new Discord.Collection();
@@ -19,6 +20,7 @@ for (const file of commandFiles) {
 function CacheData() {
     GetItems()
     GetQuests()
+    GetCalibers()
 }
 
 client.once('ready', () => {
@@ -26,7 +28,8 @@ client.once('ready', () => {
 })
 
 client.on('message', async message => {
-    let prefix = GetConfigData(message).Prefix
+    let prefix = "!"
+    if (GetConfigData(message) !== undefined) { prefix = GetConfigData(message).Prefix }
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     const args = message.content.slice(prefix.length).split(/ +/);
@@ -63,6 +66,11 @@ client.on('message', async message => {
         case 'quest':
         case 'q':
             client.commands.get('quest').execute(message, args, Discord);
+            break;
+        case 'caliber':
+        case 'calibre':
+        case 'c':
+            client.commands.get('caliber').execute(message, args, Discord);
             break;
     }
 });

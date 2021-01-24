@@ -25,6 +25,9 @@
         },
         "Quest": {
             "FooterText": "Quest data may be slightly out of date"
+        },
+        "Caliber": {
+            "FooterText": "Ammo data may be slightly out of date"
         }
     },
     "Maps": {
