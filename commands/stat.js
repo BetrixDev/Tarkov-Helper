@@ -42,7 +42,6 @@ module.exports = {
                     ImageThumbnail = `https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/game_data/images/${ItemID}.png`
                 }
                 let WikiLink = `https://escapefromtarkov.gamepedia.com/${Templates[ItemID].Name.replace('. ', '_-_').replace(' ', '_').split(' ').join('_')}`
-                console.log(WikiLink)
                 if (ItemFullName.includes('patron_') === true) {
                     SendMessage([
                         { name: "Damage", value: ItemData.Damage },
@@ -52,6 +51,11 @@ module.exports = {
                         { name: "Fragmentation Chance", value: parseFloat(ItemData.FragmentationChance * 100).toFixed(2) + "%" }
                     ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message, WikiLink)
                 } else if (ItemFullName.includes('foregrip_') === true || ItemFullName.includes('silencer_') === true || ItemFullName.includes('handguard_') === true || ItemFullName.includes('stock_') === true || ItemFullName.includes('scope_') === true) {
+                    SendMessage([
+                        { name: "Recoil", value: ItemData.Recoil },
+                        { name: "Ergonomics", value: ItemData.Ergonomics },
+                    ], Templates[ItemID].Name, ItemDescription, ImageThumbnail, Discord, message, WikiLink)
+                } else if (ItemFullName.includes('mag_') === true && ItemFullName.includes('stock_') === false) {
                     SendMessage([
                         { name: "Recoil", value: ItemData.Recoil },
                         { name: "Ergonomics", value: ItemData.Ergonomics },

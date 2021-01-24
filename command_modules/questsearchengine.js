@@ -14,7 +14,7 @@ const QuestSearchEngine = (Input) => {
         for (const Item in QuestNames) {
             if (SearchResults[0] === 'FoundExact') {
 
-            } else if (SearchItem.toLocaleLowerCase() === QuestNames[Item].Name.toLocaleLowerCase()) {
+            } else if (SearchItem.toLowerCase() === QuestNames[Item].Name.toLowerCase()) {
                 SearchResults = []
                 SearchResults = [QuestNames[Item].Name]
                 ItemResults.push(Item)
