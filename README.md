@@ -6,29 +6,7 @@
  
  - Tarkov Helper is not affiliated with BattleState Games in any way 
  
- # Commands - More Coming Soon!
- **The commmands for the bot include [Refer here to see responses](https://github.com/BetrixEdits/Tarkov-Helper/tree/master/Assets/Reponses)**
- **Most commands feature a shorter "alias" command aswell**
- #### !bitcoinfarm *{GPUS}* - **short:** !bf *{GPUS}* - **ex:** !bitcoinfarm 50
- - Returns the amount of Bitcoins and Roubles made per day from the amount of GPUS selected
- #### !bitcoinfarm compare *{GPUS1} {GPUS2}* - **short:** !bf c *{GPUS} {GPUS2}* - **ex:** !bitcoinfarm compare 1 10
- - Compares the amount of Bitcoin and Roubles made per day between two different configurations of GPUS
- #### !map *{MAP} {SPECIFIC MAP}* - **short:** !m  {MAP} {SPECIFIC MAP} - **ex:** !map customs spawns
- - Returns an image of the map specified
- #### !price *{ITEM}* - Coming Soon
- - Returns the current price of the selected item on the flea market
- #### !xpto *{LVL} {CURRENT LVL}* - **short:** !xp *{LVL} {CURRENT LVL}* - **ex:** !xpto 40 30
- - Returns the amount of Experience needed to go from the Current Level to the Selected Level. Can also use Current Experience to Selected Level for more a accurate calculation
- #### !quest *{QUEST NAME}* - **short:** !q *{QUEST NAME}* - **ex:** !quest Debut
- - Return information about the inputted quest
- 
- ## Stat Commands
- #### !stats *{ITEM_NAME}* - Coming Soon
- - Returns important values of the item specified
- 
- ## Admin Commands
- #### !prefixset *{PREFIX}* - **ex:** !prefixset #
- - Customize the prefix that the bot will respond to in order to help with conflicting commands and other bots or just preference
+ # [Commands - More Coming Soon!](https://github.com/BetrixEdits/Tarkov-Helper/wiki/Commands)
 
 # Deployment
 [**Click Here**](https://discord.com/oauth2/authorize?client_id=797600238449590334&scope=bot&permissions=511040) then **select a server** and hit **continue** to be able to add Tarkov Helper to your server.
