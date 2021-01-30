@@ -1,3 +1,5 @@
+let Start = new Date()
+
 // Load required modules
 const Discord = require('discord.js');
 const client = new Discord.Client();
@@ -8,6 +10,7 @@ require('dotenv').config();
 // load command_modules
 const { GetConfigData } = require("./command_modules/getconfigdata")
 const { GetCalibers } = require("./command_modules/getcalibers");
+const { start } = require('repl');
 
 
 // Load all commands
@@ -25,7 +28,8 @@ GetCalibers()
 
 
 client.once('ready', () => {
-    console.log('Tarkov Helper Initialized')
+    let End = new Date()
+    console.log(`Tarkov Helper Initialized in ${End.getTime() - Start.getTime()}ms`)
 })
 
 
@@ -41,39 +45,39 @@ client.on('message', async message => {
     switch (command) {
         case 'help':
         case 'h':
-            client.commands.get('help').execute(message, args, Discord); // DOESNT NEED FIXING BUT JUST UPDATING
+            client.commands.get('help').execute(message, args, Discord);
             break;
         case 'bitcoinfarm':
         case 'bf':
-            client.commands.get('bitcoinfarm').execute(message, args, Discord); // CLEAN UP CODE
+            client.commands.get('bitcoinfarm').execute(message, args, Discord);
             break;
         case 'map':
         case 'm':
-            client.commands.get('map').execute(message, args, Discord); // CLEAN UP CODE
+            client.commands.get('map').execute(message, args, Discord);
             break;
         case 'price':
         case 'p':
-            //client.commands.get('price').execute(message, args, Discord); //CANT DO YET
+            //client.commands.get('price').execute(message, args, Discord);
             break;
         case 'prefixset':
-            client.commands.get('prefix').execute(message, args, Discord); // MAKE PREFIX MORE EFFICIENT AND WORK BETTER
+            client.commands.get('prefix').execute(message, args, Discord);
             break;
         case 'stats':
         case 's':
-            client.commands.get('stat').execute(message, args, Discord); // USE NEW CHACHED FILE DATA FOR STATS
+            client.commands.get('stat').execute(message, args, Discord);
             break;
         case 'xpto':
         case 'xp':
-            client.commands.get('xpto').execute(message, args, Discord); // CLEAN UP CODE
+            client.commands.get('xpto').execute(message, args, Discord);
             break;
         case 'quest':
         case 'q':
-            client.commands.get('quest').execute(message, args, Discord); // USE NEW CHACHED FILE DATA FOR QUESTS
+            client.commands.get('quest').execute(message, args, Discord);
             break;
         case 'caliber':
         case 'calibre':
         case 'c':
-            client.commands.get('caliber').execute(message, args, Discord); // CLEAN UP CODE / FIND A BETTER WAY TO DISPLAY DATA
+            client.commands.get('caliber').execute(message, args, Discord);
             break;
     }
 });

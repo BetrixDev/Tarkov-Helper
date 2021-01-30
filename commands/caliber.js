@@ -10,7 +10,6 @@ const Settings = require("../settings.json")
 
 // Load game data
 const AmmoData = JSON.parse(fs.readFileSync('./game_data/ammo.json'))
-const ItemData = JSON.parse(fs.readFileSync('./game_data/items.json'))
 const ItemFromID = JSON.parse(fs.readFileSync('./game_data/itemfromid.json'))
 
 module.exports = {
@@ -18,6 +17,7 @@ module.exports = {
     description: "",
     execute(message, args, Discord) {
 
+        // Get engine result
         let SearchResults = CaliberSearchEngine(args)
 
         if (SearchResults !== undefined) {
@@ -29,32 +29,37 @@ module.exports = {
 
                 let Caliber = SearchResults[0]
                 let DataCaliber = "Caliber" + Caliber
-                let CaliberData = new Array()
 
+                // Create arrays for message
+                let Names = new Array()
+                let Damages = new Array()
+                let Penetrations = new Array()
+
+                // Loop through all ammo in ammo.json
                 for (const Patron in AmmoData) {
 
                     let Ammo = AmmoData[Patron]
 
                     if (Ammo._props.Caliber === DataCaliber) {
 
-                        let UnformattedName = ItemData[ItemFromID[Ammo._id].Name].Name.split('mm').pop()
-                        let FormattedName = UnformattedName.substring(1);
-                        let AmmoEntry = [{ name: FormattedName, value: "\u200B", inline: true },
-                            { name: Ammo._props.Damage, value: "\u200B", inline: true },
-                            { name: Ammo._props.PenetrationPower, value: "\u200B", inline: true }
-                        ]
-
-                        CaliberData.push(AmmoEntry)
+                        // Add data to arrays
+                        Names.push(ItemFromID[Ammo._id].Name)
+                        Damages.push(Ammo._props.Damage)
+                        Penetrations.push(Ammo._props.PenetrationPower)
 
                     }
                 }
 
-                let MessageArray = [{ name: "Name", value: "\u200B", inline: true }, { name: "Damage", value: "\u200B", inline: true }, { name: "Penetration", value: "\u200B", inline: true }]
-                for (const Ammo in CaliberData) {
-                    MessageArray.push(CaliberData[Ammo])
-                }
+                // Convert all values in arrays to one string with line breaks
+                let NameString = `${Names.join('\n')}`
+                let DamageString = `${Damages.join('\n')}`
+                let PenetrationString = `${Penetrations.join('\n')}`
 
-                SendMessage(MessageArray, Caliber, Discord, message)
+                // Send message function
+                SendMessage([{ name: 'Name:', value: NameString, inline: true },
+                    { name: 'Damage:', value: DamageString, inline: true },
+                    { name: 'Penetration:', value: PenetrationString, inline: true }
+                ], Caliber, Discord, message)
 
             }
         }
