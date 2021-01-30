@@ -139,6 +139,9 @@ module.exports = {
                     SendMessage([
                         { name: "Stab Damage Slash/Stab", value: `${ItemData.SlashDamage}/${ItemData.StabDamage}`, inline: true }
                     ], Item, ItemDescription, ImageThumbnail, Discord, message, WikiLink)
+                } else if (ItemFullName.includes('nvg_') === true && ItemJsonData[Item].ItemSound.includes('gear_goggles') === true) {
+                    let Picture = `https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/nvg_ingame/${ItemID}.png`
+                    SendMessage([], Item, ItemDescription, ImageThumbnail, Discord, message, WikiLink, Picture)
                 } else {
                     SendMessage([], Item, ItemDescription, ImageThumbnail, Discord, message, WikiLink)
                 }
@@ -149,7 +152,7 @@ module.exports = {
     }
 }
 
-function SendMessage(Fields, Name, Description, Thumbnail, Discord, message, WikiLink) {
+function SendMessage(Fields, Name, Description, Thumbnail, Discord, message, WikiLink, Picture) {
     const EmbededMessage = {
         color: Settings.BotSettings.Color,
         title: Name,
@@ -160,6 +163,9 @@ function SendMessage(Fields, Name, Description, Thumbnail, Discord, message, Wik
         fields: Fields,
         footer: {
             text: Settings.Text.Stats.FooterText,
+        },
+        image: {
+            url: Picture,
         },
     }
     message.channel.send({ embed: EmbededMessage })
