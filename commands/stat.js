@@ -47,6 +47,7 @@ module.exports = {
                 let ImageThumbnail = ItemJsonData[Item].ImageLink
                 let WikiLink = ItemJsonData[Item].WikiLink
 
+
                 // Get and Send Item Specific Data
                 if (ItemFullName.includes('patron_') === true) {
                     let MessageArray = [
@@ -70,7 +71,7 @@ module.exports = {
                         { name: "Recoil", value: ItemData.Recoil },
                         { name: "Ergonomics", value: ItemData.Ergonomics },
                     ], Item, ItemDescription, ImageThumbnail, Discord, message, WikiLink)
-                } else if (ItemFullName.includes('weapon_') === true && ItemData.ItemSound.includes('knife') === false) {
+                } else if (ItemFullName.includes('weapon_') === true && ItemJsonData[Item].ItemSound.includes('weap') === true) {
                     SendMessage([
                         { name: "Vertical Recoil", value: ItemData.VeritcalRecoil, inline: true },
                         { name: "Horizontal Recoil", value: ItemData.HorizontalRecoil, inline: true },
@@ -134,7 +135,7 @@ module.exports = {
                         { name: "Container", value: ItemData.ContainerSize, inline: true },
                         { name: "Space Efficiency", value: ItemData.SpaceEfficiency, inline: true },
                     ], Item, ItemDescription, ImageThumbnail, Discord, message, WikiLink)
-                } else if (ItemFullName.includes('weapon_') === true && ItemData.ItemSound.includes('knife') === true) {
+                } else if (ItemFullName.includes('weapon_') === true && ItemJsonData[Item].ItemSound.includes('knife') === true) {
                     SendMessage([
                         { name: "Stab Damage Slash/Stab", value: `${ItemData.SlashDamage}/${ItemData.StabDamage}`, inline: true }
                     ], Item, ItemDescription, ImageThumbnail, Discord, message, WikiLink)
