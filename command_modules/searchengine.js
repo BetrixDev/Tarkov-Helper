@@ -1,6 +1,8 @@
-var ItemNames = require('../game_data/itemnames.json')
+var ItemNames = require('../game_data/items.json')
 
 const SearchEngine = (Input) => {
+
+    // Convert Input To A Searchable String
     let SearchItem = ""
     for (let Arg in Input) {
         SearchItem = SearchItem + " " + Input[Arg]
@@ -8,6 +10,9 @@ const SearchEngine = (Input) => {
     let SearchItemArray = SearchItem.split(" ")
     SearchItemArray.shift()
     SearchItem = SearchItemArray.join(" ")
+
+
+    // Get A Search Result
     if (SearchItem !== undefined && SearchItem.length > 2) {
         let SearchResults = new Array()
         let ItemResults = new Array()
@@ -23,7 +28,9 @@ const SearchEngine = (Input) => {
                 ItemResults.push(Item)
             }
         }
+
         return [SearchItem, SearchResults, ItemResults]
+
     }
 }
 
