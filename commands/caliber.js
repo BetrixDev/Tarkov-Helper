@@ -59,14 +59,14 @@ module.exports = {
                 SendMessage([{ name: 'Name:', value: NameString, inline: true },
                     { name: 'Damage:', value: DamageString, inline: true },
                     { name: 'Penetration:', value: PenetrationString, inline: true }
-                ], Caliber, Discord, message)
+                ], Caliber, message)
 
             }
         }
     }
 }
 
-function SendMessage(Fields, Name, Discord, message) {
+function SendMessage(Fields, Name, message) {
     const EmbededMessage = {
         color: Settings.BotSettings.Color,
         title: Name,

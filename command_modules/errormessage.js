@@ -1,4 +1,3 @@
-const Discord = require('discord.js');
 const Responses = require('../settings.json')
 
 const ErrorMessage = (Description, message, Fields) => {
