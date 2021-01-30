@@ -38,7 +38,7 @@ module.exports = {
                 SendMessage([
                     { name: "Location", value: QuestLocation, inline: true },
                     { name: "Conditions", value: FieldConditions }
-                ], QuestData.name, `[Wiki Link To Quest](${QuestData.WikiLink})`, ImageThumbnail, Discord, message)
+                ], QuestData.Name, `[Wiki Link To Quest](${QuestData.WikiLink})`, ImageThumbnail, Discord, message)
 
             }
         }
