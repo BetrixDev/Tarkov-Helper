@@ -1,14 +1,29 @@
-const Config = require('../config.json')
+// Load modules
+const fs = require('fs')
+
+// Load data
+let Config = JSON.parse(fs.readFileSync('./config.json'))
 
 const GetConfigData = (message) => {
     if (message.guild !== null) {
         if (Config.hasOwnProperty(message.guild.id)) {
+
             // Already data
+
         } else {
-            var NewJsonEntry = Config.Default
-            Config[message.guild.id] = NewJsonEntry
+
+            // Create new config file
+            let UpdateConfig = Config
+            var NewJsonEntry = UpdateConfig.Default
+            UpdateConfig[message.guild.id] = NewJsonEntry
+
+            // Write new data
+            fs.writeFileSync('./config.json', JSON.stringify(UpdateConfig, null, 2))
+
         }
+
         return Config[message.guild.id]
+
     }
 }
 
