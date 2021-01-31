@@ -10,7 +10,6 @@ require('dotenv').config();
 // load command_modules
 const { GetConfigData } = require("./command_modules/getconfigdata")
 const { GetCalibers } = require("./command_modules/getcalibers");
-const { start } = require('repl');
 
 
 // Load all commands
