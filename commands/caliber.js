@@ -40,7 +40,7 @@ module.exports = {
 
                     let Ammo = AmmoData[Patron]
 
-                    if (Ammo._props.Caliber === DataCaliber) {
+                    if (Ammo._props.Caliber === DataCaliber && Ammo._props.ItemSound.includes('generic') === false) {
 
                         // Add data to arrays
                         Names.push(ItemFromID[Ammo._id].Name)
@@ -50,10 +50,19 @@ module.exports = {
                     }
                 }
 
+                // Sorting
+                let NonSortedArray = new Array()
+
+                for (const Ammo in Names) {
+                    NonSortedArray.push({ Name: Names[Ammo], Damage: Damages[Ammo], Penetration: Penetrations[Ammo] })
+                }
+
+                let SortedValues = SortValues(NonSortedArray, 1)
+
                 // Convert all values in arrays to one string with line breaks
-                let NameString = `${Names.join('\n')}`
-                let DamageString = `${Damages.join('\n')}`
-                let PenetrationString = `${Penetrations.join('\n')}`
+                let NameString = `${SortedValues[0].join('\n')}`
+                let DamageString = `${SortedValues[1].join('\n')}`
+                let PenetrationString = `${SortedValues[2].join('\n')}`
 
                 // Send message function
                 SendMessage([{ name: 'Name:', value: NameString, inline: true },
@@ -76,4 +85,29 @@ function SendMessage(Fields, Name, message) {
         },
     }
     message.channel.send({ embed: EmbededMessage })
+}
+
+function SortValues(Values, Type) {
+
+    const Types = ['Damage', 'Penetration']
+    let InputArray = Values
+
+    InputArray.sort(function(a, b) {
+        return b[Types[Type]] - a[Types[Type]]
+    })
+
+    let OutputNames = new Array()
+    let OutputDamages = new Array()
+    let OutputPenetrations = new Array()
+
+    for (const Ammo in InputArray) {
+
+        OutputNames.push(InputArray[Ammo].Name)
+        OutputDamages.push(InputArray[Ammo].Damage)
+        OutputPenetrations.push(InputArray[Ammo].Penetration)
+
+    }
+
+    return [OutputNames, OutputDamages, OutputPenetrations]
+
 }
