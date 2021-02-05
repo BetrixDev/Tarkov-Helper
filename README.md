@@ -8,7 +8,7 @@
  
  ## [Commands - More Coming Soon!](https://github.com/BetrixEdits/Tarkov-Helper/wiki/Commands)
 
-# Deployment
+# Adding Bot To Server
 [**Click Here**](https://discord.com/oauth2/authorize?client_id=797600238449590334&scope=bot&permissions=511040) then **select a server** and hit **continue** to be able to add Tarkov Helper to your server.
 ![TarkovHelperBanner](https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Media/DiscordBotConnection.png?raw=true)
 
