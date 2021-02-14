@@ -4,7 +4,8 @@
 **Tarkov Helper** is a Discord bot aimed to give users all kinds of information in an easy and read and use format. <br /> <br />
  - Since most players use Discord as a way to communicate, having a discord bot to access information within the game will help with having to not open a browser and searching which will take more resources and time with the potential of lag in-game instead, now by typing in a command in a Discord server/channel, a simple alt-tab to an already open program will be much more efficient. Aswell as having extra useful features such as a **Bitcoin Farm Calculator**
  
- - Tarkov Helper is not affiliated with BattleState Games in any way 
+ - Tarkov Helper is not associated with BattleState Games in any way 
+ - Any use of Logos refering to Escape From Tarkov or in-game assets are owned by BattleState Games
  
  ## [Commands - More Coming Soon!](https://github.com/BetrixEdits/Tarkov-Helper/wiki/Commands)
 
