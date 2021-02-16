@@ -10,12 +10,12 @@ module.exports = {
             let XPGap = (ExperienceData[args[0]].Total - ExperienceData[args[1]].Total).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
             SendMessage([
                 { name: "Experience Gap", value: XPGap },
-            ], Discord, message)
+            ], message)
         } else if (args[0] < 71 && args[1] > 999 && args[0] !== args[1]) {
             let XPGap = (ExperienceData[args[0]].Total - args[1]).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
             SendMessage([
                 { name: "Experience Gap", value: XPGap },
-            ], Discord, message)
+            ], message)
         } else if (args[0] === args[1]) {
             ErrorMessage('Both inputs are equal, nothing to compare', message)
         } else if (args[0] > 70 && args[0] < 1000 || args[1] > 70 && args[1] < 1000) {
@@ -24,7 +24,7 @@ module.exports = {
     }
 }
 
-function SendMessage(Fields, Discord, message) {
+function SendMessage(Fields, message) {
     const EmbededMessage = {
         color: Settings.BotSettings.Color,
         title: 'Experience Calculator',

@@ -3,3 +3,4 @@ node_modules/
 .gitattributes
 Assets/ProjectFiles
 PlannedFeatures.txt
+config.json

@@ -1,7 +1,8 @@
 {
     "BotSettings": {
         "Color": "#cecdc3",
-        "ErrorColor": "#ff2424"
+        "ErrorColor": "#ff2424",
+        "NotifyColor": "#005eff"
     },
     "Images": {
         "Author": "https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Media/Logo50x50SmallText.png?raw=true",
@@ -28,10 +29,13 @@
         },
         "Caliber": {
             "FooterText": "Ammo data may be slightly out of date"
+        },
+        "Notify" : {
+            "FooterText": "Trader icon from wiki"
         }
     },
     "Maps": {
 
     },
-    "PossiblePrefixs": ["!", "@", "#", "%", "&", "*", "th", "!t"]
+    "PossiblePrefixs": ["!", "@", "#", "%", "&", "*", "th", "!t", "!th"]
 }

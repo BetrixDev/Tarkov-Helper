@@ -1,6 +1,6 @@
 {
     "Default": {
-        "Prefix": "!",
-        "ShortCommands": true
+        "Prefix": "!th",
+        "ShortCommands": false
     }
 }

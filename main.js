@@ -1,15 +1,20 @@
 let Start = new Date()
 
 // Load required modules
-const Discord = require('discord.js');
-const client = new Discord.Client();
-const fs = require('fs');
+var Discord = require('discord.js');
+var client = new Discord.Client();
+var cron = require('node-cron')
+var fs = require('fs');
 require('dotenv').config();
 
 
 // load command_modules
-const { GetConfigData } = require("./command_modules/getconfigdata")
-const { GetCalibers } = require("./command_modules/getcalibers");
+//var { GetConfigData } = require("./command_modules/getconfigdata")
+var { GetCalibers } = require("./command_modules/getcalibers");
+var { NotifyMessage } = require("./command_modules/notifymessage")
+
+// Load data
+let ResetData = JSON.parse(fs.readFileSync('./resetdata.json'))
 
 
 // Load all commands
@@ -34,12 +39,21 @@ client.once('ready', () => {
 
 // Command handler
 client.on('message', async message => {
-    let prefix = "!"
-    if (GetConfigData(message) !== undefined) { prefix = GetConfigData(message).Prefix }
+    let prefix = "!th"
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     const args = message.content.slice(prefix.length).split(/ +/);
+    // Fix for having a space between prefix and command just quality of life change
+    if (args[0] === '') { args.shift() }
+
     const command = args.shift().toLowerCase();
+
+    /*
+    // Using if statement since has multiple conditions
+    if (command === "notify" && message.guild === null) {
+        client.commands.get('notify').execute(message, args, Discord);
+    }
+    */
 
     switch (command) {
         case 'help':
@@ -54,10 +68,12 @@ client.on('message', async message => {
         case 'm':
             client.commands.get('map').execute(message, args, Discord);
             break;
+            /*
         case 'price':
         case 'p':
-            //client.commands.get('price').execute(message, args, Discord);
+            client.commands.get('price').execute(message, args, Discord);
             break;
+            */
         case 'prefixset':
             client.commands.get('prefix').execute(message, args, Discord);
             break;
@@ -78,6 +94,13 @@ client.on('message', async message => {
         case 'c':
             client.commands.get('caliber').execute(message, args, Discord);
             break;
+            /*
+        case 'weaponbuilder':
+        case 'weaponbuild':
+        case 'wb':
+            client.commands.get('weaponbuilder').execute(message, args, Discord);
+            break;
+            */
     }
 });
 
