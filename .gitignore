@@ -1,6 +1,2 @@
+.env
 node_modules/
-*.env
-.gitattributes
-Assets/ProjectFiles
-PlannedFeatures.txt
-config.json

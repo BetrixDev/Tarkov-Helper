@@ -1,20 +1,15 @@
 {
-    "name": "discordtarkovbot",
-    "version": "1.0.0",
-    "description": "",
-    "main": "main.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "Betrix",
-    "license": "ISC",
-    "dependencies": {
-        "axios": "^0.21.1",
-        "discord.js": "^12.5.1",
-        "dotenv": "^8.2.0",
-        "node-cron": "^2.0.3",
-        "table": "^6.0.7",
-        "toad-scheduler": "^1.0.2",
-        "url-exist": "^2.0.2"
-    }
+  "name": "tarkov-lfg-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "dotenv": "^8.2.0"
+  }
 }
