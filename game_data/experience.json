@@ -1,0 +1,282 @@
+{
+    "1": {
+        "FromPrevious": 0,
+        "Total": 0
+    },
+    "2": {
+        "FromPrevious": 1000,
+        "Total": 1000
+    },
+    "3": {
+        "FromPrevious": 2743,
+        "Total": 3743
+    },
+    "4": {
+        "FromPrevious": 3999,
+        "Total": 7742
+    },
+    "5": {
+        "FromPrevious": 5256,
+        "Total": 12998
+    },
+    "6": {
+        "FromPrevious": 6494,
+        "Total": 19492
+    },
+    "7": {
+        "FromPrevious": 7658,
+        "Total": 27150
+    },
+    "8": {
+        "FromPrevious": 8851,
+        "Total": 36001
+    },
+    "9": {
+        "FromPrevious": 10025,
+        "Total": 46026
+    },
+    "10": {
+        "FromPrevious": 11098,
+        "Total": 57124
+    },
+    "11": {
+        "FromPrevious": 12226,
+        "Total": 69350
+    },
+    "12": {
+        "FromPrevious": 13336,
+        "Total": 82686
+    },
+    "13": {
+        "FromPrevious": 16814,
+        "Total": 99500
+    },
+    "14": {
+        "FromPrevious": 19924,
+        "Total": 119424
+    },
+    "15": {
+        "FromPrevious": 23053,
+        "Total": 142477
+    },
+    "16": {
+        "FromPrevious": 26283,
+        "Total": 169760
+    },
+    "17": {
+        "FromPrevious": 29219,
+        "Total": 197979
+    },
+    "18": {
+        "FromPrevious": 32045,
+        "Total": 230024
+    },
+    "19": {
+        "FromPrevious": 34466,
+        "Total": 264490
+    },
+    "20": {
+        "FromPrevious": 37044,
+        "Total": 301534
+    },
+    "21": {
+        "FromPrevious": 39162,
+        "Total": 340696
+    },
+    "22": {
+        "FromPrevious": 41492,
+        "Total": 382188
+    },
+    "23": {
+        "FromPrevious": 44002,
+        "Total": 426190
+    },
+    "24": {
+        "FromPrevious": 46900,
+        "Total": 473090
+    },
+    "25": {
+        "FromPrevious": 51490,
+        "Total": 524580
+    },
+    "26": {
+        "FromPrevious": 56080,
+        "Total": 580660
+    },
+    "27": {
+        "FromPrevious": 60670,
+        "Total": 641330
+    },
+    "28": {
+        "FromPrevious": 65260,
+        "Total": 706590
+    },
+    "29": {
+        "FromPrevious": 69850,
+        "Total": 776440
+    },
+    "30": {
+        "FromPrevious": 74440,
+        "Total": 860880
+    },
+    "31": {
+        "FromPrevious": 79030,
+        "Total": 929910
+    },
+    "32": {
+        "FromPrevious": 83620,
+        "Total": 1013530
+    },
+    "33": {
+        "FromPrevious": 90964,
+        "Total": 110449490
+    },
+    "34": {
+        "FromPrevious": 98308,
+        "Total": 1202802
+    },
+    "35": {
+        "FromPrevious": 105652,
+        "Total": 1308454
+    },
+    "36": {
+        "FromPrevious": 112996,
+        "Total": 1421450
+    },
+    "37": {
+        "FromPrevious": 120340,
+        "Total": 1541790
+    },
+    "38": {
+        "FromPrevious": 127684,
+        "Total": 1669474
+    },
+    "39": {
+        "FromPrevious": 135028,
+        "Total": 1804502
+    },
+    "40": {
+        "FromPrevious": 142372,
+        "Total": 1946874
+    },
+    "41": {
+        "FromPrevious": 149716,
+        "Total": 2096590
+    },
+    "42": {
+        "FromPrevious": 157060,
+        "Total": 2253650
+    },
+    "43": {
+        "FromPrevious": 167158,
+        "Total": 2420808
+    },
+    "44": {
+        "FromPrevious": 177256,
+        "Total": 2598064
+    },
+    "45": {
+        "FromPrevious": 187354,
+        "Total": 2785418
+    },
+    "46": {
+        "FromPrevious": 197452,
+        "Total": 2982870
+    },
+    "47": {
+        "FromPrevious": 207550,
+        "Total": 3190420
+    },
+    "48": {
+        "FromPrevious": 217648,
+        "Total": 3408068
+    },
+    "49": {
+        "FromPrevious": 227746,
+        "Total": 3635814
+    },
+    "50": {
+        "FromPrevious": 237844,
+        "Total": 3873658
+    },
+    "51": {
+        "FromPrevious": 247942,
+        "Total": 4121600
+    },
+    "52": {
+        "FromPrevious": 258040,
+        "Total": 4379640
+    },
+    "53": {
+        "FromPrevious": 271810,
+        "Total": 4651450
+    },
+    "54": {
+        "FromPrevious": 285580,
+        "Total": 4937030
+    },
+    "55": {
+        "FromPrevious": 299350,
+        "Total": 5236380
+    },
+    "56": {
+        "FromPrevious": 313120,
+        "Total": 5549500
+    },
+    "57": {
+        "FromPrevious": 323450,
+        "Total": 5872950
+    },
+    "58": {
+        "FromPrevious": 362111,
+        "Total": 6235061
+    },
+    "59": {
+        "FromPrevious": 369536,
+        "Total": 6604597
+    },
+    "60": {
+        "FromPrevious": 386978,
+        "Total": 6991575
+    },
+    "61": {
+        "FromPrevious": 407174,
+        "Total": 7398749
+    },
+    "62": {
+        "FromPrevious": 430124,
+        "Total": 7828873
+    },
+    "63": {
+        "FromPrevious": 457664,
+        "Total": 8286537
+    },
+    "64": {
+        "FromPrevious": 494384,
+        "Total": 8780921
+    },
+    "65": {
+        "FromPrevious": 549464,
+        "Total": 9330385
+    },
+    "66": {
+        "FromPrevious": 622904,
+        "Total": 9953289
+    },
+    "67": {
+        "FromPrevious": 760604,
+        "Total": 10713893
+    },
+    "68": {
+        "FromPrevious": 1036004,
+        "Total": 11749897
+    },
+    "69": {
+        "FromPrevious": 1449104,
+        "Total": 13199001
+    },
+    "70": {
+        "FromPrevious": 10000000,
+        "Total": 23199001
+    }
+}
