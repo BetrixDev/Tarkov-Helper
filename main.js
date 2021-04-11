@@ -1,3 +1,5 @@
+let Start = new Date()
+
 const DiscordJS = require('discord.js')
 const fs = require('fs')
 require('dotenv').config()
@@ -7,9 +9,7 @@ const client = new DiscordJS.Client()
 
 const getApp = (guildID) => {
     const app = client.api.applications(client.user.id)
-    if (guildID) {
-        app.guilds(guildID)
-    }
+    if (guildID) { app.guilds(guildID) }
     return app
 }
 
@@ -20,30 +20,17 @@ for (const File of CommandFiles) {
 }
 
 client.on('ready', async() => {
-    console.log('Bot Ready')
+    let End = new Date()
+    console.log(`Tarkov Helper Initialized in ${End.getTime() - Start.getTime()}ms`)
 
     const commands = await getApp(guildID).commands.get()
         //console.log(commands)
 
-    await getApp(guildID).commands.post({
-        data: {
-            name: 'bitcoinfarm',
-            description: 'Calculate to amount of money obtained from a certain amount of Graphics Cards',
-            options: [{
-                    name: 'gpus',
-                    description: 'Amount of GPUS to calculate with',
-                    required: true,
-                    type: 4
-                },
-                {
-                    name: "compare-gpus",
-                    description: 'Use this to display the difference between two different GPU amount',
-                    required: false,
-                    type: 4
-                }
-            ]
-        }
-    })
+    for (const File of CommandFiles) {
+        let FormatFile = File.split('.')[0]
+        let CommandData = require(`./commands/${FormatFile}`)['CommandSettings']
+        await getApp(guildID).commands.post(CommandData)
+    }
 
     client.ws.on('INTERACTION_CREATE', async(interaction) => {
         const { name, options } = interaction.data
@@ -61,7 +48,7 @@ client.on('ready', async() => {
 
         // If command exists locally
         if (BotCommands.includes(command)) {
-            const message = require(`./commands/${command}`)[command](DiscordJS, args)
+            const message = require(`./commands/${command}`)['CommandFunction'](DiscordJS, args)
             Reply(interaction, message)
         } else {
             Reply(interaction, 'This command has no logic yet')
