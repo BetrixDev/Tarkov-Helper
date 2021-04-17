@@ -2,7 +2,7 @@
 const CommandSettings = {
     data: {
         name: 'xpto',
-        description: 'Calculate the experience it will take to get to a certain level',
+        description: 'Calculate the experience needed to reach a certain level',
         options: [{
                 name: 'current',
                 description: 'Current Level. Can also be Experience Amount',
@@ -19,12 +19,13 @@ const CommandSettings = {
     }
 }
 
+const DiscordJS = require('discord.js')
 const Settings = require('../settings.json')
 const ExperienceData = require('../game_data/experience.json')
 const { ErrorMessage } = require('../command_modules/errormessage')
 
 // Command Functions
-const xpto = (DiscordJS, args) => {
+const CommandFunction = (args) => {
     let Current = args['current']
     let End = args['end']
 
@@ -55,5 +56,5 @@ const xpto = (DiscordJS, args) => {
     }
 }
 
-exports.CommandFunction = xpto
+exports.CommandFunction = CommandFunction
 exports.CommandSettings = CommandSettings

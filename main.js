@@ -48,7 +48,7 @@ client.on('ready', async() => {
 
         // If command exists locally
         if (BotCommands.includes(command)) {
-            const message = require(`./commands/${command}`)['CommandFunction'](DiscordJS, args)
+            const message = require(`./commands/${command}`)['CommandFunction'](args)
             Reply(interaction, message)
         } else {
             Reply(interaction, 'This command has no logic yet')

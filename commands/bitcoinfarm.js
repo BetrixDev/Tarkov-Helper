@@ -19,17 +19,13 @@ const CommandSettings = {
     }
 }
 
+const DiscordJS = require('discord.js')
 const Settings = require('../settings.json')
+const { BitcoinFarmCalc } = require('../classes/BitcoinFarmCalc')
 
 // Command Functions
-class BitcoinFarmCalc {
-    constructor(amount) {
-        this.BTCPerDay = (1 / ((110000 / (1 + (amount - 1) * 0.044225)) / 3600)) * 24
-        this.RUBPerDay = this.BTCPerDay * 650000 // Using 650,000 as a placeholder until I use an actual price API
-    }
-}
 
-const bitcoinfarm = (DiscordJS, args) => {
+const CommandFunction = (args) => {
     const Calculation = new BitcoinFarmCalc(args['gpus'])
 
     if (args['compare-gpus'] === undefined) {
@@ -39,7 +35,7 @@ const bitcoinfarm = (DiscordJS, args) => {
             .setThumbnail(Settings.Images.Thumbnails['BitcoinFarm'])
             .addFields({
                 name: "Bitcoin Price",
-                value: '₽650,000'
+                value: '₽480,000'
             }, {
                 name: "Amount of GPUS",
                 value: args['gpus']
@@ -73,5 +69,5 @@ const bitcoinfarm = (DiscordJS, args) => {
     }
 }
 
-exports.CommandFunction = bitcoinfarm
+exports.CommandFunction = CommandFunction
 exports.CommandSettings = CommandSettings
