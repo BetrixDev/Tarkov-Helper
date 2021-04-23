@@ -30,6 +30,7 @@ const CommandFunction = async(args) => {
 
     if (Length === 1) {
         let PriceData = await GetPrice(ItemFromName[Item[0]].ID)
+        console.log(PriceData)
 
         if (PriceData !== 'ERROR') {
             return new MessageEmbed()
@@ -45,7 +46,7 @@ const CommandFunction = async(args) => {
                     inline: true
                 }, {
                     name: 'Flea Market Fee',
-                    value: FormatNumber(CalcFee(PriceData.avg24hPrice, (PriceData.avg24hPrice - 1))) + '₽ per one',
+                    value: FormatNumber(CalcFee(PriceData.basePrice, (PriceData.avg24hPrice - 1))) + '₽ per one',
                     inline: true
                 }, {
                     name: 'Wiki Link',

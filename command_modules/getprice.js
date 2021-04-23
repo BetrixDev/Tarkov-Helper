@@ -13,7 +13,7 @@ const GetPrice = async(ID) => {
                     height
                     iconLink
                     wikiLink
-                    
+                    basePrice
                 }
             }`
         })
