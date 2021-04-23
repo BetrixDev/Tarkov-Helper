@@ -21,12 +21,12 @@ const CommandSettings = {
 
 const { MessageEmbed } = require('discord.js')
 const Settings = require('../settings.json')
-const { BitcoinFarmCalc } = require('../classes/BitcoinFarmCalc')
+const { BitcoinFarmCalc } = require('../command_modules/bitcoinfarmcalc')
 
 // Command Functions
 
-const CommandFunction = (args) => {
-    const Calculation = new BitcoinFarmCalc(args['gpus'])
+const CommandFunction = async(args) => {
+    const Calculation = await BitcoinFarmCalc(args['gpus'])
 
     if (args['compare-gpus'] === undefined) {
         return new MessageEmbed()
@@ -35,7 +35,7 @@ const CommandFunction = (args) => {
             .setThumbnail(Settings.Images.Thumbnails['BitcoinFarm'])
             .addFields({
                 name: "Bitcoin Price",
-                value: '₽480,000'
+                value: `${Calculation.BTCPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}₽`
             }, {
                 name: "Amount of GPUS",
                 value: args['gpus']
@@ -44,10 +44,10 @@ const CommandFunction = (args) => {
                 value: Calculation.BTCPerDay
             }, {
                 name: "Roubles Per Day",
-                value: `₽${Math.round(Calculation.RUBPerDay).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`
+                value: `${Math.round(Calculation.RUBPerDay).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}₽`
             })
     } else if (args['compare-gpus'] !== undefined) {
-        const SecondCalculation = new BitcoinFarmCalc(args['compare-gpus'])
+        const SecondCalculation = await BitcoinFarmCalc(args['compare-gpus'])
 
         return new MessageEmbed()
             .setColor(Settings.BotSettings.Color)
@@ -55,7 +55,7 @@ const CommandFunction = (args) => {
             .setThumbnail(Settings.Images.Thumbnails.BitcoinFarm)
             .addFields({
                 name: "Bitcoin Price",
-                value: '₽650,000'
+                value: `${Calculation.BTCPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}₽`
             }, {
                 name: "Difference in GPUS",
                 value: (Math.abs(args['gpus'] - args['compare-gpus']))
@@ -64,7 +64,7 @@ const CommandFunction = (args) => {
                 value: Math.abs(Calculation.BTCPerDay - SecondCalculation.BTCPerDay)
             }, {
                 name: "Difference in Roubles Per Day",
-                value: `₽${Math.abs((Math.round(Calculation.RUBPerDay) - Math.round(SecondCalculation.RUBPerDay))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`
+                value: `${Math.abs((Math.round(Calculation.RUBPerDay) - Math.round(SecondCalculation.RUBPerDay))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}₽`
             })
     }
 }
