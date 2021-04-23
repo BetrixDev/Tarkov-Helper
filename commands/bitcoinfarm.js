@@ -19,7 +19,7 @@ const CommandSettings = {
     }
 }
 
-const DiscordJS = require('discord.js')
+const { MessageEmbed } = require('discord.js')
 const Settings = require('../settings.json')
 const { BitcoinFarmCalc } = require('../classes/BitcoinFarmCalc')
 
@@ -29,7 +29,7 @@ const CommandFunction = (args) => {
     const Calculation = new BitcoinFarmCalc(args['gpus'])
 
     if (args['compare-gpus'] === undefined) {
-        return new DiscordJS.MessageEmbed()
+        return new MessageEmbed()
             .setColor(Settings.BotSettings['Color'])
             .setTitle('Bitcoin Farm Calculator')
             .setThumbnail(Settings.Images.Thumbnails['BitcoinFarm'])
@@ -49,7 +49,7 @@ const CommandFunction = (args) => {
     } else if (args['compare-gpus'] !== undefined) {
         const SecondCalculation = new BitcoinFarmCalc(args['compare-gpus'])
 
-        return new DiscordJS.MessageEmbed()
+        return new MessageEmbed()
             .setColor(Settings.BotSettings.Color)
             .setTitle('Bitcoin Farm Calculator')
             .setThumbnail(Settings.Images.Thumbnails.BitcoinFarm)

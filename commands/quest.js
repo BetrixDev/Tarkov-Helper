@@ -12,30 +12,29 @@ const CommandSettings = {
     }
 }
 
-const DiscordJS = require('discord.js')
+const { MessageEmbed } = require('discord.js')
 const Settings = require('../settings.json')
 const { QuestSearchEngine } = require('../command_modules/questsearchengine')
 const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormessage')
 const { QuestInfo } = require('../classes/QuestInfo')
-const QuestFromName = require('../game_data/quest-name.json')
 
 // Command Functions
 const CommandFunction = (args) => {
     if (args['questname'].length < 3 || args['questname'].length > 100) {
-        return ErrorMessage('Please keep the Quest input between 3 and 100 characters')
+        return ErrorMessage('Please keep the Quest input length between 3 and 100 characters')
     }
 
     let Quest = QuestSearchEngine(args['questname'].toLowerCase())
 
     let Length = Quest.length
+
     if (Length === 1) {
-        let QuestStuff = new QuestInfo(QuestFromName[Quest].ID)
-        return new DiscordJS.MessageEmbed()
+        let QuestStuff = new QuestInfo(Quest[0])
+        return new MessageEmbed()
             .setColor(Settings.BotSettings.Color)
             .setTitle(QuestStuff.QuestName)
             .setThumbnail(QuestStuff.QuestImage)
-            .setDescription(QuestStuff.QuestDesc)
-            .addFields({ name: 'Wiki Link', value: `[Click Here](${QuestStuff.WikiLink})` })
+            .addFields({ name: 'Wiki Link', value: `[Click Here](${QuestStuff.WikiLink})`, inline: true }, { name: 'Experience', value: QuestStuff.Experience, inline: true })
     } else if (Length > 1) {
         return ErrorMessageField(`Quest search of \"${args['questname'].toLowerCase()}\" came back with multiple results, please be more specific`, {
             name: 'Results',

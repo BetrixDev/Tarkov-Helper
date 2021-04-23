@@ -1,0 +1,2180 @@
+{
+  "Debut": {
+    "title": "Debut",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Debut",
+    "exp": 600,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "Checking": {
+    "title": "Checking",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Checking",
+    "exp": 800,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "Shootout picnic": {
+    "title": "Shootout picnic",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Shootout_picnic",
+    "exp": 2000,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "Delivery from the past": {
+    "title": "Delivery from the past",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Delivery_from_the_past",
+    "exp": 4100,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "BP depot": {
+    "title": "BP depot",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/BP_depot",
+    "exp": 2900,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "Bad rep evidence": {
+    "title": "Bad rep evidence",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Bad_rep_evidence",
+    "exp": 4200,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "Ice cream cones": {
+    "title": "Ice cream cones",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Ice_cream_cones",
+    "exp": 5400,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "Postman Pat": {
+    "title": "Postman Pat",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Postman_Pat_-_Part_1",
+    "exp": 6000,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "Shaking up teller": {
+    "title": "Shaking up teller",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Shaking_up_teller",
+    "exp": 6100,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "Perfect mediator": {
+    "title": "Perfect mediator",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Perfect_mediator",
+    "exp": 17200,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "Grenadier": {
+    "title": "Grenadier",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Grenadier",
+    "exp": 21300,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "Insomnia": {
+    "title": "Insomnia",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Insomnia",
+    "exp": 18500,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "Test drive": {
+    "title": "Test drive",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Test_drive_-_Part_1",
+    "exp": 31000,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "The Punisher - Part 1": {
+    "title": "The Punisher - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_Punisher_-_Part_1",
+    "exp": 10800,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "The Punisher - Part 2": {
+    "title": "The Punisher - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_Punisher_-_Part_2",
+    "exp": 13900,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "The Punisher - Part 3": {
+    "title": "The Punisher - Part 3",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_Punisher_-_Part_3",
+    "exp": 12400,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "The Punisher - Part 4": {
+    "title": "The Punisher - Part 4",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_Punisher_-_Part_4",
+    "exp": 19000,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "The Punisher - Part 5": {
+    "title": "The Punisher - Part 5",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_Punisher_-_Part_5",
+    "exp": 19300,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "The Punisher - Part 6": {
+    "title": "The Punisher - Part 6",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_Punisher_-_Part_6",
+    "exp": 20600,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "Shortage": {
+    "title": "Shortage",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Shortage",
+    "exp": 500,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "Sanitary Standards - Part 1": {
+    "title": "Sanitary Standards - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Sanitary_Standards_-_Part_1",
+    "exp": 2200,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "Sanitary Standards - Part 2": {
+    "title": "Sanitary Standards - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Sanitary_Standards_-_Part_2",
+    "exp": 4500,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "Painkiller": {
+    "title": "Painkiller",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Painkiller",
+    "exp": 4600,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "Pharmacist": {
+    "title": "Pharmacist",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Pharmacist",
+    "exp": 5900,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "Supply plans": {
+    "title": "Supply plans",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Supply_plans",
+    "exp": 7700,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "Kind of sabotage": {
+    "title": "Kind of sabotage",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Kind_of_sabotage",
+    "exp": 4600,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Skier"
+    }
+  },
+  "General wares": {
+    "title": "General wares",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/General_wares",
+    "exp": 5000,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "Car repair": {
+    "title": "Car repair",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Car_repair",
+    "exp": 7600,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "Health Care Privacy - Part 1": {
+    "title": "Health Care Privacy - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Health_Care_Privacy_-_Part_1",
+    "exp": 6500,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "Health Care Privacy - Part 2": {
+    "title": "Health Care Privacy - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Health_Care_Privacy_-_Part_2",
+    "exp": 8600,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "Health Care Privacy - Part 3": {
+    "title": "Health Care Privacy - Part 3",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Health_Care_Privacy_-_Part_3",
+    "exp": 9400,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "Health Care Privacy - Part 4": {
+    "title": "Health Care Privacy - Part 4",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Health_Care_Privacy_-_Part_4",
+    "exp": 10200,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "Health Care Privacy - Part 5": {
+    "title": "Health Care Privacy - Part 5",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Health_Care_Privacy_-_Part_5",
+    "exp": 13300,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "Decontamination Service": {
+    "title": "Decontamination Service",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Decontamination_service",
+    "exp": 21600,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "Private clinic": {
+    "title": "Private clinic",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Private_clinic",
+    "exp": 20100,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "Athlete": {
+    "title": "Athlete",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Athlete",
+    "exp": 19600,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "Supplier": {
+    "title": "Supplier",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Supplier",
+    "exp": 3300,
+    "giver": {
+      "name": "Skier"
+    },
+    "turnin": {
+      "name": "Skier"
+    }
+  },
+  "The Extortionist": {
+    "title": "The Extortionist",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_Extortionist",
+    "exp": 3200,
+    "giver": {
+      "name": "Skier"
+    },
+    "turnin": {
+      "name": "Skier"
+    }
+  },
+  "What's on the flash drive?": {
+    "title": "What's on the flash drive?",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/What%27s_on_the_flash_drive%3F",
+    "exp": 4500,
+    "giver": {
+      "name": "Skier"
+    },
+    "turnin": {
+      "name": "Skier"
+    }
+  },
+  "Golden swag": {
+    "title": "Golden swag",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Golden_swag",
+    "exp": 4600,
+    "giver": {
+      "name": "Skier"
+    },
+    "turnin": {
+      "name": "Skier"
+    }
+  },
+  "Chemical - Part 1": {
+    "title": "Chemical - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Chemical_-_Part_1",
+    "exp": 4800,
+    "giver": {
+      "name": "Skier"
+    },
+    "turnin": {
+      "name": "Skier"
+    }
+  },
+  "Chemical - Part 2": {
+    "title": "Chemical - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Chemical_-_Part_2",
+    "exp": 4900,
+    "giver": {
+      "name": "Skier"
+    },
+    "turnin": {
+      "name": "Skier"
+    }
+  },
+  "Chemical - Part 3": {
+    "title": "Chemical - Part 3",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Chemical_-_Part_3",
+    "exp": 5400,
+    "giver": {
+      "name": "Skier"
+    },
+    "turnin": {
+      "name": "Skier"
+    }
+  },
+  "Chemical - Part 4": {
+    "title": "Chemical - Part 4",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Chemical_-_Part_4",
+    "exp": 6600,
+    "giver": {
+      "name": "Skier"
+    },
+    "turnin": {
+      "name": "Skier"
+    }
+  },
+  "\"Vitamins\" - Part 1": {
+    "title": "\"Vitamins\" - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/%22Vitamins%22_-_Part_1",
+    "exp": 14100,
+    "giver": {
+      "name": "Skier"
+    },
+    "turnin": {
+      "name": "Skier"
+    }
+  },
+  "\"Vitamins\" - Part 2": {
+    "title": "\"Vitamins\" - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/%22Vitamins%22_-_Part_2",
+    "exp": 17200,
+    "giver": {
+      "name": "Skier"
+    },
+    "turnin": {
+      "name": "Skier"
+    }
+  },
+  "Friend from the West - Part 1": {
+    "title": "Friend from the West - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Friend_from_the_West_-_Part_1",
+    "exp": 10800,
+    "giver": {
+      "name": "Skier"
+    },
+    "turnin": {
+      "name": "Skier"
+    }
+  },
+  "Friend from the West - Part 2": {
+    "title": "Friend from the West - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Friend_from_the_West_-_Part_2",
+    "exp": 9200,
+    "giver": {
+      "name": "Skier"
+    },
+    "turnin": {
+      "name": "Skier"
+    }
+  },
+  "Lend lease - Part 1": {
+    "title": "Lend lease - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Lend_lease_-_Part_1",
+    "exp": 20000,
+    "giver": {
+      "name": "Skier"
+    },
+    "turnin": {
+      "name": "Skier"
+    }
+  },
+  "Lend lease - Part 2": {
+    "title": "Lend lease - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Lend_lease_-_Part_2",
+    "exp": 22200,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Peacekeeping mission": {
+    "title": "Peacekeeping mission",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Peacekeeping_mission",
+    "exp": 32400,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Informed means armed": {
+    "title": "Informed means armed",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Informed_means_armed",
+    "exp": 15900,
+    "giver": {
+      "name": "Skier"
+    },
+    "turnin": {
+      "name": "Skier"
+    }
+  },
+  "Chumming": {
+    "title": "Chumming",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Chumming",
+    "exp": 22000,
+    "giver": {
+      "name": "Skier"
+    },
+    "turnin": {
+      "name": "Skier"
+    }
+  },
+  "Silent caliber": {
+    "title": "Silent caliber",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Silent_caliber",
+    "exp": 12900,
+    "giver": {
+      "name": "Skier"
+    },
+    "turnin": {
+      "name": "Skier"
+    }
+  },
+  "Flint": {
+    "title": "Flint",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Flint",
+    "exp": 20000,
+    "giver": {
+      "name": "Skier"
+    },
+    "turnin": {
+      "name": "Skier"
+    }
+  },
+  "Bullshit": {
+    "title": "Bullshit",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Bullshit",
+    "exp": 29700,
+    "giver": {
+      "name": "Skier"
+    },
+    "turnin": {
+      "name": "Skier"
+    }
+  },
+  "Setup": {
+    "title": "Setup",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Setup",
+    "exp": 29300,
+    "giver": {
+      "name": "Skier"
+    },
+    "turnin": {
+      "name": "Skier"
+    }
+  },
+  "Fishing Gear": {
+    "title": "Fishing Gear",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Fishing_Gear",
+    "exp": 5400,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Tigr Safari": {
+    "title": "Tigr Safari",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Tigr_Safari",
+    "exp": 6600,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Scrap Metal": {
+    "title": "Scrap Metal",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Scrap_Metal",
+    "exp": 7200,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Eagle Eye": {
+    "title": "Eagle Eye",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Eagle_Eye",
+    "exp": 7300,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Humanitarian Supplies": {
+    "title": "Humanitarian Supplies",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Humanitarian_Supplies",
+    "exp": 7400,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "The Cult - Part 1": {
+    "title": "The Cult - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_Cult_-_Part_1",
+    "exp": 6700,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "The Cult - Part 2": {
+    "title": "The Cult - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_Cult_-_Part_2",
+    "exp": 8200,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Spa Tour - Part 1": {
+    "title": "Spa Tour - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Spa_Tour_-_Part_1",
+    "exp": 8900,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Spa Tour - Part 2": {
+    "title": "Spa Tour - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Spa_Tour_-_Part_2",
+    "exp": 7500,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Spa Tour - Part 3": {
+    "title": "Spa Tour - Part 3",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Spa_Tour_-_Part_3",
+    "exp": 9100,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Spa Tour - Part 4": {
+    "title": "Spa Tour - Part 4",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Spa_Tour_-_Part_4",
+    "exp": 9300,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Spa Tour - Part 5": {
+    "title": "Spa Tour - Part 5",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Spa_Tour_-_Part_5",
+    "exp": 7800,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Spa Tour - Part 6": {
+    "title": "Spa Tour - Part 6",
+    "wikiLink": "",
+    "exp": 11400,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Spa Tour - Part 7": {
+    "title": "Spa Tour - Part 7",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Spa_Tour_-_Part_7",
+    "exp": 11600,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Cargo X - Part 1": {
+    "title": "Cargo X - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Cargo_X_-_Part_1",
+    "exp": 10400,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Cargo X - Part 2": {
+    "title": "Cargo X - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Cargo_X_-_Part_2",
+    "exp": 8600,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Cargo X - Part 3": {
+    "title": "Cargo X - Part 3",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Cargo_X_-_Part_3",
+    "exp": 10700,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Wet Job - Part 1": {
+    "title": "Wet Job - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Wet_Job_-_Part_1",
+    "exp": 13000,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Wet Job - Part 2": {
+    "title": "Wet Job - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Wet_Job_-_Part_2",
+    "exp": 11700,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Wet Job - Part 3": {
+    "title": "Wet Job - Part 3",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Wet_Job_-_Part_3",
+    "exp": 9900,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Wet Job - Part 4": {
+    "title": "Wet Job - Part 4",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Wet_Job_-_Part_4",
+    "exp": 10000,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Wet Job - Part 5": {
+    "title": "Wet Job - Part 5",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Wet_Job_-_Part_5",
+    "exp": 10200,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Wet Job - Part 6": {
+    "title": "Wet Job - Part 6",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Wet_Job_-_Part_6",
+    "exp": 10400,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Psycho Sniper": {
+    "title": "Psycho Sniper",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Psycho_Sniper",
+    "exp": 32400,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "The guide": {
+    "title": "The guide",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_guide",
+    "exp": 35100,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Gunsmith - Part 1": {
+    "title": "Gunsmith - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Gunsmith_-_Part_1",
+    "exp": 6500,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Gunsmith - Part 2": {
+    "title": "Gunsmith - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Gunsmith_-_Part_2",
+    "exp": 6000,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Gunsmith - Part 3": {
+    "title": "Gunsmith - Part 3",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Gunsmith_-_Part_3",
+    "exp": 8000,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Gunsmith - Part 4": {
+    "title": "Gunsmith - Part 4",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Gunsmith_-_Part_4",
+    "exp": 10100,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Gunsmith - Part 5": {
+    "title": "Gunsmith - Part 5",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Gunsmith_-_Part_5",
+    "exp": 13900,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Gunsmith - Part 6": {
+    "title": "Gunsmith - Part 6",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Gunsmith_-_Part_6",
+    "exp": 13900,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Gunsmith - Part 7": {
+    "title": "Gunsmith - Part 7",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Gunsmith_-_Part_7",
+    "exp": 16000,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Gunsmith - Part 8": {
+    "title": "Gunsmith - Part 8",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Gunsmith_-_Part_8",
+    "exp": 16200,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Gunsmith - Part 9": {
+    "title": "Gunsmith - Part 9",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Gunsmith_-_Part_9",
+    "exp": 17300,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Gunsmith - Part 10": {
+    "title": "Gunsmith - Part 10",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Gunsmith_-_Part_10",
+    "exp": 17500,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Gunsmith - Part 11": {
+    "title": "Gunsmith - Part 11",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Gunsmith_-_Part_11",
+    "exp": 18600,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Gunsmith - Part 12": {
+    "title": "Gunsmith - Part 12",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Gunsmith_-_Part_12",
+    "exp": 14400,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Gunsmith - Part 13": {
+    "title": "Gunsmith - Part 13",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Gunsmith_-_Part_13",
+    "exp": 19000,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Gunsmith - Part 14": {
+    "title": "Gunsmith - Part 14",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Gunsmith_-_Part_14",
+    "exp": 20800,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Gunsmith - Part 15": {
+    "title": "Gunsmith - Part 15",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Gunsmith_-_Part_15",
+    "exp": 22600,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Gunsmith - Part 16": {
+    "title": "Gunsmith - Part 16",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Gunsmith_-_Part_16",
+    "exp": 28500,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Signal - Part 1": {
+    "title": "Signal - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Signal_-_Part_1",
+    "exp": 8500,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Signal - Part 2": {
+    "title": "Signal - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Signal_-_Part_2",
+    "exp": 8700,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Signal - Part 3": {
+    "title": "Signal - Part 3",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Signal_-_Part_3",
+    "exp": 11000,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Signal - Part 4": {
+    "title": "Signal - Part 4",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Signal_-_Part_4",
+    "exp": 11100,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Scout": {
+    "title": "Scout",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Scout",
+    "exp": 9200,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Insider": {
+    "title": "Insider",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Insider",
+    "exp": 9300,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Farming - Part 1": {
+    "title": "Farming - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Farming_-_Part_1",
+    "exp": 8000,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Farming - Part 2": {
+    "title": "Farming - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Farming_-_Part_2",
+    "exp": 6800,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Farming - Part 3": {
+    "title": "Farming - Part 3",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Farming_-_Part_3",
+    "exp": 8100,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Farming - Part 4": {
+    "title": "Farming - Part 4",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Farming_-_Part_4",
+    "exp": 9800,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Import": {
+    "title": "Import",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Import",
+    "exp": 42800,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Fertilizers": {
+    "title": "Fertilizers",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Fertilizers",
+    "exp": 19500,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "A Shooter Born in Heaven": {
+    "title": "A Shooter Born in Heaven",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/A_Shooter_Born_in_Heaven",
+    "exp": 39500,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Only business": {
+    "title": "Only business",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Only_business",
+    "exp": 6700,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "Big sale": {
+    "title": "Big sale",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Big_sale",
+    "exp": 8900,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "The Blood of War - Part 1": {
+    "title": "The Blood of War - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_Blood_of_War_-_Part_1",
+    "exp": 7500,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "Dressed to kill": {
+    "title": "Dressed to kill",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Dressed_to_kill",
+    "exp": 10200,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "Database - Part 1": {
+    "title": "Database - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Database_-_Part_1",
+    "exp": 11500,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "Database - Part 2": {
+    "title": "Database - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Database_-_Part_2",
+    "exp": 11700,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "Gratitude": {
+    "title": "Gratitude",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Gratitude",
+    "exp": 16300,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "Sales Night": {
+    "title": "Sales Night",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Sales_Night",
+    "exp": 19800,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "Supervisor": {
+    "title": "Supervisor",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Supervisor",
+    "exp": 24100,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "Hot Delivery": {
+    "title": "Hot Delivery",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Hot_delivery",
+    "exp": 25000,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "Scavenger": {
+    "title": "Scavenger",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Scavenger",
+    "exp": 15400,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "Make ULTRA Great Again": {
+    "title": "Make ULTRA Great Again",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Make_ULTRA_Great_Again",
+    "exp": 9800,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "Minibus": {
+    "title": "Minibus",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Minibus",
+    "exp": 16500,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "Sew it good - Part 1": {
+    "title": "Sew it good - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Sew_it_good_-_Part_1",
+    "exp": 12300,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "Sew it good - Part 2": {
+    "title": "Sew it good - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Sew_it_good_-_Part_2",
+    "exp": 18700,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "Sew it good - Part 3": {
+    "title": "Sew it good - Part 3",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Sew_it_good_-_Part_3",
+    "exp": 19700,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "Sew it good - Part 4": {
+    "title": "Sew it good - Part 4",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Sew_it_good_-_Part_4",
+    "exp": 20700,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "Charisma brings success": {
+    "title": "Charisma brings success",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Charisma_brings_success",
+    "exp": 12700,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "No fuss needed": {
+    "title": "No fuss needed",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/No_fuss_needed",
+    "exp": 12900,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "The Blood of War - Part 2": {
+    "title": "The Blood of War - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_Blood_of_War_-_Part_2",
+    "exp": 15600,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "The Blood of War - Part 3": {
+    "title": "The Blood of War - Part 3",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_Blood_of_War_-_Part_3",
+    "exp": 21000,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "Living high is not a crime - Part 1": {
+    "title": "Living high is not a crime - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Living_high_is_not_a_crime_-_Part_1",
+    "exp": 23000,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "Living high is not a crime - Part 2": {
+    "title": "Living high is not a crime - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Living_high_is_not_a_crime_-_Part_2",
+    "exp": 29600,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "Introduction": {
+    "title": "Introduction",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Introduction",
+    "exp": 4500,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Acquaintance": {
+    "title": "Acquaintance",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Acquaintance",
+    "exp": 4000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "The survivalist path - Unprotected, but dangerous": {
+    "title": "The survivalist path - Unprotected, but dangerous",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_survivalist_path_-_Unprotected,_but_dangerous",
+    "exp": 7000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "The survivalist path - Thrifty": {
+    "title": "The survivalist path - Thrifty",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_survivalist_path_-_Thrifty",
+    "exp": 6500,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "The survivalist path - Zhivchik": {
+    "title": "The survivalist path - Zhivchik",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_survivalist_path_-_Zhivchik",
+    "exp": 9000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "The survivalist path - Wounded beast": {
+    "title": "The survivalist path - Wounded beast",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_survivalist_path_-_Wounded_beast",
+    "exp": 10000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "The survivalist path - Tough guy": {
+    "title": "The survivalist path - Tough guy",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_survivalist_path_-_Tough_guy",
+    "exp": 12000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "Courtesy visit": {
+    "title": "Courtesy visit",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Courtesy_visit",
+    "exp": 10000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "Nostalgia": {
+    "title": "Nostalgia",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Nostalgia",
+    "exp": 10000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "The Tarkov shooter - Part 1": {
+    "title": "The Tarkov shooter - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/%22The_Tarkov_shooter%22_-_Part_1",
+    "exp": 18900,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "The Tarkov shooter - Part 2": {
+    "title": "The Tarkov shooter - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/%22The_Tarkov_shooter%22_-_Part_2",
+    "exp": 19200,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "The Tarkov shooter - Part 3": {
+    "title": "The Tarkov shooter - Part 3",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/%22The_Tarkov_shooter%22_-_Part_3",
+    "exp": 16200,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "The Tarkov shooter - Part 4": {
+    "title": "The Tarkov shooter - Part 4",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/%22The_Tarkov_shooter%22_-_Part_4",
+    "exp": 16400,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "The Tarkov shooter - Part 5": {
+    "title": "The Tarkov shooter - Part 5",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/%22The_Tarkov_shooter%22_-_Part_5",
+    "exp": 20000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "The Tarkov shooter - Part 6": {
+    "title": "The Tarkov shooter - Part 6",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/%22The_Tarkov_shooter%22_-_Part_6",
+    "exp": 20300,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "The Tarkov shooter - Part 7": {
+    "title": "The Tarkov shooter - Part 7",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/%22The_Tarkov_shooter%22_-_Part_7",
+    "exp": 20700,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "The Tarkov shooter - Part 8": {
+    "title": "The Tarkov shooter - Part 8",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/%22The_Tarkov_shooter%22_-_Part_8",
+    "exp": 25200,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "The survivalist path - Cold blooded": {
+    "title": "The survivalist path - Cold blooded",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_survivalist_path_-_Cold_blooded",
+    "exp": 11000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "Colleagues - Part 2": {
+    "title": "Colleagues - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Colleagues_-_Part_2",
+    "exp": 13200,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "Colleagues - Part 3": {
+    "title": "Colleagues - Part 3",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Colleagues_-_Part_3",
+    "exp": 13200,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "The survivalist path - Combat medic": {
+    "title": "The survivalist path - Combat medic",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_survivalist_path_-_Combat_medic",
+    "exp": 14000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "Ambulance": {
+    "title": "Ambulance",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Ambulance",
+    "exp": 12000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "Huntsman path - Secured perimeter": {
+    "title": "Huntsman path - Secured perimeter",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Huntsman_path_-_Secured_perimeter",
+    "exp": 14000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "Reserv": {
+    "title": "Reserv",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Reserv",
+    "exp": 9000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "Huntsman path - Woods cleaning": {
+    "title": "Huntsman path - Woods cleaning",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Huntsman_path_-_Woods_cleaning",
+    "exp": 18000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "Huntsman path - Controller": {
+    "title": "Huntsman path - Controller",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Huntsman_path_-_Controller",
+    "exp": 21000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "Huntsman path - Evil watchman": {
+    "title": "Huntsman path - Evil watchman",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Huntsman_path_-_Evil_watchman",
+    "exp": 21000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "Fishing place": {
+    "title": "Fishing place",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Fishing_place",
+    "exp": 15000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "Huntsman path - The trophy": {
+    "title": "Huntsman path - The trophy",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Huntsman_path_-_The_trophy",
+    "exp": 20000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "Huntsman path - Justice": {
+    "title": "Huntsman path - Justice",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Huntsman_path_-_Justice",
+    "exp": 20000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "Huntsman path - Sell-out": {
+    "title": "Huntsman path - Sell-out",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Huntsman_path_-_Sell-out",
+    "exp": 23000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "Huntsman path - Woods keeper": {
+    "title": "Huntsman path - Woods keeper",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Huntsman_path_-_Woods_keeper",
+    "exp": 25000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "Huntsman path - Eraser - Part 1": {
+    "title": "Huntsman path - Eraser - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Huntsman_path_-_Eraser_-_Part_1",
+    "exp": 30000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "Huntsman path - Eraser - Part 2": {
+    "title": "Huntsman path - Eraser - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Huntsman_path_-_Eraser_-_Part_2",
+    "exp": 30000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "Hunting trip": {
+    "title": "Hunting trip",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Hunting_trip",
+    "exp": 16000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "Operation Aquarius - Part 1": {
+    "title": "Operation Aquarius - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Operation_Aquarius_-_Part_1",
+    "exp": 3400,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "Operation Aquarius - Part 2": {
+    "title": "Operation Aquarius - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Operation_Aquarius_-_Part_2",
+    "exp": 3400,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "Polikhim hobo": {
+    "title": "Polikhim hobo",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Polikhim_hobo",
+    "exp": 7000,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "Regulated materials": {
+    "title": "Regulated materials",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Regulated_materials",
+    "exp": 0,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "Stirrup": {
+    "title": "Stirrup",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Stirrup",
+    "exp": 4700,
+    "giver": {
+      "name": "Skier"
+    },
+    "turnin": {
+      "name": "Skier"
+    }
+  },
+  "Mentor": {
+    "title": "Mentor",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Mentor",
+    "exp": 4700,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Bad habit": {
+    "title": "Bad habit",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Bad_habit",
+    "exp": 9000,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "The key to success": {
+    "title": "The key to success",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_key_to_success",
+    "exp": 18100,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "Shady Business": {
+    "title": "Shady Business",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Shady_business",
+    "exp": 11000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "Postman Pat - Part 2": {
+    "title": "Postman Pat - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Postman_Pat_-_Part_2",
+    "exp": 4200,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "Out of curiosity": {
+    "title": "Out of curiosity",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Out_of_curiosity",
+    "exp": 8300,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "Big customer": {
+    "title": "Big customer",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Big_customer",
+    "exp": 8200,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "The survivalist path - Junkie": {
+    "title": "The survivalist path - Junkie",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_survivalist_path_-_Junkie",
+    "exp": 12000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "Textile - Part 1": {
+    "title": "Textile - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Textile_-_Part_1",
+    "exp": 0,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "Textile - Part 2": {
+    "title": "Textile - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Textile_-_Part_2",
+    "exp": 0,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "Anesthesia": {
+    "title": "Anesthesia",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Anesthesia",
+    "exp": 12600,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "Colleagues - Part 1": {
+    "title": "Colleagues - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Colleagues_-_Part_1",
+    "exp": 12600,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  },
+  "Rigged game": {
+    "title": "Rigged game",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Rigged_game",
+    "exp": 13200,
+    "giver": {
+      "name": "Skier"
+    },
+    "turnin": {
+      "name": "Skier"
+    }
+  },
+  "The chemistry closet": {
+    "title": "The chemistry closet",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_chemistry_closet",
+    "exp": 13800,
+    "giver": {
+      "name": "Mechanic"
+    },
+    "turnin": {
+      "name": "Mechanic"
+    }
+  },
+  "Samples": {
+    "title": "Samples",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Samples",
+    "exp": 13200,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "TerraGroup employee": {
+    "title": "TerraGroup employee",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/TerraGroup_employee",
+    "exp": 14400,
+    "giver": {
+      "name": "Peacekeeper"
+    },
+    "turnin": {
+      "name": "Peacekeeper"
+    }
+  },
+  "Huntsman path - Sadist": {
+    "title": "Huntsman path - Sadist",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Huntsman_path_-_Sadist",
+    "exp": 13800,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "The bunker - Part 1": {
+    "title": "The bunker - Part 1",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_bunker_-_Part_1",
+    "exp": 6000,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "The bunker - Part 2": {
+    "title": "The bunker - Part 2",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_bunker_-_Part_2",
+    "exp": 6600,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "Search mission": {
+    "title": "Search mission",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Search_mission",
+    "exp": 2000,
+    "giver": {
+      "name": "Prapor"
+    },
+    "turnin": {
+      "name": "Prapor"
+    }
+  },
+  "The stylish one": {
+    "title": "The stylish one",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_stylish_one",
+    "exp": 0,
+    "giver": {
+      "name": "Ragman"
+    },
+    "turnin": {
+      "name": "Ragman"
+    }
+  },
+  "Thee survivalist path - Eagle-owl": {
+    "title": "Thee survivalist path - Eagle-owl",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/The_survivalist_path_-_Eagle-owl",
+    "exp": 13000,
+    "giver": {
+      "name": "Jaeger"
+    },
+    "turnin": {
+      "name": "Jaeger"
+    }
+  },
+  "Collector": {
+    "title": "Collector",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/Collector",
+    "exp": 0,
+    "giver": {
+      "name": "Fence"
+    },
+    "turnin": {
+      "name": "Fence"
+    }
+  },
+  "An apple a day - keeps the doctor away": {
+    "title": "An apple a day - keeps the doctor away",
+    "wikiLink": "https://escapefromtarkov.gamepedia.com/An_apple_a_day_-_keeps_the_doctor_away",
+    "exp": 0,
+    "giver": {
+      "name": "Therapist"
+    },
+    "turnin": {
+      "name": "Therapist"
+    }
+  }
+}
