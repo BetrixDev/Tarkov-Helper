@@ -1,8 +1,7 @@
 {
     "BotSettings": {
         "Color": "#cecdc3",
-        "ErrorColor": "#ff2424",
-        "NotifyColor": "#005eff"
+        "ErrorColor": "#ff2424"
     },
     "Images": {
         "Author": "https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Media/Logo50x50SmallText.png?raw=true",
@@ -32,10 +31,25 @@
         },
         "Notify" : {
             "FooterText": "Trader icon from wiki"
+        },
+        "KeyList": {
+            "FooterText": "Emote images from the wiki"
         }
     },
-    "Maps": {
+    "KeyListEmojis": {
+        "AmmoBox" : "<:AmmoBox:833692303532621844>",
+        "Box": "<:Box:833692311203610664>",
+        "Drawer": "<:Drawer:833692318019223563>",
+        "Jacket": "<:JacketNormal:833692326772867082>",
+        "Jewelry" : "<:Jewelry:833692334603370596>",
+        "LooseLoot" : "<:LooseLoot:833692341796733018>",
+        "Medcase" : "<:Medcase:833692349073850379>",
+        "Money" : "<:Money:833692357916229652>",
+        "PCBlock" : "<:PCBlock:833692365863518279>",
+        "Safe" : "<:Safe:833692375381049374>",
+        "SportBag" : "<:SportBag:833692422771966004>",
+        "Toolbox" : "<:Toolbox:833692429999144991>",
+        "WeaponRack" : "<:WeaponRack:833692471678468116>"
 
-    },
-    "PossiblePrefixs": ["!", "@", "#", "%", "&", "*", "th", "!t", "!th"]
+    }
 }

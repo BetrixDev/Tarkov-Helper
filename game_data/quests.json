@@ -8,7 +8,10 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": [
+      "Kalashnikov AKS-74U 5.45x39"
+    ]
   },
   "Checking": {
     "title": "Checking",
@@ -19,7 +22,8 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": []
   },
   "Shootout picnic": {
     "title": "Shootout picnic",
@@ -30,7 +34,8 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": []
   },
   "Delivery from the past": {
     "title": "Delivery from the past",
@@ -41,7 +46,10 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": [
+      "5.45x39 mm PS"
+    ]
   },
   "BP depot": {
     "title": "BP depot",
@@ -52,7 +60,8 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": []
   },
   "Bad rep evidence": {
     "title": "Bad rep evidence",
@@ -63,7 +72,10 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": [
+      "Zenit-Belomo PSO 1M2-1 4x24 scope"
+    ]
   },
   "Ice cream cones": {
     "title": "Ice cream cones",
@@ -74,7 +86,10 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": [
+      "60-round 6L31 5.45x39 magazine for AK-74 and compatibles"
+    ]
   },
   "Postman Pat": {
     "title": "Postman Pat",
@@ -85,7 +100,10 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": [
+      "Salewa FIRST AID KIT"
+    ]
   },
   "Shaking up teller": {
     "title": "Shaking up teller",
@@ -96,7 +114,11 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": [
+      "PBS-4 5.45x39 Silencer",
+      "Hexagon 12K sound suppressor"
+    ]
   },
   "Perfect mediator": {
     "title": "Perfect mediator",
@@ -107,7 +129,8 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": []
   },
   "Grenadier": {
     "title": "Grenadier",
@@ -118,7 +141,10 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": [
+      "8 pcs pack of 9x39 7N12 BP ammo"
+    ]
   },
   "Insomnia": {
     "title": "Insomnia",
@@ -129,7 +155,8 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": []
   },
   "Test drive": {
     "title": "Test drive",
@@ -140,7 +167,8 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": []
   },
   "The Punisher - Part 1": {
     "title": "The Punisher - Part 1",
@@ -151,7 +179,10 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": [
+      "SV-98 bolt-action sniper rifle"
+    ]
   },
   "The Punisher - Part 2": {
     "title": "The Punisher - Part 2",
@@ -162,7 +193,8 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": []
   },
   "The Punisher - Part 3": {
     "title": "The Punisher - Part 3",
@@ -173,7 +205,8 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": []
   },
   "The Punisher - Part 4": {
     "title": "The Punisher - Part 4",
@@ -184,7 +217,10 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": [
+      "5.45x39 mm BT"
+    ]
   },
   "The Punisher - Part 5": {
     "title": "The Punisher - Part 5",
@@ -195,7 +231,10 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": [
+      "7.62x39 mm BP"
+    ]
   },
   "The Punisher - Part 6": {
     "title": "The Punisher - Part 6",
@@ -206,7 +245,8 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": []
   },
   "Shortage": {
     "title": "Shortage",
@@ -217,7 +257,8 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": []
   },
   "Sanitary Standards - Part 1": {
     "title": "Sanitary Standards - Part 1",
@@ -228,7 +269,10 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": [
+      "Car first aid kit"
+    ]
   },
   "Sanitary Standards - Part 2": {
     "title": "Sanitary Standards - Part 2",
@@ -239,7 +283,8 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": []
   },
   "Painkiller": {
     "title": "Painkiller",
@@ -250,7 +295,8 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": []
   },
   "Pharmacist": {
     "title": "Pharmacist",
@@ -261,7 +307,10 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": [
+      "6B47 Helmet with cover (flora digital)"
+    ]
   },
   "Supply plans": {
     "title": "Supply plans",
@@ -272,7 +321,8 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": []
   },
   "Kind of sabotage": {
     "title": "Kind of sabotage",
@@ -283,7 +333,8 @@
     },
     "turnin": {
       "name": "Skier"
-    }
+    },
+    "unlocks": []
   },
   "General wares": {
     "title": "General wares",
@@ -294,7 +345,8 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": []
   },
   "Car repair": {
     "title": "Car repair",
@@ -305,7 +357,8 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": []
   },
   "Health Care Privacy - Part 1": {
     "title": "Health Care Privacy - Part 1",
@@ -316,7 +369,10 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": [
+      "IFAK personal tactical first aid kit"
+    ]
   },
   "Health Care Privacy - Part 2": {
     "title": "Health Care Privacy - Part 2",
@@ -327,7 +383,8 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": []
   },
   "Health Care Privacy - Part 3": {
     "title": "Health Care Privacy - Part 3",
@@ -338,7 +395,10 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": [
+      "Morphine injector"
+    ]
   },
   "Health Care Privacy - Part 4": {
     "title": "Health Care Privacy - Part 4",
@@ -349,7 +409,8 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": []
   },
   "Health Care Privacy - Part 5": {
     "title": "Health Care Privacy - Part 5",
@@ -360,7 +421,8 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": []
   },
   "Decontamination Service": {
     "title": "Decontamination Service",
@@ -371,7 +433,8 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": []
   },
   "Private clinic": {
     "title": "Private clinic",
@@ -382,7 +445,8 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": []
   },
   "Athlete": {
     "title": "Athlete",
@@ -393,7 +457,10 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": [
+      "Adrenaline injector"
+    ]
   },
   "Supplier": {
     "title": "Supplier",
@@ -404,7 +471,10 @@
     },
     "turnin": {
       "name": "Skier"
-    }
+    },
+    "unlocks": [
+      "Saiga-9 9x19 Carbine"
+    ]
   },
   "The Extortionist": {
     "title": "The Extortionist",
@@ -415,7 +485,8 @@
     },
     "turnin": {
       "name": "Skier"
-    }
+    },
+    "unlocks": []
   },
   "What's on the flash drive?": {
     "title": "What's on the flash drive?",
@@ -426,7 +497,8 @@
     },
     "turnin": {
       "name": "Skier"
-    }
+    },
+    "unlocks": []
   },
   "Golden swag": {
     "title": "Golden swag",
@@ -437,7 +509,10 @@
     },
     "turnin": {
       "name": "Skier"
-    }
+    },
+    "unlocks": [
+      "VOMZ Pilad P1X42 \"WEAVER\" reflex sight"
+    ]
   },
   "Chemical - Part 1": {
     "title": "Chemical - Part 1",
@@ -448,7 +523,8 @@
     },
     "turnin": {
       "name": "Skier"
-    }
+    },
+    "unlocks": []
   },
   "Chemical - Part 2": {
     "title": "Chemical - Part 2",
@@ -459,7 +535,10 @@
     },
     "turnin": {
       "name": "Skier"
-    }
+    },
+    "unlocks": [
+      "SAI-02 10-round 12x76 magazine for SOK-12 and compatible weapons"
+    ]
   },
   "Chemical - Part 3": {
     "title": "Chemical - Part 3",
@@ -470,7 +549,8 @@
     },
     "turnin": {
       "name": "Skier"
-    }
+    },
+    "unlocks": []
   },
   "Chemical - Part 4": {
     "title": "Chemical - Part 4",
@@ -481,7 +561,10 @@
     },
     "turnin": {
       "name": "Skier"
-    }
+    },
+    "unlocks": [
+      "ZSh-1-2M helmet (black)"
+    ]
   },
   "\"Vitamins\" - Part 1": {
     "title": "\"Vitamins\" - Part 1",
@@ -492,7 +575,8 @@
     },
     "turnin": {
       "name": "Skier"
-    }
+    },
+    "unlocks": []
   },
   "\"Vitamins\" - Part 2": {
     "title": "\"Vitamins\" - Part 2",
@@ -503,7 +587,8 @@
     },
     "turnin": {
       "name": "Skier"
-    }
+    },
+    "unlocks": []
   },
   "Friend from the West - Part 1": {
     "title": "Friend from the West - Part 1",
@@ -514,7 +599,8 @@
     },
     "turnin": {
       "name": "Skier"
-    }
+    },
+    "unlocks": []
   },
   "Friend from the West - Part 2": {
     "title": "Friend from the West - Part 2",
@@ -525,7 +611,8 @@
     },
     "turnin": {
       "name": "Skier"
-    }
+    },
+    "unlocks": []
   },
   "Lend lease - Part 1": {
     "title": "Lend lease - Part 1",
@@ -536,7 +623,8 @@
     },
     "turnin": {
       "name": "Skier"
-    }
+    },
+    "unlocks": []
   },
   "Lend lease - Part 2": {
     "title": "Lend lease - Part 2",
@@ -547,7 +635,8 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": []
   },
   "Peacekeeping mission": {
     "title": "Peacekeeping mission",
@@ -558,7 +647,8 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": []
   },
   "Informed means armed": {
     "title": "Informed means armed",
@@ -569,7 +659,8 @@
     },
     "turnin": {
       "name": "Skier"
-    }
+    },
+    "unlocks": []
   },
   "Chumming": {
     "title": "Chumming",
@@ -580,7 +671,8 @@
     },
     "turnin": {
       "name": "Skier"
-    }
+    },
+    "unlocks": []
   },
   "Silent caliber": {
     "title": "Silent caliber",
@@ -591,7 +683,8 @@
     },
     "turnin": {
       "name": "Skier"
-    }
+    },
+    "unlocks": []
   },
   "Flint": {
     "title": "Flint",
@@ -602,7 +695,10 @@
     },
     "turnin": {
       "name": "Skier"
-    }
+    },
+    "unlocks": [
+      "M-2 Tactical Sword"
+    ]
   },
   "Bullshit": {
     "title": "Bullshit",
@@ -613,7 +709,10 @@
     },
     "turnin": {
       "name": "Skier"
-    }
+    },
+    "unlocks": [
+      "5 pcs. 12x70 DIPP ammo box"
+    ]
   },
   "Setup": {
     "title": "Setup",
@@ -624,7 +723,10 @@
     },
     "turnin": {
       "name": "Skier"
-    }
+    },
+    "unlocks": [
+      "20 pcs. 9x19 mm DIPP ammo box"
+    ]
   },
   "Fishing Gear": {
     "title": "Fishing Gear",
@@ -635,7 +737,10 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": [
+      "Aimpoint Micro T-1 reflex sight"
+    ]
   },
   "Tigr Safari": {
     "title": "Tigr Safari",
@@ -646,7 +751,8 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": []
   },
   "Scrap Metal": {
     "title": "Scrap Metal",
@@ -657,7 +763,10 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": [
+      "HK MP5 9x19 submachinegun (Navy 3 Round Burst) \"SD\""
+    ]
   },
   "Eagle Eye": {
     "title": "Eagle Eye",
@@ -668,7 +777,8 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": []
   },
   "Humanitarian Supplies": {
     "title": "Humanitarian Supplies",
@@ -679,7 +789,10 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": [
+      "Hexagon AK-74 5.45x39 sound suppressor"
+    ]
   },
   "The Cult - Part 1": {
     "title": "The Cult - Part 1",
@@ -690,7 +803,10 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": [
+      "5.56x45 mm M856A1"
+    ]
   },
   "The Cult - Part 2": {
     "title": "The Cult - Part 2",
@@ -701,7 +817,8 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": []
   },
   "Spa Tour - Part 1": {
     "title": "Spa Tour - Part 1",
@@ -712,7 +829,8 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": []
   },
   "Spa Tour - Part 2": {
     "title": "Spa Tour - Part 2",
@@ -723,7 +841,8 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": []
   },
   "Spa Tour - Part 3": {
     "title": "Spa Tour - Part 3",
@@ -734,7 +853,8 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": []
   },
   "Spa Tour - Part 4": {
     "title": "Spa Tour - Part 4",
@@ -745,7 +865,8 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": []
   },
   "Spa Tour - Part 5": {
     "title": "Spa Tour - Part 5",
@@ -756,7 +877,8 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": []
   },
   "Spa Tour - Part 6": {
     "title": "Spa Tour - Part 6",
@@ -767,7 +889,8 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": []
   },
   "Spa Tour - Part 7": {
     "title": "Spa Tour - Part 7",
@@ -778,7 +901,8 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": []
   },
   "Cargo X - Part 1": {
     "title": "Cargo X - Part 1",
@@ -789,7 +913,8 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": []
   },
   "Cargo X - Part 2": {
     "title": "Cargo X - Part 2",
@@ -800,7 +925,10 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": [
+      "KAC QDSS NT-4 5.56x45 silencer (Black)"
+    ]
   },
   "Cargo X - Part 3": {
     "title": "Cargo X - Part 3",
@@ -811,7 +939,8 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": []
   },
   "Wet Job - Part 1": {
     "title": "Wet Job - Part 1",
@@ -822,7 +951,8 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": []
   },
   "Wet Job - Part 2": {
     "title": "Wet Job - Part 2",
@@ -833,7 +963,10 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": [
+      "Magpul PMAG D-60 5.56x45 60-round magazine"
+    ]
   },
   "Wet Job - Part 3": {
     "title": "Wet Job - Part 3",
@@ -844,7 +977,8 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": []
   },
   "Wet Job - Part 4": {
     "title": "Wet Job - Part 4",
@@ -855,7 +989,8 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": []
   },
   "Wet Job - Part 5": {
     "title": "Wet Job - Part 5",
@@ -866,7 +1001,8 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": []
   },
   "Wet Job - Part 6": {
     "title": "Wet Job - Part 6",
@@ -877,7 +1013,10 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": [
+      "7.62x51 mm M61"
+    ]
   },
   "Psycho Sniper": {
     "title": "Psycho Sniper",
@@ -888,7 +1027,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "The guide": {
     "title": "The guide",
@@ -899,7 +1039,12 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": [
+      "Eotech HHS-1 sight Tan",
+      "SLAAP armor Plate (Tan)",
+      "Arsenal CWP 30-round 5.56x45 magazine for SLR-106 and compatible weapons"
+    ]
   },
   "Gunsmith - Part 1": {
     "title": "Gunsmith - Part 1",
@@ -910,7 +1055,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Gunsmith - Part 2": {
     "title": "Gunsmith - Part 2",
@@ -921,7 +1067,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Gunsmith - Part 3": {
     "title": "Gunsmith - Part 3",
@@ -932,7 +1079,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Gunsmith - Part 4": {
     "title": "Gunsmith - Part 4",
@@ -943,7 +1091,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Gunsmith - Part 5": {
     "title": "Gunsmith - Part 5",
@@ -954,7 +1103,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Gunsmith - Part 6": {
     "title": "Gunsmith - Part 6",
@@ -965,7 +1115,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Gunsmith - Part 7": {
     "title": "Gunsmith - Part 7",
@@ -976,7 +1127,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Gunsmith - Part 8": {
     "title": "Gunsmith - Part 8",
@@ -987,7 +1139,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Gunsmith - Part 9": {
     "title": "Gunsmith - Part 9",
@@ -998,7 +1151,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Gunsmith - Part 10": {
     "title": "Gunsmith - Part 10",
@@ -1009,7 +1163,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Gunsmith - Part 11": {
     "title": "Gunsmith - Part 11",
@@ -1020,7 +1175,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Gunsmith - Part 12": {
     "title": "Gunsmith - Part 12",
@@ -1031,7 +1187,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Gunsmith - Part 13": {
     "title": "Gunsmith - Part 13",
@@ -1042,7 +1199,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Gunsmith - Part 14": {
     "title": "Gunsmith - Part 14",
@@ -1053,7 +1211,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Gunsmith - Part 15": {
     "title": "Gunsmith - Part 15",
@@ -1064,7 +1223,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Gunsmith - Part 16": {
     "title": "Gunsmith - Part 16",
@@ -1075,7 +1235,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Signal - Part 1": {
     "title": "Signal - Part 1",
@@ -1086,7 +1247,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Signal - Part 2": {
     "title": "Signal - Part 2",
@@ -1097,7 +1259,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Signal - Part 3": {
     "title": "Signal - Part 3",
@@ -1108,7 +1271,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Signal - Part 4": {
     "title": "Signal - Part 4",
@@ -1119,7 +1283,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Scout": {
     "title": "Scout",
@@ -1130,7 +1295,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Insider": {
     "title": "Insider",
@@ -1141,7 +1307,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Farming - Part 1": {
     "title": "Farming - Part 1",
@@ -1152,7 +1319,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Farming - Part 2": {
     "title": "Farming - Part 2",
@@ -1163,7 +1331,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Farming - Part 3": {
     "title": "Farming - Part 3",
@@ -1174,7 +1343,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Farming - Part 4": {
     "title": "Farming - Part 4",
@@ -1185,7 +1355,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Import": {
     "title": "Import",
@@ -1196,7 +1367,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Fertilizers": {
     "title": "Fertilizers",
@@ -1207,7 +1379,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "A Shooter Born in Heaven": {
     "title": "A Shooter Born in Heaven",
@@ -1218,7 +1391,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Only business": {
     "title": "Only business",
@@ -1229,7 +1403,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "Big sale": {
     "title": "Big sale",
@@ -1240,7 +1415,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "The Blood of War - Part 1": {
     "title": "The Blood of War - Part 1",
@@ -1251,7 +1427,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "Dressed to kill": {
     "title": "Dressed to kill",
@@ -1262,7 +1439,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "Database - Part 1": {
     "title": "Database - Part 1",
@@ -1273,7 +1451,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "Database - Part 2": {
     "title": "Database - Part 2",
@@ -1284,7 +1463,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "Gratitude": {
     "title": "Gratitude",
@@ -1295,7 +1475,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "Sales Night": {
     "title": "Sales Night",
@@ -1306,7 +1487,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "Supervisor": {
     "title": "Supervisor",
@@ -1317,7 +1499,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "Hot Delivery": {
     "title": "Hot Delivery",
@@ -1328,7 +1511,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "Scavenger": {
     "title": "Scavenger",
@@ -1339,7 +1523,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "Make ULTRA Great Again": {
     "title": "Make ULTRA Great Again",
@@ -1350,7 +1535,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "Minibus": {
     "title": "Minibus",
@@ -1361,7 +1547,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "Sew it good - Part 1": {
     "title": "Sew it good - Part 1",
@@ -1372,7 +1559,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "Sew it good - Part 2": {
     "title": "Sew it good - Part 2",
@@ -1383,7 +1571,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "Sew it good - Part 3": {
     "title": "Sew it good - Part 3",
@@ -1394,7 +1583,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "Sew it good - Part 4": {
     "title": "Sew it good - Part 4",
@@ -1405,7 +1595,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "Charisma brings success": {
     "title": "Charisma brings success",
@@ -1416,7 +1607,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "No fuss needed": {
     "title": "No fuss needed",
@@ -1427,7 +1619,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "The Blood of War - Part 2": {
     "title": "The Blood of War - Part 2",
@@ -1438,7 +1631,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "The Blood of War - Part 3": {
     "title": "The Blood of War - Part 3",
@@ -1449,7 +1643,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "Living high is not a crime - Part 1": {
     "title": "Living high is not a crime - Part 1",
@@ -1460,7 +1655,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "Living high is not a crime - Part 2": {
     "title": "Living high is not a crime - Part 2",
@@ -1471,7 +1667,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "Introduction": {
     "title": "Introduction",
@@ -1482,7 +1679,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Acquaintance": {
     "title": "Acquaintance",
@@ -1493,7 +1691,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "The survivalist path - Unprotected, but dangerous": {
     "title": "The survivalist path - Unprotected, but dangerous",
@@ -1504,7 +1703,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "The survivalist path - Thrifty": {
     "title": "The survivalist path - Thrifty",
@@ -1515,7 +1715,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "The survivalist path - Zhivchik": {
     "title": "The survivalist path - Zhivchik",
@@ -1526,7 +1727,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "The survivalist path - Wounded beast": {
     "title": "The survivalist path - Wounded beast",
@@ -1537,7 +1739,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "The survivalist path - Tough guy": {
     "title": "The survivalist path - Tough guy",
@@ -1548,7 +1751,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "Courtesy visit": {
     "title": "Courtesy visit",
@@ -1559,7 +1763,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "Nostalgia": {
     "title": "Nostalgia",
@@ -1570,7 +1775,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "The Tarkov shooter - Part 1": {
     "title": "The Tarkov shooter - Part 1",
@@ -1581,7 +1787,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "The Tarkov shooter - Part 2": {
     "title": "The Tarkov shooter - Part 2",
@@ -1592,7 +1799,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "The Tarkov shooter - Part 3": {
     "title": "The Tarkov shooter - Part 3",
@@ -1603,7 +1811,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "The Tarkov shooter - Part 4": {
     "title": "The Tarkov shooter - Part 4",
@@ -1614,7 +1823,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "The Tarkov shooter - Part 5": {
     "title": "The Tarkov shooter - Part 5",
@@ -1625,7 +1835,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "The Tarkov shooter - Part 6": {
     "title": "The Tarkov shooter - Part 6",
@@ -1636,7 +1847,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "The Tarkov shooter - Part 7": {
     "title": "The Tarkov shooter - Part 7",
@@ -1647,7 +1859,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "The Tarkov shooter - Part 8": {
     "title": "The Tarkov shooter - Part 8",
@@ -1658,7 +1871,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "The survivalist path - Cold blooded": {
     "title": "The survivalist path - Cold blooded",
@@ -1669,7 +1883,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "Colleagues - Part 2": {
     "title": "Colleagues - Part 2",
@@ -1680,7 +1895,8 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": []
   },
   "Colleagues - Part 3": {
     "title": "Colleagues - Part 3",
@@ -1691,7 +1907,8 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": []
   },
   "The survivalist path - Combat medic": {
     "title": "The survivalist path - Combat medic",
@@ -1702,7 +1919,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "Ambulance": {
     "title": "Ambulance",
@@ -1713,7 +1931,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "Huntsman path - Secured perimeter": {
     "title": "Huntsman path - Secured perimeter",
@@ -1724,7 +1943,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "Reserv": {
     "title": "Reserv",
@@ -1735,7 +1955,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "Huntsman path - Woods cleaning": {
     "title": "Huntsman path - Woods cleaning",
@@ -1746,7 +1967,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "Huntsman path - Controller": {
     "title": "Huntsman path - Controller",
@@ -1757,7 +1979,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "Huntsman path - Evil watchman": {
     "title": "Huntsman path - Evil watchman",
@@ -1768,7 +1991,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "Fishing place": {
     "title": "Fishing place",
@@ -1779,7 +2003,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "Huntsman path - The trophy": {
     "title": "Huntsman path - The trophy",
@@ -1790,7 +2015,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "Huntsman path - Justice": {
     "title": "Huntsman path - Justice",
@@ -1801,7 +2027,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "Huntsman path - Sell-out": {
     "title": "Huntsman path - Sell-out",
@@ -1812,7 +2039,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "Huntsman path - Woods keeper": {
     "title": "Huntsman path - Woods keeper",
@@ -1823,7 +2051,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "Huntsman path - Eraser - Part 1": {
     "title": "Huntsman path - Eraser - Part 1",
@@ -1834,7 +2063,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "Huntsman path - Eraser - Part 2": {
     "title": "Huntsman path - Eraser - Part 2",
@@ -1845,7 +2075,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "Hunting trip": {
     "title": "Hunting trip",
@@ -1856,7 +2087,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "Operation Aquarius - Part 1": {
     "title": "Operation Aquarius - Part 1",
@@ -1867,7 +2099,8 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": []
   },
   "Operation Aquarius - Part 2": {
     "title": "Operation Aquarius - Part 2",
@@ -1878,7 +2111,8 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": []
   },
   "Polikhim hobo": {
     "title": "Polikhim hobo",
@@ -1889,7 +2123,8 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": []
   },
   "Regulated materials": {
     "title": "Regulated materials",
@@ -1900,7 +2135,8 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": []
   },
   "Stirrup": {
     "title": "Stirrup",
@@ -1911,7 +2147,8 @@
     },
     "turnin": {
       "name": "Skier"
-    }
+    },
+    "unlocks": []
   },
   "Mentor": {
     "title": "Mentor",
@@ -1922,7 +2159,8 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": []
   },
   "Bad habit": {
     "title": "Bad habit",
@@ -1933,7 +2171,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "The key to success": {
     "title": "The key to success",
@@ -1944,7 +2183,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "Shady Business": {
     "title": "Shady Business",
@@ -1955,7 +2195,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "Postman Pat - Part 2": {
     "title": "Postman Pat - Part 2",
@@ -1966,7 +2207,8 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": []
   },
   "Out of curiosity": {
     "title": "Out of curiosity",
@@ -1977,7 +2219,8 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": []
   },
   "Big customer": {
     "title": "Big customer",
@@ -1988,7 +2231,8 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": []
   },
   "The survivalist path - Junkie": {
     "title": "The survivalist path - Junkie",
@@ -1999,7 +2243,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "Textile - Part 1": {
     "title": "Textile - Part 1",
@@ -2010,7 +2255,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "Textile - Part 2": {
     "title": "Textile - Part 2",
@@ -2021,7 +2267,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "Anesthesia": {
     "title": "Anesthesia",
@@ -2032,7 +2279,8 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": []
   },
   "Colleagues - Part 1": {
     "title": "Colleagues - Part 1",
@@ -2043,7 +2291,8 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": []
   },
   "Rigged game": {
     "title": "Rigged game",
@@ -2054,7 +2303,8 @@
     },
     "turnin": {
       "name": "Skier"
-    }
+    },
+    "unlocks": []
   },
   "The chemistry closet": {
     "title": "The chemistry closet",
@@ -2065,7 +2315,8 @@
     },
     "turnin": {
       "name": "Mechanic"
-    }
+    },
+    "unlocks": []
   },
   "Samples": {
     "title": "Samples",
@@ -2076,7 +2327,8 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": []
   },
   "TerraGroup employee": {
     "title": "TerraGroup employee",
@@ -2087,7 +2339,8 @@
     },
     "turnin": {
       "name": "Peacekeeper"
-    }
+    },
+    "unlocks": []
   },
   "Huntsman path - Sadist": {
     "title": "Huntsman path - Sadist",
@@ -2098,7 +2351,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "The bunker - Part 1": {
     "title": "The bunker - Part 1",
@@ -2109,7 +2363,8 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": []
   },
   "The bunker - Part 2": {
     "title": "The bunker - Part 2",
@@ -2120,7 +2375,8 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": []
   },
   "Search mission": {
     "title": "Search mission",
@@ -2131,7 +2387,8 @@
     },
     "turnin": {
       "name": "Prapor"
-    }
+    },
+    "unlocks": []
   },
   "The stylish one": {
     "title": "The stylish one",
@@ -2142,7 +2399,8 @@
     },
     "turnin": {
       "name": "Ragman"
-    }
+    },
+    "unlocks": []
   },
   "Thee survivalist path - Eagle-owl": {
     "title": "Thee survivalist path - Eagle-owl",
@@ -2153,7 +2411,8 @@
     },
     "turnin": {
       "name": "Jaeger"
-    }
+    },
+    "unlocks": []
   },
   "Collector": {
     "title": "Collector",
@@ -2164,7 +2423,8 @@
     },
     "turnin": {
       "name": "Fence"
-    }
+    },
+    "unlocks": []
   },
   "An apple a day - keeps the doctor away": {
     "title": "An apple a day - keeps the doctor away",
@@ -2175,6 +2435,7 @@
     },
     "turnin": {
       "name": "Therapist"
-    }
+    },
+    "unlocks": []
   }
 }

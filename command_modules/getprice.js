@@ -1,28 +1,10 @@
 const got = require('got')
+const fs = require('fs')
 
 const GetPrice = async(ID) => {
     try {
-        const bodyQuery = JSON.stringify({
-            query: `{
-                item(id: "${ID}") {
-                    id
-                    name
-                    shortName
-                    avg24hPrice
-                    width
-                    height
-                    iconLink
-                    wikiLink
-                    basePrice
-                }
-            }`
-        })
-        const response = await got.post('https://tarkov-tools.com/graphql', {
-            body: bodyQuery,
-            responseType: 'json',
-        })
-
-        return response.body.data.item
+        const PriceData = JSON.parse(fs.readFileSync('./game_data/pricedata.json'))
+        return PriceData[ID].Item
     } catch (e) {
         console.log(e)
         return 'ERROR'
@@ -31,35 +13,7 @@ const GetPrice = async(ID) => {
 
 const GetAllPrices = async() => {
     try {
-        const bodyQuery = JSON.stringify({
-            query: `{
-                itemsByType(type: any) {
-                    name
-                    normalizedName
-                    shortName
-                    id
-                    avg24hPrice
-                }
-            }`
-        })
-        const response = await got.post('https://tarkov-tools.com/graphql', {
-            body: bodyQuery,
-            responseType: 'json',
-        })
-
-        let Res = response.body.data.itemsByType
-        let FormattedObject = {}
-
-        for (Item in Res) {
-            let Itemdata = Res[Item]
-            FormattedObject[Itemdata.id] = {
-                Name: Itemdata.name,
-                ShortName: Itemdata.shortName,
-                ID: Itemdata.id,
-                Price: Itemdata.avg24hPrice
-            }
-        }
-        return FormattedObject
+        return PriceData = JSON.parse(fs.readFileSync('./game_data/pricedata.json'))
     } catch (e) {
         console.log(e)
         return 'ERROR'

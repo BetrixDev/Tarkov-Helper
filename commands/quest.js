@@ -16,7 +16,8 @@ const { MessageEmbed } = require('discord.js')
 const Settings = require('../settings.json')
 const { QuestSearchEngine } = require('../command_modules/questsearchengine')
 const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormessage')
-const { QuestInfo } = require('../classes/QuestInfo')
+const ItemFromName = require('../game_data/itemfromname.json')
+const { QuestInfo } = require('../classes/questinfo')
 
 // Command Functions
 const CommandFunction = (args) => {
@@ -31,16 +32,38 @@ const CommandFunction = (args) => {
     if (Length === 1) {
         let QuestStuff = new QuestInfo(Quest[0])
         return new MessageEmbed()
-            .setColor(Settings.BotSettings.Color)
             .setTitle(QuestStuff.QuestName)
             .setThumbnail(QuestStuff.QuestImage)
-            .addFields({ name: 'Wiki Link', value: `[Click Here](${QuestStuff.WikiLink})`, inline: true }, { name: 'Experience', value: QuestStuff.Experience, inline: true })
+            .addFields({
+                name: 'Wiki Link',
+                value: `[Click Here](${QuestStuff.WikiLink})`,
+                inline: true
+            }, {
+                name: 'Experience',
+                value: QuestStuff.Experience,
+                inline: true
+            }, {
+                name: 'Unlocks',
+                value: GetUnlocks(QuestStuff.Unlocks),
+                inline: true
+            })
     } else if (Length > 1) {
         return ErrorMessageField(`Quest search of \"${args['questname'].toLowerCase()}\" came back with multiple results, please be more specific`, {
             name: 'Results',
             value: Quest
         })
     }
+}
+
+const GetUnlocks = (array) => {
+    let Unlocks = new Array()
+
+    for (const i in array) {
+        let Item = array[i]
+        Unlocks.push(ItemFromName[Item].ShortName)
+    }
+
+    return Unlocks
 }
 
 exports.CommandFunction = CommandFunction

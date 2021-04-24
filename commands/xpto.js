@@ -31,20 +31,18 @@ const CommandFunction = (args) => {
 
     if (Current < 71 && End < 71 && Current !== End) {
         return new DiscordJS.MessageEmbed()
-            .setColor(Settings.BotSettings.Color)
             .setTitle('Experience Calculator')
             .setThumbnail(Settings.Images.Thumbnails.Experience)
             .addFields({
-                name: "Experience Gap",
+                name: `Experience Gap From ${Current} To ${End}`,
                 value: (Math.abs(ExperienceData[Current].Total - ExperienceData[End].Total)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
             })
     } else if (Current > 999 && End > 71 && Current !== End) {
         return new DiscordJS.MessageEmbed()
-            .setColor(Settings.BotSettings.Color)
             .setTitle('Experience Calculator')
             .setThumbnail(Settings.Images.Thumbnails.Experience)
             .addFields({
-                name: "Experience Gap",
+                name: `Experience Gap From ${Current}xp To ${End}`,
                 value: (Math.abs(ExperienceData[Current].Total - End)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
             })
     } else if (Current === End) {

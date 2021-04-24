@@ -15,7 +15,7 @@ const CommandSettings = {
 const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormessage')
 const { ItemSearchEngine } = require('../command_modules/itemsearchengine')
 const ItemFromName = require('../game_data/itemfromname.json')
-const { GetPrice } = require('../command_modules/getprice')
+const { PriceInfo } = require('../classes/priceinfo')
 const { MessageEmbed } = require('discord.js')
 
 // Command Functions
@@ -29,31 +29,33 @@ const CommandFunction = async(args) => {
     let Length = Item.length
 
     if (Length === 1) {
-        let PriceData = await GetPrice(ItemFromName[Item[0]].ID)
-        console.log(PriceData)
+        let PriceData = new PriceInfo(ItemFromName[Item[0]].ID)
 
         if (PriceData !== 'ERROR') {
             return new MessageEmbed()
-                .setTitle(`${PriceData.shortName} Price Data`)
-                .setThumbnail(PriceData.iconLink)
+                .setTitle(`${PriceData.PriceData.shortName} Price Data`)
+                .setThumbnail(`https://raw.githubusercontent.com/RatScanner/EfTIcons/master/uid/${PriceData.PriceData.id}.png`)
                 .addFields({
                     name: 'Price',
-                    value: FormatNumber(PriceData.avg24hPrice) + '₽',
+                    value: FormatNumber(PriceData.PriceData.avg24hPrice) + '₽',
                     inline: true
                 }, {
                     name: 'Price Per Slot',
-                    value: FormatNumber(PricePerSlot(PriceData.avg24hPrice, PriceData.width, PriceData.height)) + '₽',
+                    value: FormatNumber(PriceData.PricePerSlot) + '₽',
                     inline: true
                 }, {
                     name: 'Flea Market Fee',
-                    value: FormatNumber(CalcFee(PriceData.basePrice, (PriceData.avg24hPrice - 1))) + '₽ per one',
+                    value: FormatNumber(PriceData.Fee) + '₽/each',
                     inline: true
                 }, {
                     name: 'Wiki Link',
-                    value: `[Click Here](${PriceData.wikiLink})`,
+                    value: `[Click Here](${PriceData.PriceData.wikiLink})`,
                     inline: true
+                }, {
+                    name: 'Highest Trader Sell',
+                    value: `${PriceData.HighestTraderBuy[1]} at ${FormatNumber(PriceData.HighestTraderBuy[0])}₽/each`
                 })
-                .setFooter('Fee is calculated from a offer of 1 rouble less then the current price')
+                .setFooter('Fee is calculated from an offer of 1 rouble less then the current price')
         } else {
             return ErrorMessage('Unable to grab price data please try again later')
         }
@@ -67,32 +69,6 @@ const CommandFunction = async(args) => {
     } else {
         return ErrorMessage(`Item search of \"${args['item'].toLowerCase()}\" came back with no results`)
     }
-}
-
-const PricePerSlot = (Price, W, H) => {
-    let Slots = W * H
-    return Math.round(Price / Slots)
-}
-
-// Function from tarkov-tools fee calculator script
-const CalcFee = (basePrice, sellPrice, count = 1) => {
-    let V0 = basePrice
-    let VR = sellPrice
-    let Ti = 0.05
-    let Tr = 0.05
-    let P0 = Math.log10(V0 / VR)
-    let PR = Math.log10(VR / V0)
-    let Q = count
-
-    if (VR < V0) {
-        P0 = Math.pow(P0, 1.08)
-    }
-
-    if (VR >= V0) {
-        PR = Math.pow(PR, 1.08)
-    }
-
-    return Math.ceil(V0 * Ti * Math.pow(4, P0) * Q + VR * Tr * Math.pow(4, PR) * Q)
 }
 
 const FormatNumber = (n) => {

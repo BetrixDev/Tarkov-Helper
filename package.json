@@ -12,6 +12,7 @@
     "discord.js": "^12.5.3",
     "dotenv": "^8.2.0",
     "got": "^11.8.2",
-    "graphql": "^15.5.0"
+    "graphql": "^15.5.0",
+    "node-schedule": "^2.0.0"
   }
 }

@@ -17,10 +17,11 @@ const Engine = (Input) => {
     }
 
     for (const Item in ItemName) {
-        if (ItemName[Item].toLowerCase().split('.').join('').includes(Input)) {
+        if (ItemName[Item].toLowerCase().split('.').join('').includes(Input.split('.').join(''))) {
             Results.push(ItemName[Item])
         }
     }
+
     return Results
 }
 

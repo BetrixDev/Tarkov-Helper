@@ -30,7 +30,6 @@ const CommandFunction = async(args) => {
 
     if (args['compare-gpus'] === undefined) {
         return new MessageEmbed()
-            .setColor(Settings.BotSettings['Color'])
             .setTitle('Bitcoin Farm Calculator')
             .setThumbnail(Settings.Images.Thumbnails['BitcoinFarm'])
             .addFields({
@@ -50,7 +49,6 @@ const CommandFunction = async(args) => {
         const SecondCalculation = await BitcoinFarmCalc(args['compare-gpus'])
 
         return new MessageEmbed()
-            .setColor(Settings.BotSettings.Color)
             .setTitle('Bitcoin Farm Calculator')
             .setThumbnail(Settings.Images.Thumbnails.BitcoinFarm)
             .addFields({

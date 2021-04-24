@@ -1,2 +1,3 @@
 .env
 node_modules/
+game_data/pricedata.json

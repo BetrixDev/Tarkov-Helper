@@ -85,86 +85,10 @@ const CreateAPIMessage = async(interaction, content) => {
     return {...data, files }
 }
 
-const CacheQuests = async() => {
-    let start = new Date()
-    const bodyQuery = JSON.stringify({
-        query: `{
-            quests {
-                title
-                wikiLink
-                exp
-                giver {
-                    name
-                }
-                turnin {
-                    name
-                }
-            }
-        }`
-    })
-    const response = await got.post('https://tarkov-tools.com/graphql', {
-        body: bodyQuery,
-        responseType: 'json',
-    })
-    let QuestData = response.body.data.quests
-
-    let FormattedData = {}
-    for (const Quest in QuestData) {
-        FormattedData[QuestData[Quest].title] = QuestData[Quest]
-    }
-    fs.writeFileSync('./game_data/quests.json', JSON.stringify(FormattedData, null, 2))
-
-    let QuestNames = new Array()
-    for (const Quest in QuestData) {
-        QuestNames.push(QuestData[Quest].title)
-    }
-    fs.writeFileSync('./game_data/questnames.json', JSON.stringify(QuestNames, null, 2))
-
-    let end = new Date()
-    console.log(`Cached quests in ${end.getTime() - start.getTime()}ms`)
-}
-
-const CacheItems = async() => {
-    let start = new Date()
-    const bodyQuery = JSON.stringify({
-        query: `{
-            itemsByType(type: any) {
-                name
-                shortName
-                normalizedName
-                id
-            }
-        }`
-    })
-    const response = await got.post('https://tarkov-tools.com/graphql', {
-        body: bodyQuery,
-        responseType: 'json',
-    })
-    let ItemData = response.body.data.itemsByType
-
-    let ItemFromName = {}
-    let ItemArray = new Array()
-    for (const Item in ItemData) {
-        let Data = ItemData[Item]
-        if (Data.name) {
-            ItemFromName[Data.name] = {
-                Name: Data.name,
-                ShortName: Data.shortName,
-                ID: Data.id
-            }
-            ItemArray.push(Data.name)
-        }
-    }
-    fs.writeFileSync('./game_data/itemfromname.json', JSON.stringify(ItemFromName, null, 2))
-    fs.writeFileSync('./game_data/itemarray.json', JSON.stringify(ItemArray, null, 2))
-
-    let end = new Date()
-    console.log(`Cached items in ${end.getTime() - start.getTime()}ms`)
-}
-
 const StartBot = async() => {
-    await CacheQuests()
-    await CacheItems()
+    const { StartTasks } = require('./tasks')
+    StartTasks()
+
     client.login(process.env.BOT_TOKEN)
 }
 StartBot()
