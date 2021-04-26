@@ -18,9 +18,6 @@
 - [A code editor](https://code.visualstudio.com/download)
 - [Git](https://git-scm.com/downloads) (Optional)
 - [Node.js](https://nodejs.org/en/) 
-- Discord.js: ```npm install discord.js```
-- Axios: ```npm install axios```
-- Dotenv: ```npm install dotenv```
 
 **Setup**
 - Open CMD and type: ```cd DIRECTORY_OF_PROJECT``` ex: "cd Desktop/Discordbot"
