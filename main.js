@@ -28,13 +28,27 @@ client.on('ready', async() => {
     let End = new Date()
     console.log(`Tarkov Helper Initialized in ${End.getTime() - Start.getTime()}ms`)
 
+    //await getApp(guildID).commands('836632502470180894').delete()
+
     const commands = await getApp(guildID).commands.get()
-        //console.log(commands)
+
+    let FormattedCommands = {}
+    for (const c in commands) {
+        let Command = commands[c]
+        FormattedCommands[Command.name] = {
+            ID: Command.id
+        }
+    }
+
+    //console.log(commands)
 
     for (const File of CommandFiles) {
         let FormatFile = File.split('.')[0]
         let CommandData = require(`./commands/${FormatFile}`)['CommandSettings']
-        await getApp(guildID).commands.post(CommandData)
+
+        if (!FormattedCommands.hasOwnProperty(FormatFile)) {
+            await getApp(guildID).commands.post(CommandData)
+        }
     }
 
     client.ws.on('INTERACTION_CREATE', async(interaction) => {
@@ -48,7 +62,6 @@ client.on('ready', async() => {
                 args[name] = value
             }
         }
-
         // If command exists locally
         if (BotCommands.includes(command)) {
             const message = await require(`./commands/${command}`)['CommandFunction'](args)
