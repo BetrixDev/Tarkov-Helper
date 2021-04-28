@@ -55,7 +55,7 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
 })
 
 // Update item data every 12 hours
-const UpdateItems = schedule.scheduleJob('* */12 * * *', async function() {
+const UpdateItems = schedule.scheduleJob('*/60 * * * *', async function() {
     console.log(`{${GetDate()}}: Updating items`)
 
     try {
@@ -100,7 +100,7 @@ const UpdateItems = schedule.scheduleJob('* */12 * * *', async function() {
 })
 
 // Update quest data every 24 hours
-const UpdateQuests = schedule.scheduleJob('* */24 * * *', async function() {
+const UpdateQuests = schedule.scheduleJob('@daily', async function() {
     console.log(`{${GetDate()}}: Updating quests`)
 
     try {
