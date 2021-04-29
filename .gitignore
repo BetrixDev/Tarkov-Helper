@@ -2,7 +2,9 @@
 node_modules/
 wiki/
 
-game_data/pricedata.json
-game_data/itemfromname.json
-game_data/quests.json
-game_data/questnames.json
+src/assets/ProjectFiles/
+
+src/game_data/pricedata.json
+src/game_data/itemfromname.json
+src/game_data/quests.json
+src/game_data/questnames.json
