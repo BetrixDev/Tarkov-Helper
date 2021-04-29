@@ -1,7 +1,6 @@
 // Discord Slash Command code setup from Worn Off Keys https://www.youtube.com/channel/UChPrh75CmPP9Ig6jISPnfNA
 // Tarkov Data API from Tarkov Tools https://tarkov-tools.com/about/
 // Some code snippets are also from Tarkov Tools
-
 let Start = new Date()
 
 const DiscordJS = require('discord.js')
@@ -19,7 +18,7 @@ const getApp = (guildID) => {
 }
 
 const BotCommands = new Array()
-const CommandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
+const CommandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.js'))
 for (const File of CommandFiles) {
     BotCommands.push(File.split('.')[0])
 }

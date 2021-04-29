@@ -1,4 +1,4 @@
-![Tarkov Helper Banner](Assets/Media/Banner3000x1000.png)
+![Tarkov Helper Banner](assets/Media/SecondBanner3000x1000.png)
 # Description (This Project Is Not Yet Finished)
 **Tarkov Helper** is a Discord bot aimed to give users all kinds of information in an easy and read and use format. <br />
 

@@ -1,18 +1,19 @@
 {
-  "name": "tarkov-lfg-bot",
-  "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "discord.js": "^12.5.3",
-    "dotenv": "^8.2.0",
-    "got": "^11.8.2",
-    "graphql": "^15.5.0",
-    "node-schedule": "^2.0.0"
-  }
+    "name": "tarkov-lfg-bot",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "bot": "node src/main.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "discord.js": "^12.5.3",
+        "dotenv": "^8.2.0",
+        "got": "^11.8.2",
+        "graphql": "^15.5.0",
+        "node-schedule": "^2.0.0"
+    }
 }

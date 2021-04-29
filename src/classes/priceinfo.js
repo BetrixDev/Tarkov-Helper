@@ -2,12 +2,14 @@ const fs = require('fs')
 
 class PriceInfo {
     constructor(id) {
-        this.RawData = JSON.parse(fs.readFileSync('./game_data/pricedata.json'))
+        this.RawData = JSON.parse(fs.readFileSync('./src/game_data/pricedata.json'))
         this.ItemID = id
         this.PriceData = this.RawData[id].Item
         this.HighestTraderBuy = this.HighestTrader()
         this.Fee = this.CalcFee()
         this.PricePerSlot = this.PriceSlot()
+        this.PriceWithFee = this.PriceData.avg24hPrice - this.Fee
+        this.RecommendedSell = this.BestSell()
     }
     HighestTrader() {
         let Traders = this.PriceData.traderPrices
@@ -22,6 +24,13 @@ class PriceInfo {
         }
 
         return Highest
+    }
+    BestSell() {
+        if (this.PriceWithFee > this.HighestTrader()[0]) {
+            return 'Flea Market'
+        } else {
+            return this.HighestTrader()[1]
+        }
     }
     CalcFee() {
         // Function from tarkov-tools fee calculator script
@@ -51,7 +60,7 @@ class PriceInfo {
 
 const GetAllPrices = async() => {
     try {
-        return PriceData = JSON.parse(fs.readFileSync('./game_data/pricedata.json'))
+        return PriceData = JSON.parse(fs.readFileSync('./src/game_data/pricedata.json'))
     } catch (e) {
         console.log(e)
         return 'ERROR'

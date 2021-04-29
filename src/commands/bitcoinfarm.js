@@ -21,12 +21,12 @@ const CommandSettings = {
 
 const { MessageEmbed } = require('discord.js')
 const Settings = require('../settings.json')
-const { BitcoinFarmCalc } = require('../command_modules/bitcoinfarmcalc')
+const { BitcoinFarmCalc } = require('../classes/bitcoinfarmcalc')
 
 // Command Functions
 
 const CommandFunction = async(args) => {
-    const Calculation = await BitcoinFarmCalc(args['gpus'])
+    const Calculation = new BitcoinFarmCalc(args['gpus'])
 
     if (args['compare-gpus'] === undefined) {
         return new MessageEmbed()

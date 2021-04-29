@@ -2,7 +2,7 @@
 const CommandSettings = {
     data: {
         name: 'price',
-        description: 'Calculate the amount of money obtained from a certain amount of Graphics Cards',
+        description: 'Returns price info of a specified item',
         options: [{
             name: 'item',
             description: 'What item to get the price of',
@@ -19,7 +19,7 @@ const { PriceInfo } = require('../classes/priceinfo')
 const { MessageEmbed } = require('discord.js')
 
 // Command Functions
-const CommandFunction = async(args) => {
+const CommandFunction = (args) => {
     if (args['item'].length < 2 || args['item'].length > 100) {
         return ErrorMessage('Please keep the item input length between 3 and 100 characters')
     }
@@ -54,6 +54,9 @@ const CommandFunction = async(args) => {
                 }, {
                     name: 'Highest Trader Sell',
                     value: `${PriceData.HighestTraderBuy[1]} at ${FormatNumber(PriceData.HighestTraderBuy[0])}₽/each`
+                }, {
+                    name: 'Best Place To Sell',
+                    value: `${PriceData.RecommendedSell}`
                 })
                 .setFooter('Fee is calculated from an offer of 1 rouble less then the current price')
         } else {

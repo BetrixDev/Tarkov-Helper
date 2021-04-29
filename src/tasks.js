@@ -41,11 +41,12 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
 
         for (const i in response.body.data.itemsByType) {
             let Item = response.body.data.itemsByType[i]
+            Item.PricePerSlot = Math.round(Item.avg24hPrice / (Item.width * Item.height))
             NewPrices[Item.id] = {
                 Item
             }
         }
-        fs.writeFileSync('./game_data/pricedata.json', JSON.stringify(NewPrices, null, 2))
+        fs.writeFileSync('./src/game_data/pricedata.json', JSON.stringify(NewPrices, null, 2))
 
         console.log(`{${GetDate()}}: Updated prices successfully`)
 
@@ -88,8 +89,8 @@ const UpdateItems = schedule.scheduleJob('*/60 * * * *', async function() {
                 ItemArray.push(Data.name)
             }
         }
-        fs.writeFileSync('./game_data/itemfromname.json', JSON.stringify(ItemFromName, null, 2))
-        fs.writeFileSync('./game_data/itemarray.json', JSON.stringify(ItemArray, null, 2))
+        fs.writeFileSync('./src/game_data/itemfromname.json', JSON.stringify(ItemFromName, null, 2))
+        fs.writeFileSync('./src/game_data/itemarray.json', JSON.stringify(ItemArray, null, 2))
 
         console.log(`{${GetDate()}}: Updated items successfully`)
 
@@ -130,13 +131,13 @@ const UpdateQuests = schedule.scheduleJob('@daily', async function() {
         for (const Quest in QuestData) {
             FormattedData[QuestData[Quest].title] = QuestData[Quest]
         }
-        fs.writeFileSync('./game_data/quests.json', JSON.stringify(FormattedData, null, 2))
+        fs.writeFileSync('./src/game_data/quests.json', JSON.stringify(FormattedData, null, 2))
 
         let QuestNames = new Array()
         for (const Quest in QuestData) {
             QuestNames.push(QuestData[Quest].title)
         }
-        fs.writeFileSync('./game_data/questnames.json', JSON.stringify(QuestNames, null, 2))
+        fs.writeFileSync('./src/game_data/questnames.json', JSON.stringify(QuestNames, null, 2))
 
         console.log(`{${GetDate()}}: Updated quests successfully`)
 

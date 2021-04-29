@@ -46,6 +46,9 @@ const CommandFunction = (args) => {
                 name: 'Unlocks',
                 value: GetUnlocks(QuestStuff.Unlocks),
                 inline: true
+            }, {
+                name: 'Needed For Kappa',
+                value: 'true'
             })
     } else if (Length > 1) {
         return ErrorMessageField(`Quest search of \"${args['questname'].toLowerCase()}\" came back with multiple results, please be more specific`, {
