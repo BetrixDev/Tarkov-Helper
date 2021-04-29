@@ -10,9 +10,7 @@
  
 
 # Adding Bot To Server 
-**(THE BOT IS CURRENTLY IN DEVELOPMENT AND WON'T BE RUNNING MOST OF THE TIME)**
-
-[**Click Here**](https://discord.com/api/oauth2/authorize?client_id=797600238449590334&permissions=0&scope=bot%20applications.commands) then **select a server** and hit **continue** to be able to add Tarkov Helper to your server.
+**(THE BOT IS CURRENTLY IN DEVELOPMENT)**
 
 # Building Yourself
 
