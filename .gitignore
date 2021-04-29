@@ -1,4 +1,9 @@
 .env
 node_modules/
-game_data/pricedata.json
 wiki/
+
+game_data/pricedata.json
+game_data/itemarray.json
+game_data/itemfromname.json
+game_data/quests.json
+game_data/questnames.json
