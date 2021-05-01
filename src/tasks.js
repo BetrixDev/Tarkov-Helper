@@ -6,6 +6,8 @@ const GetDate = () => {
     return Date().split(' G')[0]
 }
 
+const RawGameData = JSON.parse(fs.readFileSync('./src/game_data/rawdata.json'))
+
 // Update price data every 10 minutes
 const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
     console.log(`{${GetDate()}}: Updating prices`)
@@ -29,6 +31,7 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
                           name
                         }
                     }
+                    types
                 }
             }`
         })
@@ -38,6 +41,7 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
         })
 
         let NewPrices = {}
+        let ItemData = {}
 
         for (const i in response.body.data.itemsByType) {
             let Item = response.body.data.itemsByType[i]
@@ -45,8 +49,17 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
             NewPrices[Item.id] = {
                 Item
             }
+            ItemData[Item.id] = {
+                ID: Item.id,
+                Name: Item.name,
+                ShortName: Item.shortName,
+                WikiLink: Item.wikiLink,
+                Types: Item.types,
+                RawData: RawGameData[Item.id]
+            }
         }
         fs.writeFileSync('./src/game_data/pricedata.json', JSON.stringify(NewPrices, null, 2))
+        fs.writeFileSync('./src/game_data/itemdata.json', JSON.stringify(ItemData, null, 2))
 
         console.log(`{${GetDate()}}: Updated prices successfully`)
 
@@ -77,6 +90,8 @@ const UpdateItems = schedule.scheduleJob('*/60 * * * *', async function() {
         let ItemData = response.body.data.itemsByType
 
         let ItemFromName = {}
+        let ItemFromShortName = {}
+        let ItemIDs = new Array()
         let ItemArray = new Array()
         for (const Item in ItemData) {
             let Data = ItemData[Item]
@@ -86,11 +101,19 @@ const UpdateItems = schedule.scheduleJob('*/60 * * * *', async function() {
                     ShortName: Data.shortName,
                     ID: Data.id
                 }
+                ItemFromShortName[Data.shortName.toLowerCase()] = {
+                    Name: Data.name,
+                    ShortName: Data.shortName,
+                    ID: Data.id
+                }
                 ItemArray.push(Data.name)
+                ItemIDs.push(Data.id)
             }
         }
+        fs.writeFileSync('./src/game_data/itemfromshortname.json', JSON.stringify(ItemFromShortName, null, 2))
         fs.writeFileSync('./src/game_data/itemfromname.json', JSON.stringify(ItemFromName, null, 2))
         fs.writeFileSync('./src/game_data/itemarray.json', JSON.stringify(ItemArray, null, 2))
+        fs.writeFileSync('./src/game_data/itemids.json', JSON.stringify(ItemIDs, null, 2))
 
         console.log(`{${GetDate()}}: Updated items successfully`)
 
