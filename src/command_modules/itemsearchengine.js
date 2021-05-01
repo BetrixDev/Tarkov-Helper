@@ -6,9 +6,13 @@ const Engine = (Input) => {
 
     // Made short name search need a prefix since I don't know a great way to 
     // implement it without making it less user-friendly
+    // Also some items are inacessible using short names since they share the name
+    // with another item
     if (ItemShortName[Input.replace('short=', '')] !== undefined && Input.includes('short=')) {
         return [ItemShortName[Input.replace('short=', '')].Name]
     }
+
+    Input = Input.replace('short=', '')
 
     if (ItemName.includes(Input.toLowerCase())) {
         return [Input]
