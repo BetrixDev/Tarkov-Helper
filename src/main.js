@@ -3,8 +3,10 @@
 // Some code snippets are also from Tarkov Tools
 let Start = new Date()
 
+const { GetCooldown, SetCooldown } = require('./cooldown')
+const { GetServerData } = require('./command_modules/serverdata')
 const DiscordJS = require('discord.js')
-const got = require('got')
+
 const fs = require('fs')
 require('dotenv').config()
 
@@ -51,22 +53,31 @@ client.on('ready', async() => {
     }
 
     client.ws.on('INTERACTION_CREATE', async(interaction) => {
-        const { name, options } = interaction.data
-        const command = name.toLowerCase()
-        const args = {}
+        const uid = interaction.member.user.id
+        let Cooldown = GetServerData(interaction.guild_id)['Cooldown']
+        let LastMessage = GetCooldown(uid)
+        if (LastMessage > Cooldown || interaction.member.roles.includes(GetServerData(interaction.guild_id)['AdminRole'])) { // Admins bypass cooldowns
+            SetCooldown(uid)
+            const { name, options } = interaction.data
+            const command = name.toLowerCase()
+            const args = {}
 
-        if (options) {
-            for (const option of options) {
-                const { name, value } = option
-                args[name] = value
+            if (options) {
+                for (const option of options) {
+                    const { name, value } = option
+                    args[name] = value
+                }
             }
-        }
-        // If command exists locally
-        if (BotCommands.includes(command)) {
-            const message = await require(`./commands/${command}`)['CommandFunction'](args)
-            Reply(interaction, message)
+            // If command exists locally
+            if (BotCommands.includes(command)) {
+                const guild = client.guilds.resolve(interaction.guild_id) // Needed for admin commands
+                const message = await require(`./commands/${command}`)['CommandFunction'](args, interaction, guild)
+                Reply(interaction, message)
+            } else {
+                Reply(interaction, 'This command has no logic yet')
+            }
         } else {
-            Reply(interaction, 'This command has no logic yet')
+            Reply(interaction, `Cooldown: Please wait ${Cooldown - (Math.round(LastMessage * 100) / 100)} seconds`)
         }
     })
 })
