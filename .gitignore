@@ -4,6 +4,9 @@ wiki/
 
 src/assets/ProjectFiles/
 
+# Random debug thing
+dev/
+
 # These files are created internally so useless to keep
 src/game_data/pricedata.json
 src/game_data/itemfromname.json

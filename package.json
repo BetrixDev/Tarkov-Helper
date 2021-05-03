@@ -5,7 +5,8 @@
     "main": "main.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "bot": "node src/main.js"
+        "bot": "node src/main.js",
+        "refresh": "node src/scripts/refreshcommands.js"
     },
     "author": "",
     "license": "ISC",
@@ -13,7 +14,6 @@
         "discord.js": "^12.5.3",
         "dotenv": "^8.2.0",
         "got": "^11.8.2",
-        "graphql": "^15.5.0",
         "node-schedule": "^2.0.0"
     }
 }
