@@ -16,6 +16,7 @@ const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormes
 const { ItemSearchEngine } = require('../command_modules/itemsearchengine')
 const ItemFromName = require('../game_data/itemfromname.json')
 const { PriceInfo } = require('../classes/priceinfo')
+const Settings = require('../settings.json')
 const { MessageEmbed } = require('discord.js')
 
 // Command Functions
@@ -35,6 +36,7 @@ const CommandFunction = (args) => {
             return new MessageEmbed()
                 .setTitle(`${PriceData.PriceData.shortName} Price Data`)
                 .setThumbnail(`https://raw.githubusercontent.com/RatScanner/EfTIcons/master/uid/${PriceData.PriceData.id}.png`)
+                .setDescription(`[Wiki Link To Item](${PriceData.PriceData.wikiLink})`)
                 .addFields({
                     name: 'Price',
                     value: FormatNumber(PriceData.PriceData.avg24hPrice) + '₽',
@@ -48,10 +50,6 @@ const CommandFunction = (args) => {
                     value: FormatNumber(PriceData.Fee) + '₽/each',
                     inline: true
                 }, {
-                    name: 'Wiki Link',
-                    value: `[Click Here](${PriceData.PriceData.wikiLink})`,
-                    inline: true
-                }, {
                     name: 'Highest Trader Sell',
                     value: `${PriceData.HighestTraderBuy[1]} at ${FormatNumber(PriceData.HighestTraderBuy[0])}₽/each`
                 }, {
@@ -63,14 +61,14 @@ const CommandFunction = (args) => {
             return ErrorMessage('Unable to grab price data please try again later')
         }
     } else if (Length > 1 && Length < 25) {
-        return ErrorMessageField(`Item search of \"${args['item'].toLowerCase()}\" came back with multiple results, please be more specific. [Click here](https://github.com/BetrixEdits/Tarkov-Helper/blob/master/game_data/itemarray.json) to see a list of all possible entries`, {
+        return ErrorMessageField(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with multiple results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries`, {
             name: 'Results',
             value: Item
         })
     } else if (Length > 25) {
-        return ErrorMessage(`Item search of \"${args['item'].toLowerCase()}\" came back with over 25 results, please be more specific`)
+        return ErrorMessage(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with over 25 results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries`)
     } else {
-        return ErrorMessage(`Item search of \"${args['item'].toLowerCase()}\" came back with no results`)
+        return ErrorMessage(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with no results. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries`)
     }
 }
 

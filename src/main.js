@@ -29,9 +29,10 @@ client.on('ready', async() => {
     let End = new Date()
     console.log(`Tarkov Helper Initialized in ${End.getTime() - Start.getTime()}ms`)
 
-    //await getApp(guildID).commands('836632502470180894').delete()
+    //await getApp(guildID).commands('838564759489478686').delete()
 
     const commands = await getApp(guildID).commands.get()
+    fs.writeFileSync('./dev/commands.json', JSON.stringify(commands, null, 4)) // Debug
 
     let FormattedCommands = {}
     for (const c in commands) {
@@ -47,7 +48,7 @@ client.on('ready', async() => {
         let FormatFile = File.split('.')[0]
         let CommandData = require(`./commands/${FormatFile}`)['CommandSettings']
 
-        if (!FormattedCommands.hasOwnProperty(FormatFile)) {
+        if (!FormattedCommands.hasOwnProperty(FormatFile) && CommandData !== undefined) {
             await getApp(guildID).commands.post(CommandData)
         }
     }
@@ -58,6 +59,7 @@ client.on('ready', async() => {
         let LastMessage = GetCooldown(uid)
         if (LastMessage > Cooldown || interaction.member.roles.includes(GetServerData(interaction.guild_id)['AdminRole'])) { // Admins bypass cooldowns
             SetCooldown(uid)
+            fs.writeFileSync('./dev/interaction.json', JSON.stringify(interaction, null, 4)) // Debug
             const { name, options } = interaction.data
             const command = name.toLowerCase()
             const args = {}

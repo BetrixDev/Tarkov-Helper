@@ -24,7 +24,7 @@ const CommandFunction = (args, interaction, guild) => {
             let Role = args['role']
             SetServerData(interaction.guild_id, 'AdminRole', Role)
 
-            return `Changed Role to: ${interaction.data.resolved.roles[Role].name}`
+            return `Changed Role to: ${interaction.data.resolved.roles[Role].name || Role}`
         } else {
             return ErrorMessage('Insufficient permission')
         }

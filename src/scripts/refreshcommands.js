@@ -1,5 +1,5 @@
 // Set guildid to only refresh a certain guild or blank for global
-const guildID = '797601083589001227'
+const guildID = ''
 
 const fs = require('fs')
 require('dotenv').config()

@@ -1,11 +1,17 @@
 .env
 node_modules/
 wiki/
+*.code-workspace
 
 src/assets/ProjectFiles/
+src/assets/Emojis
+src/bot_data/config.json
 
 # Random debug thing
 dev/
+
+# Big files
+src/game_data/rawdata.json
 
 # These files are created internally so useless to keep
 src/game_data/pricedata.json
