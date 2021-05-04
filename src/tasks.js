@@ -89,6 +89,7 @@ const UpdateItems = schedule.scheduleJob('*/60 * * * *', async function() {
         })
         let ItemData = response.body.data.itemsByType
 
+        let ItemFromID = {}
         let ItemFromName = {}
         let ItemFromShortName = {}
         let ItemIDs = new Array()
@@ -106,12 +107,18 @@ const UpdateItems = schedule.scheduleJob('*/60 * * * *', async function() {
                     ShortName: Data.shortName,
                     ID: Data.id
                 }
+                ItemFromID[Data.id] = {
+                    Name: Data.name,
+                    ShortName: Data.shortName,
+                    ID: Data.id
+                }
                 ItemArray.push(Data.name)
                 ItemIDs.push(Data.id)
             }
         }
         fs.writeFileSync('./src/game_data/itemfromshortname.json', JSON.stringify(ItemFromShortName, null, 2))
         fs.writeFileSync('./src/game_data/itemfromname.json', JSON.stringify(ItemFromName, null, 2))
+        fs.writeFileSync('./src/game_data/itemfromid.json', JSON.stringify(ItemFromID, null, 2))
         fs.writeFileSync('./src/game_data/itemarray.json', JSON.stringify(ItemArray, null, 2))
         fs.writeFileSync('./src/game_data/itemids.json', JSON.stringify(ItemIDs, null, 2))
 

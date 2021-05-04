@@ -1,3 +1,4 @@
+const ItemID = require('../game_data/itemfromid.json')
 const ItemName = require('../game_data/itemarray.json')
 const ItemShortName = require('../game_data/itemfromshortname.json')
 
@@ -10,6 +11,10 @@ const Engine = (Input) => {
     // with another item
     if (ItemShortName[Input.replace('short=', '')] !== undefined && Input.includes('short=')) {
         return [ItemShortName[Input.replace('short=', '')].Name]
+    }
+
+    if (ItemID[Input.replace('id=', '')] !== undefined && Input.includes('id=')) {
+        return [ItemID[Input.replace('id=', '')].Name]
     }
 
     Input = Input.replace('short=', '')
