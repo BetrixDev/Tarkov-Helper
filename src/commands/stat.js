@@ -32,8 +32,10 @@ const CommandFunction = async(args) => {
             return new MessageEmbed()
                 .setTitle(`${ItemData.ShortName} Stats`)
                 .setThumbnail(`https://raw.githubusercontent.com/RatScanner/EfTIcons/master/uid/${ItemFromName[Item[0]].ID}.png`)
-                .setDescription(`[Wiki Link To Item](${ItemData.WikiLink})`)
+                .setDescription(`${ItemData.Description} \n[Wiki Link To Item](${ItemData.WikiLink})`)
+                .setImage(ItemData.SpecificData.Image || '')
                 .addFields(ItemData.SpecificData.Fields)
+                .setFooter(ItemData.SpecificData.Footer || '')
         } else {
             return ErrorMessage('Unable to grab item data please try again later')
         }

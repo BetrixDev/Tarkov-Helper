@@ -13,7 +13,7 @@ const Engine = (Input) => {
         return [ItemShortName[Input.replace('short=', '')].Name]
     }
 
-    if (ItemID[Input.replace('id=', '')] !== undefined && Input.includes('id=')) {
+    if (ItemID[Input.replace('id=', '')] !== undefined) {
         return [ItemID[Input.replace('id=', '')].Name]
     }
 
