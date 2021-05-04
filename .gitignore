@@ -10,9 +10,6 @@ src/bot_data/config.json
 # Random debug thing
 dev/
 
-# Big files
-src/game_data/rawdata.json
-
 # These files are created internally so useless to keep
 src/game_data/pricedata.json
 src/game_data/itemfromname.json
