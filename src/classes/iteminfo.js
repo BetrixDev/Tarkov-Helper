@@ -23,10 +23,13 @@ class ItemInfo {
                     Fields: [
                         { name: 'Damage', value: RawData.Damage, inline: true },
                         { name: 'Penetration', value: RawData.PenetrationPower, inline: true },
-                        { name: 'Armor Damage', value: RawData.ArmorDamage, inline: true },
+                        { name: 'Armor Damage', value: `${RawData.ArmorDamage}%`, inline: true },
                         { name: 'Bullet Velocity', value: `${RawData.InitialSpeed}m/s`, inline: true },
                         { name: 'Stamina Drain On Hit', value: RawData.StaminaBurnPerDamage, inline: true },
-                        { name: 'Is Tracer', value: RawData.Tracer, inline: true }
+                        { name: 'Fragmentation Chance', value: `${RawData.FragmentationChance}%`, inline: true },
+                        { name: 'Tracer?', value: RawData.Tracer, inline: true },
+                        { name: 'Light Bleed Chance', value: `${RawData.LightBleedingDelta}%`, inline: true },
+                        { name: 'Heavy Bleed Chance', value: `${RawData.HeavyBleedingDelta}%`, inline: true }
                     ]
                 }
             } else if (Types.includes('gun')) {
@@ -75,8 +78,11 @@ class ItemInfo {
                 let Object = {
                     Fields: [
                         { name: 'Fuse Time', value: RawData.ExplDelay, inline: true },
+                        { name: 'Min/Max Explosion Distance', value: `${RawData.MinExplosionDistance}/${RawData.MaxExplosionDistance}m`, inline: true },
                         { name: 'Fragment Count', value: RawData.FragmentsCount, inline: true },
-                        { name: 'Strength', value: RawData.Strength, inline: true }
+                        { name: 'Strength', value: RawData.Strength, inline: true },
+                        { name: 'Fragment Damage', value: RawData.FragmentsCount, inline: true }
+                        //{ name: 'Max Damage', value: (RawData.FragmentsCount * RawData.Strength), inline: true, }
                     ]
                 }
                 if (RawData.ContusionDistance !== 0) {
