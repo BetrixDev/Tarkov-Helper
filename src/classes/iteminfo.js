@@ -4,7 +4,7 @@ const ArmorDurability = require('../game_data/destructability.json')
 
 class ItemInfo {
     constructor(item) {
-        this.AllData = JSON.parse(fs.readFileSync('./src/game_data/itemdata.json'))
+        this.AllData = JSON.parse(fs.readFileSync('./src/game_data/api/itemdata.json'))
         this.ItemData = this.AllData[item]
         this.Description = this.ItemData.RawData.Description
         this.SpecificData = this.GetSpecificData()
@@ -158,7 +158,8 @@ class ItemInfo {
                         { name: 'Size', value: (RawData.Width * RawData.Height), inline: true },
                         { name: 'Container Size', value: this.GetContainerSize(), inline: true },
                         { name: 'Space Efficiency', value: this.GetSpaceEfficiency(), inline: true },
-                    ]
+                    ],
+                    Image: `https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/container_images/${this.ItemData.ID}.png`
                 }
             } else if (Types.includes('wearable') && !Types.includes('gun') || Types.includes('T-7')) {
                 let Object = {

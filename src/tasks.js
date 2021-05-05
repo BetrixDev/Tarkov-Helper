@@ -6,7 +6,7 @@ const GetDate = () => {
     return Date().split(' G')[0]
 }
 
-const RawGameData = JSON.parse(fs.readFileSync('./src/game_data/rawdata.json'))
+const RawGameData = JSON.parse(fs.readFileSync('./src/game_data/raw_game/rawdata.json'))
 
 // Update price data every 10 minutes
 const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
@@ -58,8 +58,8 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
                 RawData: RawGameData[Item.id]
             }
         }
-        fs.writeFileSync('./src/game_data/pricedata.json', JSON.stringify(NewPrices, null, 2))
-        fs.writeFileSync('./src/game_data/itemdata.json', JSON.stringify(ItemData, null, 2))
+        fs.writeFileSync('./src/game_data/api/pricedata.json', JSON.stringify(NewPrices, null, 2))
+        fs.writeFileSync('./src/game_data/api/itemdata.json', JSON.stringify(ItemData, null, 2))
 
         console.log(`{${GetDate()}}: Updated prices successfully`)
 
@@ -116,11 +116,11 @@ const UpdateItems = schedule.scheduleJob('*/60 * * * *', async function() {
                 ItemIDs.push(Data.id)
             }
         }
-        fs.writeFileSync('./src/game_data/itemfromshortname.json', JSON.stringify(ItemFromShortName, null, 2))
-        fs.writeFileSync('./src/game_data/itemfromname.json', JSON.stringify(ItemFromName, null, 2))
-        fs.writeFileSync('./src/game_data/itemfromid.json', JSON.stringify(ItemFromID, null, 2))
-        fs.writeFileSync('./src/game_data/itemarray.json', JSON.stringify(ItemArray, null, 2))
-        fs.writeFileSync('./src/game_data/itemids.json', JSON.stringify(ItemIDs, null, 2))
+        fs.writeFileSync('./src/game_data/api/itemfromshortname.json', JSON.stringify(ItemFromShortName, null, 2))
+        fs.writeFileSync('./src/game_data/api/itemfromname.json', JSON.stringify(ItemFromName, null, 2))
+        fs.writeFileSync('./src/game_data/api/itemfromid.json', JSON.stringify(ItemFromID, null, 2))
+        fs.writeFileSync('./src/game_data/api/itemarray.json', JSON.stringify(ItemArray, null, 2))
+        fs.writeFileSync('./src/game_data/api/itemids.json', JSON.stringify(ItemIDs, null, 2))
 
         console.log(`{${GetDate()}}: Updated items successfully`)
 
@@ -161,13 +161,13 @@ const UpdateQuests = schedule.scheduleJob('@daily', async function() {
         for (const Quest in QuestData) {
             FormattedData[QuestData[Quest].title] = QuestData[Quest]
         }
-        fs.writeFileSync('./src/game_data/quests.json', JSON.stringify(FormattedData, null, 2))
+        fs.writeFileSync('./src/game_data/api/quests.json', JSON.stringify(FormattedData, null, 2))
 
         let QuestNames = new Array()
         for (const Quest in QuestData) {
             QuestNames.push(QuestData[Quest].title)
         }
-        fs.writeFileSync('./src/game_data/questnames.json', JSON.stringify(QuestNames, null, 2))
+        fs.writeFileSync('./src/game_data/api/questnames.json', JSON.stringify(QuestNames, null, 2))
 
         console.log(`{${GetDate()}}: Updated quests successfully`)
 

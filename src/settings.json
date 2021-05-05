@@ -52,5 +52,5 @@
         "WeaponRack" : "<:WeaponRack:833692471678468116>"
 
     },
-    "ItemArrayLink": "https://github.com/BetrixEdits/Tarkov-Helper/blob/master/src/game_data/itemarray.json"
+    "ItemArrayLink": "https://github.com/BetrixEdits/Tarkov-Helper/blob/master/src/api/game_data/itemarray.json"
 }

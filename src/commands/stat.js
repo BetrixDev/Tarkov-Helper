@@ -14,7 +14,7 @@ const CommandSettings = {
 
 const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormessage')
 const { ItemSearchEngine } = require('../command_modules/itemsearchengine')
-const ItemFromName = require('../game_data/itemfromname.json')
+const ItemFromName = require('../game_data/api/itemfromname.json')
 const { ItemInfo } = require('../classes/iteminfo')
 const { MessageEmbed } = require('discord.js')
 const Settings = require('../settings.json')

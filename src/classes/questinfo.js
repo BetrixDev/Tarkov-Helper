@@ -1,4 +1,4 @@
-const QuestData = require('../game_data/quests.json')
+const QuestData = require('../game_data/api/quests.json')
 const QuestImages = require('../game_data/questimages.json')
 
 class QuestInfo {

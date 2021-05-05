@@ -1,6 +1,6 @@
-const ItemID = require('../game_data/itemfromid.json')
-const ItemName = require('../game_data/itemarray.json')
-const ItemShortName = require('../game_data/itemfromshortname.json')
+const ItemID = require('../game_data/api/itemfromid.json')
+const ItemName = require('../game_data/api/itemarray.json')
+const ItemShortName = require('../game_data/api/itemfromshortname.json')
 
 const Engine = (Input) => {
     let Results = new Array()
@@ -35,6 +35,12 @@ const Engine = (Input) => {
     for (const Item in ItemName) {
         if (ItemName[Item].toLowerCase().split('.').join('').includes(Input.split('.').join(''))) {
             Results.push(ItemName[Item])
+        }
+    }
+
+    if (Results.length > 10) {
+        if (ItemShortName[Input.replace('short=', '')] !== undefined) {
+            return [ItemShortName[Input.replace('short=', '')].Name]
         }
     }
 

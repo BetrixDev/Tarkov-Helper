@@ -22,7 +22,7 @@ const CommandFunction = (args) => {
     let Map = args['map'].toLowerCase()
 
     if (PossibleMaps.includes(Map)) {
-        let MapData = JSON.parse(fs.readFileSync(`./src/game_data/maps/${Map}.json`))
+        let MapData = JSON.parse(fs.readFileSync(`./src/api/game_data/maps/${Map}.json`))
         return new MessageEmbed()
             .setTitle(`${CapitalizeName(Map)}`)
             .setDescription(MapData.base.Description)

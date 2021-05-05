@@ -16,7 +16,7 @@ const { MessageEmbed } = require('discord.js')
 const Settings = require('../settings.json')
 const { QuestSearchEngine } = require('../command_modules/questsearchengine')
 const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormessage')
-const ItemFromName = require('../game_data/itemfromname.json')
+const ItemFromName = require('../game_data/api/itemfromname.json')
 const { QuestInfo } = require('../classes/questinfo')
 
 // Command Functions

@@ -2,7 +2,7 @@ const fs = require('fs')
 
 class PriceInfo {
     constructor(id) {
-        this.RawData = JSON.parse(fs.readFileSync('./src/game_data/pricedata.json'))
+        this.RawData = JSON.parse(fs.readFileSync('./src/game_data/api/pricedata.json'))
         this.ItemID = id
         this.PriceData = this.RawData[id].Item
         this.HighestTraderBuy = this.HighestTrader()
@@ -60,7 +60,7 @@ class PriceInfo {
 
 const GetAllPrices = async() => {
     try {
-        return PriceData = JSON.parse(fs.readFileSync('./src/game_data/pricedata.json'))
+        return PriceData = JSON.parse(fs.readFileSync('./src/api/game_data/pricedata.json'))
     } catch (e) {
         console.log(e)
         return 'ERROR'
