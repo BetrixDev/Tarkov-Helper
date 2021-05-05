@@ -1,5 +1,6 @@
 const fs = require('fs')
 
+const Globals = require('../game_data/raw_game/globals.json')
 const ArmorDurability = require('../game_data/destructability.json')
 
 class ItemInfo {
@@ -192,10 +193,15 @@ class ItemInfo {
                 if (RawData.effects_damage !== undefined && !Array.isArray(RawData.effects_damage)) {
                     Object.Fields.push({ name: 'Damage Effects', value: this.GetDamageEffects(), inline: true })
                 }
-                if (RawData.MaxHpResource !== undefined) {
+                if (RawData.MaxHpResource !== undefined && RawData.MaxHpResource > 0) {
                     Object.Fields.push({ name: 'Max hp', value: RawData.MaxHpResource, inline: true })
+                } else {
+                    Object.Fields.push({ name: '\u200b', value: '\u200b', inline: true })
                 }
-                console.log(Object)
+                if (Globals.data.config.Health.Effects.Stimulator.Buffs[`Buffs${this.ItemData.ShortName.split(' ').join('')}`] !== undefined) {
+                    let StimData = Globals.data.config.Health.Effects.Stimulator.Buffs[`Buffs${this.ItemData.ShortName.split(' ').join('')}`]
+                    Object.Fields.push({ name: 'Buffs', value: this.GetStimEffects(StimData), inline: true })
+                }
                 return Object
             } else {
                 return {
@@ -305,6 +311,34 @@ class ItemInfo {
                         Effects.push(CurrentEffect)
                     }
                 }
+            }
+            return Effects
+        } catch {
+            return 'ERROR'
+        }
+    }
+    GetStimEffects(EffectTypes) {
+        try {
+            let Effects = new Array()
+            for (const i in EffectTypes) {
+                let StimData = EffectTypes[i]
+                let Effect = ''
+                if (StimData.BuffType === "SkillRate") {
+                    Effect = `${StimData.SkillName} - `
+                } else {
+                    Effect = `${StimData.BuffType} - `
+                }
+                if (StimData.Chance > 1) {
+                    Effect = `${Effect} Chance: ${StimData.Chance}%`
+                }
+                if (StimData.Delay > 1) {
+                    Effect = `${Effect} Delay: ${StimData.Delay}s`
+                }
+                Effect = `${Effect} Duration: ${StimData.Duration}s`
+                if (StimData.Value > 0) {
+                    Effect = `${Effect} Value: ${StimData.Value}`
+                }
+                Effects.push(Effect)
             }
             return Effects
         } catch {
