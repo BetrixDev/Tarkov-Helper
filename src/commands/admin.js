@@ -2,7 +2,7 @@
 const CommandSettings = {
     data: {
         name: 'admin',
-        description: 'ADMIN COMMAND: Returns basic info on how to use Tarkov Helper',
+        description: 'ADMIN COMMAND: Assign an admin role so that role can use admin commands',
         options: [{
             type: 8,
             name: "role",
