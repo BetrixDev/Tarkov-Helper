@@ -34,6 +34,7 @@ class PriceInfo {
     }
     CalcFee() {
         // Function from tarkov-tools fee calculator script
+        // https://github.com/kokarn/tarkov-tools/blob/master/src/modules/flea-market-fee.js
         let V0 = this.PriceData.basePrice
         let VR = (this.PriceData.avg24hPrice - 1)
         let Ti = 0.05
