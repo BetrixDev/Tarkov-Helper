@@ -82,9 +82,7 @@ client.on('ready', async() => {
             } else {
                 Reply(interaction, `Cooldown: Please wait ${Cooldown - (Math.round(LastMessage * 100) / 100)} seconds`)
             }
-        } catch {
-
-        }
+        } catch {}
     })
 })
 

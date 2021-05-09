@@ -28,7 +28,6 @@ const CommandFunction = (args) => {
     let Item = ItemSearchEngine(args['item'].toLowerCase())
 
     let Length = Item.length
-
     if (Length === 1) {
         let PriceData = new PriceInfo(ItemFromName[Item[0]].ID)
 
