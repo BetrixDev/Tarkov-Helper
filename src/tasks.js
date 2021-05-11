@@ -58,6 +58,7 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
                 RawData: RawGameData[Item.id]
             }
         }
+
         fs.writeFileSync('./src/game_data/api/pricedata.json', JSON.stringify(NewPrices, null, 2))
         fs.writeFileSync('./src/game_data/api/itemdata.json', JSON.stringify(ItemData, null, 2))
 
@@ -69,7 +70,7 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
 })
 
 // Update item data every 12 hours
-const UpdateItems = schedule.scheduleJob('*/60 * * * *', async function() {
+const UpdateItems = schedule.scheduleJob('0 */12 * * *', async function() {
     console.log(`{${GetDate()}}: Updating items`)
 
     try {
