@@ -147,6 +147,8 @@ class ItemInfo {
                     Object.Fields.push({ name: 'Zooms', value: RawData.Zooms[0] })
                     Object.Fields.push({ name: 'Sensitivity', value: RawData.AimSensitivity[0], inline: true })
 
+                    Object['Image'] = `https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/reticles/${this.ItemData.ID}.png`
+
                     if (this.ItemData.ShortName === 'REAP-IR' || this.ItemData.ShortName === 'RS-32') {
                         Object['Image'] = `https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/thermal_ingame/${this.ItemData.ID}.png`
                         Object['Footer'] = 'Thermal images from the wiki'
