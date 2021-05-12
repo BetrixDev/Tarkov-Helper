@@ -144,7 +144,8 @@ class ItemInfo {
                 } else if (RawData.Name.includes('reciever_')) { // Upper Receiver
 
                 } else if (RawData.Name.includes('scope_') || RawData.Zooms !== undefined) { // Scope
-                    Object.Fields.push({ name: 'Zooms', value: RawData.Zooms[0] })
+                    Object.Fields.push({ name: '\u200b', value: '\u200b', inline: true })
+                    Object.Fields.push({ name: 'Zooms', value: RawData.Zooms[0], inline: true })
                     Object.Fields.push({ name: 'Sensitivity', value: RawData.AimSensitivity[0], inline: true })
 
                     Object['Image'] = `https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/reticles/${this.ItemData.ID}.png`

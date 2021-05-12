@@ -1,3 +1,4 @@
+// Need to move where some files are being written so more specified tasks
 const schedule = require('node-schedule')
 const got = require('got')
 const fs = require('fs')

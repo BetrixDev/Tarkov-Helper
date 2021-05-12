@@ -10,7 +10,7 @@ const CommandSettings = {
 const { MessageEmbed } = require('discord.js')
 
 // Command Functions
-const CommandFunction = (args) => {
+const CommandFunction = () => {
     return new MessageEmbed()
         .setTitle('Tarkov Helper Information')
         .setThumbnail('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/Logo200x200.png')
@@ -20,7 +20,7 @@ const CommandFunction = (args) => {
             value: '[Click Here](https://github.com/BetrixEdits/Tarkov-Helper/wiki)'
         }, {
             name: 'Add Tarkov Helper to Your Sever',
-            value: 'SOON'
+            value: 'LINK SOON'
         })
 }
 
