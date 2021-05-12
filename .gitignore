@@ -11,9 +11,4 @@ src/bot_data/config.json
 dev/
 
 # These files are created internally so useless to keep
-src/game_data/api/pricedata.json
-src/game_data/api/itemfromname.json
-src/game_data/api/itemfromid.json
-src/game_data/api/quests.json
-src/game_data/api/questnames.json
-src/game_data/api/itemdata.json
+src/game_data/api/
