@@ -4,8 +4,9 @@ const GetServerData = (serverid) => {
     let Config = JSON.parse(fs.readFileSync('./src/bot_data/config.json'))
     if (Config[serverid] === undefined) {
         Config[serverid] = {
-            AdminRole: 0,
-            Cooldown: 3
+            AdminRole: "",
+            Cooldown: 3,
+            ChannelLock: ""
         }
     }
     fs.writeFileSync('./src/bot_data/config.json', JSON.stringify(Config, null, 2))

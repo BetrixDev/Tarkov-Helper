@@ -5,6 +5,7 @@ let Start = new Date()
 
 const { GetCooldown, SetCooldown } = require('./cooldown')
 const { GetServerData } = require('./command_modules/serverdata')
+const { MessageUser } = require('./command_modules/messageuser')
 const DiscordJS = require('discord.js')
 
 const fs = require('fs')
@@ -26,10 +27,9 @@ for (const File of CommandFiles) {
 }
 
 client.on('ready', async() => {
+    fs.writeFileSync('./dev/client.json', JSON.stringify(client, null, 4)) // Debug
     let End = new Date()
     console.log(`Tarkov Helper Initialized in ${End.getTime() - Start.getTime()}ms`)
-
-    //await getApp(guildID).commands('838564759489478686').delete()
 
     const commands = await getApp(guildID).commands.get()
     fs.writeFileSync('./dev/commands.json', JSON.stringify(commands, null, 4)) // Debug
@@ -54,35 +54,60 @@ client.on('ready', async() => {
     }
 
     client.ws.on('INTERACTION_CREATE', async(interaction) => {
-        try {
-            const uid = interaction.member.user.id
-            let Cooldown = GetServerData(interaction.guild_id)['Cooldown']
-            let LastMessage = GetCooldown(uid)
-            if (LastMessage > Cooldown || interaction.member.roles.includes(GetServerData(interaction.guild_id)['AdminRole'])) { // Admins bypass cooldowns
-                SetCooldown(uid)
-                fs.writeFileSync('./dev/interaction.json', JSON.stringify(interaction, null, 4)) // Debug
-                const { name, options } = interaction.data
-                const command = name.toLowerCase()
-                const args = {}
+        try { // Try block so we can ignore interactions without erroring the bot
+            let IsAdmin = interaction.member.roles.includes(GetServerData(interaction.guild_id)['AdminRole']) // Admins can bypass restrictions
 
-                if (options) {
-                    for (const option of options) {
-                        const { name, value } = option
-                        args[name] = value
+            let ChannelLock = GetServerData(interaction.guild_id)['ChannelLock']
+            if (ChannelLock === interaction.channel_id || ChannelLock === "" || IsAdmin) {
+
+                const uid = interaction.member.user.id
+                let Cooldown = GetServerData(interaction.guild_id)['Cooldown']
+                let LastMessage = GetCooldown(uid)
+                if (LastMessage > Cooldown || IsAdmin) {
+                    SetCooldown(uid)
+                    fs.writeFileSync('./dev/interaction.json', JSON.stringify(interaction, null, 4)) // Debug
+                    const { name, options } = interaction.data
+                    const command = name.toLowerCase()
+                    const args = {}
+
+                    if (options) {
+                        for (const option of options) {
+                            const { name, value } = option
+                            args[name] = value
+                        }
                     }
-                }
-                // If command exists locally
-                if (BotCommands.includes(command)) {
-                    const guild = client.guilds.resolve(interaction.guild_id) // Needed for admin commands
-                    const message = await require(`./commands/${command}`)['CommandFunction'](args, interaction, guild)
-                    Reply(interaction, message)
+                    // If command exists locally
+                    if (BotCommands.includes(command)) {
+                        const guild = client.guilds.resolve(interaction.guild_id) // Needed for admin commands
+                        const message = await require(`./commands/${command}`)['CommandFunction'](args, interaction, guild)
+                        Reply(interaction, message)
+                    } else {
+                        Reply(interaction, 'This command has no logic yet')
+                    }
                 } else {
-                    Reply(interaction, 'This command has no logic yet')
+                    MessageUser(
+                        client,
+                        interaction.member.user.id,
+                        `Cooldown: Please wait ${Cooldown - (Math.round(LastMessage * 100) / 100)} seconds`
+                    )
                 }
             } else {
-                Reply(interaction, `Cooldown: Please wait ${Cooldown - (Math.round(LastMessage * 100) / 100)} seconds`)
+                let TypedChannel = await client.channels.fetch(interaction.channel_id).then(channel => {
+                    return channel.name
+                })
+                let LockedChannel = await client.channels.fetch(ChannelLock).then(channel => {
+                    return channel.name
+                })
+
+                MessageUser(
+                    client,
+                    interaction.member.user.id,
+                    `The channel: \`#${TypedChannel}\` is locked, please use \`#${LockedChannel}\` to have access to Tarkov Helper commands`
+                )
             }
-        } catch {}
+        } catch (e) {
+            console.log(e)
+        }
     })
 })
 

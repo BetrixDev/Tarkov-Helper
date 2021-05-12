@@ -13,7 +13,6 @@ const CommandSettings = {
 }
 
 const fs = require('fs')
-const { MessageEmbed } = require('discord.js')
 const { GetServerData, SetServerData } = require('../command_modules/serverdata')
 const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormessage')
 
