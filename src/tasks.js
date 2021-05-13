@@ -7,7 +7,10 @@ const GetDate = () => {
     return Date().split(' G')[0]
 }
 
+const { GetAmmoData } = require('./scripts/nofoodammo')
+
 const RawGameData = JSON.parse(fs.readFileSync('./src/game_data/raw_game/rawdata.json'))
+const NoFoodTranslator = JSON.parse(fs.readFileSync('./src/game_data/translator.json'))
 
 // Update price data every 10 minutes
 const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
@@ -50,6 +53,8 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
             NewPrices[Item.id] = {
                 Item
             }
+
+            // This should be under item caching
             ItemData[Item.id] = {
                 ID: Item.id,
                 Name: Item.name,
@@ -59,13 +64,34 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
                 RawData: RawGameData[Item.id]
             }
         }
+        for (const Ammo of await GetAmmoData()) {
+            if (NoFoodTranslator[Ammo.name] !== undefined) {
+                let Translated = NoFoodTranslator[Ammo.name]
 
+                if (ItemData[Translated.ID].RawData === undefined) {
+                    console.log(`No data for ${Ammo.name} adding it`)
+
+                    ItemData[Translated.ID]['RawData'] = {
+                        Data: {
+                            Damage: Ammo.damage,
+                            ArmorDamage: Ammo.armorDamage,
+                            PenetrationPower: Ammo.penetration
+                        }
+                    }
+                } else {
+                    ItemData[Translated.ID].RawData.Data['Damage'] = Ammo.damage
+                    ItemData[Translated.ID].RawData.Data['ArmorDamage'] = Ammo.armorDamage
+                    ItemData[Translated.ID].RawData.Data['PenetrationPower'] = Ammo.penetration
+                }
+            }
+        }
         fs.writeFileSync('./src/game_data/api/pricedata.json', JSON.stringify(NewPrices, null, 2))
         fs.writeFileSync('./src/game_data/api/itemdata.json', JSON.stringify(ItemData, null, 2))
 
         console.log(`{${GetDate()}}: Updated prices successfully`)
 
-    } catch {
+    } catch (e) {
+        console.log(e)
         console.log(`{${GetDate()}}: Error updating prices, waiting till next cycle`)
     }
 })
