@@ -2,7 +2,7 @@
 const CommandSettings = {
     data: {
         name: 'fee',
-        description: 'ADMIN COMMAND: Assign an admin role so that role can use admin commands',
+        description: 'Calculate the fee for the sell price of an item or amount of items and the profit',
         options: [{
             type: 3,
             name: 'item',
