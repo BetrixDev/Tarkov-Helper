@@ -80,8 +80,8 @@
     "Slug \"Poleva-6u\" ": {
         "NoFoodPos": 23,
         "NoFoodName": "Slug \"Poleva-6u\" ",
-        "ID": "5a38ebd9c4a282000d722a5b",
-        "Name": "20x70 7.5mm Buckshot"
+        "ID": "5d6e689ca4b9361bc8618956",
+        "Name": "12/70 \"Poleva-6u\" Slug"
     },
     "Shell With .50 BMG (Tracer)": {
         "NoFoodPos": 14,
@@ -110,14 +110,14 @@
     "7.5mm Buckshot": {
         "NoFoodPos": 18,
         "NoFoodName": "7.5mm Buckshot",
-        "ID": "5d6e69c7a4b9360b6c0d54e4",
-        "Name": "20/70 7.3mm Buckshot"
+        "ID": "5a38ebd9c4a282000d722a5b",
+        "Name": "20x70 7.5mm Buckshot"
     },
     "7.3mm Buckshot": {
         "NoFoodPos": 19,
         "NoFoodName": "7.3mm Buckshot",
-        "ID": "5d6e6a05a4b93618084f58d0",
-        "Name": "20/70 Star Slug"
+        "ID": "5d6e69c7a4b9360b6c0d54e4",
+        "Name": "20/70 7.3mm Buckshot"
     },
     "Devastator Slug": {
         "NoFoodPos": 20,
@@ -128,8 +128,8 @@
     "Star Slug": {
         "NoFoodPos": 22,
         "NoFoodName": "Star Slug",
-        "ID": "5d6e6a42a4b9364f07165f52",
-        "Name": "20/70 Slug Poleva-6u"
+        "ID": "5d6e6a05a4b93618084f58d0",
+        "Name": "20/70 Star Slug"
     },
     "Shrapnel 25": {
         "NoFoodPos": 24,
@@ -212,14 +212,14 @@
     "RG028 gzh": {
         "NoFoodPos": 37,
         "NoFoodName": "RG028 gzh",
-        "ID": "573718ba2459775a75491131",
-        "Name": "9x18 mm PM 9 BZT gzh"
+        "ID": "573720e02459776143012541",
+        "Name": "9x18mm PM RG028 gzh"
     },
     "BZT gzh": {
         "NoFoodPos": 38,
         "NoFoodName": "BZT gzh",
-        "ID": "573719df2459775a626ccbc2",
-        "Name": "9x18 mm PM PBM"
+        "ID": "573718ba2459775a75491131",
+        "Name": "9x18 mm PM 9 BZT gzh"
     },
     "PMM": {
         "NoFoodPos": 39,
@@ -230,8 +230,8 @@
     "PBM": {
         "NoFoodPos": 40,
         "NoFoodName": "PBM",
-        "ID": "56d59d3ad2720bdb418b4577",
-        "Name": "9x19 mm Pst gzh"
+        "ID": "573719df2459775a626ccbc2",
+        "Name": "9x18 mm PM PBM"
     },
     "LRNPC": {
         "NoFoodPos": 41,
@@ -314,8 +314,8 @@
     "Hydroshok": {
         "NoFoodPos": 57,
         "NoFoodName": "Hydroshok",
-        "ID": "5e81f423763d9f754677bf2e",
-        "Name": ".45 ACP FMJ"
+        "ID": "5efb0fc6aeb21837e749c801",
+        "Name": ".45 ACP Hydra-Shok"
     },
     "Lasermatch (Tracer)": {
         "NoFoodPos": 58,
@@ -326,14 +326,14 @@
     "ACP": {
         "NoFoodPos": 59,
         "NoFoodName": "ACP",
-        "ID": "5efb0cabfb3e451d70735af5",
-        "Name": ".45 ACP AP"
+        "ID": "5e81f423763d9f754677bf2e",
+        "Name": ".45 ACP FMJ"
     },
     "ACP AP": {
         "NoFoodPos": 60,
         "NoFoodName": "ACP AP",
-        "ID": "5efb0fc6aeb21837e749c801",
-        "Name": ".45 ACP Hydra-Shok"
+        "ID": "5efb0cabfb3e451d70735af5",
+        "Name": ".45 ACP AP"
     },
     "sp12": {
         "NoFoodPos": 61,
@@ -446,8 +446,8 @@
     "BP": {
         "NoFoodPos": 111,
         "NoFoodName": "BP",
-        "ID": "59e0d99486f7744a32234762",
-        "Name": "7.62x39 mm BP"
+        "ID": "5c0d688c86f77413ae3407b2",
+        "Name": "9x39 mm 7N12 BP"
     },
     "Geksa": {
         "NoFoodPos": 80,
@@ -536,8 +536,8 @@
     "Warmage": {
         "NoFoodPos": 96,
         "NoFoodName": "Warmage",
-        "ID": "54527a984bdc2d4e668b4567",
-        "Name": "5.56x45 mm M855"
+        "ID": "5c0d5ae286f7741e46554302",
+        "Name": "5.56x45mm Warmage"
     },
     "55 HP": {
         "NoFoodPos": 97,
@@ -566,8 +566,8 @@
     "M855": {
         "NoFoodPos": 102,
         "NoFoodName": "M855",
-        "ID": "54527ac44bdc2d36668b4567",
-        "Name": "5.56x45 mm M855A1"
+        "ID": "54527a984bdc2d4e668b4567",
+        "Name": "5.56x45 mm M855"
     },
     "M856A1 (Tracer)": {
         "NoFoodPos": 103,
@@ -632,8 +632,8 @@
     "M80": {
         "NoFoodPos": 118,
         "NoFoodName": "M80",
-        "ID": "5a6086ea4f39f99cd479502f",
-        "Name": "7.62x51 mm M61"
+        "ID": "58dd3ad986f77403051cba8f",
+        "Name": "7.62x51 mm M80"
     },
     "M62 (Tracer)": {
         "NoFoodPos": 119,
@@ -644,14 +644,14 @@
     "M61": {
         "NoFoodPos": 120,
         "NoFoodName": "M61",
-        "ID": "5efb0c1bd79ff02a1f5e68d9",
-        "Name": "7.62x51 mm M993"
+        "ID": "5a6086ea4f39f99cd479502f",
+        "Name": "7.62x51 mm M61"
     },
     "M993": {
         "NoFoodPos": 121,
         "NoFoodName": "M993",
-        "ID": "5cadf6ddae9215051e1c23b2",
-        "Name": "12.7x55 mm PS12"
+        "ID": "5efb0c1bd79ff02a1f5e68d9",
+        "Name": "7.62x51 mm M993"
     },
     "T-46M (Tracer)": {
         "NoFoodPos": 122,
@@ -710,13 +710,13 @@
     "ps12": {
         "NoFoodPos": 133,
         "NoFoodName": "ps12",
-        "ID": "5cadf6eeae921500134b2799",
-        "Name": "12.7x55 mm PS12B"
+        "ID": "5cadf6ddae9215051e1c23b2",
+        "Name": "12.7x55 mm PS12"
     },
     "ps12b": {
         "NoFoodPos": 134,
         "NoFoodName": "ps12b",
-        "ID": "5d70e500a4b9364de70d38ce",
-        "Name": "30x29 mm VOG-30"
+        "ID": "5cadf6eeae921500134b2799",
+        "Name": "12.7x55 mm PS12B"
     }
 }

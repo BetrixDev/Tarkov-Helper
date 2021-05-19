@@ -26,7 +26,7 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
                     avg24hPrice
                     width
                     height
-                    iconLink
+                    imageLink
                     wikiLink
                     basePrice
                     traderPrices {
@@ -45,7 +45,6 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
         })
 
         let NewPrices = {}
-        let ItemData = {}
 
         for (const i in response.body.data.itemsByType) {
             let Item = response.body.data.itemsByType[i]
@@ -53,40 +52,9 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
             NewPrices[Item.id] = {
                 Item
             }
-
-            // This should be under item caching
-            ItemData[Item.id] = {
-                ID: Item.id,
-                Name: Item.name,
-                ShortName: Item.shortName,
-                WikiLink: Item.wikiLink,
-                Types: Item.types,
-                RawData: RawGameData[Item.id]
-            }
         }
-        for (const Ammo of await GetAmmoData()) {
-            if (NoFoodTranslator[Ammo.name] !== undefined) {
-                let Translated = NoFoodTranslator[Ammo.name]
 
-                if (ItemData[Translated.ID].RawData === undefined) {
-                    console.log(`No data for ${Ammo.name} adding it`)
-
-                    ItemData[Translated.ID]['RawData'] = {
-                        Data: {
-                            Damage: Ammo.damage,
-                            ArmorDamage: Ammo.armorDamage,
-                            PenetrationPower: Ammo.penetration
-                        }
-                    }
-                } else {
-                    ItemData[Translated.ID].RawData.Data['Damage'] = Ammo.damage
-                    ItemData[Translated.ID].RawData.Data['ArmorDamage'] = Ammo.armorDamage
-                    ItemData[Translated.ID].RawData.Data['PenetrationPower'] = Ammo.penetration
-                }
-            }
-        }
         fs.writeFileSync('./src/game_data/api/pricedata.json', JSON.stringify(NewPrices, null, 2))
-        fs.writeFileSync('./src/game_data/api/itemdata.json', JSON.stringify(ItemData, null, 2))
 
         console.log(`{${GetDate()}}: Updated prices successfully`)
 
@@ -101,6 +69,9 @@ const UpdateItems = schedule.scheduleJob('0 */12 * * *', async function() {
     console.log(`{${GetDate()}}: Updating items`)
 
     try {
+
+        let AmmoData = await GetAmmoData()
+
         const bodyQuery = JSON.stringify({
             query: `{
             itemsByType(type: any) {
@@ -108,6 +79,7 @@ const UpdateItems = schedule.scheduleJob('0 */12 * * *', async function() {
                 shortName
                 normalizedName
                 id
+                types
             }
         }`
         })
@@ -115,44 +87,78 @@ const UpdateItems = schedule.scheduleJob('0 */12 * * *', async function() {
             body: bodyQuery,
             responseType: 'json',
         })
-        let ItemData = response.body.data.itemsByType
+        let ApiData = response.body.data.itemsByType
 
+        let ItemData = {}
         let ItemFromID = {}
         let ItemFromName = {}
         let ItemFromShortName = {}
         let ItemIDs = new Array()
         let ItemArray = new Array()
-        for (const Item in ItemData) {
-            let Data = ItemData[Item]
-            if (Data.name) {
-                ItemFromName[Data.name] = {
-                    Name: Data.name,
-                    ShortName: Data.shortName,
-                    ID: Data.id
+
+        for (const Item of ApiData) {
+            if (Item.name !== undefined) {
+                ItemData[Item.id] = {
+                    ID: Item.id,
+                    Name: Item.name,
+                    ShortName: Item.shortName,
+                    WikiLink: Item.wikiLink,
+                    ImageLink: Item.imageLink,
+                    Types: Item.types,
+                    RawData: RawGameData[Item.id]
                 }
-                ItemFromShortName[Data.shortName.toLowerCase()] = {
-                    Name: Data.name,
-                    ShortName: Data.shortName,
-                    ID: Data.id
+                ItemFromName[Item.name] = {
+                    Name: Item.name,
+                    ShortName: Item.shortName,
+                    ID: Item.id
                 }
-                ItemFromID[Data.id] = {
-                    Name: Data.name,
-                    ShortName: Data.shortName,
-                    ID: Data.id
+                ItemFromShortName[Item.shortName.toLowerCase()] = {
+                    Name: Item.name,
+                    ShortName: Item.shortName,
+                    ID: Item.id
                 }
-                ItemArray.push(Data.name)
-                ItemIDs.push(Data.id)
+                ItemFromID[Item.id] = {
+                    Name: Item.name,
+                    ShortName: Item.shortName,
+                    ID: Item.id
+                }
+                ItemArray.push(Item.name)
+                ItemIDs.push(Item.id)
             }
         }
+
+        // Inject updated ammo data
+        for (const Ammo of AmmoData) {
+            if (NoFoodTranslator[Ammo.name] !== undefined) {
+                let Translated = NoFoodTranslator[Ammo.name]
+
+                if (ItemData[Translated.ID].RawData === undefined) {
+                    ItemData[Translated.ID]['RawData'] = {
+                        Data: {
+                            Damage: Ammo.damage,
+                            ArmorDamage: Ammo.armorDamage,
+                            PenetrationPower: Ammo.penetration
+                        }
+                    }
+                } else {
+                    ItemData[Translated.ID].RawData.Data['Damage'] = Ammo.damage
+                    ItemData[Translated.ID].RawData.Data['ArmorDamage'] = Ammo.armorDamage
+                    ItemData[Translated.ID].RawData.Data['PenetrationPower'] = Ammo.penetration
+                }
+            }
+        }
+
         fs.writeFileSync('./src/game_data/api/itemfromshortname.json', JSON.stringify(ItemFromShortName, null, 2))
         fs.writeFileSync('./src/game_data/api/itemfromname.json', JSON.stringify(ItemFromName, null, 2))
         fs.writeFileSync('./src/game_data/api/itemfromid.json', JSON.stringify(ItemFromID, null, 2))
+        fs.writeFileSync('./src/game_data/api/itemdata.json', JSON.stringify(ItemData, null, 2))
         fs.writeFileSync('./src/game_data/api/itemarray.json', JSON.stringify(ItemArray, null, 2))
         fs.writeFileSync('./src/game_data/api/itemids.json', JSON.stringify(ItemIDs, null, 2))
 
         console.log(`{${GetDate()}}: Updated items successfully`)
 
-    } catch {
+    } catch (e) {
+        console.log(e)
         console.log(`{${GetDate()}}: Error updating items, waiting till next cycle`)
     }
 
