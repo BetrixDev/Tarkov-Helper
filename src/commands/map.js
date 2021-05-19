@@ -15,14 +15,15 @@ const CommandSettings = {
 const fs = require('fs')
 const { MessageEmbed } = require('discord.js')
 const PossibleMaps = require('../game_data/maps.json')
+const { MapSearchEngine } = require('../command_modules/mapsearchengine')
 const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormessage')
 
 // Command Functions
 const CommandFunction = (args) => {
-    let Map = args['map'].toLowerCase()
+    let Map = MapSearchEngine(args['map'].toLowerCase())
 
     if (PossibleMaps.includes(Map)) {
-        let MapData = JSON.parse(fs.readFileSync(`./src/api/game_data/maps/${Map}.json`))
+        let MapData = JSON.parse(fs.readFileSync(`./src/game_data/maps/${Map}.json`))
         return new MessageEmbed()
             .setTitle(`${CapitalizeName(Map)}`)
             .setDescription(MapData.base.Description)
