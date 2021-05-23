@@ -1,15 +1,18 @@
 // Command Config
 const CommandSettings = {
-    data: {
-        name: 'stat',
-        description: 'Returns information about a specified item',
-        options: [{
-            name: 'item',
-            description: 'Item to get info of',
-            required: true,
-            type: 3
-        }]
-    }
+    CommandData: {
+        data: {
+            name: 'stat',
+            description: 'Returns information about a specified item',
+            options: [{
+                name: 'item',
+                description: 'Item to get info of',
+                required: true,
+                type: 3
+            }]
+        }
+    },
+    DMCommand: true
 }
 
 const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormessage')
@@ -29,25 +32,32 @@ const CommandFunction = async(args) => {
         let ItemData = new ItemInfo(ItemFromName[Item[0]].ID)
 
         if (ItemData !== undefined) {
-            return new MessageEmbed()
-                .setTitle(`${ItemData.ShortName} Stats`)
-                .setThumbnail(`https://raw.githubusercontent.com/RatScanner/EfTIcons/master/uid/${ItemFromName[Item[0]].ID}.png`)
-                .setDescription(`${ItemData.Description} \n[Wiki Link To Item](${ItemData.WikiLink})`)
-                .setImage(ItemData.SpecificData.Image || '')
-                .addFields(ItemData.SpecificData.Fields)
-                .setFooter(ItemData.SpecificData.Footer || '')
+            return {
+                Type: "ServerMessage",
+                Content: new MessageEmbed()
+                    .setTitle(`${ItemData.ShortName} Stats`)
+                    .setThumbnail(`https://raw.githubusercontent.com/RatScanner/EfTIcons/master/uid/${ItemFromName[Item[0]].ID}.png`)
+                    .setDescription(`${ItemData.Description} \n[Wiki Link To Item](${ItemData.WikiLink})`)
+                    .setImage(ItemData.SpecificData.Image || '')
+                    .addFields(ItemData.SpecificData.Fields)
+                    .setFooter(ItemData.SpecificData.Footer || '')
+            }
         } else {
-            return ErrorMessage('Unable to grab item data please try again later')
+            return { Type: "Error", Content: ErrorMessage('Unable to grab item data please try again later'), Time: 5000 }
         }
     } else if (Length > 1 && Length < 25) {
-        return ErrorMessageField(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with multiple results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries`, {
-            name: 'Results',
-            value: Item
-        })
+        return {
+            Type: "Error",
+            Content: ErrorMessageField(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with multiple results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries`, {
+                name: 'Results',
+                value: Item
+            }),
+            Time: 15000
+        }
     } else if (Length > 25) {
-        return ErrorMessage(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with over 25 results, please be more specific.  [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries`)
+        return { Type: "Error", Content: ErrorMessage(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with over 25 results, please be more specific.  [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries`), Time: 10000 }
     } else {
-        return ErrorMessage(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with no results. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries`)
+        return { Type: "Error", Content: ErrorMessage(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with no results. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries`), Time: 10000 }
     }
 }
 

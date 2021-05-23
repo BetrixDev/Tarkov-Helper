@@ -1,15 +1,18 @@
 // Command Config
 const CommandSettings = {
-    data: {
-        name: 'quest',
-        description: 'Retrieve basic information about a quest as well as a link to the wiki',
-        options: [{
-            name: 'questname',
-            description: 'Name of the quest',
-            required: true,
-            type: 3
-        }]
-    }
+    CommandData: {
+        data: {
+            name: 'quest',
+            description: 'Retrieve basic information about a quest as well as a link to the wiki',
+            options: [{
+                name: 'questname',
+                description: 'Name of the quest',
+                required: true,
+                type: 3
+            }]
+        }
+    },
+    DMCommand: true
 }
 
 const { MessageEmbed } = require('discord.js')
@@ -31,30 +34,37 @@ const CommandFunction = (args) => {
 
     if (Length === 1) {
         let QuestStuff = new QuestInfo(Quest[0])
-        return new MessageEmbed()
-            .setTitle(QuestStuff.QuestName)
-            .setThumbnail(QuestStuff.QuestImage)
-            .addFields({
-                name: 'Wiki Link',
-                value: `[Click Here](${QuestStuff.WikiLink})`,
-                inline: true
-            }, {
-                name: 'Experience',
-                value: QuestStuff.Experience,
-                inline: true
-            }, {
-                name: 'Unlocks',
-                value: GetUnlocks(QuestStuff.Unlocks),
-                inline: true
-            }, {
-                name: 'Needed For Kappa',
-                value: 'true'
-            })
+        return {
+            Type: "ServerMessage",
+            Content: new MessageEmbed()
+                .setTitle(QuestStuff.QuestName)
+                .setThumbnail(QuestStuff.QuestImage)
+                .addFields({
+                    name: 'Wiki Link',
+                    value: `[Click Here](${QuestStuff.WikiLink})`,
+                    inline: true
+                }, {
+                    name: 'Experience',
+                    value: QuestStuff.Experience,
+                    inline: true
+                }, {
+                    name: 'Unlocks',
+                    value: GetUnlocks(QuestStuff.Unlocks),
+                    inline: true
+                }, {
+                    name: 'Needed For Kappa',
+                    value: 'true'
+                })
+        }
     } else if (Length > 1) {
-        return ErrorMessageField(`Quest search of \"${args['questname'].toLowerCase()}\" came back with multiple results, please be more specific`, {
-            name: 'Results',
-            value: Quest
-        })
+        return {
+            Type: "Error",
+            Content: ErrorMessageField(`Quest search of \"${args['questname'].toLowerCase()}\" came back with multiple results, please be more specific`, {
+                name: 'Results',
+                value: Quest
+            }),
+            Time: 15000
+        }
     }
 }
 

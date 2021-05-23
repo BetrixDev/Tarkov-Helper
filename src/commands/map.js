@@ -1,15 +1,18 @@
 // Command Config
 const CommandSettings = {
-    data: {
-        name: 'map',
-        description: 'Returns information and maps of a certain location',
-        options: [{
+    CommandData: {
+        data: {
             name: 'map',
-            description: 'map to get info of',
-            required: true,
-            type: 3
-        }]
-    }
+            description: 'Returns information and maps of a certain location',
+            options: [{
+                name: 'map',
+                description: 'map to get info of',
+                required: true,
+                type: 3
+            }]
+        }
+    },
+    DMCommand: true
 }
 
 const fs = require('fs')
@@ -24,32 +27,35 @@ const CommandFunction = (args) => {
 
     if (PossibleMaps.includes(Map)) {
         let MapData = JSON.parse(fs.readFileSync(`./src/game_data/maps/${Map}.json`))
-        return new MessageEmbed()
-            .setTitle(`${CapitalizeName(Map)}`)
-            .setDescription(MapData.base.Description)
-            .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/map_icons/${Map.replace(' ', '%20')}.png`)
-            .addFields({
-                name: 'Map Genie',
-                value: `[Click Here](https://mapgenie.io/tarkov/maps/${Map.replace('the ','')})`,
-                inline: true
-            }, {
-                name: 'Player Count',
-                value: `${MapData.base.MinPlayers} - ${MapData.base.MaxPlayers}`,
-                inline: true
-            }, {
-                name: 'Raid Time',
-                value: `${MapData.base.escape_time_limit} minutes`,
-                inline: true
-            }, {
-                name: 'Has Insurance',
-                value: CapitalizeName(MapData.base.Insurance.toString()),
-                inline: true
-            }, {
-                name: 'Total PMC Extracts',
-                value: MapData.base.exits.length
-            })
+        return {
+            Type: "ServerMessage",
+            Content: new MessageEmbed()
+                .setTitle(`${CapitalizeName(Map)}`)
+                .setDescription(MapData.base.Description)
+                .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/map_icons/${Map.replace(' ', '%20')}.png`)
+                .addFields({
+                    name: 'Map Genie',
+                    value: `[Click Here](https://mapgenie.io/tarkov/maps/${Map.replace('the ','')})`,
+                    inline: true
+                }, {
+                    name: 'Player Count',
+                    value: `${MapData.base.MinPlayers} - ${MapData.base.MaxPlayers}`,
+                    inline: true
+                }, {
+                    name: 'Raid Time',
+                    value: `${MapData.base.escape_time_limit} minutes`,
+                    inline: true
+                }, {
+                    name: 'Has Insurance',
+                    value: CapitalizeName(MapData.base.Insurance.toString()),
+                    inline: true
+                }, {
+                    name: 'Total PMC Extracts',
+                    value: MapData.base.exits.length
+                })
+        }
     } else {
-        return ErrorMessageField('Please input a valid map', { name: 'Maps', value: PossibleMaps })
+        return { Type: "Error", Content: ErrorMessageField('Please input a valid map', { name: 'Maps', value: PossibleMaps }), Time: 10000 }
     }
 
 }
