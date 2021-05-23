@@ -1,5 +1,5 @@
 // Set guildid to only refresh a certain guild or blank for global
-const guildID = ''
+const guildID = '797601083589001227'
 
 const fs = require('fs')
 require('dotenv').config()
@@ -32,7 +32,7 @@ client.on('ready', async() => {
 
         for (const File of CommandFiles) {
             let FormatFile = File.split('.')[0]
-            let CommandData = require(`../commands/${FormatFile}`)['CommandSettings']
+            let CommandData = require(`../commands/${FormatFile}`)['CommandSettings'].CommandData
 
             if (CommandData !== undefined) {
                 console.log(`Adding ${CommandData.data.name}`)
