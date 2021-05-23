@@ -72,17 +72,14 @@ const formatRow = function formatRow(row) {
 };
 
 const getSheetData = async function getSheetData(url) {
-    console.time(`Get excel sheet data url ${url}`);
     try {
         const response = await got(url, {
             responseType: 'json',
             timeout: 5000,
         });
-        console.timeEnd(`Get excel sheet data url ${url}`);
 
         return response;
     } catch (responseError) {
-        console.timeEnd(`Get excel sheet data url ${url}`);
         console.error(responseError);
     }
 
