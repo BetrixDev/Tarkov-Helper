@@ -1,6 +1,8 @@
-const MessageUser = (client, uid, message) => {
+const MessageUser = (client, uid, msg) => {
     client.users.fetch(uid).then((user) => {
-        user.send(message)
+        user.send(msg).then((message) => {
+            return message
+        })
     })
 }
 
