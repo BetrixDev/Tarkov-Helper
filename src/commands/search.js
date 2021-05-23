@@ -39,7 +39,7 @@ const CommandFunction = async(args) => {
     }
 
     return {
-        Type: "DirectMessage",
+        Type: "Ephemeral",
         Content: new MessageEmbed()
             .setTitle(`Search Results of: ${args['item']}`)
             .addFields({

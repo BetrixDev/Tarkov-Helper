@@ -92,23 +92,14 @@ client.on('ready', async() => {
 
                         let JSMessage
 
-                        if (Message.Type === "ServerMessage" || Message.Type === "Error") {
+                        if (Message.Type === "ServerMessage") {
                             await Reply(interaction, Message.Content)
 
                             const msg = await client.api.webhooks(client.user.id, interaction.token).messages('@original').patch({ data: {} })
                             JSMessage = new DiscordJS.Message(client, msg, client.channels.cache.get(msg.channel_id))
 
-                        } else if (Message.Type === "DirectMessage") {
-                            JSMessage = MessageUser( // This will return the DiscordJS Message after dming the user
-                                client,
-                                interaction.member.user.id,
-                                Message.Content
-                            )
-                        }
-
-                        // If message is an error then set the message to delete after a set time
-                        if (Message.Type === "Error") {
-                            setTimeout(() => JSMessage.delete(), Message.Time || 10000)
+                        } else if (Message.Type === "Ephemeral" || Message.Type === "Error") {
+                            Reply(interaction, Message.Content, true)
                         }
 
                         // Reaction Handler
@@ -119,20 +110,20 @@ client.on('ready', async() => {
                     }
 
                 } else { // Message user that they are on cooldown
-                    MessageUser(
-                        client,
-                        interaction.member.user.id,
-                        `Cooldown: Please wait ${Cooldown - (Math.round(LastMessage * 100) / 100)} seconds`
+                    Reply(
+                        interaction,
+                        `Cooldown: Please wait ${Cooldown - (Math.round(LastMessage * 100) / 100)} seconds`,
+                        true
                     )
                 }
             } else { // Message user that they cannot type in this channel
                 let TypedChannel = await client.channels.fetch(interaction.channel_id).then(channel => { return channel.name })
                 let LockedChannel = await client.channels.fetch(ChannelLock).then(channel => { return channel.name })
 
-                MessageUser(
-                    client,
-                    interaction.member.user.id,
-                    `The channel: \`#${TypedChannel}\` is locked, please use \`#${LockedChannel}\` to have access to Tarkov Helper commands`
+                Reply(
+                    interaction,
+                    `The channel: \`#${TypedChannel}\` is locked, please use \`#${LockedChannel}\` to have access to Tarkov Helper commands`,
+                    true
                 )
             }
 
@@ -176,19 +167,40 @@ client.on('ready', async() => {
 })
 
 // Replies to the orignial interaction 
-const Reply = async(interaction, response) => {
-    let data = {
-        content: response
-    }
-    if (typeof response === 'object') {
-        data = await CreateAPIMessage(interaction, response)
-    }
-    client.api.interactions(interaction.id, interaction.token).callback.post({
-        data: {
-            type: 4,
-            data
+const Reply = async(interaction, response, ephemeral) => {
+    if (!ephemeral) {
+        let data = {
+            content: response
         }
-    })
+        if (typeof response === 'object') {
+            data = await CreateAPIMessage(interaction, response)
+        }
+        client.api.interactions(interaction.id, interaction.token).callback.post({
+            data: {
+                type: 4,
+                data
+            }
+        })
+    } else {
+        let data = {
+            content: response,
+            flags: 1 << 6
+        }
+
+        if (typeof response === 'object') {
+            data = await CreateAPIMessage(interaction, response)
+            data['flags'] = 1 << 6
+        }
+
+        // Responds to the interaction with a message only the author can see
+        client.api.interactions(interaction.id, interaction.token).callback.post({
+            data: {
+                type: 4,
+                data
+            }
+        })
+    }
+
 }
 
 // Converts an embeded message into a message discord can use for the interaction message
@@ -236,15 +248,10 @@ async function ReactionHandler(ReactionData, Data, FromInteraction) {
 }
 
 const StartBot = async() => {
-    const { InitSearchEngine } = require('./command_modules/searchengine')
-    const { InitMapEngine } = require('./command_modules/mapsearchengine')
-    const { InitCaliberEngine } = require('./command_modules/calibersearchengine')
-    const { StartTasks } = require('./tasks')
-
-    InitSearchEngine()
-    InitMapEngine()
-    InitCaliberEngine()
-    StartTasks()
+    require('./command_modules/searchengine').InitSearchEngine()
+    require('./command_modules/mapsearchengine').InitMapEngine()
+    require('./command_modules/calibersearchengine').InitCaliberEngine()
+    require('./tasks').StartTasks()
 
     client.login(process.env.BOT_TOKEN)
 }
