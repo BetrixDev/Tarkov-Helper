@@ -80,6 +80,9 @@ const UpdateItems = schedule.scheduleJob('0 */12 * * *', async function() {
                 normalizedName
                 id
                 types
+                imageLink
+                iconLink
+                wikiLink
             }
         }`
         })
@@ -103,8 +106,8 @@ const UpdateItems = schedule.scheduleJob('0 */12 * * *', async function() {
                     Name: Item.name,
                     ShortName: Item.shortName,
                     WikiLink: Item.wikiLink,
-                    ImageLink: Item.imageLink,
                     Types: Item.types,
+                    Image: Item.iconLink,
                     RawData: RawGameData[Item.id]
                 }
                 ItemFromName[Item.name] = {
