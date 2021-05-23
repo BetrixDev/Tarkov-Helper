@@ -120,7 +120,7 @@ class ItemInfo {
                         { name: 'Speed Penalty', value: `${RawData.speedPenaltyPercent}%`, inline: true },
                         { name: 'Sensitivity Penalty', value: `${RawData.mousePenalty}%`, inline: true },
                         { name: 'Ergonomic Penalty', value: `${RawData.weaponErgonomicPenalty}%`, inline: true },
-                        { name: 'Armor Zones', value: RawData.headSegments, inline: true },
+                        { name: 'Armor Zones', value: RawData.headSegments, inline: true }
                     ]
                 }
             } else if (Types.includes('mods') && !Types.includes('noFlea')) {
