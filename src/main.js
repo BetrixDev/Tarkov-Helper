@@ -11,7 +11,6 @@ const DiscordJS = require('discord.js')
 const fs = require('fs')
 require('dotenv').config()
 
-const guildID = '797601083589001227'
 const client = new DiscordJS.Client()
 
 const getApp = (guildID) => {
@@ -38,7 +37,7 @@ client.on('ready', async() => {
     let End = new Date()
     console.log(`Tarkov Helper Initialized in ${End.getTime() - Start.getTime()}ms`)
 
-    const commands = await getApp(guildID).commands.get()
+    const commands = await getApp().commands.get()
 
     let FormattedCommands = {}
     for (const c in commands) {
@@ -53,7 +52,7 @@ client.on('ready', async() => {
         let CommandData = require(`./commands/${FormatFile}`)['CommandSettings'].CommandData
 
         if (!FormattedCommands.hasOwnProperty(FormatFile) && CommandData !== undefined) {
-            await getApp(guildID).commands.post(CommandData)
+            await getApp().commands.post(CommandData)
         }
     }
 
@@ -258,7 +257,7 @@ const StartBot = async() => {
     require('./tasks').StartTasks()
 
     KeepAlive()
-    client.login(process.env.BOT_TOKEN)
+    client.login(process.env.BOT_TOKEN_DEV)
 }
 StartBot()
 
