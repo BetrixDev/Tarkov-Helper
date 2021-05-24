@@ -257,7 +257,7 @@ const StartBot = async() => {
     require('./tasks').StartTasks()
 
     KeepAlive()
-    client.login(process.env.BOT_TOKEN_DEV)
+    client.login(process.env.BOT_TOKEN)
 }
 StartBot()
 
