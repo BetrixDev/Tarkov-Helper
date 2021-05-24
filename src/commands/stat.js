@@ -46,13 +46,14 @@ const CommandFunction = async(args) => {
             return { Type: "Error", Content: ErrorMessage('Unable to grab item data please try again later'), Time: 5000 }
         }
     } else if (Length > 1 && Length < 25) {
+        let uid = obj.interaction.member.user.id
+        let Array = require('../command_modules/search').CreateInput(Item, 'price', uid)
         return {
             Type: "Error",
-            Content: ErrorMessageField(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with multiple results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries`, {
-                name: 'Results',
-                value: Item
-            }),
-            Time: 15000
+            Content: new MessageEmbed()
+                .setTitle('Error')
+                .setDescription(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with multiple results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries. \n\n Use the command \`/Confirm\` followed by the number next to the item to complete the search`)
+                .addFields({ name: 'Results', value: Array })
         }
     } else if (Length > 25) {
         return { Type: "Error", Content: ErrorMessage(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with over 25 results, please be more specific.  [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries`), Time: 10000 }
