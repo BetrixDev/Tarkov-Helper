@@ -27,7 +27,7 @@ const CommandFunction = (args, obj) => {
                 console.log(Channel)
                 SetServerData(obj.interaction.guild_id, 'ChannelLock', Channel)
 
-                return { Type: "ServerMessage", Content: `Changed Channel Lock to: ${obj.interaction.data.resolved.channels[Channel].name || Channel}` }
+                return { Type: "Ephemeral", Content: `Changed Channel Lock to: ${obj.interaction.data.resolved.channels[Channel].name || Channel}` }
             } else {
                 return { Type: "Error", Content: ErrorMessage('Insufficient permission'), Time: 2000 }
             }

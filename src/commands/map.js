@@ -52,6 +52,9 @@ const CommandFunction = (args) => {
                 }, {
                     name: 'Total PMC Extracts',
                     value: MapData.base.exits.length
+                }, {
+                    name: 'Total Static Loot Spawns',
+                    value: MapData.loot.static.length
                 })
         }
     } else {

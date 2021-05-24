@@ -31,11 +31,13 @@ const CommandFunction = async(args) => {
     }
 
     let Names = new Array()
+    let ShortNames = new Array()
     let IDs = new Array()
 
     for (const Item of Results) {
-        Names.push(TruncateString(Item, 40))
+        Names.push(TruncateString(Item, 28))
         IDs.push(ItemFromName[Item].ID)
+        ShortNames.push(ItemFromName[Item].ShortName)
     }
 
     return {
@@ -45,6 +47,10 @@ const CommandFunction = async(args) => {
             .addFields({
                 name: 'Item Name',
                 value: Names,
+                inline: true
+            }, {
+                name: 'Short Name',
+                value: ShortNames,
                 inline: true
             }, {
                 name: 'Item ID',

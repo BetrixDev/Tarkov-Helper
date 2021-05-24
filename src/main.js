@@ -1,4 +1,3 @@
-// Discord Slash Command code setup from Worn Off Keys https://www.youtube.com/channel/UChPrh75CmPP9Ig6jISPnfNA
 // Tarkov Data API from Tarkov Tools https://tarkov-tools.com/about/
 // Some code snippets are also from Tarkov Tools
 let Start = new Date()
@@ -6,6 +5,7 @@ let Start = new Date()
 const { GetCooldown, SetCooldown } = require('./cooldown')
 const { GetServerData } = require('./command_modules/serverdata')
 const { MessageUser } = require('./command_modules/messageuser')
+const { KeepAlive } = require('./scripts/server')
 const DiscordJS = require('discord.js')
 
 const fs = require('fs')
@@ -180,16 +180,18 @@ const Reply = async(interaction, response, ephemeral) => {
                 type: 4,
                 data
             }
+        }).catch((e) => {
+            console.log(e)
         })
     } else {
         let data = {
             content: response,
-            flags: 1 << 6
+            flags: 64
         }
 
         if (typeof response === 'object') {
             data = await CreateAPIMessage(interaction, response)
-            data['flags'] = 1 << 6
+            data['flags'] = 64
         }
 
         // Responds to the interaction with a message only the author can see
@@ -198,6 +200,8 @@ const Reply = async(interaction, response, ephemeral) => {
                 type: 4,
                 data
             }
+        }).catch((e) => {
+            console.log(e)
         })
     }
 
@@ -253,6 +257,7 @@ const StartBot = async() => {
     require('./command_modules/calibersearchengine').InitCaliberEngine()
     require('./tasks').StartTasks()
 
+    KeepAlive()
     client.login(process.env.BOT_TOKEN)
 }
 StartBot()

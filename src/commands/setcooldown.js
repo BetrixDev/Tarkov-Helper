@@ -29,18 +29,18 @@ const CommandFunction = (args, obj) => {
                 if (Time > 0 && Time < 61) {
                     SetServerData(obj.interaction.guild_id, 'Cooldown', Time)
 
-                    return { Type: "ServerMessage", Content: `Changed Cooldown time to: ${Time}` }
+                    return { Type: "Ephemeral", Content: `Changed Cooldown time to: ${Time}` }
                 } else {
-                    return { Type: "ServerMessage", Content: ErrorMessage('Please make sure Cooldown is between 0 and 60 seconds'), Time: 5000 }
+                    return { Type: "Error", Content: ErrorMessage('Please make sure Cooldown is between 0 and 60 seconds'), Time: 5000 }
                 }
             } else {
-                return { Type: "ServerMessage", Content: ErrorMessage('Insufficient permission'), Time: 2000 }
+                return { Type: "Error", Content: ErrorMessage('Insufficient permission'), Time: 2000 }
             }
         } else {
-            return { Type: "ServerMessage", Content: ErrorMessage('No admin role set please use \`/admin @role\` to set it'), Time: 5000 }
+            return { Type: "Error", Content: ErrorMessage('No admin role set please use \`/admin @role\` to set it'), Time: 5000 }
         }
     } catch {
-        return { Type: "ServerMessage", Content: ErrorMessage('Error changing cooldown time, please try again later'), Time: 3000 }
+        return { Type: "Error", Content: ErrorMessage('Error changing cooldown time, please try again later'), Time: 3000 }
     }
 }
 

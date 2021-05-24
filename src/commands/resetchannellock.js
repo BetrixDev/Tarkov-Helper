@@ -21,7 +21,7 @@ const CommandFunction = (args, obj) => {
         if (GetServerData(obj.interaction.guild_id)['AdminRole'] !== 0) {
             if (obj.interaction.member.roles.includes(GetServerData(obj.interaction.guild_id)['AdminRole'])) {
                 SetServerData(obj.interaction.guild_id, 'ChannelLock', 0)
-                return { Type: "ServerMessage", Content: 'Reset channel lock' }
+                return { Type: "Ephemeral", Content: 'Reset channel lock' }
             } else {
                 return { Type: "Error", Content: ErrorMessage('Insufficient permission'), Time: 2000 }
             }
