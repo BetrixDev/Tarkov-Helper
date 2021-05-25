@@ -9,6 +9,7 @@ class QuestInfo {
         this.Experience = QuestData[quest]['exp']
         this.Giver = QuestData[quest]['giver'].name
         this.Unlocks = QuestData[quest]['unlocks']
+        this.Kappa = QuestData[quest]['Kappa']
     }
     Image() {
         try {
