@@ -23,7 +23,9 @@ const prefixes = [
 ];
 
 const URLS = [
-    'https://sheet.best/api/sheets/691aa8be-ad49-4882-a5df-4527e0b65019'
+    'https://sheet.best/api/sheets/691aa8be-ad49-4882-a5df-4527e0b65019',
+    'https://sheet.best/api/sheets/a8713717-bc6a-4cfc-bf34-658f97dea338',
+    'https://sheet.best/api/sheets/27bd2288-44ba-42dc-ab88-f8101f19e54e'
 ];
 
 let tempType = false;
