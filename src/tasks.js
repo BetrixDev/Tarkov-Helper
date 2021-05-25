@@ -65,7 +65,7 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
 })
 
 // Update item data every 12 hours
-const UpdateItems = schedule.scheduleJob('0 */12 * * *', async function() {
+const UpdateItems = schedule.scheduleJob('@daily', async function() {
     console.log(`{${GetDate()}}: Updating items`)
 
     try {
@@ -171,6 +171,9 @@ const UpdateItems = schedule.scheduleJob('0 */12 * * *', async function() {
 const UpdateQuests = schedule.scheduleJob('@daily', async function() {
     console.log(`{${GetDate()}}: Updating quests`)
 
+    let ExtraData = await got('https://raw.githubusercontent.com/TarkovTracker/tarkovdata/master/quests.json')
+    ExtraData = JSON.parse(ExtraData.body)
+
     try {
         const bodyQuery = JSON.stringify({
             query: `{
@@ -198,23 +201,38 @@ const UpdateQuests = schedule.scheduleJob('@daily', async function() {
         for (const Quest in QuestData) {
             FormattedData[QuestData[Quest].title] = QuestData[Quest]
         }
-        fs.writeFileSync('./src/game_data/api/quests.json', JSON.stringify(FormattedData, null, 2))
 
         let QuestNames = new Array()
         for (const Quest in QuestData) {
             QuestNames.push(QuestData[Quest].title)
         }
+
+        for (const Quest of ExtraData) {
+            let QuestData = FormattedData[Quest.title]
+
+            try {
+                if (Quest.nokappa !== undefined) {
+                    QuestData.Kappa = false
+                } else {
+                    QuestData.Kappa = true
+                }
+            } catch {}
+
+        }
+
+        fs.writeFileSync('./src/game_data/api/quests.json', JSON.stringify(FormattedData, null, 2))
         fs.writeFileSync('./src/game_data/api/questnames.json', JSON.stringify(QuestNames, null, 2))
 
         console.log(`{${GetDate()}}: Updated quests successfully`)
 
-    } catch {
+    } catch (e) {
+        console.log(e)
         console.log(`{${GetDate()}}: Error updating quests, waiting till next cycle`)
     }
 
 })
 
-const StartTasks = () => {
+const StartTasks = async() => {
     // Run updates at startup
     UpdatePrices.invoke()
     UpdateItems.invoke()
