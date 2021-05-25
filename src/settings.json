@@ -4,13 +4,13 @@
         "ErrorColor": "#ff2424"
     },
     "Images": {
-        "Author": "https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Media/Logo50x50SmallText.png?raw=true",
+        "Author": "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/Logo50x50SmallText.png?raw=true",
         "Thumbnails": {
-            "Error": "https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Media/ErrorLogo128x128.png?raw=true",
-            "Map": "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/MapLogo128x128.png",
-            "BitcoinFarm": "https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Media/BitcoinFarmLogo128x128.png?raw=true",
-            "Settings": "https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Media/SettingsLogo128x128.png?raw=true",
-            "Experience": "https://github.com/BetrixEdits/Tarkov-Helper/blob/master/Assets/Media/ExperienceLogo128x128.png?raw=true"
+            "Error": "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/ErrorLogo128x128.png?raw=true",
+            "Map": "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/MapLogo128x128.png",
+            "BitcoinFarm": "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/BitcoinFarmLogo128x128.png?raw=true",
+            "Settings": "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/SettingsLogo128x128.png?raw=true",
+            "Experience": "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/ExperienceLogo128x128.png?raw=true"
         }
     },
     "Text": {
@@ -35,22 +35,6 @@
         "KeyList": {
             "FooterText": "Emote images from the wiki"
         }
-    },
-    "KeyListEmojis": {
-        "AmmoBox" : "<:AmmoBox:833692303532621844>",
-        "Box": "<:Box:833692311203610664>",
-        "Drawer": "<:Drawer:833692318019223563>",
-        "Jacket": "<:JacketNormal:833692326772867082>",
-        "Jewelry" : "<:Jewelry:833692334603370596>",
-        "LooseLoot" : "<:LooseLoot:833692341796733018>",
-        "Medcase" : "<:Medcase:833692349073850379>",
-        "Money" : "<:Money:833692357916229652>",
-        "PCBlock" : "<:PCBlock:833692365863518279>",
-        "Safe" : "<:Safe:833692375381049374>",
-        "SportBag" : "<:SportBag:833692422771966004>",
-        "Toolbox" : "<:Toolbox:833692429999144991>",
-        "WeaponRack" : "<:WeaponRack:833692471678468116>"
-
     },
     "ItemArrayLink": "https://gist.github.com/BetrixEdits/58aa8d985e4690b9a540467af30ec909"
 }
