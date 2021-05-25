@@ -87,7 +87,9 @@ client.on('ready', async() => {
                     if (BotCommands.includes(command)) {
                         const guild = client.guilds.resolve(interaction.guild_id) // Needed for admin commands
 
+                        console.time('Get Command Response')
                         const Message = await require(`./commands/${command}`)['CommandFunction'](args, { interaction, guild })
+                        console.timeEnd('Get Command Response')
 
                         let JSMessage
 
@@ -148,7 +150,9 @@ client.on('ready', async() => {
                         args[options[0].name] = message.content.split(' ')[1]
                     }
 
+                    console.time('Get Command Response')
                     let Message = await require(`./commands/${command}`)['CommandFunction'](args)
+                    console.timeEnd('Get Command Response')
 
                     message.reply(Message.Content)
 
@@ -257,7 +261,10 @@ const StartBot = async() => {
     require('./tasks').StartTasks()
 
     KeepAlive()
+
     client.login(process.env.BOT_TOKEN)
+
+    //client.login(process.env.BOT_TOKEN_DEV)
 }
 StartBot()
 
