@@ -23,7 +23,7 @@ const { MessageEmbed } = require('discord.js')
 const Settings = require('../settings.json')
 
 // Command Functions
-const CommandFunction = async(args) => {
+const CommandFunction = async(args, obj) => {
     let Item = ItemSearchEngine(args['item'].toLowerCase())
 
     let Length = Item.length
@@ -47,7 +47,7 @@ const CommandFunction = async(args) => {
         }
     } else if (Length > 1 && Length < 25) {
         let uid = obj.interaction.member.user.id
-        let Array = require('../command_modules/search').CreateInput(Item, 'price', uid)
+        let Array = require('../command_modules/search').CreateInput(Item, 'stat', uid)
         return {
             Type: "Error",
             Content: new MessageEmbed()

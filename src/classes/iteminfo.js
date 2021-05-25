@@ -7,16 +7,28 @@ class ItemInfo {
     constructor(item) {
         this.AllData = JSON.parse(fs.readFileSync('./src/game_data/api/itemdata.json'))
         this.ItemData = this.AllData[item]
-        this.Description = this.ItemData.RawData.Description
+        this.Description = this.GetDescription()
         this.SpecificData = this.GetSpecificData()
         this.WikiLink = this.ItemData.WikiLink
         this.Name = this.ItemData.Name
         this.ShortName = this.ItemData.ShortName
     }
+    GetDescription() {
+        if (this.ItemData.RawData !== undefined) {
+            return this.ItemData.RawData.Description
+        } else {
+            return this.ItemData.Name
+        }
+    }
     GetSpecificData() {
         try {
             let RawData = this.ItemData.RawData.Data
             let Types = this.ItemData.Types
+            console.log(RawData.CompressorTreshold)
+            if (RawData.CompressorTreshold !== undefined) {
+                console.log('headphone')
+            }
+
 
             if (Types.includes('ammo') && !Types.includes('grenade')) {
                 // Need to add ammo specific traits in here like buckshot pellets
@@ -31,6 +43,21 @@ class ItemInfo {
                         { name: 'Tracer?', value: RawData.Tracer, inline: true },
                         { name: 'Light Bleed Chance', value: `${RawData.LightBleedingDelta}%`, inline: true },
                         { name: 'Heavy Bleed Chance', value: `${RawData.HeavyBleedingDelta}%`, inline: true }
+                    ]
+                }
+            } else if (RawData.CompressorTreshold !== undefined) {
+                return {
+                    Fields: [
+                        { name: 'Distortion', value: RawData.Distortion, inline: true },
+                        { name: 'Compressor Treshold', value: RawData.CompressorTreshold, inline: true },
+                        { name: 'Compressor Attack', value: RawData.CompressorAttack, inline: true },
+                        { name: 'Compressor Release', value: RawData.CompressorRelease, inline: true },
+                        { name: 'Compresso rGain', value: RawData.CompressorGain, inline: true },
+                        { name: 'Cutoff Freq', value: RawData.CutoffFreq, inline: true },
+                        { name: 'Resonance', value: RawData.Resonance, inline: true },
+                        { name: 'Compressor Volume', value: RawData.CompressorVolume, inline: true },
+                        { name: 'Ambient Volume', value: RawData.AmbientVolume, inline: true },
+                        { name: 'Dry Volume', value: RawData.DryVolume, inline: true }
                     ]
                 }
             } else if (Types.includes('gun')) {
