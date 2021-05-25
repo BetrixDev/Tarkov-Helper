@@ -52,7 +52,7 @@ class ItemInfo {
                         { name: 'Compressor Treshold', value: RawData.CompressorTreshold, inline: true },
                         { name: 'Compressor Attack', value: RawData.CompressorAttack, inline: true },
                         { name: 'Compressor Release', value: RawData.CompressorRelease, inline: true },
-                        { name: 'Compresso rGain', value: RawData.CompressorGain, inline: true },
+                        { name: 'Compressor Gain', value: RawData.CompressorGain, inline: true },
                         { name: 'Cutoff Freq', value: RawData.CutoffFreq, inline: true },
                         { name: 'Resonance', value: RawData.Resonance, inline: true },
                         { name: 'Compressor Volume', value: RawData.CompressorVolume, inline: true },
