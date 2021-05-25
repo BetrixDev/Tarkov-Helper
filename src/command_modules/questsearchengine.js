@@ -1,7 +1,7 @@
 const QuestNames = require('../game_data/api/questnames.json')
 
 const Engine = (Input) => {
-    if (QuestNames.includes(Input.toLowerCase())) {
+    if (QuestNames.includes(Input)) {
         return [Input]
     } else {
         let Results = new Array()
