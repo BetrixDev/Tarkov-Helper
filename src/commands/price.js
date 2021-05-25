@@ -18,6 +18,7 @@ const CommandSettings = {
 const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormessage')
 const { ItemSearchEngine } = require('../command_modules/itemsearchengine')
 const ItemFromName = require('../game_data/api/itemfromname.json')
+const FormatPrice = require('../command_modules/formatprice')
 const { PriceInfo } = require('../classes/priceinfo')
 const Settings = require('../settings.json')
 const { MessageEmbed } = require('discord.js')
@@ -43,19 +44,19 @@ const CommandFunction = (args, obj) => {
                     .setDescription(`[Wiki Link To Item](${PriceData.PriceData.wikiLink})`)
                     .addFields({
                         name: 'Price',
-                        value: FormatNumber(PriceData.PriceData.avg24hPrice) + '₽',
+                        value: FormatPrice(PriceData.PriceData.avg24hPrice),
                         inline: true
                     }, {
                         name: 'Price Per Slot',
-                        value: FormatNumber(PriceData.PricePerSlot) + '₽',
+                        value: FormatPrice(PriceData.PricePerSlot),
                         inline: true
                     }, {
                         name: 'Flea Market Fee',
-                        value: FormatNumber(PriceData.Fee) + '₽/each',
+                        value: FormatPrice(PriceData.Fee) + '/each',
                         inline: true
                     }, {
                         name: 'Highest Trader Sell',
-                        value: `${PriceData.HighestTraderBuy[1]} at ${FormatNumber(PriceData.HighestTraderBuy[0])}₽/each`
+                        value: `${PriceData.HighestTraderBuy[1]} at ${FormatPrice(PriceData.HighestTraderBuy[0])}/each`
                     }, {
                         name: 'Best Place To Sell',
                         value: `${PriceData.RecommendedSell}`
@@ -67,7 +68,7 @@ const CommandFunction = (args, obj) => {
         }
     } else if (Length > 1 && Length < 25) {
         let uid = obj.interaction.member.user.id
-        let Array = require('../command_modules/search').CreateInput(Item, 'price', uid)
+        let Array = require('../command_modules/search').CreateInput(Item, 'fee', uid)
         return {
             Type: "Error",
             Content: new MessageEmbed()
@@ -81,10 +82,6 @@ const CommandFunction = (args, obj) => {
     } else {
         return { Type: "Error", Content: ErrorMessage(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with no results. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries`), Time: 5000 }
     }
-}
-
-const FormatNumber = (n) => {
-    return String(n).replace(/(.)(?=(\d{3})+$)/g, '$1,')
 }
 
 exports.CommandFunction = CommandFunction

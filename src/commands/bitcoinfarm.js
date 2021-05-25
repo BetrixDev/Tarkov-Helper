@@ -24,6 +24,7 @@ const CommandSettings = {
 
 const { MessageEmbed } = require('discord.js')
 const Settings = require('../settings.json')
+const FormatPrice = require('../command_modules/formatprice')
 const { BitcoinFarmCalc } = require('../classes/bitcoinfarmcalc')
 
 // Command Functions
@@ -39,7 +40,7 @@ const CommandFunction = async(args) => {
                 .setThumbnail(Settings.Images.Thumbnails['BitcoinFarm'])
                 .addFields({
                     name: "Bitcoin Price",
-                    value: `${Calculation.BTCPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}₽`
+                    value: FormatPrice(Calculation.BTCPrice)
                 }, {
                     name: "Amount of GPUS",
                     value: args['gpus']
@@ -48,7 +49,7 @@ const CommandFunction = async(args) => {
                     value: Calculation.BTCPerDay
                 }, {
                     name: "Roubles Per Day",
-                    value: `${Math.round(Calculation.RUBPerDay).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}₽`
+                    value: FormatPrice(Math.round(Calculation.RUBPerDay))
                 })
         }
     } else if (args['compare-gpus'] !== undefined) {
@@ -61,7 +62,7 @@ const CommandFunction = async(args) => {
                 .setThumbnail(Settings.Images.Thumbnails.BitcoinFarm)
                 .addFields({
                     name: "Bitcoin Price",
-                    value: `${Calculation.BTCPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}₽`
+                    value: FormatPrice(Calculation.BTCPrice)
                 }, {
                     name: "Difference in GPUS",
                     value: (Math.abs(args['gpus'] - args['compare-gpus']))
@@ -70,7 +71,7 @@ const CommandFunction = async(args) => {
                     value: Math.abs(Calculation.BTCPerDay - SecondCalculation.BTCPerDay)
                 }, {
                     name: "Difference in Roubles Per Day",
-                    value: `${Math.abs((Math.round(Calculation.RUBPerDay) - Math.round(SecondCalculation.RUBPerDay))).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}₽`
+                    value: FormatPrice(Math.abs((Math.round(Calculation.RUBPerDay) - Math.round(SecondCalculation.RUBPerDay))))
                 })
         }
     }

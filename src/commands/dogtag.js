@@ -16,6 +16,7 @@ const CommandSettings = {
 }
 
 const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormessage')
+const FormatPrice = require('../command_modules/formatprice')
 const { MessageEmbed } = require('discord.js')
 
 // Command Functions
@@ -38,7 +39,7 @@ const CommandFunction = (args) => {
                     value: Level
                 }, {
                     name: 'Price Of Dogtag',
-                    value: (Level * 378)
+                    value: FormatPrice(Level * 378)
                 })
         }
     }
