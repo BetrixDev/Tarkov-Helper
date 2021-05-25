@@ -26,7 +26,7 @@ const CommandFunction = (args, obj) => {
             let Role = args['role']
             SetServerData(obj.interaction.guild_id, 'AdminRole', Role)
 
-            return { Type: "ServerMessage", Content: `Changed Role to: ${obj.interaction.data.resolved.roles[Role].name || Role}` }
+            return { Type: "Ephemeral", Content: `Changed Role to: ${obj.interaction.data.resolved.roles[Role].name || Role}` }
         } else {
             return { Type: "Error", Content: ErrorMessage('Insufficient permission'), Time: 5000 }
         }
