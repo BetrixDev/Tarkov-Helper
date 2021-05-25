@@ -23,17 +23,15 @@ const ItemFromName = require('../game_data/api/itemfromname.json')
 const { QuestInfo } = require('../classes/questinfo')
 
 // Command Functions
-const CommandFunction = (args) => {
-    if (args['questname'].length < 3 || args['questname'].length > 100) {
-        return ErrorMessage('Please keep the Quest input length between 3 and 100 characters')
-    }
-
-    let Quest = QuestSearchEngine(args['questname'].toLowerCase())
+const CommandFunction = (args, obj) => {
+    let Quest = QuestSearchEngine(args['questname'])
 
     let Length = Quest.length
 
     if (Length === 1) {
+
         let QuestStuff = new QuestInfo(Quest[0])
+
         return {
             Type: "ServerMessage",
             Content: new MessageEmbed()
@@ -53,22 +51,34 @@ const CommandFunction = (args) => {
                     inline: true
                 }, {
                     name: 'Needed For Kappa',
-                    value: 'true'
+                    value: QuestStuff.Kappa
                 })
         }
     } else if (Length > 1) {
+        let uid = obj.interaction.member.user.id
+        let Array = require('../command_modules/search').CreateInput(Quest, 'quest', uid)
+
         return {
             Type: "Error",
-            Content: ErrorMessageField(`Quest search of \"${args['questname'].toLowerCase()}\" came back with multiple results, please be more specific`, {
-                name: 'Results',
-                value: Quest
-            }),
-            Time: 15000
+            Content: new MessageEmbed()
+                .setTitle('Error')
+                .setColor(Settings.BotSettings.ErrorColor)
+                .setDescription(`Item search of \"${args['questname'].toLowerCase()}\" came back with multiple results, please be more specific. \n\n Use the command \`/Confirm\` followed by the number next to the item to complete the search`)
+                .addFields({ name: 'Results', value: Array })
+        }
+
+    } else {
+        return {
+            Type: "Error",
+            Content: ErrorMessage('No Results found')
         }
     }
 }
 
 const GetUnlocks = (array) => {
+
+    if (array.length < 1) { return 'None' }
+
     let Unlocks = new Array()
 
     for (const i in array) {
