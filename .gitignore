@@ -3,6 +3,8 @@ node_modules/
 wiki/
 *.code-workspace
 
+src/bot_data/config.json
+
 src/assets/ProjectFiles/
 src/assets/Emojis
 src/bot_data/config.json
