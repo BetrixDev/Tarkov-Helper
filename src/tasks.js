@@ -211,11 +211,13 @@ const UpdateQuests = schedule.scheduleJob('@daily', async function() {
             let QuestData = FormattedData[Quest.title]
 
             try {
+
                 if (Quest.nokappa !== undefined) {
                     QuestData.Kappa = false
                 } else {
                     QuestData.Kappa = true
                 }
+                QuestData.Objectives = Quest.objectives
             } catch {}
 
         }
@@ -234,8 +236,8 @@ const UpdateQuests = schedule.scheduleJob('@daily', async function() {
 
 const StartTasks = async() => {
     // Run updates at startup
-    UpdatePrices.invoke()
-    UpdateItems.invoke()
+    //UpdatePrices.invoke() ONLY COMMENTED FOR DEV
+    //UpdateItems.invoke()
     UpdateQuests.invoke()
 
     // Start the intervalled updates
