@@ -41,6 +41,7 @@ const CommandFunction = (args) => {
 
     let Message = new MessageEmbed()
         .setTitle(`${Caliber} Data`)
+        .setThumbnail('https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/ui_icons/icon_ammo.png')
         .setDescription('For a list of all possible calibers [Click Here](https://gist.github.com/BetrixEdits/16c20db88feb4aefd22dbac6e257e290)')
         .addFields({
             name: 'Name',
