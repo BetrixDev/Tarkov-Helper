@@ -42,7 +42,7 @@ const CommandFunction = (args, obj) => {
                     value: Amounts.FindInRaid,
                     inline: true
                 }, {
-                    name: 'Needed FIR',
+                    name: 'Non FIR',
                     value: Amounts.Collect,
                     inline: true
                 }, {
@@ -101,7 +101,7 @@ function QuestItems(item) {
     }
 
     if (UsedQuests.length < 1) {
-        UsedQuests = '**No Quests**'
+        UsedQuests = ['**No Quests**']
     }
 
     return { FindInRaid: FindInRaid, Collect: Collect, Place: Place, UsedQuests: UsedQuests.join('\n') }

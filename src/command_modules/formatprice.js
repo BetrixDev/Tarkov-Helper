@@ -3,5 +3,5 @@ module.exports = (price) => {
         style: 'currency',
         currency: 'RUB',
         maximumSignificantDigits: 6,
-    }).format(price)
+    }).format(Number(price))
 };
