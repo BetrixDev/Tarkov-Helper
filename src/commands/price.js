@@ -68,7 +68,7 @@ const CommandFunction = (args, obj) => {
         }
     } else if (Length > 1 && Length < 25) {
         let uid = obj.interaction.member.user.id
-        let Array = require('../command_modules/search').CreateInput(Item, 'fee', uid)
+        let Array = require('../command_modules/search').CreateInput(Item, 'price', uid)
         return {
             Type: "Error",
             Content: new MessageEmbed()
