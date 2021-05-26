@@ -1,4 +1,20 @@
-// This file will retrieve game data and is run in isolation for the first run so
-// that it can load the data before any module or command is run
-const { StartTasks } = require('../tasks')
-StartTasks()
+const { exec } = require("child_process")
+
+console.log('Downloading Node Packages')
+
+exec('npm i', (error, stdout, stderr) => {
+    if (error) {
+        console.error(error)
+        return
+    }
+    console.log(stdout)
+
+    console.log('Retrieving Game Data From APIS')
+    require('../tasks').StartTasks()
+
+    setTimeout(() => {
+        console.log('\nStarting Bot')
+        console.log('-------------------\n')
+        require('../main')
+    }, 5000)
+})
