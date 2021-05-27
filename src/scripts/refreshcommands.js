@@ -1,6 +1,3 @@
-// Set guildid to only refresh a certain guild or blank for global
-const guildID = '797601083589001227'
-
 const fs = require('fs')
 require('dotenv').config()
 const DiscordJS = require('discord.js')
@@ -21,14 +18,15 @@ for (const File of CommandFiles) {
 
 client.on('ready', async() => {
     try {
-        const commands = await getApp(guildID).commands.get()
+        const commands = await getApp().commands.get()
 
         for (const Command of commands) {
             console.log(`Deleting: ${Command.name}`)
-            await getApp(guildID).commands(Command.id).delete()
+            await getApp().commands(Command.id).delete()
         }
 
         console.log('Finished Deleting')
+
 
         for (const File of CommandFiles) {
             let FormatFile = File.split('.')[0]
@@ -39,6 +37,7 @@ client.on('ready', async() => {
                 await getApp(guildID).commands.post(CommandData)
             }
         }
+
 
         console.log('Refreshed commands. You may now close this application and run the bot normally')
 
