@@ -171,8 +171,10 @@ const UpdateItems = schedule.scheduleJob('@daily', async function() {
 const UpdateQuests = schedule.scheduleJob('@daily', async function() {
     console.log(`{${GetDate()}}: Updating quests`)
 
-    let ExtraData = await got('https://raw.githubusercontent.com/TarkovTracker/tarkovdata/master/quests.json')
-    ExtraData = JSON.parse(ExtraData.body)
+    let ExtraData = await got('https://raw.githubusercontent.com/TarkovTracker/tarkovdata/master/quests.json', {
+        responseType: 'json',
+    })
+    ExtraData = ExtraData.body
 
     try {
         const bodyQuery = JSON.stringify({
@@ -236,8 +238,8 @@ const UpdateQuests = schedule.scheduleJob('@daily', async function() {
 
 const StartTasks = async() => {
     // Run updates at startup
-    //UpdatePrices.invoke() ONLY COMMENTED FOR DEV
-    //UpdateItems.invoke()
+    UpdatePrices.invoke()
+    UpdateItems.invoke()
     UpdateQuests.invoke()
 
     // Start the intervalled updates
