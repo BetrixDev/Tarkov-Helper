@@ -26,12 +26,18 @@ const CommandFunction = (args, obj) => {
     if (Search.OpenSearch(uid)) {
         let Searches = Search.GetSearchObj(uid)
 
-        Search.RemoveSearch(uid)
-
-        return require(`./${Searches.Command}`).CommandFunction({
-            questname: Searches['Inputs'][pos - 1],
-            item: Searches['Inputs'][pos - 1]
-        })
+        if (Searches['Inputs'].length < Number(pos)) {
+            return {
+                Type: "Error",
+                Content: ErrorMessage('Invalid position')
+            }
+        } else {
+            Search.RemoveSearch(uid)
+            return require(`./${Searches.Command}`).CommandFunction({
+                questname: Searches['Inputs'][pos - 1],
+                item: Searches['Inputs'][pos - 1]
+            })
+        }
     } else {
         return {
             Type: "Error",
