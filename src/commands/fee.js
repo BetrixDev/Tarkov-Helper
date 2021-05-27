@@ -57,7 +57,7 @@ const CommandFunction = (args, obj) => {
                         value: FormatPrice(Math.round(CalcFee(PriceData.PriceData.basePrice, Price, Amount)))
                     }, {
                         name: 'Flea Market Price',
-                        value: FormatPrice(PriceData.PriceData.avg24hPrice) + '/each'
+                        value: FormatPrice(args['price'] || PriceData.PriceData.avg24hPrice) + '/each'
                     }, {
                         name: 'Profit',
                         value: FormatPrice(((PriceData.PriceData.avg24hPrice * Amount) - Math.round(CalcFee(PriceData.PriceData.basePrice, Price, Amount))))
