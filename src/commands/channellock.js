@@ -24,7 +24,7 @@ const CommandFunction = (args, obj) => {
         if (GetServerData(obj.interaction.guild_id)['AdminRole'] !== 0) {
             if (obj.interaction.member.roles.includes(GetServerData(obj.interaction.guild_id)['AdminRole'])) {
                 let Channel = args['channel']
-                console.log(Channel)
+
                 SetServerData(obj.interaction.guild_id, 'ChannelLock', Channel)
 
                 return { Type: "Ephemeral", Content: `Changed Channel Lock to: ${obj.interaction.data.resolved.channels[Channel].name || Channel}` }

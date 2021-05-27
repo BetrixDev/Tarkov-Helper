@@ -30,7 +30,7 @@ const CommandFunction = async(args, obj) => {
 
     if (Length === 1) {
         let ItemData = new ItemInfo(ItemFromName[Item[0]].ID)
-        console.log(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/item_icons/${ItemFromName[Item[0]].ID}.png`);
+
         if (ItemData !== undefined) {
             return {
                 Type: "ServerMessage",

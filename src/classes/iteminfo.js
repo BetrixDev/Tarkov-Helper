@@ -24,11 +24,6 @@ class ItemInfo {
         try {
             let RawData = this.ItemData.RawData.Data
             let Types = this.ItemData.Types
-            console.log(RawData.CompressorTreshold)
-            if (RawData.CompressorTreshold !== undefined) {
-                console.log('headphone')
-            }
-
 
             if (Types.includes('ammo') && !Types.includes('grenade')) {
                 // Need to add ammo specific traits in here like buckshot pellets
