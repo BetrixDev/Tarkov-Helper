@@ -1,6 +1,14 @@
+const AccurateSearch = require('accurate-search')
+
 const ItemID = require('../game_data/api/itemfromid.json')
 const ItemName = require('../game_data/api/itemarray.json')
 const ItemShortName = require('../game_data/api/itemfromshortname.json')
+
+let SearchEngine = new AccurateSearch()
+
+for (const Item of ItemName) {
+    SearchEngine.addText(Item, Item)
+}
 
 const Engine = (Input) => {
     let Results = new Array()
@@ -42,6 +50,10 @@ const Engine = (Input) => {
         if (ItemShortName[Input.replace('short=', '')] !== undefined) {
             return [ItemShortName[Input.replace('short=', '')].Name]
         }
+    }
+
+    if (Results.length === 0) {
+        Results = SearchEngine.accurateSearch(Input)
     }
 
     return Results
