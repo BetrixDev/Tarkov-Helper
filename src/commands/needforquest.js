@@ -35,7 +35,7 @@ const CommandFunction = (args, obj) => {
             Type: "ServerMessage",
             Content: new MessageEmbed()
                 .setTitle(`Quest Dependencies for ${ItemFromName[Item].ShortName}`)
-                .setThumbnail(`https://raw.githubusercontent.com/RatScanner/EfTIcons/master/uid/${ItemFromName[Item].ID}.png`)
+                .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/item_icons/${ItemFromName[Item].ID}.png`)
                 .setDescription(`[Wiki Link](${ItemData[ItemFromName[Item].ID].WikiLink}) to item\n\n${ItemFromName[Item].ShortName} is needed in the following quests:\n${Amounts.UsedQuests}`)
                 .addFields({
                     name: 'Find in Raid',

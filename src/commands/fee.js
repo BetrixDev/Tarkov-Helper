@@ -50,7 +50,7 @@ const CommandFunction = (args, obj) => {
                 Type: "ServerMessage",
                 Content: new MessageEmbed()
                     .setTitle(`${PriceData.PriceData.shortName} Fee Calculation`)
-                    .setThumbnail(`https://raw.githubusercontent.com/RatScanner/EfTIcons/master/uid/${PriceData.PriceData.id}.png`)
+                    .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/item_icons/${PriceData.PriceData.id}.png`)
                     .setDescription(`Fee and Profit are being calculated using a total sell of ${Amount} items \n [Wiki Link To Item](${PriceData.PriceData.wikiLink})`)
                     .addFields({
                         name: 'Fee',

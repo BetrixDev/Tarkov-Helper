@@ -30,13 +30,13 @@ const CommandFunction = async(args, obj) => {
 
     if (Length === 1) {
         let ItemData = new ItemInfo(ItemFromName[Item[0]].ID)
-
+        console.log(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/item_icons/${ItemFromName[Item[0]].ID}.png`);
         if (ItemData !== undefined) {
             return {
                 Type: "ServerMessage",
                 Content: new MessageEmbed()
                     .setTitle(`${ItemData.ShortName} Stats`)
-                    .setThumbnail(`https://raw.githubusercontent.com/RatScanner/EfTIcons/master/uid/${ItemFromName[Item[0]].ID}.png`)
+                    .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/item_icons/${ItemFromName[Item[0]].ID}.png`)
                     .setDescription(`${ItemData.Description} \n[Wiki Link To Item](${ItemData.WikiLink})`)
                     .setImage(ItemData.SpecificData.Image || '')
                     .addFields(ItemData.SpecificData.Fields)

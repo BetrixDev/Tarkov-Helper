@@ -33,7 +33,7 @@ const CommandFunction = (args) => {
             Type: "ServerMessage",
             Content: new MessageEmbed()
                 .setTitle('Dogtag Price')
-                .setThumbnail(`https://raw.githubusercontent.com/RatScanner/EfTIcons/master/uid/59f32c3b86f77472a31742f0.png`)
+                .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/item_icons/59f32c3b86f77472a31742f0.png`)
                 .addFields({
                     name: 'Level Of Dogtag',
                     value: Level
