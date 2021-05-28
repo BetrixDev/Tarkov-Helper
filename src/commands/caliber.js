@@ -1,5 +1,3 @@
-const { GetCalibers } = require('../command_modules/calibers')
-
 // Command Config
 const CommandSettings = {
     CommandData: {
@@ -11,7 +9,32 @@ const CommandSettings = {
                 description: 'What caliber to list information of',
                 required: true,
                 type: 3,
-                choices: GetCalibers().Caliber
+                choices: [
+                    { name: '5.56x45', value: '5.56x45' },
+                    { name: '12x70', value: '12x70' },
+                    { name: '7.62x54R', value: '7.62x54R' },
+                    { name: '7.62x39', value: '7.62x39' },
+                    { name: '9x19', value: '9x19' },
+                    { name: '5.45x39', value: '5.45x39' },
+                    { name: '7.62x25', value: '7.62x25' },
+                    { name: '9x18', value: '9x18' },
+                    { name: '9x39', value: '9x39' },
+                    { name: '7.62x51', value: '7.62x51' },
+                    { name: '.366', value: '.366' },
+                    { name: '9x21', value: '9x21' },
+                    { name: '20x70', value: '20x70' },
+                    { name: '4.6x30', value: '4.6x30' },
+                    { name: '12.7x55', value: '12.7x55' },
+                    { name: '5.7x28', value: '5.7x28' },
+                    { name: '12/70', value: '12/70' },
+                    { name: '20/70', value: '20/70' },
+                    { name: '30x29', value: '30x29' },
+                    { name: '.45', value: '.45' },
+                    { name: '23x75', value: '23x75' },
+                    { name: '40x46', value: '40x46' },
+                    { name: '.300', value: '.300' },
+                    { name: '.338', value: '.338' }
+                ]
             }]
         }
     },
