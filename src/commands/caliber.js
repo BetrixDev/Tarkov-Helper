@@ -1,3 +1,5 @@
+const { GetCalibers } = require('../command_modules/calibers')
+
 // Command Config
 const CommandSettings = {
     CommandData: {
@@ -8,7 +10,8 @@ const CommandSettings = {
                 name: 'caliber',
                 description: 'What caliber to list information of',
                 required: true,
-                type: 3
+                type: 3,
+                choices: GetCalibers().Caliber
             }]
         }
     },
