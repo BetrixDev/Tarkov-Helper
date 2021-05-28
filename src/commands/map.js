@@ -8,11 +8,32 @@ const CommandSettings = {
                 name: 'map',
                 description: 'map to get info of',
                 required: true,
-                type: 3
+                type: 3,
+                choices: [{
+                    name: 'Customs',
+                    value: 'customs'
+                }, {
+                    name: 'Factory',
+                    value: 'factory',
+                }, {
+                    name: 'Interchange',
+                    value: 'interchange',
+                }, {
+                    name: 'Reserve',
+                    value: 'reserve',
+                }, {
+                    name: 'Shoreline',
+                    value: 'shoreline',
+                }, {
+                    name: 'Labs',
+                    value: 'the lab',
+                }, {
+                    name: 'Woods',
+                    value: 'woods',
+                }]
             }]
         }
-    },
-    DMCommand: true
+    }
 }
 
 const fs = require('fs')
@@ -23,7 +44,7 @@ const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormes
 
 // Command Functions
 const CommandFunction = (args) => {
-    let Map = MapSearchEngine(args['map'].toLowerCase())
+    let Map = args['map']
 
     if (PossibleMaps.includes(Map)) {
         let MapData = JSON.parse(fs.readFileSync(`./src/game_data/maps/${Map}.json`))
