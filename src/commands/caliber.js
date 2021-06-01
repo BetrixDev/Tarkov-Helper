@@ -9,21 +9,44 @@ const CommandSettings = {
                 description: 'What caliber to list information of',
                 required: true,
                 type: 3
+            }, {
+                name: 'sort',
+                description: 'What value to sort array by',
+                required: false,
+                type: 3,
+                choices: [
+                    { name: 'Damage', value: "0" },
+                    { name: 'Penetration', value: "1" }
+                ]
             }]
         }
-    },
-    DMCommand: true
+    }
 }
 
-const { CaliberSearchEngine } = require('../command_modules/calibersearchengine')
+const Settings = require('../settings.json')
+const { CaliberSearchEngine, GetCalibers } = require('../command_modules/calibersearchengine')
 const { MessageEmbed } = require('discord.js')
 
 // Command Functions
-const CommandFunction = (args) => {
+const CommandFunction = (args, obj) => {
     let Caliber = args['caliber']
+    let Sort = Number(args['sort']) || 1
 
     let EngineResults = CaliberSearchEngine(Caliber)
     Caliber = EngineResults.Results[0]
+
+    if (Caliber === undefined) {
+        let uid = obj.interaction.member.user.id
+        let Array = require('../command_modules/search').CreateInput(GetCalibers(), 'caliber', uid)
+        return {
+            Type: "Error",
+            Content: new MessageEmbed()
+                .setTitle('Error')
+                .setColor(Settings.BotSettings.ErrorColor)
+                .setDescription(`Caliber search of \"${args['caliber'].toLowerCase()}\" came back with multiple results, please be more specific. [Click here](${Settings.CaliberArrayLink}) to see a list of all possible entries. \n\n Use the command \`/Confirm\` followed by the number next to the item to complete the search`)
+                .addFields({ name: 'Results', value: Array })
+        }
+    }
 
     let CaliberData = EngineResults.CaliberData[Caliber]
 
@@ -33,7 +56,7 @@ const CommandFunction = (args) => {
         NonSortedArray.push({ Name: Ammo.Name, Damage: Ammo.Damage, Penetration: Ammo.Penetration })
     }
 
-    let SortedValues = SortValues(NonSortedArray, 1)
+    let SortedValues = SortValues(NonSortedArray, Sort)
 
     let NameString = `${SortedValues[0].join('\n')}`
     let DamageString = `${SortedValues[1].join('\n')}`
