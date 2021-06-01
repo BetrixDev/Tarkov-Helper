@@ -13,7 +13,7 @@ const CommandSettings = {
                 type: 4,
                 name: 'amount',
                 description: 'Amount of the item to sell',
-                required: true
+                required: false
             }, {
                 type: 4,
                 name: 'price',
@@ -36,7 +36,7 @@ const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormes
 // Command Functions
 const CommandFunction = (args, obj) => {
     let Item = ItemSearchEngine(args['item'].toLowerCase())
-    let Amount = args['amount']
+    let Amount = args['amount'] || 1
 
     let Length = Item.length
 
@@ -60,7 +60,7 @@ const CommandFunction = (args, obj) => {
                         value: FormatPrice(args['price'] || PriceData.PriceData.avg24hPrice) + '/each'
                     }, {
                         name: 'Profit',
-                        value: FormatPrice(((PriceData.PriceData.avg24hPrice * Amount) - Math.round(CalcFee(PriceData.PriceData.basePrice, Price, Amount))))
+                        value: FormatPrice(((args['price'] || PriceData.PriceData.avg24hPrice * Amount) - Math.round(CalcFee(PriceData.PriceData.basePrice, Price, Amount))))
                     })
             }
         } else {
