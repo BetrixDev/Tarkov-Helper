@@ -37,25 +37,6 @@ client.on('ready', async() => {
     let End = new Date()
     console.log(`Tarkov Helper Initialized in ${End.getTime() - Start.getTime()}ms`)
 
-    const commands = await getApp().commands.get()
-
-    let FormattedCommands = {}
-    for (const c in commands) {
-        let Command = commands[c]
-        FormattedCommands[Command.name] = {
-            ID: Command.id
-        }
-    }
-
-    for (const File of CommandFiles) {
-        let FormatFile = File.split('.')[0]
-        let CommandData = require(`./commands/${FormatFile}`)['CommandSettings'].CommandData
-
-        if (!FormattedCommands.hasOwnProperty(FormatFile) && CommandData !== undefined) {
-            await getApp().commands.post(CommandData)
-        }
-    }
-
     // Used for slash commands
     client.ws.on('INTERACTION_CREATE', async(interaction) => {
         try { // Try block so we can ignore interactions without erroring the bot
@@ -87,9 +68,7 @@ client.on('ready', async() => {
                     if (BotCommands.includes(command)) {
                         const guild = client.guilds.resolve(interaction.guild_id) // Needed for admin commands
 
-                        console.time('Get Command Response')
                         const Message = await require(`./commands/${command}`)['CommandFunction'](args, { interaction, guild })
-                        console.timeEnd('Get Command Response')
 
                         let JSMessage
 
@@ -126,42 +105,6 @@ client.on('ready', async() => {
                     `The channel: \`#${TypedChannel}\` is locked, please use \`#${LockedChannel}\` to have access to Tarkov Helper commands`,
                     true
                 )
-            }
-
-        } catch (e) {
-            console.log(e)
-        }
-    })
-
-    // Used for direct message commands
-    client.on('message', async(message) => {
-        try {
-            if (!message.author.bot && message.guild === null) {
-                let command = message.content.replace('/', '').replace('!', '').split(' ')[0]
-
-                if (DMCommands.includes(command)) {
-                    let CommandSettings = require(`./commands/${command}`)['CommandSettings'].CommandData
-
-
-                    // Since DM commands only have 1 input this will work
-                    let options = CommandSettings.data.options
-                    let args = {}
-                    if (options.length > 0) {
-                        args[options[0].name] = message.content.split(' ')[1]
-                    }
-
-                    console.time('Get Command Response')
-                    let Message = await require(`./commands/${command}`)['CommandFunction'](args)
-                    console.timeEnd('Get Command Response')
-
-                    message.reply(Message.Content)
-
-                    // Reaction Handler
-                    let ReactionData = require(`./commands/${command}`)['CommandSettings'].ReactionData
-                    if (ReactionData !== undefined && Message.Type !== "Error") { // Don't collect reactions on an error message
-                        await AddReactionCollection(ReactionData, { Message: message }, false)
-                    }
-                }
             }
         } catch (e) {
             console.log(e)
