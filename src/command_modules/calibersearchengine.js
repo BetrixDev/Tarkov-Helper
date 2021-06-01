@@ -35,11 +35,16 @@ function InitEngine() {
     }
 }
 
+function GetCalibers() {
+    return Calibers
+}
+
 const Engine = (Input) => {
     let Results = SearchEngine.search(Input.replace(' ', 'x'))
 
     return { Results: Results, CaliberData: CaliberData }
 }
 
+exports.GetCalibers = GetCalibers
 exports.InitCaliberEngine = InitEngine
 exports.CaliberSearchEngine = Engine
