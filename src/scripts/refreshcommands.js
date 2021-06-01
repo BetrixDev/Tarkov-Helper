@@ -34,7 +34,7 @@ client.on('ready', async() => {
 
             if (CommandData !== undefined) {
                 console.log(`Adding ${CommandData.data.name}`)
-                await getApp(guildID).commands.post(CommandData)
+                await getApp().commands.post(CommandData)
             }
         }
 
