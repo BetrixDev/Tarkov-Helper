@@ -14,3 +14,4 @@ dev/
 
 # These files are created internally so useless to keep
 src/game_data/api/
+*.psd
