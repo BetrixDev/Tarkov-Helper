@@ -12,7 +12,7 @@ function CreateInput(Inputs, cmd, uid) {
     let Message = new Array()
     for (const i in Inputs) {
         let pos = Number(i) + 1
-        Message.push(`\`${pos}\`. ${Inputs[i]}`)
+        Message.push(`\`${pos}\` **-** ${Inputs[i]}`)
     }
 
     return Message
