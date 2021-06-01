@@ -23,7 +23,7 @@ const { MessageEmbed } = require('discord.js')
 // Command Functions
 const CommandFunction = (args, obj) => {
     let Caliber = args['caliber']
-    console.log(Caliber);
+
     let EngineResults = CaliberSearchEngine(Caliber)
     Caliber = EngineResults.Results[0]
 
