@@ -35,7 +35,8 @@ const CommandFunction = (args, obj) => {
             Search.RemoveSearch(uid)
             return require(`./${Searches.Command}`).CommandFunction({
                 questname: Searches['Inputs'][pos - 1],
-                item: Searches['Inputs'][pos - 1]
+                item: Searches['Inputs'][pos - 1],
+                caliber: Searches['Inputs'][pos - 1]
             })
         }
     } else {
