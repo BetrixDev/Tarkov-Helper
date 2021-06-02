@@ -213,7 +213,6 @@ const UpdateQuests = schedule.scheduleJob('@daily', async function() {
             let QuestData = FormattedData[Quest.title]
 
             try {
-
                 if (Quest.nokappa !== undefined) {
                     QuestData.Kappa = false
                 } else {
@@ -237,6 +236,11 @@ const UpdateQuests = schedule.scheduleJob('@daily', async function() {
 })
 
 const StartTasks = async() => {
+    try {
+        fs.mkdirSync('./src/game_data/api')
+    } catch {}
+
+
     // Run updates at startup
     UpdatePrices.invoke()
     UpdateItems.invoke()
