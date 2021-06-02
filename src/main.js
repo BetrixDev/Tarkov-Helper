@@ -5,7 +5,7 @@ let Start = new Date()
 const { GetCooldown, SetCooldown } = require('./cooldown')
 const { GetServerData } = require('./command_modules/serverdata')
 const { MessageUser } = require('./command_modules/messageuser')
-const { KeepAlive } = require('./scripts/server')
+    //const { KeepAlive } = require('./scripts/server')
 const DiscordJS = require('discord.js')
 
 const fs = require('fs')
@@ -40,7 +40,12 @@ client.on('ready', async() => {
     // Used for slash commands
     client.ws.on('INTERACTION_CREATE', async(interaction) => {
         try { // Try block so we can ignore interactions without erroring the bot
-            let IsAdmin = interaction.member.roles.includes(GetServerData(interaction.guild_id)['AdminRole']) // Admins can bypass restrictions
+            let IsAdmin // Admins can bypass restrictions
+            if (interaction.guild_id === undefined) {
+                IsAdmin = true
+            } else {
+                IsAdmin = interaction.member.roles.includes(GetServerData(interaction.guild_id)['AdminRole'])
+            }
 
             let ChannelLock = GetServerData(interaction.guild_id)['ChannelLock']
             if (ChannelLock === interaction.channel_id || ChannelLock === "" || IsAdmin) {
@@ -203,7 +208,7 @@ const StartBot = async() => {
     require('./command_modules/calibersearchengine').InitCaliberEngine()
     require('./tasks').StartTasks()
 
-    KeepAlive()
+    //KeepAlive()
 
     client.login(process.env.BOT_TOKEN)
 
