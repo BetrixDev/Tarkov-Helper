@@ -6,7 +6,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "bot": "node src/main.js",
-        "first": "node /src/scripts/first.js",
+        "first": "node src/scripts/first.js",
         "refresh": "node src/scripts/refreshcommands.js"
     },
     "author": "",
