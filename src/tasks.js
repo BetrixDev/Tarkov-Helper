@@ -54,7 +54,7 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
             }
         }
 
-        fs.writeFileSync('./src/game_data/api/pricedata.json', JSON.stringify(NewPrices, null, 2))
+        fs.writeFileSync('./src/game_data/api/pricedata.json', JSON.stringify(NewPrices, null, 4))
 
         console.log(`{${GetDate()}}: Updated prices successfully`)
 
@@ -151,12 +151,12 @@ const UpdateItems = schedule.scheduleJob('@daily', async function() {
             }
         }
 
-        fs.writeFileSync('./src/game_data/api/itemfromshortname.json', JSON.stringify(ItemFromShortName, null, 2))
-        fs.writeFileSync('./src/game_data/api/itemfromname.json', JSON.stringify(ItemFromName, null, 2))
-        fs.writeFileSync('./src/game_data/api/itemfromid.json', JSON.stringify(ItemFromID, null, 2))
-        fs.writeFileSync('./src/game_data/api/itemdata.json', JSON.stringify(ItemData, null, 2))
-        fs.writeFileSync('./src/game_data/api/itemarray.json', JSON.stringify(ItemArray, null, 2))
-        fs.writeFileSync('./src/game_data/api/itemids.json', JSON.stringify(ItemIDs, null, 2))
+        fs.writeFileSync('./src/game_data/api/itemfromshortname.json', JSON.stringify(ItemFromShortName, null, 4))
+        fs.writeFileSync('./src/game_data/api/itemfromname.json', JSON.stringify(ItemFromName, null, 4))
+        fs.writeFileSync('./src/game_data/api/itemfromid.json', JSON.stringify(ItemFromID, null, 4))
+        fs.writeFileSync('./src/game_data/api/itemdata.json', JSON.stringify(ItemData, null, 4))
+        fs.writeFileSync('./src/game_data/api/itemarray.json', JSON.stringify(ItemArray, null, 4))
+        fs.writeFileSync('./src/game_data/api/itemids.json', JSON.stringify(ItemIDs, null, 4))
 
         console.log(`{${GetDate()}}: Updated items successfully`)
 
@@ -223,8 +223,8 @@ const UpdateQuests = schedule.scheduleJob('@daily', async function() {
 
         }
 
-        fs.writeFileSync('./src/game_data/api/quests.json', JSON.stringify(FormattedData, null, 2))
-        fs.writeFileSync('./src/game_data/api/questnames.json', JSON.stringify(QuestNames, null, 2))
+        fs.writeFileSync('./src/game_data/api/quests.json', JSON.stringify(FormattedData, null, 4))
+        fs.writeFileSync('./src/game_data/api/questnames.json', JSON.stringify(QuestNames, null, 4))
 
         console.log(`{${GetDate()}}: Updated quests successfully`)
 
@@ -235,21 +235,102 @@ const UpdateQuests = schedule.scheduleJob('@daily', async function() {
 
 })
 
+// Update quest data every 24 hours
+const UpdateBarters = schedule.scheduleJob('@daily', async function() {
+    console.log(`{${GetDate()}}: Updating barters`)
+
+    try {
+        const bodyQuery = JSON.stringify({
+            query: `{
+                barters {
+                    source
+                    requiredItems {
+                        count
+                        item {
+                            name
+                            shortName
+                            id
+                            wikiLink
+                        }
+                    }
+                    rewardItems {
+                        count
+                        item {
+                            name
+                            shortName
+                            id
+                            wikiLink
+                        }
+                    }
+                }
+            }`
+        })
+        const response = await got.post('https://tarkov-tools.com/graphql', {
+            body: bodyQuery,
+            responseType: 'json',
+        })
+
+        let BarterData = response.body.data.barters
+
+        let FormattedData = {}
+
+        for (const Barter of BarterData) {
+            let Reward = Barter.rewardItems[0]
+            let RewardID = Reward.item.id
+
+            if (FormattedData[RewardID] === undefined) { FormattedData[RewardID] = new Array() }
+
+            let BarterScheme = {
+                Trader: Barter.source,
+                RequiredItems: new Array(),
+                Reward: {
+                    Amount: Reward.count,
+                    Name: Reward.item.name,
+                    ShortName: Reward.item.shortName,
+                    ID: RewardID,
+                    WikiLink: Reward.item.wikiLink
+                }
+            }
+
+            for (const Ingredient of Barter.requiredItems) {
+                BarterScheme.RequiredItems.push({
+                    Amount: Ingredient.count,
+                    Name: Ingredient.item.name,
+                    ShortName: Ingredient.item.shortName,
+                    ID: Ingredient.item.id,
+                    WikiLink: Ingredient.item.wikiLink
+                })
+            }
+
+            FormattedData[RewardID].push(BarterScheme)
+        }
+
+        fs.writeFileSync('./src/game_data/api/barters.json', JSON.stringify(FormattedData, null, 4))
+
+        console.log(`{${GetDate()}}: Updated barters successfully`)
+    } catch (e) {
+        console.log(e)
+        console.log(`{${GetDate()}}: Error updating barters, waiting till next cycle`)
+    }
+
+})
+
 const StartTasks = async() => {
     try {
         fs.mkdirSync('./src/game_data/api')
     } catch {}
 
-
     // Run updates at startup
     UpdatePrices.invoke()
     UpdateItems.invoke()
     UpdateQuests.invoke()
+    UpdateBarters.invoke()
 
     // Start the intervalled updates
     UpdatePrices.schedule()
     UpdateItems.schedule()
     UpdateQuests.schedule()
+    UpdateBarters.schedule()
 }
 
 exports.StartTasks = StartTasks

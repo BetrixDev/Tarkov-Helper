@@ -33,11 +33,20 @@ const CommandFunction = (args, obj) => {
             }
         } else {
             Search.RemoveSearch(uid)
-            return require(`./${Searches.Command}`).CommandFunction({
-                questname: Searches['Inputs'][pos - 1],
-                item: Searches['Inputs'][pos - 1],
-                caliber: Searches['Inputs'][pos - 1]
-            })
+
+            if (Searches.Command === 'internalbarter') {
+                return require(`./barter`).CommandFunction({
+                    item: Searches['Item']
+                }, {...obj,
+                    Barter: (pos - 1)
+                })
+            } else {
+                return require(`./${Searches.Command}`).CommandFunction({
+                    questname: Searches['Inputs'][pos - 1],
+                    item: Searches['Inputs'][pos - 1],
+                    caliber: Searches['Inputs'][pos - 1]
+                }, obj)
+            }
         }
     } else {
         return {
