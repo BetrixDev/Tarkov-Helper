@@ -5,6 +5,7 @@ class PriceInfo {
         this.RawData = JSON.parse(fs.readFileSync('./src/game_data/api/pricedata.json'))
         this.ItemID = id
         this.PriceData = this.RawData[id].Item
+        this.PriceChange = this.PriceData.changeLast48h
         this.HighestTraderBuy = this.HighestTrader()
         this.Fee = this.CalcFee()
         this.PricePerSlot = this.PriceSlot()

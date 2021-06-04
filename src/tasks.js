@@ -24,6 +24,7 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
                     name
                     shortName
                     avg24hPrice
+                    changeLast48h
                     width
                     height
                     imageLink

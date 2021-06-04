@@ -55,6 +55,9 @@ const CommandFunction = (args, obj) => {
                         value: FormatPrice(PriceData.Fee) + '/each',
                         inline: true
                     }, {
+                        name: 'Change From Yesterday',
+                        value: PriceData.PriceChange + '%'
+                    }, {
                         name: 'Highest Trader Sell',
                         value: `${PriceData.HighestTraderBuy[1]} at ${FormatPrice(PriceData.HighestTraderBuy[0])}/each`
                     }, {
