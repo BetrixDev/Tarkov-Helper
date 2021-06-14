@@ -23,7 +23,7 @@ const { MessageEmbed } = require('discord.js')
 const Settings = require('../settings.json')
 
 // Command Functions
-const CommandFunction = async(args, obj) => {
+const CommandFunction = async(args, { interaction }) => {
     let Item = ItemSearchEngine(args['item'].toLowerCase())
 
     let Length = Item.length
@@ -46,7 +46,7 @@ const CommandFunction = async(args, obj) => {
             return { Type: "Error", Content: ErrorMessage('Unable to grab item data please try again later'), Time: 5000 }
         }
     } else if (Length > 1 && Length < 25) {
-        let uid = obj.interaction.member.user.id
+        let uid = interaction.member.user.id
         let Array = require('../command_modules/search').CreateInput(Item, 'stat', uid)
         return {
             Type: "Error",

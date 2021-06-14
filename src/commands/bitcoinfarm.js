@@ -1,3 +1,8 @@
+const { MessageEmbed } = require('discord.js')
+const Settings = require('../settings.json')
+const FormatPrice = require('../command_modules/formatprice')
+const { BitcoinFarmCalc } = require('../classes/bitcoinfarmcalc')
+
 // Command Config
 const CommandSettings = {
     CommandData: {
@@ -22,13 +27,7 @@ const CommandSettings = {
     DMCommand: true
 }
 
-const { MessageEmbed } = require('discord.js')
-const Settings = require('../settings.json')
-const FormatPrice = require('../command_modules/formatprice')
-const { BitcoinFarmCalc } = require('../classes/bitcoinfarmcalc')
-
 // Command Functions
-
 const CommandFunction = async(args) => {
     const Calculation = new BitcoinFarmCalc(args['gpus'])
 

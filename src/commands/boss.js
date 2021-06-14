@@ -1,3 +1,6 @@
+const { MessageEmbed } = require('discord.js')
+const { BossInfo } = require('../classes/bossinfo')
+
 // Command Config
 const CommandSettings = {
     CommandData: {
@@ -12,18 +15,8 @@ const CommandSettings = {
                 choices: require('../command_modules/bosses').GetBosses()
             }]
         }
-    },
-    ReactionData: {
-        ":white_circle:": {
-
-        }
     }
 }
-
-const fs = require('fs')
-const { MessageEmbed } = require('discord.js')
-const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormessage')
-const { BossInfo } = require('../classes/bossinfo')
 
 // Command Functions
 const CommandFunction = (args) => {

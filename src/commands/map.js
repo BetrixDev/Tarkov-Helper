@@ -1,3 +1,8 @@
+const fs = require('fs')
+const { MessageEmbed } = require('discord.js')
+const PossibleMaps = require('../game_data/maps.json')
+const { ErrorMessageField } = require('../command_modules/errormessage')
+
 // Command Config
 const CommandSettings = {
     CommandData: {
@@ -36,12 +41,6 @@ const CommandSettings = {
     }
 }
 
-const fs = require('fs')
-const { MessageEmbed } = require('discord.js')
-const PossibleMaps = require('../game_data/maps.json')
-const { MapSearchEngine } = require('../command_modules/mapsearchengine')
-const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormessage')
-
 // Command Functions
 const CommandFunction = (args) => {
     let Map = args['map']
@@ -74,7 +73,7 @@ const CommandFunction = (args) => {
                     name: 'Total PMC Extracts',
                     value: MapData.base.exits.length
                 }, {
-                    name: 'Total Static Loot Spawns',
+                    name: 'Total Loot Containers',
                     value: MapData.loot.static.length
                 })
         }

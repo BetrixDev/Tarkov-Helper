@@ -1,3 +1,7 @@
+const { ErrorMessage } = require('../command_modules/errormessage')
+const FormatPrice = require('../command_modules/formatprice')
+const { MessageEmbed } = require('discord.js')
+
 // Command Config
 const CommandSettings = {
     CommandData: {
@@ -14,10 +18,6 @@ const CommandSettings = {
     },
     DMCommand: true
 }
-
-const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormessage')
-const FormatPrice = require('../command_modules/formatprice')
-const { MessageEmbed } = require('discord.js')
 
 // Command Functions
 const CommandFunction = (args) => {

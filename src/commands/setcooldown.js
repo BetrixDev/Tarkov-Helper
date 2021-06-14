@@ -1,3 +1,6 @@
+const { GetServerData, SetServerData } = require('../command_modules/serverdata')
+const { ErrorMessage } = require('../command_modules/errormessage')
+
 // Command Config
 const CommandSettings = {
     CommandData: {
@@ -14,20 +17,14 @@ const CommandSettings = {
     }
 }
 
-
-const fs = require('fs')
-const { MessageEmbed } = require('discord.js')
-const { GetServerData, SetServerData } = require('../command_modules/serverdata')
-const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormessage')
-
 // Command Functions
-const CommandFunction = (args, obj) => {
+const CommandFunction = (args, { interaction }) => {
     try {
-        if (GetServerData(obj.interaction.guild_id)['AdminRole'] !== 0) {
-            if (obj.interaction.member.roles.includes(GetServerData(obj.interaction.guild_id)['AdminRole'])) {
+        if (GetServerData(interaction.guild_id)['AdminRole'] !== 0) {
+            if (interaction.member.roles.includes(GetServerData(interaction.guild_id)['AdminRole'])) {
                 let Time = args['time']
                 if (Time > 0 && Time < 61) {
-                    SetServerData(obj.interaction.guild_id, 'Cooldown', Time)
+                    SetServerData(interaction.guild_id, 'Cooldown', Time)
 
                     return { Type: "Ephemeral", Content: `Changed Cooldown time to: ${Time}` }
                 } else {

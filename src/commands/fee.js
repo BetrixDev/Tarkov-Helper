@@ -1,3 +1,11 @@
+const { MessageEmbed } = require('discord.js')
+const { PriceInfo } = require('../classes/priceinfo')
+const ItemFromName = require('../game_data/api/itemfromname.json')
+const FormatPrice = require('../command_modules/formatprice')
+const Settings = require('../settings.json')
+const { ItemSearchEngine } = require('../command_modules/itemsearchengine')
+const { ErrorMessage } = require('../command_modules/errormessage')
+
 // Command Config
 const CommandSettings = {
     CommandData: {
@@ -24,17 +32,8 @@ const CommandSettings = {
     }
 }
 
-
-const { MessageEmbed } = require('discord.js')
-const { PriceInfo } = require('../classes/priceinfo')
-const ItemFromName = require('../game_data/api/itemfromname.json')
-const FormatPrice = require('../command_modules/formatprice')
-const Settings = require('../settings.json')
-const { ItemSearchEngine } = require('../command_modules/itemsearchengine')
-const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormessage')
-
 // Command Functions
-const CommandFunction = (args, obj) => {
+const CommandFunction = (args, { interaction }) => {
     let Item = ItemSearchEngine(args['item'].toLowerCase())
     let Amount = args['amount'] || 1
 
@@ -67,7 +66,7 @@ const CommandFunction = (args, obj) => {
             return { Type: "Error", Content: ErrorMessage('Unable to grab price data please try again later'), Time: 5000 }
         }
     } else if (Length > 1 && Length < 25) {
-        let uid = obj.interaction.member.user.id
+        let uid = interaction.member.user.id
         let Array = require('../command_modules/search').CreateInput(Item, 'price', uid)
         return {
             Type: "Error",

@@ -1,3 +1,10 @@
+const { MessageEmbed } = require('discord.js')
+const Settings = require('../settings.json')
+const { QuestSearchEngine } = require('../command_modules/questsearchengine')
+const { ErrorMessage } = require('../command_modules/errormessage')
+const ItemFromName = require('../game_data/api/itemfromname.json')
+const { QuestInfo } = require('../classes/questinfo')
+
 // Command Config
 const CommandSettings = {
     CommandData: {
@@ -15,15 +22,8 @@ const CommandSettings = {
     DMCommand: true
 }
 
-const { MessageEmbed } = require('discord.js')
-const Settings = require('../settings.json')
-const { QuestSearchEngine } = require('../command_modules/questsearchengine')
-const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormessage')
-const ItemFromName = require('../game_data/api/itemfromname.json')
-const { QuestInfo } = require('../classes/questinfo')
-
 // Command Functions
-const CommandFunction = (args, obj) => {
+const CommandFunction = (args, { interaction }) => {
     let Quest = QuestSearchEngine(args['questname'])
 
     let Length = Quest.length
@@ -55,7 +55,7 @@ const CommandFunction = (args, obj) => {
                 })
         }
     } else if (Length > 1) {
-        let uid = obj.interaction.member.user.id
+        let uid = interaction.member.user.id
         let Array = require('../command_modules/search').CreateInput(Quest, 'quest', uid)
 
         return {

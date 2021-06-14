@@ -1,3 +1,6 @@
+const Search = require('../command_modules/search')
+const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormessage')
+
 // Command Config
 const CommandSettings = {
     CommandData: {
@@ -15,13 +18,12 @@ const CommandSettings = {
     DMCommand: true
 }
 
-const Search = require('../command_modules/search')
-const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormessage')
-
 // Command Functions
 const CommandFunction = (args, obj) => {
+    let { interaction } = obj
+
     let pos = args['position']
-    let uid = obj.interaction.member.user.id
+    let uid = interaction.member.user.id
 
     if (Search.OpenSearch(uid)) {
         let Searches = Search.GetSearchObj(uid)

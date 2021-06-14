@@ -1,3 +1,11 @@
+const { ErrorMessage } = require('../command_modules/errormessage')
+const { ItemSearchEngine } = require('../command_modules/itemsearchengine')
+const ItemFromName = require('../game_data/api/itemfromname.json')
+const FormatPrice = require('../command_modules/formatprice')
+const { PriceInfo } = require('../classes/priceinfo')
+const Settings = require('../settings.json')
+const { MessageEmbed } = require('discord.js')
+
 // Command Config
 const CommandSettings = {
     CommandData: {
@@ -15,16 +23,8 @@ const CommandSettings = {
     DMCommand: true
 }
 
-const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormessage')
-const { ItemSearchEngine } = require('../command_modules/itemsearchengine')
-const ItemFromName = require('../game_data/api/itemfromname.json')
-const FormatPrice = require('../command_modules/formatprice')
-const { PriceInfo } = require('../classes/priceinfo')
-const Settings = require('../settings.json')
-const { MessageEmbed } = require('discord.js')
-
 // Command Functions
-const CommandFunction = (args, obj) => {
+const CommandFunction = (args, { interaction }) => {
     if (args['item'].length < 2 || args['item'].length > 100) {
         return { Type: "Error", Content: ErrorMessage('Please keep the item input length between 3 and 100 characters'), Time: 5000 }
     }
@@ -70,7 +70,7 @@ const CommandFunction = (args, obj) => {
             return { Type: "Error", Content: ErrorMessage('Unable to grab price data please try again later'), Time: 5000 }
         }
     } else if (Length > 1 && Length < 25) {
-        let uid = obj.interaction.member.user.id
+        let uid = interaction.member.user.id
         let Array = require('../command_modules/search').CreateInput(Item, 'price', uid)
         return {
             Type: "Error",

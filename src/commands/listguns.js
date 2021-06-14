@@ -1,3 +1,8 @@
+const Settings = require('../settings.json')
+const ItemData = require('../game_data/api/itemdata.json')
+const { CaliberSearchEngine, GetCalibers } = require('../command_modules/calibersearchengine')
+const { MessageEmbed } = require('discord.js')
+
 // Command Config
 const CommandSettings = {
     CommandData: {
@@ -15,20 +20,15 @@ const CommandSettings = {
     DMCommand: true
 }
 
-const Settings = require('../settings.json')
-const ItemData = require('../game_data/api/itemdata.json')
-const { CaliberSearchEngine, GetCalibers } = require('../command_modules/calibersearchengine')
-const { MessageEmbed } = require('discord.js')
-
 // Command Functions
-const CommandFunction = (args, obj) => {
+const CommandFunction = (args, { interaction }) => {
     let Caliber = args['caliber']
 
     let EngineResults = CaliberSearchEngine(Caliber)
     Caliber = EngineResults.Results[0]
 
     if (Caliber === undefined) {
-        let uid = obj.interaction.member.user.id
+        let uid = interaction.member.user.id
         let Array = require('../command_modules/search').CreateInput(GetCalibers(), 'caliber', uid)
         return {
             Type: "Error",

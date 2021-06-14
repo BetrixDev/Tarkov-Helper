@@ -1,3 +1,11 @@
+const FormatPrice = require('../command_modules/formatprice')
+const { BarterInfo } = require('../classes/barterinfo')
+const ItemFromName = require('../game_data/api/itemfromname.json')
+const { ErrorMessage } = require('../command_modules/errormessage')
+const { ItemSearchEngine } = require('../command_modules/itemsearchengine')
+const Settings = require('../settings.json')
+const { MessageEmbed } = require('discord.js')
+
 // Command Config
 const CommandSettings = {
     CommandData: {
@@ -14,14 +22,6 @@ const CommandSettings = {
     },
     DMCommand: true
 }
-
-const FormatPrice = require('../command_modules/formatprice')
-const { BarterInfo } = require('../classes/barterinfo')
-const ItemFromName = require('../game_data/api/itemfromname.json')
-const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormessage')
-const { ItemSearchEngine } = require('../command_modules/itemsearchengine')
-const Settings = require('../settings.json')
-const { MessageEmbed } = require('discord.js')
 
 // Command Functions
 const CommandFunction = (args, obj) => {

@@ -1,3 +1,6 @@
+const { SetServerData } = require('../command_modules/serverdata')
+const { ErrorMessage } = require('../command_modules/errormessage')
+
 // Command Config
 const CommandSettings = {
     CommandData: {
@@ -14,19 +17,14 @@ const CommandSettings = {
     }
 }
 
-const fs = require('fs')
-const { MessageEmbed } = require('discord.js')
-const { GetServerData, SetServerData } = require('../command_modules/serverdata')
-const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormessage')
-
 // Command Functions
-const CommandFunction = (args, obj) => {
+const CommandFunction = (args, { interaction, guild }) => {
     try {
-        if (obj.interaction.member.user.id === obj.guild.ownerID) {
+        if (interaction.member.user.id === guild.ownerID) {
             let Role = args['role']
-            SetServerData(obj.interaction.guild_id, 'AdminRole', Role)
+            SetServerData(interaction.guild_id, 'AdminRole', Role)
 
-            return { Type: "Ephemeral", Content: `Changed Role to: ${obj.interaction.data.resolved.roles[Role].name || Role}` }
+            return { Type: "Ephemeral", Content: `Changed Role to: ${interaction.data.resolved.roles[Role].name || Role}` }
         } else {
             return { Type: "Error", Content: ErrorMessage('Insufficient permission'), Time: 5000 }
         }

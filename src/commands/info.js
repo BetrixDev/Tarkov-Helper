@@ -1,3 +1,5 @@
+const { MessageEmbed } = require('discord.js')
+
 // Command Config
 const CommandSettings = {
     CommandData: {
@@ -9,8 +11,6 @@ const CommandSettings = {
     },
     DMCommand: true
 }
-
-const { MessageEmbed } = require('discord.js')
 
 // Command Functions
 const CommandFunction = () => {

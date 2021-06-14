@@ -1,3 +1,11 @@
+const fs = require('fs')
+const { MessageEmbed } = require('discord.js')
+const ItemFromName = require('../game_data/api/itemfromname.json')
+const ItemData = require('../game_data/api/itemdata.json')
+const Settings = require('../settings.json')
+const { ItemSearchEngine } = require('../command_modules/itemsearchengine')
+const { ErrorMessage } = require('../command_modules/errormessage')
+
 // Command Config
 const CommandSettings = {
     CommandData: {
@@ -13,14 +21,6 @@ const CommandSettings = {
         }
     }
 }
-
-const fs = require('fs')
-const { MessageEmbed } = require('discord.js')
-const ItemFromName = require('../game_data/api/itemfromname.json')
-const ItemData = require('../game_data/api/itemdata.json')
-const Settings = require('../settings.json')
-const { ItemSearchEngine } = require('../command_modules/itemsearchengine')
-const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormessage')
 
 // Command Functions
 const CommandFunction = (args, obj) => {

@@ -1,3 +1,7 @@
+const Settings = require('../settings.json')
+const { CaliberSearchEngine, GetCalibers } = require('../command_modules/calibersearchengine')
+const { MessageEmbed } = require('discord.js')
+
 // Command Config
 const CommandSettings = {
     CommandData: {
@@ -23,12 +27,8 @@ const CommandSettings = {
     }
 }
 
-const Settings = require('../settings.json')
-const { CaliberSearchEngine, GetCalibers } = require('../command_modules/calibersearchengine')
-const { MessageEmbed } = require('discord.js')
-
 // Command Functions
-const CommandFunction = (args, obj) => {
+const CommandFunction = (args, { interaction }) => {
     let Caliber = args['caliber']
     let Sort = Number(args['sort']) || 1
 
@@ -36,7 +36,7 @@ const CommandFunction = (args, obj) => {
     Caliber = EngineResults.Results[0]
 
     if (Caliber === undefined) {
-        let uid = obj.interaction.member.user.id
+        let uid = interaction.member.user.id
         let Array = require('../command_modules/search').CreateInput(GetCalibers(), 'caliber', uid)
         return {
             Type: "Error",
