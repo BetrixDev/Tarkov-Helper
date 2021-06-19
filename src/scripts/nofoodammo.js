@@ -1,4 +1,4 @@
-// script from https://github.com/kokarn/tarkov-tools/blob/efcd538d9a7d80801e19da3497cc0d88c34b1ec0/scripts/getdata-nofoodaftermidnight.js#L1
+// part of script from https://github.com/kokarn/tarkov-tools/blob/efcd538d9a7d80801e19da3497cc0d88c34b1ec0/scripts/getdata-nofoodaftermidnight.js#L1
 
 const fs = require('fs');
 const path = require('path');
@@ -22,11 +22,8 @@ const prefixes = [
     '127x55_',
 ];
 
-const URLS = [
-    'https://sheet.best/api/sheets/691aa8be-ad49-4882-a5df-4527e0b65019',
-    'https://sheet.best/api/sheets/a8713717-bc6a-4cfc-bf34-658f97dea338',
-    'https://sheet.best/api/sheets/27bd2288-44ba-42dc-ab88-f8101f19e54e'
-];
+// Create an array in your .env file called "SPREDSHEETURLS"
+const URLS = JSON.parse(process.env.SPREDSHEETURLS)
 
 let tempType = false;
 let typeCache = [];
