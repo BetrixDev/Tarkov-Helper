@@ -59,13 +59,9 @@ client.on('ready', async() => {
 
                         const Message = await require(`./commands/${command}`)['CommandFunction'](args, { interaction, guild })
 
-                        let JSMessage
-
                         if (Message.Type === "ServerMessage") {
                             await Reply(interaction, Message.Content)
 
-                            const msg = await client.api.webhooks(client.user.id, interaction.token).messages('@original').patch({ data: {} })
-                            JSMessage = new DiscordJS.Message(client, msg, client.channels.cache.get(msg.channel_id))
 
                         } else if (Message.Type === "Ephemeral" || Message.Type === "Error") {
                             Reply(interaction, Message.Content, true)
@@ -74,7 +70,6 @@ client.on('ready', async() => {
                         // Reaction Handler
                         let ReactionData = require(`./commands/${command}`)['CommandSettings'].ReactionData
                         if (ReactionData !== undefined && Message.Type !== "Error") { // Don't collect reactions on an error message
-                            await AddReactionCollection(ReactionData, { Interaction: interaction, Message: JSMessage }, true)
                         }
                     }
 
@@ -154,38 +149,6 @@ const CreateAPIMessage = async(interaction, content) => {
     return {...data, files }
 }
 
-async function ReactionHandler(ReactionData, Data, FromInteraction) {
-    for (const EmojiID in ReactionData) {
-        let Reaction = ReactionData[EmojiID]
-
-        if (FromInteraction) { // If this function was called from inside "INTERACTION_CREATE"
-            Data.Message.react(EmojiID)
-
-            let Filter = (reaction, user) => {
-                return user.id === Data.Interaction.member.user.id
-            }
-
-            let Collector = Message.createReactionCollector(Filter, { max: 1, time: 180000 })
-            Collector.on('collect', (reaction, user) => {
-                Reaction.CallBack(Message, Data.Interaction.member.user.id)
-            })
-
-        } else { // If this function was called from a callback
-            Data.Message.react(EmojiID)
-
-            let Filter = (reaction, user) => {
-                return user.id === Data.CommandAuthor
-            }
-
-            let Collector = Message.createReactionCollector(Filter, { max: 1, time: 180000 })
-            Collector.on('collect', (reaction, user) => {
-                Reaction.CallBack(Message, Data.CommandAuthor)
-            })
-
-        }
-    }
-}
-
 const StartBot = async() => {
 
     if (!fs.existsSync('./src/game_data')) {
@@ -223,5 +186,3 @@ const StartBot = async() => {
     }, 7500)
 }
 StartBot()
-
-exports.ReactionHandler = ReactionHandler
