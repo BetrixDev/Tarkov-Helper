@@ -1,7 +1,6 @@
 // part of script from https://github.com/kokarn/tarkov-tools/blob/efcd538d9a7d80801e19da3497cc0d88c34b1ec0/scripts/getdata-nofoodaftermidnight.js#L1
 
-const fs = require('fs');
-const path = require('path');
+require('dotenv').config()
 
 const got = require('got');
 
@@ -23,7 +22,7 @@ const prefixes = [
 ];
 
 // Create an array in your .env file called "SPREDSHEETURLS"
-const URLS = JSON.parse(process.env.SPREDSHEETURLS)
+const URLS = JSON.parse(String(process.env.SPREADSHEETURLS).toString())
 
 let tempType = false;
 let typeCache = [];
