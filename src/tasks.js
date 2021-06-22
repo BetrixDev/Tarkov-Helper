@@ -1,4 +1,4 @@
-// Need to move where some files are being written so more specified tasks
+const download = require('download-git-repo')
 const schedule = require('node-schedule')
 const got = require('got')
 const fs = require('fs')
@@ -9,8 +9,48 @@ const GetDate = () => {
 
 const { GetAmmoData } = require('./scripts/nofoodammo')
 
-const RawGameData = JSON.parse(fs.readFileSync('./src/game_data/raw_game/rawdata.json'))
-const NoFoodTranslator = JSON.parse(fs.readFileSync('./src/game_data/translator.json'))
+async function GameData() {
+    console.log('Updating Game Data')
+
+    /*
+
+    --> I can just overwrite old files so deleting is useless and could cause issues
+
+    // Get files to be changed
+    let Excluded = ['api', 'temp']
+    let PendingDirs = fs.readdirSync('./src/game_data/').filter(Name => {
+        return !Excluded.includes(Name)
+    })
+    
+    // Delete old files
+    try {
+        fs.rmSync('./src/game_data/temp/', { recursive: true })
+        fs.mkdirSync('./src/game_data/temp/')
+    } catch {}
+
+    PendingDirs.forEach(Dir => {
+        if (Dir.endsWith('.json')) {
+            fs.rmSync(`./src/game_data/${Dir}`)
+        } else {
+            fs.rmSync(`./src/game_data/${Dir}`, { recursive: true })
+        }
+    })
+
+    */
+
+    // Download new files
+    download('direct:https://github.com/Tarkov-Helper/Database/archive/refs/heads/main.zip', './src/game_data/', function() {
+        console.log('Done Updating Game Data')
+        return 'Done'
+    })
+}
+
+// Update game data every hour
+const UpdateGameData = schedule.scheduleJob('@hourly', async function() {
+
+    try { await GameData() } catch {}
+
+})
 
 // Update price data every 10 minutes
 const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
@@ -68,6 +108,9 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
 // Update item data every 12 hours
 const UpdateItems = schedule.scheduleJob('@daily', async function() {
     console.log(`{${GetDate()}}: Updating items`)
+
+    const RawGameData = JSON.parse(fs.readFileSync('./src/game_data/raw_game/rawdata.json'))
+    const NoFoodTranslator = JSON.parse(fs.readFileSync('./src/game_data/translator.json'))
 
     try {
 
@@ -328,6 +371,7 @@ const StartTasks = async() => {
     UpdateBarters.invoke()
 
     // Start the intervalled updates
+    UpdateGameData.schedule()
     UpdatePrices.schedule()
     UpdateItems.schedule()
     UpdateQuests.schedule()
@@ -335,3 +379,4 @@ const StartTasks = async() => {
 }
 
 exports.StartTasks = StartTasks
+exports.GameData = GameData

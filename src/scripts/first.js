@@ -1,3 +1,4 @@
+const fs = require('fs')
 const { exec } = require("child_process")
 
 console.log('Downloading Node Packages')
@@ -10,11 +11,22 @@ exec('npm i', (error, stdout, stderr) => {
     console.log(stdout)
 
     console.log('Retrieving Game Data From APIS')
-    require('../tasks').StartTasks()
+
+    try {
+        fs.mkdirSync('./src/game_data/')
+    } catch {}
+
+    require('../tasks').GameData()
 
     setTimeout(() => {
-        console.log('\nStarting Bot')
-        console.log('-------------------\n')
-        require('../main')
-    }, 5000)
+        require('../tasks').StartTasks()
+
+        setTimeout(() => {
+            console.log('\nStarting Bot')
+            console.log('-------------------\n')
+            require('../main')
+        }, 5000)
+
+    }, 7500)
+
 })

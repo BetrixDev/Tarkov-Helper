@@ -1,11 +1,9 @@
 // Tarkov Data API from Tarkov Tools https://tarkov-tools.com/about/
 // Some code snippets are also from Tarkov Tools
-let Start = new Date()
+let Start = new Date();
 
 const { GetCooldown, SetCooldown } = require('./cooldown')
 const { GetServerData } = require('./command_modules/serverdata')
-const { MessageUser } = require('./command_modules/messageuser')
-    //const { KeepAlive } = require('./scripts/server')
 const DiscordJS = require('discord.js')
 
 const fs = require('fs')
@@ -13,23 +11,9 @@ require('dotenv').config()
 
 const client = new DiscordJS.Client()
 
-const getApp = (guildID) => {
-    const app = client.api.applications(client.user.id)
-    if (guildID) { app.guilds(guildID) }
-    return app
-}
-
 const DMCommands = new Array()
 const BotCommands = new Array()
 const CommandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.js'))
-for (const File of CommandFiles) {
-    BotCommands.push(File.split('.')[0])
-
-    let CommandSettings = require(`./commands/${File}`)['CommandSettings']
-    if (CommandSettings.DMCommand) {
-        DMCommands.push(File.split('.')[0])
-    }
-}
 
 // ----------
 
@@ -203,16 +187,40 @@ async function ReactionHandler(ReactionData, Data, FromInteraction) {
 }
 
 const StartBot = async() => {
-    require('./command_modules/searchengine').InitSearchEngine()
-    require('./command_modules/mapsearchengine').InitMapEngine()
-    require('./command_modules/calibersearchengine').InitCaliberEngine()
-    require('./tasks').StartTasks()
 
-    //KeepAlive()
+    if (!fs.existsSync('./src/game_data')) {
+        console.error('Game data directory not found, please use \"npm run first\" to download all needed files for the bot to run')
+        return
+    }
 
-    client.login(process.env.BOT_TOKEN)
+    try {
+        fs.mkdirSync('./src/game_data/')
+    } catch {}
 
-    //client.login(process.env.BOT_TOKEN_DEV)
+    require('./tasks').GameData()
+
+    // Terrible but easy fix for waiting for download since the only way that I found to get consistency doesn't support promises
+    setTimeout(() => {
+
+        for (const File of CommandFiles) {
+            BotCommands.push(File.split('.')[0])
+
+            let CommandSettings = require(`./commands/${File}`)['CommandSettings']
+            if (CommandSettings.DMCommand) {
+                DMCommands.push(File.split('.')[0])
+            }
+        }
+
+        require('./command_modules/searchengine').InitSearchEngine()
+        require('./command_modules/mapsearchengine').InitMapEngine()
+        require('./command_modules/calibersearchengine').InitCaliberEngine()
+        require('./tasks').StartTasks()
+
+        client.login(process.env.BOT_TOKEN)
+
+        //client.login(process.env.BOT_TOKEN_DEV)
+
+    }, 7500)
 }
 StartBot()
 
