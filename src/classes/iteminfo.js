@@ -1,11 +1,24 @@
 const fs = require('fs')
 
-const Globals = require('../game_data/raw_game/globals.json')
-const ArmorDurability = require('../game_data/destructability.json')
+const Globals = require('../game_data/database/globals.json')
+const Templates = require('../game_data/database/locales/global/en.json').templates
+
+function ArmorDurability() {
+    let Result = new Object()
+
+    const ArmorMaterials = Globals.config.ArmorMaterials
+
+    for (const MaterialName in ArmorMaterials) {
+        Result[MaterialName] = ArmorMaterials[MaterialName].Destructibility
+    }
+
+    return Result
+}
 
 class ItemInfo {
     constructor(item) {
         this.AllData = JSON.parse(fs.readFileSync('./src/game_data/api/itemdata.json'))
+        this.ItemID = item
         this.ItemData = this.AllData[item]
         this.Description = this.GetDescription()
         this.SpecificData = this.GetSpecificData()
@@ -14,15 +27,16 @@ class ItemInfo {
         this.ShortName = this.ItemData.ShortName
     }
     GetDescription() {
-        if (this.ItemData.RawData !== undefined) {
-            return this.ItemData.RawData.Description
+        if (Templates[this.ItemID] !== undefined) {
+            return Templates[this.ItemID].Description
         } else {
             return this.ItemData.Name
         }
     }
     GetSpecificData() {
         try {
-            let RawData = this.ItemData.RawData.Data
+            let RawData = this.ItemData.RawData._props
+
             let Types = this.ItemData.Types
 
             if (Types.includes('ammo') && !Types.includes('grenade')) {
@@ -223,15 +237,15 @@ class ItemInfo {
                 } else {
                     Object.Fields.push({ name: '\u200b', value: '\u200b', inline: true })
                 }
-                if (Globals.data.config.Health.Effects.Stimulator.Buffs[`Buffs${this.ItemData.ShortName.split(' ').join('')}`] !== undefined) {
-                    let StimData = Globals.data.config.Health.Effects.Stimulator.Buffs[`Buffs${this.ItemData.ShortName.split(' ').join('')}`]
+                if (Globals.config.Health.Effects.Stimulator.Buffs[`Buffs${this.ItemData.ShortName.split(' ').join('')}`] !== undefined) {
+                    let StimData = Globals.config.Health.Effects.Stimulator.Buffs[`Buffs${this.ItemData.ShortName.split(' ').join('')}`]
                     Object.Fields.push({ name: 'Buffs', value: this.GetStimEffects(StimData), inline: true })
                 }
                 return Object
             } else {
                 return {
                     Fields: [
-                        { name: 'Generic Data Here ', value: ':)' }
+                        { name: 'No specific data for this item yet', value: '\u200B' }
                     ]
                 }
             }
@@ -245,9 +259,10 @@ class ItemInfo {
     }
     GetEffective() {
         try {
-            let Material = this.ItemData.RawData.Data.ArmorMaterial
-            let Destructability = ArmorDurability[Material]
-            let Durability = this.ItemData.RawData.Data.Durability
+            let Material = this.ItemData.RawData._props.ArmorMaterial
+            let Destructability = ArmorDurability()[Material]
+            let Durability = this.ItemData.RawData._props.Durability
+
             return Math.round(Durability / Destructability)
         } catch {
             return 'ERROR'
@@ -255,7 +270,7 @@ class ItemInfo {
     }
     GetContainerSize() {
         try {
-            let RawData = this.ItemData.RawData.Data
+            let RawData = this.ItemData.RawData._props
             let Grids = RawData.Grids
             let Size = 0
 
@@ -271,7 +286,7 @@ class ItemInfo {
     }
     GetSpaceEfficiency() {
         try {
-            let RawData = this.ItemData.RawData.Data
+            let RawData = this.ItemData.RawData._props
             let SpaceEfficiency = this.GetContainerSize() / (RawData.Width * RawData.Height)
             return Math.round(SpaceEfficiency * 100) / 100
         } catch {
@@ -281,7 +296,7 @@ class ItemInfo {
     GetHealthEffects() {
         try {
             let Effects = new Array()
-            let RawData = this.ItemData.RawData.Data
+            let RawData = this.ItemData.RawData._props
             if (RawData.effects_health !== undefined) {
                 for (const e in RawData.effects_health) {
                     let Effect = RawData.effects_health[e]
@@ -310,7 +325,7 @@ class ItemInfo {
     GetDamageEffects() {
         try {
             let Effects = new Array()
-            let RawData = this.ItemData.RawData.Data
+            let RawData = this.ItemData.RawData._props
             if (RawData.effects_damage !== undefined) {
                 for (const e in RawData.effects_damage) {
                     let Effect = RawData.effects_damage[e]

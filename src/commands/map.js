@@ -3,6 +3,19 @@ const { MessageEmbed } = require('discord.js')
 const PossibleMaps = require('../game_data/maps.json')
 const { ErrorMessageField } = require('../command_modules/errormessage')
 
+function GetMaps() {
+    let Result = new Array()
+
+    for (const DisplayName in PossibleMaps) {
+        Result.push({
+            name: DisplayName,
+            value: PossibleMaps[DisplayName]
+        })
+    }
+
+    return Result
+}
+
 // Command Config
 const CommandSettings = {
     CommandData: {
@@ -14,28 +27,7 @@ const CommandSettings = {
                 description: 'map to get info of',
                 required: true,
                 type: 3,
-                choices: [{
-                    name: 'Customs',
-                    value: 'customs'
-                }, {
-                    name: 'Factory',
-                    value: 'factory',
-                }, {
-                    name: 'Interchange',
-                    value: 'interchange',
-                }, {
-                    name: 'Reserve',
-                    value: 'reserve',
-                }, {
-                    name: 'Shoreline',
-                    value: 'shoreline',
-                }, {
-                    name: 'Labs',
-                    value: 'the lab',
-                }, {
-                    name: 'Woods',
-                    value: 'woods',
-                }]
+                choices: GetMaps()
             }]
         }
     }
@@ -45,42 +37,39 @@ const CommandSettings = {
 const CommandFunction = (args) => {
     let Map = args['map']
 
-    if (PossibleMaps.includes(Map)) {
-        let MapData = JSON.parse(fs.readFileSync(`./src/game_data/maps/${Map}.json`))
-        return {
-            Type: "ServerMessage",
-            Content: new MessageEmbed()
-                .setTitle(`${CapitalizeName(Map)}`)
-                .setDescription(MapData.base.Description)
-                .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/map_icons/${Map.replace(' ', '%20')}.png`)
-                .addFields({
-                    name: 'Map Genie',
-                    value: `[Click Here](https://mapgenie.io/tarkov/maps/${Map.replace('the ','')})`,
-                    inline: true
-                }, {
-                    name: 'Player Count',
-                    value: `${MapData.base.MinPlayers} - ${MapData.base.MaxPlayers}`,
-                    inline: true
-                }, {
-                    name: 'Raid Time',
-                    value: `${MapData.base.escape_time_limit} minutes`,
-                    inline: true
-                }, {
-                    name: 'Has Insurance',
-                    value: CapitalizeName(MapData.base.Insurance.toString()),
-                    inline: true
-                }, {
-                    name: 'Total PMC Extracts',
-                    value: MapData.base.exits.length
-                }, {
-                    name: 'Total Loot Containers',
-                    value: MapData.loot.static.length
-                })
-        }
-    } else {
-        return { Type: "Error", Content: ErrorMessageField('Please input a valid map', { name: 'Maps', value: PossibleMaps }), Time: 10000 }
-    }
+    let MapData = require(`../game_data/database/locations/${Map}/base.json`)
+    let MapLootData = require(`../game_data/database/locations/${Map}/loot.json`)
 
+    return {
+        Type: "ServerMessage",
+        Content: new MessageEmbed()
+            .setTitle(`${CapitalizeName(Map)}`)
+            .setDescription(MapData.Description)
+            .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/map_icons/${Map.replace(' ', '%20')}.png`)
+            .addFields({
+                name: 'Map Genie',
+                value: `[Click Here](https://mapgenie.io/tarkov/maps/${Map.replace('the ','')})`,
+                inline: true
+            }, {
+                name: 'Player Count',
+                value: `${MapData.MinPlayers} - ${MapData.MaxPlayers}`,
+                inline: true
+            }, {
+                name: 'Raid Time',
+                value: `${MapData.escape_time_limit} minutes`,
+                inline: true
+            }, {
+                name: 'Has Insurance',
+                value: CapitalizeName(MapData.Insurance.toString()),
+                inline: true
+            }, {
+                name: 'Total PMC Extracts',
+                value: MapData.exits.length
+            }, {
+                name: 'Total Loot Containers',
+                value: MapLootData.static.length
+            })
+    }
 }
 
 const CapitalizeName = (string) => {

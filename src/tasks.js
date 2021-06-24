@@ -9,49 +9,6 @@ const GetDate = () => {
 
 const { GetAmmoData } = require('./scripts/nofoodammo')
 
-async function GameData() {
-    console.log('Updating Game Data')
-
-    /*
-
-    --> I can just overwrite old files so deleting is useless and could cause issues
-
-    // Get files to be changed
-    let Excluded = ['api', 'temp']
-    let PendingDirs = fs.readdirSync('./src/game_data/').filter(Name => {
-        return !Excluded.includes(Name)
-    })
-    
-    // Delete old files
-    try {
-        fs.rmSync('./src/game_data/temp/', { recursive: true })
-        fs.mkdirSync('./src/game_data/temp/')
-    } catch {}
-
-    PendingDirs.forEach(Dir => {
-        if (Dir.endsWith('.json')) {
-            fs.rmSync(`./src/game_data/${Dir}`)
-        } else {
-            fs.rmSync(`./src/game_data/${Dir}`, { recursive: true })
-        }
-    })
-
-    */
-
-    // Download new files
-    download('direct:https://github.com/Tarkov-Helper/Database/archive/refs/heads/main.zip', './src/game_data/', function() {
-        console.log('Done Updating Game Data')
-        return 'Done'
-    })
-}
-
-// Update game data every hour
-const UpdateGameData = schedule.scheduleJob('@hourly', async function() {
-
-    try { await GameData() } catch {}
-
-})
-
 // Update price data every 10 minutes
 const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
     console.log(`{${GetDate()}}: Updating prices`)
@@ -109,8 +66,8 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
 const UpdateItems = schedule.scheduleJob('@daily', async function() {
     console.log(`{${GetDate()}}: Updating items`)
 
-    const RawGameData = JSON.parse(fs.readFileSync('./src/game_data/raw_game/rawdata.json'))
-    const NoFoodTranslator = JSON.parse(fs.readFileSync('./src/game_data/translator.json'))
+    const RawGameData = require('./game_data/database/templates/items.json')
+    const NoFoodTranslator = require('./game_data/translator.json')
 
     try {
 
@@ -188,9 +145,9 @@ const UpdateItems = schedule.scheduleJob('@daily', async function() {
                         }
                     }
                 } else {
-                    ItemData[Translated.ID].RawData.Data['Damage'] = Ammo.damage
-                    ItemData[Translated.ID].RawData.Data['ArmorDamage'] = Ammo.armorDamage
-                    ItemData[Translated.ID].RawData.Data['PenetrationPower'] = Ammo.penetration
+                    ItemData[Translated.ID].RawData._props['Damage'] = Ammo.damage
+                    ItemData[Translated.ID].RawData._props['ArmorDamage'] = Ammo.armorDamage
+                    ItemData[Translated.ID].RawData._props['PenetrationPower'] = Ammo.penetration
                 }
             }
         }
@@ -371,7 +328,6 @@ const StartTasks = async() => {
     UpdateBarters.invoke()
 
     // Start the intervalled updates
-    UpdateGameData.schedule()
     UpdatePrices.schedule()
     UpdateItems.schedule()
     UpdateQuests.schedule()
@@ -379,4 +335,3 @@ const StartTasks = async() => {
 }
 
 exports.StartTasks = StartTasks
-exports.GameData = GameData

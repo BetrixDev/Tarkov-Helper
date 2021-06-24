@@ -22,7 +22,7 @@ function InitEngine() {
                 CaliberData[Caliber] = new Array()
             }
 
-            let RawData = Item.RawData.Data
+            let RawData = Item.RawData
 
             CaliberData[Caliber].push({
                 Name: Item.ShortName,

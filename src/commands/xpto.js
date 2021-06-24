@@ -24,8 +24,28 @@ const CommandSettings = {
 
 const DiscordJS = require('discord.js')
 const Settings = require('../settings.json')
-const ExperienceData = require('../game_data/experience.json')
 const { ErrorMessage } = require('../command_modules/errormessage')
+
+function ExperienceData() {
+    let Result = new Object()
+
+    let ExpData = require('../game_data/database/globals.json').config.exp.level.exp_table
+
+    let TotalExp = 0
+
+    for (i in ExpData) {
+        let LevelData = ExpData[i]
+
+        TotalExp = TotalExp + LevelData.exp
+
+        Result[Number(i) + 1] = {
+            FromPrevious: LevelData.exp,
+            Total: TotalExp
+        }
+    }
+
+    return Result
+}
 
 // Command Functions
 const CommandFunction = (args) => {
@@ -40,7 +60,7 @@ const CommandFunction = (args) => {
                 .setThumbnail(Settings.Images.Thumbnails.Experience)
                 .addFields({
                     name: `Experience Gap From ${Current} To ${End}`,
-                    value: (Math.abs(ExperienceData[Current].Total - ExperienceData[End].Total)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                    value: (Math.abs((ExperienceData())[Current].Total - ExperienceData()[End].Total)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                 })
         }
     } else if (Current > 999 && End > 71 && Current !== End) {
@@ -51,7 +71,7 @@ const CommandFunction = (args) => {
                 .setThumbnail(Settings.Images.Thumbnails.Experience)
                 .addFields({
                     name: `Experience Gap From ${Current}xp To ${End}`,
-                    value: (Math.abs(ExperienceData[Current].Total - End)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                    value: (Math.abs(ExperienceData()[Current].Total - End)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                 })
         }
     } else if (Current === End) {

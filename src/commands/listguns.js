@@ -45,7 +45,7 @@ const CommandFunction = (args, { interaction }) => {
         let Item = ItemData[ItemID]
 
         if (Item.Types.includes('gun') && Item.RawData !== undefined) {
-            if (Item.RawData.Data.ammoCaliber.includes(Caliber.replace('.', ''))) {
+            if (Item.RawData.ammoCaliber.includes(Caliber.replace('.', ''))) {
                 Guns.push(`\`${Guns.length + 1}\` **-** ${Item.Name}`)
             }
         } else if (Item.Types.includes('gun') && Item.Name.includes(Caliber)) {

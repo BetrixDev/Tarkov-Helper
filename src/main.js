@@ -151,38 +151,21 @@ const CreateAPIMessage = async(interaction, content) => {
 
 const StartBot = async() => {
 
-    if (!fs.existsSync('./src/game_data')) {
-        console.error('Game data directory not found, please use \"npm run first\" to download all needed files for the bot to run')
-        return
+    for (const File of CommandFiles) {
+        BotCommands.push(File.split('.')[0])
+
+        let CommandSettings = require(`./commands/${File}`)['CommandSettings']
+        if (CommandSettings.DMCommand) {
+            DMCommands.push(File.split('.')[0])
+        }
     }
 
-    try {
-        fs.mkdirSync('./src/game_data/')
-    } catch {}
+    require('./command_modules/searchengine').InitSearchEngine()
+    require('./command_modules/calibersearchengine').InitCaliberEngine()
+    require('./tasks').StartTasks()
 
-    require('./tasks').GameData()
+    client.login(process.env.BOT_TOKEN)
 
-    // Terrible but easy fix for waiting for download since the only way that I found to get consistency doesn't support promises
-    setTimeout(() => {
-
-        for (const File of CommandFiles) {
-            BotCommands.push(File.split('.')[0])
-
-            let CommandSettings = require(`./commands/${File}`)['CommandSettings']
-            if (CommandSettings.DMCommand) {
-                DMCommands.push(File.split('.')[0])
-            }
-        }
-
-        require('./command_modules/searchengine').InitSearchEngine()
-        require('./command_modules/mapsearchengine').InitMapEngine()
-        require('./command_modules/calibersearchengine').InitCaliberEngine()
-        require('./tasks').StartTasks()
-
-        client.login(process.env.BOT_TOKEN)
-
-        //client.login(process.env.BOT_TOKEN_DEV)
-
-    }, 7500)
+    //client.login(process.env.BOT_TOKEN_DEV)
 }
 StartBot()
