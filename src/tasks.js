@@ -54,6 +54,10 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
 
         fs.writeFileSync('./src/game_data/api/pricedata.json', JSON.stringify(NewPrices, null, 4))
 
+        let Updated = JSON.parse(fs.readFileSync('./src/bot_data/updated.json'))
+        Updated.Prices = GetDate()
+        fs.writeFileSync('./src/bot_data/updated.json', JSON.stringify(Updated, null, 4))
+
         console.log(`{${GetDate()}}: Updated prices successfully`)
 
     } catch (e) {
@@ -158,6 +162,11 @@ const UpdateItems = schedule.scheduleJob('@daily', async function() {
         fs.writeFileSync('./src/game_data/api/itemdata.json', JSON.stringify(ItemData, null, 4))
         fs.writeFileSync('./src/game_data/api/itemarray.json', JSON.stringify(ItemArray, null, 4))
         fs.writeFileSync('./src/game_data/api/itemids.json', JSON.stringify(ItemIDs, null, 4))
+
+        let Updated = JSON.parse(fs.readFileSync('./src/bot_data/updated.json'))
+        Updated.Other = GetDate()
+        fs.writeFileSync('./src/bot_data/updated.json', JSON.stringify(Updated, null, 4))
+
 
         console.log(`{${GetDate()}}: Updated items successfully`)
 

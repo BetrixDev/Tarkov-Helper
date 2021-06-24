@@ -14,6 +14,8 @@ const CommandSettings = {
 
 // Command Functions
 const CommandFunction = () => {
+    let Updated = JSON.parse(require('fs').readFileSync('./src/bot_data/updated.json'))
+    console.log(Updated);
     return {
         Type: "ServerMessage",
         Content: new MessageEmbed()
@@ -26,6 +28,13 @@ const CommandFunction = () => {
             }, {
                 name: 'Add Tarkov Helper to Your Sever',
                 value: 'LINK SOON'
+            }, {
+                name: 'Data Last Updated',
+                value: [
+                    `Maps/Bosses as of patch: **${Updated.SPT}**`,
+                    `Prices: **${Updated.Prices}**`,
+                    `Items/Barters/Quests: **${Updated.Other}**`
+                ]
             })
     }
 }
