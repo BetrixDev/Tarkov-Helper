@@ -1,4 +1,3 @@
-const download = require('download-git-repo')
 const schedule = require('node-schedule')
 const got = require('got')
 const fs = require('fs')
