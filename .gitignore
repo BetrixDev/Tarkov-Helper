@@ -3,6 +3,8 @@ node_modules/
 wiki/
 *.code-workspace
 
+src/commands/unused
+
 *.psd
 
 src/assets/ProjectFiles/
