@@ -15,7 +15,7 @@ const CommandSettings = {
 // Command Functions
 const CommandFunction = () => {
     let Updated = JSON.parse(require('fs').readFileSync('./src/bot_data/updated.json'))
-    console.log(Updated);
+
     return {
         Type: "ServerMessage",
         Content: new MessageEmbed()
