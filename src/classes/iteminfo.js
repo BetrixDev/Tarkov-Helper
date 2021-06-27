@@ -1,3 +1,4 @@
+const ColorNamer = require('color-namer')
 const fs = require('fs')
 
 const Globals = require('../game_data/database/globals.json')
@@ -54,6 +55,28 @@ class ItemInfo {
                         { name: 'Heavy Bleed Chance', value: `${RawData.HeavyBleedingDelta}%`, inline: true }
                     ]
                 }
+            } else if (Types.includes('wearable') && !Types.includes('gun') || RawData.Name == 'ПНВ') {
+                let Object = {
+                    Fields: []
+                }
+                if (RawData.Grids.length > 0) {
+                    Object.Fields.push({ name: 'Size', value: (RawData.Width * RawData.Height), inline: true })
+                    Object.Fields.push({ name: 'Container Size', value: this.GetContainerSize(), inline: true })
+                    Object.Fields.push({ name: 'Space Efficiency', value: this.GetSpaceEfficiency(), inline: true })
+                    Object['Image'] = `https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/rig_images/${this.ItemData.ID}.png`
+                    Object['Footer'] = 'Rig inside views provided by the wiki'
+                }
+                if (RawData.MaskSize !== undefined) { // Night Vision
+                    let GoggleColorName = ColorNamer(`rgb(${RawData.Color.r},${RawData.Color.g},${RawData.Color.b})`, { pick: ['x11'] })['x11'][0].name
+                    GoggleColorName = GoggleColorName[0].toUpperCase() + GoggleColorName.substr(1)
+
+                    Object.Fields.push({ name: 'Goggle Color', value: [`Name: **${GoggleColorName}**`, `R: ${RawData.Color.r}, G: ${RawData.Color.g}, B: ${RawData.Color.b}, A: ${RawData.Color.a}`] }),
+                        Object.Fields.push({ name: 'Diffuse Intensity', value: RawData.DiffuseIntensity }),
+                        Object.Fields.push({ name: 'Intensity', value: RawData.Intensity })
+                    Object['Image'] = `https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/nvg_ingame/${this.ItemData.ID}.png`
+                    Object['Footer'] = 'Night vision image from the wiki'
+                }
+                return Object
             } else if (RawData.CompressorTreshold !== undefined) {
                 return {
                     Fields: [
@@ -201,25 +224,6 @@ class ItemInfo {
                     ],
                     Image: `https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/container_images/${this.ItemData.ID}.png`
                 }
-            } else if (Types.includes('wearable') && !Types.includes('gun') || Types.includes('T-7')) {
-                let Object = {
-                    Fields: []
-                }
-                if (RawData.Grids.length > 0) {
-                    Object.Fields.push({ name: 'Size', value: (RawData.Width * RawData.Height), inline: true })
-                    Object.Fields.push({ name: 'Container Size', value: this.GetContainerSize(), inline: true })
-                    Object.Fields.push({ name: 'Space Efficiency', value: this.GetSpaceEfficiency(), inline: true })
-                    Object['Image'] = `https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/rig_images/${this.ItemData.ID}.png`
-                    Object['Footer'] = 'Rig inside views provided by the wiki'
-                }
-                if (RawData.MaskSize !== undefined) {
-                    Object.Fields.push({ name: 'Goggle Color', value: `R: ${RawData.Color.r}, G: ${RawData.Color.g}, B: ${RawData.Color.b}, A: ${RawData.Color.a}` }),
-                        Object.Fields.push({ name: 'Diffuse Intensity', value: RawData.DiffuseIntensity }),
-                        Object.Fields.push({ name: 'Intensity', value: RawData.Intensity })
-                    Object['Image'] = `https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/nvg_ingame/${this.ItemData.ID}.png`
-                    Object['Footer'] = 'Night vision image from the wiki'
-                }
-                return Object
             } else if (Types.includes('provisions')) {
                 let Object = {
                     Fields: [
