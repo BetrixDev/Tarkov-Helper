@@ -2,7 +2,7 @@
 // Some code snippets are also from Tarkov Tools
 let Start = new Date();
 
-const { GetCooldown, SetCooldown } = require('./cooldown')
+const { GetCooldown, SetCooldown } = require('./scripts/cooldown')
 const { GetServerData } = require('./command_modules/serverdata')
 const DiscordJS = require('discord.js')
 
@@ -11,7 +11,6 @@ require('dotenv').config()
 
 const client = new DiscordJS.Client()
 
-const DMCommands = new Array()
 const BotCommands = new Array()
 const CommandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.js'))
 
@@ -153,11 +152,6 @@ const StartBot = async() => {
 
     for (const File of CommandFiles) {
         BotCommands.push(File.split('.')[0])
-
-        let CommandSettings = require(`./commands/${File}`)['CommandSettings']
-        if (CommandSettings.DMCommand) {
-            DMCommands.push(File.split('.')[0])
-        }
     }
 
     require('./command_modules/searchengine').InitSearchEngine()

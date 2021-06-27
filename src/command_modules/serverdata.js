@@ -5,7 +5,7 @@ const GetServerData = (serverid) => {
     if (Config[serverid] === undefined) {
         Config[serverid] = {
             AdminRole: "",
-            Cooldown: 3,
+            Cooldown: 1,
             ChannelLock: ""
         }
     }
