@@ -47,12 +47,14 @@ function ExperienceData() {
     return Result
 }
 
+let MaxLevel = require('../game_data/database/globals.json').config.exp.level.exp_table.length
+
 // Command Functions
 const CommandFunction = (args) => {
     let Current = args['current']
     let End = args['end']
 
-    if (Current < 71 && End < 71 && Current !== End) {
+    if (Current <= MaxLevel && End <= MaxLevel && Current !== End) {
         return {
             Type: "ServerMessage",
             Content: new DiscordJS.MessageEmbed()
@@ -63,7 +65,7 @@ const CommandFunction = (args) => {
                     value: (Math.abs((ExperienceData())[Current].Total - ExperienceData()[End].Total)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                 })
         }
-    } else if (Current > 999 && End > 71 && Current !== End) {
+    } else if (Current > 999 && End >= MaxLevel && Current !== End) {
         return {
             Type: "ServerMessage",
             Content: new DiscordJS.MessageEmbed()
@@ -76,9 +78,9 @@ const CommandFunction = (args) => {
         }
     } else if (Current === End) {
         return { Type: "Error", Content: ErrorMessage('Both inputs are equal, nothing to compare'), Time: 7000 }
-    } else if (Current < 1000 && Current > 70) {
+    } else if (Current < 1000 && Current > MaxLevel) {
         return { Type: "Error", Content: ErrorMessage('Input is to high to be a level and too low to be an experience value'), Time: 7000 }
-    } else if (End < 1000 && End > 70) {
+    } else if (End < 1000 && End > MaxLevel) {
         return { Type: "Error", Content: ErrorMessage('Input is to high to be a level and too low to be an experience value'), Time: 7000 }
     }
 }
