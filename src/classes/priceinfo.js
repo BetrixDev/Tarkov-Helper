@@ -37,7 +37,7 @@ class PriceInfo {
         // Function from tarkov-tools fee calculator script
         // https://github.com/kokarn/tarkov-tools/blob/master/src/modules/flea-market-fee.js
         let V0 = this.PriceData.basePrice
-        let VR = (this.PriceData.avg24hPrice - 1)
+        let VR = this.PriceData.avg24hPrice
         let Ti = 0.05
         let Tr = 0.05
         let P0 = Math.log10(V0 / VR)
@@ -60,15 +60,4 @@ class PriceInfo {
     }
 }
 
-const GetAllPrices = async() => {
-    try {
-        return PriceData = JSON.parse(fs.readFileSync('./src/api/game_data/pricedata.json'))
-    } catch (e) {
-        console.log(e)
-        return 'ERROR'
-    }
-}
-
-
 exports.PriceInfo = PriceInfo
-exports.GetAllPrices = GetAllPrices
