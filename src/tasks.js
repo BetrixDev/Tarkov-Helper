@@ -1,3 +1,5 @@
+let decompress = require('decompress')
+let download = require('download')
 const schedule = require('node-schedule')
 const got = require('got')
 const fs = require('fs')
@@ -7,6 +9,41 @@ const GetDate = () => {
 }
 
 const { GetAmmoData } = require('./scripts/nofoodammo')
+
+// Update database every 3 hours
+async function Database() {
+    try {
+        fs.rmSync('./src/game_data/temp', { recursive: true })
+        fs.mkdirSync('./src/game_data/temp')
+    } catch {}
+
+    await download('https://github.com/Tarkov-Helper/Database/archive/refs/heads/main.zip', './src/game_data/temp')
+    await decompress('./game_data/temp/main.zip', './src/game_data/temp')
+
+    let DownloadedFiles = fs.readdirSync('./src/game_data/temp/Database-main')
+    for (let File of DownloadedFiles) {
+        try { fs.rmSync(`./src/game_data/${File}`, { recursive: true }) } catch {}
+        fs.renameSync(`./src/game_data/temp/Database-main/${File}`, `./src/game_data/${File}`)
+    }
+
+    fs.rmSync('./src/game_data/temp', { recursive: true })
+
+    return 'Done'
+}
+const UpdateDatabase = schedule.scheduleJob('0 */3 * * *', async function() {
+    console.log(`{${GetDate()}}: Updating database`)
+
+    try {
+
+        await Database()
+
+        console.log(`{${GetDate()}}: Updated database successfully`)
+
+    } catch (e) {
+        console.log(e)
+        console.log(`{${GetDate()}}: Error updating database, waiting till next cycle`)
+    }
+})
 
 // Update price data every 10 minutes
 const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
@@ -336,10 +373,18 @@ const StartTasks = async() => {
     UpdateBarters.invoke()
 
     // Start the intervalled updates
+    UpdateDatabase.schedule()
     UpdatePrices.schedule()
     UpdateItems.schedule()
     UpdateQuests.schedule()
     UpdateBarters.schedule()
 }
 
+// Seperate function since we need to invoke this before anything else since this downloads data used by the other updates
+async function InvokeDatabase() {
+    await UpdateDatabase.invoke()
+    return 'Done'
+}
+
+exports.InvokeDatabase = InvokeDatabase
 exports.StartTasks = StartTasks
