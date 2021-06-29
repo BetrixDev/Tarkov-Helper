@@ -64,7 +64,6 @@ const CommandFunction = (args, { interaction }) => {
                         name: 'Best Place To Sell',
                         value: `${PriceData.RecommendedSell}`
                     })
-                    .setFooter('Fee is calculated from an offer of 1 rouble less then the current price')
             }
         } else {
             return { Type: "Error", Content: ErrorMessage('Unable to grab price data please try again later'), Time: 5000 }
