@@ -16,8 +16,6 @@ exec('npm i', (error, stdout, stderr) => {
         fs.mkdirSync('./src/game_data/')
     } catch {}
 
-    require('../tasks').GameData()
-
     setTimeout(() => {
         require('../tasks').StartTasks()
 
