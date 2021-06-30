@@ -16,18 +16,31 @@ for (const File of CommandFiles) {
     BotCommands.push(File.split('.')[0])
 }
 
+let ExcludedDMCommands = [
+    'admin',
+    'channellock',
+    'resetchannellock',
+    'setcooldown'
+]
+
 client.on('ready', async() => {
     let End = new Date()
     console.log(`Tarkov Helper Initialized in ${End.getTime() - Start.getTime()}ms`)
 
     client.ws.on('INTERACTION_CREATE', async(interaction) => {
         try {
-            let IsAdmin = interaction.member.roles.includes(GetServerData(interaction.guild_id)['AdminRole']) // Admins can bypass restrictions
+            let uid
+            let IsAdmin // Admins can bypass restrictions
+            if (interaction.member !== undefined) {
+                uid = interaction.member.user.id
+                IsAdmin = interaction.member.roles.includes(GetServerData(interaction.guild_id)['AdminRole'])
+            } else {
+                IsAdmin = true
+                uid = interaction.user.id
+            }
 
             let ChannelLock = GetServerData(interaction.guild_id)['ChannelLock']
             if (ChannelLock === interaction.channel_id || ChannelLock === "" || IsAdmin) {
-
-                const uid = interaction.member.user.id
 
                 let Cooldown = GetServerData(interaction.guild_id)['Cooldown']
                 let LastMessage = GetCooldown(uid)
@@ -38,6 +51,10 @@ client.on('ready', async() => {
                     const { name, options } = interaction.data
                     const command = name.toLowerCase()
                     const args = {}
+
+                    if (ExcludedDMCommands.includes(command)) {
+                        Reply(interaction, require('./command_modules/errormessage').ErrorMessage('Cannot use admin commands in a Direct Message channel'))
+                    }
 
                     if (options) {
                         for (const option of options) {
@@ -52,12 +69,12 @@ client.on('ready', async() => {
 
                         const Message = await require(`./commands/${command}`)['CommandFunction'](args, { interaction, guild })
 
-                        if (Message.Type === "ServerMessage") {
-                            await Reply(interaction, Message.Content)
-
+                        if (Message.Type === "ServerMessage" || interaction.member === undefined) {
+                            Reply(interaction, Message.Content)
 
                         } else if (Message.Type === "Ephemeral" || Message.Type === "Error") {
                             Reply(interaction, Message.Content, true)
+
                         }
 
                         // Reaction Handler
@@ -132,8 +149,14 @@ const Reply = async(interaction, response, ephemeral) => {
 
 // Converts an embeded message into a message discord can use for the interaction message
 const CreateAPIMessage = async(interaction, content) => {
+    let Channel
+    if (interaction.member !== undefined) {
+        Channel = client.channels.resolve(interaction.channel_id)
+    } else {
+        Channel = await client.channels.fetch(interaction.channel_id)
+    }
     const { data, files } = await DiscordJS.APIMessage.create(
-            client.channels.resolve(interaction.channel_id),
+            Channel,
             content
         )
         .resolveData()
