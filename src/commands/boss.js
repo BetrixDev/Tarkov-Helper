@@ -7,14 +7,16 @@ const Translations = {
         bosskilla: 'Killa',
         bossbully: 'Reshala',
         bosssanitar: 'Sanitar',
-        bosskojaniy: 'Shturman'
+        bosskojaniy: 'Shturman',
+        bosstagilla: 'Tagilla'
     },
     MapNames: {
         rezervbase: 'Reserve',
         interchange: 'Interchange',
         bigmap: 'Customs',
         shoreline: 'Shoreline',
-        woods: 'Woods'
+        woods: 'Woods',
+        factory4_day: 'Factory'
     }
 }
 
@@ -45,6 +47,9 @@ const CommandSettings = {
                 }, {
                     name: 'Shturman',
                     value: 'bosskojaniy'
+                }, {
+                    name: 'Tagilla',
+                    value: 'bosstagilla'
                 }]
             }]
         }

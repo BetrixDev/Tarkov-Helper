@@ -5,7 +5,8 @@ const BossMaps = {
     "bosskilla": "interchange",
     "bossbully": "bigmap",
     "bosssanitar": "shoreline",
-    "bosskojaniy": "woods"
+    "bosskojaniy": "woods",
+    "bosstagilla": "factory4_day"
 }
 
 class BossInfo {
