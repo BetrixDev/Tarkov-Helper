@@ -17,8 +17,12 @@ const Engine = (Input) => {
     // implement it without making it less user-friendly
     // Also some items are inacessible using short names since they share the name
     // with another item
-    if (ItemShortName[Input.replace('short=', '')] !== undefined && Input.includes('short=')) {
+    if (ItemShortName[Input.replace('short=', '')] !== undefined) {
         return [ItemShortName[Input.replace('short=', '')].Name]
+    }
+
+    if (ItemShortName[Input.replace('short=', '').replace(' ', '-')] !== undefined) {
+        return [ItemShortName[Input.replace('short=', '').replace(' ', '-')].Name]
     }
 
     if (ItemID[Input.replace('id=', '')] !== undefined) {
