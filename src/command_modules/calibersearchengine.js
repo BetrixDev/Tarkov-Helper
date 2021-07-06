@@ -22,15 +22,17 @@ function InitEngine() {
                 CaliberData[Caliber] = new Array()
             }
 
-            let RawData = Item.RawData
+            try {
+                let RawData = Item.RawData._props
 
-            CaliberData[Caliber].push({
-                Name: Item.ShortName,
-                ID: Item.ID,
-                Damage: RawData.Damage,
-                ArmorDamage: RawData.ArmorDamage,
-                Penetration: RawData.PenetrationPower
-            })
+                CaliberData[Caliber].push({
+                    Name: Item.ShortName,
+                    ID: Item.ID,
+                    Damage: RawData.Damage,
+                    ArmorDamage: RawData.ArmorDamage,
+                    Penetration: RawData.PenetrationPower
+                })
+            } catch {}
         }
     }
 }
