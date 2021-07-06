@@ -55,6 +55,13 @@ class ItemInfo {
                         { name: 'Heavy Bleed Chance', value: `${RawData.HeavyBleedingDelta}%`, inline: true }
                     ]
                 }
+            } else if (Types.includes('keys')) {
+                return {
+                    Fields: [
+                        { name: 'Behind the Lock', value: require('../game_data/keys.json')[this.ItemID] }
+                    ],
+                    Footer: 'Key data from the wiki'
+                }
             } else if (Types.includes('wearable') && !Types.includes('gun') || RawData.Name == 'ПНВ') {
                 let Object = {
                     Fields: []
