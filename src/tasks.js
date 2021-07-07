@@ -18,7 +18,7 @@ async function Database() {
     } catch {}
 
     await download('https://github.com/Tarkov-Helper/Database/archive/refs/heads/main.zip', './src/game_data/temp')
-    await decompress('./game_data/temp/main.zip', './src/game_data/temp')
+    await decompress('./src/game_data/temp/main.zip', './src/game_data/temp')
 
     let DownloadedFiles = fs.readdirSync('./src/game_data/temp/Database-main')
     for (let File of DownloadedFiles) {
