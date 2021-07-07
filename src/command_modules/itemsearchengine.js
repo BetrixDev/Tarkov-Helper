@@ -5,62 +5,45 @@ const ItemName = require('../game_data/api/itemarray.json')
 const ItemShortName = require('../game_data/api/itemfromshortname.json')
 
 let SearchEngine = new AccurateSearch()
+let ShortSearchEngine = new AccurateSearch()
 
-for (const Item of ItemName) {
-    SearchEngine.addText(Item, Item)
+for (const i in ItemShortName) {
+    let Item = ItemShortName[i]
+    SearchEngine.addText(Item.Name, Item.Name)
+    ShortSearchEngine.addText(Item.ShortName, Item.ShortName)
 }
 
 const Engine = (Input) => {
-    let Results = new Array()
 
-    // Made short name search need a prefix since I don't know a great way to 
-    // implement it without making it less user-friendly
-    // Also some items are inacessible using short names since they share the name
-    // with another item
-    if (ItemShortName[Input.replace('short=', '')] !== undefined) {
-        return [ItemShortName[Input.replace('short=', '')].Name]
+    // User inputted item id
+    if (ItemID.hasOwnProperty(Input)) {
+        return [ItemID[Input].Name]
     }
 
-    if (ItemShortName[Input.replace('short=', '').replace(' ', '-')] !== undefined) {
-        return [ItemShortName[Input.replace('short=', '').replace(' ', '-')].Name]
+    // User inputted short name
+    if (ItemShortName.hasOwnProperty(Input.toLowerCase())) {
+        return [ItemShortName[Input.toLowerCase()].Name]
+    }
+    if (ItemShortName.hasOwnProperty(Input.toLowerCase().replace(' ', '-'))) {
+        return [ItemShortName[Input.toLowerCase().replace(' ', '-')].Name]
     }
 
-    if (ItemID[Input.replace('id=', '')] !== undefined) {
-        return [ItemID[Input.replace('id=', '')].Name]
-    }
+    // // User inputted regular name
+    // if (ItemName.map(item => { return item.toLowerCase() }).includes(Input.toLowerCase())) {
+    //     return [Input]
+    // }
 
-    Input = Input.replace('short=', '')
+    let LongResults = SearchEngine.accurateSearch(Input)
+    let ShortResults = ShortSearchEngine.accurateSearch(Input)
 
-    if (ItemName.includes(Input.toLowerCase())) {
-        return [Input]
+    if (LongResults.length > ShortResults.length) {
+        return LongResults
     } else {
-        for (const Item in ItemName) {
-            if (ItemName[Item].toLowerCase() === Input.toLowerCase()) {
-                Results.push(ItemName[Item])
-            }
-        }
-        if (Results.length > 0) {
-            return Results
-        }
+        return ShortResults.map(item => {
+            console.log(item)
+            return ItemShortName[item.toLowerCase()].Name
+        })
     }
-
-    for (const Item in ItemName) {
-        if (ItemName[Item].toLowerCase().split('.').join('').includes(Input.split('.').join(''))) {
-            Results.push(ItemName[Item])
-        }
-    }
-
-    if (Results.length > 10) {
-        if (ItemShortName[Input.replace('short=', '')] !== undefined) {
-            return [ItemShortName[Input.replace('short=', '')].Name]
-        }
-    }
-
-    if (Results.length === 0) {
-        Results = SearchEngine.accurateSearch(Input)
-    }
-
-    return Results
 
 }
 
