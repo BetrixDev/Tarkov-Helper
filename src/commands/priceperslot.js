@@ -46,8 +46,10 @@ const CommandFunction = (args) => {
         return b['pricePerSlot'] - a['pricePerSlot']
     })
 
-    itemnames = items.map(item => { return item.name })
-    itemprices = items.map(item => { return FormatPrice(item.pricePerSlot) })
+    let i = 0
+    itemnames = items.map(item => { i++; return (i % 2 == 0 ? ':black_medium_small_square:' : ':white_medium_small_square: ') + item.name })
+    i = 0
+    itemprices = items.map(item => { i++; return (i % 2 == 0 ? ':black_medium_small_square:' : ':white_medium_small_square: ') + item.pricePerSlot })
 
     if (items.length > 30) {
         return {
