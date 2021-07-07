@@ -1,1 +1,1 @@
-worker: node ./src/main.js
+worker: npm run first
