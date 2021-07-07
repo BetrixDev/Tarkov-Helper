@@ -1,5 +1,6 @@
+const fs = require('fs')
 const Settings = require('../settings.json')
-const ItemData = require('../game_data/api/itemdata.json')
+const ItemData = JSON.parse(fs.readFileSync('./src/game_data/api/itemdata.json'))
 const { CaliberSearchEngine, GetCalibers } = require('../command_modules/calibersearchengine')
 const { MessageEmbed } = require('discord.js')
 

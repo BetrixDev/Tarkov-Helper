@@ -1,3 +1,5 @@
+const fs = require('fs')
+let ItemFromName = JSON.parse(fs.readFileSync('./src/game_data/api/itemfromname.json'))
 let Searches = new Object(null)
 
 
@@ -5,7 +7,8 @@ function CreateInput(Inputs, cmd, uid) {
 
     Searches[uid] = {
         Command: cmd,
-        Inputs: Inputs
+        Inputs: Inputs,
+        IDs: Inputs.map(item => { return ItemFromName[item].ID })
     }
 
     // Create array to send back

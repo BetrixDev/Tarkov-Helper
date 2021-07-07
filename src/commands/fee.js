@@ -1,6 +1,7 @@
+const fs = require('fs')
 const { MessageEmbed } = require('discord.js')
 const { PriceInfo } = require('../classes/priceinfo')
-const ItemFromName = require('../game_data/api/itemfromname.json')
+const ItemFromName = JSON.parse(fs.readFileSync('./src/game_data/api/itemfromname.json'))
 const FormatPrice = require('../command_modules/formatprice')
 const Settings = require('../settings.json')
 const { ItemSearchEngine } = require('../command_modules/itemsearchengine')

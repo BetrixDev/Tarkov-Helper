@@ -1,8 +1,9 @@
+const fs = require('fs')
 const { MessageEmbed } = require('discord.js')
 const Settings = require('../settings.json')
 const { QuestSearchEngine } = require('../command_modules/questsearchengine')
 const { ErrorMessage } = require('../command_modules/errormessage')
-const ItemFromName = require('../game_data/api/itemfromname.json')
+const ItemFromName = JSON.parse(fs.readFileSync('./src/game_data/api/itemfromname.json'))
 const { QuestInfo } = require('../classes/questinfo')
 
 // Command Config
@@ -47,7 +48,7 @@ const CommandFunction = (args, { interaction }) => {
                     inline: true
                 }, {
                     name: 'Unlocks',
-                    value: GetUnlocks(QuestStuff.Unlocks),
+                    value: (QuestStuff.Unlocks.length > 0 ? QuestStuff.Unlocks : 'None'),
                     inline: true
                 }, {
                     name: 'Needed For Kappa',
@@ -73,20 +74,6 @@ const CommandFunction = (args, { interaction }) => {
             Content: ErrorMessage('No Results found')
         }
     }
-}
-
-const GetUnlocks = (array) => {
-
-    if (array.length < 1) { return 'None' }
-
-    let Unlocks = new Array()
-
-    for (const i in array) {
-        let Item = array[i]
-        Unlocks.push(ItemFromName[Item].ShortName)
-    }
-
-    return Unlocks
 }
 
 exports.CommandFunction = CommandFunction

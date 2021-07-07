@@ -1,6 +1,8 @@
+const fs = require('fs')
+
 const FormatPrice = require('../command_modules/formatprice')
 const { BarterInfo } = require('../classes/barterinfo')
-const ItemFromName = require('../game_data/api/itemfromname.json')
+const ItemFromName = JSON.parse(fs.readFileSync('./src/game_data/api/itemfromname.json'))
 const { ErrorMessage } = require('../command_modules/errormessage')
 const { ItemSearchEngine } = require('../command_modules/itemsearchengine')
 const Settings = require('../settings.json')

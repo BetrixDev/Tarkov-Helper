@@ -1,4 +1,5 @@
-const QuestNames = require('../game_data/api/questnames.json')
+const fs = require('fs')
+const QuestNames = JSON.parse(fs.readFileSync('./src/game_data/api/questnames.json'))
 
 const Engine = (Input) => {
     if (QuestNames.includes(Input)) {

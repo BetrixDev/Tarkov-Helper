@@ -1,4 +1,5 @@
-const QuestData = require('../game_data/api/quests.json')
+const fs = require('fs')
+const QuestData = JSON.parse(fs.readFileSync('./src/game_data/api/quests.json'))
 const QuestImages = require('../game_data/questimages.json')
 
 class QuestInfo {

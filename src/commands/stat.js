@@ -15,9 +15,10 @@ const CommandSettings = {
     DMCommand: true
 }
 
-const { ErrorMessage, ErrorMessageField } = require('../command_modules/errormessage')
+const fs = require('fs')
+const { ErrorMessage } = require('../command_modules/errormessage')
 const { ItemSearchEngine } = require('../command_modules/itemsearchengine')
-const ItemFromName = require('../game_data/api/itemfromname.json')
+const ItemFromName = JSON.parse(fs.readFileSync('./src/game_data/api/itemfromname.json'))
 const { ItemInfo } = require('../classes/iteminfo')
 const { MessageEmbed } = require('discord.js')
 const Settings = require('../settings.json')
@@ -29,6 +30,7 @@ const CommandFunction = async(args, { interaction }) => {
     let Length = Item.length
 
     if (Length === 1) {
+        console.log(ItemFromName[Item[0]].ID)
         let ItemData = new ItemInfo(ItemFromName[Item[0]].ID)
 
         if (ItemData !== undefined) {

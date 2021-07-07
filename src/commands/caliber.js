@@ -50,8 +50,6 @@ const CommandFunction = (args, { interaction }) => {
 
     let CaliberData = EngineResults.CaliberData[Caliber]
 
-    console.log(CaliberData)
-
     let NonSortedArray = new Array()
 
     for (const Ammo of CaliberData) {
@@ -82,13 +80,10 @@ const CommandFunction = (args, { interaction }) => {
             inline: true
         })
 
-    console.log(Message)
     return { Type: "ServerMessage", Content: Message }
 }
 
 function SortValues(Values, Type) {
-
-    console.log(Values)
 
     const Types = ['Damage', 'Penetration']
     let InputArray = Values
