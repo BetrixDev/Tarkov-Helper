@@ -47,9 +47,9 @@ const CommandFunction = (args) => {
     })
 
     let i = 0
-    itemnames = items.map(item => { i++; return (i % 2 == 0 ? ':black_medium_small_square:' : ':white_medium_small_square: ') + item.name })
+    itemnames = items.map(item => { i++; return `\`${i}\` **-** ${(i % 2 == 0 ? '**' : '')}${item.name}${(i % 2 == 0 ? '**' : '')}` })
     i = 0
-    itemprices = items.map(item => { i++; return (i % 2 == 0 ? ':black_medium_small_square:' : ':white_medium_small_square: ') + item.pricePerSlot })
+    itemprices = items.map(item => { i++; return `\`${i}\` **-** ${(i % 2 == 0 ? '**' : '')}${item.pricePerSlot}${(i % 2 == 0 ? '**' : '')}` })
 
     if (items.length > 30) {
         return {
@@ -62,6 +62,7 @@ const CommandFunction = (args) => {
         Type: 'ServerMessage',
         Content: new MessageEmbed()
             .setTitle(`Price Per Slot Range: ${FormatPrice(min)} - ${FormatPrice(max)}`)
+            .setThumbnail('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/PricePerSlotLogo200x200.png')
             .addFields({
                 name: 'Items',
                 value: itemnames,
