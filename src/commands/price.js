@@ -37,6 +37,8 @@ const CommandFunction = (args, { interaction }) => {
     if (Length === 1) {
         let PriceData = new PriceInfo(ItemFromName[Item[0]].ID)
 
+        console.log(PriceData.BestBuy())
+
         if (PriceData !== 'ERROR') {
             return {
                 Type: "ServerMessage",
@@ -65,6 +67,9 @@ const CommandFunction = (args, { interaction }) => {
                     }, {
                         name: 'Best Place To Sell',
                         value: `${PriceData.RecommendedSell}`
+                    }, {
+                        name: 'Best Place To Buy',
+                        value: `${PriceData.BestBuy()[1]} at ${FormatPrice(PriceData.BestBuy()[0])}/each`
                     })
             }
         } else {

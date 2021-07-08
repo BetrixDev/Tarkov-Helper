@@ -69,6 +69,22 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
                           name
                         }
                     }
+                    sellFor {
+                        source
+                        price
+                        requirements {
+                            type
+                            value
+                        }
+                    }
+                    buyFor {
+                        source
+                        price
+                        requirements {
+                            type
+                            value
+                        }
+                    }
                     types
                 }
             }`
