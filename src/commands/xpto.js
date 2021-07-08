@@ -51,8 +51,8 @@ let MaxLevel = require('../game_data/database/globals.json').config.exp.level.ex
 
 // Command Functions
 const CommandFunction = (args) => {
-    let Current = args['current']
-    let End = args['end']
+    let Current = Number(args['current'])
+    let End = Number(args['end'])
 
     if (Current <= MaxLevel && End <= MaxLevel && Current !== End) {
         return {
@@ -65,7 +65,7 @@ const CommandFunction = (args) => {
                     value: (Math.abs((ExperienceData())[Current].Total - ExperienceData()[End].Total)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                 })
         }
-    } else if (Current > 999 && End >= MaxLevel && Current !== End) {
+    } else if (Current > 999 && End <= MaxLevel && Current !== End) {
         return {
             Type: "ServerMessage",
             Content: new DiscordJS.MessageEmbed()
@@ -73,7 +73,7 @@ const CommandFunction = (args) => {
                 .setThumbnail(Settings.Images.Thumbnails.Experience)
                 .addFields({
                     name: `Experience Gap From ${Current}xp To ${End}`,
-                    value: (Math.abs(ExperienceData()[Current].Total - End)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                    value: (Math.abs(Current - ExperienceData()[End].Total)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                 })
         }
     } else if (Current === End) {
