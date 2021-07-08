@@ -62,7 +62,7 @@ const CommandFunction = (args, { interaction }) => {
                 Type: "ServerMessage",
                 Content: new MessageEmbed()
                     .setTitle(`Spawn Percentages for: ${Item[0]}`)
-                    .setDescription(`Listed below are the all the possible containers that can spawn a **${ItemData[ItemID].ShortName}** and their spawn chances \n\n[Wiki Link to item](${ItemData[ItemID].WikiLink})`)
+                    .setDescription(`Listed below are all the possible containers that can spawn a **${ItemData[ItemID].ShortName}** and their spawn chances \n\n[Wiki Link to item](${ItemData[ItemID].WikiLink})`)
                     .setThumbnail('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/SpawnChance200x200.png')
                     .addFields({
                         name: 'Container',
