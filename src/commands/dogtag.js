@@ -1,3 +1,5 @@
+const fs = require('fs')
+let MaxLevel = JSON.parse(fs.readFileSync('./src/game_data/database/globals.json')).config.exp.level.exp_table.length
 const { ErrorMessage } = require('../command_modules/errormessage')
 const FormatPrice = require('../command_modules/formatprice')
 const { MessageEmbed } = require('discord.js')
@@ -15,18 +17,17 @@ const CommandSettings = {
                 type: 3
             }]
         }
-    },
-    DMCommand: true
+    }
 }
 
 // Command Functions
 const CommandFunction = (args) => {
     let Level = args['level']
 
-    if (Level > 70 || Level < 1) {
+    if (Level > MaxLevel || Level < 1) {
         return {
             Type: "Error",
-            Content: ErrorMessage('Please enter a valid level between 1 and 70')
+            Content: ErrorMessage('Please enter a valid level between 1 and ' + MaxLevel)
         }
     } else {
         return {
