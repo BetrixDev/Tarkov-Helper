@@ -58,6 +58,29 @@ class PriceInfo {
         let Slots = this.PriceData.width * this.PriceData.height
         return Math.round(this.PriceData.avg24hPrice / Slots)
     }
+    BestBuy() {
+        let BuyData = this.PriceData.buyFor
+        console.log(BuyData)
+        let LowestBuy = [0, '']
+
+        for (let Trade of BuyData) {
+            let NormalizedPrice = Trade.price
+            if (Trade.source === 'peacekeeper') {
+                NormalizedPrice = Trade.price * 116
+            }
+
+            if (LowestBuy[1] === '') {
+                LowestBuy[0] = NormalizedPrice
+                LowestBuy[1] = Trade.source
+            } else if (LowestBuy[0] > NormalizedPrice) {
+                LowestBuy[0] = NormalizedPrice
+                LowestBuy[1] = Trade.source
+            }
+
+        }
+
+        return LowestBuy
+    }
 }
 
 exports.PriceInfo = PriceInfo
