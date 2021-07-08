@@ -14,4 +14,4 @@ async function StartBot(Dev) {
     require('./bot').InitBot(Dev)
 
 }
-StartBot(true) // Pass in true to use BOT_TOKEN_DEV to log your bot in and bypass waiting for caching
+StartBot() // Pass in true to use BOT_TOKEN_DEV to log your bot in and bypass waiting for caching
