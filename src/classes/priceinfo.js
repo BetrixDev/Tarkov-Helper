@@ -60,7 +60,7 @@ class PriceInfo {
     }
     BestBuy() {
         let BuyData = this.PriceData.buyFor
-        console.log(BuyData)
+
         let LowestBuy = [0, '']
 
         for (let Trade of BuyData) {
