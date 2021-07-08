@@ -73,7 +73,7 @@ const CommandFunction = (args, { interaction }) => {
         } else {
             return { Type: "Error", Content: ErrorMessage('Unable to grab price data please try again later'), Time: 5000 }
         }
-    } else if (Length > 1) {
+    } else if (Length > 1 && Length < 25) {
         let uid = interaction.member.user.id
         let Array = require('../command_modules/search').CreateInput(Item, 'price', uid)
         return {
@@ -84,6 +84,8 @@ const CommandFunction = (args, { interaction }) => {
                 .setDescription(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with multiple results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries. \n\n Use the command \`/Confirm\` followed by the number next to the item to complete the search`)
                 .addFields({ name: 'Results', value: Array })
         }
+    } else if (Length > 25) {
+        return { Type: "Error", Content: ErrorMessage(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with over 25 results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries`), Time: 5000 }
     } else {
         return { Type: "Error", Content: ErrorMessage(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with no results. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries`), Time: 5000 }
     }
