@@ -49,7 +49,7 @@ const CommandFunction = (args) => {
     let i = 0
     itemnames = items.map(item => { i++; return `\`${i}\` **-** ${(i % 2 == 0 ? '**' : '')}${item.name}${(i % 2 == 0 ? '**' : '')}` })
     i = 0
-    itemprices = items.map(item => { i++; return `\`${i}\` **-** ${(i % 2 == 0 ? '**' : '')}${item.pricePerSlot}${(i % 2 == 0 ? '**' : '')}` })
+    itemprices = items.map(item => { i++; return `\`${i}\` **-** ${(i % 2 == 0 ? '**' : '')}${FormatPrice(item.pricePerSlot)}${(i % 2 == 0 ? '**' : '')}` })
 
     if (items.length > 30) {
         return {

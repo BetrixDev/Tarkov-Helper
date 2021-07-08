@@ -55,6 +55,28 @@ class ItemInfo {
                         { name: 'Heavy Bleed Chance', value: `${RawData.HeavyBleedingDelta}%`, inline: true }
                     ]
                 }
+            } else if (Types.includes('armor')) {
+                let Object = {
+                    Fields: [
+                        { name: 'Armor Level', value: RawData.armorClass, inline: true },
+                        { name: 'Durabiltiy', value: RawData.MaxDurability, inline: true },
+                        { name: 'Effective Durability', value: this.GetEffective(), inline: true },
+                        { name: 'Speed Penalty', value: `${RawData.speedPenaltyPercent}%`, inline: true },
+                        { name: 'Sensitivity Penalty', value: `${RawData.mousePenalty}%`, inline: true },
+                        { name: 'Ergonomic Penalty', value: `${RawData.weaponErgonomicPenalty}%`, inline: true },
+                        { name: 'Armor Areas', value: RawData.armorZone, inline: true },
+                        { name: 'Material', value: RawData.ArmorMaterial, inline: true },
+                        { name: 'Weight', value: `${RawData.Weight}kg`, inline: true }
+                    ]
+                }
+                if (RawData.Grids.length > 0) {
+                    Object.Fields.push({ name: 'Size', value: (RawData.Width * RawData.Height), inline: true })
+                    Object.Fields.push({ name: 'Container Size', value: this.GetContainerSize(), inline: true })
+                    Object.Fields.push({ name: 'Space Efficiency', value: this.GetSpaceEfficiency(), inline: true })
+                    Object['Image'] = `https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/rig_images/${this.ItemData.ID}.png`
+                    Object['Footer'] = 'Rig inside views provided by the wiki'
+                }
+                return Object
             } else if (Types.includes('keys')) {
                 return {
                     Fields: [
@@ -110,28 +132,6 @@ class ItemInfo {
                         { name: 'Caliber', value: RawData.ammoCaliber, inline: true }
                     ]
                 }
-            } else if (Types.includes('armor')) {
-                let Object = {
-                    Fields: [
-                        { name: 'Armor Level', value: RawData.armorClass, inline: true },
-                        { name: 'Durabiltiy', value: RawData.MaxDurability, inline: true },
-                        { name: 'Effective Durability', value: this.GetEffective(), inline: true },
-                        { name: 'Speed Penalty', value: `${RawData.speedPenaltyPercent}%`, inline: true },
-                        { name: 'Sensitivity Penalty', value: `${RawData.mousePenalty}%`, inline: true },
-                        { name: 'Ergonomic Penalty', value: `${RawData.weaponErgonomicPenalty}%`, inline: true },
-                        { name: 'Armor Areas', value: RawData.armorZone, inline: true },
-                        { name: 'Material', value: RawData.ArmorMaterial, inline: true },
-                        { name: 'Weight', value: `${RawData.Weight}kg`, inline: true }
-                    ]
-                }
-                if (RawData.Grids.length > 0) {
-                    Object.Fields.push({ name: 'Size', value: (RawData.Width * RawData.Height), inline: true })
-                    Object.Fields.push({ name: 'Container Size', value: this.GetContainerSize(), inline: true })
-                    Object.Fields.push({ name: 'Space Efficiency', value: this.GetSpaceEfficiency(), inline: true })
-                    Object['Image'] = `https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/rig_images/${this.ItemData.ID}.png`
-                    Object['Footer'] = 'Rig inside views provided by the wiki'
-                }
-                return Object
             } else if (Types.includes('backpack')) {
                 return {
                     Fields: [

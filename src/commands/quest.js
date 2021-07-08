@@ -48,7 +48,7 @@ const CommandFunction = (args, { interaction }) => {
                     inline: true
                 }, {
                     name: 'Unlocks',
-                    value: (QuestStuff.Unlocks.length > 0 ? QuestStuff.Unlocks : 'None'),
+                    value: (QuestStuff.Unlocks.length > 0 ? QuestStuff.Unlocks : 'None\\'),
                     inline: true
                 }, {
                     name: 'Needed For Kappa',

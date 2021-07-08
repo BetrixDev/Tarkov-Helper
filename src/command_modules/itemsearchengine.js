@@ -41,7 +41,6 @@ const Engine = (Input) => {
         return LongResults
     } else {
         return ShortResults.map(item => {
-            console.log(item)
             return ItemShortName[item.toLowerCase()].Name
         })
     }

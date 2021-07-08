@@ -30,7 +30,7 @@ const CommandFunction = async(args, { interaction }) => {
     let Length = Item.length
 
     if (Length === 1) {
-        console.log(ItemFromName[Item[0]].ID)
+
         let ItemData = new ItemInfo(ItemFromName[Item[0]].ID)
 
         if (ItemData !== undefined) {

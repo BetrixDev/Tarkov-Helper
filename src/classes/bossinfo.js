@@ -60,7 +60,6 @@ class BossInfo {
 
         } else { // If boss only has multiple types of followers
             for (const Type of BossData.Supports) {
-                console.log('follower' + BossName);
                 Escorts.push(`**${Type.BossEscortAmount}** ${Type.BossEscortType.replace('follower' + BossName.replace('boss',''), '')}`)
                 Total = Total + Number(Type.BossEscortAmount)
             }
