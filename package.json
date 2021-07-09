@@ -22,5 +22,8 @@
         "express": "^4.17.1",
         "got": "^11.8.2",
         "node-schedule": "^2.0.0"
+    },
+    "engines": {
+        "node": "16.x"
     }
 }
