@@ -8,7 +8,7 @@ const GetDate = () => {
     return Date().split(' G')[0]
 }
 
-const { GetAmmoData } = require('./scripts/nofoodammo')
+const { GetAmmo } = require('./scripts/ammo')
 
 // Update database every 3 hours
 async function Database() {
@@ -127,7 +127,7 @@ const UpdateItems = schedule.scheduleJob('@daily', async function() {
 
     try {
 
-        let AmmoData = await GetAmmoData()
+        let AmmoData = await GetAmmo()
 
         const bodyQuery = JSON.stringify({
             query: `{
@@ -187,25 +187,22 @@ const UpdateItems = schedule.scheduleJob('@daily', async function() {
             }
         }
 
-        if (AmmoData) {
-            // Inject updated ammo data
-            for (const Ammo of AmmoData) {
-                if (NoFoodTranslator[Ammo.name] !== undefined) {
-                    let Translated = NoFoodTranslator[Ammo.name]
+        for (let AmmoID in AmmoData) {
+            let Ammo = AmmoData[AmmoID]
 
-                    if (ItemData[Translated.ID].RawData === undefined) {
-                        ItemData[Translated.ID]['RawData'] = {
-                            Data: {
-                                Damage: Ammo.damage,
-                                ArmorDamage: Ammo.armorDamage,
-                                PenetrationPower: Ammo.penetration
-                            }
+            if (ItemData[AmmoID]) {
+                if (ItemData[AmmoID].RawData === undefined) {
+                    ItemData[AmmoID]['RawData'] = {
+                        Data: {
+                            Damage: Ammo.damage,
+                            ArmorDamage: Ammo.armorDamage,
+                            PenetrationPower: Ammo.penetration
                         }
-                    } else {
-                        ItemData[Translated.ID].RawData._props['Damage'] = Ammo.damage
-                        ItemData[Translated.ID].RawData._props['ArmorDamage'] = Ammo.armorDamage
-                        ItemData[Translated.ID].RawData._props['PenetrationPower'] = Ammo.penetration
                     }
+                } else {
+                    ItemData[AmmoID].RawData._props['Damage'] = Ammo.damage
+                    ItemData[AmmoID].RawData._props['ArmorDamage'] = Ammo.armorDamage
+                    ItemData[AmmoID].RawData._props['PenetrationPower'] = Ammo.penetration
                 }
             }
         }
