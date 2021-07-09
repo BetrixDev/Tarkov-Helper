@@ -42,18 +42,34 @@ class ItemInfo {
 
             if (Types.includes('ammo') && !Types.includes('grenade')) {
                 // Need to add ammo specific traits in here like buckshot pellets
-                return {
-                    Fields: [
-                        { name: 'Damage', value: RawData.Damage, inline: true },
-                        { name: 'Penetration', value: RawData.PenetrationPower, inline: true },
-                        { name: 'Armor Damage', value: `${RawData.ArmorDamage}%`, inline: true },
-                        { name: 'Bullet Velocity', value: `${RawData.InitialSpeed}m/s`, inline: true },
-                        { name: 'Stamina Drain On Hit', value: RawData.StaminaBurnPerDamage, inline: true },
-                        { name: 'Fragmentation Chance', value: `${RawData.FragmentationChance}%`, inline: true },
-                        { name: 'Tracer?', value: RawData.Tracer, inline: true },
-                        { name: 'Light Bleed Chance', value: `${RawData.LightBleedingDelta}%`, inline: true },
-                        { name: 'Heavy Bleed Chance', value: `${RawData.HeavyBleedingDelta}%`, inline: true }
-                    ]
+                if (RawData.buckshotBullets > 1) {
+                    return {
+                        Fields: [
+                            { name: 'Pellets', value: RawData.buckshotBullets, inline: true },
+                            { name: 'Damage', value: `${RawData.buckshotBullets * RawData.Damage} *(${RawData.buckshotBullets}x${RawData.Damage})*`, inline: true },
+                            { name: 'Penetration', value: RawData.PenetrationPower, inline: true },
+                            { name: 'Armor Damage', value: `${RawData.ArmorDamage}%`, inline: true },
+                            { name: 'Bullet Velocity', value: `${RawData.InitialSpeed}m/s`, inline: true },
+                            { name: 'Stamina Drain On Hit', value: RawData.StaminaBurnPerDamage, inline: true },
+                            { name: 'Fragmentation Chance', value: `${RawData.FragmentationChance}%`, inline: true },
+                            { name: 'Light Bleed Chance', value: `${RawData.LightBleedingDelta}%`, inline: true },
+                            { name: 'Heavy Bleed Chance', value: `${RawData.HeavyBleedingDelta}%`, inline: true }
+                        ]
+                    }
+                } else {
+                    return {
+                        Fields: [
+                            { name: 'Damage', value: RawData.Damage, inline: true },
+                            { name: 'Penetration', value: RawData.PenetrationPower, inline: true },
+                            { name: 'Armor Damage', value: `${RawData.ArmorDamage}%`, inline: true },
+                            { name: 'Bullet Velocity', value: `${RawData.InitialSpeed}m/s`, inline: true },
+                            { name: 'Stamina Drain On Hit', value: RawData.StaminaBurnPerDamage, inline: true },
+                            { name: 'Fragmentation Chance', value: `${RawData.FragmentationChance}%`, inline: true },
+                            { name: 'Tracer?', value: RawData.Tracer, inline: true },
+                            { name: 'Light Bleed Chance', value: `${RawData.LightBleedingDelta}%`, inline: true },
+                            { name: 'Heavy Bleed Chance', value: `${RawData.HeavyBleedingDelta}%`, inline: true }
+                        ]
+                    }
                 }
             } else if (Types.includes('armor')) {
                 let Object = {
