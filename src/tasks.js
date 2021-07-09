@@ -123,7 +123,6 @@ const UpdateItems = schedule.scheduleJob('@daily', async function() {
     console.log(`{${GetDate()}}: Updating items`)
 
     const RawGameData = require('./game_data/database/templates/items.json')
-    const NoFoodTranslator = require('./game_data/translator.json')
 
     try {
 
