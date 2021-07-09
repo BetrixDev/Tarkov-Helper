@@ -22,11 +22,9 @@
 **Setup**
 - Download the repository to your project's folder. [**See Here**](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
 
- - Create an account on [sheet.best](https://sheet.best) and add connections using [NoFood's Ammo Charts](https://docs.google.com/spreadsheets/d/1jjWcIue0_PCsbLQAiL5VrIulPK8SzM5jjiCMx9zUuvE/edit#gid=64053005) (Optional but make sure to remove all mentions of *GetAmmoData()* and any relating function)
-
 - Create a new Discord bot and make note of its **Bot Token**
 
- - Add your newly created connection urls to `.env_sample` as well as your Discord bot's token and rename the file to `.env`
+ - Add your Discord bot's token to `.env` under **BOT_TOKEN** variable
 
 - Run the `FirstRun.bat` file or type `npm run first` in the terminal which will download dependencies as well as retrieve necessary game data. The bot should now be running
 - To run the bot at other times, run the `StartBot.bat` file
