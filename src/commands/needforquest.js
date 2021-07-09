@@ -59,6 +59,7 @@ const CommandFunction = (args, obj) => {
             Type: "Error",
             Content: new MessageEmbed()
                 .setTitle('Error')
+                .setThumbnail(Settings.Images.Thumbnails.Search)
                 .setColor(Settings.BotSettings.ErrorColor)
                 .setDescription(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with multiple results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries. \n\n Use the command \`/Confirm\` followed by the number next to the item to complete the search`)
                 .addFields({ name: 'Results', value: Array })

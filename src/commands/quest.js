@@ -63,6 +63,7 @@ const CommandFunction = (args, { interaction }) => {
             Type: "Error",
             Content: new MessageEmbed()
                 .setTitle('Error')
+                .setThumbnail(Settings.Images.Thumbnails.Search)
                 .setColor(Settings.BotSettings.ErrorColor)
                 .setDescription(`Item search of \"${args['questname'].toLowerCase()}\" came back with multiple results, please be more specific. \n\n Use the command \`/Confirm\` followed by the number next to the item to complete the search`)
                 .addFields({ name: 'Results', value: Array })
