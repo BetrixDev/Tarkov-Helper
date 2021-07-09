@@ -187,23 +187,25 @@ const UpdateItems = schedule.scheduleJob('@daily', async function() {
             }
         }
 
-        // Inject updated ammo data
-        for (const Ammo of AmmoData) {
-            if (NoFoodTranslator[Ammo.name] !== undefined) {
-                let Translated = NoFoodTranslator[Ammo.name]
+        if (AmmoData) {
+            // Inject updated ammo data
+            for (const Ammo of AmmoData) {
+                if (NoFoodTranslator[Ammo.name] !== undefined) {
+                    let Translated = NoFoodTranslator[Ammo.name]
 
-                if (ItemData[Translated.ID].RawData === undefined) {
-                    ItemData[Translated.ID]['RawData'] = {
-                        Data: {
-                            Damage: Ammo.damage,
-                            ArmorDamage: Ammo.armorDamage,
-                            PenetrationPower: Ammo.penetration
+                    if (ItemData[Translated.ID].RawData === undefined) {
+                        ItemData[Translated.ID]['RawData'] = {
+                            Data: {
+                                Damage: Ammo.damage,
+                                ArmorDamage: Ammo.armorDamage,
+                                PenetrationPower: Ammo.penetration
+                            }
                         }
+                    } else {
+                        ItemData[Translated.ID].RawData._props['Damage'] = Ammo.damage
+                        ItemData[Translated.ID].RawData._props['ArmorDamage'] = Ammo.armorDamage
+                        ItemData[Translated.ID].RawData._props['PenetrationPower'] = Ammo.penetration
                     }
-                } else {
-                    ItemData[Translated.ID].RawData._props['Damage'] = Ammo.damage
-                    ItemData[Translated.ID].RawData._props['ArmorDamage'] = Ammo.armorDamage
-                    ItemData[Translated.ID].RawData._props['PenetrationPower'] = Ammo.penetration
                 }
             }
         }

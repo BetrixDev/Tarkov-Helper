@@ -22,7 +22,12 @@ const prefixes = [
 ];
 
 // Create an array in your .env file called "SPREDSHEETURLS"
-const URLS = JSON.parse(String(process.env.SPREADSHEETURLS).toString())
+let URLS // = JSON.parse(String(process.env.SPREADSHEETURLS).toString())
+if (process.env.SPREADSHEETURLS !== undefined) {
+    URLS = JSON.parse(String(process.env.SPREADSHEETURLS).toString())
+} else {
+    URLS = false
+}
 
 let tempType = false;
 let typeCache = [];
@@ -83,6 +88,8 @@ const getSheetData = async function getSheetData(url) {
 };
 
 const GetAmmoData = async() => {
+    if (!URLS) { return false }
+
     let response = false;
     for (let i = 0; i < URLS.length; i = i + 1) {
         response = await getSheetData(URLS[i]);
