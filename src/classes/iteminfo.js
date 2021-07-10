@@ -66,8 +66,8 @@ class ItemInfo {
                             { name: 'Stamina Drain On Hit', value: RawData.StaminaBurnPerDamage, inline: true },
                             { name: 'Fragmentation Chance', value: `${RawData.FragmentationChance}%`, inline: true },
                             { name: 'Tracer?', value: RawData.Tracer, inline: true },
-                            { name: 'Light Bleed Chance', value: `${RawData.LightBleedingDelta}%`, inline: true },
-                            { name: 'Heavy Bleed Chance', value: `${RawData.HeavyBleedingDelta}%`, inline: true }
+                            { name: 'Light Bleed Chance', value: `${RawData.LightBleedingDelta * 100}%`, inline: true },
+                            { name: 'Heavy Bleed Chance', value: `${RawData.HeavyBleedingDelta * 100}%`, inline: true }
                         ]
                     }
                 }
