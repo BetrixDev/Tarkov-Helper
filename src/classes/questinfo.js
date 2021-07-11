@@ -14,7 +14,7 @@ class QuestInfo {
         this.Experience = QuestData[quest]['exp']
         this.Giver = QuestData[quest]['giver'].name
         this.Unlocks = QuestData[quest]['unlocks'].map(item => {
-            return ItemFromID[item].ShortName
+            try { return ItemFromID[item].ShortName } catch { return item }
         })
         this.Kappa = QuestData[quest]['Kappa']
     }
