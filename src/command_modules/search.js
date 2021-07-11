@@ -5,10 +5,18 @@ let Searches = new Object(null)
 
 function CreateInput(Inputs, cmd, uid) {
 
-    Searches[uid] = {
-        Command: cmd,
-        Inputs: Inputs,
-        IDs: Inputs.map(item => { return ItemFromName[item].ID })
+    if (cmd === 'quest') {
+        Searches[uid] = {
+            Command: cmd,
+            Inputs: Inputs,
+            IDs: Inputs
+        }
+    } else {
+        Searches[uid] = {
+            Command: cmd,
+            Inputs: Inputs,
+            IDs: Inputs.map(item => { return ItemFromName[item].ID })
+        }
     }
 
     // Create array to send back

@@ -32,28 +32,57 @@ const CommandFunction = (args, { interaction }) => {
     if (Length === 1) {
 
         let QuestStuff = new QuestInfo(Quest[0])
-
-        return {
-            Type: "ServerMessage",
-            Content: new MessageEmbed()
-                .setTitle(QuestStuff.QuestName)
-                .setThumbnail(QuestStuff.QuestImage)
-                .addFields({
-                    name: 'Wiki Link',
-                    value: `[Click Here](${QuestStuff.WikiLink})`,
-                    inline: true
-                }, {
-                    name: 'Experience',
-                    value: QuestStuff.Experience,
-                    inline: true
-                }, {
-                    name: 'Unlocks',
-                    value: (QuestStuff.Unlocks.length > 0 ? QuestStuff.Unlocks : 'None\\'),
-                    inline: true
-                }, {
-                    name: 'Needed For Kappa',
-                    value: QuestStuff.Kappa
-                })
+        if (QuestStuff.QuestName.includes('Gunsmith')) {
+            return {
+                Type: "ServerMessage",
+                Content: new MessageEmbed()
+                    .setTitle(QuestStuff.QuestName)
+                    .setThumbnail(QuestStuff.QuestImage)
+                    .addFields({
+                        name: 'Wiki Link',
+                        value: `[Click Here](${QuestStuff.WikiLink})`,
+                        inline: true
+                    }, {
+                        name: 'Experience',
+                        value: QuestStuff.Experience,
+                        inline: true
+                    }, {
+                        name: 'Unlocks',
+                        value: (QuestStuff.Unlocks.length > 0 ? QuestStuff.Unlocks : 'None'),
+                        inline: true
+                    }, {
+                        name: 'Shopping List',
+                        value: QuestStuff.Gunsmith().ShoppingList,
+                        inline: true
+                    }, {
+                        name: 'Total Cost For Parts',
+                        value: QuestStuff.Gunsmith().Price,
+                        inline: true
+                    })
+            }
+        } else {
+            return {
+                Type: "ServerMessage",
+                Content: new MessageEmbed()
+                    .setTitle(QuestStuff.QuestName)
+                    .setThumbnail(QuestStuff.QuestImage)
+                    .addFields({
+                        name: 'Wiki Link',
+                        value: `[Click Here](${QuestStuff.WikiLink})`,
+                        inline: true
+                    }, {
+                        name: 'Experience',
+                        value: QuestStuff.Experience,
+                        inline: true
+                    }, {
+                        name: 'Unlocks',
+                        value: (QuestStuff.Unlocks.length > 0 ? QuestStuff.Unlocks : 'None'),
+                        inline: true
+                    }, {
+                        name: 'Needed For Kappa',
+                        value: QuestStuff.Kappa
+                    })
+            }
         }
     } else if (Length > 1) {
         let uid = interaction.member.user.id

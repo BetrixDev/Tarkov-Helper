@@ -1,6 +1,10 @@
 const fs = require('fs')
 const QuestData = JSON.parse(fs.readFileSync('./src/game_data/api/quests.json'))
+const GunsmithData = JSON.parse(fs.readFileSync('./src/game_data/gunsmith.json'))
+const PriceData = JSON.parse(fs.readFileSync('./src/game_data/api/pricedata.json'))
+const ItemFromID = JSON.parse(fs.readFileSync('./src/game_data/api/itemfromid.json'))
 const QuestImages = require('../game_data/questimages.json')
+const FormatPrice = require('../command_modules/formatprice')
 
 class QuestInfo {
     constructor(quest) {
@@ -9,8 +13,23 @@ class QuestInfo {
         this.WikiLink = QuestData[quest]['wikiLink']
         this.Experience = QuestData[quest]['exp']
         this.Giver = QuestData[quest]['giver'].name
-        this.Unlocks = QuestData[quest]['unlocks']
+        this.Unlocks = QuestData[quest]['unlocks'].map(item => {
+            return ItemFromID[item].ShortName
+        })
         this.Kappa = QuestData[quest]['Kappa']
+    }
+    Gunsmith() {
+        let Data = GunsmithData[this.QuestName]
+
+        let Price = 0
+        let ShoppingList = Data.shoppingList.map(item => {
+            let ItemPrice = PriceData[item.id].Item.avg24hPrice
+            Price += ItemPrice
+            return `**${ItemFromID[item.id].ShortName}** - ${FormatPrice(ItemPrice)}`
+        })
+
+
+        return { ShoppingList, Price: FormatPrice(Price) }
     }
     Image() {
         try {
