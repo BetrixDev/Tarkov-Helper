@@ -39,7 +39,7 @@ const CommandFunction = async(args, { interaction }) => {
                 Content: new MessageEmbed()
                     .setTitle(`${ItemData.ShortName} Stats`)
                     .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/item_icons/${ItemFromName[Item[0]].ID}.png`)
-                    .setDescription(`${ItemData.Description} \n[Wiki Link To Item](${ItemData.WikiLink})`)
+                    .setDescription(`${ItemData.Description}\n[Wiki Link To Item](${ItemData.WikiLink})`)
                     .setImage(ItemData.SpecificData.Image || '')
                     .addFields(ItemData.SpecificData.Fields)
                     .setFooter(ItemData.SpecificData.Footer || '')
