@@ -1,6 +1,7 @@
 const ColorNamer = require('color-namer')
 const fs = require('fs')
 
+const ItemFromId = JSON.parse(fs.readFileSync('./src/game_data/api/itemfromid.json'))
 const Globals = require('../game_data/database/globals.json')
 const Templates = require('../game_data/database/locales/global/en.json').templates
 
@@ -29,7 +30,7 @@ class ItemInfo {
     }
     GetDescription() {
         if (Templates[this.ItemID] !== undefined) {
-            return Templates[this.ItemID].Description
+            return `*\"${Templates[this.ItemID].Description.substr(0, 150).concat('...')}\"*`
         } else {
             return this.ItemData.Name
         }
@@ -41,7 +42,6 @@ class ItemInfo {
             let Types = this.ItemData.Types
 
             if (Types.includes('ammo') && !Types.includes('grenade')) {
-                // Need to add ammo specific traits in here like buckshot pellets
                 if (RawData.buckshotBullets > 1) {
                     return {
                         Fields: [
@@ -70,6 +70,21 @@ class ItemInfo {
                             { name: 'Heavy Bleed Chance', value: `${RawData.HeavyBleedingDelta * 100}%`, inline: true }
                         ]
                     }
+                }
+            } else if (RawData.CompressorTreshold !== undefined) {
+                return {
+                    Fields: [
+                        { name: 'Distortion', value: RawData.Distortion, inline: true },
+                        { name: 'Compressor Treshold', value: RawData.CompressorTreshold, inline: true },
+                        { name: 'Compressor Attack', value: RawData.CompressorAttack, inline: true },
+                        { name: 'Compressor Release', value: RawData.CompressorRelease, inline: true },
+                        { name: 'Compressor Gain', value: RawData.CompressorGain, inline: true },
+                        { name: 'Cutoff Freq', value: RawData.CutoffFreq, inline: true },
+                        { name: 'Resonance', value: RawData.Resonance, inline: true },
+                        { name: 'Compressor Volume', value: RawData.CompressorVolume, inline: true },
+                        { name: 'Ambient Volume', value: RawData.AmbientVolume, inline: true },
+                        { name: 'Dry Volume', value: RawData.DryVolume, inline: true }
+                    ]
                 }
             } else if (Types.includes('armor')) {
                 let Object = {
@@ -122,30 +137,28 @@ class ItemInfo {
                     Object['Footer'] = 'Night vision image from the wiki'
                 }
                 return Object
-            } else if (RawData.CompressorTreshold !== undefined) {
-                return {
-                    Fields: [
-                        { name: 'Distortion', value: RawData.Distortion, inline: true },
-                        { name: 'Compressor Treshold', value: RawData.CompressorTreshold, inline: true },
-                        { name: 'Compressor Attack', value: RawData.CompressorAttack, inline: true },
-                        { name: 'Compressor Release', value: RawData.CompressorRelease, inline: true },
-                        { name: 'Compressor Gain', value: RawData.CompressorGain, inline: true },
-                        { name: 'Cutoff Freq', value: RawData.CutoffFreq, inline: true },
-                        { name: 'Resonance', value: RawData.Resonance, inline: true },
-                        { name: 'Compressor Volume', value: RawData.CompressorVolume, inline: true },
-                        { name: 'Ambient Volume', value: RawData.AmbientVolume, inline: true },
-                        { name: 'Dry Volume', value: RawData.DryVolume, inline: true }
-                    ]
-                }
             } else if (Types.includes('gun')) {
                 return {
                     Fields: [
                         { name: 'Vertical Recoil', value: RawData.RecoilForceUp, inline: true },
                         { name: 'Horizontal Recoil', value: RawData.RecoilForceBack, inline: true },
-                        { name: 'FireModes', value: RawData.weapFireType, inline: true },
+                        {
+                            name: 'FireModes',
+                            value: RawData.weapFireType.map(mode => {
+                                return mode[0].toUpperCase() + mode.substr(1)
+                            }),
+                            inline: true
+                        },
                         { name: 'FireRate', value: RawData.bFirerate, inline: true },
                         { name: 'Ergonomics', value: RawData.Ergonomics, inline: true },
-                        { name: 'Caliber', value: RawData.ammoCaliber, inline: true }
+                        { name: 'Caliber', value: RawData.ammoCaliber.replace('Caliber', ''), inline: true },
+                        { name: 'Weapon Type', value: RawData.weapClass[0].toUpperCase() + RawData.weapClass.substr(1), inline: true },
+                        {
+                            name: 'Accepted Bullets',
+                            value: RawData.Chambers[0]._props.filters[0].Filter.map(bullet => {
+                                return ItemFromId[bullet].ShortName
+                            }).join(', ')
+                        }
                     ]
                 }
             } else if (Types.includes('backpack')) {
@@ -163,9 +176,8 @@ class ItemInfo {
                         { name: 'Fuse Time', value: RawData.ExplDelay, inline: true },
                         { name: 'Min/Max Explosion Distance', value: `${RawData.MinExplosionDistance}/${RawData.MaxExplosionDistance}m`, inline: true },
                         { name: 'Fragment Count', value: RawData.FragmentsCount, inline: true },
-                        { name: 'Strength', value: RawData.Strength, inline: true },
-                        { name: 'Fragment Damage', value: RawData.FragmentsCount, inline: true }
-                        //{ name: 'Max Damage', value: (RawData.FragmentsCount * RawData.Strength), inline: true, }
+                        { name: 'Fragment Damage', value: RawData.Strength, inline: true },
+                        { name: 'Max Damage', value: (RawData.FragmentsCount * RawData.Strength), inline: true }
                     ]
                 }
                 if (RawData.ContusionDistance !== 0) {
@@ -276,7 +288,8 @@ class ItemInfo {
                     ]
                 }
             }
-        } catch {
+        } catch (e) {
+            console.log(e)
             return {
                 Fields: [
                     { name: 'UNABLE TO GET ITEM DATA', value: 'Please try again at a later date' }
