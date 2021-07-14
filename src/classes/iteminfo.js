@@ -71,7 +71,7 @@ class ItemInfo {
                         ]
                     }
                 }
-            } else if (RawData.CompressorTreshold !== undefined) {
+            } else if (Types.includes('headphones')) {
                 return {
                     Fields: [
                         { name: 'Distortion', value: RawData.Distortion, inline: true },
