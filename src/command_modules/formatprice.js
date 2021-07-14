@@ -1,5 +1,5 @@
 module.exports = (price) => {
-    return new Intl.NumberFormat('ru-RU', {
+    return new Intl.NumberFormat('en-EN', {
         style: 'currency',
         currency: 'RUB',
         maximumSignificantDigits: 6,
