@@ -11,7 +11,7 @@
  
 
 # Adding the Bot to Your Server
-**Click the invite image to add the bot to your server**
+**Click the invite image to add the bot to your server (CURRENTLY UNAVAILABLE DUE TO THE NOT BEING IN DEVELOPMENT)**
 <br>
 [<img src="src/assets/Media/InviteScreen.png">]()
 <br>
