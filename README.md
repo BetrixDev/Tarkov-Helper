@@ -1,4 +1,5 @@
 ![Tarkov Helper Banner](src/assets/Media/SecondBanner3000x1000.png)
+![Commands Banner](src/assets/WikiImages/Commands.png)
 # Description (This Project Is Not Yet Finished)
 **SOME FEATURES ARE NOT COMPLETE**
 
@@ -9,8 +10,14 @@
  - Tarkov Helper is not associated with BattleState Games in any way. Any use of Logos refering to Escape From Tarkov or in-game assets are owned by [BattleState Games](https://www.battlestategames.com)
  
 
-# Adding Bot To Server 
-**(THE BOT IS CURRENTLY IN DEVELOPMENT) COMING VERY SOON**
+# Adding the Bot to Your Server
+**Click the invite image to add the bot to your server**
+<br>
+[<img src="src/assets/Media/InviteScreen.png">]()
+<br>
+**You can also join the Tarkov Helper Discord Server to try out the bot**
+<br>
+[<img src="https://discordapp.com/api/guilds/797601083589001227/widget.png?style=banner2">](https://discord.gg/daTPNWes)
 
 # Building Yourself
 
