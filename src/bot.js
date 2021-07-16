@@ -16,6 +16,26 @@ for (const File of CommandFiles) {
     BotCommands.push(File.split('.')[0])
 }
 
+client.on('guildCreate', async(guild) => {
+    let Embed = new DiscordJS.MessageEmbed()
+        .setTitle(`Thank you for adding Tarkov Helper to ${guild.name}`)
+        .setThumbnail('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/Logo200x200.png')
+        .setImage('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/SecondBanner3000x1000.png')
+        .setDescription(`
+        • Tarkov Helper is a Discord bot that aims to provide information within **Escape from Tarkov** to users of your Discord server in the easiest way possible.
+
+        • Tarkov Helper makes use of Discord's slash command API so don't worry about informing your members of any prefixes or compatibility issues between others bots.
+
+        • A great first step to ensuring Tarkov Helper is as easy to use as possible you can configure it to your liking, start by using \`/admin @ADMIN_ROLE\`.
+
+        • To learn more about how to use Tarkov Helper please head over to the [official wiki](https://github.com/BetrixEdits/Tarkov-Helper/wiki).
+
+        `)
+        .setFooter('This message was sent to your because you or a member with the \"Manage Server\" role added Tarkov Helper to a server you own')
+
+    client.users.fetch(guild.ownerID).then(owner => owner.send(Embed))
+})
+
 let ExcludedDMCommands = [
     'admin',
     'channellock',
