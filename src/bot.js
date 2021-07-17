@@ -57,6 +57,11 @@ client.on('ready', async() => {
             } else {
                 IsAdmin = true
                 uid = interaction.user.id
+
+                if (ExcludedDMCommands.includes(command)) {
+                    Reply(interaction, require('./command_modules/errormessage').ErrorMessage('Cannot use admin commands in a Direct Message channel'), true)
+                    return
+                }
             }
 
             let ChannelLock = GetServerData(interaction.guild_id)['ChannelLock']
@@ -71,10 +76,6 @@ client.on('ready', async() => {
                     const { name, options } = interaction.data
                     const command = name.toLowerCase()
                     const args = {}
-
-                    if (ExcludedDMCommands.includes(command)) {
-                        Reply(interaction, require('./command_modules/errormessage').ErrorMessage('Cannot use admin commands in a Direct Message channel'))
-                    }
 
                     if (options) {
                         for (const option of options) {
