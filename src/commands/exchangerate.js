@@ -95,7 +95,7 @@ function FormatPrice(Currency, Price)  {
     style: 'currency',
     currency: Currency.toUpperCase(),
     maximumSignificantDigits: 6,
-    }).format(Number(Price))
+    }).format(Number(Price)).replace('RUB', '₽').replace(' ', '')
 }
 
 // Command Functions
