@@ -25,7 +25,10 @@ const CommandFunction = (args, obj) => {
             .setDescription(`
             • A Discord bot to make accessing information within Escape From Tarkov easier.
             • Start a command by typing \`/\` in the message box and follow each command's guide
-            • **Current server count: ${obj.serverCount}**`)
+            • If you don't see anything make sure you have slash commands enabled by going to **User Settings > Text & Images**, and enable \"Use slash commands...\"
+            • If you still don't see anything ask the server owner or admins if slash commands are enabled in that specific channel or DM Tarkov Helper to use the commands instead
+
+            **Current server count: ${obj.serverCount}**`)
             .addFields({
                 name: 'Official Wiki',
                 value: '[Click Here](https://github.com/BetrixEdits/Tarkov-Helper/wiki)'
