@@ -90,7 +90,7 @@ client.on('ready', async() => {
                     if (BotCommands.includes(command)) {
                         const guild = client.guilds.resolve(interaction.guild_id) // Needed for admin commands
 
-                        const Message = await require(`./commands/${command}`)['CommandFunction'](args, { interaction, guild })
+                        const Message = await require(`./commands/${command}`)['CommandFunction'](args, { interaction, guild, serverCount: client.guilds.cache.size })
 
                         if (Message.Type === "ServerMessage" || interaction.member === undefined) {
                             Reply(interaction, Message.Content)

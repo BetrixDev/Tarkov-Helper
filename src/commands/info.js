@@ -13,15 +13,19 @@ const CommandSettings = {
 }
 
 // Command Functions
-const CommandFunction = () => {
+const CommandFunction = (args, obj) => {
     let Updated = JSON.parse(require('fs').readFileSync('./src/bot_data/updated.json'))
 
     return {
         Type: "ServerMessage",
         Content: new MessageEmbed()
             .setTitle('Tarkov Helper Information')
-            .setThumbnail('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/Assets/Media/Logo200x200.png')
-            .setDescription('A Discord bot to make accessing information within Escape From Tarkov easier.')
+            .setThumbnail('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/Logo200x200.png')
+            .setImage('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/SlashCommand.png')
+            .setDescription(`
+            • A Discord bot to make accessing information within Escape From Tarkov easier.
+            • Start a command by typing \`/\` in the message box and follow each command's guide
+            • **Current server count: ${obj.serverCount}**`)
             .addFields({
                 name: 'Official Wiki',
                 value: '[Click Here](https://github.com/BetrixEdits/Tarkov-Helper/wiki)'
