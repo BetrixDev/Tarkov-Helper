@@ -17,7 +17,7 @@ const CommandFunction = (args, obj) => {
     let Updated = JSON.parse(require('fs').readFileSync('./src/bot_data/updated.json'))
 
     return {
-        Type: "ServerMessage",
+        Type: "Ephemeral",
         Content: new MessageEmbed()
             .setTitle('Tarkov Helper Information')
             .setThumbnail('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/Logo200x200.png')
