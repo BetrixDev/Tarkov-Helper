@@ -26,6 +26,8 @@ client.on('guildCreate', async(guild) => {
 
         • Tarkov Helper makes use of Discord's slash command API so don't worry about informing your members of any prefixes or compatibility issues between others bots.
 
+        • Use the \`/info\` command to gain more information about Tarkov Helper
+
         • A great first step to ensuring Tarkov Helper is as easy to use as possible you can configure it to your liking, start by using \`/admin @ADMIN_ROLE\`.
 
         • To learn more about how to use Tarkov Helper please head over to the [official wiki](https://github.com/BetrixEdits/Tarkov-Helper/wiki).
