@@ -51,6 +51,18 @@ client.on('ready', async() => {
 
     client.ws.on('INTERACTION_CREATE', async(interaction) => {
         try {
+            // Format arguments into easier and easier to use object
+            const { name, options } = interaction.data
+            const command = name.toLowerCase()
+            const args = {}
+
+            if (options) {
+                for (const option of options) {
+                    const { name, value } = option
+                    args[name] = value
+                }
+            }
+
             let uid
             let IsAdmin // Admins can bypass restrictions
             if (interaction.member !== undefined) {
@@ -73,18 +85,6 @@ client.on('ready', async() => {
                 let LastMessage = GetCooldown(uid)
                 if (LastMessage > Cooldown || IsAdmin) {
                     SetCooldown(uid) // Update Cooldown
-
-                    // Format arguments into easier and easier to use object
-                    const { name, options } = interaction.data
-                    const command = name.toLowerCase()
-                    const args = {}
-
-                    if (options) {
-                        for (const option of options) {
-                            const { name, value } = option
-                            args[name] = value
-                        }
-                    }
 
                     // If command exists locally
                     if (BotCommands.includes(command)) {
