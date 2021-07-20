@@ -1,4 +1,4 @@
-const { GetServerData, SetServerData } = require('../command_modules/serverdata')
+const { SetServerData } = require('../database')
 const { ErrorMessage } = require('../command_modules/errormessage')
 
 // Command Config
@@ -18,13 +18,13 @@ const CommandSettings = {
 }
 
 // Command Functions
-const CommandFunction = (args, { interaction }) => {
+const CommandFunction = (args, { interaction, serverData }) => {
     try {
-        if (GetServerData(interaction.guild_id)['AdminRole'] !== 0) {
-            if (interaction.member.roles.includes(GetServerData(interaction.guild_id)['AdminRole'])) {
+        if (serverData['AdminRole'] !== "") {
+            if (interaction.member.roles.includes(serverData['AdminRole'])) {
                 let Time = args['time']
                 if (Time > 0 && Time < 61) {
-                    SetServerData(interaction.guild_id, 'Cooldown', Time)
+                    SetServerData(interaction.guild_id, 'Cooldown', Number(Time))
 
                     return { Type: "Ephemeral", Content: `Changed Cooldown time to: ${Time}` }
                 } else {
