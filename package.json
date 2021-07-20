@@ -21,6 +21,7 @@
         "download-git-repo": "^1.1.0",
         "express": "^4.17.1",
         "got": "^11.8.2",
+        "mongoose": "^5.13.3",
         "node-schedule": "^2.0.0"
     },
     "engines": {

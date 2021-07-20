@@ -1,4 +1,4 @@
-const { GetServerData, SetServerData } = require('../command_modules/serverdata')
+const { SetServerData } = require('../database')
 const { ErrorMessage } = require('../command_modules/errormessage')
 
 // Command Config
@@ -13,11 +13,11 @@ const CommandSettings = {
 }
 
 // Command Functions
-const CommandFunction = (args, { interaction }) => {
+const CommandFunction = (args, { interaction, serverData }) => {
     try {
-        if (GetServerData(interaction.guild_id)['AdminRole'] !== 0) {
-            if (interaction.member.roles.includes(GetServerData(interaction.guild_id)['AdminRole'])) {
-                SetServerData(interaction.guild_id, 'ChannelLock', 0)
+        if (serverData['AdminRole'] !== 0) {
+            if (interaction.member.roles.includes(serverData['AdminRole'])) {
+                SetServerData(interaction.guild_id, 'ChannelLock', "")
                 return { Type: "Ephemeral", Content: 'Reset channel lock' }
             } else {
                 return { Type: "Error", Content: ErrorMessage('Insufficient permission'), Time: 2000 }
