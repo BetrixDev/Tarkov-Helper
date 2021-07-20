@@ -15,14 +15,14 @@ const CommandSettings = {
 }
 
 const fs = require('fs')
-const { GetServerData, SetServerData } = require('../command_modules/serverdata')
+const { SetServerData } = require('../database')
 const { ErrorMessage } = require('../command_modules/errormessage')
 
 // Command Functions
-const CommandFunction = (args, { interaction }) => {
+const CommandFunction = (args, { interaction, serverData }) => {
     try {
-        if (GetServerData(interaction.guild_id)['AdminRole'] !== 0) {
-            if (interaction.member.roles.includes(GetServerData(interaction.guild_id)['AdminRole'])) {
+        if (serverData['AdminRole'] !== 0) {
+            if (interaction.member.roles.includes(serverData['AdminRole'])) {
                 let Channel = args['channel']
 
                 SetServerData(interaction.guild_id, 'ChannelLock', Channel)

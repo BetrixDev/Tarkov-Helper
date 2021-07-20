@@ -1,4 +1,4 @@
-const { SetServerData } = require('../command_modules/serverdata')
+const { SetServerData } = require('../database')
 const { ErrorMessage } = require('../command_modules/errormessage')
 
 // Command Config

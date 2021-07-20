@@ -1,7 +1,7 @@
 let Start = new Date();
 
 const { GetCooldown, SetCooldown } = require('./scripts/cooldown')
-const { GetServerData } = require('./command_modules/serverdata')
+const { GetServerData } = require('./database')
 const DiscordJS = require('discord.js')
 
 const fs = require('fs')
@@ -51,6 +51,8 @@ client.on('ready', async() => {
 
     client.ws.on('INTERACTION_CREATE', async(interaction) => {
         try {
+            let ServerData = await GetServerData(interaction.guild_id)
+
             // Format arguments into easier and easier to use object
             const { name, options } = interaction.data
             const command = name.toLowerCase()
@@ -67,7 +69,7 @@ client.on('ready', async() => {
             let IsAdmin // Admins can bypass restrictions
             if (interaction.member !== undefined) {
                 uid = interaction.member.user.id
-                IsAdmin = interaction.member.roles.includes(GetServerData(interaction.guild_id)['AdminRole'])
+                IsAdmin = interaction.member.roles.includes(ServerData['AdminRole'])
             } else {
                 IsAdmin = true
                 uid = interaction.user.id
@@ -78,10 +80,10 @@ client.on('ready', async() => {
                 }
             }
 
-            let ChannelLock = GetServerData(interaction.guild_id)['ChannelLock']
+            let ChannelLock = ServerData['ChannelLock']
             if (ChannelLock === interaction.channel_id || ChannelLock === "" || IsAdmin) {
 
-                let Cooldown = GetServerData(interaction.guild_id)['Cooldown']
+                let Cooldown = ServerData['Cooldown']
                 let LastMessage = GetCooldown(uid)
                 if (LastMessage > Cooldown || IsAdmin) {
                     SetCooldown(uid) // Update Cooldown
@@ -90,7 +92,7 @@ client.on('ready', async() => {
                     if (BotCommands.includes(command)) {
                         const guild = client.guilds.resolve(interaction.guild_id) // Needed for admin commands
 
-                        const Message = await require(`./commands/${command}`)['CommandFunction'](args, { interaction, guild, serverCount: client.guilds.cache.size })
+                        const Message = await require(`./commands/${command}`)['CommandFunction'](args, { interaction, guild, serverCount: client.guilds.cache.size, serverData: ServerData })
 
                         if (Message.Type === "ServerMessage" || interaction.member === undefined) {
                             Reply(interaction, Message.Content)
