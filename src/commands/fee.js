@@ -57,10 +57,10 @@ const CommandFunction = (args, { interaction }) => {
                         value: FormatPrice(Math.round(CalcFee(PriceData.PriceData.basePrice, Price, Amount)))
                     }, {
                         name: 'Flea Market Price',
-                        value: FormatPrice(args['price'] || PriceData.PriceData.avg24hPrice) + '/each'
+                        value: FormatPrice(Price) + '/each'
                     }, {
                         name: 'Profit',
-                        value: FormatPrice(((args['price'] || PriceData.PriceData.avg24hPrice * Amount) - Math.round(CalcFee(PriceData.PriceData.basePrice, Price, Amount))))
+                        value: FormatPrice(((Price * Amount) - Math.round(CalcFee(PriceData.PriceData.basePrice, Price, Amount))))
                     })
             }
         } else {
