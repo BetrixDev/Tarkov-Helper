@@ -381,10 +381,6 @@ const StartTasks = async() => {
     } catch {}
 
     // Run updates at startup
-    UpdatePrices.invoke()
-    UpdateItems.invoke()
-    UpdateQuests.invoke()
-    UpdateBarters.invoke()
 
     // Start the intervalled updates
     UpdateDatabase.schedule()
