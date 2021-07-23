@@ -1,7 +1,6 @@
 ![Tarkov Helper Banner](src/assets/Media/SecondBanner3000x1000.png)
 ![Commands Banner](src/assets/WikiImages/Commands.png)
-# Description (This Project Is Not Yet Finished)
-**SOME FEATURES ARE NOT COMPLETE**
+# Description
 
 **Tarkov Helper** is a fully featured Discord bot aimed at giving access to information in Escape From Tarkov in the easiest way
 
@@ -11,9 +10,9 @@
  
 
 # Adding the Bot to Your Server
-**Click the invite image to add the bot to your server (CURRENTLY UNAVAILABLE DUE TO THE NOT BEING IN DEVELOPMENT)**
+**Click the invite image to add the bot to your server**
 <br>
-[<img src="src/assets/Media/InviteScreen.png">]()
+[<img src="src/assets/Media/InviteScreen.png">](https://top.gg/bot/797600238449590334/invite/)
 <br>
 **You can also join the Tarkov Helper Discord Server to try out the bot**
 <br>
