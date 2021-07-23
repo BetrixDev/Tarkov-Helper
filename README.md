@@ -1,3 +1,4 @@
+[![Discord Bots](https://top.gg/api/widget/status/797600238449590334.svg)](https://top.gg/bot/797600238449590334) [![Discord Bots](https://top.gg/api/widget/servers/797600238449590334.svg)](https://top.gg/bot/797600238449590334)
 ![Tarkov Helper Banner](src/assets/Media/SecondBanner3000x1000.png)
 ![Commands Banner](src/assets/WikiImages/Commands.png)
 # Description
