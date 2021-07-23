@@ -19,17 +19,17 @@
 
         setTimeout(async() => {
             require('../tasks').InvokeDatabase().then(() => {
+                require('../tasks').StartTasks()
 
-                require('../init').InitData().then(() => {
-                    require('../tasks').StartTasks()
-
-                    setTimeout(() => {
-                        console.log('\nStarting Bot')
-                        console.log('-------------------\n')
-                        require('../main')
-                    }, 5000)
-                })
+                setTimeout(() => {
+                    console.log('\nStarting Bot')
+                    console.log('-------------------\n')
+                    require('../main')
+                }, 5000)
             })
+
+
         }, 7500)
+
     })
 })()
