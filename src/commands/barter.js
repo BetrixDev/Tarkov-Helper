@@ -13,7 +13,7 @@ const CommandSettings = {
     CommandData: {
         data: {
             name: 'barter',
-            description: 'Returns price info of a specified item',
+            description: 'Calculates the price and profit of a specified barter',
             options: [{
                 name: 'item',
                 description: 'What item to get the price of',
