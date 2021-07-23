@@ -34,7 +34,10 @@ const CommandFunction = (args, obj) => {
                 value: '[Click Here](https://github.com/BetrixEdits/Tarkov-Helper/wiki)'
             }, {
                 name: 'Add Tarkov Helper to Your Sever',
-                value: 'LINK SOON'
+                value: '[Click Here](https://top.gg/bot/797600238449590334/invite/)'
+            }, {
+                name: 'Visit Tarkov Helper on top.gg',
+                value: '[Click Here](https://top.gg/bot/797600238449590334)'
             }, {
                 name: 'Data Last Updated',
                 value: [

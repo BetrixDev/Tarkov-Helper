@@ -1,5 +1,6 @@
 let Start = new Date();
 
+const { AutoPoster } = require('topgg-autoposter')
 const { GetCooldown, SetCooldown } = require('./scripts/cooldown')
 const { GetServerData } = require('./database')
 const DiscordJS = require('discord.js')
@@ -15,6 +16,13 @@ const CommandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWi
 for (const File of CommandFiles) {
     BotCommands.push(File.split('.')[0])
 }
+
+
+const poster = AutoPoster(process.env['TOPGG_TOKEN'], client)
+
+poster.on('posted', (stats) => {
+    console.log(`Posted stats to Top.gg | ${stats.serverCount} servers`)
+})
 
 client.on('guildCreate', async(guild) => {
     let Embed = new DiscordJS.MessageEmbed()
