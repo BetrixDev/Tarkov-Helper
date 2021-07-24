@@ -12,7 +12,6 @@ class QuestInfo {
         this.QuestImage = this.Image()
         this.WikiLink = QuestData[quest]['wikiLink']
         this.Experience = QuestData[quest]['exp']
-        this.Giver = QuestData[quest]['giver'].name
         this.Unlocks = QuestData[quest]['unlocks'].map(item => {
             try { return ItemFromID[item].ShortName } catch { return item }
         })

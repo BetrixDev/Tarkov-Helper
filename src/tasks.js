@@ -243,12 +243,6 @@ const UpdateQuests = schedule.scheduleJob('@daily', async function() {
                     title
                     wikiLink
                     exp
-                    giver {
-                        name
-                    }
-                    turnin {
-                        name
-                    }
                     unlocks
                 }
             }`
