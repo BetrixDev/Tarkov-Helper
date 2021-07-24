@@ -37,7 +37,22 @@ const CommandFunction = (args, { interaction }) => {
     if (Length === 1) {
         let PriceData = new PriceInfo(ItemFromName[Item[0]].ID)
 
-        if (PriceData !== 'ERROR') {
+        if (PriceData.PriceData.avg24hPrice === 0) {
+            return {
+                Type: "ServerMessage",
+                Content: new MessageEmbed()
+                    .setTitle(`${PriceData.PriceData.shortName} Price Data`)
+                    .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/item_icons/${PriceData.PriceData.id}.png`)
+                    .setDescription(`[Wiki Link To Item](${PriceData.PriceData.wikiLink}) \n **This item has no offers on the Flea Market**`)
+                    .addFields({
+                        name: 'Highest Trader Sell',
+                        value: `${PriceData.HighestTraderBuy[1]} at ${FormatPrice(PriceData.HighestTraderBuy[0])}/each`
+                    }, {
+                        name: 'Best Place To Sell',
+                        value: `${PriceData.RecommendedSell}`
+                    })
+            }
+        } else {
             return {
                 Type: "ServerMessage",
                 Content: new MessageEmbed()
@@ -70,9 +85,8 @@ const CommandFunction = (args, { interaction }) => {
                         value: `${PriceData.BestBuy()[1]} at ${FormatPrice(PriceData.BestBuy()[0])}/each`
                     })
             }
-        } else {
-            return { Type: "Error", Content: ErrorMessage('Unable to grab price data please try again later'), Time: 5000 }
         }
+
     } else if (Length > 1 && Length < 25) {
         let uid = interaction.member.user.id
         let Array = require('../command_modules/search').CreateInput(Item, 'price', uid)
