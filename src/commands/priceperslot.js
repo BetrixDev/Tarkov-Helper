@@ -1,10 +1,7 @@
-const fs = require('fs')
-
-let PriceData = JSON.parse(fs.readFileSync('./src/game_data/api/pricedata.json'))
-
-const { ErrorMessage } = require('../command_modules/errormessage')
-const FormatPrice = require('../command_modules/formatprice')
+require('../utils')
 const { MessageEmbed } = require('discord.js')
+
+let PriceData = ReadJson('./src/game_data/api/pricedata.json')
 
 // Command Config
 const CommandSettings = {

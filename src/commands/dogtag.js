@@ -1,7 +1,5 @@
-const fs = require('fs')
-let MaxLevel = JSON.parse(fs.readFileSync('./src/game_data/database/globals.json')).config.exp.level.exp_table.length
-const { ErrorMessage } = require('../command_modules/errormessage')
-const FormatPrice = require('../command_modules/formatprice')
+require('../utils')
+let MaxLevel = ReadJson('./src/game_data/database/globals.json').config.exp.level.exp_table.length
 const { MessageEmbed } = require('discord.js')
 
 // Command Config
@@ -33,6 +31,7 @@ const CommandFunction = (args) => {
         return {
             Type: "ServerMessage",
             Content: new MessageEmbed()
+                .setColor(Settings.BotSettings.Color)
                 .setTitle('Dogtag Price')
                 .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/item_icons/59f32c3b86f77472a31742f0.png`)
                 .addFields({

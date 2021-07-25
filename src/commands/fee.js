@@ -1,11 +1,8 @@
-const fs = require('fs')
+require('../utils')
 const { MessageEmbed } = require('discord.js')
 const { PriceInfo } = require('../classes/priceinfo')
-const ItemFromName = JSON.parse(fs.readFileSync('./src/game_data/api/itemfromname.json'))
-const FormatPrice = require('../command_modules/formatprice')
-const Settings = require('../settings.json')
+const ItemFromName = ReadJson('./src/game_data/api/itemfromname.json')
 const { ItemSearchEngine } = require('../command_modules/itemsearchengine')
-const { ErrorMessage } = require('../command_modules/errormessage')
 
 // Command Config
 const CommandSettings = {
@@ -49,6 +46,7 @@ const CommandFunction = (args, { interaction }) => {
             return {
                 Type: "ServerMessage",
                 Content: new MessageEmbed()
+                    .setColor(Settings.BotSettings.Color)
                     .setTitle(`${PriceData.PriceData.shortName} Fee Calculation`)
                     .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/item_icons/${PriceData.PriceData.id}.png`)
                     .setDescription(`Fee and Profit are being calculated using a total sell of ${Amount} items \n [Wiki Link To Item](${PriceData.PriceData.wikiLink})`)
@@ -74,7 +72,7 @@ const CommandFunction = (args, { interaction }) => {
             Content: new MessageEmbed()
                 .setTitle('Error')
                 .setThumbnail(Settings.Images.Thumbnails.Search)
-                .setColor(Settings.BotSettings.ErrorColor)
+                .setColor(Settings.BotSettings['Alt-Color'])
                 .setDescription(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with multiple results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries. \n\n Use the command \`/Confirm\` followed by the number next to the item to complete the search`)
                 .addFields({ name: 'Results', value: Array })
         }

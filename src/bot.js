@@ -1,3 +1,4 @@
+require('./utils')
 let Start = new Date();
 
 const { AutoPoster } = require('topgg-autoposter')
@@ -23,6 +24,7 @@ const poster = AutoPoster(process.env['TOPGG_TOKEN'], client)
 poster.on('posted', (stats) => {
     console.log(`Posted stats to Top.gg | ${stats.serverCount} servers`)
 })
+
 
 client.on('guildCreate', async(guild) => {
     let Embed = new DiscordJS.MessageEmbed()
@@ -83,7 +85,7 @@ client.on('ready', async() => {
                 uid = interaction.user.id
 
                 if (ExcludedDMCommands.includes(command)) {
-                    Reply(interaction, require('./command_modules/errormessage').ErrorMessage('Cannot use admin commands in a Direct Message channel'), true)
+                    Reply(interaction, ErrorMessage('Cannot use admin commands in a Direct Message channel'), true)
                     return
                 }
             }

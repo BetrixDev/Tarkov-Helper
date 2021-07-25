@@ -1,5 +1,5 @@
+require('../utils')
 const { SetServerData } = require('../database')
-const { ErrorMessage } = require('../command_modules/errormessage')
 
 // Command Config
 const CommandSettings = {

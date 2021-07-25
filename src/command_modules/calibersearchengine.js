@@ -1,7 +1,7 @@
+require('../utils')
 const AccurateSearch = require('accurate-search')
-const fs = require('fs')
 
-const ItemData = JSON.parse(fs.readFileSync('./src/game_data/api/itemdata.json'))
+const ItemData = ReadJson('./src/game_data/api/itemdata.json')
 
 let SearchEngine = new AccurateSearch()
 

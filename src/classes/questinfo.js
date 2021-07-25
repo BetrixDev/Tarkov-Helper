@@ -1,10 +1,9 @@
-const fs = require('fs')
-const QuestData = JSON.parse(fs.readFileSync('./src/game_data/api/quests.json'))
-const GunsmithData = JSON.parse(fs.readFileSync('./src/game_data/gunsmith.json'))
-const PriceData = JSON.parse(fs.readFileSync('./src/game_data/api/pricedata.json'))
-const ItemFromID = JSON.parse(fs.readFileSync('./src/game_data/api/itemfromid.json'))
+require('../utils')
+const QuestData = ReadJson('./src/game_data/api/quests.json')
+const GunsmithData = ReadJson('./src/game_data/gunsmith.json')
+const PriceData = ReadJson('./src/game_data/api/pricedata.json')
+const ItemFromID = ReadJson('./src/game_data/api/itemfromid.json')
 const QuestImages = require('../game_data/questimages.json')
-const FormatPrice = require('../command_modules/formatprice')
 
 class QuestInfo {
     constructor(quest) {
@@ -12,7 +11,6 @@ class QuestInfo {
         this.QuestImage = this.Image()
         this.WikiLink = QuestData[quest]['wikiLink']
         this.Experience = QuestData[quest]['exp']
-        this.Giver = QuestData[quest]['giver'].name
         this.Unlocks = QuestData[quest]['unlocks'].map(item => {
             try { return ItemFromID[item].ShortName } catch { return item }
         })

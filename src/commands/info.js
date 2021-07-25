@@ -14,7 +14,7 @@ const CommandSettings = {
 
 // Command Functions
 const CommandFunction = (args, obj) => {
-    let Updated = JSON.parse(require('fs').readFileSync('./src/bot_data/updated.json'))
+    let Updated = ReadJson('./src/bot_data/updated.json')
 
     return {
         Type: "Ephemeral",

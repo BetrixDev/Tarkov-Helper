@@ -1,10 +1,8 @@
-const fs = require('fs')
+require('../utils')
 const { MessageEmbed } = require('discord.js')
-const ItemFromName = JSON.parse(fs.readFileSync('./src/game_data/api/itemfromname.json'))
-const ItemData = JSON.parse(fs.readFileSync('./src/game_data/api/itemdata.json'))
-const Settings = require('../settings.json')
+const ItemFromName = ReadJson('./src/game_data/api/itemfromname.json')
+const ItemData = ReadJson('./src/game_data/api/itemdata.json')
 const { ItemSearchEngine } = require('../command_modules/itemsearchengine')
-const { ErrorMessage } = require('../command_modules/errormessage')
 
 // Command Config
 const CommandSettings = {
@@ -34,6 +32,7 @@ const CommandFunction = (args, obj) => {
         return {
             Type: "ServerMessage",
             Content: new MessageEmbed()
+                .setColor(Settings.BotSettings.Color)
                 .setTitle(`Quest Dependencies for ${ItemFromName[Item].ShortName}`)
                 .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/item_icons/${ItemFromName[Item].ID}.png`)
                 .setDescription(`[Wiki Link](${ItemData[ItemFromName[Item].ID].WikiLink}) to item\n\n${ItemFromName[Item].ShortName} is needed in the following quests:\n${Amounts.UsedQuests}`)
@@ -60,7 +59,7 @@ const CommandFunction = (args, obj) => {
             Content: new MessageEmbed()
                 .setTitle('Error')
                 .setThumbnail(Settings.Images.Thumbnails.Search)
-                .setColor(Settings.BotSettings.ErrorColor)
+                .setColor(Settings.BotSettings['Alt-Color'])
                 .setDescription(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with multiple results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries. \n\n Use the command \`/Confirm\` followed by the number next to the item to complete the search`)
                 .addFields({ name: 'Results', value: Array })
         }
@@ -72,7 +71,7 @@ const CommandFunction = (args, obj) => {
 }
 
 function QuestItems(item) {
-    let QuestData = JSON.parse(fs.readFileSync('./src/game_data/api/quests.json'))
+    let QuestData = ReadJson('./src/game_data/api/quests.json')
 
     let UsedQuests = new Array()
     let FindInRaid = 0

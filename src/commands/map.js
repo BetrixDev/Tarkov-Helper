@@ -1,7 +1,5 @@
-const fs = require('fs')
 const { MessageEmbed } = require('discord.js')
 const PossibleMaps = require('../game_data/maps.json')
-const { ErrorMessageField } = require('../command_modules/errormessage')
 
 function GetMaps() {
     let Result = new Array()
@@ -43,6 +41,7 @@ const CommandFunction = (args) => {
     return {
         Type: "ServerMessage",
         Content: new MessageEmbed()
+            .setColor(Settings.BotSettings.Color)
             .setTitle(`${CapitalizeName(Map)}`)
             .setDescription(MapData.Description)
             .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/map_icons/${Map.replace(' ', '%20')}.png`)

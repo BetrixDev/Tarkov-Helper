@@ -1,3 +1,4 @@
+require('./utils')
 let decompress = require('decompress')
 let download = require('download')
 const schedule = require('node-schedule')
@@ -106,7 +107,7 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
 
         fs.writeFileSync('./src/game_data/api/pricedata.json', JSON.stringify(NewPrices, null, 4))
 
-        let Updated = JSON.parse(fs.readFileSync('./src/bot_data/updated.json'))
+        let Updated = ReadJson('./src/bot_data/updated.json')
         Updated.Prices = GetDate()
         fs.writeFileSync('./src/bot_data/updated.json', JSON.stringify(Updated, null, 4))
 
@@ -213,7 +214,7 @@ const UpdateItems = schedule.scheduleJob('@daily', async function() {
         fs.writeFileSync('./src/game_data/api/itemarray.json', JSON.stringify(ItemArray, null, 4))
         fs.writeFileSync('./src/game_data/api/itemids.json', JSON.stringify(ItemIDs, null, 4))
 
-        let Updated = JSON.parse(fs.readFileSync('./src/bot_data/updated.json'))
+        let Updated = ReadJson('./src/bot_data/updated.json')
         Updated.Other = GetDate()
         fs.writeFileSync('./src/bot_data/updated.json', JSON.stringify(Updated, null, 4))
 
