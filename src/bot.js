@@ -3,7 +3,7 @@ let Start = new Date();
 
 const { AutoPoster } = require('topgg-autoposter')
 const { GetCooldown, SetCooldown } = require('./scripts/cooldown')
-const { GetServerData } = require('./database')
+const { GetServerData, IncreaseCommands } = require('./database')
 const DiscordJS = require('discord.js')
 
 const fs = require('fs')
@@ -112,10 +112,7 @@ client.on('ready', async() => {
 
                         }
 
-                        // Reaction Handler
-                        let ReactionData = require(`./commands/${command}`)['CommandSettings'].ReactionData
-                        if (ReactionData !== undefined && Message.Type !== "Error") { // Don't collect reactions on an error message
-                        }
+                        IncreaseCommands(command)
                     }
 
                 } else { // Message user that they are on cooldown
