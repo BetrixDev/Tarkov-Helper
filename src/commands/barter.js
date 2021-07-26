@@ -1,11 +1,7 @@
-const fs = require('fs')
-
-const FormatPrice = require('../command_modules/formatprice')
+require('../utils')
 const { BarterInfo } = require('../classes/barterinfo')
-const ItemFromName = JSON.parse(fs.readFileSync('./src/game_data/api/itemfromname.json'))
-const { ErrorMessage } = require('../command_modules/errormessage')
+const ItemFromName = ReadJson('./src/game_data/api/itemfromname.json')
 const { ItemSearchEngine } = require('../command_modules/itemsearchengine')
-const Settings = require('../settings.json')
 const { MessageEmbed } = require('discord.js')
 
 // Command Config
@@ -27,7 +23,7 @@ const CommandSettings = {
 
 // Command Functions
 const CommandFunction = (args, obj) => {
-    let BarterData = JSON.parse(require('fs').readFileSync('./src/game_data/api/barters.json'))
+    let BarterData = ReadJson('./src/game_data/api/barters.json')
 
     if (args['item'].length < 2 || args['item'].length > 100) {
         return { Type: "Error", Content: ErrorMessage('Please keep the item input length between 3 and 100 characters') }
@@ -69,6 +65,7 @@ const CommandFunction = (args, obj) => {
         return {
             Type: "ServerMessage",
             Content: new MessageEmbed()
+                .setColor(Settings.BotSettings.Color)
                 .setTitle(`${Barter.Reward.ShortName} Barter`)
                 .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/item_icons/${Barter.Reward.ID}.png`)
                 .setDescription(`[Wiki Link To Item](${Barter.Reward.WikiLink}) \n\n **${Barter.Trader.replace('LL', 'Loyalty Level ')}** is required for this barter\n\u200B`)
@@ -108,7 +105,7 @@ const CommandFunction = (args, obj) => {
             Content: new MessageEmbed()
                 .setTitle('Error')
                 .setThumbnail(Settings.Images.Thumbnails.Search)
-                .setColor(Settings.BotSettings.ErrorColor)
+                .setColor(Settings.BotSettings['Alt-Color'])
                 .setDescription(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with multiple results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries. \n\n Use the command \`/Confirm\` followed by the number next to the item to complete the search`)
                 .addFields({ name: 'Results', value: Array })
         }

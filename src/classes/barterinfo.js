@@ -1,8 +1,8 @@
-const FormatPrice = require('../command_modules/formatprice')
+require('../utils')
 
 class BarterInfo {
     constructor(Barter) {
-        this.PriceData = JSON.parse(require('fs').readFileSync('./src/game_data/api/pricedata.json'))
+        this.PriceData = ReadJson('./src/game_data/api/pricedata.json')
         this.Barter = Barter
     }
     FormattedIngredients() {

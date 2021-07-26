@@ -15,13 +15,12 @@ const CommandSettings = {
     DMCommand: true
 }
 
+require('../utils')
 const fs = require('fs')
-const { ErrorMessage } = require('../command_modules/errormessage')
 const { ItemSearchEngine } = require('../command_modules/itemsearchengine')
-const ItemFromName = JSON.parse(fs.readFileSync('./src/game_data/api/itemfromname.json'))
+const ItemFromName = ReadJson('./src/game_data/api/itemfromname.json')
 const { ItemInfo } = require('../classes/iteminfo')
 const { MessageEmbed } = require('discord.js')
-const Settings = require('../settings.json')
 
 // Command Functions
 const CommandFunction = async(args, { interaction }) => {
@@ -37,6 +36,7 @@ const CommandFunction = async(args, { interaction }) => {
             return {
                 Type: "ServerMessage",
                 Content: new MessageEmbed()
+                    .setColor(Settings.BotSettings.Color)
                     .setTitle(`${ItemData.ShortName} Stats`)
                     .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/item_icons/${ItemFromName[Item[0]].ID}.png`)
                     .setDescription(`${ItemData.Description}\n[Wiki Link To Item](${ItemData.WikiLink})`)
@@ -55,7 +55,7 @@ const CommandFunction = async(args, { interaction }) => {
             Content: new MessageEmbed()
                 .setTitle('Error')
                 .setThumbnail(Settings.Images.Thumbnails.Search)
-                .setColor(Settings.BotSettings.ErrorColor)
+                .setColor(Settings.BotSettings['Alt-Color'])
                 .setDescription(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with multiple results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries. \n\n Use the command \`/Confirm\` followed by the number next to the item to complete the search`)
                 .addFields({ name: 'Results', value: Array })
         }

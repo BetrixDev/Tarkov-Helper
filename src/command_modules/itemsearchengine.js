@@ -1,9 +1,8 @@
-const fs = require('fs')
+require('../utils')
 const AccurateSearch = require('accurate-search')
 
-const ItemID = JSON.parse(fs.readFileSync('./src/game_data/api/itemfromid.json'))
-const ItemName = JSON.parse(fs.readFileSync('./src/game_data/api/itemarray.json'))
-const ItemShortName = JSON.parse(fs.readFileSync('./src/game_data/api/itemfromshortname.json'))
+const ItemID = ReadJson('./src/game_data/api/itemfromid.json')
+const ItemShortName = ReadJson('./src/game_data/api/itemfromshortname.json')
 
 let SearchEngine = new AccurateSearch()
 let ShortSearchEngine = new AccurateSearch()

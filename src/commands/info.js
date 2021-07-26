@@ -1,3 +1,4 @@
+require('../utils')
 const { MessageEmbed } = require('discord.js')
 
 // Command Config
@@ -14,14 +15,14 @@ const CommandSettings = {
 
 // Command Functions
 const CommandFunction = (args, obj) => {
-    let Updated = JSON.parse(require('fs').readFileSync('./src/bot_data/updated.json'))
+    let Updated = ReadJson('./src/bot_data/updated.json')
 
     return {
         Type: "Ephemeral",
         Content: new MessageEmbed()
             .setTitle('Tarkov Helper Information')
-            .setThumbnail('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/Logo200x200.png')
-            .setImage('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/SlashCommand.png')
+            .setThumbnail(Settings.Images.Logo250)
+            .setImage(Settings.Images.SlashBanner)
             .setDescription(`
             • A Discord bot to make accessing information within Escape From Tarkov easier.
             • Start a command by typing \`/\` in the message box and follow each command's guide

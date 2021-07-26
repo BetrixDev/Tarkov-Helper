@@ -1,11 +1,9 @@
-const fs = require('fs')
+require('../utils')
 
-let SpawnChances = JSON.parse(fs.readFileSync('./src/game_data/spawnchances.json'))
-const { ErrorMessage } = require('../command_modules/errormessage')
+let SpawnChances = ReadJson('./src/game_data/spawnchances.json')
 const { ItemSearchEngine } = require('../command_modules/itemsearchengine')
-const ItemFromName = JSON.parse(fs.readFileSync('./src/game_data/api/itemfromname.json'))
-const ItemData = JSON.parse(fs.readFileSync('./src/game_data/api/itemdata.json'))
-const Settings = require('../settings.json')
+const ItemFromName = ReadJson('./src/game_data/api/itemfromname.json')
+const ItemData = ReadJson('./src/game_data/api/itemdata.json')
 const { MessageEmbed } = require('discord.js')
 
 // Command Config
@@ -61,9 +59,10 @@ const CommandFunction = (args, { interaction }) => {
             return {
                 Type: "ServerMessage",
                 Content: new MessageEmbed()
+                    .setColor(Settings.BotSettings.Color)
                     .setTitle(`Spawn Percentages for: ${Item[0]}`)
                     .setDescription(`Listed below are all the possible containers that can spawn a **${ItemData[ItemID].ShortName}** and their spawn chances \n\n[Wiki Link to item](${ItemData[ItemID].WikiLink})`)
-                    .setThumbnail('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/SpawnChance200x200.png')
+                    .setThumbnail(Settings.Images.Thumbnails.SpawnChance)
                     .addFields({
                         name: 'Container',
                         value: Names,
@@ -83,7 +82,7 @@ const CommandFunction = (args, { interaction }) => {
             Content: new MessageEmbed()
                 .setTitle('Error')
                 .setThumbnail(Settings.Images.Thumbnails.Search)
-                .setColor(Settings.BotSettings.ErrorColor)
+                .setColor(Settings.BotSettings['Alt-Color'])
                 .setDescription(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with multiple results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries. \n\n Use the command \`/Confirm\` followed by the number next to the item to complete the search`)
                 .addFields({ name: 'Results', value: Array })
         }

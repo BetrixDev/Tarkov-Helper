@@ -1,6 +1,5 @@
+require('../utils')
 const { MessageEmbed } = require('discord.js')
-const Settings = require('../settings.json')
-const FormatPrice = require('../command_modules/formatprice')
 const { BitcoinFarmCalc } = require('../classes/bitcoinfarmcalc')
 
 // Command Config
@@ -35,8 +34,9 @@ const CommandFunction = async(args) => {
         return {
             Type: "ServerMessage",
             Content: new MessageEmbed()
+                .setColor(Settings.BotSettings.Color)
                 .setTitle('Bitcoin Farm Calculator')
-                .setThumbnail(Settings.Images.Thumbnails['BitcoinFarm'])
+                .setThumbnail(Settings.Images.Thumbnails.BitcoinFarm)
                 .addFields({
                     name: "Bitcoin Price",
                     value: FormatPrice(Calculation.BTCPrice)
@@ -57,6 +57,7 @@ const CommandFunction = async(args) => {
         return {
             Type: "ServerMessage",
             Content: new MessageEmbed()
+                .setColor(Settings.BotSettings.Color)
                 .setTitle('Bitcoin Farm Calculator')
                 .setThumbnail(Settings.Images.Thumbnails.BitcoinFarm)
                 .addFields({

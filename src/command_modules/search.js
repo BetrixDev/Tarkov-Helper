@@ -1,5 +1,5 @@
-const fs = require('fs')
-let ItemFromName = JSON.parse(fs.readFileSync('./src/game_data/api/itemfromname.json'))
+require('../utils')
+let ItemFromName = ReadJson('./src/game_data/api/itemfromname.json')
 let Searches = new Object(null)
 
 

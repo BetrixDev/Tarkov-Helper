@@ -1,10 +1,7 @@
-const fs = require('fs')
-
-let PriceData = JSON.parse(fs.readFileSync('./src/game_data/api/pricedata.json'))
-
-const { ErrorMessage } = require('../command_modules/errormessage')
-const FormatPrice = require('../command_modules/formatprice')
+require('../utils')
 const { MessageEmbed } = require('discord.js')
+
+let PriceData = ReadJson('./src/game_data/api/pricedata.json')
 
 // Command Config
 const CommandSettings = {
@@ -62,7 +59,7 @@ const CommandFunction = (args) => {
         Type: 'ServerMessage',
         Content: new MessageEmbed()
             .setTitle(`Price Per Slot Range: ${FormatPrice(min)} - ${FormatPrice(max)}`)
-            .setThumbnail('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/PricePerSlotLogo200x200.png')
+            .setThumbnail(Settings.Images.Thumbnails.PricePerSlot)
             .addFields({
                 name: 'Items',
                 value: itemnames,

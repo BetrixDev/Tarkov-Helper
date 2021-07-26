@@ -1,9 +1,9 @@
+require('../utils')
 const ColorNamer = require('color-namer')
-const fs = require('fs')
 
-const ItemFromId = JSON.parse(fs.readFileSync('./src/game_data/api/itemfromid.json'))
-const Globals = require('../game_data/database/globals.json')
-const Templates = require('../game_data/database/locales/global/en.json').templates
+const ItemFromId = ReadJson('./src/game_data/api/itemfromid.json')
+const Globals = ReadJson('./src/game_data/database/globals.json')
+const Templates = ReadJson('./src/game_data/database/locales/global/en.json').templates
 
 function ArmorDurability() {
     let Result = new Object()
@@ -19,7 +19,7 @@ function ArmorDurability() {
 
 class ItemInfo {
     constructor(item) {
-        this.AllData = JSON.parse(fs.readFileSync('./src/game_data/api/itemdata.json'))
+        this.AllData = ReadJson('./src/game_data/api/itemdata.json')
         this.ItemID = item
         this.ItemData = this.AllData[item]
         this.Description = this.GetDescription()

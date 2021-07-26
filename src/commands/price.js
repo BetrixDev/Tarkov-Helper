@@ -1,11 +1,7 @@
-const fs = require('fs')
-
-const { ErrorMessage } = require('../command_modules/errormessage')
+require('../utils')
 const { ItemSearchEngine } = require('../command_modules/itemsearchengine')
-const ItemFromName = JSON.parse(fs.readFileSync('./src/game_data/api/itemfromname.json'))
-const FormatPrice = require('../command_modules/formatprice')
+const ItemFromName = ReadJson('./src/game_data/api/itemfromname.json')
 const { PriceInfo } = require('../classes/priceinfo')
-const Settings = require('../settings.json')
 const { MessageEmbed } = require('discord.js')
 
 // Command Config
@@ -41,6 +37,7 @@ const CommandFunction = (args, { interaction }) => {
             return {
                 Type: "ServerMessage",
                 Content: new MessageEmbed()
+                    .setColor(Settings.BotSettings.Color)
                     .setTitle(`${PriceData.PriceData.shortName} Price Data`)
                     .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/item_icons/${PriceData.PriceData.id}.png`)
                     .setDescription(`[Wiki Link To Item](${PriceData.PriceData.wikiLink}) \n **This item has no offers on the Flea Market**`)
@@ -56,6 +53,7 @@ const CommandFunction = (args, { interaction }) => {
             return {
                 Type: "ServerMessage",
                 Content: new MessageEmbed()
+                    .setColor(Settings.BotSettings.Color)
                     .setTitle(`${PriceData.PriceData.shortName} Price Data`)
                     .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/item_icons/${PriceData.PriceData.id}.png`)
                     .setDescription(`[Wiki Link To Item](${PriceData.PriceData.wikiLink})`)
@@ -95,7 +93,7 @@ const CommandFunction = (args, { interaction }) => {
             Content: new MessageEmbed()
                 .setTitle('Error')
                 .setThumbnail(Settings.Images.Thumbnails.Search)
-                .setColor(Settings.BotSettings.ErrorColor)
+                .setColor(Settings.BotSettings['Alt-Color'])
                 .setDescription(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with multiple results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries. \n\n Use the command \`/Confirm\` followed by the number next to the item to complete the search`)
                 .addFields({ name: 'Results', value: Array })
         }

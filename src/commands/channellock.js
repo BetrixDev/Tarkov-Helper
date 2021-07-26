@@ -14,9 +14,8 @@ const CommandSettings = {
     }
 }
 
-const fs = require('fs')
+require('../utils')
 const { SetServerData } = require('../database')
-const { ErrorMessage } = require('../command_modules/errormessage')
 
 // Command Functions
 const CommandFunction = (args, { interaction, serverData }) => {

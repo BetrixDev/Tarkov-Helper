@@ -21,10 +21,8 @@ const CommandSettings = {
     }
 }
 
-
+require('../utils')
 const DiscordJS = require('discord.js')
-const Settings = require('../settings.json')
-const { ErrorMessage } = require('../command_modules/errormessage')
 
 function ExperienceData() {
     let Result = new Object()
@@ -58,6 +56,7 @@ const CommandFunction = (args) => {
         return {
             Type: "ServerMessage",
             Content: new DiscordJS.MessageEmbed()
+                .setColor(Settings.BotSettings.Color)
                 .setTitle('Experience Calculator')
                 .setThumbnail(Settings.Images.Thumbnails.Experience)
                 .addFields({
@@ -69,6 +68,7 @@ const CommandFunction = (args) => {
         return {
             Type: "ServerMessage",
             Content: new DiscordJS.MessageEmbed()
+                .setColor(Settings.BotSettings.Color)
                 .setTitle('Experience Calculator')
                 .setThumbnail(Settings.Images.Thumbnails.Experience)
                 .addFields({

@@ -1,4 +1,4 @@
-const Settings = require('../settings.json')
+require('../utils')
 const { CaliberSearchEngine, GetCalibers } = require('../command_modules/calibersearchengine')
 const { MessageEmbed } = require('discord.js')
 
@@ -43,7 +43,7 @@ const CommandFunction = (args, { interaction }) => {
             Content: new MessageEmbed()
                 .setTitle('Error')
                 .setThumbnail(Settings.Images.Thumbnails.Search)
-                .setColor(Settings.BotSettings.ErrorColor)
+                .setColor(Settings.BotSettings['Alt-Color'])
                 .setDescription(`Caliber search of \"${args['caliber'].toLowerCase()}\" came back with multiple results, please be more specific. [Click here](${Settings.CaliberArrayLink}) to see a list of all possible entries. \n\n Use the command \`/Confirm\` followed by the number next to the item to complete the search`)
                 .addFields({ name: 'Results', value: Array })
         }
@@ -64,6 +64,7 @@ const CommandFunction = (args, { interaction }) => {
     let PenetrationString = `${SortedValues[2].join('\n')}`
 
     let Message = new MessageEmbed()
+        .setColor(Settings.BotSettings.Color)
         .setTitle(`${Caliber} Data`)
         .setThumbnail('https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/ui_icons/icon_ammo.png')
         .setDescription('For a list of all possible calibers [Click Here](https://gist.github.com/BetrixEdits/16c20db88feb4aefd22dbac6e257e290)')

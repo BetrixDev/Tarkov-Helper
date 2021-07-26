@@ -1,9 +1,6 @@
-const fs = require('fs')
+require('../utils')
 const { MessageEmbed } = require('discord.js')
-const Settings = require('../settings.json')
 const { QuestSearchEngine } = require('../command_modules/questsearchengine')
-const { ErrorMessage } = require('../command_modules/errormessage')
-const ItemFromName = JSON.parse(fs.readFileSync('./src/game_data/api/itemfromname.json'))
 const { QuestInfo } = require('../classes/questinfo')
 
 // Command Config
@@ -36,6 +33,7 @@ const CommandFunction = (args, { interaction }) => {
             return {
                 Type: "ServerMessage",
                 Content: new MessageEmbed()
+                    .setColor(Settings.BotSettings.Color)
                     .setTitle(QuestStuff.QuestName)
                     .setThumbnail(QuestStuff.QuestImage)
                     .addFields({
@@ -64,6 +62,7 @@ const CommandFunction = (args, { interaction }) => {
             return {
                 Type: "ServerMessage",
                 Content: new MessageEmbed()
+                    .setColor(Settings.BotSettings.Color)
                     .setTitle(QuestStuff.QuestName)
                     .setThumbnail(QuestStuff.QuestImage)
                     .addFields({
@@ -93,7 +92,7 @@ const CommandFunction = (args, { interaction }) => {
             Content: new MessageEmbed()
                 .setTitle('Error')
                 .setThumbnail(Settings.Images.Thumbnails.Search)
-                .setColor(Settings.BotSettings.ErrorColor)
+                .setColor(Settings.BotSettings['Alt-Color'])
                 .setDescription(`Item search of \"${args['questname'].toLowerCase()}\" came back with multiple results, please be more specific. \n\n Use the command \`/Confirm\` followed by the number next to the item to complete the search`)
                 .addFields({ name: 'Results', value: Array })
         }

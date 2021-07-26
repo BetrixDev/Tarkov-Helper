@@ -65,6 +65,7 @@ const CommandFunction = (args) => {
     return {
         Type: "ServerMessage",
         Content: new MessageEmbed()
+            .setColor(Settings.BotSettings.Color)
             .setTitle(Translations.BossNames[Boss] + ' Information')
             .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/boss_images/${Boss.toLowerCase()}.png`)
             .addFields({
