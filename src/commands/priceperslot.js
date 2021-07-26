@@ -59,7 +59,7 @@ const CommandFunction = (args) => {
         Type: 'ServerMessage',
         Content: new MessageEmbed()
             .setTitle(`Price Per Slot Range: ${FormatPrice(min)} - ${FormatPrice(max)}`)
-            .setThumbnail('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/PricePerSlotLogo200x200.png')
+            .setThumbnail(Settings.Images.Thumbnails.PricePerSlot)
             .addFields({
                 name: 'Items',
                 value: itemnames,

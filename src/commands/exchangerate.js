@@ -1,3 +1,4 @@
+require('../utils')
 const { MessageEmbed } = require('discord.js')
 
 // Command Config
@@ -108,7 +109,7 @@ const CommandFunction = (args) => {
         Content: new MessageEmbed()
             .setColor(Settings.BotSettings.Color)
             .setTitle(`Conversion Rate from ${FormatPrice(Currency, Amount)}`)
-            .setThumbnail('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/ExchangeLogo128x128.png')
+            .setThumbnail(Settings.Images.Thumbnails.ExchangeRate)
             .setDescription(`Below will show the value of ${Names[Currency]} in other currencies`)
             .addFields({
                 name: 'Conversions',

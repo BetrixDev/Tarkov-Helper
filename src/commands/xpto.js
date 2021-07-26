@@ -56,6 +56,7 @@ const CommandFunction = (args) => {
         return {
             Type: "ServerMessage",
             Content: new DiscordJS.MessageEmbed()
+                .setColor(Settings.BotSettings.Color)
                 .setTitle('Experience Calculator')
                 .setThumbnail(Settings.Images.Thumbnails.Experience)
                 .addFields({
@@ -67,6 +68,7 @@ const CommandFunction = (args) => {
         return {
             Type: "ServerMessage",
             Content: new DiscordJS.MessageEmbed()
+                .setColor(Settings.BotSettings.Color)
                 .setTitle('Experience Calculator')
                 .setThumbnail(Settings.Images.Thumbnails.Experience)
                 .addFields({

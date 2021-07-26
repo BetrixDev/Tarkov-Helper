@@ -49,6 +49,9 @@ globalThis.Settings = {
         "ErrorColor": "#ff2424"
     },
     "Images": {
+        "Logo250": "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/Logo250x250.png",
+        "SecondBanner": "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/SecondBanner3000x1000.png",
+        "SlashBanner": "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/SlashCommand.png",
         "Author": "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/Logo50x50SmallText.png?raw=true",
         "Thumbnails": {
             "Search": "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/SearchLogo.png?raw=true",

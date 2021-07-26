@@ -29,8 +29,8 @@ poster.on('posted', (stats) => {
 client.on('guildCreate', async(guild) => {
     let Embed = new DiscordJS.MessageEmbed()
         .setTitle(`Thank you for adding Tarkov Helper to ${guild.name}`)
-        .setThumbnail('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/Logo200x200.png')
-        .setImage('https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/SecondBanner3000x1000.png')
+        .setThumbnail(Settings.Images.Logo250)
+        .setImage(Settings.Images.SecondBanner)
         .setDescription(`
         • Tarkov Helper is a Discord bot that aims to provide information within **Escape from Tarkov** to users of your Discord server in the easiest way possible.
 
