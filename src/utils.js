@@ -1,5 +1,11 @@
 let fs = require('fs')
+let moment = require('moment-timezone')
 const { MessageEmbed } = require('discord.js')
+
+globalThis.Logger = (message) => {
+    let time = moment().tz('America/New_York').format('h:m:s a').toUpperCase()
+    console.log(`{ ${time} }: ${message}`)
+}
 
 // Generates Message Embeds in a error format
 globalThis.ErrorMessage = (Message, Footer = '') => {

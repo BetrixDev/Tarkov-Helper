@@ -32,23 +32,23 @@ async function Database() {
     return 'Done'
 }
 const UpdateDatabase = schedule.scheduleJob('0 */3 * * *', async function() {
-    console.log(`{${GetDate()}}: Updating database`)
+    Logger(`Updating database`)
 
     try {
 
         await Database()
 
-        console.log(`{${GetDate()}}: Updated database successfully`)
+        Logger(`Updated database successfully`)
 
     } catch (e) {
         console.log(e)
-        console.log(`{${GetDate()}}: Error updating database, waiting till next cycle`)
+        Logger(`Error updating database, waiting till next cycle`)
     }
 })
 
 // Update price data every 10 minutes
 const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
-    console.log(`{${GetDate()}}: Updating prices`)
+    Logger(`Updating prices`)
 
     try {
         const bodyQuery = JSON.stringify({
@@ -111,17 +111,17 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
         Updated.Prices = GetDate()
         fs.writeFileSync('./src/bot_data/updated.json', JSON.stringify(Updated, null, 4))
 
-        console.log(`{${GetDate()}}: Updated prices successfully`)
+        Logger(`Updated prices successfully`)
 
     } catch (e) {
         console.log(e)
-        console.log(`{${GetDate()}}: Error updating prices, waiting till next cycle`)
+        Logger(`Error updating prices, waiting till next cycle`)
     }
 })
 
 // Update item data every 12 hours
 const UpdateItems = schedule.scheduleJob('@daily', async function() {
-    console.log(`{${GetDate()}}: Updating items`)
+    Logger(`Updating items`)
 
     const RawGameData = require('./game_data/database/templates/items.json')
 
@@ -219,18 +219,18 @@ const UpdateItems = schedule.scheduleJob('@daily', async function() {
         fs.writeFileSync('./src/bot_data/updated.json', JSON.stringify(Updated, null, 4))
 
 
-        console.log(`{${GetDate()}}: Updated items successfully`)
+        Logger(`Updated items successfully`)
 
     } catch (e) {
         console.log(e)
-        console.log(`{${GetDate()}}: Error updating items, waiting till next cycle`)
+        Logger(`Error updating items, waiting till next cycle`)
     }
 
 })
 
 // Update quest data every 24 hours
 const UpdateQuests = schedule.scheduleJob('@daily', async function() {
-    console.log(`{${GetDate()}}: Updating quests`)
+    Logger(`Updating quests`)
 
     let ExtraData = await got('https://raw.githubusercontent.com/TarkovTracker/tarkovdata/master/quests.json', {
         responseType: 'json',
@@ -281,18 +281,18 @@ const UpdateQuests = schedule.scheduleJob('@daily', async function() {
         fs.writeFileSync('./src/game_data/api/quests.json', JSON.stringify(FormattedData, null, 4))
         fs.writeFileSync('./src/game_data/api/questnames.json', JSON.stringify(QuestNames, null, 4))
 
-        console.log(`{${GetDate()}}: Updated quests successfully`)
+        Logger(`Updated quests successfully`)
 
     } catch (e) {
         console.log(e)
-        console.log(`{${GetDate()}}: Error updating quests, waiting till next cycle`)
+        Logger(`Error updating quests, waiting till next cycle`)
     }
 
 })
 
 // Update quest data every 24 hours
 const UpdateBarters = schedule.scheduleJob('@daily', async function() {
-    console.log(`{${GetDate()}}: Updating barters`)
+    Logger(`Updating barters`)
 
     try {
         const bodyQuery = JSON.stringify({
@@ -362,10 +362,10 @@ const UpdateBarters = schedule.scheduleJob('@daily', async function() {
 
         fs.writeFileSync('./src/game_data/api/barters.json', JSON.stringify(FormattedData, null, 4))
 
-        console.log(`{${GetDate()}}: Updated barters successfully`)
+        Logger(`Updated barters successfully`)
     } catch (e) {
         console.log(e)
-        console.log(`{${GetDate()}}: Error updating barters, waiting till next cycle`)
+        Logger(`Error updating barters, waiting till next cycle`)
     }
 
 })
