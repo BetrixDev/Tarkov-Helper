@@ -1,3 +1,4 @@
+require('../utils')
 const { MessageEmbed } = require('discord.js')
 const PossibleMaps = require('../game_data/maps.json')
 
@@ -62,11 +63,20 @@ const CommandFunction = (args) => {
                 value: CapitalizeName(MapData.Insurance.toString()),
                 inline: true
             }, {
-                name: 'Total PMC Extracts',
-                value: MapData.exits.length
-            }, {
                 name: 'Total Loot Containers',
                 value: MapLootData.static.length
+            }, {
+                name: 'Extracts',
+                value: MapData.exits.map(exfil => {
+                    let properties = new Array()
+                    properties.push(`**${exfil.Chance}%** Chance`)
+                    properties.push(`**${exfil.ExfiltrationTime}s** Time`)
+
+                    if (exfil.Count !== 0 && exfil.Count !== undefined) {
+                        properties.push(`**${FormatPrice(exfil.Count)}** Price`)
+                    }
+                    return `__${exfil.Name.replaceAll('_', ' ').replace('lab', '')}__: ${properties.join(', ')}`
+                })
             })
     }
 }
