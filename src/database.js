@@ -1,6 +1,5 @@
 const fs = require('fs')
 const serverModel = require('./models/serverSchema')
-const commandCounter = require('./models/commandSchema')
 
 const GetServerData = async(serverid) => {
     let serverData
