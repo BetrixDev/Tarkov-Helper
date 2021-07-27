@@ -1,3 +1,4 @@
+const fs = require('fs')
 const serverModel = require('./models/serverSchema')
 const commandCounter = require('./models/commandSchema')
 
@@ -41,30 +42,15 @@ const SetServerData = async(serverid, key, data) => {
 }
 
 const IncreaseCommands = async(commandName) => {
-    let commandData
+    let commandData = JSON.parse(fs.readFileSync('./src/bot_data/commands.json'))
 
-    try {
-        commandData = await commandCounter.findOne({ name: commandName })
-
-        if (!commandData) {
-            let command = await commandCounter.create({
-                name: commandName,
-                commands: 1
-            })
-            await command.save()
-        } else {
-            await commandCounter.findOneAndUpdate({
-                name: commandName
-            }, {
-                $inc: {
-                    commands: 1
-                }
-            })
-        }
-
-    } catch (e) {
-        console.log(e)
+    if (commandData[commandName] === undefined) {
+        commandData[commandName] = { total: 1 }
+    } else {
+        commandData[commandName].total++
     }
+
+    fs.writeFileSync('./src/bot_data/commands.json', JSON.stringify(commandData, null, 4))
 }
 
 exports.IncreaseCommands = IncreaseCommands
