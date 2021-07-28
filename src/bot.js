@@ -25,6 +25,11 @@ poster.on('posted', (stats) => {
     console.log(`Posted stats to Top.gg | ${stats.serverCount} servers`)
 })
 
+function DMUser(uid, msg) {
+    client.users.fetch(uid).then(user => {
+        user.send(msg)
+    })
+}
 
 client.on('guildCreate', async(guild) => {
     let Embed = new DiscordJS.MessageEmbed()
@@ -102,7 +107,7 @@ client.on('ready', async() => {
                     if (BotCommands.includes(command)) {
                         const guild = client.guilds.resolve(interaction.guild_id) // Needed for admin commands
 
-                        const Message = await require(`./commands/${command}`)['CommandFunction'](args, { interaction, guild, serverCount: client.guilds.cache.size, serverData: ServerData })
+                        const Message = await require(`./commands/${command}`)['CommandFunction'](args, { interaction, guild, serverCount: client.guilds.cache.size, serverData: ServerData, uid: uid })
 
                         if (Message.Type === "ServerMessage" || interaction.member === undefined) {
                             Reply(interaction, Message.Content)
@@ -201,4 +206,5 @@ function InitBot(Dev) {
     client.login(process.env[!Dev ? 'BOT_TOKEN' : 'BOT_TOKEN_DEV'])
 }
 
+exports.DMUser = DMUser
 exports.InitBot = InitBot

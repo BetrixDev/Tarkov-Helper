@@ -113,6 +113,8 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
 
         Logger(`Updated prices successfully`)
 
+        require('./command_modules/notify').GenerateNotifications()
+
     } catch (e) {
         console.log(e)
         Logger(`Error updating prices, waiting till next cycle`)

@@ -69,7 +69,9 @@ globalThis.Settings = {
             "PricePerSlot": "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/PricePerSlotLogo.png?raw=true",
             "Question": "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/QuestionLogo.png?raw=true",
             "SpawnChance": "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/SpawnChance.png?raw=true",
-            "ExchangeRate": "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/ExchangeLogo.png?raw=true"
+            "ExchangeRate": "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/ExchangeLogo.png?raw=true",
+            "PriceNotify": "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/PriceNotifyLogo.png?raw=true",
+            "NotifyRemove": "https://raw.githubusercontent.com/BetrixEdits/Tarkov-Helper/master/src/assets/Media/NotifyRemoveLogo.png?raw=true",
         }
     },
     "Text": {

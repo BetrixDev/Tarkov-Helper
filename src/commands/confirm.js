@@ -46,7 +46,8 @@ const CommandFunction = (args, obj) => {
                 return require(`./${Searches.Command}`).CommandFunction({
                     questname: Searches['IDs'][pos - 1],
                     item: Searches['IDs'][pos - 1],
-                    caliber: Searches['IDs'][pos - 1]
+                    caliber: Searches['IDs'][pos - 1],
+                    ...Searches['otherArgs']
                 }, obj)
             }
         }

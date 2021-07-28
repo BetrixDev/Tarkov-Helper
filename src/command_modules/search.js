@@ -3,7 +3,7 @@ let ItemFromName = ReadJson('./src/game_data/api/itemfromname.json')
 let Searches = new Object(null)
 
 
-function CreateInput(Inputs, cmd, uid) {
+function CreateInput(Inputs, cmd, uid, otherArgs) {
 
     if (cmd === 'quest') {
         Searches[uid] = {
@@ -15,7 +15,8 @@ function CreateInput(Inputs, cmd, uid) {
         Searches[uid] = {
             Command: cmd,
             Inputs: Inputs,
-            IDs: Inputs.map(item => { return ItemFromName[item].ID })
+            IDs: Inputs.map(item => { return ItemFromName[item].ID }),
+            otherArgs
         }
     }
 
