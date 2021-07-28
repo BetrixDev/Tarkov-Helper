@@ -2,10 +2,9 @@
 node_modules/
 wiki/
 *.code-workspace
+*.psd
 
 src/commands/unused
-
-*.psd
 
 src/assets/ProjectFiles/
 src/assets/Emojis
