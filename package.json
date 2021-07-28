@@ -22,6 +22,7 @@
         "moment-timezone": "^0.5.33",
         "mongoose": "^5.13.3",
         "node-schedule": "^2.0.0",
+        "pm2": "^5.1.0",
         "topgg-autoposter": "^2.0.0"
     },
     "engines": {
