@@ -20,10 +20,9 @@ const CommandSettings = {
 
 // Command Functions
 const CommandFunction = (args, obj) => {
-    let { interaction } = obj
+    let { interaction, uid } = obj
 
     let pos = args['position']
-    let uid = interaction.member.user.id
 
     if (Search.OpenSearch(uid)) {
         let Searches = Search.GetSearchObj(uid)

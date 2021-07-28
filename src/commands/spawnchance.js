@@ -23,7 +23,7 @@ const CommandSettings = {
 }
 
 // Command Functions
-const CommandFunction = (args, { interaction }) => {
+const CommandFunction = (args, { interaction, uid }) => {
     if (args['item'].length < 2 || args['item'].length > 100) {
         return { Type: "Error", Content: ErrorMessage('Please keep the item input length between 3 and 100 characters'), Time: 5000 }
     }
@@ -75,7 +75,6 @@ const CommandFunction = (args, { interaction }) => {
             }
         }
     } else if (Length > 1 && Length < 25) {
-        let uid = interaction.member.user.id
         let Array = require('../command_modules/search').CreateInput(Item, 'spawnchance', uid)
         return {
             Type: "Error",

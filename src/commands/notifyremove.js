@@ -68,7 +68,6 @@ const CommandFunction = (args, { interaction, uid }) => {
             }
         }
     } else if (Length > 1 && Length < 25) {
-        let uid = interaction.member.user.id
         let Array = require('../command_modules/search').CreateInput(item, 'pricenotify', uid, { minimum: args['minimum'], maximum: args['maximum'] })
         return {
             Type: "Error",

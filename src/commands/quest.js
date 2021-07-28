@@ -21,7 +21,7 @@ const CommandSettings = {
 }
 
 // Command Functions
-const CommandFunction = (args, { interaction }) => {
+const CommandFunction = (args, { interaction, uid }) => {
     let Quest = QuestSearchEngine(args['questname'])
 
     let Length = Quest.length
@@ -84,7 +84,6 @@ const CommandFunction = (args, { interaction }) => {
             }
         }
     } else if (Length > 1) {
-        let uid = interaction.member.user.id
         let Array = require('../command_modules/search').CreateInput(Quest, 'quest', uid)
 
         return {

@@ -28,7 +28,7 @@ const CommandSettings = {
 }
 
 // Command Functions
-const CommandFunction = (args, { interaction }) => {
+const CommandFunction = (args, { interactionm, uid }) => {
     let Caliber = args['caliber']
     let Sort = Number(args['sort']) || 1
 
@@ -36,7 +36,6 @@ const CommandFunction = (args, { interaction }) => {
     Caliber = EngineResults.Results[0]
 
     if (Caliber === undefined) {
-        let uid = interaction.member.user.id
         let Array = require('../command_modules/search').CreateInput(GetCalibers(), 'caliber', uid)
         return {
             Type: "Error",

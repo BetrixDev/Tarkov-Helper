@@ -31,7 +31,7 @@ const CommandSettings = {
 }
 
 // Command Functions
-const CommandFunction = (args, { interaction }) => {
+const CommandFunction = (args, { interaction, uid }) => {
     let Item = ItemSearchEngine(args['item'].toLowerCase())
     let Amount = args['amount'] || 1
 
@@ -65,7 +65,6 @@ const CommandFunction = (args, { interaction }) => {
             return { Type: "Error", Content: ErrorMessage('Unable to grab price data please try again later'), Time: 5000 }
         }
     } else if (Length > 1 && Length < 25) {
-        let uid = interaction.member.user.id
         let Array = require('../command_modules/search').CreateInput(Item, 'price', uid)
         return {
             Type: "Error",
