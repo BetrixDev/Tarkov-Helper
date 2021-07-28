@@ -69,7 +69,7 @@ const CommandFunction = (args, { interaction, uid }) => {
         }
     } else if (Length > 1 && Length < 25) {
         let array = require('../command_modules/search').CreateInput(item, 'notifyremove', uid)
-        return CreateSearchInput(array)
+        return CreateSearchInput(array, args['item'])
     } else if (Length > 25) {
         return { Type: "Error", Content: ErrorMessage(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with over 25 results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries`) }
     } else {
