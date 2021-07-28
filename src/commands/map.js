@@ -2,7 +2,6 @@ require('../utils')
 const { MessageEmbed } = require('discord.js')
 const PossibleMaps = require('../game_data/maps.json')
 let LocationStrings = ReadJson('./src/game_data/database/locales/global/en.json').locations
-console.log(LocationStrings)
 
 function GetMaps() {
     let Result = new Array()
@@ -61,7 +60,7 @@ const CommandFunction = (args) => {
             .setColor(Settings.BotSettings.Color)
             .setTitle(mapName)
             .setDescription(LocationStrings[mapID].Description)
-            .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/map_icons/${Map.replace(' ', '%20')}.png`)
+            .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/map_icons/${mapName.replace(' ', '%20').toLowerCase()}.png`)
             .addFields({
                 name: 'Map Genie',
                 value: `[Click Here](https://mapgenie.io/tarkov/maps/${mapName.replace('The ', '')})`,
