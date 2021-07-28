@@ -99,7 +99,7 @@ const CommandFunction = (args, { interaction, uid }) => {
                 .setDescription(`
                 Notification created for ${ItemFromID[item].ShortName}, you will be **direct messaged** when the item's price drops below ${FormatPrice(max)}!
                 
-                *The notification for this item has now been removed, to add it back use this command:*
+                *To remove this notification use:*
                 \`/notifyremove item:${item}\`
                 `)
         }
