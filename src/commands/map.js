@@ -90,7 +90,7 @@ const CommandFunction = (args) => {
                     if (exfil.Count !== 0 && exfil.Count !== undefined) {
                         properties.push(`**${FormatPrice(exfil.Count)}** Price`)
                     }
-                    return `__${exfil.Name.replaceAll('_', ' ').replace('lab', '')}__: ${properties.join(', ')}`
+                    return `:small_orange_diamond: \`${exfil.Name.replaceAll('_', ' ').replace('lab', '')}\`: ${properties.join(', ')}`
                 })
             })
     }
