@@ -14,7 +14,7 @@ async function GenerateNotifications() {
         for (let i in userNotifications) {
             let notification = userNotifications[i]
 
-            let itemPrice = priceData[notification.id].Item.avg24hPrice
+            let itemPrice = priceData[notification.id].Item.lastLowPrice
 
             if (itemPrice < notification.max) {
                 try {
