@@ -62,7 +62,7 @@ let ExcludedDMCommands = [
 
 client.on('ready', async() => {
     let End = new Date()
-    console.log(`Tarkov Helper Initialized in ${End.getTime() - Start.getTime()}ms`)
+    Logger(`Tarkov Helper Initialized in ${End.getTime() - Start.getTime()}ms`)
 
     client.ws.on('INTERACTION_CREATE', async(interaction) => {
         try {
