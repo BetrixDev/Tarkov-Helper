@@ -71,7 +71,7 @@ const CommandFunction = (args, { interaction, uid }) => {
                         inline: true
                     }, {
                         name: 'Change From Yesterday',
-                        value: PriceData.PriceChange + '%'
+                        value: (PriceData.PriceChange < 0 ? '▼  ' : '▲  ') + PriceData.PriceChange + ' % '
                     }, {
                         name: 'Highest Trader Sell',
                         value: `${PriceData.HighestTraderBuy[1]} at ${FormatPrice(PriceData.HighestTraderBuy[0])}/each`
