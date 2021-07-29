@@ -25,8 +25,8 @@ poster.on('posted', (stats) => {
     console.log(`Posted stats to Top.gg | ${stats.serverCount} servers`)
 })
 
-function DMUser(uid, msg) {
-    client.users.fetch(uid).then(user => {
+async function DMUser(uid, msg) {
+    await client.users.fetch(uid).then(user => {
         user.send(msg)
     })
 }
