@@ -1,5 +1,5 @@
 {
-    "name": "tarkov-lfg-bot",
+    "name": "tarkov-helper",
     "version": "1.0.0",
     "description": "",
     "main": "src/main.js",
@@ -9,7 +9,7 @@
         "first": "node src/scripts/first.js",
         "refresh": "node src/scripts/refreshcommands.js"
     },
-    "author": "",
+    "author": "Betrix",
     "license": "MIT",
     "dependencies": {
         "accurate-search": "^1.2.12",
