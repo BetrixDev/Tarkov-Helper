@@ -23,7 +23,7 @@ async function GenerateNotifications() {
                         .setThumbnail(Settings.Images.Thumbnails.PriceNotify)
                         .setTitle(`Price Notification for ${ItemFromID[notification.id].ShortName}`)
                         .setDescription(`
-                        **${ItemFromID[notification.id].Name}** is currently under ${FormatPrice(notification.max)} at ${FormatPrice(itemPrice)}
+                        **${ItemFromID[notification.id].Name}** is currently under ${FormatPrice(notification.max)} at **${FormatPrice(itemPrice)}**
                         
                         *The notification for this item has now been removed, to add it back use this command:*
                         \`/pricenotify item:${notification.id} maximum:${notification.max}\`
