@@ -1,34 +1,34 @@
 require('./utils')
-let Start = new Date();
+const fs = require('fs')
+require('dotenv').config()
 
 const { AutoPoster } = require('topgg-autoposter')
 const { GetCooldown, SetCooldown } = require('./scripts/cooldown')
 const { GetServerData, IncreaseCommands } = require('./database')
 const DiscordJS = require('discord.js')
 
-const fs = require('fs')
-require('dotenv').config()
+let Start = new Date()
 
 const client = new DiscordJS.Client()
 
-const BotCommands = new Array()
 const CommandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.js'))
+const BotCommands = CommandFiles.map(file => { return file.split('.')[0] })
 
-for (const File of CommandFiles) {
-    BotCommands.push(File.split('.')[0])
-}
-
+let ExcludedDMCommands = [
+    'admin',
+    'channellock',
+    'resetchannellock',
+    'setcooldown'
+]
 
 const poster = AutoPoster(process.env['TOPGG_TOKEN'], client)
 
 poster.on('posted', (stats) => {
-    console.log(`Posted stats to Top.gg | ${stats.serverCount} servers`)
+    Logger(`Posted stats to Top.gg | ${stats.serverCount} servers`)
 })
 
 async function DMUser(uid, msg) {
-    await client.users.fetch(uid).then(user => {
-        user.send(msg)
-    })
+    await client.users.fetch(uid).then(user => { user.send(msg) })
 }
 
 client.on('guildCreate', async(guild) => {
@@ -53,20 +53,12 @@ client.on('guildCreate', async(guild) => {
     client.users.fetch(guild.ownerID).then(owner => owner.send(Embed))
 })
 
-let ExcludedDMCommands = [
-    'admin',
-    'channellock',
-    'resetchannellock',
-    'setcooldown'
-]
-
 client.on('ready', async() => {
     let End = new Date()
     Logger(`Tarkov Helper Initialized in ${End.getTime() - Start.getTime()}ms`)
 
     client.ws.on('INTERACTION_CREATE', async(interaction) => {
         try {
-            let ServerData = await GetServerData(interaction.guild_id)
 
             // Format arguments into easier and easier to use object
             const { name, options } = interaction.data
@@ -82,12 +74,20 @@ client.on('ready', async() => {
 
             let uid
             let IsAdmin // Admins can bypass restrictions
+            let ServerData
             if (interaction.member !== undefined) {
                 uid = interaction.member.user.id
+                ServerData = await GetServerData(interaction.guild_id)
                 IsAdmin = interaction.member.roles.includes(ServerData['AdminRole'])
             } else {
                 IsAdmin = true
                 uid = interaction.user.id
+                ServerData = {
+                    ServerID: "",
+                    AdminRole: "",
+                    Cooldown: 3,
+                    ChannelLock: ""
+                }
 
                 if (ExcludedDMCommands.includes(command)) {
                     Reply(interaction, ErrorMessage('Cannot use admin commands in a Direct Message channel'), true)
