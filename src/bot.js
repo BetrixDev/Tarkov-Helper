@@ -21,11 +21,11 @@ let ExcludedDMCommands = [
     'setcooldown'
 ]
 
-const poster = AutoPoster(process.env['TOPGG_TOKEN'], client)
+// const poster = AutoPoster(process.env['TOPGG_TOKEN'], client)
 
-poster.on('posted', (stats) => {
-    Logger(`Posted stats to Top.gg | ${stats.serverCount} servers`)
-})
+// poster.on('posted', (stats) => {
+//     Logger(`Posted stats to Top.gg | ${stats.serverCount} servers`)
+// })
 
 async function DMUser(uid, msg) {
     await client.users.fetch(uid).then(user => { user.send(msg) })
@@ -59,6 +59,9 @@ client.on('ready', async() => {
 
     client.ws.on('INTERACTION_CREATE', async(interaction) => {
         try {
+            Logger('-------------------------------------')
+            Logger(`New command: ${interaction.data.name}`)
+            let commandStart = new Date()
 
             // Format arguments into easier and easier to use object
             const { name, options } = interaction.data
@@ -71,6 +74,8 @@ client.on('ready', async() => {
                     args[name] = value
                 }
             }
+
+            Logger(`With args: ${JSON.stringify(args)}`)
 
             let uid
             let IsAdmin // Admins can bypass restrictions
@@ -118,6 +123,8 @@ client.on('ready', async() => {
                         }
 
                         IncreaseCommands(command)
+                        Logger(`Command fulfilled in ${new Date().getTime() - commandStart.getTime()}ms`)
+                        Logger('-------------------------------------')
                     }
 
                 } else { // Message user that they are on cooldown
@@ -138,6 +145,7 @@ client.on('ready', async() => {
                 )
             }
         } catch (e) {
+            Logger('Command errored with the message')
             console.log(e)
         }
     })
