@@ -21,11 +21,11 @@ let ExcludedDMCommands = [
     'setcooldown'
 ]
 
-// const poster = AutoPoster(process.env['TOPGG_TOKEN'], client)
+const poster = AutoPoster(process.env['TOPGG_TOKEN'], client)
 
-// poster.on('posted', (stats) => {
-//     Logger(`Posted stats to Top.gg | ${stats.serverCount} servers`)
-// })
+poster.on('posted', (stats) => {
+    Logger(`Posted stats to Top.gg | ${stats.serverCount} servers`)
+})
 
 async function DMUser(uid, msg) {
     await client.users.fetch(uid).then(user => { user.send(msg) })
