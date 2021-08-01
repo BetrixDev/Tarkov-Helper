@@ -9,7 +9,7 @@ async function StartBot(Dev) {
     require('./command_modules/calibersearchengine').InitCaliberEngine()
 
     mongoose.connect(process.env.DATABASE_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }).then(() => {
-        Logger('Connected to database')
+        Logger('Connected to MongoDB database')
     }).catch((e) => {
         console.log(e)
     })
