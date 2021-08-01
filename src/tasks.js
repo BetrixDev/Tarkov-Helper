@@ -122,7 +122,7 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
     }
 })
 
-// Update item data every 12 hours
+// Update item data daily
 const UpdateItems = schedule.scheduleJob('@daily', async function() {
     Logger(`Updating items`)
 
