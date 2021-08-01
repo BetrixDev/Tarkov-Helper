@@ -30,7 +30,7 @@ const CommandSettings = {
 // Command Functions
 const CommandFunction = (args, { interactionm, uid }) => {
     let Caliber = args['caliber']
-    let Sort = Number(args['sort']) || 1
+    let Sort = args['sort'] || 1
 
     let EngineResults = CaliberSearchEngine(Caliber)
     Caliber = EngineResults.Results[0]
