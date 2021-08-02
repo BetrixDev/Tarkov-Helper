@@ -57,7 +57,7 @@ class ItemInfo {
                     `Class 5: ${Math.round(class5 * 10) / 10}%`,
                     `Class 6: ${Math.round(class6 * 10) / 10}%`
                 ]
-                console.log(penChances)
+
                 if (RawData.buckshotBullets > 1) {
                     return {
                         Fields: [
@@ -68,7 +68,7 @@ class ItemInfo {
                             { name: 'Bullet Velocity', value: `${RawData.InitialSpeed}m/s`, inline: true },
                             { name: 'Stamina Drain On Hit', value: RawData.StaminaBurnPerDamage, inline: true },
                             { name: 'Fragmentation Chance', value: `${RawData.FragmentationChance}%`, inline: true },
-                            { name: 'Penetration Chance', value: penChances, inline: true },
+                            { name: 'First Shot Penetration Chance', value: penChances, inline: true },
                         ]
                     }
                 } else {
@@ -80,7 +80,7 @@ class ItemInfo {
                             { name: 'Bullet Velocity', value: `${RawData.InitialSpeed}m/s`, inline: true },
                             { name: 'Stamina Drain On Hit', value: RawData.StaminaBurnPerDamage, inline: true },
                             { name: 'Fragmentation Chance', value: `${RawData.FragmentationChance}%`, inline: true },
-                            { name: 'Penetration Chance', value: penChances, inline: true },
+                            { name: 'First Shot Penetration Chance', value: penChances, inline: true },
                         ]
                     }
                 }
