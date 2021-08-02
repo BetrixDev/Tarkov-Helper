@@ -1,5 +1,6 @@
 require('../utils')
 const ColorNamer = require('color-namer')
+const { PenetrationCalculator } = require('./penetrationcalculator')
 
 const ItemFromId = ReadJson('./src/game_data/api/itemfromid.json')
 const Globals = ReadJson('./src/game_data/database/globals.json')
@@ -42,6 +43,21 @@ class ItemInfo {
             let Types = this.ItemData.Types
 
             if (Types.includes('ammo') && !Types.includes('grenade')) {
+                // We can use any armor since the first shot is only dependent on the class of the armor, and since we don't care about the result, only the chance of the bullet to pen, this is good for now
+                let class2 = new PenetrationCalculator('5648a7494bdc2d9d488b4583', this.ItemID).CalculateChance(50) // PACA
+                let class3 = new PenetrationCalculator('5b44d22286f774172b0c9de8', this.ItemID).CalculateChance(70) // KIRASA
+                let class4 = new PenetrationCalculator('5d5d646386f7742797261fd9', this.ItemID).CalculateChance(40) // 6B3TM
+                let class5 = new PenetrationCalculator('5c0e541586f7747fa54205c9', this.ItemID).CalculateChance(60) // KILLA
+                let class6 = new PenetrationCalculator('5e4abb5086f77406975c9342', this.ItemID).CalculateChance(80) // SLICK
+
+                let penChances = [
+                    `Class 2: ${Math.round(class2 * 10) / 10}%`,
+                    `Class 3: ${Math.round(class3 * 10) / 10}%`,
+                    `Class 4: ${Math.round(class4 * 10) / 10}%`,
+                    `Class 5: ${Math.round(class5 * 10) / 10}%`,
+                    `Class 6: ${Math.round(class6 * 10) / 10}%`
+                ]
+                console.log(penChances)
                 if (RawData.buckshotBullets > 1) {
                     return {
                         Fields: [
@@ -52,8 +68,7 @@ class ItemInfo {
                             { name: 'Bullet Velocity', value: `${RawData.InitialSpeed}m/s`, inline: true },
                             { name: 'Stamina Drain On Hit', value: RawData.StaminaBurnPerDamage, inline: true },
                             { name: 'Fragmentation Chance', value: `${RawData.FragmentationChance}%`, inline: true },
-                            { name: 'Light Bleed Chance', value: `${RawData.LightBleedingDelta}%`, inline: true },
-                            { name: 'Heavy Bleed Chance', value: `${RawData.HeavyBleedingDelta}%`, inline: true }
+                            { name: 'Penetration Chance', value: penChances, inline: true },
                         ]
                     }
                 } else {
@@ -65,9 +80,7 @@ class ItemInfo {
                             { name: 'Bullet Velocity', value: `${RawData.InitialSpeed}m/s`, inline: true },
                             { name: 'Stamina Drain On Hit', value: RawData.StaminaBurnPerDamage, inline: true },
                             { name: 'Fragmentation Chance', value: `${RawData.FragmentationChance}%`, inline: true },
-                            { name: 'Tracer?', value: RawData.Tracer, inline: true },
-                            { name: 'Light Bleed Chance', value: `${RawData.LightBleedingDelta * 100}%`, inline: true },
-                            { name: 'Heavy Bleed Chance', value: `${RawData.HeavyBleedingDelta * 100}%`, inline: true }
+                            { name: 'Penetration Chance', value: penChances, inline: true },
                         ]
                     }
                 }
