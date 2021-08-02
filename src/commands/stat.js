@@ -16,10 +16,11 @@ const CommandSettings = {
 }
 
 require('../utils')
-const fs = require('fs')
+const BarterData = ReadJson('./src/game_data/api/barters.json')
 const { ItemSearchEngine } = require('../command_modules/itemsearchengine')
 const ItemFromName = ReadJson('./src/game_data/api/itemfromname.json')
 const { ItemInfo } = require('../classes/iteminfo')
+const { PriceInfo } = require('../classes/priceinfo')
 const { MessageEmbed } = require('discord.js')
 
 // Command Functions
@@ -29,8 +30,17 @@ const CommandFunction = async(args, { interaction, uid }) => {
     let Length = Item.length
 
     if (Length === 1) {
+        let itemID = ItemFromName[Item[0]].ID
+        let ItemData = new ItemInfo(itemID)
+        let PriceData = new PriceInfo(itemID)
 
-        let ItemData = new ItemInfo(ItemFromName[Item[0]].ID)
+        function Barters() {
+            if (BarterData[itemID] !== undefined) {
+                return BarterData[itemID].length
+            } else {
+                return 0
+            }
+        }
 
         if (ItemData !== undefined) {
             return {
@@ -41,7 +51,21 @@ const CommandFunction = async(args, { interaction, uid }) => {
                     .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/item_icons/${ItemFromName[Item[0]].ID}.png`)
                     .setDescription(`${ItemData.Description}\n[Wiki Link To Item](${ItemData.WikiLink})`)
                     .setImage(ItemData.SpecificData.Image || '')
-                    .addFields(ItemData.SpecificData.Fields)
+                    .addFields([{
+                        name: 'Available From',
+                        value: PriceData.PriceData.buyFor.map(offer => {
+                            return `**${CapitalizeWords(offer.source)} LL${offer.requirements[0].value}** @ **${FormatPrice(offer.price, offer.source)}**`
+                        }),
+                        inline: true
+                    }, {
+                        name: '\u200b',
+                        value: '\u200b',
+                        inline: true
+                    }, {
+                        name: 'Barters available',
+                        value: Barters(),
+                        inline: true
+                    }, ...ItemData.SpecificData.Fields])
                     .setFooter(ItemData.SpecificData.Footer || '')
             }
         } else {
