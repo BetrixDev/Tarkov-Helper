@@ -20,7 +20,7 @@ const CommandSettings = {
 
 // Command Functions
 const CommandFunction = (args, obj) => {
-    let { interaction, uid } = obj
+    let { uid } = obj
 
     let pos = args['position']
 
