@@ -49,17 +49,31 @@ globalThis.ReadJson = (path) => {
     return JSON.parse(fs.readFileSync(path))
 }
 
+globalThis.CapitalizeWords = (string) => {
+    return string.split(' ').map(word => {
+        return word[0].toUpperCase() + word.substr(1)
+    }).join(' ')
+}
 
 // Formats numbers into a price format
-globalThis.FormatPrice = (price) => {
-    return new Intl.NumberFormat('en-EN', {
-            style: 'currency',
-            currency: 'RUB',
-            maximumSignificantDigits: 6,
-        })
-        .format(Number(price))
-        .replace('RUB', '₽')
-        .replace(' ', '')
+globalThis.FormatPrice = (price, source) => {
+    if (source === 'peacekeeper') {
+        return new Intl.NumberFormat('en-EN', {
+                style: 'currency',
+                currency: 'USD',
+                maximumSignificantDigits: 6,
+            })
+            .format(Number(price))
+    } else {
+        return new Intl.NumberFormat('en-EN', {
+                style: 'currency',
+                currency: 'RUB',
+                maximumSignificantDigits: 6,
+            })
+            .format(Number(price))
+            .replace('RUB', '₽')
+            .replace(' ', '')
+    }
 }
 
 
