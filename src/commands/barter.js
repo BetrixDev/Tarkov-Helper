@@ -38,7 +38,7 @@ const CommandFunction = (args, obj) => {
 
 
         const BarterConfirmation = () => {
-            let uid = obj.interaction.member.user.id
+            let uid = obj.uid
             let Array = require('../command_modules/search').CreateBarterInput(BarterData, Item[0], uid)
             return {
                 Type: "Error",
@@ -98,7 +98,7 @@ const CommandFunction = (args, obj) => {
         }
 
     } else if (Length > 1 && Length < 25) {
-        let uid = obj.interaction.member.user.id
+        let uid = obj.uid
         let array = require('../command_modules/search').CreateInput(Item, CommandSettings.CommandData.data.name, uid)
         return CreateSearchInput(array, args['item'])
     } else if (Length > 25) {
