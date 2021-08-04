@@ -49,8 +49,7 @@ async function GetAmmo() {
     wikiData = JSON.parse(wikiData.body)
     wikiData = wikiData.query.pages['11366'].revisions[0]['*']
 
-    let rawAmmoData = wikiData.split('<br />')[1].split('[[Category:Escape from Tarkov]]')[0].split('\n')
-
+    let rawAmmoData = wikiData.split('<br/>')[5].split('[[Category:Escape from Tarkov]]')[0].split('\n')
     let formattedAmmoData = new Object()
 
     for (let i in rawAmmoData) {
