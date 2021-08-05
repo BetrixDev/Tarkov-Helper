@@ -15,7 +15,7 @@
         "accurate-search": "^1.2.12",
         "color-namer": "^1.4.0",
         "decompress": "^4.2.1",
-        "discord.js": "^13.0.0",
+        "discord.js": "^13.0.0-dev.t1628124537.3eb4140",
         "dotenv": "^8.2.0",
         "download": "^5.0.3",
         "got": "^11.8.2",
