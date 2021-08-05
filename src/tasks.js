@@ -1,12 +1,12 @@
 require('./utils')
 let decompress = require('decompress')
 let download = require('download')
-const schedule = require('node-schedule')
+const { scheduleJob } = require('node-schedule')
 const got = require('got')
 const fs = require('fs')
 
-const GetDate = () => {
-    return Date().split(' G')[0]
+function WriteFile(path, data) {
+    fs.writeFileSync(path, JSON.stringify(data, null, 4))
 }
 
 const { GetAmmo } = require('./scripts/ammo')
@@ -31,7 +31,7 @@ async function Database() {
 
     return 'Done'
 }
-const UpdateDatabase = schedule.scheduleJob('0 */3 * * *', async function() {
+const UpdateDatabase = scheduleJob('0 */3 * * *', async function() {
     Logger(`Updating database`)
 
     try {
@@ -47,7 +47,7 @@ const UpdateDatabase = schedule.scheduleJob('0 */3 * * *', async function() {
 })
 
 // Update price data every 10 minutes
-const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
+const UpdatePrices = scheduleJob('*/10 * * * *', async function() {
     Logger(`Updating prices`)
 
     try {
@@ -123,7 +123,7 @@ const UpdatePrices = schedule.scheduleJob('*/10 * * * *', async function() {
 })
 
 // Update item data daily
-const UpdateItems = schedule.scheduleJob('@daily', async function() {
+const UpdateItems = scheduleJob('@daily', async function() {
     Logger(`Updating items`)
 
     const RawGameData = require('./game_data/database/templates/items.json')
@@ -232,7 +232,7 @@ const UpdateItems = schedule.scheduleJob('@daily', async function() {
 })
 
 // Update quest data every 24 hours
-const UpdateQuests = schedule.scheduleJob('@daily', async function() {
+const UpdateQuests = scheduleJob('@daily', async function() {
     Logger(`Updating quests`)
 
     let ExtraData = await got('https://raw.githubusercontent.com/TarkovTracker/tarkovdata/master/quests.json', {
@@ -294,7 +294,7 @@ const UpdateQuests = schedule.scheduleJob('@daily', async function() {
 })
 
 // Update quest data every 24 hours
-const UpdateBarters = schedule.scheduleJob('@daily', async function() {
+const UpdateBarters = scheduleJob('@daily', async function() {
     Logger(`Updating barters`)
 
     try {

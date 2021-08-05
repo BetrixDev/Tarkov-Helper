@@ -3,6 +3,16 @@ const AccurateSearch = require('accurate-search')
 
 const ItemID = ReadJson('./src/game_data/api/itemfromid.json')
 const ItemShortName = ReadJson('./src/game_data/api/itemfromshortname.json')
+let ItemName = ReadJson('./src/game_data/api/itemfromname.json')
+
+let newItemName = new Object()
+for (let name in ItemName) {
+    let itemData = ItemName[name]
+    newItemName[name.toLowerCase()] = {
+        ...itemData
+    }
+}
+ItemName = newItemName
 
 let SearchEngine = new AccurateSearch()
 let ShortSearchEngine = new AccurateSearch()
@@ -28,10 +38,10 @@ const Engine = (Input) => {
         return [ItemShortName[Input.toLowerCase().replace(' ', '-')].Name]
     }
 
-    // // User inputted regular name
-    // if (ItemName.map(item => { return item.toLowerCase() }).includes(Input.toLowerCase())) {
-    //     return [Input]
-    // }
+    // User inputted regular name
+    if (ItemName.hasOwnProperty(Input.toLowerCase())) {
+        return [Input]
+    }
 
     let LongResults = SearchEngine.accurateSearch(Input)
     let ShortResults = ShortSearchEngine.accurateSearch(Input)

@@ -1,42 +1,6 @@
 require('../utils')
 const { MessageEmbed } = require('discord.js')
 
-// Command Config
-const CommandSettings = {
-    CommandData: {
-        data: {
-            name: 'exchangerate',
-            description: 'Convert one currency to another.',
-            options: [{
-                    type: 3,
-                    name: "currency",
-                    description: "Name of first currency",
-                    required: true,
-                    choices: [{
-                            name: "Rubles",
-                            value: "rub"
-                        },
-                        {
-                            name: "Dollars",
-                            value: "usd"
-                        },
-                        {
-                            name: "Euros",
-                            value: "eur"
-                        }
-                    ]
-                },
-                {
-                    type: 4,
-                    name: "amount",
-                    description: "Amount of first currency",
-                    required: true
-                }
-            ]
-        }
-    }
-}
-
 const Conversions = {
     rub: {
         usd: {
@@ -76,6 +40,14 @@ const Names = {
     eur: 'Euros'
 }
 
+function FormatPrice(Currency, Price) {
+    return new Intl.NumberFormat('en-EN', {
+        style: 'currency',
+        currency: Currency.toUpperCase(),
+        maximumSignificantDigits: 6,
+    }).format(Number(Price)).replace('RUB', '₽').replace(' ', '')
+}
+
 function GetConversions(Currency, Amount) {
     let Data = Conversions[Currency]
 
@@ -91,32 +63,52 @@ function GetConversions(Currency, Amount) {
     return Output
 }
 
-function FormatPrice(Currency, Price)  {
-    return new Intl.NumberFormat('en-EN', {
-    style: 'currency',
-    currency: Currency.toUpperCase(),
-    maximumSignificantDigits: 6,
-    }).format(Number(Price)).replace('RUB', '₽').replace(' ', '')
-}
+module.exports = {
+    data: {
+        name: 'exchangerate',
+        description: 'Convert one currency to another.',
+        options: [{
+                type: 3,
+                name: "currency",
+                description: "Name of first currency",
+                required: true,
+                choices: [{
+                        name: "Rubles",
+                        value: "rub"
+                    },
+                    {
+                        name: "Dollars",
+                        value: "usd"
+                    },
+                    {
+                        name: "Euros",
+                        value: "eur"
+                    }
+                ]
+            },
+            {
+                type: 4,
+                name: "amount",
+                description: "Amount of first currency",
+                required: true
+            }
+        ]
+    },
+    message: (args) => {
+        let Currency = args['currency']
+        let Amount = args['amount']
 
-// Command Functions
-const CommandFunction = (args) => {
-    let Currency = args['currency']
-    let Amount = args['amount']
-
-    return {
-        Type: "ServerMessage",
-        Content: new MessageEmbed()
-            .setColor(Settings.BotSettings.Color)
-            .setTitle(`Conversion Rate from ${FormatPrice(Currency, Amount)}`)
-            .setThumbnail(Settings.Images.Thumbnails.ExchangeRate)
-            .setDescription(`Below will show the value of ${Names[Currency]} in other currencies`)
-            .addFields({
-                name: 'Conversions',
-                value: GetConversions(Currency, Amount)
-            })
+        return {
+            Type: "serverMessage",
+            Content: new MessageEmbed()
+                .setColor(Settings.BotSettings.Color)
+                .setTitle(`Conversion Rate from ${FormatPrice(Currency, Amount)}`)
+                .setThumbnail(Settings.Images.Thumbnails.ExchangeRate)
+                .setDescription(`Below will show the value of ${Names[Currency]} in other currencies`)
+                .addFields(ResolveStrings([{
+                    name: 'Conversions',
+                    value: GetConversions(Currency, Amount)
+                }]))
+        }
     }
 }
-
-exports.CommandFunction = CommandFunction
-exports.CommandSettings = CommandSettings

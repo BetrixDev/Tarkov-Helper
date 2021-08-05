@@ -5,11 +5,11 @@ require('dotenv').config()
 const { AutoPoster } = require('topgg-autoposter')
 const { GetCooldown, SetCooldown } = require('./scripts/cooldown')
 const { GetServerData, IncreaseCommands } = require('./database')
-const DiscordJS = require('discord.js')
+const discordjs = require('discord.js')
 
 let Start = new Date()
 
-const client = new DiscordJS.Client()
+const client = new discordjs.Client({ intents: [discordjs.Intents.FLAGS.GUILDS] })
 
 const CommandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.js'))
 const BotCommands = CommandFiles.map(file => { return file.split('.')[0] })
@@ -32,7 +32,7 @@ async function DMUser(uid, msg) {
 }
 
 client.on('guildCreate', async(guild) => {
-    let Embed = new DiscordJS.MessageEmbed()
+    let Embed = new discordjs.MessageEmbed()
         .setTitle(`Thank you for adding Tarkov Helper to ${guild.name}`)
         .setThumbnail(Settings.Images.Logo250)
         .setImage(Settings.Images.SecondBanner)
@@ -57,36 +57,43 @@ client.on('ready', async() => {
     let End = new Date()
     Logger(`Tarkov Helper Initialized in ${End.getTime() - Start.getTime()}ms`)
 
-    client.ws.on('INTERACTION_CREATE', async(interaction) => {
+    client.on('interactionCreate', async(interaction) => {
         try {
+            if (!interaction.isCommand()) return
+
+            let commandName = interaction.commandName
+
             Logger('-------------------------------------')
-            Logger(`New command: ${interaction.data.name}`)
+            Logger(`New command: ${commandName}`)
             let commandStart = new Date()
 
-            // Format arguments into easier and easier to use object
-            const { name, options } = interaction.data
-            const command = name.toLowerCase()
-            const args = {}
+            let command = require(`./commands/${commandName}`)
 
-            if (options) {
-                for (const option of options) {
-                    const { name, value } = option
-                    args[name] = value
+            // Format arguments into easier to use object
+            const args = {}
+            if (command.data.options) {
+                for (let arg of command.data.options) {
+                    let input = interaction.options.get(arg.name)
+                    if (!input) { continue }
+
+                    args[arg.name] = input.value
                 }
             }
 
             Logger(`With args: ${JSON.stringify(args)}`)
 
-            let uid
+            let uid = interaction.user.id
             let IsAdmin // Admins can bypass restrictions
             let ServerData
-            if (interaction.member !== undefined) {
-                uid = interaction.member.user.id
-                ServerData = await GetServerData(interaction.guild_id)
-                IsAdmin = interaction.member.roles.includes(ServerData['AdminRole'])
+            if (interaction.inGuild()) {
+                let userRoles = await client.guilds.fetch(interaction.guildId).then(guild => {
+                    return guild.members.fetch(uid).then(user => { return user.roles.cache.map(role => role.id) })
+                })
+
+                ServerData = await GetServerData(interaction.guildId)
+                IsAdmin = userRoles.includes(ServerData['AdminRole'])
             } else {
                 IsAdmin = true
-                uid = interaction.user.id
                 ServerData = {
                     ServerID: "",
                     AdminRole: "",
@@ -94,14 +101,15 @@ client.on('ready', async() => {
                     ChannelLock: ""
                 }
 
-                if (ExcludedDMCommands.includes(command)) {
-                    Reply(interaction, ErrorMessage('Cannot use admin commands in a Direct Message channel'), true)
+                if (ExcludedDMCommands.includes(commandName)) {
+                    interaction.reply({ embeds: [ErrorMessage('Cannot use admin commands in a Direct Message channel')], ephemeral: true })
                     return
                 }
             }
 
             let ChannelLock = ServerData['ChannelLock']
-            if (ChannelLock === interaction.channel_id || ChannelLock === "" || IsAdmin) {
+
+            if (ChannelLock === interaction.channelId || ChannelLock === "" || IsAdmin) {
 
                 let Cooldown = ServerData['Cooldown']
                 let LastMessage = GetCooldown(uid)
@@ -109,40 +117,40 @@ client.on('ready', async() => {
                     SetCooldown(uid) // Update Cooldown
 
                     // If command exists locally
-                    if (BotCommands.includes(command)) {
-                        const guild = client.guilds.resolve(interaction.guild_id) // Needed for admin commands
+                    if (BotCommands.includes(commandName)) {
+                        const guild = client.guilds.resolve(interaction.guildId) // Needed for admin commands
 
-                        const Message = await require(`./commands/${command}`)['CommandFunction'](args, { interaction, guild, serverCount: client.guilds.cache.size, serverData: ServerData, uid: uid })
+                        const Message = await command.message(args, { interaction, guild, serverCount: client.guilds.cache.size, serverData: ServerData, uid: uid, isAdmin: IsAdmin })
 
-                        if (Message.Type === "ServerMessage" || interaction.member === undefined) {
-                            Reply(interaction, Message.Content)
-
-                        } else if (Message.Type === "Ephemeral" || Message.Type === "Error") {
-                            Reply(interaction, Message.Content, true)
-
+                        if (Message.Type === "serverMessage" || !interaction.member) {
+                            interaction.reply({ embeds: [Message.Content] })
+                        } else if (Message.Type === "ephemeral" || Message.Type === "error") {
+                            if (typeof(Message.Content) === 'object') {
+                                interaction.reply({ embeds: [Message.Content], ephemeral: true })
+                            } else {
+                                interaction.reply({ content: Message.Content, ephemeral: true })
+                            }
                         }
 
-                        IncreaseCommands(command)
+                        IncreaseCommands(commandName)
                         Logger(`Command fulfilled in ${new Date().getTime() - commandStart.getTime()}ms`)
                         Logger('-------------------------------------')
                     }
 
                 } else { // Message user that they are on cooldown
-                    Reply(
-                        interaction,
-                        `Cooldown: Please wait ${Cooldown - (Math.round(LastMessage * 100) / 100)} seconds`,
-                        true
-                    )
+                    interaction.reply({
+                        content: `Cooldown: Please wait ${Cooldown - (Math.round(LastMessage * 100) / 100)} seconds`,
+                        ephemeral: true
+                    })
                 }
             } else { // Message user that they cannot type in this channel
-                let TypedChannel = await client.channels.fetch(interaction.channel_id).then(channel => { return channel.name })
+                let TypedChannel = await client.channels.fetch(interaction.channelId).then(channel => { return channel.name })
                 let LockedChannel = await client.channels.fetch(ChannelLock).then(channel => { return channel.name })
 
-                Reply(
-                    interaction,
-                    `The channel: \`#${TypedChannel}\` is locked, please use \`#${LockedChannel}\` to have access to Tarkov Helper commands`,
-                    true
-                )
+                interaction.reply({
+                    content: `The channel: \`#${TypedChannel}\` is locked, please use \`#${LockedChannel}\` to have access to Tarkov Helper commands`,
+                    ephemeral: true
+                })
             }
         } catch (e) {
             Logger('Command errored with the message')
@@ -150,65 +158,6 @@ client.on('ready', async() => {
         }
     })
 })
-
-// Replies to the orignial interaction 
-const Reply = async(interaction, response, ephemeral) => {
-    if (!ephemeral) {
-        let data = {
-            content: response
-        }
-        if (typeof response === 'object') {
-            data = await CreateAPIMessage(interaction, response)
-        }
-        client.api.interactions(interaction.id, interaction.token).callback.post({
-            data: {
-                type: 4,
-                data
-            }
-        }).catch((e) => {
-            console.log(e)
-        })
-    } else {
-        let data = {
-            content: response,
-            flags: 64
-        }
-
-        if (typeof response === 'object') {
-            data = await CreateAPIMessage(interaction, response)
-            data['flags'] = 64
-        }
-
-        // Responds to the interaction with a message only the author can see
-        client.api.interactions(interaction.id, interaction.token).callback.post({
-            data: {
-                type: 4,
-                data
-            }
-        }).catch((e) => {
-            console.log(e)
-        })
-    }
-
-}
-
-// Converts an embeded message into a message discord can use for the interaction message
-const CreateAPIMessage = async(interaction, content) => {
-    let Channel
-    if (interaction.member !== undefined) {
-        Channel = client.channels.resolve(interaction.channel_id)
-    } else {
-        Channel = await client.channels.fetch(interaction.channel_id)
-    }
-    const { data, files } = await DiscordJS.APIMessage.create(
-            Channel,
-            content
-        )
-        .resolveData()
-        .resolveFiles()
-
-    return {...data, files }
-}
 
 function InitBot(Dev) {
     client.login(process.env[!Dev ? 'BOT_TOKEN' : 'BOT_TOKEN_DEV'])

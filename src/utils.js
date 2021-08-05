@@ -11,15 +11,28 @@ globalThis.Logger = (message) => {
     console.log(`{ ${time} }: ${message}`)
 }
 
+// Discord.js no longer supports turing arrays and numbers into strings for embed fields 
+// (alteast I couldn't find how to anymore) so this function takes care of that
+globalThis.ResolveStrings = (fields) => {
+    return fields.map(field => {
+        let { name, value, inline } = field
+        return {
+            name: name,
+            value: (typeof(value) === 'object') ? value.join('\n') : String(value).toString(),
+            inline: (inline ? inline : false)
+        }
+    })
+}
+
 globalThis.CreateSearchInput = (array, input) => {
     return {
-        Type: "Error",
+        Type: "error",
         Content: new MessageEmbed()
             .setTitle('Error!')
             .setThumbnail(Settings.Images.Thumbnails.Search)
             .setColor(Settings.BotSettings['Alt-Color'])
             .setDescription(`Item search of \"${input.toLowerCase().replace('short=','')}\" came back with multiple results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries. \n\n Use the command \`/Confirm\` followed by the number next to the item to complete the search`)
-            .addFields({ name: 'Results', value: array })
+            .addFields(ResolveStrings([{ name: 'Results', value: array }]))
     }
 }
 
@@ -39,7 +52,7 @@ globalThis.ErrorMessageField = (Message, Fields, Footer = '') => {
         .setTitle('Error!')
         //.setThumbnail(Settings.Images.Thumbnails.Error)
         .setDescription(Message)
-        .addFields(Fields)
+        .addFields(ResolveStrings([Fields]))
         .setFooter(Footer)
 }
 
@@ -47,6 +60,10 @@ globalThis.ErrorMessageField = (Message, Fields, Footer = '') => {
 // Reads JSON files
 globalThis.ReadJson = (path) => {
     return JSON.parse(fs.readFileSync(path))
+}
+
+globalThis.WriteJson = (path, data) => {
+    fs.writeFileSync(path, JSON.stringify(data, null, 4))
 }
 
 globalThis.CapitalizeWords = (string) => {

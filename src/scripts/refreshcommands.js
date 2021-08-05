@@ -1,43 +1,30 @@
 const fs = require('fs')
 require('dotenv').config()
-const DiscordJS = require('discord.js')
+const discordjs = require('discord.js')
 
-const client = new DiscordJS.Client()
+const client = new discordjs.Client({ intents: [discordjs.Intents.FLAGS.GUILDS] })
 
-const getApp = (guildID) => {
-    const app = client.api.applications(client.user.id)
-    if (guildID) { app.guilds(guildID) }
-    return app
-}
-
-const BotCommands = new Array()
 const CommandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.js'))
-for (const File of CommandFiles) {
-    BotCommands.push(File.split('.')[0])
-}
 
 client.on('ready', async() => {
     try {
-        const commands = await getApp().commands.get()
+        const commands = await client.application.commands.cache
 
-        for (const Command of commands) {
-            console.log(`Deleting: ${Command.name}`)
-            await getApp().commands(Command.id).delete()
-        }
+        commands.forEach(command => {
+            command.delete()
+        })
 
         console.log('Finished Deleting')
 
-
         for (const File of CommandFiles) {
             let FormatFile = File.split('.')[0]
-            let CommandData = require(`../commands/${FormatFile}`)['CommandSettings'].CommandData
+            let CommandData = require(`../commands/${FormatFile}`).data
 
             if (CommandData !== undefined) {
-                console.log(`Adding ${CommandData.data.name}`)
-                await getApp().commands.post(CommandData)
+                console.log(`Adding ${CommandData.name}`)
+                const command = await client.application.commands.create(CommandData)
             }
         }
-
 
         console.log('Refreshed commands. You may now close this application and run the bot normally')
 

@@ -1,62 +1,53 @@
 require('../utils')
 const Search = require('../command_modules/search')
 
-// Command Config
-const CommandSettings = {
-    CommandData: {
-        data: {
-            name: 'confirm',
-            description: 'Use this to command when you have a search pending to finalize a search',
-            options: [{
-                name: 'position',
-                description: 'What item number to confirm the search of',
-                required: true,
-                type: 3
-            }]
-        }
+module.exports = {
+    data: {
+        name: 'confirm',
+        description: 'Use this to command when you have a search pending to finalize a search',
+        options: [{
+            name: 'position',
+            description: 'What item number to confirm the search of',
+            required: true,
+            type: 3
+        }]
     },
-    DMCommand: true
-}
+    message: (args, obj) => {
+        let { uid } = obj
 
-// Command Functions
-const CommandFunction = (args, obj) => {
-    let { uid } = obj
+        let pos = args['position']
 
-    let pos = args['position']
+        if (Search.OpenSearch(uid)) {
+            let Searches = Search.GetSearchObj(uid)
 
-    if (Search.OpenSearch(uid)) {
-        let Searches = Search.GetSearchObj(uid)
+            if (Searches['Inputs'].length < Number(pos)) {
+                return {
+                    Type: "error",
+                    Content: ErrorMessage('Invalid position')
+                }
+            } else {
+                Search.RemoveSearch(uid)
 
-        if (Searches['Inputs'].length < Number(pos)) {
-            return {
-                Type: "Error",
-                Content: ErrorMessage('Invalid position')
+                if (Searches.Command === 'internalbarter') {
+                    return require(`./barter`).message({
+                        item: Searches['Item']
+                    }, {...obj,
+                        Barter: (pos - 1)
+                    })
+                } else {
+                    return require(`./${Searches.Command}`).message({
+                        questname: Searches['IDs'][pos - 1],
+                        item: Searches['IDs'][pos - 1],
+                        caliber: Searches['IDs'][pos - 1],
+                        ...Searches['otherArgs']
+                    }, obj)
+                }
             }
         } else {
-            Search.RemoveSearch(uid)
-
-            if (Searches.Command === 'internalbarter') {
-                return require(`./barter`).CommandFunction({
-                    item: Searches['Item']
-                }, {...obj,
-                    Barter: (pos - 1)
-                })
-            } else {
-                return require(`./${Searches.Command}`).CommandFunction({
-                    questname: Searches['IDs'][pos - 1],
-                    item: Searches['IDs'][pos - 1],
-                    caliber: Searches['IDs'][pos - 1],
-                    ...Searches['otherArgs']
-                }, obj)
+            return {
+                Type: "error",
+                Content: ErrorMessage('You current don\'t have an open search pending')
             }
-        }
-    } else {
-        return {
-            Type: "Error",
-            Content: ErrorMessage('You current don\'t have an open search pending')
         }
     }
 }
-
-exports.CommandFunction = CommandFunction
-exports.CommandSettings = CommandSettings

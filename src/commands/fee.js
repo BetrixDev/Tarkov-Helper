@@ -4,73 +4,68 @@ const { PriceInfo } = require('../classes/priceinfo')
 const ItemFromName = ReadJson('./src/game_data/api/itemfromname.json')
 const { ItemSearchEngine } = require('../command_modules/itemsearchengine')
 
-// Command Config
-const CommandSettings = {
-    CommandData: {
-        data: {
-            name: 'fee',
-            description: 'Calculate the fee for the sell price of an item or amount of items and the profit',
-            options: [{
-                type: 3,
-                name: 'item',
-                description: 'Item to calculate fee of',
-                required: true
-            }, {
-                type: 4,
-                name: 'amount',
-                description: 'Amount of the item to sell',
-                required: false
-            }, {
-                type: 4,
-                name: 'price',
-                description: 'Price to sell item. Leave blank to use lowest price on Flea Market',
-                required: false
-            }]
-        }
-    }
-}
+module.exports = {
+    data: {
+        name: 'fee',
+        description: 'Calculate the fee for the sell price of an item or amount of items and the profit',
+        options: [{
+            type: 3,
+            name: 'item',
+            description: 'Item to calculate fee of',
+            required: true
+        }, {
+            type: 4,
+            name: 'amount',
+            description: 'Amount of the item to sell',
+            required: false
+        }, {
+            type: 4,
+            name: 'price',
+            description: 'Price to sell item. Leave blank to use lowest price on Flea Market',
+            required: false
+        }]
+    },
+    message: (args, { interaction, uid }) => {
+        let Item = ItemSearchEngine(args['item'].toLowerCase())
+        let Amount = args['amount'] || 1
 
-// Command Functions
-const CommandFunction = (args, { interaction, uid }) => {
-    let Item = ItemSearchEngine(args['item'].toLowerCase())
-    let Amount = args['amount'] || 1
+        let Length = Item.length
 
-    let Length = Item.length
+        if (Length === 1) {
+            let PriceData = new PriceInfo(ItemFromName[Item[0]].ID)
 
-    if (Length === 1) {
-        let PriceData = new PriceInfo(ItemFromName[Item[0]].ID)
+            if (PriceData !== undefined) {
+                let Price = args['price'] || PriceData.PriceData.avg24hPrice
 
-        if (PriceData !== undefined) {
-            let Price = args['price'] || PriceData.PriceData.avg24hPrice
-
-            return {
-                Type: "ServerMessage",
-                Content: new MessageEmbed()
-                    .setColor(Settings.BotSettings.Color)
-                    .setTitle(`${PriceData.PriceData.shortName} Fee Calculation`)
-                    .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/item_icons/${PriceData.PriceData.id}.png`)
-                    .setDescription(`Fee and Profit are being calculated using a total sell of ${Amount} items \n [Wiki Link To Item](${PriceData.PriceData.wikiLink})`)
-                    .addFields({
-                        name: 'Fee',
-                        value: FormatPrice(Math.round(CalcFee(PriceData.PriceData.basePrice, Price, Amount)))
-                    }, {
-                        name: 'Flea Market Price',
-                        value: FormatPrice(Price) + '/each'
-                    }, {
-                        name: 'Profit',
-                        value: FormatPrice(((Price * Amount) - Math.round(CalcFee(PriceData.PriceData.basePrice, Price, Amount))))
-                    })
+                return {
+                    Type: "serverMessage",
+                    Content: new MessageEmbed()
+                        .setColor(Settings.BotSettings.Color)
+                        .setTitle(`${PriceData.PriceData.shortName} Fee Calculation`)
+                        .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/item_icons/${PriceData.PriceData.id}.png`)
+                        .setDescription(`Fee and Profit are being calculated using a total sell of ${Amount} items \n [Wiki Link To Item](${PriceData.PriceData.wikiLink})`)
+                        .addFields({
+                            name: 'Fee',
+                            value: FormatPrice(Math.round(CalcFee(PriceData.PriceData.basePrice, Price, Amount)))
+                        }, {
+                            name: 'Flea Market Price',
+                            value: FormatPrice(Price) + '/each'
+                        }, {
+                            name: 'Profit',
+                            value: FormatPrice(((Price * Amount) - Math.round(CalcFee(PriceData.PriceData.basePrice, Price, Amount))))
+                        })
+                }
+            } else {
+                return { Type: "error", Content: ErrorMessage('Unable to grab price data please try again later'), Time: 5000 }
             }
+        } else if (Length > 1 && Length < 25) {
+            let array = require('../command_modules/search').CreateInput(Item, 'fee', uid)
+            return CreateSearchInput(array, args['item'])
+        } else if (Length > 25) {
+            return { Type: "error", Content: ErrorMessage(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with over 25 results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries`), Time: 5000 }
         } else {
-            return { Type: "Error", Content: ErrorMessage('Unable to grab price data please try again later'), Time: 5000 }
+            return { Type: "error", Content: ErrorMessage(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with no results. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries`), Time: 5000 }
         }
-    } else if (Length > 1 && Length < 25) {
-        let array = require('../command_modules/search').CreateInput(Item, CommandSettings.CommandData.data.name, uid)
-        return CreateSearchInput(array, args['item'])
-    } else if (Length > 25) {
-        return { Type: "Error", Content: ErrorMessage(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with over 25 results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries`), Time: 5000 }
-    } else {
-        return { Type: "Error", Content: ErrorMessage(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with no results. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries`), Time: 5000 }
     }
 }
 
@@ -95,6 +90,3 @@ function CalcFee(BasePrice, ItemPrice, Amount = 1) {
 
     return Math.ceil(V0 * Ti * Math.pow(4, P0) * Q + VR * Tr * Math.pow(4, PR) * Q)
 }
-
-exports.CommandFunction = CommandFunction
-exports.CommandSettings = CommandSettings
