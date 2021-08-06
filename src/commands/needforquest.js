@@ -46,9 +46,7 @@ module.exports = {
             }
 
         } else if (Length > 1 && Length < 25) {
-            let uid = obj.interaction.member.user.id
-            let array = require('../command_modules/search').CreateInput(Item, 'needforquest', uid)
-            return CreateSearchInput(array, args['item'])
+            return CreateSearchInput(Item, args, 'item', 'needforquest')
         } else if (Length > 25) {
             return { Type: "error", Content: ErrorMessage(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with over 25 results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries`), Time: 5000 }
         } else {

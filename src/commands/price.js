@@ -15,7 +15,7 @@ module.exports = {
             type: 3
         }]
     },
-    message: (args, { interaction, uid }) => {
+    message: (args, { uid }) => {
         if (args['item'].length < 2 || args['item'].length > 100) {
             return { Type: "error", Content: ErrorMessage('Please keep the item input length between 3 and 100 characters'), Time: 5000 }
         }
@@ -79,8 +79,7 @@ module.exports = {
             }
 
         } else if (Length > 1 && Length < 25) {
-            let array = require('../command_modules/search').CreateInput(Item, 'price', uid)
-            return CreateSearchInput(array, args['item'])
+            return CreateSearchInput(Item, args, 'item', 'price')
         } else if (Length > 25) {
             return { Type: "error", Content: ErrorMessage(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with over 25 results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries`), Time: 5000 }
         } else {

@@ -30,16 +30,7 @@ module.exports = {
         Caliber = EngineResults.Results[0]
 
         if (Caliber === undefined) {
-            let Array = require('../command_modules/search').CreateInput(GetCalibers(), 'caliber', uid)
-            return {
-                Type: "error",
-                Content: new MessageEmbed()
-                    .setTitle('Error')
-                    .setThumbnail(Settings.Images.Thumbnails.Search)
-                    .setColor(Settings.BotSettings['Alt-Color'])
-                    .setDescription(`Caliber search of \"${args['caliber'].toLowerCase()}\" came back with multiple results, please be more specific. [Click here](${Settings.CaliberArrayLink}) to see a list of all possible entries. \n\n Use the command \`/Confirm\` followed by the number next to the item to complete the search`)
-                    .addFields(ResolveStrings([{ name: 'Results', value: Array }]))
-            }
+            return CreateSearchInput(GetCalibers(), args, 'caliber', 'caliber')
         }
 
         let CaliberData = EngineResults.CaliberData[Caliber]

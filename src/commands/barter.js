@@ -31,22 +31,26 @@ module.exports = {
 
 
             const BarterConfirmation = () => {
-                let uid = obj.uid
-                let Array = require('../command_modules/search').CreateBarterInput(BarterData, Item[0], uid)
-                return {
-                    Type: "error",
-                    Content: new MessageEmbed()
-                        .setTitle('Error')
-                        .setColor(Settings.BotSettings.ErrorColor)
-                        .setDescription(`Barter search for \"${args['item'].toLowerCase().replace('short=','')}\" came back with multiple results, please be more specific.\n\n Use the command \`/Confirm\` followed by the number next to the item to complete the search`)
-                        .addFields(ResolveStrings([{ name: 'Results', value: Array }]))
+                let Message = new Array()
+                for (const i in BarterData) {
+                    let pos = Number(i) + 1
+                    let Ingredients = new Array()
+
+                    for (const Ingredient of BarterData[i].RequiredItems) {
+                        Ingredients.push(`${Ingredient.Amount} ${Ingredient.ShortName}`)
+                    }
+                    Message.push(`${pos}-Ingredients: ${Ingredients.join(', ')}`)
                 }
+
+                return CreateSearchInput(Message, args, 'barter', 'barter')
             }
 
             if (obj === undefined) {
                 return BarterConfirmation()
             } else if (obj.Barter !== undefined) {
                 Barter = BarterData[obj.Barter]
+            } else if (args['barter'] !== undefined) {
+                Barter = BarterData[Number(args['barter']) - 1]
             } else if (BarterData.length === 1) {
                 Barter = BarterData[0]
             } else {
@@ -87,13 +91,10 @@ module.exports = {
                         value: ExtraData.BarterProfit(),
                         inline: true
                     }]))
-
             }
 
         } else if (Length > 1 && Length < 25) {
-            let uid = obj.uid
-            let array = require('../command_modules/search').CreateInput(Item, 'barter', uid)
-            return CreateSearchInput(array, args['item'])
+            return CreateSearchInput(Item, args, 'item', 'barter')
         } else if (Length > 25) {
             return { Type: "error", Content: ErrorMessage(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with over 25 results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries`) }
         } else {

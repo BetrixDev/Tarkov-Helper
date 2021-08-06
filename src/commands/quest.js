@@ -77,17 +77,8 @@ module.exports = {
                 }
             }
         } else if (Length > 1) {
-            let Array = require('../command_modules/search').CreateInput(Quest, 'quest', uid)
 
-            return {
-                Type: "error",
-                Content: new MessageEmbed()
-                    .setTitle('Error')
-                    .setThumbnail(Settings.Images.Thumbnails.Search)
-                    .setColor(Settings.BotSettings['Alt-Color'])
-                    .setDescription(`Item search of \"${args['questname'].toLowerCase()}\" came back with multiple results, please be more specific. \n\n Use the command \`/Confirm\` followed by the number next to the item to complete the search`)
-                    .addFields(ResolveStrings([{ name: 'Results', value: Array }]))
-            }
+            return CreateSearchInput(Quest, args, 'questname', 'quest')
 
         } else {
             return {

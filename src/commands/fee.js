@@ -59,8 +59,7 @@ module.exports = {
                 return { Type: "error", Content: ErrorMessage('Unable to grab price data please try again later'), Time: 5000 }
             }
         } else if (Length > 1 && Length < 25) {
-            let array = require('../command_modules/search').CreateInput(Item, 'fee', uid)
-            return CreateSearchInput(array, args['item'])
+            return CreateSearchInput(Item, args, 'item', 'fee')
         } else if (Length > 25) {
             return { Type: "error", Content: ErrorMessage(`Item search of \"${args['item'].toLowerCase().replace('short=','')}\" came back with over 25 results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries`), Time: 5000 }
         } else {

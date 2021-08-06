@@ -1,6 +1,6 @@
 let fs = require('fs')
 let moment = require('moment-timezone')
-const { MessageEmbed } = require('discord.js')
+const { MessageEmbed, MessageSelectMenu, MessageActionRow } = require('discord.js')
 
 globalThis.GetTime = () => {
     return moment().tz('America/New_York').format('MM/DD h:m:s a').toUpperCase()
@@ -24,15 +24,52 @@ globalThis.ResolveStrings = (fields) => {
     })
 }
 
-globalThis.CreateSearchInput = (array, input) => {
+globalThis.CreateSearchInput = (array, args, variable, commandName) => {
+    const ItemFromName = ReadJson('./src/game_data/api/itemfromname.json')
+    const Descriptions = ReadJson('./src/game_data/database/locales/global/en.json').templates
+
     return {
         Type: "error",
         Content: new MessageEmbed()
             .setTitle('Error!')
             .setThumbnail(Settings.Images.Thumbnails.Search)
             .setColor(Settings.BotSettings['Alt-Color'])
-            .setDescription(`Item search of \"${input.toLowerCase().replace('short=','')}\" came back with multiple results, please be more specific. [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries. \n\n Use the command \`/Confirm\` followed by the number next to the item to complete the search`)
-            .addFields(ResolveStrings([{ name: 'Results', value: array }]))
+            .setDescription((variable !== 'barter') ?
+                `
+                Item search of **${args[variable]}** came back with multiple results.
+                [Click here](${Settings.ItemArrayLink}) to see a list of all possible entries.
+                Use the dropdown menu below to specify your ${variable}
+            ` : `
+                The item you searched has multiple barters available.
+                Use the dropdown menu below to specify the barter you want
+            `),
+        Components: [new MessageActionRow()
+            .addComponents(new MessageSelectMenu()
+                .setCustomId(`${commandName}__${variable}__${JSON.stringify(args)}`)
+                .setMaxValues(1)
+                .setMinValues(1)
+                .setPlaceholder(`Choose a/an ${variable} to complete search`)
+                .addOptions(array.map(entry => {
+                    if (variable === 'item') {
+                        let itemID = ItemFromName[entry].ID
+                        return {
+                            label: entry,
+                            value: itemID,
+                            description: Descriptions[itemID].Description.substr(0, 75).concat('...')
+                        }
+                    } else if (variable === 'questname' || variable === 'caliber') {
+                        return {
+                            label: entry,
+                            value: entry
+                        }
+                    } else if (variable === 'barter') {
+                        return {
+                            label: entry.split('-')[1],
+                            value: entry.split('-')[0]
+                        }
+                    }
+                })))
+        ]
     }
 }
 

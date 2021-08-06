@@ -59,97 +59,131 @@ client.on('ready', async() => {
 
     client.on('interactionCreate', async(interaction) => {
         try {
-            if (!interaction.isCommand()) return
+            if (interaction.isCommand()) {
 
-            let commandName = interaction.commandName
+                let commandName = interaction.commandName
 
-            Logger('-------------------------------------')
-            Logger(`New command: ${commandName}`)
-            let commandStart = new Date()
+                Logger('-------------------------------------')
+                Logger(`New command: ${commandName}`)
+                let commandStart = new Date()
 
-            let command = require(`./commands/${commandName}`)
+                let command = require(`./commands/${commandName}`)
 
-            // Format arguments into easier to use object
-            const args = {}
-            if (command.data.options) {
-                for (let arg of command.data.options) {
-                    let input = interaction.options.get(arg.name)
-                    if (!input) { continue }
+                // Format arguments into easier to use object
+                const args = {}
+                if (command.data.options) {
+                    for (let arg of command.data.options) {
+                        let input = interaction.options.get(arg.name)
+                        if (!input) { continue }
 
-                    args[arg.name] = input.value
-                }
-            }
-
-            Logger(`With args: ${JSON.stringify(args)}`)
-
-            let uid = interaction.user.id
-            let IsAdmin // Admins can bypass restrictions
-            let ServerData
-            if (interaction.inGuild()) {
-                let userRoles = await client.guilds.fetch(interaction.guildId).then(guild => {
-                    return guild.members.fetch(uid).then(user => { return user.roles.cache.map(role => role.id) })
-                })
-
-                ServerData = await GetServerData(interaction.guildId)
-                IsAdmin = userRoles.includes(ServerData['AdminRole'])
-            } else {
-                IsAdmin = true
-                ServerData = {
-                    ServerID: "",
-                    AdminRole: "",
-                    Cooldown: 3,
-                    ChannelLock: ""
+                        args[arg.name] = input.value
+                    }
                 }
 
-                if (ExcludedDMCommands.includes(commandName)) {
-                    interaction.reply({ embeds: [ErrorMessage('Cannot use admin commands in a Direct Message channel')], ephemeral: true })
-                    return
-                }
-            }
+                Logger(`With args: ${JSON.stringify(args)}`)
 
-            let ChannelLock = ServerData['ChannelLock']
+                let uid = interaction.user.id
+                let IsAdmin // Admins can bypass restrictions
+                let ServerData
+                if (interaction.inGuild()) {
+                    let userRoles = await client.guilds.fetch(interaction.guildId).then(guild => {
+                        return guild.members.fetch(uid).then(user => { return user.roles.cache.map(role => role.id) })
+                    })
 
-            if (ChannelLock === interaction.channelId || ChannelLock === "" || IsAdmin) {
-
-                let Cooldown = ServerData['Cooldown']
-                let LastMessage = GetCooldown(uid)
-                if (LastMessage > Cooldown || IsAdmin) {
-                    SetCooldown(uid) // Update Cooldown
-
-                    // If command exists locally
-                    if (BotCommands.includes(commandName)) {
-                        const guild = client.guilds.resolve(interaction.guildId) // Needed for admin commands
-
-                        const Message = await command.message(args, { interaction, guild, serverCount: client.guilds.cache.size, serverData: ServerData, uid: uid, isAdmin: IsAdmin })
-
-                        if (Message.Type === "serverMessage" || !interaction.member) {
-                            interaction.reply({ embeds: [Message.Content] })
-                        } else if (Message.Type === "ephemeral" || Message.Type === "error") {
-                            if (typeof(Message.Content) === 'object') {
-                                interaction.reply({ embeds: [Message.Content], ephemeral: true })
-                            } else {
-                                interaction.reply({ content: Message.Content, ephemeral: true })
-                            }
-                        }
-
-                        IncreaseCommands(commandName)
-                        Logger(`Command fulfilled in ${new Date().getTime() - commandStart.getTime()}ms`)
-                        Logger('-------------------------------------')
+                    ServerData = await GetServerData(interaction.guildId)
+                    IsAdmin = userRoles.includes(ServerData['AdminRole'])
+                } else {
+                    IsAdmin = true
+                    ServerData = {
+                        ServerID: "",
+                        AdminRole: "",
+                        Cooldown: 3,
+                        ChannelLock: ""
                     }
 
-                } else { // Message user that they are on cooldown
+                    if (ExcludedDMCommands.includes(commandName)) {
+                        interaction.reply({ embeds: [ErrorMessage('Cannot use admin commands in a Direct Message channel')], ephemeral: true })
+                        return
+                    }
+                }
+
+                let ChannelLock = ServerData['ChannelLock']
+
+                if (ChannelLock === interaction.channelId || ChannelLock === "" || IsAdmin) {
+
+                    let Cooldown = ServerData['Cooldown']
+                    let LastMessage = GetCooldown(uid)
+                    if (LastMessage > Cooldown || IsAdmin) {
+                        SetCooldown(uid) // Update Cooldown
+
+                        // If command exists locally
+                        if (BotCommands.includes(commandName)) {
+                            const guild = client.guilds.resolve(interaction.guildId) // Needed for admin commands
+
+                            const Message = await command.message(args, { interaction, guild, serverCount: client.guilds.cache.size, serverData: ServerData, uid: uid, isAdmin: IsAdmin })
+
+                            if (Message.Type === "serverMessage" || !interaction.member) {
+                                interaction.reply({ embeds: [Message.Content] })
+                            } else if (Message.Type === "ephemeral" || Message.Type === "error") {
+                                if (typeof(Message.Content) === 'object') {
+                                    if (Message.Components !== undefined) {
+                                        interaction.reply({ embeds: [Message.Content], ephemeral: true, components: Message.Components })
+                                    } else {
+                                        interaction.reply({ embeds: [Message.Content], ephemeral: true })
+                                    }
+                                } else {
+                                    interaction.reply({ content: Message.Content, ephemeral: true })
+                                }
+                            }
+
+                            IncreaseCommands(commandName)
+                            Logger(`Command fulfilled in ${new Date().getTime() - commandStart.getTime()}ms`)
+                            Logger('-------------------------------------')
+                        }
+
+                    } else { // Message user that they are on cooldown
+                        interaction.reply({
+                            content: `Cooldown: Please wait ${Cooldown - (Math.round(LastMessage * 100) / 100)} seconds`,
+                            ephemeral: true
+                        })
+                    }
+                } else { // Message user that they cannot type in this channel
+                    let TypedChannel = await client.channels.fetch(interaction.channelId).then(channel => { return channel.name })
+                    let LockedChannel = await client.channels.fetch(ChannelLock).then(channel => { return channel.name })
+
                     interaction.reply({
-                        content: `Cooldown: Please wait ${Cooldown - (Math.round(LastMessage * 100) / 100)} seconds`,
+                        content: `The channel: \`#${TypedChannel}\` is locked, please use \`#${LockedChannel}\` to have access to Tarkov Helper commands`,
                         ephemeral: true
                     })
                 }
-            } else { // Message user that they cannot type in this channel
-                let TypedChannel = await client.channels.fetch(interaction.channelId).then(channel => { return channel.name })
-                let LockedChannel = await client.channels.fetch(ChannelLock).then(channel => { return channel.name })
+            } else if (interaction.isSelectMenu()) {
+                let id = interaction.customId
+
+                let uid = interaction.user
+
+                let commandName = id.split('__')[0]
+                let args = JSON.parse(id.split('__')[2])
+                let variable = id.split('__')[1]
+
+                args[variable] = interaction.values[0]
+
+                let command = require(`./commands/${commandName}`)
+
+                let newMessage = await command.message(args, {
+                    interaction,
+                    serverData: {
+                        ServerID: "",
+                        AdminRole: "",
+                        Cooldown: 1,
+                        ChannelLock: ""
+                    },
+                    uid: uid,
+                    isAdmin: false
+                })
 
                 interaction.reply({
-                    content: `The channel: \`#${TypedChannel}\` is locked, please use \`#${LockedChannel}\` to have access to Tarkov Helper commands`,
-                    ephemeral: true
+                    embeds: [newMessage.Content],
+                    ephemeral: newMessage.Type === 'error' || newMessage.Type === 'ephemeral' ? true : false
                 })
             }
         } catch (e) {
