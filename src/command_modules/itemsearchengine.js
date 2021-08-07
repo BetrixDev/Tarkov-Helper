@@ -51,9 +51,9 @@ function GetMatchingPercent(searchTerm, input) {
                 name = name.substr(0, index) + name.substr(index + 1, name.length)
             }
         })
-    }
 
-    percentage = matches / input.split('').length * 0.5
+        percentage = matches / input.split('').length * 0.5
+    }
 
     if (percentage) {
         return { matches, percentage, itemData: ItemName[input] }
@@ -72,7 +72,7 @@ const Engine = (Input) => {
             percentages.push(matchData)
         }
     }
-    percentages = percentages.sort((a, b) => b.percentage - a.percentage).splice(0, 20)
+    percentages = percentages.sort((a, b) => b.percentage - a.percentage).splice(0, 24)
 
     // User inputted item id
     if (ItemID.hasOwnProperty(Input)) {
@@ -95,7 +95,7 @@ const Engine = (Input) => {
     let LongResults = SearchEngine.accurateSearch(Input)
     let ShortResults = ShortSearchEngine.accurateSearch(Input)
 
-    if (LongResults.length > 20 || ShortResults.length > 20) {
+    if (LongResults.length > 25 || ShortResults.length > 25) {
         return percentages.map(item => { return item.itemData.Name })
     }
 
