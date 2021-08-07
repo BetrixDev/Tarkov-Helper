@@ -17,7 +17,7 @@ module.exports = {
             type: 3
         }]
     },
-    message: function(args, { uid }) {
+    message: function(args) {
         let Item = ItemSearchEngine(args['item'].toLowerCase())
 
         let Length = Item.length
