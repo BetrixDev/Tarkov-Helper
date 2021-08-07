@@ -23,7 +23,56 @@ for (const i in ItemShortName) {
     ShortSearchEngine.addText(Item.ShortName, Item.ShortName)
 }
 
+function GetMatchingPercent(searchTerm, input) {
+    let search = searchTerm.split(' ')
+    let name = input
+
+    let matches = 0
+
+    search.forEach(word => {
+        let index = name.indexOf(word)
+
+        if (index >= 0) {
+            matches++
+            name = name.substr(0, index) + name.substr(index + word.length + 1, name.length)
+        }
+    })
+
+    let percentage = matches / input.length
+
+    if (!percentage) {
+        matches = 0
+
+        search.forEach(char => {
+            let index = name.indexOf(char)
+
+            if (index >= 0) {
+                matches++
+                name = name.substr(0, index) + name.substr(index + 1, name.length)
+            }
+        })
+    }
+
+    percentage = matches / input.split('').length * 0.5
+
+    if (percentage) {
+        return { matches, percentage, itemData: ItemName[input] }
+    } else {
+        return null
+    }
+}
+
 const Engine = (Input) => {
+
+    let percentages = new Array()
+    for (let name in ItemName) {
+        let matchData = GetMatchingPercent(Input, name)
+
+        if (matchData) {
+            percentages.push(matchData)
+        }
+    }
+    percentages = percentages.sort((a, b) => b.percentage - a.percentage).splice(0, 20)
 
     // User inputted item id
     if (ItemID.hasOwnProperty(Input)) {
@@ -45,6 +94,10 @@ const Engine = (Input) => {
 
     let LongResults = SearchEngine.accurateSearch(Input)
     let ShortResults = ShortSearchEngine.accurateSearch(Input)
+
+    if (LongResults.length > 20 || ShortResults.length > 20) {
+        return percentages.map(item => { return item.itemData.Name })
+    }
 
     if (LongResults.length > ShortResults.length) {
         return LongResults
