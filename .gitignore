@@ -14,3 +14,5 @@ dev/
 
 # These files are created internally so useless to keep
 src/game_data/
+src/bot_data/commands.json
+src/bot_data/notifylist.json
