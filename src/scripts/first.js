@@ -14,6 +14,8 @@
         console.log('Retrieving Game Data From APIS')
 
         try {
+            fs.writeFileSync('./src/bot_data/notifylist.json', JSON.stringify({}))
+            fs.writeFileSync('./src/bot_data/commands.json', JSON.stringify({}))
             fs.mkdirSync('./src/game_data/')
         } catch {}
 
