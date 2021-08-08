@@ -31,7 +31,7 @@ globalThis.CreateSearchInput = (array, args, variable, commandName) => {
     return {
         Type: "error",
         Content: new MessageEmbed()
-            .setTitle('Error!')
+            .setTitle('Complete Your Search')
             .setThumbnail(Settings.Images.Thumbnails.Search)
             .setColor(Settings.BotSettings['Alt-Color'])
             .setDescription((variable !== 'barter') ?
