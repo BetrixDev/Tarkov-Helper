@@ -9,7 +9,7 @@ class PriceInfo {
         this.HighestTraderBuy = this.HighestTrader()
         this.Fee = this.CalcFee()
         this.PricePerSlot = this.PriceSlot()
-        this.PriceWithFee = this.PriceData.avg24hPrice - this.Fee
+        this.PriceWithFee = this.PriceData.lastLowPrice - this.Fee
         this.RecommendedSell = this.BestSell()
     }
     HighestTrader() {
@@ -37,7 +37,7 @@ class PriceInfo {
         // Function from tarkov-tools fee calculator script
         // https://github.com/kokarn/tarkov-tools/blob/master/src/modules/flea-market-fee.js
         let V0 = this.PriceData.basePrice
-        let VR = this.PriceData.avg24hPrice
+        let VR = this.PriceData.lastLowPrice
         let Ti = 0.05
         let Tr = 0.05
         let P0 = Math.log10(V0 / VR)
@@ -56,7 +56,7 @@ class PriceInfo {
     }
     PriceSlot() {
         let Slots = this.PriceData.width * this.PriceData.height
-        return Math.round(this.PriceData.avg24hPrice / Slots)
+        return Math.round(this.PriceData.lastLowPrice / Slots)
     }
     BestBuy() {
         let BuyData = this.PriceData.buyFor

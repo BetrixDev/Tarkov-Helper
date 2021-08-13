@@ -15,7 +15,7 @@ module.exports = {
             type: 3
         }]
     },
-    message: (args, { uid }) => {
+    message: (args) => {
         if (args['item'].length < 2 || args['item'].length > 100) {
             return { Type: "error", Content: ErrorMessage('Please keep the item input length between 3 and 100 characters'), Time: 5000 }
         }
@@ -51,13 +51,16 @@ module.exports = {
                         .setThumbnail(`https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/item_icons/${PriceData.PriceData.id}.png`)
                         .setDescription(`[Wiki Link To Item](${PriceData.PriceData.wikiLink})`)
                         .addFields(ResolveStrings([{
-                            name: 'Price',
-                            value: FormatPrice(PriceData.PriceData.avg24hPrice),
+                            name: 'Price Right Now',
+                            value: `**${FormatPrice(PriceData.PriceData.lastLowPrice)}**`,
                             inline: true
                         }, {
                             name: 'Price Per Slot',
                             value: FormatPrice(PriceData.PricePerSlot),
                             inline: true
+                        }, {
+                            name: 'Avg 24hr Price',
+                            value: FormatPrice(PriceData.PriceData.avg24hPrice)
                         }, {
                             name: 'Flea Market Fee',
                             value: FormatPrice(PriceData.Fee) + '/each',
@@ -73,7 +76,7 @@ module.exports = {
                             value: `${PriceData.RecommendedSell}`
                         }, {
                             name: 'Best Place To Buy',
-                            value: `${PriceData.BestBuy()[1]} at ${FormatPrice(PriceData.BestBuy()[0])}/each`
+                            value: `${CapitalizeWords(PriceData.BestBuy()[1])} at ${FormatPrice(PriceData.BestBuy()[0])}/each`
                         }]))
                 }
             }
