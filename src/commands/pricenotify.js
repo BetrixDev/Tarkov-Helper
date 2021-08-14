@@ -49,7 +49,6 @@ module.exports = {
             if (notifyData[uid] === undefined) { notifyData[uid] = new Array() } // User doesn't have any current notifications so we create an array
 
             if (notifyData[uid].length >= 5) { // User has too many open notifications
-                console.log(notifyData[uid])
                 return {
                     Type: "error",
                     Content: ErrorMessage(`
