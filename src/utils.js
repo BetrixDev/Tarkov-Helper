@@ -24,6 +24,10 @@ globalThis.ResolveStrings = (fields) => {
     })
 }
 
+globalThis.Round = (num, place) => {
+    return Math.round(num * place) / place
+}
+
 globalThis.CreateSearchInput = (array, args, variable, commandName) => {
     const ItemFromName = ReadJson('./src/game_data/api/itemfromname.json')
     const Descriptions = ReadJson('./src/game_data/database/locales/global/en.json').templates
