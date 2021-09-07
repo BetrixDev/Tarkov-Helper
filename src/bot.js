@@ -183,7 +183,8 @@ client.on('ready', async() => {
 
                 interaction.reply({
                     embeds: [newMessage.Content],
-                    ephemeral: newMessage.Type === 'error' || newMessage.Type === 'ephemeral' ? true : false
+                    ephemeral: newMessage.Type === 'error' || newMessage.Type === 'ephemeral' ? true : false,
+                    components: newMessage.Components
                 })
             }
         } catch (e) {
