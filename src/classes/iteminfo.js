@@ -5,6 +5,7 @@ const { PenetrationCalculator } = require('./simulator/penetrationcalculator')
 const ItemFromId = ReadJson('./src/game_data/api/itemfromid.json')
 const Globals = ReadJson('./src/game_data/database/globals.json')
 const Templates = ReadJson('./src/game_data/database/locales/global/en.json').templates
+let GameData = ReadJson('./src/game_data/api/itemdata.json')
 
 function ArmorDurability() {
     let Result = new Object()
@@ -20,9 +21,8 @@ function ArmorDurability() {
 
 class ItemInfo {
     constructor(item) {
-        this.AllData = ReadJson('./src/game_data/api/itemdata.json')
         this.ItemID = item
-        this.ItemData = this.AllData[item]
+        this.ItemData = GameData[item]
         this.Description = this.GetDescription()
         this.SpecificData = this.GetSpecificData()
         this.WikiLink = this.ItemData.WikiLink
