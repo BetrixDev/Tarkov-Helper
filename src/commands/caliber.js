@@ -22,7 +22,7 @@ module.exports = {
             ]
         }]
     },
-    message: (args, { uid }) => {
+    message: (args) => {
         let Caliber = args['caliber']
         let Sort = args['sort'] || 1
 
