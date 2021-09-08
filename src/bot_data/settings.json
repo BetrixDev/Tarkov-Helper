@@ -21,7 +21,8 @@
             "SpawnChance": "https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/SpawnChance.png?raw=true",
             "ExchangeRate": "https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/ExchangeLogo.png?raw=true",
             "PriceNotify": "https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/PriceNotifyLogo.png?raw=true",
-            "NotifyRemove": "https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/NotifyRemoveLogo.png?raw=true"
+            "NotifyRemove": "https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/NotifyRemoveLogo.png?raw=true",
+            "Compare": "https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/CompareLogo.png?raw=true"
         }
     },
     "Text": {
