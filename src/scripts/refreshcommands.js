@@ -8,23 +8,25 @@ const CommandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWi
 
 client.on('ready', async() => {
     try {
-        const commands = await client.application.commands.cache
 
-        commands.forEach(command => {
-            command.delete()
+        let commands = new Array()
+
+        for (let command of CommandFiles) {
+            let commandData = require(`../commands/${command}`).data
+
+            commands.push(commandData)
+        }
+
+        commands.forEach(async command => {
+            console.log(`Deleting: ${command.name}`)
+            try {
+                await client.application.commands.delete(command)
+            } catch {}
         })
 
-        console.log('Finished Deleting')
+        console.log('\n')
 
-        for (const File of CommandFiles) {
-            let FormatFile = File.split('.')[0]
-            let CommandData = require(`../commands/${FormatFile}`).data
-
-            if (CommandData !== undefined) {
-                console.log(`Adding ${CommandData.name}`)
-                const command = await client.application.commands.create(CommandData)
-            }
-        }
+        await client.application.commands.set(commands)
 
         console.log('Refreshed commands. You may now close this application and run the bot normally')
 
