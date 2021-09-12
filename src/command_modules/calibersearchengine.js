@@ -2,6 +2,7 @@ require('../utils')
 const AccurateSearch = require('accurate-search')
 
 const ItemData = ReadJson('./src/game_data/api/itemdata.json')
+const PriceData = ReadJson('./src/game_data/api/pricedata.json')
 
 let SearchEngine = new AccurateSearch()
 
@@ -24,13 +25,17 @@ function InitEngine() {
 
             try {
                 let RawData = Item.RawData._props
+                let itemPriceData = PriceData[i].Item
 
                 CaliberData[Caliber].push({
                     Name: Item.ShortName,
                     ID: Item.ID,
                     Damage: RawData.Damage,
                     ArmorDamage: RawData.ArmorDamage,
-                    Penetration: RawData.PenetrationPower
+                    Penetration: RawData.PenetrationPower,
+                    AvailableFrom: itemPriceData.buyFor.map(offer => {
+                        return `${CapitalizeWords(offer.source)} LL${offer.requirements[0].value}`
+                    }).join(', ')
                 })
             } catch {}
         }
