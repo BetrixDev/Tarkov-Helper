@@ -173,17 +173,20 @@ const UpdateItems = scheduleJob('@daily', async function() {
                 ItemFromName[Item.name] = {
                     Name: Item.name,
                     ShortName: Item.shortName,
-                    ID: Item.id
+                    ID: Item.id,
+                    Types: Item.types,
                 }
                 ItemFromShortName[Item.shortName.toLowerCase()] = {
                     Name: Item.name,
                     ShortName: Item.shortName,
-                    ID: Item.id
+                    ID: Item.id,
+                    Types: Item.types,
                 }
                 ItemFromID[Item.id] = {
                     Name: Item.name,
                     ShortName: Item.shortName,
-                    ID: Item.id
+                    ID: Item.id,
+                    Types: Item.types,
                 }
                 ItemArray.push(Item.name)
                 ItemIDs.push(Item.id)
