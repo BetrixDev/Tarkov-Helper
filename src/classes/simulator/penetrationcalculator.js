@@ -69,6 +69,74 @@ class PenetrationCalculator {
 
         this.currentDurability -= armorDamage
     }
+    ChanceSummary() {
+        let results = new Array()
+
+        for (let i = 5; i > 0; i--) {
+            let durability = Math.floor((i * 20 / 100) * this.armorDurability)
+
+            this.currentDurability = durability
+
+            let penChance = Math.round(this.CalculateChance() * 100) / 100
+
+            results.push(`${durability}/${this.armorDurability}: **${penChance}%**`)
+        }
+
+        return results
+    }
+    Simulate(iterations) {
+        let simResults = new Array()
+
+        for (let i = 0; i < iterations; i++) {
+            let result = new Array()
+
+            while (this.currentDurability > 0) {
+                if (this.currentDurability < 0) { this.currentDurability = 0 }
+
+                let penChance = this.CalculateChance()
+
+                let random = Math.floor(Math.random() * 100) + 1
+                let penned = true
+
+                if (penChance > random) {
+                    this.DamageArmor(true)
+                } else {
+                    this.DamageArmor(false)
+                    penned = false
+                }
+
+                if (this.currentDurability < 0) { this.currentDurability = 0, penChance = 100 }
+
+                result.push({ chance: penChance, durability: this.currentDurability, penned, rolled: random })
+            }
+
+            simResults.push(result)
+
+            this.currentDurability = this.armorDurability
+        }
+
+        let report = {
+            averageShotsToPen: 0,
+            averageShotsToZero: 0
+        }
+
+        simResults.forEach(sim => {
+            report.averageShotsToZero += sim.length
+
+            for (let i in sim) {
+                let result = sim[i]
+                if (result.penned) {
+                    report.averageShotsToPen += Number(i)
+                    break
+                }
+            }
+        })
+
+        report.averageShotsToZero = report.averageShotsToZero / simResults.length
+        report.averageShotsToPen = report.averageShotsToPen / simResults.length
+
+        return report
+    }
 }
 
 function ClampNumber(num, min, max) {
