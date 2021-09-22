@@ -18,7 +18,7 @@ globalThis.ResolveStrings = (fields) => {
         let { name, value, inline } = field
         return {
             name: name,
-            value: (typeof(value) === 'object') ? value.join('\n') : String(value).toString(),
+            value: (typeof (value) === 'object') ? value.join('\n') : String(value).toString(),
             inline: (inline ? inline : false)
         }
     })
@@ -71,6 +71,13 @@ globalThis.CreateSearchInput = (array, args, variable, commandName) => {
                             label: entry.split('-')[1],
                             value: entry.split('-')[0]
                         }
+                    } else if (variable === 'bullet' || variable === 'armor') {
+                        let itemID = entry?.ID || entry?.id
+                        return {
+                            label: entry.Name,
+                            value: itemID,
+                            description: Descriptions[itemID].Description.substr(0, 75).concat('...')
+                        }
                     }
                 })))
         ]
@@ -117,17 +124,17 @@ globalThis.CapitalizeWords = (string) => {
 globalThis.FormatPrice = (price, source) => {
     if (source === 'peacekeeper') {
         return new Intl.NumberFormat('en-EN', {
-                style: 'currency',
-                currency: 'USD',
-                maximumSignificantDigits: 6,
-            })
+            style: 'currency',
+            currency: 'USD',
+            maximumSignificantDigits: 6,
+        })
             .format(Number(price))
     } else {
         return new Intl.NumberFormat('en-EN', {
-                style: 'currency',
-                currency: 'RUB',
-                maximumSignificantDigits: 6,
-            })
+            style: 'currency',
+            currency: 'RUB',
+            maximumSignificantDigits: 6,
+        })
             .format(Number(price))
             .replace('RUB', '₽')
             .replace(' ', '')
