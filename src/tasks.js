@@ -16,14 +16,14 @@ async function Database() {
     try {
         fs.rmSync('./src/game_data/temp', { recursive: true })
         fs.mkdirSync('./src/game_data/temp')
-    } catch {}
+    } catch { }
 
     await download('https://github.com/Tarkov-Helper/Database/archive/refs/heads/main.zip', './src/game_data/temp')
     await decompress('./src/game_data/temp/main.zip', './src/game_data/temp')
 
     let DownloadedFiles = fs.readdirSync('./src/game_data/temp/Database-main')
     for (let File of DownloadedFiles) {
-        try { fs.rmSync(`./src/game_data/${File}`, { recursive: true }) } catch {}
+        try { fs.rmSync(`./src/game_data/${File}`, { recursive: true }) } catch { }
         fs.renameSync(`./src/game_data/temp/Database-main/${File}`, `./src/game_data/${File}`)
     }
 
@@ -31,7 +31,7 @@ async function Database() {
 
     return 'Done'
 }
-const UpdateDatabase = scheduleJob('0 */3 * * *', async function() {
+const UpdateDatabase = scheduleJob('0 */3 * * *', async function () {
     Logger(`Updating database`)
 
     try {
@@ -47,7 +47,7 @@ const UpdateDatabase = scheduleJob('0 */3 * * *', async function() {
 })
 
 // Update price data every 10 minutes
-const UpdatePrices = scheduleJob('*/10 * * * *', async function() {
+const UpdatePrices = scheduleJob('*/10 * * * *', async function () {
     Logger(`Updating prices`)
 
     try {
@@ -122,8 +122,29 @@ const UpdatePrices = scheduleJob('*/10 * * * *', async function() {
     }
 })
 
+const PriceHistory = scheduleJob('*/30 * * * *', async function () {
+    let time = Date.now()
+    let priceData = ReadJson('./src/game_data/api/pricedata.json')
+
+    let History = ReadJson('./src/bot_data/pricehistory.json')
+    for (const itemID in priceData) {
+        let array = History[itemID]
+        if (array == undefined) { array = new Array() }
+
+        let price = priceData[itemID].Item.avg24hPrice
+
+        if (price) { // only log the price is there actually is one
+
+            array.push({ price: price, time: time })
+
+            History[itemID] = array
+        }
+    }
+    fs.writeFileSync('./src/bot_data/pricehistory.json', JSON.stringify(History, null, 4))
+})
+
 // Update item data daily
-const UpdateItems = scheduleJob('@daily', async function() {
+const UpdateItems = scheduleJob('@daily', async function () {
     Logger(`Updating items`)
 
     const RawGameData = require('./game_data/database/templates/items.json')
@@ -235,7 +256,7 @@ const UpdateItems = scheduleJob('@daily', async function() {
 })
 
 // Update quest data every 24 hours
-const UpdateQuests = scheduleJob('@daily', async function() {
+const UpdateQuests = scheduleJob('@daily', async function () {
     Logger(`Updating quests`)
 
     let ExtraData = await got('https://raw.githubusercontent.com/TarkovTracker/tarkovdata/master/quests.json', {
@@ -280,7 +301,7 @@ const UpdateQuests = scheduleJob('@daily', async function() {
                     QuestData.Kappa = true
                 }
                 QuestData.Objectives = Quest.objectives
-            } catch {}
+            } catch { }
 
         }
 
@@ -297,7 +318,7 @@ const UpdateQuests = scheduleJob('@daily', async function() {
 })
 
 // Update quest data every 24 hours
-const UpdateBarters = scheduleJob('@daily', async function() {
+const UpdateBarters = scheduleJob('@daily', async function () {
     Logger(`Updating barters`)
 
     try {
@@ -376,10 +397,10 @@ const UpdateBarters = scheduleJob('@daily', async function() {
 
 })
 
-const StartTasks = async() => {
+const StartTasks = async () => {
     try {
         fs.mkdirSync('./src/game_data/api')
-    } catch {}
+    } catch { }
 
     // Run updates at startup
     UpdatePrices.invoke()
@@ -393,6 +414,7 @@ const StartTasks = async() => {
     UpdateItems.schedule()
     UpdateQuests.schedule()
     UpdateBarters.schedule()
+    PriceHistory.schedule()
 }
 
 // Seperate function since we need to invoke this before anything else since this downloads data used by the other updates
