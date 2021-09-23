@@ -55,15 +55,9 @@ class SearchEngine {
                     excludedTypes.includes(t)
                 )
 
-                if (negative.length > 0) {
-                    return false
-                }
-                if (positive.length > 0) {
-                    return true
-                }
-                if (positive.length < 1 && types.length > 0) {
-                    return false
-                }
+                if (negative.length > 0) { return false }
+                if (positive.length > 0) { return true }
+                if (positive.length < 1 && types.length > 0) { return false }
                 return true
             } catch {
                 return true
@@ -71,17 +65,11 @@ class SearchEngine {
         })
 
         if (results.length < 1 && types.length < 1) {
-            error = ErrorMessage(
-                `Item search of \"${input}\" came back with no results`
-            )
+            error = ErrorMessage(`Item search of \"${input}\" came back with no results`)
         } else if (results.length < 1 && types.length > 0) {
-            error = ErrorMessage(
-                `Item search of \"${input}\" came back with results but is not of the types: **${types.join(', ')}**`
-            )
+            error = ErrorMessage(`Item search of \"${input}\" came back with results but is not of the types: **${types.join(', ')}**`)
         } else if (results.length >= 25) {
-            error = ErrorMessage(
-                `Item search of \"${input}\" came back with over 25 results, please be more specific`
-            )
+            error = ErrorMessage(`Item search of \"${input}\" came back with over 25 results, please be more specific`)
         }
 
         return { error, results }
