@@ -133,12 +133,11 @@ const PriceHistory = scheduleJob('*/30 * * * *', async function () {
 
         let price = priceData[itemID].Item.avg24hPrice
 
-        if (price) { // only log the price is there actually is one
+        if (!price) { price = 0 }
 
-            array.push({ price: price, time: time })
+        array.push({ price: price, time: time })
 
-            History[itemID] = array
-        }
+        History[itemID] = array
     }
     fs.writeFileSync('./src/bot_data/pricehistory.json', JSON.stringify(History, null, 4))
 })
