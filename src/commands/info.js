@@ -25,7 +25,7 @@ module.exports = {
                 **Current server count: ${obj.serverCount}**`)
                 .addFields(ResolveStrings([{
                     name: 'Official Wiki',
-                    value: '[Click Here](https://github.com/BetrixEdits/Tarkov-Helper/wiki)'
+                    value: '[Click Here](https://github.com/BetrixDev/Tarkov-Helper/wiki)'
                 }, {
                     name: 'Add Tarkov Helper to Your Sever',
                     value: '[Click Here](https://top.gg/bot/797600238449590334/invite/)'

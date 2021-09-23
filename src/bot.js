@@ -31,7 +31,7 @@ async function DMUser(uid, msg) {
     await client.users.fetch(uid).then(user => { user.send(msg) })
 }
 
-client.on('guildCreate', async(guild) => {
+client.on('guildCreate', async (guild) => {
     let Embed = new discordjs.MessageEmbed()
         .setTitle(`Thank you for adding Tarkov Helper to ${guild.name}`)
         .setThumbnail(Settings.Images.Logo250)
@@ -45,7 +45,7 @@ client.on('guildCreate', async(guild) => {
 
         • A great first step to ensuring Tarkov Helper is as easy to use as possible you can configure it to your liking, start by using \`/admin @ADMIN_ROLE\`.
 
-        • To learn more about how to use Tarkov Helper please head over to the [official wiki](https://github.com/BetrixEdits/Tarkov-Helper/wiki).
+        • To learn more about how to use Tarkov Helper please head over to the [official wiki](https://github.com/BetrixDev/Tarkov-Helper/wiki).
 
         `)
         .setFooter('This message was sent to your because you or a member with the \"Manage Server\" role added Tarkov Helper to a server you own')
@@ -53,11 +53,11 @@ client.on('guildCreate', async(guild) => {
     client.users.fetch(guild.ownerID).then(owner => owner.send(Embed))
 })
 
-client.on('ready', async() => {
+client.on('ready', async () => {
     let End = new Date()
     Logger(`Tarkov Helper Initialized in ${End.getTime() - Start.getTime()}ms`)
 
-    client.on('interactionCreate', async(interaction) => {
+    client.on('interactionCreate', async (interaction) => {
         try {
             if (interaction.isCommand()) {
 
@@ -120,21 +120,24 @@ client.on('ready', async() => {
                         if (BotCommands.includes(commandName)) {
                             const guild = client.guilds.resolve(interaction.guildId) // Needed for admin commands
 
-                            const Message = await command.message(args, { interaction, guild, serverCount: client.guilds.cache.size, serverData: ServerData, uid: uid, isAdmin: IsAdmin })
+                            const message = await command.message(args, { interaction, guild, serverCount: client.guilds.cache.size, serverData: ServerData, uid: uid, isAdmin: IsAdmin })
+                            let object = new Object()
 
-                            if (Message.Type === "serverMessage" || !interaction.member) {
-                                interaction.reply({ embeds: [Message.Content] })
-                            } else if (Message.Type === "ephemeral" || Message.Type === "error") {
-                                if (typeof(Message.Content) === 'object') {
-                                    if (Message.Components !== undefined) {
-                                        interaction.reply({ embeds: [Message.Content], ephemeral: true, components: Message.Components })
-                                    } else {
-                                        interaction.reply({ embeds: [Message.Content], ephemeral: true })
-                                    }
+                            if (message.Content !== undefined) {
+                                if (typeof (message.content) !== 'string') {
+                                    object['embeds'] = [message.Content]
                                 } else {
-                                    interaction.reply({ content: Message.Content, ephemeral: true })
+                                    object['content'] = message.Content
                                 }
                             }
+                            if (message.Files !== undefined) { object['files'] = [message.Files] }
+                            if (message.Components !== undefined) { object['components'] = message.Components }
+
+                            let ephemeral = false
+                            if (message.Type == 'ephemeral' || message.Type == 'error') { ephemeral = true }
+                            object['ephemeral'] = ephemeral
+
+                            interaction.reply(object)
 
                             IncreaseCommands(commandName)
                             Logger(`Command fulfilled in ${new Date().getTime() - commandStart.getTime()}ms`)
