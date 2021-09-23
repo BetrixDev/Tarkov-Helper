@@ -55,7 +55,7 @@ globalThis.CreateSearchInput = (array, args, variable, commandName) => {
                 .setPlaceholder(`Choose a/an ${variable} to complete search`)
                 .addOptions(array.map(entry => {
                     if (variable.includes('item')) {
-                        let itemID = ItemFromName[entry].ID
+                        let itemID = ItemFromName[entry]?.ID || entry.id
                         return {
                             label: entry,
                             value: itemID,
