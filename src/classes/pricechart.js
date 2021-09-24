@@ -17,7 +17,7 @@ class Chart {
     }
     GeneratePoints(item, options) {
         let priceData = priceHistory[item]
-        let itemName = itemFromID[item].ShortName
+        let itemName = itemFromID[item].Name
         let time = Date.now()
 
         if (priceData == undefined) {
