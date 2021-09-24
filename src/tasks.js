@@ -131,7 +131,7 @@ const PriceHistory = scheduleJob('*/30 * * * *', async function () {
         let array = History[itemID]
         if (array == undefined) { array = new Array() }
 
-        let price = priceData[itemID].Item.avg24hPrice
+        let price = priceData[itemID].Item.lastLowPrice
 
         if (!price) { price = 0 }
 
