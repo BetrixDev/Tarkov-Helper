@@ -56,8 +56,10 @@ globalThis.CreateSearchInput = (array, args, variable, commandName) => {
                 .addOptions(array.map(entry => {
                     if (variable.includes('item')) {
                         let itemID = ItemFromName[entry]?.ID || entry.id
+                        let name = entry
+                        if (typeof entry == 'object') { name = entry.Name }
                         return {
-                            label: entry,
+                            label: name,
                             value: itemID,
                             description: Descriptions[itemID].Description.substr(0, 75).concat('...')
                         }
