@@ -12,6 +12,22 @@ class PriceInfo {
         this.PriceWithFee = this.PriceData.lastLowPrice - this.Fee
         this.RecommendedSell = this.BestSell()
     }
+    SellingPrices() {
+        let prices = this.PriceData.sellFor
+
+        prices = prices.map(offer => {
+            if (offer.source == 'fleaMarket') {
+                return { source: 'fleaMarket', price: this.PriceWithFee }
+            }
+            return offer
+        })
+
+        return prices.sort(function (a, b) {
+            return b['price'] - a['price']
+        }).map(offer => {
+            return { source: CapitalizeWords(offer.source), price: FormatPrice(offer.price, offer.source) }
+        })
+    }
     HighestTrader() {
         let Traders = this.PriceData.traderPrices
         let Highest = [0, '']
