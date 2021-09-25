@@ -13,7 +13,7 @@ class Chart {
         this.width = options?.width || 1280
         this.height = options?.height || 720
 
-        this.range = (options?.range || 7) * 86400000
+        this.range = (options?.range || 1) * 86400000
     }
     GeneratePoints(item, options) {
         let priceData = priceHistory[item]
