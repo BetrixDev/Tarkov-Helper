@@ -184,11 +184,17 @@ client.on('ready', async () => {
                     isAdmin: false
                 })
 
-                interaction.reply({
+                let msg = {
                     embeds: [newMessage.Content],
                     ephemeral: newMessage.Type === 'error' || newMessage.Type === 'ephemeral' ? true : false,
                     components: newMessage.Components
-                })
+                }
+
+                if (newMessage.Files !== undefined) {
+                    msg.files = [newMessage.Files]
+                }
+
+                interaction.reply(msg)
             }
         } catch (e) {
             Logger('Command errored with the message')
