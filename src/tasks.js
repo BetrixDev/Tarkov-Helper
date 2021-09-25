@@ -137,7 +137,9 @@ const PriceHistory = scheduleJob('*/30 * * * *', async function () {
 
         array.push({ price: price, time: time })
 
-        History[itemID] = array
+        History[itemID] = array.filter(point => {
+            return point.time + 86400000 > time
+        })
     }
     fs.writeFileSync('./src/bot_data/pricehistory.json', JSON.stringify(History, null, 4))
 })
@@ -414,6 +416,7 @@ const StartTasks = async () => {
     UpdateQuests.schedule()
     UpdateBarters.schedule()
     PriceHistory.schedule()
+    PriceHistory.invoke()
 }
 
 // Seperate function since we need to invoke this before anything else since this downloads data used by the other updates

@@ -26,7 +26,7 @@ class Chart {
 
         let furthestValue = 0
         for (let i = 0; i < priceData.length; i++) {
-            if (priceData[i].time + this.range > time) {
+            if (priceData[i].time + this.range < time) {
                 furthestValue = i - 1
                 break
             }
