@@ -59,7 +59,7 @@ module.exports = {
                     }]))
             }
         } else {
-            let priceChart = new Chart({ range: 1 })
+            let priceChart = new Chart()
 
             priceChart.GeneratePoints(ItemIDs[Item].ID)
             let chart = await priceChart.RenderChart()
