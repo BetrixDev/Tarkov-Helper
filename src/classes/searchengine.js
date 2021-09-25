@@ -5,9 +5,11 @@ const ShortNames = ReadJson('./src/game_data/api/itemfromshortname.json')
 const ItemNames = ReadJson('./src/game_data/api/itemfromname.json')
 const ItemIds = ReadJson('./src/game_data/api/itemfromid.json')
 
+let shortArray = new Array()
 let newArray = new Array()
 for (let itemID in ShortNames) {
     newArray.push(ShortNames[itemID])
+    shortArray.push(ShortNames[itemID])
 }
 
 let SearchData = newArray
@@ -33,7 +35,13 @@ class SearchEngine {
 
         let engineResults = new Array()
 
-        if (ItemIds[input] !== undefined) {
+        let shorts = shortArray.filter(name => {
+            return input.toLowerCase() == name.ShortName.toLowerCase()
+        })
+
+        if (shorts.length == 1) {
+            engineResults.push(ShortNames[input])
+        } else if (ItemIds[input] !== undefined) {
             engineResults.push(ItemIds[input])
         } else if (ItemNames[input] !== undefined) {
             engineResults.push(ItemNames[input])
