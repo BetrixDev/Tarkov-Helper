@@ -43,6 +43,8 @@ class Chart {
         for (let i = 0; i < priceData.length; i++) {
             let point = priceData[i]
 
+            points.push(point.price)
+
             if (i % 4 == 0) {
                 dates.push(timeAgo.format(point.date))
             } else {
