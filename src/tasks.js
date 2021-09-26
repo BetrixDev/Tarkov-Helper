@@ -137,10 +137,11 @@ const PriceHistory = scheduleJob('*/30 * * * *', async function () {
 
         array.push({ price: price, time: time })
 
-        let end = array.length - 48
-        if (end < 0) { end = 0 }
+        if (array.length > 48) {
+            array.shift()
+        }
 
-        History[itemID] = array.slice(end)
+        History[itemID] = array
     }
     fs.writeFileSync('./src/bot_data/pricehistory.json', JSON.stringify(History, null, 4))
 })
