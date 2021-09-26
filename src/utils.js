@@ -7,8 +7,7 @@ globalThis.GetTime = () => {
 }
 
 globalThis.Logger = (message) => {
-    let time = moment().tz('America/New_York').format('h:m:s a').toUpperCase()
-    console.log(`{ ${time} }: ${message}`)
+    console.log(`{ ${GetTime()} }: ${message}`)
 }
 
 // Discord.js no longer supports turing arrays and numbers into strings for embed fields 
