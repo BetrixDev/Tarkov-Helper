@@ -1,11 +1,21 @@
 require('../utils')
 const { ChartJSNodeCanvas } = require('chartjs-node-canvas')
-const priceHistory = ReadJson('./src/bot_data/pricehistory.json')
 const itemFromID = ReadJson('./src/game_data/api/itemfromid.json')
+const moment = require('moment-timezone')
 
 const TimeAgo = require('javascript-time-ago')
 TimeAgo.addDefaultLocale(require('javascript-time-ago/locale/en'))
 const timeAgo = new TimeAgo('en-US')
+
+const priceHistoryDir = './src/game_data/pricehistory/'
+
+function getDate(mili) {
+    if (mili !== undefined) {
+        return moment(mili).format('MM-DD').toUpperCase()
+    } else {
+        return moment().tz('America/New_York').format('MM-DD').toUpperCase()
+    }
+}
 
 class Chart {
     constructor(options) {
@@ -16,23 +26,16 @@ class Chart {
         this.range = (options?.range || 1) * 86400000
     }
     GeneratePoints(item, options) {
-        let priceData = priceHistory[item]
-        let itemName = itemFromID[item].Name
-        let time = Date.now()
+        let date = getDate()
+        let file = priceHistoryDir + date + '.json'
 
-        if (priceData == undefined) {
-            return
-        }
+        let priceData = new Array()
+        let currentHistory = ReadJson(file)[item]
+        let missing = 48 - currentHistory.length
+        let pastHistory = ReadJson(priceHistoryDir + getDate(Date.now() - 86400000) + '.json')[item]
 
-        let furthestValue = 0
-        for (let i = 0; i < priceData.length; i++) {
-            if (priceData[i].time + this.range < time) {
-                furthestValue = i - 1
-                break
-            }
-        }
-
-        priceData = priceData.slice(furthestValue, priceData.length)
+        priceData.push(...pastHistory.slice(missing))
+        priceData.push(...currentHistory)
 
         let points = new Array()
         let dates = new Array()
@@ -40,10 +43,8 @@ class Chart {
         for (let i = 0; i < priceData.length; i++) {
             let point = priceData[i]
 
-            points.push(point.price)
-
             if (i % 4 == 0) {
-                dates.push(timeAgo.format(point.time))
+                dates.push(timeAgo.format(point.date))
             } else {
                 dates.push(' ')
             }
@@ -53,7 +54,8 @@ class Chart {
 
         this.chartData.push({
             points,
-            dates, item: itemName,
+            dates,
+            item: itemFromID[item].Name,
             border: options?.border || 'rgba(221, 204, 76, 1)',
             background: options?.background || 'rgba(21, 36, 46, 1)'
         })
@@ -76,6 +78,15 @@ class Chart {
                         borderWidth: 3
                     }
                 })
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            callback: (value) => FormatPrice(value)
+                        }
+                    }]
+                }
             }
         }
         return await chart.renderToBuffer(config)

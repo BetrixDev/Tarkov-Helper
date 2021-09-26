@@ -123,27 +123,7 @@ const UpdatePrices = scheduleJob('*/10 * * * *', async function () {
 })
 
 const PriceHistory = scheduleJob('*/30 * * * *', async function () {
-    let time = Date.now()
-    let priceData = ReadJson('./src/game_data/api/pricedata.json')
-
-    let History = ReadJson('./src/bot_data/pricehistory.json')
-    for (const itemID in priceData) {
-        let array = History[itemID]
-        if (array == undefined) { array = new Array() }
-
-        let price = priceData[itemID].Item.lastLowPrice
-
-        if (!price) { price = 0 }
-
-        array.push({ price: price, time: time })
-
-        if (array.length > 48) {
-            array.shift()
-        }
-
-        History[itemID] = array
-    }
-    fs.writeFileSync('./src/bot_data/pricehistory.json', JSON.stringify(History, null, 4))
+    require('./scripts/pricehistory')()
 })
 
 // Update item data daily

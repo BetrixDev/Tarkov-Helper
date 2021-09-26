@@ -1,4 +1,4 @@
-(async() => {
+(async () => {
     const fs = require('fs')
     const { exec } = require("child_process")
 
@@ -17,9 +17,10 @@
             fs.writeFileSync('./src/bot_data/notifylist.json', JSON.stringify({}))
             fs.writeFileSync('./src/bot_data/commands.json', JSON.stringify({}))
             fs.mkdirSync('./src/game_data/')
-        } catch {}
+            fs.mkdirSync('./src/game_data/pricehistory/')
+        } catch { }
 
-        setTimeout(async() => {
+        setTimeout(async () => {
             require('../tasks').InvokeDatabase().then(() => {
                 require('../tasks').StartTasks()
 
