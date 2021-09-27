@@ -1,6 +1,7 @@
 require('./utils')
 let decompress = require('decompress')
 let download = require('download')
+const moment = require('moment-timezone')
 const { scheduleJob } = require('node-schedule')
 const got = require('got')
 const fs = require('fs')
@@ -123,7 +124,31 @@ const UpdatePrices = scheduleJob('*/10 * * * *', async function () {
 })
 
 const PriceHistory = scheduleJob('*/30 * * * *', async function () {
-    require('./scripts/pricehistory')()
+    let ItemData = ReadJson('./src/game_data/api/itemdata.json')
+    let PriceData = ReadJson('./src/game_data/api/pricedata.json')
+
+    const priceHistoryDir = './src/game_data/pricehistory/'
+
+    const file = priceHistoryDir + moment().tz('America/New_York').format('MM-DD-YYYY').toUpperCase() + '.json'
+    let date = Date.now()
+
+    let history = {}
+
+    if (fs.existsSync(file)) {
+        history = ReadJson(file)
+    } else {
+        Object.keys(ItemData).forEach(id => {
+            history[id] = []
+        })
+    }
+
+    for (let id in history) {
+        let price = PriceData[id].Item.lastLowPrice
+
+        history[id].push({ price, date })
+    }
+
+    WriteJson(file, history)
 })
 
 // Update item data daily
