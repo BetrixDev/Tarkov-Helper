@@ -32,12 +32,9 @@ function InitEngine() {
                     ID: Item.ID,
                     Damage: RawData.Damage,
                     ArmorDamage: RawData.ArmorDamage,
-                    Penetration: RawData.PenetrationPower,
-                    AvailableFrom: itemPriceData.buyFor.map(offer => {
-                        return `${CapitalizeWords(offer.source)} LL${offer.requirements[0].value}`
-                    }).join(', ')
+                    Penetration: RawData.PenetrationPower
                 })
-            } catch {}
+            } catch { }
         }
     }
 }

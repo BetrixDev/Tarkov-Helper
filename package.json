@@ -16,6 +16,7 @@
         "chart.js": "^2.9.4",
         "chartjs-node-canvas": "^3.2.0",
         "color-namer": "^1.4.0",
+        "color-scheme": "^1.0.1",
         "decompress": "^4.2.1",
         "discord.js": "^13.0.0-dev.t1628124537.3eb4140",
         "dotenv": "^8.2.0",
@@ -27,6 +28,7 @@
         "mongoose": "^5.13.3",
         "node-schedule": "^2.0.0",
         "pm2": "^5.1.0",
+        "simple-color-converter": "^2.1.13",
         "topgg-autoposter": "^2.0.0"
     },
     "engines": {

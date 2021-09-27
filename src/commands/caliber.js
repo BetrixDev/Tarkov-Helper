@@ -1,6 +1,7 @@
 require('../utils')
 const { CaliberSearchEngine, GetCalibers } = require('../command_modules/calibersearchengine')
-const { MessageEmbed } = require('discord.js')
+const { MessageEmbed, MessageAttachment } = require('discord.js')
+const { Chart } = require('../classes/caliberchart')
 
 module.exports = {
     data: {
@@ -22,7 +23,7 @@ module.exports = {
             ]
         }]
     },
-    message: (args) => {
+    message: async (args) => {
         let Caliber = args['caliber']
         let Sort = args['sort'] || 1
 
@@ -47,26 +48,33 @@ module.exports = {
         let DamageString = `${SortedValues[1].join('\n')}`
         let PenetrationString = `${SortedValues[2].join('\n')}`
 
-        let Message = new MessageEmbed()
-            .setColor(Settings.BotSettings.Color)
-            .setTitle(`${Caliber} Data`)
-            .setThumbnail('https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/ui_icons/icon_ammo.png')
-            .setDescription('For a list of all possible calibers [Click Here](https://gist.github.com/BetrixDev/16c20db88feb4aefd22dbac6e257e290)')
-            .addFields({
-                name: 'Name',
-                value: NameString,
-                inline: true
-            }, {
-                name: 'Damage',
-                value: DamageString,
-                inline: true
-            }, {
-                name: 'Penetration',
-                value: PenetrationString,
-                inline: true
-            })
+        let caliberChart = new Chart(CaliberData, Caliber)
 
-        return { Type: "serverMessage", Content: Message }
+        let chart = await caliberChart.RenderChart()
+
+        return {
+            Type: "serverMessage",
+            Files: new MessageAttachment(chart, 'chart.png'),
+            Content: new MessageEmbed()
+                .setColor(Settings.BotSettings.Color)
+                .setTitle(`${Caliber} Data`)
+                .setThumbnail('https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/ui_icons/icon_ammo.png')
+                .setDescription('For a list of all possible calibers [Click Here](https://gist.github.com/BetrixDev/16c20db88feb4aefd22dbac6e257e290)')
+                .addFields({
+                    name: 'Name',
+                    value: NameString,
+                    inline: true
+                }, {
+                    name: 'Damage',
+                    value: DamageString,
+                    inline: true
+                }, {
+                    name: 'Penetration',
+                    value: PenetrationString,
+                    inline: true
+                })
+                .setImage('attachment://chart.png')
+        }
     }
 }
 
