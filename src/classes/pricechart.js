@@ -34,7 +34,12 @@ class Chart {
         let missing = 48 - currentHistory.length
         let pastHistory = ReadJson(priceHistoryDir + getDate(Date.now() - 86400000) + '.json')[item]
 
-        priceData.push(...pastHistory.slice(missing))
+        if (pastHistory.length < missing) {
+            priceData = pastHistory
+        } else {
+            priceData.push(...pastHistory.slice(missing))
+        }
+
         priceData.push(...currentHistory)
 
         let points = new Array()

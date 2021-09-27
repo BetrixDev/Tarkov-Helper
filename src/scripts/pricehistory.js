@@ -2,8 +2,8 @@ require('../utils')
 const fs = require('fs')
 const moment = require('moment-timezone')
 
-const ItemData = ReadJson('./src/game_data/api/itemdata.json')
-const PriceData = ReadJson('./src/game_data/api/pricedata.json')
+let ItemData = ReadJson('./src/game_data/api/itemdata.json')
+let PriceData = ReadJson('./src/game_data/api/pricedata.json')
 
 const priceHistoryDir = './src/game_data/pricehistory/'
 
