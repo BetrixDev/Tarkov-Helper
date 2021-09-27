@@ -8,7 +8,7 @@ let PriceData = ReadJson('./src/game_data/api/pricedata.json')
 const priceHistoryDir = './src/game_data/pricehistory/'
 
 module.exports = () => {
-    const file = priceHistoryDir + moment().tz('America/New_York').format('MM-DD').toUpperCase() + '.json'
+    const file = priceHistoryDir + moment().tz('America/New_York').format('MM-DD-YYYY').toUpperCase() + '.json'
     let date = Date.now()
 
     let history = {}

@@ -11,9 +11,9 @@ const priceHistoryDir = './src/game_data/pricehistory/'
 
 function getDate(mili) {
     if (mili !== undefined) {
-        return moment(mili).format('MM-DD').toUpperCase()
+        return moment(mili).format('MM-DD-YYYY').toUpperCase()
     } else {
-        return moment().tz('America/New_York').format('MM-DD').toUpperCase()
+        return moment().tz('America/New_York').format('MM-DD-YYYY').toUpperCase()
     }
 }
 
