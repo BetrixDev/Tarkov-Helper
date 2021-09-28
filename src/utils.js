@@ -6,6 +6,10 @@ globalThis.GetTime = () => {
     return moment().tz('America/New_York').format('MM/DD h:m:s a').toUpperCase()
 }
 
+globalThis.GetMilis = () => {
+    return Math.floor(moment().tz('America/New_York').valueOf() / 1000) * 1000
+}
+
 globalThis.Logger = (message) => {
     console.log(`{ ${GetTime()} }: ${message}`)
 }

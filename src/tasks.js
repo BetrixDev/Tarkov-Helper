@@ -6,11 +6,7 @@ const { scheduleJob } = require('node-schedule')
 const got = require('got')
 const fs = require('fs')
 
-function WriteFile(path, data) {
-    fs.writeFileSync(path, JSON.stringify(data, null, 4))
-}
-
-const { GetAmmo } = require('./scripts/ammo')
+let { GetAmmo } = require('./scripts/ammo')
 
 // Update database every 3 hours
 async function Database() {
@@ -33,7 +29,7 @@ async function Database() {
     return 'Done'
 }
 const UpdateDatabase = scheduleJob('0 */3 * * *', async function () {
-    Logger(`Updating database`)
+    Logger(`Updating database...`)
 
     try {
 
@@ -49,7 +45,7 @@ const UpdateDatabase = scheduleJob('0 */3 * * *', async function () {
 
 // Update price data every 10 minutes
 const UpdatePrices = scheduleJob('*/10 * * * *', async function () {
-    Logger(`Updating prices`)
+    Logger(`Updating prices...`)
 
     try {
         const bodyQuery = JSON.stringify({
@@ -124,13 +120,15 @@ const UpdatePrices = scheduleJob('*/10 * * * *', async function () {
 })
 
 const PriceHistory = scheduleJob('*/30 * * * *', async function () {
+    Logger('Logging Prices...')
+
     let ItemData = ReadJson('./src/game_data/api/itemdata.json')
     let PriceData = ReadJson('./src/game_data/api/pricedata.json')
 
     const priceHistoryDir = './src/game_data/pricehistory/'
 
-    const file = priceHistoryDir + moment().tz('America/New_York').format('MM-DD-YYYY').toUpperCase() + '.json'
-    let date = Date.now()
+    let date = GetMilis()
+    const file = priceHistoryDir + moment(date).format('MM-DD-YYYY').toUpperCase() + '.json'
 
     let history = {}
 
@@ -149,11 +147,13 @@ const PriceHistory = scheduleJob('*/30 * * * *', async function () {
     }
 
     WriteJson(file, history)
+
+    Logger('Logged Prices')
 })
 
 // Update item data daily
 const UpdateItems = scheduleJob('@daily', async function () {
-    Logger(`Updating items`)
+    Logger(`Updating items...`)
 
     const RawGameData = require('./game_data/database/templates/items.json')
 
@@ -265,7 +265,7 @@ const UpdateItems = scheduleJob('@daily', async function () {
 
 // Update quest data every 24 hours
 const UpdateQuests = scheduleJob('@daily', async function () {
-    Logger(`Updating quests`)
+    Logger(`Updating quests...`)
 
     let ExtraData = await got('https://raw.githubusercontent.com/TarkovTracker/tarkovdata/master/quests.json', {
         responseType: 'json',
@@ -327,7 +327,7 @@ const UpdateQuests = scheduleJob('@daily', async function () {
 
 // Update quest data every 24 hours
 const UpdateBarters = scheduleJob('@daily', async function () {
-    Logger(`Updating barters`)
+    Logger(`Updating barters...`)
 
     try {
         const bodyQuery = JSON.stringify({
@@ -409,6 +409,8 @@ const StartTasks = async () => {
     try {
         fs.mkdirSync('./src/game_data/api')
     } catch { }
+
+    PriceHistory.invoke() // DEBUG
 
     // Run updates at startup
     UpdatePrices.invoke()

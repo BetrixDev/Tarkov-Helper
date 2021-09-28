@@ -29,17 +29,14 @@ class Chart {
         let date = getDate()
         let file = priceHistoryDir + date + '.json'
 
+        let milis = GetMilis()
+
         let priceData = new Array()
         let currentHistory = ReadJson(file)[item]
         let missing = 48 - currentHistory.length
-        let pastHistory = ReadJson(priceHistoryDir + getDate(Date.now() - 86400000) + '.json')[item]
+        let pastHistory = ReadJson(priceHistoryDir + getDate(milis - 86400000) + '.json')[item]
 
-        if (pastHistory.length < missing) {
-            priceData = pastHistory
-        } else {
-            priceData.push(...pastHistory.slice(missing))
-        }
-
+        priceData.push(...pastHistory.slice(missing - 1, pastHistory.length - 1))
         priceData.push(...currentHistory)
 
         let points = new Array()
