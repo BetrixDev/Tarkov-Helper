@@ -410,8 +410,6 @@ const StartTasks = async () => {
         fs.mkdirSync('./src/game_data/api')
     } catch { }
 
-    PriceHistory.invoke() // DEBUG
-
     // Run updates at startup
     UpdatePrices.invoke()
     UpdateItems.invoke()
