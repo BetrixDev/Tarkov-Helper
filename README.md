@@ -1,7 +1,7 @@
 [![Discord Bots](https://top.gg/api/widget/status/797600238449590334.svg)](https://top.gg/bot/797600238449590334) [![Discord Bots](https://top.gg/api/widget/servers/797600238449590334.svg)](https://top.gg/bot/797600238449590334)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FBetrixDev%2FTarkov-Helper.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FBetrixDev%2FTarkov-Helper?ref=badge_shield)
 ![Tarkov Helper Banner](https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/SecondBanner3000x1000.png)
 ![Commands Banner](https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/WikiImages/Commands.png)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FBetrixDev%2FTarkov-Helper.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FBetrixDev%2FTarkov-Helper?ref=badge_shield)
 
 # Description
 
