@@ -124,7 +124,7 @@ client.on('ready', async () => {
                             let object = new Object()
 
                             if (message.Content !== undefined) {
-                                if (typeof (message.content) !== 'string') {
+                                if (typeof (message.Content) !== 'string') {
                                     object['embeds'] = [message.Content]
                                 } else {
                                     object['content'] = message.Content
