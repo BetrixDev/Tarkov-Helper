@@ -1,37 +1,48 @@
 {
-    "name": "tarkov-helper",
-    "version": "1.0.0",
-    "description": "",
-    "main": "src/main.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "bot": "node src/main.js",
-        "first": "node src/scripts/first.js",
-        "refresh": "node src/scripts/refreshcommands.js"
-    },
-    "author": "Betrix",
-    "license": "MIT",
-    "dependencies": {
-        "accurate-search": "^1.2.12",
-        "chart.js": "^2.9.4",
-        "chartjs-node-canvas": "^3.2.0",
-        "color-namer": "^1.4.0",
-        "color-scheme": "^1.0.1",
-        "decompress": "^4.2.1",
-        "discord.js": "^13.0.0-dev.t1628124537.3eb4140",
-        "dotenv": "^8.2.0",
-        "download": "^5.0.3",
-        "first": "^0.0.3",
-        "got": "^11.8.2",
-        "javascript-time-ago": "^2.3.8",
-        "minisearch": "^3.1.0",
-        "moment-timezone": "^0.5.33",
-        "mongoose": "^5.13.3",
-        "node-schedule": "^2.0.0",
-        "simple-color-converter": "^2.1.13",
-        "topgg-autoposter": "^2.0.0"
-    },
-    "engines": {
-        "node": "16.6.0"
-    }
+  "name": "tarkov-helper",
+  "description": "",
+  "main": "./src/Bot.ts",
+  "scripts": {
+    "start": "ts-node --files src/Bot.ts",
+    "init": "ts-node --files src/scheduler/Init.ts",
+    "production": "tsc && pm2 start ecosystem.config.js --only tarkovhelper"
+  },
+  "author": "Betrix",
+  "devDependencies": {
+    "@types/node": "^16.11.4",
+    "@types/node-schedule": "^1.3.2",
+    "prettier": "^2.4.1",
+    "ts-node": "^10.3.0",
+    "typescript": "^4.4.4"
+  },
+  "peerDependencies": {
+    "chart.js": "^3.5.1"
+  },
+  "dependencies": {
+    "@discordx/utilities": "^1.7.1",
+    "canvas": "^2.8.0",
+    "chartjs-node-canvas": "^4.1.3",
+    "discord.js": "^13.3.1",
+    "discordx": "^7.0.0",
+    "dotenv": "^10.0.0",
+    "fast-json": "^2.1.0",
+    "fast-json-parse": "^1.0.3",
+    "get-github-code": "^1.0.4",
+    "gitly": "^2.1.5",
+    "got": "^11.8.2",
+    "graphql-request": "^3.6.1",
+    "json5": "^2.2.0",
+    "minisearch": "^3.1.0",
+    "moment-timezone": "^0.5.33",
+    "mongoose": "^6.0.12",
+    "node-cache": "^5.1.2",
+    "node-schedule": "^2.0.0",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^0.3.0",
+    "uuid": "^8.3.2"
+  },
+  "engines": {
+    "node": ">=16.6.0"
+  },
+  "engineStrict": true
 }

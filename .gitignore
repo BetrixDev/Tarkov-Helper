@@ -1,18 +1,8 @@
-.env
-node_modules/
-wiki/
-*.code-workspace
-*.psd
+node_modules
 
-src/commands/unused
+build/
+.vscode/
 
-src/assets/ProjectFiles/
-src/assets/Emojis
-
-# Random debug thing
-dev/
-
-# These files are created internally so useless to keep
-src/game_data/
-src/bot_data/commands.json
-src/bot_data/notifylist.json
+src/data/bot/config.json5
+src/data/game/
+src/data/command/pricehistory
