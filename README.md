@@ -23,7 +23,7 @@
 <br>
 [<img width="320" height="" align="left" style="float: left; margin: 0 10px 0 0;" alt="Tarkov Helper" src="https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/InviteBanner.png">](https://discord.com/api/oauth2/authorize?client_id=797600238449590334&permissions=128&scope=bot%20applications.commands)
 <br><br><br><br><br>
-[<img src="https://discordapp.com/api/guilds/797601083589001227/widget.png?style=banner2">](https://discord.gg/daTPNWes)
+[<img src="https://discordapp.com/api/guilds/797601083589001227/widget.png?style=banner2">](https://discord.gg/CHhE5vQ3zT)
 <br>
 **You can also join the Tarkov Helper Discord Server to try out the bot**
 
