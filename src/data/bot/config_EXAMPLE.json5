@@ -12,5 +12,7 @@
     DevServerID: '',
 
     // MongoDB Atlas url for storing server specific data (can also be done locally with some changes to Database.ts)
-    MongoURL: ''
+    MongoURL: '',
+
+    TopggToken: ''
 }

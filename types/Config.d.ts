@@ -3,4 +3,5 @@ interface Config {
     BotDevToken: string
     DevServerIDs: string[]
     MongoURL: string
+    TopggToken: string
 }
