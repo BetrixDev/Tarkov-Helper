@@ -7,7 +7,6 @@ import { connect } from 'mongoose'
 import { Logger } from './Lib'
 import { ScheduleJobs } from './scheduler/Scheduler'
 require('dotenv').config()
-import AutoPoster from 'topgg-autoposter'
 
 const config: Config = parse(readFileSync('./src/data/bot/config.json5').toString())
 
@@ -28,13 +27,6 @@ export class Main {
             Logger('Connected to MongoDB database')
         })
 
-        if (!this.Dev) {
-            const poster = AutoPoster(config.TopggToken, this.Client)
-            poster.on('posted', (stats) => {
-                Logger(`Posted stats to Top.gg | ${stats.serverCount} servers`)
-            })
-        }
-
         this._client = new Client({
             botGuilds: config.DevServerIDs,
             classes: [`${__dirname}/discord/**/*.{js,ts}`, `${__dirname}/discord/commands/*.{js,ts}`],
@@ -48,3 +40,4 @@ export class Main {
 
 Main.start()
 export const GetClient = () => Main.Client
+export const GetDev = () => Main.Dev
