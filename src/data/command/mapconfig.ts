@@ -107,5 +107,12 @@ export = {
             link: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/7e/ShorelineKeySpawnsByStealtheh.jpg',
             author: 'Maksen & Stealtheh'
         }
+    ],
+    lighthouse: [
+        {
+            name: 'General (Rough Outline)',
+            link: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/3a/LighthouseMapEarly.jpg',
+            author: 'LordTachankaMain'
+        }
     ]
 }

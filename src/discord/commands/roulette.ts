@@ -102,7 +102,7 @@ export class Randomizer {
     private helmet: Item
 
     constructor() {
-        const maps = ['Customs', 'Factory', 'Interchange', 'Reserve', 'Shoreline', 'Labs', 'Woods']
+        const maps = ['Customs', 'Factory', 'Interchange', 'Reserve', 'Shoreline', 'Labs', 'Woods', 'Lighthouse']
         const helmets = GetItemByType('helmet')
         const armors = GetItemByType('armor')
         const guns = GetItemByType('gun')

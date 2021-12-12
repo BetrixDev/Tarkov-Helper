@@ -8,7 +8,7 @@ import { AppendCache } from '../../helpers/Cache'
 
 const mapUrlPrefix = 'https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/map_icons/'
 
-export type Map = 'thelab' | 'interchange' | 'woods' | 'customs' | 'factory' | 'reserve' | 'shoreline'
+export type Map = 'thelab' | 'interchange' | 'woods' | 'customs' | 'factory' | 'reserve' | 'shoreline' | 'lighthouse'
 
 @Discord()
 export abstract class Command {
@@ -16,6 +16,7 @@ export abstract class Command {
         description: 'Returns information and maps of a certain location'
     })
     async map(
+        @SlashChoice('Lighthouse', 'lighthouse')
         @SlashChoice('Labs', 'thelab')
         @SlashChoice('Interchange', 'interchange')
         @SlashChoice('Woods', 'woods')
@@ -100,7 +101,8 @@ enum RawTranslator {
     thelab = 'laboratory',
     reserve = 'rezervbase',
     shoreline = 'shoreline',
-    woods = 'woods'
+    woods = 'woods',
+    lighthouse = 'lighthouse'
 }
 
 function GetDescriptions(): { [key: string]: any } {
