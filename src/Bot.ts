@@ -30,7 +30,7 @@ export class Main {
         this._client = new Client({
             botGuilds: config.DevServerIDs,
             classes: [`${__dirname}/discord/**/*.{js,ts}`, `${__dirname}/discord/commands/*.{js,ts}`],
-            intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.DIRECT_MESSAGES],
+            intents: [Intents.FLAGS.GUILDS],
             silent: true
         })
 
