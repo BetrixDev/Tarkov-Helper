@@ -3,10 +3,10 @@ import { ChartJSNodeCanvas } from 'chartjs-node-canvas'
 import { CommandInteraction, InteractionReplyOptions, MessageAttachment, MessageEmbed } from 'discord.js'
 import { Discord, Slash, SlashOption } from 'discordx'
 import { readFileSync } from 'fs'
-import settings from '../../data/bot/settings'
+import settings from '../../botConfig'
 import { ErrorMessage, FormatPrice, GetItem, ItemSearchMessage, ReadJson, ResolveStrings, Round, SearchEngine } from '../../Lib'
 
-const ErrorImage = readFileSync('./src/data/command/images/charterror.png')
+const ErrorImage = readFileSync('./data/command/images/charterror.png')
 
 type Args = {
     range: number
@@ -203,7 +203,7 @@ export class PriceChart {
             })
 
             this._items.forEach((item) => {
-                let rawData: { date: number; price: number }[] = ReadJson(`./src/data/command/pricehistory/${item.id}.json`)
+                let rawData: { date: number; price: number }[] = ReadJson(`./data/command/pricehistory/${item.id}.json`)
                 rawData.slice(rawData.length - 48 * this._range, rawData.length)
 
                 points[item.id].push(...rawData)

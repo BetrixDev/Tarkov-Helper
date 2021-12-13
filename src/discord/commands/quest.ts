@@ -2,10 +2,10 @@ import 'reflect-metadata'
 import { Discord, Slash, SlashOption } from 'discordx'
 import { CommandInteraction, InteractionReplyOptions, MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
 import { ErrorMessage, GetQuest, QuestSearchEngine, QuestSearchMessage, ReadJson } from '../../Lib'
-import settings from '../../data/bot/settings'
+import settings from '../../botConfig'
 import { AppendCache } from '../../helpers/Cache'
 
-let QuestGuides: { [key: string]: object } = ReadJson('./src/data/game/questguide.json')
+let QuestGuides: { [key: string]: object } = ReadJson('./data/game/questguide.json')
 
 enum Traders {
     'Prapor',
@@ -91,7 +91,7 @@ class QuestData {
     description: string
 
     constructor(quest: TrackerQuest) {
-        let Locals = ReadJson('./src/data/game/database/locales/global/en.json')
+        let Locals = ReadJson('./data/game/database/locales/global/en.json')
 
         this.gameID = quest.gameId
 

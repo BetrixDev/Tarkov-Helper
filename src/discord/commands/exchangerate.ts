@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import { CommandInteraction, InteractionReplyOptions, MessageEmbed } from 'discord.js'
 import { Discord, Slash, SlashChoice, SlashOption } from 'discordx'
-import settings from '../../data/bot/settings'
+import settings from '../../botConfig'
 import { ResolveStrings } from '../../Lib'
 
 /*

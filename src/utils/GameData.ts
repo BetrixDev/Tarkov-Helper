@@ -10,21 +10,21 @@ export class Cache {
     static globals: { [key: string]: any }
 
     constructor() {
-        Cache.itemData = ReadJson('./src/data/game/api/itemdata.json') as Item[]
-        Cache.rawData = ReadJson('./src/data/game/database/templates/items.json')
-        Cache.questData = ReadJson('./src/data/game/api/questdata.json')
-        Cache.barterData = ReadJson('./src/data/game/api/barterdata.json')
-        Cache.locals = ReadJson('./src/data/game/database/locales/global/en.json')
-        Cache.globals = ReadJson('./src/data/game/database/globals.json')
+        Cache.itemData = ReadJson('./data/game/api/itemdata.json') as Item[]
+        Cache.rawData = ReadJson('./data/game/database/templates/items.json')
+        Cache.questData = ReadJson('./data/game/api/questdata.json')
+        Cache.barterData = ReadJson('./data/game/api/barterdata.json')
+        Cache.locals = ReadJson('./data/game/database/locales/global/en.json')
+        Cache.globals = ReadJson('./data/game/database/globals.json')
     }
 
     updateData() {
-        Cache.itemData = ReadJson('./src/data/game/api/itemdata.json') as Item[]
-        Cache.rawData = ReadJson('./src/data/game/database/templates/items.json')
-        Cache.questData = ReadJson('./src/data/game/api/questdata.json')
-        Cache.barterData = ReadJson('./src/data/game/api/barterdata.json')
-        Cache.locals = ReadJson('./src/data/game/database/locales/global/en.json')
-        Cache.globals = ReadJson('./src/data/game/database/globals.json')
+        Cache.itemData = ReadJson('./data/game/api/itemdata.json') as Item[]
+        Cache.rawData = ReadJson('./data/game/database/templates/items.json')
+        Cache.questData = ReadJson('./data/game/api/questdata.json')
+        Cache.barterData = ReadJson('./data/game/api/barterdata.json')
+        Cache.locals = ReadJson('./data/game/database/locales/global/en.json')
+        Cache.globals = ReadJson('./data/game/database/globals.json')
     }
 }
 
@@ -74,7 +74,7 @@ type DBItem = {
 export function GetDBItem(item: string): DBItem {
     const rawData = Cache.rawData
     const locals = Cache.locals.templates
-    const keyData = ReadJson('./src/data/game/keys.json')
+    const keyData = ReadJson('./data/game/keys.json')
 
     let obj: DBItem = {
         raw: rawData[item]?._props,

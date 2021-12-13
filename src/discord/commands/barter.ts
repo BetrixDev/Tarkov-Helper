@@ -2,7 +2,7 @@ import 'reflect-metadata'
 import { Discord, Slash, SlashOption } from 'discordx'
 import { CommandInteraction, EmbedFieldData, InteractionReplyOptions, MessageEmbed } from 'discord.js'
 import { FormatPrice, GetBarter, GetItem, ItemImage, ItemSearchMessage, SearchEngine } from '../../Lib'
-import settings from '../../data/bot/settings'
+import settings from '../../botConfig'
 
 /*
     Class for dealing with registering command

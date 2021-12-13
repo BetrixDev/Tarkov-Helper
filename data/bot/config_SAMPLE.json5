@@ -1,14 +1,9 @@
-echo "-= BOT CONFIGURATION =-"
-echo "Please enter your bot\'s token"
-read token
-
-touch data/bot/config.json5
-echo "{
+{
     // Discord Bot Configuration
     // Remove _EXAMPLE from this file to make it valid
 
     // Find your bot's token by going here: https://discord.com/developers/applications YOUR_BOT> Bot> Copy Token
-    BotToken: '$token',
+    BotToken: '',
 
     // Add this token is you have a seperate bot used for developing the bot
     BotDevToken: '',
@@ -17,7 +12,8 @@ echo "{
     DevServerID: '',
 
     // MongoDB Atlas url for storing server specific data (can also be done locally with some changes to Database.ts)
-    MongoURL: ''
-}" > data/bot/config.json5
+    MongoURL: '',
 
-echo "Bot token set, to add dev variables, edit data/bot/config.json5"
+    // Top.gg token for auto updating bot stats
+    TopggToken: ''
+}

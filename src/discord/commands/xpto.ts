@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import { CommandInteraction, InteractionReplyOptions, MessageEmbed } from 'discord.js'
 import { Discord, Slash, SlashOption } from 'discordx'
-import settings from '../../data/bot/settings'
+import settings from '../../botConfig'
 import { ErrorMessage, FormatNumber, ReadJson } from '../../Lib'
 
 /*
@@ -10,10 +10,10 @@ import { ErrorMessage, FormatNumber, ReadJson } from '../../Lib'
 
 type EXP = { fromPrevious: number; total: number }
 
-let levelData: { exp: number }[] = ReadJson('./src/data/game/database/globals.json').config.exp.level.exp_table
+let levelData: { exp: number }[] = ReadJson('./data/game/database/globals.json').config.exp.level.exp_table
 
 function ExperienceData(): EXP[] {
-    const levelData = ReadJson('./src/data/game/database/globals.json').config.exp.level.exp_table
+    const levelData = ReadJson('./data/game/database/globals.json').config.exp.level.exp_table
 
     let total = 0
     let table: EXP[] = new Array()

@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import settings from '../../data/bot/settings'
+import settings from '../../botConfig'
 import { Discord, Slash, SlashOption } from 'discordx'
 import { CommandInteraction, InteractionReplyOptions, MessageEmbed } from 'discord.js'
 import { GetItem, ItemImage, ItemSearchMessage, ReadJson, ResolveStrings, SearchEngine } from '../../Lib'
@@ -97,7 +97,7 @@ export default async (interaction: CommandInteraction, args: { item: any }): Pro
 */
 
 function GetDependencies(item: Item) {
-    const questData: TrackerQuest[] = ReadJson('./src/data/game/api/questdata.json')
+    const questData: TrackerQuest[] = ReadJson('./data/game/api/questdata.json')
 
     let usedQuests: string[] = []
     let fir = 0

@@ -1,5 +1,5 @@
 import { ButtonInteraction, CommandInteraction, MessageEmbed } from 'discord.js'
-import maps from '../../data/command/mapconfig'
+import { mapconfig } from '../commands/map'
 import { CapitalizeWords } from '../../Lib'
 import { Map } from '../commands/map'
 
@@ -9,7 +9,7 @@ type ImageData = {
     author: string
 }
 
-const mapImages: { [key: string]: ImageData[] } = maps
+const mapImages: { [key: string]: ImageData[] } = mapconfig
 
 type MapData = [
     {

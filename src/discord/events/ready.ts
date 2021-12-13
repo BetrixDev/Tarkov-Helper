@@ -6,13 +6,14 @@ import { parse } from 'json5'
 import { Logger } from '../../Lib'
 import AutoPoster from 'topgg-autoposter'
 
-const config: Config = parse(readFileSync('./src/data/bot/config.json5').toString())
+const config: Config = parse(readFileSync('./data/bot/config.json5').toString())
 
 @Discord()
 abstract class Event {
     @Once('ready')
     private async initialized() {
         const client = GetClient()
+        await client.clearApplicationCommands()
         await client.initApplicationCommands()
         await client.initApplicationPermissions()
 

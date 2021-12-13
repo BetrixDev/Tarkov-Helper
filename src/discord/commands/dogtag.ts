@@ -1,10 +1,10 @@
 import 'reflect-metadata'
 import { CommandInteraction, InteractionReplyOptions, MessageEmbed } from 'discord.js'
 import { Discord, Slash, SlashOption } from 'discordx'
-import settings from '../../data/bot/settings'
+import settings from '../../botConfig'
 import { FormatPrice, ItemImage, ReadJson, ResolveStrings } from '../../Lib'
 
-let MaxLevel: number = ReadJson('./src/data/game/database/globals.json').config.exp.level.exp_table.length
+let MaxLevel: number = ReadJson('./data/game/database/globals.json').config.exp.level.exp_table.length
 
 /*
     Class for dealing with registering command

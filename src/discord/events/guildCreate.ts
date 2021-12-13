@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import { MessageEmbed } from 'discord.js'
 import { ArgsOf, Client, Discord, On } from 'discordx'
-import settings from '../../data/bot/settings'
+import settings from '../../botConfig'
 
 @Discord()
 abstract class Event {

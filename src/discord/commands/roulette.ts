@@ -2,7 +2,7 @@ import 'reflect-metadata'
 import { Discord, Slash } from 'discordx'
 import { CommandInteraction, Interaction, InteractionReplyOptions, MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
 import { FormatPrice, GetDBItem, GetItem, GetItemByType, Random, ResolveStrings } from '../../Lib'
-import settings from '../../data/bot/settings'
+import settings from '../../botConfig'
 import { AppendCache } from '../../helpers/Cache'
 
 /*
