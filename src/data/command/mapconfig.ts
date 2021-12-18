@@ -110,9 +110,9 @@ export = {
     ],
     lighthouse: [
         {
-            name: 'General (Rough Outline)',
-            link: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/3a/LighthouseMapEarly.jpg',
-            author: 'LordTachankaMain'
+            name: 'General',
+            link: 'https://raw.githubusercontent.com/kokarn/tarkov-tools/master/public/maps/lighthouse-landscape.jpg',
+            author: 'Justin Pai & White Wolf'
         }
     ]
 }
