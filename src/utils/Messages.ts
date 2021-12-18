@@ -1,5 +1,5 @@
 import { CommandInteraction, InteractionReplyOptions, MessageActionRow, MessageEmbed, MessageSelectMenu } from 'discord.js'
-import settings from '../botConfig'
+import settings from '../data/bot/settings'
 import { AppendCache } from '../helpers/Cache'
 import { ResolveStrings } from './Strings'
 

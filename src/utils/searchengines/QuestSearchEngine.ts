@@ -2,7 +2,7 @@
 import MiniSearch from 'minisearch'
 import { ReadJson } from '../../Lib'
 
-const Quests: [Quest] = ReadJson('./data/game/api/questdata.json').map((quest: Quest) => {
+const Quests: [Quest] = ReadJson('./src/data/game/api/questdata.json').map((quest: Quest) => {
     return {
         id: quest.id,
         title: quest.title

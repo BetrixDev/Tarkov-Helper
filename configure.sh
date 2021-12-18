@@ -2,7 +2,7 @@ echo "-= BOT CONFIGURATION =-"
 echo "Please enter your bot\'s token"
 read token
 
-touch data/bot/config.json5
+touch src/data/bot/config.json5
 echo "{
     // Discord Bot Configuration
     // Remove _EXAMPLE from this file to make it valid
@@ -18,6 +18,6 @@ echo "{
 
     // MongoDB Atlas url for storing server specific data (can also be done locally with some changes to Database.ts)
     MongoURL: ''
-}" > data/bot/config.json5
+}" > src/data/bot/config.json5
 
-echo "Bot token set, to add dev variables, edit data/bot/config.json5"
+echo "Bot token set, to add dev variables, edit src/data/bot/config.json5"

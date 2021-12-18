@@ -8,7 +8,7 @@ import { Logger } from './Lib'
 import { ScheduleJobs } from './scheduler/Scheduler'
 require('dotenv').config()
 
-const config: Config = parse(readFileSync('./data/bot/config.json5').toString())
+const config: Config = parse(readFileSync('./src/data/bot/config.json5').toString())
 
 export class Main {
     private static _client: Client

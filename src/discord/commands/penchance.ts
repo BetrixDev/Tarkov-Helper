@@ -1,7 +1,7 @@
 import { CommandInteraction, InteractionReplyOptions, MessageAttachment, MessageEmbed } from 'discord.js'
 import { Discord, Slash, SlashOption } from 'discordx'
 import 'reflect-metadata'
-import settings from '../../botConfig'
+import settings from '../../data/bot/settings'
 import { Clamp, GetDBItem, GetItem, ItemSearchMessage, Random, ReadJson, ResolveStrings, SearchEngine } from '../../Lib'
 
 type Args = { bullet: string; armor: string }
@@ -94,7 +94,7 @@ export default async (interaction: CommandInteraction, args: Args): Promise<Inte
     Data for command
 */
 
-let ArmorMaterials = ReadJson('./data/game/database/globals.json').config.ArmorMaterials
+let ArmorMaterials = ReadJson('./src/data/game/database/globals.json').config.ArmorMaterials
 
 type ArmorData = {
     class: number

@@ -3,7 +3,7 @@
 import { existsSync, mkdirSync, readdirSync } from 'fs'
 import { Logger, ReadJson, WriteJson } from '../../Lib'
 
-const dateDir = './data/command/pricehistory'
+const dateDir = './src/data/command/pricehistory'
 
 type History = {
     price: number
@@ -13,23 +13,23 @@ type History = {
 export const HistoryLogger = async () => {
     Logger('Logging Prices...')
 
-    if (!existsSync(dateDir) && existsSync('./data/command/old')) {
-        mkdirSync('./data/command/pricehistory')
+    if (!existsSync(dateDir) && existsSync('./src/data/command/old')) {
+        mkdirSync('./src/data/command/pricehistory')
         GenerateLogs()
         return
     }
 
     const date = Math.floor(Date.now() / 1000) * 1000 // Cleans up number
 
-    let itemData: Item[] = ReadJson('./data/game/api/itemdata.json')
+    let itemData: Item[] = ReadJson('./src/data/game/api/itemdata.json')
 
     for (let i = 0; i < itemData.length; i++) {
         const item = itemData[i]
 
         let oldFile: History[] = []
 
-        if (existsSync(`./data/command/pricehistory/${item.id}.json`)) {
-            oldFile = ReadJson(`./data/command/pricehistory/${item.id}.json`)
+        if (existsSync(`./src/data/command/pricehistory/${item.id}.json`)) {
+            oldFile = ReadJson(`./src/data/command/pricehistory/${item.id}.json`)
             oldFile.push({ date: date, price: itemData[i].lastLowPrice })
 
             if (oldFile.length > 1488) oldFile.shift()
@@ -37,7 +37,7 @@ export const HistoryLogger = async () => {
             oldFile = [{ date: date, price: itemData[i].lastLowPrice }]
         }
 
-        WriteJson(`./data/command/pricehistory/${item.id}.json`, oldFile)
+        WriteJson(`./src/data/command/pricehistory/${item.id}.json`, oldFile)
     }
 
     Logger('Logged Prices')
@@ -45,12 +45,12 @@ export const HistoryLogger = async () => {
 
 const GenerateLogs = () => {
     // Converts old style to new style of logging
-    let itemData: Item[] = ReadJson('./data/game/api/itemdata.json')
+    let itemData: Item[] = ReadJson('./src/data/game/api/itemdata.json')
 
-    const dateFiles = readdirSync('./data/command/old/')
+    const dateFiles = readdirSync('./src/data/command/old/')
         .filter((file) => file.endsWith('.json'))
         .reverse()
-        .map((file) => ReadJson(`./data/command/old/${file}`))
+        .map((file) => ReadJson(`./src/data/command/old/${file}`))
 
     const SetArray = (item: Item) => {
         let prices: History[] = []
@@ -72,7 +72,7 @@ const GenerateLogs = () => {
     for (let i = 0; i < itemData.length; i++) {
         const item = itemData[i]
 
-        WriteJson(`./data/command/pricehistory/${item.id}.json`, SetArray(item))
+        WriteJson(`./src/data/command/pricehistory/${item.id}.json`, SetArray(item))
     }
 
     Logger('Logged Prices')

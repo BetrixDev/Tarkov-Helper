@@ -41,7 +41,7 @@ export const BarterGrabber = async () => {
                 return data.barters
             })
 
-            writeFileSync('./data/game/api/barterdata.json', JSON.stringify(reponse, null, 4))
+            writeFileSync('./src/data/game/api/barterdata.json', JSON.stringify(reponse, null, 4))
 
             Logger('Barter data succesfully retrieved')
         } catch (e) {

@@ -3,6 +3,6 @@ node_modules
 build/
 .vscode/
 
-data/bot/config.json5
-data/game/
-data/command/pricehistory
+src/data/bot/config.json5
+src/data/game/
+src/data/command/pricehistory

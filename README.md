@@ -54,7 +54,7 @@ Open the Tarkov-Helper directory and run configure.sh
     bash configure.sh
 
 Enter your bot's token when prompted to. <br>
-To configure a dev bot, open **config.json5** under `data/bot/config.json5`.
+To configure a dev bot, open **config.json5** under `src/data/bot/config.json5`.
 
 Run init.sh to automatically download all needed files
 

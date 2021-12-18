@@ -14,7 +14,7 @@ export const QuestGrabber = async () => {
             return data.body
         })
 
-        writeFileSync('./data/game/api/questdata.json', JSON.stringify(reponse, null, 4))
+        writeFileSync('./src/data/game/api/questdata.json', JSON.stringify(reponse, null, 4))
 
         Logger('Quest data succesfully retrieved')
     } catch (e) {

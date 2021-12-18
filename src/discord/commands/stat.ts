@@ -2,7 +2,7 @@ import 'reflect-metadata'
 import { Discord, Slash, SlashOption } from 'discordx'
 import { Cache, FormatPrice, GetDBItem, GetItem, ItemImage, ItemSearchMessage, ReadJson, ResolveStrings, Round, SearchEngine } from '../../Lib'
 import { CommandInteraction, MessageEmbed, InteractionReplyOptions, MessageEmbedOptions } from 'discord.js'
-import settings from '../../botConfig'
+import settings from '../../data/bot/settings'
 import { BallisticsCalculator } from './penchance'
 
 /*
@@ -75,7 +75,7 @@ export default async (interaction: CommandInteraction, args: { item: string }): 
     Data for command
 */
 
-let ArmorMaterials = ReadJson('./data/game/database/globals.json').config.ArmorMaterials
+let ArmorMaterials = ReadJson('./src/data/game/database/globals.json').config.ArmorMaterials
 
 type THType =
     | 'key'
@@ -118,7 +118,7 @@ class ItemData {
     }
 
     get SpecificData(): MessageEmbedOptions {
-        const globals = Cache.globals //ReadJson('./data/game/database/globals.json')
+        const globals = Cache.globals //ReadJson('./src/data/game/database/globals.json')
         const data = this.itemData.raw
         const type: THType = GetType(this.item, data, this.itemData.rawName)
         const item = this.item

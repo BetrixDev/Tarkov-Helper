@@ -1,5 +1,5 @@
 echo Adding files
-cd data
+cd src/data
 rm game/ -r -f
 mkdir game
 cd game/
@@ -15,7 +15,7 @@ curl https://gist.githubusercontent.com/BetrixDev/f1de51cf80f8817b0ae6c6726eacfd
 curl https://gist.githubusercontent.com/BetrixDev/49d4ff375890256aa2a2fb69c927d8cd/raw/c80d61be18e5898ee328c90fd7e2023e715eb297/quest.json > questdata.json
 
 echo Grabbing database
-cd ../../../
+cd ../../../../
 bash database.sh
 
 echo Installing node modules

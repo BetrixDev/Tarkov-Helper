@@ -3,7 +3,7 @@ import 'reflect-metadata'
 import { InteractionReplyOptions, MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
 import { Discord, Slash } from 'discordx'
 
-import Settings from '../../botConfig'
+import Settings from '../../data/bot/settings'
 
 /*
     Class for dealing with registering command

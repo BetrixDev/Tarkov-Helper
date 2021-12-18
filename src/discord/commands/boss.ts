@@ -2,7 +2,7 @@ import 'reflect-metadata'
 import { Discord, Slash, SlashChoice, SlashOption } from 'discordx'
 import { CommandInteraction, InteractionReplyOptions, MessageEmbed } from 'discord.js'
 import { BossImage, ReadJson, ResolveStrings } from '../../Lib'
-import settings from '../../botConfig'
+import settings from '../../data/bot/settings'
 
 @Discord()
 export abstract class Command {
@@ -119,8 +119,8 @@ class Boss {
 
     constructor(name: keyof typeof BossNames) {
         this.gameName = name
-        this.bossData = ReadJson(`./data/game/database/bots/types/${name}.json`)
-        this.mapData = ReadJson(`./data/game/database/locations/${BossNames[name].rawMap}/base.json`)
+        this.bossData = ReadJson(`./src/data/game/database/bots/types/${name}.json`)
+        this.mapData = ReadJson(`./src/data/game/database/locations/${BossNames[name].rawMap}/base.json`)
 
         const spawnData = this.mapData.BossLocationSpawn as typeof this.bossSpawnData[]
         this.bossSpawnData = spawnData.find((data) => {

@@ -1,7 +1,7 @@
 import { ButtonInteraction, CommandInteraction, InteractionReplyOptions, MessageEmbed } from 'discord.js'
 import { GetQuest, Insert, ReadJson, Slice } from '../../Lib'
 
-let QuestGuides = ReadJson('./data/game/questguide.json')
+let QuestGuides = ReadJson('./src/data/game/questguide.json')
 
 type Guide = {
     steps?: string[]
