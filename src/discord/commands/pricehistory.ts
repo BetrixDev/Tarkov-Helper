@@ -116,7 +116,7 @@ export default async (interaction: CommandInteraction, args: Args): Promise<Inte
 
     const renderedChart = await chart.renderChart()
 
-    if (renderedChart == ErrorImage) {
+    if (!renderedChart) {
         return {
             ephemeral: true,
             embeds: [ErrorMessage('There was en error generating your chart, please try again')]
@@ -190,7 +190,7 @@ export class PriceChart {
         return this._items
     }
 
-    async renderChart(): Promise<Buffer> {
+    async renderChart(): Promise<Buffer | undefined> {
         try {
             // Create the points first
             let chartData: { item: Item; data: Point[] }[][] = []
@@ -298,7 +298,7 @@ export class PriceChart {
                 }
             })
         } catch {
-            return ErrorImage
+            return undefined
         }
     }
 }
