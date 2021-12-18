@@ -10,8 +10,8 @@ export function Logger(message: string): void {
     console.log(`{ ${GetTime()} }: ${message}`)
 }
 
-export function ReadJson(path: PathLike) {
-    return JSON.parse(readFileSync(path).toString())
+export function ReadJson<T>(path: PathLike) {
+    return JSON.parse(readFileSync(path).toString()) as T | any
 }
 
 export function WriteJson(path: PathLike, data: {} | []) {

@@ -8,23 +8,26 @@ export class Cache {
     static barterData: Barter[]
     static locals: { [key: string]: any; templates: any }
     static globals: { [key: string]: any }
+    static bulletData: Bullet[]
 
     constructor() {
-        Cache.itemData = ReadJson('./src/data/game/api/itemdata.json') as Item[]
+        Cache.itemData = ReadJson<Item[]>('./src/data/game/api/itemdata.json') as Item[]
         Cache.rawData = ReadJson('./src/data/game/database/templates/items.json')
         Cache.questData = ReadJson('./src/data/game/api/questdata.json')
         Cache.barterData = ReadJson('./src/data/game/api/barterdata.json')
         Cache.locals = ReadJson('./src/data/game/database/locales/global/en.json')
         Cache.globals = ReadJson('./src/data/game/database/globals.json')
+        Cache.bulletData = ReadJson<{ [key: string]: Bullet }>('./src/data/game/api/bulletdata.json')
     }
 
     updateData() {
-        Cache.itemData = ReadJson('./src/data/game/api/itemdata.json') as Item[]
+        Cache.itemData = ReadJson<Item[]>('./src/data/game/api/itemdata.json') as Item[]
         Cache.rawData = ReadJson('./src/data/game/database/templates/items.json')
         Cache.questData = ReadJson('./src/data/game/api/questdata.json')
         Cache.barterData = ReadJson('./src/data/game/api/barterdata.json')
         Cache.locals = ReadJson('./src/data/game/database/locales/global/en.json')
         Cache.globals = ReadJson('./src/data/game/database/globals.json')
+        Cache.bulletData = ReadJson<{ [key: string]: Bullet }>('./src/data/game/api/bulletdata.json')
     }
 }
 
