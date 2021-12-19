@@ -6,8 +6,6 @@ import { readFileSync } from 'fs'
 import settings from '../../data/bot/settings'
 import { ErrorMessage, FormatPrice, GetItem, ItemSearchMessage, ReadJson, ResolveStrings, Round, SearchEngine } from '../../Lib'
 
-const ErrorImage = readFileSync('./src/data/command/images/charterror.png')
-
 type Args = {
     range: number
     item: string
