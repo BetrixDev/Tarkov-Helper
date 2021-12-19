@@ -111,8 +111,8 @@ export = {
     lighthouse: [
         {
             name: 'General',
-            link: 'https://raw.githubusercontent.com/kokarn/tarkov-tools/master/public/maps/lighthouse-landscape.jpg',
-            author: 'Justin Pai & White Wolf'
+            link: 'https://i.imgur.com/JqeiYxi.png',
+            author: 'Jindouz'
         }
     ]
 }
