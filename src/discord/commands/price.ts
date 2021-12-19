@@ -61,9 +61,8 @@ export default async (interaction: CommandInteraction, args: { item: any }): Pro
                         `
                         [Wiki Link](${item.wikiLink})
                         **This item has no offers on the Flea Market**
-                        Item prices may not be up to date until a week or two after the wipe
                         `
-                    ) // REMOVE AFTER WIPE
+                    )
                     .addFields({
                         name: 'Best Sells',
                         value: `${sellPrices[0]?.source ?? ''} at ${sellPrices[0]?.price ?? ''}/each`
@@ -76,7 +75,7 @@ export default async (interaction: CommandInteraction, args: { item: any }): Pro
                 new MessageEmbed()
                     .setColor(settings.botSettings.color)
                     .setTitle(`${item.shortName} Price Data - ${FormatPrice(item.lastLowPrice)}`)
-                    .setDescription(`[Wiki Link](${item.wikiLink})\nItem prices may not be up to date until a week or two after the wipe`) // REMOVE AFTER WIPE
+                    .setDescription(`[Wiki Link](${item.wikiLink})`)
                     .setThumbnail(ItemImage(item.id))
                     .addFields(
                         ResolveStrings([
