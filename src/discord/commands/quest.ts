@@ -4,8 +4,9 @@ import { CommandInteraction, InteractionReplyOptions, MessageActionRow, MessageB
 import { ErrorMessage, GetQuest, QuestSearchEngine, QuestSearchMessage, ReadJson } from '../../Lib'
 import settings from '../../data/bot/settings'
 import { AppendCache } from '../../helpers/Cache'
+import path from 'path'
 
-let QuestGuides: { [key: string]: object } = ReadJson('./src/data/game/questguide.json')
+let QuestGuides: { [key: string]: object } = ReadJson(path.join(__dirname, '..', '..', '..', 'game_data', 'questguide.json'))
 
 enum Traders {
     'Prapor',
@@ -91,7 +92,7 @@ class QuestData {
     description: string
 
     constructor(quest: TrackerQuest) {
-        let Locals = ReadJson('./src/data/game/database/locales/global/en.json')
+        let Locals = ReadJson('./game_data/database/locales/global/en.json')
 
         this.gameID = quest.gameId
 

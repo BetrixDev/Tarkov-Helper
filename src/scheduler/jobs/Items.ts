@@ -51,11 +51,11 @@ export const ItemGrabber = async () => {
     try {
         const reponse = await request('https://tarkov-tools.com/graphql', query)
 
-        WriteJson('./src/data/game/api/itemdata.json', reponse.itemsByType)
+        WriteJson('./game_data/api/itemdata.json', reponse.itemsByType)
 
         const ammo = await axios('https://raw.githack.com/TarkovTracker/tarkovdata/master/ammunition.json')
 
-        WriteJson('./src/data/game/api/bulletdata.json', ammo.data)
+        WriteJson('./game_data/api/bulletdata.json', ammo.data)
 
         Logger('Item data succesfully retrieved')
     } catch (e) {

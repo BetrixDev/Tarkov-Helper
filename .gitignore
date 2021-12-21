@@ -1,8 +1,7 @@
-node_modules
+node_modules/
 
 build/
-.vscode/
 
+game_data/
 src/data/bot/config.json5
-src/data/game/
 src/data/command/pricehistory

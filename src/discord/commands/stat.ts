@@ -4,6 +4,7 @@ import { Cache, FormatPrice, GetDBItem, GetItem, ItemImage, ItemSearchMessage, R
 import { CommandInteraction, MessageEmbed, InteractionReplyOptions, MessageEmbedOptions } from 'discord.js'
 import settings from '../../data/bot/settings'
 import { BallisticsCalculator } from './penchance'
+import path from 'path'
 
 /*
     Class for dealing with registering command
@@ -75,7 +76,7 @@ export default async (interaction: CommandInteraction, args: { item: string }): 
     Data for command
 */
 
-let ArmorMaterials = ReadJson('./src/data/game/database/globals.json').config.ArmorMaterials
+let ArmorMaterials = ReadJson(path.join(__dirname, '..', '..', '..', 'game_data', 'database', 'globals.json')).config.ArmorMaterials
 
 type THType =
     | 'key'
@@ -118,7 +119,7 @@ class ItemData {
     }
 
     get SpecificData(): MessageEmbedOptions {
-        const globals = Cache.globals //ReadJson('./src/data/game/database/globals.json')
+        const globals = Cache.globals
         const data = this.itemData.raw
         const type: THType = GetType(this.item, data, this.itemData.rawName)
         const item = this.item

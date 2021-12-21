@@ -1,4 +1,8 @@
-rm src/data/game/temp/ -r -f
-git clone https://github.com/Tarkov-Helper/Database src/data/game/temp
-mv -v src/data/game/temp/* src/data/game/
-rm src/data/game/temp/ -r -f
+#!/bin/bash
+
+if [ -d "game_data/" ]; then
+    cd game_data/
+    git pull
+else
+    git clone https://github.com/Tarkov-Helper/Database game_data
+fi

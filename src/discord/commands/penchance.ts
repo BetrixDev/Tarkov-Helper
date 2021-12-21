@@ -1,8 +1,10 @@
+import 'reflect-metadata'
+import { ChartJSNodeCanvas } from 'chartjs-node-canvas'
 import { CommandInteraction, InteractionReplyOptions, MessageAttachment, MessageEmbed } from 'discord.js'
 import { Discord, Slash, SlashOption } from 'discordx'
-import 'reflect-metadata'
+import path from 'path'
 import settings from '../../data/bot/settings'
-import { Clamp, GetDBItem, GetItem, ItemSearchMessage, Random, ReadJson, ResolveStrings, SearchEngine } from '../../Lib'
+import { Clamp, GetDBItem, GetItem, ItemSearchMessage, Random, ReadJson, ResolveStrings, Round, SearchEngine } from '../../Lib'
 
 type Args = { bullet: string; armor: string }
 
@@ -94,7 +96,7 @@ export default async (interaction: CommandInteraction, args: Args): Promise<Inte
     Data for command
 */
 
-let ArmorMaterials = ReadJson('./src/data/game/database/globals.json').config.ArmorMaterials
+let ArmorMaterials = ReadJson(path.join(__dirname, '..', '..', '..', 'game_data', 'database', 'globals.json')).config.ArmorMaterials
 
 type ArmorData = {
     class: number
@@ -269,9 +271,6 @@ export class BallisticsCalculator {
         return report
     }
 }
-
-import { ChartJSNodeCanvas } from 'chartjs-node-canvas'
-import { Round } from '../../Lib'
 
 type Point = {
     durability: number

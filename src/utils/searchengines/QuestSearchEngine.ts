@@ -1,8 +1,9 @@
 // A module for creating a search engine for quests
 import MiniSearch from 'minisearch'
+import path from 'path'
 import { ReadJson } from '../../Lib'
 
-const Quests: [Quest] = ReadJson('./src/data/game/api/questdata.json').map((quest: Quest) => {
+const Quests: [Quest] = ReadJson<Quest[]>(path.join(__dirname, '..', '..', '..', 'game_data', 'api', 'questdata.json')).map((quest: Quest) => {
     return {
         id: quest.id,
         title: quest.title

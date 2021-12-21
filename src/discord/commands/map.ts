@@ -106,7 +106,7 @@ enum RawTranslator {
 }
 
 function GetDescriptions(): { [key: string]: any } {
-    const raw = ReadJson('./src/data/game/database/locales/global/en.json').locations
+    const raw = ReadJson('./game_data/database/locales/global/en.json').locations
 
     let formatted: { [key: string]: any } = {}
 
@@ -120,7 +120,7 @@ function GetDescriptions(): { [key: string]: any } {
 
 function GetRawData(map: Map) {
     const rawName = RawTranslator[map]
-    return ReadJson(`./src/data/game/database/locations/${rawName}/base.json`)
+    return ReadJson(`./game_data/database/locations/${rawName}/base.json`)
 }
 
 class MapInfo {

@@ -1,5 +1,8 @@
 // A module for grabbing item data
+import path from 'path'
 import { ReadJson } from '../Lib'
+
+const game_data = path.join(__dirname, '..', '..', 'game_data')
 
 export class Cache {
     static itemData: Item[]
@@ -11,23 +14,17 @@ export class Cache {
     static bulletData: Bullet[]
 
     constructor() {
-        Cache.itemData = ReadJson<Item[]>('./src/data/game/api/itemdata.json') as Item[]
-        Cache.rawData = ReadJson('./src/data/game/database/templates/items.json')
-        Cache.questData = ReadJson('./src/data/game/api/questdata.json')
-        Cache.barterData = ReadJson('./src/data/game/api/barterdata.json')
-        Cache.locals = ReadJson('./src/data/game/database/locales/global/en.json')
-        Cache.globals = ReadJson('./src/data/game/database/globals.json')
-        Cache.bulletData = ReadJson<{ [key: string]: Bullet }>('./src/data/game/api/bulletdata.json')
+        this.updateData()
     }
 
     updateData() {
-        Cache.itemData = ReadJson<Item[]>('./src/data/game/api/itemdata.json') as Item[]
-        Cache.rawData = ReadJson('./src/data/game/database/templates/items.json')
-        Cache.questData = ReadJson('./src/data/game/api/questdata.json')
-        Cache.barterData = ReadJson('./src/data/game/api/barterdata.json')
-        Cache.locals = ReadJson('./src/data/game/database/locales/global/en.json')
-        Cache.globals = ReadJson('./src/data/game/database/globals.json')
-        Cache.bulletData = ReadJson<{ [key: string]: Bullet }>('./src/data/game/api/bulletdata.json')
+        Cache.itemData = ReadJson<Item[]>(path.join(game_data, 'api', 'itemdata.json')) as Item[]
+        Cache.rawData = ReadJson(path.join(game_data, 'database', 'templates', 'items.json'))
+        Cache.questData = ReadJson<Quest[]>(path.join(game_data, 'api', 'questdata.json'))
+        Cache.barterData = ReadJson<Barter[]>(path.join(game_data, 'api', 'barterdata.json'))
+        Cache.locals = ReadJson(path.join(game_data, 'database', 'locales', 'global', 'en.json'))
+        Cache.globals = ReadJson(path.join(game_data, 'database', 'globals.json'))
+        Cache.bulletData = ReadJson<{ [key: string]: Bullet }>(path.join(game_data, 'api', 'bulletdata.json'))
     }
 }
 
@@ -77,7 +74,7 @@ type DBItem = {
 export function GetDBItem(item: string): DBItem {
     const rawData = Cache.rawData
     const locals = Cache.locals.templates
-    const keyData = ReadJson('./src/data/game/keys.json')
+    const keyData = ReadJson(path.join(__dirname, '..', '..', 'game_data', 'keys.json'))
 
     let obj: DBItem = {
         raw: rawData[item]?._props,

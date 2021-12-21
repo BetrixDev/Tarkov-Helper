@@ -3,6 +3,7 @@ import { CommandInteraction, InteractionReplyOptions, MessageEmbed } from 'disco
 import { Discord, Slash, SlashOption } from 'discordx'
 import settings from '../../data/bot/settings'
 import { ErrorMessage, FormatNumber, ReadJson } from '../../Lib'
+import path from 'path'
 
 /*
     Data for command
@@ -10,10 +11,11 @@ import { ErrorMessage, FormatNumber, ReadJson } from '../../Lib'
 
 type EXP = { fromPrevious: number; total: number }
 
-let levelData: { exp: number }[] = ReadJson('./src/data/game/database/globals.json').config.exp.level.exp_table
+let levelData: { exp: number }[] = ReadJson(path.join(__dirname, '..', '..', '..', 'game_data', 'database', 'globals.json')).config.exp.level
+    .exp_table
 
 function ExperienceData(): EXP[] {
-    const levelData = ReadJson('./src/data/game/database/globals.json').config.exp.level.exp_table
+    const levelData = ReadJson('./game_data/database/globals.json').config.exp.level.exp_table
 
     let total = 0
     let table: EXP[] = new Array()

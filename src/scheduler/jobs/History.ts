@@ -27,7 +27,7 @@ export const HistoryLogger = async () => {
 
     const date = Math.floor(Date.now() / 1000) * 1000 // Cleans up number
 
-    let itemData: Item[] = ReadJson('./src/data/game/api/itemdata.json')
+    let itemData: Item[] = ReadJson('./game_data/api/itemdata.json')
 
     for (let i = 0; i < itemData.length; i++) {
         const item = itemData[i]

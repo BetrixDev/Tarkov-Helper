@@ -3,8 +3,9 @@ import { CommandInteraction, InteractionReplyOptions, MessageEmbed } from 'disco
 import { Discord, Slash, SlashOption } from 'discordx'
 import settings from '../../data/bot/settings'
 import { FormatPrice, ItemImage, ReadJson, ResolveStrings } from '../../Lib'
+import path from 'path'
 
-let MaxLevel: number = ReadJson('./src/data/game/database/globals.json').config.exp.level.exp_table.length
+let MaxLevel: number = ReadJson(path.join(__dirname, '..', '..', '..', 'game_data', 'database', 'globals.json')).config.exp.level.exp_table.length
 
 /*
     Class for dealing with registering command

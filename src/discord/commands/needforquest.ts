@@ -97,7 +97,7 @@ export default async (interaction: CommandInteraction, args: { item: any }): Pro
 */
 
 function GetDependencies(item: Item) {
-    const questData: TrackerQuest[] = ReadJson('./src/data/game/api/questdata.json')
+    const questData: TrackerQuest[] = ReadJson('./game_data/api/questdata.json')
 
     let usedQuests: string[] = []
     let fir = 0
