@@ -17,7 +17,7 @@ export function BossImage(boss: string) {
 }
 
 export function FormatPrice(price: number | string, source?: string) {
-    if (source == 'peacekeeper' || source == 'Peacekeeper') {
+    if (source === 'peacekeeper' || source === 'Peacekeeper') {
         return new Intl.NumberFormat('en-EN', {
             style: 'currency',
             currency: 'USD',

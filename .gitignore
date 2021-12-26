@@ -1,7 +1,8 @@
-node_modules/
+config.json
+game_data
+build
+node_modules
+yarn.lock
+.vscode
 
-build/
-
-game_data/
-src/data/bot/config.json5
-src/data/command/pricehistory
+src/data/pricehistory

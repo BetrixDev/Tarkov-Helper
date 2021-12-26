@@ -3,43 +3,44 @@
   "description": "",
   "main": "./src/Bot.ts",
   "scripts": {
-    "start": "ts-node --files src/Bot.ts",
-    "init": "ts-node --files src/scheduler/Init.ts",
-    "production": "tsc && pm2 start ecosystem.config.js --only tarkovhelper"
+    "build": "tsc",
+    "dev": "ts-node --files src/main.ts",
+    "init": "ts-node --files src/helpers/scheduler/init.ts",
+    "start": "pm2 start ecosystem.config.js --only tarkovhelper"
   },
   "author": "Betrix",
   "devDependencies": {
-    "@types/node": "^16.11.4",
+    "@types/axios": "^0.14.0",
+    "@types/node": "*",
     "@types/node-schedule": "^1.3.2",
-    "prettier": "^2.4.1",
-    "ts-node": "^10.3.0",
-    "typescript": "^4.4.4"
-  },
-  "peerDependencies": {
-    "chart.js": "^3.5.1"
+    "prettier": "^2.5.1",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
   },
   "dependencies": {
-    "@discordx/utilities": "^1.7.1",
-    "@types/axios": "^0.14.0",
+    "@discordx/importer": "^1.1.2",
+    "@discordx/utilities": "^3.1.5",
     "axios": "^0.24.0",
-    "canvas": "^2.8.0",
-    "chartjs-node-canvas": "^4.1.3",
+    "chartjs-node-canvas": "^4.1.5",
     "discord.js": "^13.3.1",
-    "discordx": "^7.0.0",
+    "discordx": "^9.0.1",
     "dotenv": "^10.0.0",
-    "got": "^11.8.2",
-    "graphql-request": "^3.6.1",
-    "json5": "^2.2.0",
-    "minisearch": "^3.1.0",
-    "moment-timezone": "^0.5.33",
-    "mongoose": "^6.0.12",
-    "node-schedule": "^2.0.0",
+    "fuse.js": "^6.5.2",
+    "graphql": "^16.2.0",
+    "graphql-request": "^3.7.0",
+    "moment-timezone": "^0.5.34",
+    "mongoose": "^6.1.3",
+    "node-cache": "^5.1.2",
+    "node-schedule": "^2.1.0",
     "reflect-metadata": "^0.1.13",
     "topgg-autoposter": "^2.0.1",
-    "type-graphql": "^0.3.0"
+    "tsyringe": "^4.6.0"
   },
   "engines": {
     "node": ">=16.6.0"
   },
-  "engineStrict": true
+  "engineStrict": true,
+  "peerDependencies": {
+    "chart.js": "^3.7.0"
+  }
 }

@@ -1,7 +1,8 @@
 interface Config {
-    BotToken: string
-    BotDevToken: string
-    DevServerIDs: string[]
-    MongoURL: string
-    TopggToken: string
+    bot: {
+        token: string
+        devToken: string
+        monogoUrl: string
+        topggToken: string
+    }
 }
