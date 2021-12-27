@@ -82,10 +82,10 @@ export class QuestCommand {
                         .slice(0, 3000)}
 
                     
-                    ${QuestGuides[quest.title].images[0].text ?? ''}
+                    ${QuestGuides[quest.title]?.images[0]?.text ?? ''}
                     `
                     )
-                    .setImage(QuestGuides[quest.title].images[0].link ?? '')
+                    .setImage(QuestGuides[quest.title]?.images[0]?.link ?? '')
             ]
         }
 
