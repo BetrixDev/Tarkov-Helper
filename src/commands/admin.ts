@@ -8,11 +8,11 @@ import { ErrorReponse } from '../lib'
 
 @Discord()
 @injectable()
-@Permission(false)
-@Permission(async (guild): Promise<ApplicationCommandPermissions> => {
-    // Only the owner of the server can use these commands
-    return { id: guild.ownerId, type: 'USER', permission: true }
-})
+// @Permission(false)
+// @Permission(async (guild): Promise<ApplicationCommandPermissions> => {
+//     // Only the owner of the server can use these commands
+//     return { id: guild.ownerId, type: 'USER', permission: true }
+// })
 export class AdminCommands {
     constructor(private serverDatabase: ServerDatabase) {}
 
