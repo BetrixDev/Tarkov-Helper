@@ -20,15 +20,16 @@ export class DogtagCommand {
         interaction: CommandInteraction
     ) {
         try {
-            interaction.reply(this.message(level))
-        } catch {
-            interaction.reply(ErrorReponse('There was an unknow error executing this command', 'dogtag'))
+            interaction.reply(this.message(level, interaction))
+        } catch (e) {
+            console.log(e)
+            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
         }
     }
 
-    message(level: number) {
+    message(level: number, interaction: CommandInteraction) {
         if (level > MaxLevel || level < 1) {
-            return ErrorReponse(`Please enter a valid level between 1 and ${MaxLevel}`, 'dogtag')
+            return ErrorReponse(`Please enter a valid level between 1 and ${MaxLevel}`, interaction)
         } else {
             return {
                 embeds: [

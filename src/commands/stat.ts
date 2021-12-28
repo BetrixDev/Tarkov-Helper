@@ -23,7 +23,7 @@ export class PriceCommand {
     @Slash('stat', {
         description: 'Returns information about a specified item'
     })
-    item(
+    stat(
         @SlashOption('item', {
             description: 'item to get info of (start typing to search)',
             required: true,
@@ -50,14 +50,15 @@ export class PriceCommand {
                     id = isShort.id
                 } else {
                     interaction.reply(
-                        ErrorReponse('Please use the auto complete function to complete your search', 'price')
+                        ErrorReponse('Please use the auto complete function to complete your search', interaction)
                     )
                     return
                 }
             }
             interaction.reply(this.message(id))
-        } catch {
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', 'price'))
+        } catch (e) {
+            console.log(e)
+            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
         }
     }
 

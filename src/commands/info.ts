@@ -12,8 +12,9 @@ export class InfoCommand {
     dogtag(interaction: CommandInteraction) {
         try {
             interaction.reply(this.message())
-        } catch {
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', 'info'))
+        } catch (e) {
+            console.log(e)
+            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
         }
     }
 

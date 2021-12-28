@@ -31,8 +31,9 @@ export class MapCommand {
     ) {
         try {
             interaction.reply(this.message(map))
-        } catch {
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', 'dogtag'))
+        } catch (e) {
+            console.log(e)
+            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
         }
     }
 

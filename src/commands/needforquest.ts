@@ -33,14 +33,15 @@ export class NeedforQuestCommand {
         try {
             if (!isID(id)) {
                 interaction.reply(
-                    ErrorReponse('Please use the auto complete function to complete your search', 'needforquest')
+                    ErrorReponse('Please use the auto complete function to complete your search', interaction)
                 )
                 return
             }
 
             interaction.reply(this.message(id))
-        } catch {
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', 'needforquest'))
+        } catch (e) {
+            console.log(e)
+            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
         }
     }
 

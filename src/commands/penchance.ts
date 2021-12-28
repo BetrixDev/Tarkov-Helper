@@ -54,14 +54,15 @@ export class PenChanceCommand {
         try {
             if (!isID(bullet) || !isID(armor)) {
                 interaction.reply(
-                    ErrorReponse('Please use the auto complete function to complete your search', 'penchance')
+                    ErrorReponse('Please use the auto complete function to complete your search', interaction)
                 )
                 return
             }
 
             interaction.reply(await this.message(bullet, armor))
-        } catch {
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', 'penchance'))
+        } catch (e) {
+            console.log(e)
+            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
         }
     }
 

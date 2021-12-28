@@ -28,8 +28,9 @@ export class ExchangeRateCommand {
     ) {
         try {
             interaction.reply(this.message(currency, amount))
-        } catch {
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', 'exchangerate'))
+        } catch (e) {
+            console.log(e)
+            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
         }
     }
 

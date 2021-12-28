@@ -73,18 +73,27 @@ export class Command {
         try {
             if (!isID(item) || !CheckID(item2) || !CheckID(item3) || !CheckID(item4) || !CheckID(item5)) {
                 interaction.reply(
-                    ErrorReponse('Please use the auto complete function to complete your search', 'pricehistory')
+                    ErrorReponse('Please use the auto complete function to complete your search', interaction)
                 )
                 return
             }
 
-            interaction.reply(await this.message(range, item, item2, item3, item4, item5))
-        } catch {
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', 'pricehistory'))
+            interaction.reply(await this.message(interaction, range, item, item2, item3, item4, item5))
+        } catch (e) {
+            console.log(e)
+            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
         }
     }
 
-    async message(range: number, item: string, item2?: string, item3?: string, item4?: string, item5?: string) {
+    async message(
+        interaction: CommandInteraction,
+        range: number,
+        item: string,
+        item2?: string,
+        item3?: string,
+        item4?: string,
+        item5?: string
+    ) {
         const chart = new PriceChart()
         chart.range = range > 31 ? 31 : range // 31 is the max range
 
@@ -97,7 +106,7 @@ export class Command {
         const renderedChart = await chart.renderChart()
 
         if (!renderedChart) {
-            return ErrorReponse('There was en error generating your chart, please try again', 'pricehistory')
+            return ErrorReponse('There was en error generating your chart, please try again', interaction)
         } else {
             return {
                 embeds: [

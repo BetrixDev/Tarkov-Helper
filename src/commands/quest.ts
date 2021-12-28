@@ -52,14 +52,15 @@ export class QuestCommand {
         try {
             if (Number(id) === NaN) {
                 interaction.reply(
-                    ErrorReponse('Please use the auto complete function to complete your search', 'quest')
+                    ErrorReponse('Please use the auto complete function to complete your search', interaction)
                 )
                 return
             }
 
             interaction.reply(this.message(Number(id)))
-        } catch {
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', 'quest'))
+        } catch (e) {
+            console.log(e)
+            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
         }
     }
 

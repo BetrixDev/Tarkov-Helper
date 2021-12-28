@@ -40,13 +40,14 @@ export abstract class Command {
         interaction: CommandInteraction
     ) {
         try {
-            interaction.reply(this.message(current, end))
-        } catch {
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', 'quest'))
+            interaction.reply(this.message(interaction, current, end))
+        } catch (e) {
+            console.log(e)
+            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
         }
     }
 
-    message(current: number, end: number) {
+    message(interaction: CommandInteraction, current: number, end: number) {
         const data = ExperienceData()
 
         if (current <= MaxLevel && end <= MaxLevel && current != end) {
@@ -78,9 +79,9 @@ export abstract class Command {
                 ]
             }
         } else if (current == end) {
-            return ErrorReponse('Both level values are the same', 'xpto')
+            return ErrorReponse('Both level values are the same', interaction)
         } else {
-            return ErrorReponse('There was an error the level values inputed', 'xpto')
+            return ErrorReponse('There was an error the level values inputed', interaction)
         }
     }
 }

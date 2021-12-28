@@ -31,8 +31,9 @@ class PricePerSlotCommand {
     ) {
         try {
             interaction.reply(this.message(interaction, minimum, maximum))
-        } catch {
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', 'priceperslot'))
+        } catch (e) {
+            console.log(e)
+            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
         }
     }
 
@@ -40,11 +41,11 @@ class PricePerSlotCommand {
         const validItems = this.getValidItems(minimum, maximum)
 
         if (validItems.length == 0) {
-            return ErrorReponse('No items were found in the specified priceperslot range', 'priceperslot')
+            return ErrorReponse('No items were found in the specified priceperslot range', interaction)
         } else if (validItems.length > 999) {
             return ErrorReponse(
                 `Too many items were found within the specified range *(${validItems.length})*`,
-                'priceperslot'
+                interaction
             )
         }
 

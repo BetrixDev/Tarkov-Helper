@@ -22,8 +22,9 @@ export class BitcoinFarmCommand {
     ) {
         try {
             interaction.reply(this.message(gpus, compare))
-        } catch {
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', 'bitcoinfarm'))
+        } catch (e) {
+            console.log(e)
+            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
         }
     }
 

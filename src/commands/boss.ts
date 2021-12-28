@@ -25,8 +25,9 @@ export abstract class BossCommand {
     ) {
         try {
             interaction.reply(this.message(boss))
-        } catch {
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', 'boss'))
+        } catch (e) {
+            console.log(e)
+            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
         }
     }
 

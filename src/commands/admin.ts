@@ -30,7 +30,7 @@ export class AdminCommands {
         try {
             // Redundant check
             if (interaction.user.id !== interaction.guild?.ownerId)
-                interaction.reply(ErrorReponse('You must be the owner of this server to use this command', 'cooldown'))
+                interaction.reply(ErrorReponse('You must be the owner of this server to use this command', interaction))
 
             const commandClass = container.resolve(AdminCommands)
 
@@ -48,7 +48,7 @@ export class AdminCommands {
                     interaction.reply(
                         ErrorReponse(
                             'There was and error trying to change the channel lock, please try again later',
-                            'channellock'
+                            interaction
                         )
                     )
                 }
@@ -64,13 +64,14 @@ export class AdminCommands {
                     interaction.reply(
                         ErrorReponse(
                             'There was and error trying to reset the channel lock, please try again later',
-                            'channellock'
+                            interaction
                         )
                     )
                 }
             }
-        } catch {
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', 'channellock'))
+        } catch (e) {
+            console.log(e)
+            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
         }
     }
 
@@ -88,18 +89,18 @@ export class AdminCommands {
         try {
             // Redundant check
             if (interaction.user.id !== interaction.guild?.ownerId)
-                interaction.reply(ErrorReponse('You must be the owner of this server to use this command', 'cooldown'))
+                interaction.reply(ErrorReponse('You must be the owner of this server to use this command', interaction))
 
             const database = container.resolve(AdminCommands).serverDatabase
 
             if (time < 0 && time < 61)
-                interaction.reply(ErrorReponse('Please make sure Cooldown is between 0 and 60 seconds', 'cooldown'))
+                interaction.reply(ErrorReponse('Please make sure Cooldown is between 0 and 60 seconds', interaction))
 
             database.set(interaction.guildId, 'Cooldown', time)
 
             interaction.reply({ content: `Changed Cooldown time to: **${time}s**`, ephemeral: true })
         } catch {
-            interaction.reply(ErrorReponse('Error changing cooldown time, please try again later', 'cooldown'))
+            interaction.reply(ErrorReponse('Error changing cooldown time, please try again later', interaction))
         }
     }
 }

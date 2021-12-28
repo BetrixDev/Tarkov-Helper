@@ -35,14 +35,15 @@ export class BarterCommand {
                     id = isShort.id
                 } else {
                     interaction.reply(
-                        ErrorReponse('Please use the auto complete function to complete your search', 'barter')
+                        ErrorReponse('Please use the auto complete function to complete your search', interaction)
                     )
                     return
                 }
             }
             interaction.reply(this.message(id))
-        } catch {
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', 'barter'))
+        } catch (e) {
+            console.log(e)
+            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
         }
     }
 

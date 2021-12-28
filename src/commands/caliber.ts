@@ -32,14 +32,15 @@ export class CaliberCommand {
         try {
             if (GetCalibers()[caliber.replace('Caliber', '')] === undefined) {
                 interaction.reply(
-                    ErrorReponse('Please use the auto complete function to complete your search', 'caliber')
+                    ErrorReponse('Please use the auto complete function to complete your search', interaction)
                 )
                 return
             }
 
             interaction.reply(this.message(caliber))
-        } catch {
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', 'caliber'))
+        } catch (e) {
+            console.log(e)
+            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
         }
     }
 
