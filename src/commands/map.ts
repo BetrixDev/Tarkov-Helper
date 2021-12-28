@@ -140,7 +140,7 @@ function GetRawData(map: Map) {
     return ReadJson<any>(`./game_data/database/locations/${rawName}/base.json`)
 }
 
-class MapInfo {
+export class MapInfo {
     private map: Map
     name: string
     data: any
