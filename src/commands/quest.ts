@@ -86,6 +86,7 @@ export class QuestCommand {
                     ${QuestGuides[quest.title]?.images[0]?.text ?? ''}
                     `
                     )
+                    .setFields({ name: 'Required for Kappa?', value: quest.nokappa === true ? 'no' : 'yes' })
                     .setImage(QuestGuides[quest.title]?.images[0]?.link ?? '')
             ]
         }
@@ -114,6 +115,13 @@ export class QuestCommand {
         const guide = QuestGuides[quest.title]
 
         let message: InteractionReplyOptions = { embeds: [], ephemeral: true }
+
+        message.embeds?.push(
+            new MessageEmbed()
+                .setTitle(`Steps`)
+                .setDescription(guide.steps.join('\n'))
+                .setFooter('Text from the official wiki')
+        )
 
         guide.images?.forEach((image, i) => {
             message.embeds?.push(

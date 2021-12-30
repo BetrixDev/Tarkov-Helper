@@ -160,25 +160,16 @@ type HideoutModule = {
     moduleRequirements?: HideoutModule[]
 }
 
-type Query = {
-    item(id: string): Item
-    itemsByType(type: ItemType): Item[]
-    itemsByName(name: string): Item[]
-    barters: Barter[]
-    crafts: Craft[]
-    quests: Quest[]
-    hideoutModules: HideoutModule[]
-}
-
 type TrackerQuest = {
     id: number
     require: { level: number; quests: [] }
     giver: number
-    turning: number
+    turnin: number
     title: string
     locales: { en: string; ru: string; cs: string }
     wiki: string
     exp: number
+    nokappa?: boolean
     unlocks: string[]
     reputation: { trader: number; rep: number }[]
     objectives: {
