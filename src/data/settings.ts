@@ -31,7 +31,8 @@ export = {
             notifyremove: `${mediaPrefix}NotifyRemoveLogo.png`,
             compare: `${mediaPrefix}CompareLogo.png`,
             roulette: `${mediaPrefix}RouletteLogo.png`,
-            chart: `${mediaPrefix}ChartLogo.png`
+            chart: `${mediaPrefix}ChartLogo.png`,
+            status: `${mediaPrefix}StatusLogo.png`
         }
     },
     itemArrayLink: `${gistPrefix}58aa8d985e4690b9a540467af30ec909`,
