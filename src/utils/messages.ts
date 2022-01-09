@@ -1,4 +1,4 @@
-import { CommandInteraction, Interaction, InteractionReplyOptions, MessageEmbed } from 'discord.js'
+import { Interaction, InteractionReplyOptions, Message, MessageEmbed } from 'discord.js'
 import settings from '../data/settings'
 
 export function ErrorReponse(message: string, interaction: Interaction): InteractionReplyOptions {
@@ -14,7 +14,7 @@ export function ErrorReponse(message: string, interaction: Interaction): Interac
                     .setColor(settings.botSettings.errorColor)
                     .setTitle('The command issued had and error')
                     .setDescription(`\`${message}\``)
-                    .addField('Args', args.join('\n'))
+                    .addField('Args', args.length > 0 ? args.join('\n') : 'none')
                     .setFooter(`Command issued: ${interaction.commandName}`)
             ],
             ephemeral: true
@@ -31,5 +31,12 @@ export function ErrorReponse(message: string, interaction: Interaction): Interac
             ],
             ephemeral: true
         }
+    }
+}
+
+export class THEmbed extends MessageEmbed {
+    constructor(altColor?: boolean) {
+        super()
+        this.setColor(altColor ? settings.botSettings.altColor : settings.botSettings.color)
     }
 }
