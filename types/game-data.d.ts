@@ -206,3 +206,24 @@ interface Bullet {
         initialSpeed: number
     }
 }
+
+type Status = {
+    name: string
+    message: string
+    status: number
+    statusCode: string
+}
+
+type StatusMessage = {
+    content: string
+    time: string
+    type: number
+    solveTime: string
+    statusCode: string
+}
+
+type ServerStatus = {
+    currentStatuses: [Status]
+    messages: [StatusMessage]
+    generalStatus: Status
+}
