@@ -9,9 +9,10 @@ export class Cache {
     static rawData: { [key: string]: any }
     static questData: TrackerQuest[]
     static barterData: Barter[]
-    static locals: { [key: string]: any; templates: any }
+    static locales: { [key: string]: any; templates: any }
     static globals: { [key: string]: any }
     static bulletData: Bullet[]
+    static hideoutData: HideoutModule[]
 
     static map: { [key: string]: number } = {}
     static shorts: { [key: string]: Item } = {}
@@ -25,10 +26,10 @@ export class Cache {
         Cache.rawData = ReadJson(path.join(game_data, 'database', 'templates', 'items.json'))
         Cache.questData = ReadJson<TrackerQuest[]>(path.join(game_data, 'api', 'questdata.json'))
         Cache.barterData = ReadJson<Barter[]>(path.join(game_data, 'api', 'barterdata.json'))
-        Cache.locals = ReadJson(path.join(game_data, 'database', 'locales', 'global', 'en.json'))
+        Cache.locales = ReadJson(path.join(game_data, 'database', 'locales', 'global', 'en.json'))
         Cache.globals = ReadJson(path.join(game_data, 'database', 'globals.json'))
         Cache.bulletData = ReadJson<Bullet[]>(path.join(game_data, 'api', 'bulletdata.json'))
-
+        Cache.hideoutData = ReadJson<HideoutModule[]>(path.join(game_data, 'api', 'hideoutdata.json'))
         Cache.itemData.forEach((item, i) => {
             Cache.map[item.id] = i
             Cache.shorts[item.shortName.toLowerCase()] = item
@@ -65,7 +66,7 @@ export function isShortName(name: string): Item | null {
 
 export function GetDBItem(item: string): DBItem {
     const rawData = Cache.rawData
-    const locals = Cache.locals.templates
+    const locals = Cache.locales.templates
     const keyData = ReadJson<{ [key: string]: string[] }>(path.join(__dirname, '..', '..', 'game_data', 'keys.json'))
 
     let obj: DBItem = {

@@ -149,15 +149,16 @@ type TraderPrice = {
 }
 
 type HideoutModuleItemRequirement = {
-    item?: Item
-    quantity?: number
+    item: { id: string }
+    count: number
 }
 
 type HideoutModule = {
-    name?: string
-    level?: number
-    itemRequirements?: HideoutModuleItemRequirement[]
-    moduleRequirements?: HideoutModule[]
+    id: number
+    name: string
+    level: number
+    itemRequirements: HideoutModuleItemRequirement[]
+    moduleRequirements: { id: number; name: string; level: number }[]
 }
 
 type TrackerQuest = {

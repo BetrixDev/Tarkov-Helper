@@ -6,6 +6,7 @@ import { BarterGrabber } from './jobs/barter'
 import { HistoryLogger } from './jobs/history'
 import { scheduleJob } from 'node-schedule'
 import { Cache } from '../../lib'
+import { HideoutGrabber } from './jobs/hideout'
 
 const cache = new Cache()
 
@@ -17,6 +18,7 @@ function ScheduleJobs() {
         QuestGrabber()
         ItemGrabber()
         BarterGrabber()
+        HideoutGrabber()
     }
 
     scheduleJob('*/30 * * * *', async () => {
@@ -34,6 +36,7 @@ function ScheduleJobs() {
     scheduleJob('0 */3 * * *', async () => {
         // Runs every 3 hours
         QuestGrabber()
+        HideoutGrabber()
     })
 }
 
