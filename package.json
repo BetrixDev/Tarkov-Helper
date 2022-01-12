@@ -1,14 +1,11 @@
 {
-  "name": "tarkov-helper",
-  "description": "",
-  "main": "./src/Bot.ts",
+  "author": "Betrix",
   "scripts": {
     "build": "tsc",
     "dev": "ts-node --files src/main.ts",
     "init": "ts-node --files src/helpers/scheduler/init.ts",
     "start": "pm2 start ecosystem.config.js --only tarkovhelper"
   },
-  "author": "Betrix",
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/node": "*",
