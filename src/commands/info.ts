@@ -9,7 +9,7 @@ export class InfoCommand {
     @Slash('info', {
         description: 'Returns basic info on how to use Tarkov Helper'
     })
-    dogtag(interaction: CommandInteraction) {
+    info(interaction: CommandInteraction) {
         try {
             interaction.reply(this.message())
         } catch (e) {
