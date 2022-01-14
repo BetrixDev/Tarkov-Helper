@@ -1,8 +1,6 @@
 import 'reflect-metadata'
 import NodeCache from 'node-cache'
 import { singleton } from 'tsyringe'
-import { Variables } from 'graphql-request'
-import { CommandInteraction } from 'discord.js'
 
 type Result = {
     map: string

@@ -72,7 +72,6 @@ export class BarterCommand {
         const barterData = new BaterData(item.id)
 
         const pages = Math.ceil(barterData.Barters.length / 9)
-        console.log(pages)
         if (barterData.Barters.length === 0) {
             return {
                 embeds: [

@@ -58,7 +58,6 @@ export class HideoutCommand {
 
         let totalPrice = 0
         requiredItems.forEach((i) => {
-            console.log(i)
             const price =
                 i.item.id === '5449016a4bdc2d6f028b456f' // Roubles have a price of 1
                     ? 1
