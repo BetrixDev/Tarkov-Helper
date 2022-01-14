@@ -3,13 +3,5 @@
     "tabWidth": 4,
     "semi": false,
     "printWidth": 120,
-    "singleQuote": true,
-    "overrides": [
-        {
-            "files": "*.ts",
-            "options": {
-                "parser": "babel-ts"
-            }
-        }
-    ]
+    "singleQuote": true
 }
