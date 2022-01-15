@@ -388,7 +388,7 @@ export abstract class ItemCommand {
                 })
                 .join('\n')
 
-            if (questText.length < 1000) {
+            if (questText.length < 300) {
                 fields.push({
                     name: 'Obtained from quests',
                     value: questText,
@@ -397,7 +397,7 @@ export abstract class ItemCommand {
             } else {
                 questText = questData.questRewards.map((quest) => quest.name).join('\n')
 
-                if (questText.length < 1000) {
+                if (questText.length < 300) {
                     fields.push({
                         name: 'Obtained from quests',
                         value: questText,
