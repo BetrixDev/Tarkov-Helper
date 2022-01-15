@@ -12,7 +12,8 @@ import {
 } from 'discord.js'
 import { ErrorReponse, FormatPrice, GetDBItem, GetItem, ItemImage, ReadJson } from '../lib'
 import settings from '../data/settings'
-import { Map, MapInfo } from './map'
+import { MapInfo } from './map'
+import { MapNames } from '../../types/database/maps'
 
 const mapUrlPrefix = 'https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/map_icons/'
 type WikiMap = 'The_Lab' | 'Interchange' | 'Woods' | 'Customs' | 'Factory' | 'Reserve' | 'Shoreline' | 'Lighthouse'
@@ -72,7 +73,7 @@ export class PriceCommand {
     }
 
     baseMessage(map: WikiMap, page = 0): InteractionReplyOptions {
-        const rawMap = WikiMaptoMap[map] as Map
+        const rawMap = WikiMaptoMap[map] as MapNames
         const mapData = new MapInfo(rawMap)
 
         return {

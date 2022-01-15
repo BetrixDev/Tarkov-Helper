@@ -3,10 +3,11 @@ import { ButtonComponent, Discord, Slash, SlashChoice, SlashOption } from 'disco
 import { ButtonInteraction, CommandInteraction, MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
 import { CapitalizeWords, ErrorReponse, FormatPrice, ReadJson, ResolveStrings } from '../lib'
 import settings from '../data/settings'
-import mapLinks from '../data/map-links'
+import { MapLinks, MapNames } from '../../types/database/maps'
+
+const mapImages = ReadJson<MapLinks>('./game_data/maps.json')
 
 const mapUrlPrefix = 'https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/map_icons/'
-export type Map = 'thelab' | 'interchange' | 'woods' | 'customs' | 'factory' | 'reserve' | 'shoreline' | 'lighthouse'
 
 @Discord()
 export class MapCommand {
@@ -26,7 +27,7 @@ export class MapCommand {
             description: 'What location to use',
             required: true
         })
-        map: Map,
+        map: MapNames,
         interaction: CommandInteraction
     ) {
         try {
@@ -37,7 +38,7 @@ export class MapCommand {
         }
     }
 
-    message(map: Map) {
+    message(map: MapNames) {
         const mapData = new MapInfo(map)
 
         return {
@@ -90,7 +91,8 @@ export class MapCommand {
 
     @ButtonComponent(/^map__/)
     mapButton(interaction: ButtonInteraction) {
-        const [_, map, type] = interaction.customId.split('__')
+        const [_, m, type] = interaction.customId.split('__')
+        const map = m as MapNames
 
         const formattedMapName = CapitalizeWords(map.replace('thelab', 'labs'))
         const imageData = mapImages[map].find((t) => t.name == type)
@@ -106,10 +108,6 @@ export class MapCommand {
         })
     }
 }
-
-const mapImages: {
-    [key: string]: { name: string; link: string; author: string }[]
-} = mapLinks
 
 enum RawTranslator {
     customs = 'bigmap',
@@ -135,17 +133,17 @@ function GetDescriptions(): { [key: string]: any } {
     return formatted
 }
 
-function GetRawData(map: Map) {
+function GetRawData(map: MapNames) {
     const rawName = RawTranslator[map]
     return ReadJson<any>(`./game_data/database/locations/${rawName}/base.json`)
 }
 
 export class MapInfo {
-    private map: Map
+    private map: MapNames
     name: string
     data: any
 
-    constructor(map: Map) {
+    constructor(map: MapNames) {
         this.map = map
         this.name = CapitalizeWords(map.replace('thelab', 'labs'))
         this.data = GetRawData(map)
