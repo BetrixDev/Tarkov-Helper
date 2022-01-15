@@ -15,15 +15,7 @@ const query = gql`
             changeLast48h
             width
             height
-            gridImageLink
             wikiLink
-            basePrice
-            traderPrices {
-                price
-                trader {
-                    name
-                }
-            }
             sellFor {
                 source
                 price
