@@ -1,25 +1,3 @@
-type ItemType =
-    | 'any'
-    | 'ammo'
-    | 'armor'
-    | 'backpack'
-    | 'barter'
-    | 'glasses'
-    | 'grenade'
-    | 'gun'
-    | 'helmet'
-    | 'keys'
-    | 'markedOnly'
-    | 'mods'
-    | 'noFlea'
-    | 'provisions'
-    | 'unLootable'
-    | 'wearable'
-    | 'rig'
-    | 'headphones'
-    | 'suppressor'
-    | 'disabled'
-
 type TraderName = 'prapor' | 'therapist' | 'fence' | 'skier' | 'peacekeeper' | 'mechanic' | 'ragman' | 'jaeger'
 
 type ItemSourceName =
@@ -41,35 +19,6 @@ type GameProperty = {
     stringValue?: string
     arrayValue?: string[]
     objectValue?: string
-}
-
-type Item = {
-    id: string
-    name: string
-    normalizedName: string
-    shortName: string
-    width: number
-    height: number
-    wikiLink: string
-    types: ItemType[]
-    avg24hPrice: number
-    traderPrices: TraderPrice[]
-    lastLowPrice: number
-    changeLast48h: number
-    sellFor: [ItemPrice]
-    buyFor: [ItemPrice]
-}
-
-type ItemPrice = {
-    source: ItemSourceName
-    price: number
-    currency?: string
-    requirements?: PriceRequirement[]
-}
-
-type PriceRequirement = {
-    type: RequirementType
-    value: number
 }
 
 type TaskItem = {

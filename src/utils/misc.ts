@@ -21,3 +21,33 @@ export function WriteJson(path: PathLike, data: {} | []) {
 export function isDev() {
     return process.env.NODE_ENV == 'production' ? false : true
 }
+
+export function LowestPrice(item: Item): ItemPrice {
+    if (item.lastLowPrice) {
+        return {
+            source: 'fleaMarket',
+            price: item.lastLowPrice,
+            requirements: [
+                {
+                    type: 'playerLevel',
+                    value: 15
+                }
+            ]
+        }
+    } else if (item.buyFor.length > 0) {
+        return item.buyFor.sort((a, b) => {
+            return b.price - a.price
+        })[0]
+    } else {
+        return {
+            source: 'fleaMarket',
+            price: 0,
+            requirements: [
+                {
+                    type: 'playerLevel',
+                    value: 15
+                }
+            ]
+        }
+    }
+}

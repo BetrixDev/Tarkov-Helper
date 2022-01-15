@@ -1,8 +1,7 @@
 import 'reflect-metadata'
 import { Discord, Slash, SlashOption } from 'discordx'
-import { AutocompleteInteraction, CommandInteraction, MessageEmbed } from 'discord.js'
-import { ErrorReponse, GetItem, isID, ItemImage, ReadJson, ResolveStrings } from '../lib'
-import settings from '../data/settings'
+import { AutocompleteInteraction, CommandInteraction, InteractionReplyOptions } from 'discord.js'
+import { ErrorReponse, isID } from '../lib'
 import SearchEngine from '../helpers/search_engines/item-engine'
 
 @Discord()
@@ -38,80 +37,14 @@ export class NeedforQuestCommand {
                 return
             }
 
-            interaction.reply(this.message(id))
+            interaction.reply(this.message())
         } catch (e) {
             console.log(e)
             interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
         }
     }
 
-    message(id: string) {
-        const item = GetItem(id)
-        const dependencies = GetDependencies(item)
-
-        return {
-            embeds: [
-                new MessageEmbed()
-                    .setColor(settings.botSettings.color)
-                    .setTitle(`Quest Dependencies for ${item.shortName}`)
-                    .setThumbnail(ItemImage(item.id))
-                    .setDescription(
-                        `
-                    [Wiki Link](${item.wikiLink})
-                    ${item.shortName} is needed for the following quests:
-                    ${dependencies.usedQuests.join('\n')}
-                    `
-                    )
-                    .addFields(
-                        ResolveStrings([
-                            {
-                                name: 'Find in Raid',
-                                value: dependencies.fir,
-                                inline: true
-                            },
-                            {
-                                name: 'Non FIR',
-                                value: dependencies.collect,
-                                inline: true
-                            },
-                            {
-                                name: 'Amount to Place',
-                                value: dependencies.place,
-                                inline: true
-                            }
-                        ])
-                    )
-            ]
-        }
+    message(): InteractionReplyOptions {
+        return { content: 'Please use the /item command to access quest dependents for this item', ephemeral: true }
     }
-}
-
-function GetDependencies(item: Item) {
-    const questData: TrackerQuest[] = ReadJson('./game_data/api/questdata.json')
-
-    let usedQuests: string[] = []
-    let fir = 0
-    let collect = 0
-    let place = 0
-
-    questData.forEach((quest) => {
-        if (quest.objectives) {
-            quest.objectives.forEach((objective) => {
-                if (objective.target === item.id) {
-                    usedQuests.push(`**${quest.title}**`)
-                    if (objective.type === 'find') {
-                        fir += objective.number
-                    }
-                    if (objective.type === 'collect') {
-                        collect += objective.number
-                    }
-                    if (objective.type === 'place') {
-                        place += objective.number
-                    }
-                }
-            })
-        }
-    })
-
-    return { usedQuests, fir, collect, place }
 }
