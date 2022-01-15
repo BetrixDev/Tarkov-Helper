@@ -58,3 +58,27 @@ interface PriceRequirement {
     type: RequirementType
     value: number
 }
+
+interface Bullet {
+    id: string
+    name: string
+    shortName: string
+    weight: number
+    caliber: string
+    stackMaxSize: number
+    tracer: boolean
+    tracerColor: 'red' | 'green'
+    ammoType: 'bullet' | 'buckshot' | 'grenade'
+    projectileCount: number
+    ballistics: {
+        damage: number
+        armorDamage: number
+        fragmentationChance: number
+        ricochetChance: number
+        penetrationChance: number
+        penetrationPower: number
+        accuracy: number
+        recoil: number
+        initialSpeed: number
+    }
+}
