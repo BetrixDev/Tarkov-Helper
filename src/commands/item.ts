@@ -28,6 +28,7 @@ import { BaterData } from '../helpers/item_classes/barter-stats'
 import { GameStats } from '../helpers/item_classes/game-stats'
 import SearchEngine from '../helpers/search_engines/item-engine'
 import { PriceData } from '../helpers/item_classes/price-stats'
+import { QuestStats } from '../helpers/item_classes/quest-stats'
 
 type MenuActions = 'general' | 'game' | 'price' | 'barter'
 
@@ -207,6 +208,26 @@ export abstract class ItemCommand {
 
         const pages = barterData.barters.length
 
+        const fields: EmbedFieldData[] = []
+
+        if (barterData.barterDependents.length > 0) {
+            fields.push({
+                name: 'Used in barters',
+                value: barterData.barterDependents
+                    .map((dependent) => {
+                        return `**x${dependent.count}** in ${dependent.name}`
+                    })
+                    .join('\n'),
+                inline: true
+            })
+        } else {
+            fields.push({
+                name: 'Used in barters',
+                value: 'None',
+                inline: true
+            })
+        }
+
         if (pages === 0) {
             return {
                 embeds: [
@@ -214,6 +235,7 @@ export abstract class ItemCommand {
                         .setThumbnail(ItemImage(item.id))
                         .setTitle(`${item.shortName} Barters`)
                         .setDescription(`[Wiki Link](${item.wikiLink})\nNo Barters`)
+                        .addFields(fields)
                 ],
                 components: [this.menu(id, 'barter')]
             }
@@ -225,7 +247,7 @@ export abstract class ItemCommand {
                     .setThumbnail(ItemImage(item.id))
                     .setTitle(`${item.shortName} Barters`)
                     .setDescription(`[Wiki Link](${item.wikiLink})`)
-                    .setFields(barterData.message.slice(page * 9, page * 9 + 9))
+                    .setFields(...barterData.message.slice(page * 9, page * 9 + 9), ...fields)
             ],
             components: [this.menu(id, 'barter')]
         }
@@ -255,6 +277,7 @@ export abstract class ItemCommand {
         const item = GetItem(id)
         const gameData = new GameStats(item)
         const barterData = new BaterData(id)
+        const questData = new QuestStats(item)
 
         let desc = `
             [Wiki Link](${item.wikiLink})
@@ -352,6 +375,42 @@ export abstract class ItemCommand {
                 value: 'No barters',
                 inline: true
             })
+        }
+
+        fields.push({ name: '\u200b', value: '\u200b', inline: true })
+
+        // Some basic checks so that we can give the most amount of information without exceeding the character limit for a field (max: 1024)
+        if (questData.questRewards.length > 0) {
+            let questText = questData.questRewards
+                .sort((a, b) => b.count - a.count)
+                .map((quest) => {
+                    return `**${FormatNumber(quest.count)}** from ${quest.name}`
+                })
+                .join('\n')
+
+            if (questText.length < 1000) {
+                fields.push({
+                    name: 'Obtained from quests',
+                    value: questText,
+                    inline: true
+                })
+            } else {
+                questText = questData.questRewards.map((quest) => quest.name).join('\n')
+
+                if (questText.length < 1000) {
+                    fields.push({
+                        name: 'Obtained from quests',
+                        value: questText,
+                        inline: true
+                    })
+                } else {
+                    fields.push({
+                        name: 'Obtained from quests',
+                        value: `**Almost all quests** (*${questData.questRewards.length} quests*)`,
+                        inline: true
+                    })
+                }
+            }
         }
 
         return {

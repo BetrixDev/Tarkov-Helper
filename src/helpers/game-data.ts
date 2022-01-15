@@ -13,6 +13,7 @@ export class Cache {
     static globals: { [key: string]: any }
     static bulletData: Bullet[]
     static hideoutData: HideoutModule[]
+    static rawQuestData: any
 
     static map: { [key: string]: number } = {}
     static shorts: { [key: string]: Item } = {}
@@ -30,6 +31,7 @@ export class Cache {
         Cache.globals = ReadJson(path.join(game_data, 'database', 'globals.json'))
         Cache.bulletData = ReadJson<Bullet[]>(path.join(game_data, 'api', 'bulletdata.json'))
         Cache.hideoutData = ReadJson<HideoutModule[]>(path.join(game_data, 'api', 'hideoutdata.json'))
+        Cache.rawQuestData = ReadJson<any>(path.join(game_data, 'database', 'templates', 'quests.json'))
         Cache.itemData.forEach((item, i) => {
             Cache.map[item.id] = i
             Cache.shorts[item.shortName.toLowerCase()] = item

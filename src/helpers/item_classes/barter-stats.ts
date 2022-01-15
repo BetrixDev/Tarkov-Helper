@@ -1,6 +1,6 @@
 import { EmbedFieldData } from 'discord.js'
-import { FormatPrice, GetTime, LowestPrice } from '../../lib'
-import { GetBarter, GetItem } from '../game-data'
+import { CapitalizeWords, FormatPrice, LowestPrice } from '../../lib'
+import { Cache, GetBarter, GetItem } from '../game-data'
 
 export class BaterData {
     barters: Barter[]
@@ -22,6 +22,25 @@ export class BaterData {
 
             return costs['b'] - costs['a']
         })
+    }
+
+    get barterDependents() {
+        const barterData = Cache.barterData
+
+        let dependents: { name: string; count: number }[] = []
+
+        barterData.forEach((barter, i) => {
+            barter.requiredItems.forEach(({ item, count }) => {
+                if (item.id === this.item.id) {
+                    dependents.push({
+                        name: `${barter.rewardItems[0].item.shortName} from ${CapitalizeWords(barter.source)}`,
+                        count: count
+                    })
+                }
+            })
+        })
+
+        return dependents
     }
 
     get message() {
