@@ -102,16 +102,16 @@ class BitcoinFarm {
     constructor(gpus: number) {
         this.gpus = gpus
         // Finds the best trader to sell bitcoin to
-        this.BTCPrice = GetItem('59faff1d86f7746c51718c9c').sellFor.sort(
-            (a: { price: number }, b: { price: number }) => {
-                return b.price - a.price
-            }
-        )[0].price
+        this.BTCPrice = GetItem('59faff1d86f7746c51718c9c').sellFor.sort((a, b) => {
+            return b.price - a.price
+        })[0].price
     }
+
     get BitcoinDay() {
         // Calculates the amount of bitcoin produced everyday for a given amount of gpus
         return (1 / (145000 / (1 + (this.gpus - 1) * 0.041225) / 3600)) * 24
     }
+
     get RUBDay() {
         return Math.round(this.BitcoinDay * this.BTCPrice)
     }
