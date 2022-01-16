@@ -14,7 +14,7 @@ import { Cache, ErrorReponse, FormatPrice, ResolveStrings } from '../lib'
 @Discord()
 class PricePerSlotCommand {
     @Slash('priceperslot', {
-        description: 'Returns all items within the specified price per slot value'
+        description: 'Returns all items within the specified price per slot range'
     })
     async priceperslot(
         @SlashOption('minimum', {

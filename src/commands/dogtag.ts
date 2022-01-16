@@ -9,7 +9,7 @@ let MaxLevel: number = ReadJson<any>('game_data/database/globals.json').config.e
 @Discord()
 export class DogtagCommand {
     @Slash('dogtag', {
-        description: 'Gets the price of a dogtag at a certain level'
+        description: 'Gets the price of a dog tag at a certain level'
     })
     dogtag(
         @SlashOption('level', {

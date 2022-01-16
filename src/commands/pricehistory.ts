@@ -25,7 +25,7 @@ const CheckID = (item: string | undefined) => {
 @Discord()
 export class Command {
     @Slash('pricehistory', {
-        description: 'Generate a custom price history chart'
+        description: 'Generate a custom price history chart for one or more items'
     })
     async pricehistory(
         @SlashOption('range', {

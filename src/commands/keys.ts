@@ -32,7 +32,7 @@ const WikiMaptoMap = {
 @Discord()
 export class PriceCommand {
     @Slash('keys', {
-        description: 'Returns all keys on a specfied map and what loot is behind them'
+        description: 'Returns all keys on a specified map and what loot is behind them'
     })
     async map(
         @SlashChoice('Lighthouse', 'Lighthouse')
