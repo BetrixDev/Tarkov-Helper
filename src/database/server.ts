@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import { serverModel } from '../models/server-model'
 import { singleton } from 'tsyringe'
 import { Interaction } from 'discord.js'
