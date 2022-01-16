@@ -2,8 +2,7 @@ import 'reflect-metadata'
 import { Discord, Slash } from 'discordx'
 import { CommandInteraction, InteractionReplyOptions } from 'discord.js'
 import { gql, request } from 'graphql-request'
-import { ErrorReponse, THEmbed } from '../lib'
-import settings from '../data/settings'
+import { Cache, ErrorReponse, THEmbed } from '../lib'
 
 const query = gql`
     {
@@ -52,7 +51,7 @@ export class StatusCommand {
                     new THEmbed()
                         .setTitle(`${status.generalStatus.name} Status: ${status.generalStatus.statusCode}`)
                         .setDescription(`*"${status.messages[0].content}"*`)
-                        .setThumbnail(settings.images.thumbnails.status)
+                        .setThumbnail(Cache.config.images.thumbnails.status)
                         .addFields(
                             status.currentStatuses.map((s) => {
                                 return { name: s.name, value: s.statusCode.replace('OK', 'Stable'), inline: true }

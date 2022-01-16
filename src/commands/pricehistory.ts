@@ -1,9 +1,8 @@
 import { ChartJSNodeCanvas } from 'chartjs-node-canvas'
-import { AutocompleteInteraction, CommandInteraction, MessageAttachment, MessageEmbed } from 'discord.js'
+import { AutocompleteInteraction, CommandInteraction, MessageAttachment } from 'discord.js'
 import { Discord, Slash, SlashOption } from 'discordx'
-import settings from '../data/settings'
 import SearchEngine from '../helpers/search_engines/item-engine'
-import { isID, ErrorReponse, FormatPrice, ReadJson, Round, GetItem, ResolveStrings } from '../lib'
+import { isID, ErrorReponse, FormatPrice, ReadJson, Round, GetItem, ResolveStrings, THEmbed } from '../lib'
 
 const Autocomplete = (interaction: AutocompleteInteraction) => {
     const input = interaction.options.getFocused(true)
@@ -110,9 +109,8 @@ export class Command {
         } else {
             return {
                 embeds: [
-                    new MessageEmbed()
+                    new THEmbed()
                         .setTitle(`Price History Graph`)
-                        .setColor(settings.botSettings.color)
                         .addFields(
                             ResolveStrings([
                                 {

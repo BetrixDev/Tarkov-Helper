@@ -3,8 +3,7 @@ import { CommandInteraction, InteractionReplyOptions } from 'discord.js'
 import { Discord, Slash } from 'discordx'
 import { gql, request } from 'graphql-request'
 import moment from 'moment-timezone'
-import settings from '../data/settings'
-import { CapitalizeWords, ErrorReponse, THEmbed } from '../lib'
+import { Cache, CapitalizeWords, ErrorReponse, THEmbed } from '../lib'
 
 const query = gql`
     {
@@ -40,7 +39,7 @@ export class RestockCommand {
                 embeds: [
                     new THEmbed()
                         .setTitle('Trader restock times')
-                        .setThumbnail(settings.images.thumbnails.trader)
+                        .setThumbnail(Cache.config.images.thumbnails.trader)
                         .addFields(
                             ...traderResetTimes.map((reset) => {
                                 return {

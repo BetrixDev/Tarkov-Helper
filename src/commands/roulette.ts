@@ -1,15 +1,7 @@
 import 'reflect-metadata'
 import { ButtonComponent, Discord, Slash } from 'discordx'
-import {
-    ButtonInteraction,
-    CommandInteraction,
-    Interaction,
-    MessageActionRow,
-    MessageButton,
-    MessageEmbed
-} from 'discord.js'
-import { ErrorReponse, FormatPrice, GetDBItem, GetItemByType, Random, ResolveStrings } from '../lib'
-import settings from '../data/settings'
+import { ButtonInteraction, CommandInteraction, MessageActionRow, MessageButton } from 'discord.js'
+import { Cache, ErrorReponse, FormatPrice, GetDBItem, GetItemByType, Random, ResolveStrings, THEmbed } from '../lib'
 import { container, injectable } from 'tsyringe'
 import { RouletteResults } from '../database/roulette-results'
 
@@ -76,9 +68,8 @@ export class RouletteCommand {
 
         return {
             embeds: [
-                new MessageEmbed()
-                    .setThumbnail(settings.images.thumbnails.roulette)
-                    .setColor(settings.botSettings.color)
+                new THEmbed()
+                    .setThumbnail(Cache.config.images.thumbnails.roulette)
                     .setTitle('Tarkov Roulette')
                     .addFields(
                         ResolveStrings([

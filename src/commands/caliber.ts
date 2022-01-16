@@ -1,8 +1,7 @@
 import 'reflect-metadata'
 import { Discord, Slash, SlashOption } from 'discordx'
-import { AutocompleteInteraction, CommandInteraction, MessageEmbed } from 'discord.js'
-import { Cache, ErrorReponse } from '../lib'
-import settings from '../data/settings'
+import { AutocompleteInteraction, CommandInteraction } from 'discord.js'
+import { Cache, ErrorReponse, THEmbed } from '../lib'
 import SearchEngine from '../helpers/search_engines/caliber-engine'
 import { GetCalibers } from '../helpers/caliber-grabber'
 
@@ -69,9 +68,8 @@ export class CaliberCommand {
 
         return {
             embeds: [
-                new MessageEmbed()
+                new THEmbed()
                     .setTitle(`${caliber.replace('Caliber', '')} Information`)
-                    .setColor(settings.botSettings.color)
                     .setThumbnail(
                         'https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/ui_icons/icon_ammo.png'
                     )

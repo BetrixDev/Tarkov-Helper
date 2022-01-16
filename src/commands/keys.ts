@@ -5,13 +5,10 @@ import {
     EmbedFieldData,
     InteractionReplyOptions,
     MessageActionRow,
-    MessageEmbed,
     MessageSelectMenu,
-    MessageSelectOptionData,
     SelectMenuInteraction
 } from 'discord.js'
-import { ErrorReponse, FormatPrice, GetDBItem, GetItem, ItemImage, ReadJson } from '../lib'
-import settings from '../data/settings'
+import { ErrorReponse, FormatPrice, GetDBItem, GetItem, ItemImage, ReadJson, THEmbed } from '../lib'
 import { MapInfo } from './map'
 import { MapNames } from '../../types/database/maps'
 
@@ -78,7 +75,7 @@ export class PriceCommand {
 
         return {
             embeds: [
-                new MessageEmbed()
+                new THEmbed()
                     .setTitle(`${mapData.name} Keys`)
                     .setThumbnail(`${mapUrlPrefix}${rawMap}.png`)
                     .setDescription(
@@ -88,7 +85,6 @@ export class PriceCommand {
                     Use the menu below to view what loots the keys have
                     `
                     )
-                    .setColor(settings.botSettings.color)
             ],
             components: [new MessageActionRow().addComponents(this.menu(map, page))]
         }
@@ -108,12 +104,11 @@ export class PriceCommand {
 
         return {
             embeds: [
-                new MessageEmbed()
+                new THEmbed()
                     .setTitle(`${keyData.shortName} Loot`)
                     .addFields(fields)
                     .setFooter('To view a different key, use the menu below')
                     .setThumbnail(ItemImage(keyData.id))
-                    .setColor(settings.botSettings.color)
             ],
             components: [
                 new MessageActionRow().addComponents(this.menu(map as WikiMap, page, `Selected: ${keyData.shortName}`))

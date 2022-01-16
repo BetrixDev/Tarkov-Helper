@@ -1,7 +1,6 @@
-import { CommandInteraction, MessageEmbed } from 'discord.js'
+import { CommandInteraction } from 'discord.js'
 import { Discord, Slash, SlashChoice, SlashOption } from 'discordx'
-import settings from '../data/settings'
-import { BossImage, ErrorReponse, ReadJson, ResolveStrings } from '../lib'
+import { BossImage, Cache, ErrorReponse, ReadJson, ResolveStrings, THEmbed } from '../lib'
 
 @Discord()
 export abstract class BossCommand {
@@ -36,8 +35,8 @@ export abstract class BossCommand {
 
         return {
             embeds: [
-                new MessageEmbed()
-                    .setColor(settings.botSettings.color)
+                new THEmbed()
+                    .setColor(Cache.config.botSettings.color)
                     .setTitle(`${boss.name} Information`)
                     .setThumbnail(BossImage(bossId))
                     .addFields(
@@ -108,7 +107,6 @@ class Boss {
           }
         | undefined
 
-    /* publics */
     name: string
     map: string
 

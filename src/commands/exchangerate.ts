@@ -1,8 +1,7 @@
 import 'reflect-metadata'
 import { Discord, Slash, SlashChoice, SlashOption } from 'discordx'
-import { CommandInteraction, MessageEmbed } from 'discord.js'
-import { ErrorReponse, ResolveStrings } from '../lib'
-import settings from '../data/settings'
+import { CommandInteraction } from 'discord.js'
+import { Cache, ErrorReponse, ResolveStrings, THEmbed } from '../lib'
 
 @Discord()
 export class ExchangeRateCommand {
@@ -52,10 +51,9 @@ export class ExchangeRateCommand {
 
         return {
             embeds: [
-                new MessageEmbed()
+                new THEmbed()
                     .setTitle(`Conversion Rate from ${FormatPrice(currency, amount)}`)
-                    .setThumbnail(settings.images.thumbnails.exchangerate)
-                    .setColor(settings.botSettings.color)
+                    .setThumbnail(Cache.config.images.thumbnails.exchangerate)
                     .setDescription(`Below will show the value of ${Names[currency]} in other currencies`)
                     .addFields(
                         ResolveStrings([

@@ -1,5 +1,6 @@
 // A module for grabbing item data
 import path from 'path'
+import { BotConfig } from '../../types/database/bot-config'
 import { ReadJson } from '../lib'
 
 const game_data = path.join(__dirname, '..', '..', 'game_data')
@@ -14,6 +15,7 @@ export class Cache {
     static bulletData: Bullet[]
     static hideoutData: HideoutModule[]
     static rawQuestData: any
+    static config: BotConfig
 
     static map: { [key: string]: number } = {}
     static shorts: { [key: string]: Item } = {}
@@ -24,6 +26,7 @@ export class Cache {
 
     updateData() {
         Cache.itemData = ReadJson<Item[]>(path.join(game_data, 'api', 'itemdata.json'))
+        Cache.config = ReadJson<BotConfig>(path.join(game_data, 'botconfig.json'))
         Cache.rawData = ReadJson(path.join(game_data, 'database', 'templates', 'items.json'))
         Cache.questData = ReadJson<TrackerQuest[]>(path.join(game_data, 'api', 'questdata.json'))
         Cache.barterData = ReadJson<Barter[]>(path.join(game_data, 'api', 'barterdata.json'))

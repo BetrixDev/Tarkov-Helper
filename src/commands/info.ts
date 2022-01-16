@@ -1,8 +1,7 @@
 import 'reflect-metadata'
 import { Discord, Slash } from 'discordx'
-import { CommandInteraction, MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
-import { ErrorReponse } from '../lib'
-import settings from '../data/settings'
+import { CommandInteraction, MessageActionRow, MessageButton } from 'discord.js'
+import { Cache, ErrorReponse, THEmbed } from '../lib'
 
 @Discord()
 export class InfoCommand {
@@ -21,11 +20,10 @@ export class InfoCommand {
     message() {
         return {
             embeds: [
-                new MessageEmbed()
-                    .setColor(settings.botSettings.color)
+                new THEmbed()
                     .setTitle('Tarkov Helper Infomation')
-                    .setThumbnail(settings.images.logo250)
-                    .setImage(settings.images.slashBanner)
+                    .setThumbnail(Cache.config.images.logo250)
+                    .setImage(Cache.config.images.slashBanner)
                     .setDescription(
                         `
                         • A Discord bot to make accessing information within Escape From Tarkov easier.

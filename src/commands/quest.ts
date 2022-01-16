@@ -6,11 +6,9 @@ import {
     CommandInteraction,
     InteractionReplyOptions,
     MessageActionRow,
-    MessageButton,
-    MessageEmbed
+    MessageButton
 } from 'discord.js'
-import { ErrorReponse, GetQuest, ReadJson } from '../lib'
-import settings from '../data/settings'
+import { ErrorReponse, GetQuest, ReadJson, THEmbed } from '../lib'
 import SearchEngine from '../helpers/search_engines/quest-engine'
 
 let QuestGuides = ReadJson<QuestGuide>('game_data/questguide.json')
@@ -70,8 +68,7 @@ export class QuestCommand {
 
         let message: InteractionReplyOptions = {
             embeds: [
-                new MessageEmbed()
-                    .setColor(settings.botSettings.color)
+                new THEmbed()
                     .setTitle(`${quest.title} - ${Traders[Number(quest.giver)]}`)
                     .setDescription(
                         `
@@ -117,7 +114,7 @@ export class QuestCommand {
         let message: InteractionReplyOptions = { embeds: [], ephemeral: true }
 
         message.embeds?.push(
-            new MessageEmbed()
+            new THEmbed()
                 .setTitle(`Steps`)
                 .setDescription(guide.steps.join('\n'))
                 .setFooter('Text from the official wiki')
@@ -125,7 +122,7 @@ export class QuestCommand {
 
         guide.images?.forEach((image, i) => {
             message.embeds?.push(
-                new MessageEmbed()
+                new THEmbed()
                     .setTitle(`Image #${i + 1}`)
                     .setDescription(image?.text ?? '...')
                     .setImage(image.link)

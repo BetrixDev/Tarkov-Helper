@@ -1,8 +1,7 @@
 import 'reflect-metadata'
 import { Discord, Slash, SlashOption } from 'discordx'
-import { CommandInteraction, MessageEmbed } from 'discord.js'
-import { ErrorReponse, FormatPrice, ItemImage, ReadJson, ResolveStrings } from '../lib'
-import settings from '../data/settings'
+import { CommandInteraction } from 'discord.js'
+import { ErrorReponse, FormatPrice, ItemImage, ReadJson, ResolveStrings, THEmbed } from '../lib'
 
 let MaxLevel: number = ReadJson<any>('game_data/database/globals.json').config.exp.level.exp_table.length
 
@@ -33,8 +32,7 @@ export class DogtagCommand {
         } else {
             return {
                 embeds: [
-                    new MessageEmbed()
-                        .setColor(settings.botSettings.color)
+                    new THEmbed()
                         .setTitle('Dogtag Price')
                         .setThumbnail(ItemImage('59f32c3b86f77472a31742f0'))
                         .addFields(

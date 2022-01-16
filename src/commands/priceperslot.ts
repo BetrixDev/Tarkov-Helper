@@ -3,13 +3,10 @@ import {
     CommandInteraction,
     InteractionReplyOptions,
     MessageActionRow,
-    MessageButton,
-    MessageEmbed
+    MessageButton
 } from 'discord.js'
 import { ButtonComponent, Discord, Slash, SlashOption } from 'discordx'
-import { container, injectable } from 'tsyringe'
-import settings from '../data/settings'
-import { Cache, ErrorReponse, FormatPrice, ResolveStrings } from '../lib'
+import { Cache, ErrorReponse, FormatPrice, ResolveStrings, THEmbed } from '../lib'
 
 @Discord()
 class PricePerSlotCommand {
@@ -71,9 +68,8 @@ class PricePerSlotCommand {
 
         return {
             embeds: [
-                new MessageEmbed()
-                    .setColor(settings.botSettings.color)
-                    .setThumbnail(settings.images.thumbnails.priceperslot)
+                new THEmbed()
+                    .setThumbnail(Cache.config.images.thumbnails.priceperslot)
                     .setTitle(`Price Per Slot Range: ${FormatPrice(minimum)} - ${FormatPrice(maximum)}`)
                     .addFields(
                         ResolveStrings([

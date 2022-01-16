@@ -1,9 +1,8 @@
 import 'reflect-metadata'
 import { Discord, Slash, SlashOption } from 'discordx'
 import { ChartJSNodeCanvas } from 'chartjs-node-canvas'
-import { AutocompleteInteraction, CommandInteraction, MessageAttachment, MessageEmbed } from 'discord.js'
-import { ErrorReponse, GetItem, isID, ResolveStrings, Round } from '../lib'
-import settings from '../data/settings'
+import { AutocompleteInteraction, CommandInteraction, MessageAttachment } from 'discord.js'
+import { Cache, ErrorReponse, GetItem, isID, ResolveStrings, Round, THEmbed } from '../lib'
 import SearchEngine from '../helpers/search_engines/item-engine'
 import { BallisticsCalculator } from '../helpers/simulator/ballistics'
 
@@ -76,10 +75,10 @@ export class PenChanceCommand {
 
         return {
             embeds: [
-                new MessageEmbed()
+                new THEmbed()
                     .setTitle(`Penetration Calculator`)
                     .setImage('attachment://chart.png')
-                    .setColor(settings.botSettings.color)
+                    .setColor(Cache.config.botSettings.color)
                     .addFields(
                         ResolveStrings([
                             {

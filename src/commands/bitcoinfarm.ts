@@ -1,8 +1,7 @@
 import 'reflect-metadata'
 import { Discord, Slash, SlashOption } from 'discordx'
-import { CommandInteraction, MessageEmbed } from 'discord.js'
-import { ErrorReponse, FormatPrice, GetItem, ResolveStrings, Round } from '../lib'
-import settings from '../data/settings'
+import { CommandInteraction } from 'discord.js'
+import { Cache, ErrorReponse, FormatPrice, GetItem, ResolveStrings, Round, THEmbed } from '../lib'
 
 @Discord()
 export class BitcoinFarmCommand {
@@ -34,10 +33,9 @@ export class BitcoinFarmCommand {
 
             return {
                 embeds: [
-                    new MessageEmbed()
+                    new THEmbed()
                         .setTitle('Bitcoin Farm Calculator')
-                        .setThumbnail(settings.images.thumbnails.bitcoinfarm)
-                        .setColor(settings.botSettings.color)
+                        .setThumbnail(Cache.config.images.thumbnails.bitcoinfarm)
                         .addFields(
                             ResolveStrings([
                                 {
@@ -65,10 +63,9 @@ export class BitcoinFarmCommand {
             const farm2 = new BitcoinFarm(compare)
             return {
                 embeds: [
-                    new MessageEmbed()
+                    new THEmbed()
                         .setTitle('Bitcoin Farm Calculator')
-                        .setThumbnail(settings.images.thumbnails.bitcoinfarm)
-                        .setColor(settings.botSettings.color)
+                        .setThumbnail(Cache.config.images.thumbnails.bitcoinfarm)
                         .addFields(
                             ResolveStrings([
                                 {

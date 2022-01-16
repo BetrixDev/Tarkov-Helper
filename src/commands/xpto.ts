@@ -1,7 +1,6 @@
 import { CommandInteraction, MessageEmbed } from 'discord.js'
 import { Discord, Slash, SlashOption } from 'discordx'
-import settings from '../data/settings'
-import { ErrorReponse, FormatNumber, ReadJson } from '../lib'
+import { Cache, ErrorReponse, FormatNumber, ReadJson, THEmbed } from '../lib'
 
 type EXP = { fromPrevious: number; total: number }
 
@@ -54,10 +53,9 @@ export abstract class Command {
             // 'current' value is level
             return {
                 embeds: [
-                    new MessageEmbed()
+                    new THEmbed()
                         .setTitle('Experience Calculator')
-                        .setColor(settings.botSettings.color)
-                        .setThumbnail(settings.images.thumbnails.experience)
+                        .setThumbnail(Cache.config.images.thumbnails.experience)
                         .addField(
                             `Experience Gap from ${current} to ${end}`,
                             `${FormatNumber(Math.abs(data[current - 1].total - data[end - 1].total))}xp`
@@ -68,10 +66,9 @@ export abstract class Command {
             // 'current' value is experience points
             return {
                 embeds: [
-                    new MessageEmbed()
+                    new THEmbed()
                         .setTitle('Experience Calculator')
-                        .setColor(settings.botSettings.color)
-                        .setThumbnail(settings.images.thumbnails.experience)
+                        .setThumbnail(Cache.config.images.thumbnails.experience)
                         .addField(
                             `Experience Gap from ${current}xp to ${end}`,
                             FormatNumber(Math.abs(current - data[end - 1].total)) + 'xp'

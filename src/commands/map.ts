@@ -1,8 +1,7 @@
 import 'reflect-metadata'
 import { ButtonComponent, Discord, Slash, SlashChoice, SlashOption } from 'discordx'
-import { ButtonInteraction, CommandInteraction, MessageActionRow, MessageButton, MessageEmbed } from 'discord.js'
-import { CapitalizeWords, ErrorReponse, FormatPrice, ReadJson, ResolveStrings } from '../lib'
-import settings from '../data/settings'
+import { ButtonInteraction, CommandInteraction, MessageActionRow, MessageButton } from 'discord.js'
+import { CapitalizeWords, ErrorReponse, FormatPrice, ReadJson, ResolveStrings, THEmbed } from '../lib'
 import { MapLinks, MapNames } from '../../types/database/maps'
 
 const mapImages = ReadJson<MapLinks>('./game_data/maps.json')
@@ -43,8 +42,7 @@ export class MapCommand {
 
         return {
             embeds: [
-                new MessageEmbed()
-                    .setColor(settings.botSettings.color)
+                new THEmbed()
                     .setTitle(mapData.name)
                     .setThumbnail(`${mapUrlPrefix}${map}.png`)
                     .setDescription(`*"${mapData.Description}"*`)
@@ -99,7 +97,7 @@ export class MapCommand {
 
         interaction.reply({
             embeds: [
-                new MessageEmbed()
+                new THEmbed()
                     .setImage(imageData?.link ?? '')
                     .setTitle(`${formattedMapName} ${type} Map`)
                     .setFooter(`Map created by: ${imageData?.author ?? 'unknown'}`)
