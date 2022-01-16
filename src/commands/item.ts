@@ -406,7 +406,7 @@ export abstract class ItemCommand {
                 } else {
                     fields.push({
                         name: 'Obtained from quests',
-                        value: `**Almost all quests** (*${questData.questRewards.length} quests*)`,
+                        value: `**Alot all quests** (*${questData.questRewards.length} quests*)`,
                         inline: true
                     })
                 }
