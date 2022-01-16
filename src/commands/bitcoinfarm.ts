@@ -9,7 +9,7 @@ export class BitcoinFarmCommand {
     @Slash('bitcoinfarm', { description: 'Calculates the price and profit of a specified barter' })
     price(
         @SlashOption('gpus', {
-            description: 'Calculate the amount of money obtained from a certain amount of Graphics Cards',
+            description: 'Calculates the amounts of BTC per day for a given amount of GPUs',
             required: true
         })
         gpus: number,
