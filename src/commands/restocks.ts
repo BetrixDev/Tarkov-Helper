@@ -43,10 +43,9 @@ export class RestockCommand {
                         .setThumbnail(settings.images.thumbnails.trader)
                         .addFields(
                             ...traderResetTimes.map((reset) => {
-                                const time = moment(reset.resetTimestamp).fromNow()
                                 return {
                                     name: CapitalizeWords(reset.name),
-                                    value: time[0].toUpperCase() + time.substring(1),
+                                    value: `<t:${moment(reset.resetTimestamp).unix()}:R>`,
                                     inline: true
                                 }
                             }),
