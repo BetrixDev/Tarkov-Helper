@@ -9,7 +9,7 @@ export const Slice = (str: string, pos: number) => {
 }
 
 export function ItemImage(id: string) {
-    return `https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/item_icons/${id}.png`
+    return `https://assets.tarkov-tools.com/${id}-base-image.png`
 }
 
 export function BossImage(boss: string) {
