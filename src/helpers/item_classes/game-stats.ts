@@ -447,7 +447,7 @@ export class GameStats {
             }
         }
 
-        return { fields: [{ name: '\u200b', value: '\u200b' }] }
+        return { fields: [{ name: 'No Special Data', value: '\u200b' }] }
     }
 }
 
@@ -527,7 +527,10 @@ function GetType(item: Item, rawData: RawData, rawName: string): THType {
             } else {
                 return 'fooddrink'
             }
-        } else if ((types.includes('wearable') && !types.includes('gun')) || rawName == 'ПНВ') {
+        } else if (
+            (types.includes('wearable') && !types.includes('gun') && !rawName.includes('weapon_')) ||
+            rawName == 'ПНВ'
+        ) {
             return 'nvg'
         } else if ((types.includes('barter') && types.includes('markedOnly')) || item.shortName == 'S I C C') {
             return 'case'
