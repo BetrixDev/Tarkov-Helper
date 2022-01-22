@@ -1,4 +1,4 @@
-export type MapNames = keyof MapLinks
+type MapNames = keyof MapLinks
 
 interface MapLinks {
     thelab: MapLink[]

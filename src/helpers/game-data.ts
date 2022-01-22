@@ -1,6 +1,5 @@
 // A module for grabbing item data
 import path from 'path'
-import { BotConfig } from '../../types/database/bot-config'
 import { ReadJson } from '../lib'
 
 const game_data = path.join(__dirname, '..', '..', 'game_data')
@@ -22,19 +21,20 @@ export class Cache {
 
     constructor() {
         this.updateData()
+
+        Cache.locales = ReadJson(path.join(game_data, 'database', 'locales', 'global', 'en.json'))
+        Cache.globals = ReadJson(path.join(game_data, 'database', 'globals.json'))
+        Cache.rawData = ReadJson(path.join(game_data, 'database', 'templates', 'items.json'))
+        Cache.rawQuestData = ReadJson<any>(path.join(game_data, 'database', 'templates', 'quests.json'))
     }
 
     updateData() {
         Cache.itemData = ReadJson<Item[]>(path.join(game_data, 'api', 'itemdata.json'))
         Cache.config = ReadJson<BotConfig>(path.join(game_data, 'botconfig.json'))
-        Cache.rawData = ReadJson(path.join(game_data, 'database', 'templates', 'items.json'))
         Cache.questData = ReadJson<TrackerQuest[]>(path.join(game_data, 'api', 'questdata.json'))
         Cache.barterData = ReadJson<Barter[]>(path.join(game_data, 'api', 'barterdata.json'))
-        Cache.locales = ReadJson(path.join(game_data, 'database', 'locales', 'global', 'en.json'))
-        Cache.globals = ReadJson(path.join(game_data, 'database', 'globals.json'))
         Cache.bulletData = ReadJson<Bullet[]>(path.join(game_data, 'api', 'bulletdata.json'))
         Cache.hideoutData = ReadJson<HideoutModule[]>(path.join(game_data, 'api', 'hideoutdata.json'))
-        Cache.rawQuestData = ReadJson<any>(path.join(game_data, 'database', 'templates', 'quests.json'))
         Cache.itemData.forEach((item, i) => {
             Cache.map[item.id] = i
             Cache.shorts[item.shortName.toLowerCase()] = item

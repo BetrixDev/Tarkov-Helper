@@ -2,7 +2,6 @@ import 'reflect-metadata'
 import { ButtonComponent, Discord, Slash, SlashChoice, SlashOption } from 'discordx'
 import { ButtonInteraction, CommandInteraction, MessageActionRow, MessageButton } from 'discord.js'
 import { CapitalizeWords, ErrorReponse, FormatPrice, ReadJson, ResolveStrings, THEmbed } from '../lib'
-import { MapLinks, MapNames } from '../../types/database/maps'
 
 const mapImages = ReadJson<MapLinks>('./game_data/maps.json')
 

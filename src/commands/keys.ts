@@ -10,7 +10,6 @@ import {
 } from 'discord.js'
 import { ErrorReponse, FormatPrice, GetDBItem, GetItem, ItemImage, ReadJson, THEmbed } from '../lib'
 import { MapInfo } from './map'
-import { MapNames } from '../../types/database/maps'
 
 const mapUrlPrefix = 'https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/map_icons/'
 type WikiMap = 'The_Lab' | 'Interchange' | 'Woods' | 'Customs' | 'Factory' | 'Reserve' | 'Shoreline' | 'Lighthouse'
