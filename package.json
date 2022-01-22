@@ -37,8 +37,5 @@
   "engines": {
     "node": ">=16.6.0"
   },
-  "engineStrict": true,
-  "peerDependencies": {
-    "chart.js": "^3.7.0"
-  }
+  "engineStrict": true
 }
