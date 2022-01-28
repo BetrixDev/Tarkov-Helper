@@ -28,11 +28,11 @@ export class ServerDatabase {
         return data
     }
 
-    async set(guildId: string, key: keyof ServerData, data: any) {
+    async set(guildId: string | null, key: keyof ServerData, data: any) {
         try {
             await serverModel.findOneAndUpdate(
                 {
-                    ServerID: guildId
+                    ServerID: guildId ?? ''
                 },
                 {
                     $set: {

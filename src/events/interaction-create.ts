@@ -17,7 +17,7 @@ export class InteractionCreate {
         if (interaction.isCommand()) {
             const db = container.resolve(InteractionCreate)
 
-            const serverData = await db._servers.query(interaction.guildId)
+            const serverData = await db._servers.query(interaction.guildId ?? '')
 
             if (serverData.ChannelLock !== '' && !isOwner(interaction)) {
                 if (serverData.ChannelLock !== interaction.channelId) {
@@ -39,7 +39,7 @@ export class InteractionCreate {
             const userLastMessage = db._cooldowns.query(interaction.user.id)
 
             if (!userLastMessage || (date - userLastMessage) * 0.001 > serverData.Cooldown || isOwner(interaction)) {
-                client.executeInteraction(interaction)
+                client.executeInteraction(interaction, true)
                 db._cooldowns.update(interaction.user.id, date)
             } else {
                 interaction.reply({
@@ -51,7 +51,7 @@ export class InteractionCreate {
                 return
             }
         } else {
-            client.executeInteraction(interaction)
+            client.executeInteraction(interaction, true)
         }
     }
 }

@@ -1,10 +1,4 @@
-import {
-    AutocompleteInteraction,
-    CommandInteraction,
-    EmbedFieldData,
-    Interaction,
-    InteractionReplyOptions
-} from 'discord.js'
+import { AutocompleteInteraction, CommandInteraction, Interaction, InteractionReplyOptions } from 'discord.js'
 import { Discord, Slash, SlashOption } from 'discordx'
 import SearchEngine from '../helpers/search_engines/hideout-engine'
 import { ErrorReponse, Cache, GetItem, THEmbed, FormatPrice, FormatNumber } from '../lib'
