@@ -15,13 +15,11 @@ class PricePerSlotCommand {
     })
     async priceperslot(
         @SlashOption('minimum', {
-            description: 'Minimum price per slot',
-            required: true
+            description: 'Minimum price per slot'
         })
         minimum: number,
         @SlashOption('maximum', {
-            description: 'Maximum price per slot',
-            required: true
+            description: 'Maximum price per slot'
         })
         maximum: number,
         interaction: CommandInteraction

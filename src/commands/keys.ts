@@ -40,8 +40,7 @@ export class PriceCommand {
         @SlashChoice('Reserve', 'Reserve')
         @SlashChoice('Shoreline', 'Shoreline')
         @SlashOption('map', {
-            description: 'What location to use',
-            required: true
+            description: 'What location to use'
         })
         map: WikiMap,
         interaction: CommandInteraction

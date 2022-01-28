@@ -16,7 +16,6 @@ export abstract class BossCommand {
         @SlashChoice('Tagilla', 'bosstagilla')
         @SlashOption('boss', {
             description: 'Boss to get info of',
-            required: true,
             type: 'STRING'
         })
         boss: keyof typeof BossNames,

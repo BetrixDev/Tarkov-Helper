@@ -12,8 +12,7 @@ export class DogtagCommand {
     })
     dogtag(
         @SlashOption('level', {
-            description: `Level of the dogtag (1-${MaxLevel})`,
-            required: true
+            description: `Level of the dogtag (1-${MaxLevel})`
         })
         level: number,
         interaction: CommandInteraction

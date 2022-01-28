@@ -14,13 +14,11 @@ export class ExchangeRateCommand {
         @SlashChoice('Rubles', 'rub')
         @SlashOption('currency', {
             description: 'Currency to convert',
-            required: true,
             type: 'STRING'
         })
         currency: Currencies,
         @SlashOption('amount', {
-            description: 'Amount of the currency',
-            required: true
+            description: 'Amount of the currency'
         })
         amount: number,
         interaction: CommandInteraction

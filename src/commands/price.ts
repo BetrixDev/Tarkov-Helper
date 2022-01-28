@@ -10,7 +10,6 @@ export abstract class PriceCommand {
     price(
         @SlashOption('item', {
             description: 'item to lookup (start typing to search)',
-            required: true,
             autocomplete: (interaction: AutocompleteInteraction) => {
                 const input = interaction.options.getFocused(true)
 

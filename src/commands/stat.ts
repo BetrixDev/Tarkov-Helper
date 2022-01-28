@@ -12,7 +12,6 @@ export class PriceCommand {
     stat(
         @SlashOption('item', {
             description: 'item to get info of (start typing to search)',
-            required: true,
             autocomplete: (interaction: AutocompleteInteraction) => {
                 const input = interaction.options.getFocused(true)
 

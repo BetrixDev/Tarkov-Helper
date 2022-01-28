@@ -8,8 +8,7 @@ export class BitcoinFarmCommand {
     @Slash('bitcoinfarm', { description: 'Calculates the price and profit of a specified barter' })
     price(
         @SlashOption('gpus', {
-            description: 'Calculates the amounts of BTC per day for a given amount of GPUs',
-            required: true
+            description: 'Calculates the amounts of BTC per day for a given amount of GPUs'
         })
         gpus: number,
         @SlashOption('compare', {

@@ -80,8 +80,7 @@ export class AdminCommands {
     })
     async cooldown(
         @SlashOption('time', {
-            description: 'Cooldown length',
-            required: true
+            description: 'Cooldown length'
         })
         time: number,
         interaction: CommandInteraction

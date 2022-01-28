@@ -27,13 +27,11 @@ export abstract class Command {
     })
     async xpto(
         @SlashOption('current', {
-            description: 'Current Level. Can also be Experience Amount',
-            required: true
+            description: 'Current Level. Can also be Experience Amount'
         })
         current: number,
         @SlashOption('end', {
-            description: 'Level to end at',
-            required: true
+            description: 'Level to end at'
         })
         end: number,
         interaction: CommandInteraction

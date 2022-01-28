@@ -11,7 +11,6 @@ export class CaliberCommand {
     price(
         @SlashOption('caliber', {
             description: 'Which caliber to use (start typing to search)',
-            required: true,
             autocomplete: (interaction: AutocompleteInteraction) => {
                 const input = interaction.options.getFocused(true)
 

@@ -28,13 +28,11 @@ export class Command {
     })
     async pricehistory(
         @SlashOption('range', {
-            description: 'Range of dates shown on the graph (in days) (up to 31 days)',
-            required: true
+            description: 'Range of dates shown on the graph (in days) (up to 31 days)'
         })
         range: number,
         @SlashOption('item', {
             description: 'Item to display on the chart',
-            required: true,
             autocomplete: (interaction: AutocompleteInteraction) => Autocomplete(interaction),
             type: 'STRING'
         })

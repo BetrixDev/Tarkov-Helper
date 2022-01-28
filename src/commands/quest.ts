@@ -30,7 +30,6 @@ export class QuestCommand {
     quest(
         @SlashOption('quest', {
             description: 'name of the quest (start typing to search)',
-            required: true,
             autocomplete: (interaction: AutocompleteInteraction) => {
                 const input = interaction.options.getFocused(true)
 

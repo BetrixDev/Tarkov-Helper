@@ -14,7 +14,6 @@ export class PenChanceCommand {
     async quest(
         @SlashOption('bullet', {
             description: 'Bullet to simulate with',
-            required: true,
             autocomplete: (interaction: AutocompleteInteraction) => {
                 const input = interaction.options.getFocused(true)
 
@@ -31,7 +30,6 @@ export class PenChanceCommand {
         bullet: string,
         @SlashOption('armor', {
             description: 'Can be a helmet, body armor or armored rig',
-            required: true,
             autocomplete: (interaction: AutocompleteInteraction) => {
                 const input = interaction.options.getFocused(true)
 

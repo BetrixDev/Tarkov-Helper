@@ -9,7 +9,6 @@ export class HideoutCommand {
     async hideout(
         @SlashOption('module', {
             description: 'name of the module to grab.  ex: BitcoinFarm',
-            required: true,
             autocomplete: (interaction: AutocompleteInteraction) => {
                 const input = interaction.options.getFocused(true)
 

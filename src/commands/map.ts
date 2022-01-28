@@ -22,8 +22,7 @@ export class MapCommand {
         @SlashChoice('Reserve', 'reserve')
         @SlashChoice('Shoreline', 'shoreline')
         @SlashOption('map', {
-            description: 'What location to use',
-            required: true
+            description: 'What location to use'
         })
         map: MapNames,
         interaction: CommandInteraction

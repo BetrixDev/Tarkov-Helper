@@ -12,7 +12,6 @@ export class NeedforQuestCommand {
     async quest(
         @SlashOption('item', {
             description: 'Item to show dependencies for',
-            required: true,
             autocomplete: (interaction: AutocompleteInteraction) => {
                 const input = interaction.options.getFocused(true)
 

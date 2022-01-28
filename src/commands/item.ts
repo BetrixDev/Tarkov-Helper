@@ -38,7 +38,6 @@ export abstract class ItemCommand {
     async item(
         @SlashOption('item', {
             description: 'item to get info of (start typing to search)',
-            required: true,
             autocomplete: (interaction: AutocompleteInteraction) => {
                 const input = interaction.options.getFocused(true)
 
