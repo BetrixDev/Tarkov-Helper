@@ -1,0 +1,24 @@
+{
+    "en": {
+        "You must be the owner of this server to use this command": "You must be the owner of this server to use this command",
+        "Changed channel lock to: **{0}**:": "Changed channel lock to: **{0}**",
+        "UNKNOWN": "UNKNOWN",
+        "There was and error trying to change the channel lock, please try again later": "There was and error trying to change the channel lock, please try again later",
+        "Reset channel lock": "Reset channel lock",
+        "There was an error trying to reset the channel lock, please try again later": "There was an error trying to reset the channel lock, please try again later",
+        "Cooldown should be between 0 and 60 seconds": "Cooldown should be between 0 and 60 seconds",
+        "Changed cooldown time to: **{0}**": "Changed cooldown time to: **{0}**",
+        "Error changing cooldown time, please try again later": "Error changing cooldown time, please try again later",
+        "The command issued had and error": "The command issued had and error",
+        "Command issued: {0}": "Command issued: {0}",
+        "There was an error trying to set the language, please try again later": "There was an error trying to set the language, please try again later",
+        "Successfully set the language for this server": "Successfully set the language for this server",
+        "Please use the auto complete function to complete your search": "Please use the auto complete function to complete your search",
+        "{0} Information": "{0} Information",
+        "{0} isn't needed for any quests": "{0} isn't needed for any quests",
+        "Price of Flea": "Price of Flea",
+        "Can't be sold": "Can't be sold",
+        "{0} is needed for the following quests:": "{0} is needed for the following quests:",
+        "Highest Selling Price": "Highest Selling Price"
+    }
+}

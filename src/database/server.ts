@@ -1,13 +1,24 @@
 import 'reflect-metadata'
 import { serverModel } from '../models/server-model'
 import { singleton } from 'tsyringe'
-import { Interaction } from 'discord.js'
+import logger from '../config/logger'
+
+const Namespace = 'ServerDatabase'
+
+const defaultData: ServerData = {
+    ServerID: '',
+    Language: 'en',
+    Cooldown: 3,
+    ChannelLock: ''
+}
 
 @singleton()
 export class ServerDatabase {
     constructor() {}
 
     async query(guildId: string): Promise<ServerData> {
+        if (guildId === '') return defaultData
+
         let data
         try {
             data = await serverModel.findOne({ ServerID: guildId })
@@ -16,14 +27,15 @@ export class ServerDatabase {
                     ServerID: guildId,
                     AdminRole: '',
                     Cooldown: 3,
-                    ChannelLock: ''
+                    ChannelLock: '',
+                    Language: 'en'
                 }
 
                 const server = await serverModel.create(data)
                 server.save()
             }
         } catch (e) {
-            console.log(e)
+            logger.error(Namespace, 'Error fetching server data', e)
         }
         return data
     }

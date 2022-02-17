@@ -3,7 +3,7 @@ module.exports = {
         name: 'tarkovhelper',
         script: './build/main.js',
         env: {
-            "NODE_ENV": "production"
+            "NODE_ENV": "prod"
         }
     }]
 }

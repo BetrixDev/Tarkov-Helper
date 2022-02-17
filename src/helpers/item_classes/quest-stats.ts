@@ -1,11 +1,17 @@
-import { isTypeSystemDefinitionNode } from 'graphql'
-import { Cache } from '../game-data'
+import { fetchData } from '../../data/cache'
+import { Item } from '../../data/classes/item'
+
+interface GameQuestData {
+    [key: string]: { QuestName: string; rewards?: { Success: any[] } }
+}
 
 export class QuestStats {
+    itemId: string
     questRewards: { name: string; count: number }[] = []
 
     constructor(item: Item) {
-        const data: { [key: string]: { QuestName: string; rewards?: { Success: any[] } } } = Cache.rawQuestData
+        this.itemId = item.id
+        const data = fetchData<GameQuestData>('quests')
 
         Object.values(data).forEach((quest) => {
             if (quest.rewards) {
@@ -24,5 +30,21 @@ export class QuestStats {
                 })
             }
         })
+    }
+
+    getDependents() {
+        let quests: { quest: string; count: number }[] = []
+
+        fetchData<RawQuest[]>('questData').forEach((quest) => {
+            if (quest.objectives) {
+                quest.objectives.forEach((objective) => {
+                    if (objective.target === this.itemId) {
+                        quests.push({ quest: quest.title, count: objective.number })
+                    }
+                })
+            }
+        })
+
+        return quests
     }
 }

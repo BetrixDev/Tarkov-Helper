@@ -1,18 +1,24 @@
 import 'reflect-metadata'
-import { Intents, Interaction } from 'discord.js'
+import { Intents } from 'discord.js'
 import { Client, DIService } from 'discordx'
 import { container } from 'tsyringe'
 import { importx } from '@discordx/importer'
-import { isDev, Logger, ReadJson } from './utils/misc'
 import { connect } from 'mongoose'
 import AutoPoster from 'topgg-autoposter'
-import { ScheduleJobs } from './helpers/scheduler/scheduler'
+import dotenv from 'dotenv'
+import logger from './config/logger'
+import cron from './data/cron'
+import { isDev } from './lib'
+import { updateData } from './data/cache'
+import { initEngines } from './helpers/search_engines/item-engine'
 
-const Config = ReadJson<Config>('config.json')
+const Namespace = 'Main'
+
+dotenv.config()
 
 DIService.container = container
 
-export const client = new Client({
+const client = new Client({
     intents: [Intents.FLAGS.GUILDS]
     // If you only want to use global commands only, comment this line
     // botGuilds: [(client) => client.guilds.cache.map((guild) => guild.id)]
@@ -32,27 +38,47 @@ client.once('ready', async () => {
     // useful when moving to global commands from guild commands
     // await client.clearApplicationCommands(...client.guilds.cache.map((g) => g.id))
 
-    console.log('Tarkov Helper Started')
+    logger.info(Namespace, 'Tarkov Helper intialized')
 })
 
 async function run() {
-    await connect(Config.bot.monogoUrl).then(() => {
-        Logger('Connected to MongoDB database')
-    })
-
-    if (!isDev()) {
-        Logger('Running from production enviroment')
-
-        const poster = AutoPoster(Config.bot.topggToken, client)
-        poster.on('posted', (stats) => {
-            Logger(`Posted stats to Top.gg | ${stats.serverCount} servers`)
+    if (process.env.MONGO_URL) {
+        await connect(process.env.MONGO_URL).then(() => {
+            logger.info(Namespace, 'Connected to MongoDB')
         })
-
-        ScheduleJobs()
+    } else {
+        throw new Error('Please specifiy a MongoDB connection url in .env')
     }
 
-    await importx(__dirname + '/{commands,events}/*.{ts,js}')
-    client.login(isDev() ? Config.bot.devToken : Config.bot.token)
+    if (!isDev) {
+        logger.info(Namespace, 'Running from production enviroment')
+
+        if (process.env.TOPGG_TOKEN) {
+            const poster = AutoPoster(process.env.TOPGG_TOKEN, client)
+            poster.on('posted', ({ serverCount }) => {
+                logger.info(Namespace, `Posted stats to Top.gg | ${serverCount} servers`)
+            })
+        }
+
+        await cron()
+    } else {
+        // Don't download new data to avoid slow startup times on dev enviroments
+        updateData().then(() => initEngines())
+    }
+
+    let botToken = process.env.BOT_TOKEN_DEV
+
+    // Decide wether or not to use dev token or not
+    if (!isDev || !botToken) {
+        botToken = process.env.BOT_TOKEN
+    }
+
+    if (botToken) {
+        await importx(__dirname + '/{commands,events}/*.{ts,js}')
+        client.login(botToken)
+    } else {
+        throw new Error('Please set your bot\'s token in the "BOT_TOKEN" field in .env')
+    }
 }
 
 run()

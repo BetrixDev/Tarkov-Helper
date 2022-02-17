@@ -1,7 +1,10 @@
 import { Interaction, InteractionReplyOptions, MessageEmbed } from 'discord.js'
-import { Cache } from '../lib'
+import botConfig from '../config/bot-config'
+import { translation } from '../lib'
 
-export function ErrorReponse(message: string, interaction: Interaction): InteractionReplyOptions {
+export function ErrorReponse(message: string, interaction: Interaction, language: Languages): InteractionReplyOptions {
+    const t = translation(language)
+
     if (interaction.isCommand()) {
         const args = interaction.options.data.map((arg) => {
             return `${arg.name}: ${arg.value}`
@@ -10,12 +13,12 @@ export function ErrorReponse(message: string, interaction: Interaction): Interac
         return {
             embeds: [
                 new MessageEmbed()
-                    .setAuthor('Tarkov Helper')
-                    .setColor(Cache.config.botSettings.errorColor)
-                    .setTitle('The command issued had and error')
+                    .setAuthor({ name: 'Tarkov Helper' })
+                    .setColor(botConfig.botSettings.errorColor)
+                    .setTitle(t('The command issued had and error'))
                     .setDescription(`\`${message}\``)
                     .addField('Args', args.length > 0 ? args.join('\n') : 'none')
-                    .setFooter(`Command issued: ${interaction.commandName}`)
+                    .setFooter({ text: t('Command issued: {0}', interaction.commandName) })
             ],
             ephemeral: true
         }
@@ -23,11 +26,11 @@ export function ErrorReponse(message: string, interaction: Interaction): Interac
         return {
             embeds: [
                 new MessageEmbed()
-                    .setAuthor('Tarkov Helper')
-                    .setColor(Cache.config.botSettings.errorColor)
-                    .setTitle('The command issued had and error')
+                    .setAuthor({ name: 'Tarkov Helper' })
+                    .setColor(botConfig.botSettings.errorColor)
+                    .setTitle(t('The command issued had and error'))
                     .setDescription(`\`${message}\``)
-                    .setFooter(`Command issued: ${interaction.id}`)
+                    .setFooter({ text: t('Command issued: {0}', interaction.id) })
             ],
             ephemeral: true
         }
@@ -37,6 +40,6 @@ export function ErrorReponse(message: string, interaction: Interaction): Interac
 export class THEmbed extends MessageEmbed {
     constructor(altColor?: boolean) {
         super()
-        this.setColor(altColor ? Cache.config.botSettings.altColor : Cache.config.botSettings.color)
+        this.setColor(altColor ? botConfig.botSettings.altColor : botConfig.botSettings.color)
     }
 }
