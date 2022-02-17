@@ -3,7 +3,7 @@ import { getItemFields } from '../../../src/helpers/item_classes/game-stats'
 import { updateData } from '../../../src/data/cache'
 import { translation } from '../../../src/lib'
 
-describe('QuestStats class tests', () => {
+describe('ItemStats class tests', () => {
     beforeAll(() => {
         updateData()
     })
