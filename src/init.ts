@@ -15,6 +15,7 @@ async function init() {
     await cron()
 
     logger.info(Namespace, 'Done')
+    process.exit(0)
 }
 
 init()

@@ -11,6 +11,7 @@ import cron from './data/cron'
 import { isDev } from './lib'
 import { updateData } from './data/cache'
 import { initEngines } from './helpers/search_engines/item-engine'
+import { existsSync } from 'fs'
 
 const Namespace = 'Main'
 
@@ -60,7 +61,7 @@ async function run() {
             })
         }
 
-        await cron()
+        if (existsSync('./data/')) await cron()
     } else {
         // Don't download new data to avoid slow startup times on dev enviroments
         updateData().then(() => initEngines())
