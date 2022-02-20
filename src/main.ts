@@ -62,10 +62,9 @@ async function run() {
         }
 
         if (!existsSync('./data/')) await cron()
-    } else {
-        // Don't download new data to avoid slow startup times on dev enviroments
-        updateData().then(() => initEngines())
     }
+
+    await updateData().then(() => initEngines())
 
     let botToken = process.env.BOT_TOKEN_DEV
 
