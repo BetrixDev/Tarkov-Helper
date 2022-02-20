@@ -15,11 +15,6 @@ export class InfoCommand {
     })
     async info(): Promise<InteractionReplyOptions> {
         return new Promise((respond, error) => {
-            console.time('Got Item Class')
-            const item = new Item('59e690b686f7746c9f75e848', 'es')
-            console.timeEnd('Got Item Class')
-            writeFile('item.json', item)
-
             respond({
                 embeds: [
                     new THEmbed()
