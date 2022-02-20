@@ -1,9 +1,11 @@
 module.exports = {
-    apps: [{
-        name: 'tarkovhelper',
-        script: './build/main.js',
-        env: {
-            "NODE_ENV": "prod"
+    apps: [
+        {
+            name: 'tarkovhelper',
+            script: './build/src/main.js',
+            env: {
+                NODE_ENV: 'prod'
+            }
         }
-    }]
+    ]
 }
