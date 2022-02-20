@@ -33,4 +33,13 @@ describe('Ballistics Simulator Tests', () => {
 
         expect(calculator.currentChance).toBeLessThan(1)
     })
+
+    it('should return a stringified version of the data', () => {
+        const calculator = new BallisticsCalculator(
+            new Item('6038b4b292ec1c3103795a0b', 'en'),
+            new Item('5c0d56a986f774449d5de529', 'en')
+        )
+
+        expect(calculator.stringifiedData).toEqual(`6038b4b292ec1c3103795a0b|5c0d56a986f774449d5de529|80`)
+    })
 })

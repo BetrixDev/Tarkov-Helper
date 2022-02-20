@@ -10,6 +10,7 @@ interface Result {
 }
 
 interface ArmorData {
+    id: string
     class: number
     durability: number
     currentDurability: number
@@ -18,6 +19,7 @@ interface ArmorData {
 }
 
 interface BulletData {
+    id: string
     penetration: number
     armorDamage: number
     damage: number
@@ -30,15 +32,18 @@ export class BallisticsCalculator {
     constructor(armor: Item, bullet: Item) {
         const armorMaterials = fetchData<any>('globals').config.ArmorMaterials
 
+        // Using Number() to force the value to be defined, since we know they will be due to only accepting armors and bullets
         this.armorData = {
+            id: armor.id,
             class: Number(armor.props.armorClass),
             durability: Number(armor.props.MaxDurability),
             currentDurability: Number(armor.props.MaxDurability),
-            destructibility: armorMaterials[armor.props.ArmorMaterial ?? ArmorMaterial.Aluminium].Destructibility,
+            destructibility: armorMaterials[armor.props.ArmorMaterial ?? 'Aluminium'].Destructibility,
             resistance: 10
         }
 
         this.bulletData = {
+            id: bullet.id,
             penetration: Number(bullet.props.PenetrationPower),
             armorDamage: Number(bullet.props.ArmorDamage),
             damage: Number(bullet.props.Damage)
@@ -182,5 +187,9 @@ export class BallisticsCalculator {
         report.averageShotsToPen = report.averageShotsToPen / simResults.length
 
         return report
+    }
+
+    get stringifiedData(): string {
+        return `${this.armorData.id}|${this.bulletData.id}|${this.armorData.currentDurability}`
     }
 }
