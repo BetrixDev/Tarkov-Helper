@@ -45,7 +45,7 @@
         "tsyringe": "^4.6.0"
     },
     "engines": {
-        "node": ">=16.13.2"
+        "node": "16.x"
     },
     "engineStrict": true
 }
