@@ -5,7 +5,7 @@
         "dev": "cross-env NODE_ENV=dev ts-node --files src/main.ts",
         "init": "ts-node --files src/init.ts",
         "start": "pm2 start ecosystem.config.js --only tarkovhelper",
-        "start:heroku": "npm i && npm run init && npm run build && node ./build/src/main.js",
+        "start:heroku": "npm run init && npm run build && node ./build/src/main.js",
         "format": "prettier --config .prettierrc \"./src/*/*.ts\" --write",
         "test": "cross-env NODE_ENV=test jest"
     },

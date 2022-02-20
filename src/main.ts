@@ -61,7 +61,7 @@ async function run() {
             })
         }
 
-        if (existsSync('./data/')) await cron()
+        if (!existsSync('./data/')) await cron()
     } else {
         // Don't download new data to avoid slow startup times on dev enviroments
         updateData().then(() => initEngines())
