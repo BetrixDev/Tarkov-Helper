@@ -246,7 +246,7 @@ export class ItemCommand {
         const t = translation(language)
 
         const item = new Item(id, language)
-        const itemFields = getItemFields(item.props, t)
+        const itemFields = getItemFields(item, t)
 
         const fields: EmbedFieldData[] =
             itemFields.length > 0 ? itemFields : [{ name: '\u200b', value: 'No special stats', inline: true }]

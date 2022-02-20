@@ -2,6 +2,7 @@ import { EmbedFieldData, MessageEmbedImage } from 'discord.js'
 import { fetchData } from '../../data/cache'
 import { Item } from '../../data/classes/item'
 import { TranslationFunction, round } from '../../lib'
+import { BallisticsCalculator } from '../simulator/ballistics'
 
 interface ArmorMaterial {
     Destructibility: number
@@ -18,7 +19,8 @@ interface ContainerSize {
 interface ItemField {
     gameName: keyof RawItemProps
     displayName: string
-    format: (value: any, data: RawItemProps, t: TranslationFunction) => string
+    format: (value: any, data: RawItemProps, t: TranslationFunction, item: Item) => string
+    position?: number
 }
 
 const getContainerSize = (grid: Grid[]) => {
@@ -112,8 +114,8 @@ const itemFields: ItemField[] = [
     {
         gameName: 'Width',
         displayName: 'Size',
-        format: (Width: number, { Height }) => {
-            if (!Height || !Width) return 'No size value'
+        format: (Width: number, { Height }, t) => {
+            if (!Height || !Width) return t('No size value')
 
             return `${Height}x${Width} (${Width * Height})`
         }
@@ -137,10 +139,31 @@ const itemFields: ItemField[] = [
         gameName: 'Ergonomics',
         displayName: 'Ergonomics',
         format: (value: number) => `${value}`
+    },
+    {
+        gameName: 'PenetrationPower',
+        displayName: 'zFirst Shot Penetration Chances',
+        format: (value: number, data, t, item) => {
+            const class2 = new BallisticsCalculator(new Item('5648a7494bdc2d9d488b4583', 'en'), item).currentChance
+            const class3 = new BallisticsCalculator(new Item('5b44d22286f774172b0c9de8', 'en'), item).currentChance
+            const class4 = new BallisticsCalculator(new Item('5d5d646386f7742797261fd9', 'en'), item).currentChance
+            const class5 = new BallisticsCalculator(new Item('5c0e541586f7747fa54205c9', 'en'), item).currentChance
+            const class6 = new BallisticsCalculator(new Item('5e4abb5086f77406975c9342', 'en'), item).currentChance
+
+            return [
+                t(`Class {0}: {1}%`, 2, round(class2, '00')),
+                t(`Class {0}: {1}%`, 3, round(class3, '00')),
+                t(`Class {0}: {1}%`, 4, round(class4, '00')),
+                t(`Class {0}: {1}%`, 5, round(class5, '00')),
+                t(`Class {0}: {1}%`, 6, round(class6, '00'))
+            ].join('\n')
+        }
     }
 ]
 
-export const getItemFields = (itemProps: RawItemProps, t: TranslationFunction): EmbedFieldData[] => {
+export const getItemFields = (item: Item, t: TranslationFunction): EmbedFieldData[] => {
+    const itemProps = item.props
+
     return (
         itemFields
             .filter(({ gameName }) => itemProps[gameName] !== undefined)
@@ -149,7 +172,12 @@ export const getItemFields = (itemProps: RawItemProps, t: TranslationFunction): 
             .map(({ gameName, displayName, format }) => {
                 const value = itemProps[gameName]
 
-                return { name: t(displayName), value: format(value, itemProps, t), inline: true }
+                return {
+                    // Some fields start with z to make them be placed at the end of the embed, so we remove it
+                    name: t(displayName.startsWith('z') ? displayName.substring(1) : displayName),
+                    value: format(value, itemProps, t, item),
+                    inline: true
+                }
             })
             // Some format functions return '' to indicate not to show them even though the props matched
             .filter(({ value }) => value !== '')

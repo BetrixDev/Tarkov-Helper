@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import { Client, CommandInteraction, InteractionReplyOptions } from 'discord.js'
 import { Discord, Slash, SlashChoice, SlashOption } from 'discordx'
 import { container, injectable } from 'tsyringe'

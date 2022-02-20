@@ -14,7 +14,7 @@ describe('ItemStats class tests', () => {
 
         const t = translation('en')
 
-        expect(getItemFields(item.props, t).length).toBeGreaterThan(1)
-        expect(getItemFields(item2.props, t).length).toBeGreaterThan(1)
+        expect(getItemFields(item, t).length).toBeGreaterThan(1)
+        expect(getItemFields(item2, t).length).toBeGreaterThan(1)
     })
 })

@@ -9,7 +9,7 @@ export class Item {
     id: string
     name: string
     shortName: string
-    description: string
+    private _description: string
     wikiLink: string
     types: ItemType[] = []
     priceData: TarkovToolsItem
@@ -25,13 +25,20 @@ export class Item {
         this.id = id
         this.name = locales?.Name ?? ''
         this.shortName = locales?.ShortName.toString() ?? ''
-        this.description = locales?.Description ?? ''
+        this._description = locales?.Description ?? ''
         this.wikiLink = data.wikiLink
         this.priceData = data
         this.props = rawData._props
 
         // Change updated value to relative time
         this.priceData.updated = dayjs(this.priceData.updated).fromNow()
+    }
+
+    get description() {
+        // Makes the description a quote and shrinks the text if its too long
+        return this._description.length > 150
+            ? `*${this._description.substring(0, 150)}*` + `...`
+            : `*${this._description}*`
     }
 
     get pricePerSlot() {

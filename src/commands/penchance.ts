@@ -6,7 +6,7 @@ import { isId } from '../data/cache'
 import { Item } from '../data/classes/item'
 import { autoCompleteResults } from '../helpers/search_engines/item-engine'
 import { BallisticsCalculator } from '../helpers/simulator/ballistics'
-import { round, THEmbed, translation } from '../lib'
+import { round, THEmbed, translation, TranslationFunction } from '../lib'
 import { ChartJSNodeCanvas } from 'chartjs-node-canvas'
 
 export enum ErrorMessages {
@@ -47,21 +47,21 @@ export class PenChanceCommand {
             const simulator = new BallisticsCalculator(armor, bullet)
 
             const simResults = simulator.simulate()
-            const chart = await createChart(simulator.durabilityPenchanceData, bullet, armor)
+            const chart = await createChart(simulator.durabilityPenchanceData, bullet, armor, t)
 
             respond({
                 embeds: [
                     new THEmbed()
-                        .setTitle(`Penetration Calculator`)
+                        .setTitle(t('Penetration Calculator'))
                         .setImage('attachment://chart.png')
                         .addFields(
                             {
-                                name: 'Average Shots to Pen',
+                                name: t('Average Shots to Pen'),
                                 value: (Math.round(simResults.averageShotsToPen * 10000) / 10000).toString(),
                                 inline: true
                             },
                             {
-                                name: 'Average Shots to Zero',
+                                name: t('Average Shots to Zero'),
                                 value: (Math.round(simResults.averageShotsToZero * 10000) / 10000).toString(),
                                 inline: true
                             }
@@ -80,7 +80,12 @@ interface Point {
     penChance: number
 }
 
-export const createChart = async (data: Point[], bullet: Item, armor: Item): Promise<Buffer> => {
+export const createChart = async (
+    data: Point[],
+    bullet: Item,
+    armor: Item,
+    t: TranslationFunction
+): Promise<Buffer> => {
     const chart = new ChartJSNodeCanvas({
         width: 1600,
         height: 900,
@@ -110,7 +115,7 @@ export const createChart = async (data: Point[], bullet: Item, armor: Item): Pro
             labels: labels,
             datasets: [
                 {
-                    label: 'Penetration Curve',
+                    label: t('Penetration Curve'),
                     data: points,
                     backgroundColor: 'rgba(21, 36, 46, 1)',
                     borderColor: 'rgba(221, 204, 76, 1)',
@@ -123,7 +128,7 @@ export const createChart = async (data: Point[], bullet: Item, armor: Item): Pro
                 x: {
                     title: {
                         display: true,
-                        text: 'Durability'
+                        text: t('Durability')
                     }
                 },
                 y: {
@@ -132,14 +137,14 @@ export const createChart = async (data: Point[], bullet: Item, armor: Item): Pro
                     },
                     title: {
                         display: true,
-                        text: 'Chance'
+                        text: t('Chance')
                     }
                 }
             },
             plugins: {
                 title: {
                     display: true,
-                    text: `${bullet.shortName} & ${armor.shortName} Pentration Chances`,
+                    text: t('{0} & {1} Pentration Chances', bullet.shortName, armor.shortName),
                     font: {
                         size: 30
                     }
