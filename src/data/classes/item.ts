@@ -16,7 +16,7 @@ export class Item {
     props: RawItemProps
 
     constructor(id: string, language: Languages) {
-        const rawData = fetchData<{ [key: string]: RawProps }>('itemProps')[id]
+        const rawData = fetchData<{ [key: string]: RawItem }>('itemProps')[id]
         const locales = fetchData<Locales>(language).templates[id]
         const data = fetchData<TarkovToolsItem[]>('itemData')[fetchData<{ [key: string]: number }>('itemMap')[id]]
 
@@ -39,7 +39,7 @@ export class Item {
         return this.priceData.avg24hPrice / size
     }
 
-    private getTypes(i: RawProps) {
+    private getTypes(i: RawItem) {
         if (i && i._parent !== '') {
             const type = fetchData<{ [key: string]: {} }>('itemTypes')[i._parent] as ItemType
             this.types.push(type)

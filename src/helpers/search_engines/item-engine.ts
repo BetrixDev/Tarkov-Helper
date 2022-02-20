@@ -27,10 +27,10 @@ export const initEngines = () => {
     let geValues: EngineParams[] = []
 
     const itemData = fetchData<TarkovToolsItem[]>('itemData')
-    const itemProps = fetchData<{ [key: string]: RawProps }>('itemProps')
+    const itemProps = fetchData<{ [key: string]: RawItem }>('itemProps')
 
     itemData
-        .filter((i) => !i.types.includes('disabled') && itemProps[i.id] !== undefined)
+        .filter((i) => !i.types.includes(TarkovToolsTypes.Disabled) && itemProps[i.id] !== undefined)
         .forEach((i) => {
             const enItem = new Item(i.id, 'en')
             const esItem = new Item(i.id, 'es')
@@ -97,13 +97,13 @@ export const itemSearchEngine = (input: string, language: Languages, extras?: Ex
     }
 }
 
-export const autoCompleteResults = async (interaction: AutocompleteInteraction) => {
+export const autoCompleteResults = async (interaction: AutocompleteInteraction, extras?: ExtraOptions) => {
     const db = container.resolve(ServerDatabase)
     const serverData = await db.query(interaction.guildId ?? '')
 
     const input = interaction.options.getFocused(true).value.toString()
 
-    const results = itemSearchEngine(input, serverData.Language)
+    const results = itemSearchEngine(input, serverData.Language, extras)
 
     interaction.respond(results.map((r) => ({ name: r.item.name, value: r.item.id })))
 }

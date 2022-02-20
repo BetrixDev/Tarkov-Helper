@@ -113,7 +113,7 @@ export class Barter {
                 },
                 {
                     name: 'Flea Market Price',
-                    value: formatPrice(item.priceData.lastLowPrice),
+                    value: formatPrice(item.priceData.lastLowPrice ?? 0),
                     inline: true
                 },
                 {
@@ -128,7 +128,7 @@ export class Barter {
                 },
                 {
                     name: 'Barter Profit',
-                    value: formatPrice(item.priceData.lastLowPrice - barterTotal),
+                    value: formatPrice(item.priceData.lastLowPrice ?? 0 - barterTotal),
                     inline: true
                 }
             )

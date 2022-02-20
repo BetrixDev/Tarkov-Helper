@@ -17,7 +17,7 @@ export const updateData = async (): Promise<undefined> => {
 
     // Fetch item types
     data.itemTypes = {}
-    const itemProps = fetchData<{ [key: string]: RawProps }>('itemProps')
+    const itemProps = fetchData<{ [key: string]: RawItem }>('itemProps')
 
     Object.entries(itemProps).forEach(([k, v]) => {
         if (v._type === 'Node') {
@@ -40,7 +40,7 @@ export const fetchData = <T>(key: string): T => {
 }
 
 export const getRawItem = (id: string) => {
-    return data['itemProps'][id] as RawProps
+    return data['itemProps'][id] as RawItem
 }
 
 /**Returns all barters that give rewardItem as a reward */

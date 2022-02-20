@@ -1,11 +1,11 @@
 import { Item } from '../data/classes/item'
 
 export const lowestPrice = (item: Item): ItemPrice => {
-    if (item.priceData.lastLowPrice !== 0) {
+    if (item.priceData.lastLowPrice && item.priceData.lastLowPrice !== 0) {
         return {
-            source: 'fleaMarket',
+            source: TraderName.FleaMarket,
             price: item.priceData.lastLowPrice,
-            requirements: [{ type: 'playerLevel', value: 15 }]
+            requirements: [{ type: RequirementType.PlayerLevel, value: 15 }]
         }
     } else if (item.priceData.buyFor.length > 0) {
         return item.priceData.buyFor.sort((a, b) => {
@@ -13,9 +13,9 @@ export const lowestPrice = (item: Item): ItemPrice => {
         })[0]
     } else {
         return {
-            source: 'fleaMarket',
+            source: TraderName.FleaMarket,
             price: 0,
-            requirements: [{ type: 'playerLevel', value: 15 }]
+            requirements: [{ type: RequirementType.PlayerLevel, value: 15 }]
         }
     }
 }

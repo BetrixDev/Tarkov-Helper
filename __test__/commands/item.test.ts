@@ -1,5 +1,5 @@
 import { ItemCommand, ErrorMessages } from '../../src/commands/item'
-import { CommandInteraction, InteractionReplyOptions, MessageEmbed } from 'discord.js'
+import { CommandInteraction, MessageEmbed } from 'discord.js'
 import { updateData } from '../../src/data/cache'
 import { Client } from 'discordx'
 
@@ -23,12 +23,12 @@ describe('Item command tests', () => {
     })
 
     it('should respond with the general message in russian', async () => {
-        const response = await new ItemCommand().item('544a5caa4bdc2d1a388b4568', interaction, client, serverDataRU)
+        const response = await new ItemCommand().item('5aa7e454e5b5b0214e506fa2', interaction, client, serverDataRU)
         if (!response.embeds) throw new Error('Command Did not return embed')
 
         const embed = response.embeds[0] as MessageEmbed
 
-        expect(embed.title).toEqual('AVS Информация')
+        expect(embed.title?.includes('ЗШ-1-2М')).toBeTruthy()
     })
 
     it('should respond with the price message', async () => {
