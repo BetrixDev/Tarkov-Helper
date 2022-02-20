@@ -36,16 +36,6 @@ export class ItemCommand {
         const language = l as Languages
 
         try {
-            // if (action === 'general') {
-            //     interaction.update(this.message(id))
-            // } else if (action === 'barter') {
-            //     interaction.update(this.barterMessage(id, 0))
-            // } else if (action === 'game') {
-            //     interaction.update(this.statsMessage(id))
-            // } else if (action === 'price') {
-            //     interaction.update(this.priceMessage(id))
-            // }
-
             if (action === 'price') {
                 interaction.update(this.priceMessage(id, language))
             } else if (action === 'barter') {
@@ -129,7 +119,11 @@ export class ItemCommand {
         let fields: EmbedFieldData[] = []
 
         if (item.props.CanSellOnRagfair === true) {
-            fields.push({ name: t('Price of Flea'), value: formatPrice(item.priceData.lastLowPrice), inline: true })
+            fields.push({
+                name: t('Price on Flea'),
+                value: formatPrice(item.priceData.lastLowPrice ?? 0),
+                inline: true
+            })
         } else {
             fields.push({ name: t('Price on Flea'), value: t("Can't be sold"), inline: true })
         }
@@ -381,13 +375,15 @@ export class ItemCommand {
             return {
                 embeds: [
                     new THEmbed()
-                        .setTitle(t('{0} Price Data - {1}', item.shortName, formatPrice(item.priceData.lastLowPrice)))
+                        .setTitle(
+                            t('{0} Price Data - {1}', item.shortName, formatPrice(item.priceData.lastLowPrice ?? 0))
+                        )
                         .setDescription(t('[Wiki Link]({0})', item.wikiLink))
                         .setThumbnail(getItemImage(id))
                         .addFields(
                             {
                                 name: t('Price Right Now'),
-                                value: formatPrice(item.priceData.lastLowPrice),
+                                value: formatPrice(item.priceData.lastLowPrice ?? 0),
                                 inline: true
                             },
                             {
