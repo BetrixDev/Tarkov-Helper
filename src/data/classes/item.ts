@@ -36,9 +36,7 @@ export class Item {
 
     get description() {
         // Makes the description a quote and shrinks the text if its too long
-        return this._description.length > 150
-            ? `*${this._description.substring(0, 150)}*` + `...`
-            : `*${this._description}*`
+        return this._description.length > 150 ? `*${this._description.substring(0, 150)}*...` : `*${this._description}*`
     }
 
     get pricePerSlot() {
