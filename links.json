@@ -90,5 +90,9 @@
     {
         "name": "woods",
         "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/locations/woods/base.json"
+    },
+    {
+        "name": "maps",
+        "link": "https://raw.githubusercontent.com/Tarkov-Helper/Database/main/maps.json"
     }
 ]

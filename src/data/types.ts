@@ -739,7 +739,7 @@ interface Locales {
     customization: { [key: string]: The5_C1B857086F77465F465Faa4 }
     repeatableQuest: { [key: string]: string }
     templates: { [key: string]: Template }
-    locations: { [key: string]: The55_F2D3Fd4Bdc2D5F408B4567 }
+    locations: { [key: string]: MapLocale }
     banners: Banners
     trading: { [key: string]: Trading }
 }
@@ -767,25 +767,25 @@ interface The5_C1B857086F77465F465Faa4 {
 }
 
 interface Locations {
-    '5704e47ed2720bb35b8b4568': The55_F2D3Fd4Bdc2D5F408B4567
-    '5704e5a4d2720bb45b8b4567': The55_F2D3Fd4Bdc2D5F408B4567
-    '5704e4dad2720bb55b8b4567': The55_F2D3Fd4Bdc2D5F408B4567
-    '55f2d3fd4bdc2d5f408b4567': The55_F2D3Fd4Bdc2D5F408B4567
-    '5704e5fad2720bc05b8b4567': The55_F2D3Fd4Bdc2D5F408B4567
-    '5714dbc024597771384a510d': The55_F2D3Fd4Bdc2D5F408B4567
-    '56db0b3bd2720bb0678b4567': The55_F2D3Fd4Bdc2D5F408B4567
-    '56f40101d2720b2a4d8b45d6': The55_F2D3Fd4Bdc2D5F408B4567
-    '5704e64ad2720bb55b8b456e': The55_F2D3Fd4Bdc2D5F408B4567
-    '5704e554d2720bac5b8b456e': The55_F2D3Fd4Bdc2D5F408B4567
-    '599319c986f7740dca3070a6': The55_F2D3Fd4Bdc2D5F408B4567
-    '5714dc342459777137212e0b': The55_F2D3Fd4Bdc2D5F408B4567
-    '5704e3c2d2720bac5b8b4567': The55_F2D3Fd4Bdc2D5F408B4567
-    '59fc81d786f774390775787e': The55_F2D3Fd4Bdc2D5F408B4567
-    '5714dc692459777137212e12': The55_F2D3Fd4Bdc2D5F408B4567
+    '5704e47ed2720bb35b8b4568': MapLocale
+    '5704e5a4d2720bb45b8b4567': MapLocale
+    '5704e4dad2720bb55b8b4567': MapLocale
+    '55f2d3fd4bdc2d5f408b4567': MapLocale
+    '5704e5fad2720bc05b8b4567': MapLocale
+    '5714dbc024597771384a510d': MapLocale
+    '56db0b3bd2720bb0678b4567': MapLocale
+    '56f40101d2720b2a4d8b45d6': MapLocale
+    '5704e64ad2720bb55b8b456e': MapLocale
+    '5704e554d2720bac5b8b456e': MapLocale
+    '599319c986f7740dca3070a6': MapLocale
+    '5714dc342459777137212e0b': MapLocale
+    '5704e3c2d2720bac5b8b4567': MapLocale
+    '59fc81d786f774390775787e': MapLocale
+    '5714dc692459777137212e12': MapLocale
     '5b0fc42d86f7744a585f9105': The5_C1B857086F77465F465Faa4
 }
 
-interface The55_F2D3Fd4Bdc2D5F408B4567 {
+interface MapLocale {
     Name: string
     Description: string
 }
@@ -1478,4 +1478,183 @@ interface Trading {
     Nickname: string
     Location: string
     Description: string
+}
+
+// Map Links Data
+interface MapImageData {
+    [key: string]: MapImage[]
+}
+
+interface MapImage {
+    name: string
+    link: string
+    author: string
+}
+
+// Raw Map Data
+interface RawMapData {
+    Enabled: boolean
+    Locked: boolean
+    Insurance: boolean
+    SafeLocation: boolean
+    Name: Name
+    Description: string
+    Scene: Preview
+    Area: number
+    RequiredPlayerLevel: number
+    MinPlayers: number
+    MaxPlayers: number
+    exit_count: number
+    exit_access_time: number
+    exit_time: number
+    Preview: Preview
+    IconX: number
+    IconY: number
+    filter_ex: any[]
+    waves: Wave[]
+    limits: any[]
+    AveragePlayTime: number
+    AveragePlayerLevel: number
+    escape_time_limit: number
+    Rules: string
+    IsSecret: boolean
+    doors: any[]
+    tmp_location_field_remove_me: number
+    MinDistToExitPoint: number
+    MaxDistToFreePoint: number
+    MinDistToFreePoint: number
+    MaxBotPerZone: number
+    OpenZones: string
+    OcculsionCullingEnabled: boolean
+    GlobalLootChanceModifier: number
+    OldSpawn: boolean
+    NewSpawn: boolean
+    BotMax: number
+    BotStart: number
+    BotStop: number
+    BotMaxTimePlayer: number
+    BotSpawnTimeOnMin: number
+    BotSpawnTimeOnMax: number
+    BotSpawnTimeOffMin: number
+    BotSpawnTimeOffMax: number
+    BotMaxPlayer: number
+    BotEasy: number
+    BotNormal: number
+    BotHard: number
+    BotImpossible: number
+    BotAssault: number
+    BotMarksman: number
+    DisabledScavExits: string
+    AccessKeys: any[]
+    UnixDateTime: number
+    users_gather_seconds: number
+    users_spawn_seconds_n: number
+    users_spawn_seconds_n2: number
+    users_summon_seconds: number
+    sav_summon_seconds: number
+    matching_min_seconds: number
+    MinMaxBots: any[]
+    BotLocationModifier: BotLocationModifier
+    exits: Exit[]
+    DisabledForScav: boolean
+    SpawnPointParams: SpawnPointParam[]
+    maxItemCountInLocation: MaxItemCountInLocation[]
+    BossLocationSpawn: BossLocationSpawn[]
+    Id: string
+    _Id: string
+    Loot: any[]
+    Banners: Banner[]
+}
+
+interface Banner {
+    id: string
+    pic: Preview
+}
+
+interface Preview {
+    path: string
+    rcid: string
+}
+
+interface BossLocationSpawn {
+    BossName: string
+    BossChance: number
+    BossZone: string
+    BossPlayer: boolean
+    BossDifficult: string
+    BossEscortType: string
+    BossEscortDifficult: string
+    BossEscortAmount: string
+    Time: number
+}
+
+interface BotLocationModifier {
+    AccuracySpeed: number
+    Scattering: number
+    GainSight: number
+    MarksmanAccuratyCoef: number
+    VisibleDistance: number
+    DistToSleep: number
+    DistToActivate: number
+    MagnetPower: number
+    DistToPersueAxemanCoef: number
+    KhorovodChance: number
+}
+
+interface SpawnPointParam {
+    Id: string
+    Position: Position
+    Rotation: number
+    Sides: Side[]
+    Categories: Category[]
+    Infiltration: Name
+    DelayToCanSpawnSec: number
+    ColliderParams: ColliderParams
+    BotZoneName: string
+}
+
+interface ColliderParams {
+    _parent: Parent
+    _props: Props
+}
+
+interface Props {
+    Center: Position
+    Radius?: number
+    Size?: Position
+}
+
+interface Position {
+    x: number
+    y: number
+    z: number
+}
+
+interface Exit {
+    Name: string
+    EntryPoints: Name
+    Chance: number
+    Id: string
+    MinTime: number
+    MaxTime: number
+    PlayersCount: number
+    ExfiltrationTime: number
+}
+
+interface MaxItemCountInLocation {
+    TemplateId: string
+    Value: number
+}
+
+interface Wave {
+    number: number
+    time_min: number
+    time_max: number
+    slots_min: number
+    slots_max: number
+    SpawnPoints: string
+    BotSide: Side
+    BotPreset: string
+    WildSpawnType: string
+    isPlayers: boolean
 }

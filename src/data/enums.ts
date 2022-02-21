@@ -1,3 +1,13 @@
+const enum Maps {
+    Customs = 'customs',
+    Factory = 'factory',
+    Interchange = 'interchange',
+    Lighthouse = 'lighthouse',
+    Reserve = 'reserve',
+    Shoreline = 'shoreline',
+    Woods = 'woods'
+}
+
 const enum ArmorMaterial {
     Aluminium = 'Aluminium',
     Aramid = 'Aramid',
@@ -414,4 +424,19 @@ const enum TarkovToolsTypes {
     Rig = 'rig',
     Suppressor = 'suppressor',
     Wearable = 'wearable'
+}
+
+const enum Category {
+    Bot = 'Bot',
+    Player = 'Player'
+}
+
+const enum Parent {
+    SpawnBoxParams = 'SpawnBoxParams',
+    SpawnSphereParams = 'SpawnSphereParams'
+}
+
+const enum Side {
+    All = 'All',
+    Savage = 'Savage'
 }

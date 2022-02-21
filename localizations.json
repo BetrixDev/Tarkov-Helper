@@ -77,6 +77,25 @@
         "Sensitivity: {0}%": "Sensitivity: {0}%",
         "No size value": "No size value",
         "Class {0}: {1}%": "Class {0}: {1}%",
-        "First Shot Penetration Chances": "First Shot Penetration Chances"
+        "First Shot Penetration Chances": "First Shot Penetration Chances",
+        "In Game": "In Game",
+        "All Floors": "All Floors",
+        "Basement": "Basement",
+        "General": "General",
+        "General 2": "General 2",
+        "Stashes": "Stashes",
+        "Dorms": "Dorms",
+        "Keys": "Keys",
+        "Underground": "Underground",
+        "Resort Loot": "Resort Loot",
+        "Key Spawns": "Key Spawns",
+        "Map Genie": "Map Genie",
+        "Click the buttons below to view maps": "Click the buttons below to view maps",
+        "Raid Time": "Raid Time",
+        "Player Count": "Player Count",
+        "Has Insurance?": "Has Insurance?",
+        "Exits": "Exits",
+        "{0} {1} Map": "{0} {1} Map",
+        "Map created by: {0}": "Map created by: {0}"
     }
 }
