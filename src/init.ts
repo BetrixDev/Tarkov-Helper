@@ -10,7 +10,6 @@ async function init() {
     if (existsSync('./data/')) await rm('./data/', { recursive: true, force: true })
 
     mkdirSync('./data')
-    mkdirSync('./data/pricehistory')
 
     await cron()
 
