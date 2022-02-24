@@ -105,6 +105,12 @@
         "{0}d ago": "{0}d ago",
         "Right Now": "Right Now",
         "{0} Price": "{0} Price",
-        "{0}d Price History": "{0}d Price History"
+        "{0}d Price History": "{0}d Price History",
+        "Experience Calculator": "Experience Calculator",
+        "Experience Gap from {0} to {1}": "Experience Gap from {0} to {1}",
+        "xp": "xp",
+        "Experience Gap from {0}xp to {1}": "Experience Gap from {0}xp to {1}",
+        "Both level values are the same": "Both level values are the same",
+        "There was an error with the level values inputed": "There was an error with the level values inputed"
     }
 }
