@@ -8,6 +8,7 @@ import { formatPrice, handleCommandInteraction, round, THEmbed, translation } fr
 import axios from 'axios'
 import { isId } from '../data/cache'
 import { ChartJSNodeCanvas } from 'chartjs-node-canvas'
+import logger from '../config/logger'
 
 const PRICE_HISTORY_URL = process.env.PRICE_HISTORY_URL as string
 
@@ -79,7 +80,7 @@ export class PriceHistoryCommand {
                         respond({
                             embeds: [
                                 new THEmbed()
-                                    .setTitle(`Price History Graph`)
+                                    .setTitle(t('Price History Graph'))
                                     .addFields(
                                         {
                                             name: t('Shown Items'),
@@ -91,7 +92,7 @@ export class PriceHistoryCommand {
                                                 .join('\n'),
                                             inline: true
                                         },
-                                        { name: 'Range', value: chart.range.toString(), inline: true }
+                                        { name: t('Range'), value: chart.range.toString(), inline: true }
                                     )
                                     .setImage('attachment://chart.png')
                             ],
@@ -153,9 +154,13 @@ export class PriceChart {
 
                 const itemPriceData = await axios
                     .get<PriceHistoryResponse>(`${PRICE_HISTORY_URL}/${id}/${this.range}`)
-                    .then((res) => res.data.pricehistory)
+                    .then((res) => {
+                        if (res.status === 200) {
+                            return res.data.pricehistory
+                        }
+                    })
 
-                chartData.push({ item, points: itemPriceData })
+                if (itemPriceData) chartData.push({ item, points: itemPriceData })
             }
 
             const chart = new ChartJSNodeCanvas({
@@ -223,7 +228,7 @@ export class PriceChart {
                 }
             })
         } catch (e) {
-            console.log(e)
+            logger.warn('Pricehistory', 'Error creating chart', e)
             return undefined
         }
     }

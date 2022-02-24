@@ -96,6 +96,15 @@
         "Has Insurance?": "Has Insurance?",
         "Exits": "Exits",
         "{0} {1} Map": "{0} {1} Map",
-        "Map created by: {0}": "Map created by: {0}"
+        "Map created by: {0}": "Map created by: {0}",
+        "There was en error generating your chart, please try again": "There was en error generating your chart, please try again",
+        "Price History Graph": "Price History Graph",
+        "Shown Items": "Shown Items",
+        "Range": "Range",
+        "{0}h ago": "{0}h ago",
+        "{0}d ago": "{0}d ago",
+        "Right Now": "Right Now",
+        "{0} Price": "{0} Price",
+        "{0}d Price History": "{0}d Price History"
     }
 }
