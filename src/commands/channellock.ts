@@ -2,8 +2,8 @@ import 'reflect-metadata'
 import { TextChannel, CommandInteraction, InteractionReplyOptions, Client } from 'discord.js'
 import { Discord, Slash, SlashOption } from 'discordx'
 import { container, injectable } from 'tsyringe'
-import { ServerDatabase } from '../database/server'
-import { translation } from '../lib'
+import { handleCommandInteraction, translation } from '../lib'
+import { setDatabase } from '../database/server'
 
 enum ErrorMessages {
     MUST_BE_OWNER = 'You must be the owner of this server to use this command',
@@ -14,8 +14,6 @@ enum ErrorMessages {
 @Discord()
 @injectable()
 export class ChannelLockCommand {
-    constructor(private _servers: ServerDatabase) {}
-
     private isOwner(interaction: CommandInteraction) {
         return interaction.user.id === interaction.guild?.ownerId
     }
@@ -31,37 +29,41 @@ export class ChannelLockCommand {
         channel: TextChannel,
         interaction: CommandInteraction,
         client: Client,
-        serverData: ServerData
-    ): Promise<InteractionReplyOptions> {
-        return new Promise(async (respond, error) => {
-            const t = translation(serverData.Language)
+        { serverData }: GuardData
+    ) {
+        handleCommandInteraction(
+            interaction,
+            serverData.Language,
+            new Promise(async (respond, error) => {
+                const t = translation(serverData.Language)
 
-            if (!this.isOwner(interaction)) {
-                error(t(ErrorMessages.MUST_BE_OWNER))
-            }
-
-            const db = container.resolve(ChannelLockCommand)
-
-            if (channel) {
-                const success = await db._servers.set(interaction.guildId, 'ChannelLock', channel)
-
-                if (success) {
-                    respond({
-                        content: t('Changed channel lock to: **{0}**:', channel.name),
-                        ephemeral: true
-                    })
-                } else {
-                    error(t(ErrorMessages.UNKNWON_ERROR))
+                if (!this.isOwner(interaction)) {
+                    error(t(ErrorMessages.MUST_BE_OWNER))
                 }
-            } else {
-                const success = await db._servers.set(interaction.guildId, 'ChannelLock', '')
 
-                if (success) {
-                    respond({ content: t('Reset channel lock'), ephemeral: true })
+                const db = container.resolve(ChannelLockCommand)
+
+                if (channel) {
+                    const success = await setDatabase(interaction.guildId, 'ChannelLock', channel)
+
+                    if (success) {
+                        respond({
+                            content: t('Changed channel lock to: **{0}**:', channel.name),
+                            ephemeral: true
+                        })
+                    } else {
+                        error(t(ErrorMessages.UNKNWON_ERROR))
+                    }
                 } else {
-                    error(t(ErrorMessages.UNKNOWN_ERROR_RESET))
+                    const success = await setDatabase(interaction.guildId, 'ChannelLock', '')
+
+                    if (success) {
+                        respond({ content: t('Reset channel lock'), ephemeral: true })
+                    } else {
+                        error(t(ErrorMessages.UNKNOWN_ERROR_RESET))
+                    }
                 }
-            }
-        })
+            })
+        )
     }
 }

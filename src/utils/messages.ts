@@ -1,6 +1,9 @@
-import { Interaction, InteractionReplyOptions, MessageEmbed } from 'discord.js'
+import { CommandInteraction, Interaction, InteractionReplyOptions, MessageEmbed } from 'discord.js'
 import botConfig from '../config/bot-config'
+import logger from '../config/logger'
 import { translation } from '../lib'
+
+const Namespace = 'Messages'
 
 export function ErrorReponse(message: string, interaction: Interaction, language: Languages): InteractionReplyOptions {
     const t = translation(language)
@@ -42,4 +45,33 @@ export class THEmbed extends MessageEmbed {
         super()
         this.setColor(altColor ? botConfig.botSettings.altColor : botConfig.botSettings.color)
     }
+}
+
+/**Calls messageFunc and passes the return value to interaction.reply() or will catch the method and format the string into an errorMessage*/
+export const handleCommandInteraction = (
+    interaction: CommandInteraction,
+    language: Languages,
+    messageFunc: Promise<InteractionReplyOptions>
+) => {
+    const start = Date.now()
+    let end: number
+
+    messageFunc
+        .then((r) => {
+            end = Date.now()
+            interaction.reply(r)
+        })
+        .catch((r) => {
+            end = Date.now()
+            logger.warn('Messages', 'Error executing command', r)
+            interaction.reply(ErrorReponse(r, interaction, language))
+        })
+        .finally(() => {
+            logger.info(
+                'Messages',
+                `Completed Interaction in ${Date.now() - interaction.createdTimestamp}ms and got the message in ${
+                    end - start
+                }ms`
+            )
+        })
 }

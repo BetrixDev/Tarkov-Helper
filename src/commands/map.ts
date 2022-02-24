@@ -4,7 +4,7 @@ import { injectable } from 'tsyringe'
 import { fetchData } from '../data/cache'
 import { ButtonInteraction, Client, CommandInteraction, InteractionReplyOptions, MessageActionRow } from 'discord.js'
 import { Location } from '../data/classes/location'
-import { THEmbed, translation } from '../lib'
+import { handleCommandInteraction, THEmbed, translation } from '../lib'
 
 const mapImages = fetchData<MapImageData>('maps')
 const mapUrlPrefix = 'https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/map_icons'
@@ -30,56 +30,60 @@ export class MapCommand {
         mapName: string,
         interaction: CommandInteraction,
         client: Client,
-        { Language }: ServerData
-    ): Promise<InteractionReplyOptions> {
-        return new Promise((respond, error) => {
-            const t = translation(Language)
-            const map = new Location(mapName as Maps, Language)
+        { serverData: { Language } }: GuardData
+    ) {
+        handleCommandInteraction(
+            interaction,
+            Language,
+            new Promise((respond, error) => {
+                const t = translation(Language)
+                const map = new Location(mapName as Maps, Language)
 
-            respond({
-                embeds: [
-                    new THEmbed()
-                        .setTitle(map.name)
-                        .setThumbnail(`${mapUrlPrefix}/${map.name.toLowerCase()}.png`)
-                        .setDescription(map.description)
-                        .setFooter({ text: t('Click the buttons below to view maps') })
-                        .setFields(
-                            {
-                                name: t('Raid Time'),
-                                value: t('{0} minutes', map.raidTime),
-                                inline: true
-                            },
-                            {
-                                name: t('Player Count'),
-                                value: `${map.playerCount.min} - ${map.playerCount.max}`,
-                                inline: true
-                            },
-                            {
-                                name: t('Has Insurance?'),
-                                value: map.hasInsurance ? t('yes') : t('no'),
-                                inline: true
-                            },
-                            {
-                                name: t('Exits'),
-                                value: '\u200b',
-                                inline: true
-                            },
-                            {
-                                name: '\u200b',
-                                value: '\u200b',
-                                inline: true
-                            },
-                            {
-                                name: '\u200b',
-                                value: '\u200b',
-                                inline: true
-                            },
-                            ...map.exfilInfo
-                        )
-                ],
-                components: [new MessageActionRow().addComponents(map.mapButtons)]
+                respond({
+                    embeds: [
+                        new THEmbed()
+                            .setTitle(map.name)
+                            .setThumbnail(`${mapUrlPrefix}/${map.name.toLowerCase()}.png`)
+                            .setDescription(map.description)
+                            .setFooter({ text: t('Click the buttons below to view maps') })
+                            .setFields(
+                                {
+                                    name: t('Raid Time'),
+                                    value: t('{0} minutes', map.raidTime),
+                                    inline: true
+                                },
+                                {
+                                    name: t('Player Count'),
+                                    value: `${map.playerCount.min} - ${map.playerCount.max}`,
+                                    inline: true
+                                },
+                                {
+                                    name: t('Has Insurance?'),
+                                    value: map.hasInsurance ? t('yes') : t('no'),
+                                    inline: true
+                                },
+                                {
+                                    name: t('Exits'),
+                                    value: '\u200b',
+                                    inline: true
+                                },
+                                {
+                                    name: '\u200b',
+                                    value: '\u200b',
+                                    inline: true
+                                },
+                                {
+                                    name: '\u200b',
+                                    value: '\u200b',
+                                    inline: true
+                                },
+                                ...map.exfilInfo
+                            )
+                    ],
+                    components: [new MessageActionRow().addComponents(map.mapButtons)]
+                })
             })
-        })
+        )
     }
 
     @ButtonComponent(/^map__/)

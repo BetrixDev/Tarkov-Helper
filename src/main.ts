@@ -12,6 +12,7 @@ import { isDev } from './lib'
 import { updateData } from './data/cache'
 import { initEngines } from './helpers/search_engines/item-engine'
 import { existsSync } from 'fs'
+import { InjectServerData } from './guards/inject-data'
 
 const Namespace = 'Main'
 
@@ -20,9 +21,10 @@ dotenv.config()
 DIService.container = container
 
 const client = new Client({
-    intents: [Intents.FLAGS.GUILDS]
+    intents: [Intents.FLAGS.GUILDS],
     // If you only want to use global commands only, comment this line
-    // botGuilds: [(client) => client.guilds.cache.map((guild) => guild.id)]
+    // botGuilds: [(client) => client.guilds.cache.map((guild) => guild.id)],
+    guards: [InjectServerData]
 })
 
 client.once('ready', async () => {

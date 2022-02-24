@@ -6,3 +6,7 @@ interface ServerData {
     Cooldown: number
     Language: Languages
 }
+
+interface GuardData {
+    serverData: ServerData
+}

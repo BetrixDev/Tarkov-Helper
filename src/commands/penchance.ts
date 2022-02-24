@@ -6,7 +6,7 @@ import { isId } from '../data/cache'
 import { Item } from '../data/classes/item'
 import { autoCompleteResults } from '../helpers/search_engines/item-engine'
 import { BallisticsCalculator } from '../helpers/simulator/ballistics'
-import { round, THEmbed, translation, TranslationFunction } from '../lib'
+import { handleCommandInteraction, round, THEmbed, translation, TranslationFunction } from '../lib'
 import { ChartJSNodeCanvas } from 'chartjs-node-canvas'
 
 export enum ErrorMessages {
@@ -34,42 +34,46 @@ export class PenChanceCommand {
         armorId: string,
         interaction: CommandInteraction,
         client: Client,
-        { Language }: ServerData
-    ): Promise<InteractionReplyOptions> {
-        return new Promise(async (respond, error) => {
-            const t = translation(Language)
+        { serverData: { Language } }: GuardData
+    ) {
+        handleCommandInteraction(
+            interaction,
+            Language,
+            new Promise(async (respond, error) => {
+                const t = translation(Language)
 
-            // Make sure item ids are actual ids
-            if (!isId(bulletId) || !isId(armorId)) error(t(ErrorMessages.USE_AUTO_COMPLETE))
+                // Make sure item ids are actual ids
+                if (!isId(bulletId) || !isId(armorId)) error(t(ErrorMessages.USE_AUTO_COMPLETE))
 
-            const bullet = new Item(bulletId, Language)
-            const armor = new Item(armorId, Language)
-            const simulator = new BallisticsCalculator(armor, bullet)
+                const bullet = new Item(bulletId, Language)
+                const armor = new Item(armorId, Language)
+                const simulator = new BallisticsCalculator(armor, bullet)
 
-            const simResults = simulator.simulate()
-            const chart = await createChart(simulator.durabilityPenchanceData, bullet, armor, t)
+                const simResults = simulator.simulate()
+                const chart = await createChart(simulator.durabilityPenchanceData, bullet, armor, t)
 
-            respond({
-                embeds: [
-                    new THEmbed()
-                        .setTitle(t('Penetration Calculator'))
-                        .setImage('attachment://chart.png')
-                        .addFields(
-                            {
-                                name: t('Average Shots to Pen'),
-                                value: (Math.round(simResults.averageShotsToPen * 10000) / 10000).toString(),
-                                inline: true
-                            },
-                            {
-                                name: t('Average Shots to Zero'),
-                                value: (Math.round(simResults.averageShotsToZero * 10000) / 10000).toString(),
-                                inline: true
-                            }
-                        )
-                ],
-                files: [new MessageAttachment(chart, 'chart.png')]
+                respond({
+                    embeds: [
+                        new THEmbed()
+                            .setTitle(t('Penetration Calculator'))
+                            .setImage('attachment://chart.png')
+                            .addFields(
+                                {
+                                    name: t('Average Shots to Pen'),
+                                    value: (Math.round(simResults.averageShotsToPen * 10000) / 10000).toString(),
+                                    inline: true
+                                },
+                                {
+                                    name: t('Average Shots to Zero'),
+                                    value: (Math.round(simResults.averageShotsToZero * 10000) / 10000).toString(),
+                                    inline: true
+                                }
+                            )
+                    ],
+                    files: [new MessageAttachment(chart, 'chart.png')]
+                })
             })
-        })
+        )
     }
 }
 

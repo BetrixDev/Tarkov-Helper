@@ -1,9 +1,8 @@
 import 'reflect-metadata'
-import { Client, CommandInteraction, InteractionReplyOptions } from 'discord.js'
-import { Discord, Slash, SlashChoice, SlashOption } from 'discordx'
-import { container, injectable } from 'tsyringe'
-import { ServerDatabase } from '../database/server'
-import { translation } from '../lib'
+import { CommandInteraction } from 'discord.js'
+import { Client, Discord, Slash, SlashChoice, SlashOption } from 'discordx'
+import { handleCommandInteraction, translation } from '../lib'
+import { setDatabase } from '../database/server'
 
 enum ErrorMessages {
     MUST_BE_OWNER = 'You must be the owner of this server to use this command',
@@ -11,10 +10,7 @@ enum ErrorMessages {
 }
 
 @Discord()
-@injectable()
 export class LanguageCommand {
-    constructor(private _servers: ServerDatabase) {}
-
     private isOwner(interaction: CommandInteraction) {
         return interaction.user.id === interaction.guild?.ownerId
     }
@@ -31,24 +27,26 @@ export class LanguageCommand {
         language: string,
         interaction: CommandInteraction,
         client: Client,
-        serverData: ServerData
-    ): Promise<InteractionReplyOptions> {
-        return new Promise(async (respond, error) => {
-            const t = translation(language)
+        { serverData: { Language } }: GuardData
+    ) {
+        handleCommandInteraction(
+            interaction,
+            Language,
+            new Promise(async (respond, error) => {
+                const t = translation(language)
 
-            if (!this.isOwner(interaction)) {
-                error(t(ErrorMessages.MUST_BE_OWNER))
-            }
+                if (!this.isOwner(interaction)) {
+                    error(t(ErrorMessages.MUST_BE_OWNER))
+                }
 
-            const db = container.resolve(LanguageCommand)._servers
+                const success = await setDatabase(interaction.guildId ?? '', 'Language', language)
 
-            const success = await db.set(interaction.guildId ?? '', 'Language', language)
-
-            if (success) {
-                respond({ content: t('Successfully set the language for this server'), ephemeral: true })
-            } else {
-                error(t(ErrorMessages.UNKNOWN_ERROR))
-            }
-        })
+                if (success) {
+                    respond({ content: t('Successfully set the language for this server'), ephemeral: true })
+                } else {
+                    error(t(ErrorMessages.UNKNOWN_ERROR))
+                }
+            })
+        )
     }
 }

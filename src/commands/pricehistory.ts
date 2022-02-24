@@ -4,7 +4,7 @@ import { injectable } from 'tsyringe'
 import { AutocompleteInteraction, CommandInteraction, InteractionReplyOptions, MessageAttachment } from 'discord.js'
 import { autoCompleteResults } from '../helpers/search_engines/item-engine'
 import { Item } from '../data/classes/item'
-import { formatPrice, round, THEmbed, translation } from '../lib'
+import { formatPrice, handleCommandInteraction, round, THEmbed, translation } from '../lib'
 import axios from 'axios'
 import { isId } from '../data/cache'
 import { ChartJSNodeCanvas } from 'chartjs-node-canvas'
@@ -60,43 +60,47 @@ export class PriceHistoryCommand {
         item5: string | undefined,
         interaction: CommandInteraction,
         client: Client,
-        { Language }: ServerData
-    ): Promise<InteractionReplyOptions> {
-        return new Promise(async (respond, error) => {
-            const t = translation(Language)
+        { serverData: { Language } }: GuardData
+    ) {
+        handleCommandInteraction(
+            interaction,
+            Language,
+            new Promise(async (respond, error) => {
+                const t = translation(Language)
 
-            const chart = new PriceChart()
-            chart.range = range
-            ;[item, item2, item3, item4, item5].forEach((item) => chart.addItem(item))
+                const chart = new PriceChart()
+                chart.range = range
+                ;[item, item2, item3, item4, item5].forEach((item) => chart.addItem(item))
 
-            chart.render(Language).then((img) => {
-                if (!img) {
-                    error(t('There was en error generating your chart, please try again'))
-                } else {
-                    respond({
-                        embeds: [
-                            new THEmbed()
-                                .setTitle(`Price History Graph`)
-                                .addFields(
-                                    {
-                                        name: t('Shown Items'),
-                                        value: chart.items
-                                            .map((id, i) => {
-                                                const item = new Item(id, Language)
-                                                return `${colors[i].emoji} ${item.shortName}`
-                                            })
-                                            .join('\n'),
-                                        inline: true
-                                    },
-                                    { name: 'Range', value: chart.range.toString(), inline: true }
-                                )
-                                .setImage('attachment://chart.png')
-                        ],
-                        files: [new MessageAttachment(img, 'chart.png')]
-                    })
-                }
+                chart.render(Language).then((img) => {
+                    if (!img) {
+                        error(t('There was en error generating your chart, please try again'))
+                    } else {
+                        respond({
+                            embeds: [
+                                new THEmbed()
+                                    .setTitle(`Price History Graph`)
+                                    .addFields(
+                                        {
+                                            name: t('Shown Items'),
+                                            value: chart.items
+                                                .map((id, i) => {
+                                                    const item = new Item(id, Language)
+                                                    return `${colors[i].emoji} ${item.shortName}`
+                                                })
+                                                .join('\n'),
+                                            inline: true
+                                        },
+                                        { name: 'Range', value: chart.range.toString(), inline: true }
+                                    )
+                                    .setImage('attachment://chart.png')
+                            ],
+                            files: [new MessageAttachment(img, 'chart.png')]
+                        })
+                    }
+                })
             })
-        })
+        )
     }
 }
 

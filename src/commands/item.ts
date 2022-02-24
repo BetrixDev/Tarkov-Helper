@@ -17,7 +17,15 @@ import { fetchData, isId } from '../data/cache'
 import { Item } from '../data/classes/item'
 import { Barter } from '../data/classes/barter'
 import { QuestStats } from '../helpers/item_classes/quest-stats'
-import { capitalizeWords, formatNumber, formatPrice, getItemImage, THEmbed, translation } from '../lib'
+import {
+    capitalizeWords,
+    formatNumber,
+    formatPrice,
+    getItemImage,
+    handleCommandInteraction,
+    THEmbed,
+    translation
+} from '../lib'
 import { getItemFields, getStatImage } from '../helpers/item_classes/game-stats'
 
 type MenuActions = 'general' | 'game' | 'price' | 'barter'
@@ -77,15 +85,19 @@ export class ItemCommand {
         id: string,
         interaction: CommandInteraction,
         client: Client,
-        { Language }: ServerData
-    ): Promise<InteractionReplyOptions> {
-        return new Promise((respond, error) => {
-            try {
-                respond(this.message(id, Language))
-            } catch (e) {
-                error(e)
-            }
-        })
+        { serverData: { Language } }: GuardData
+    ) {
+        handleCommandInteraction(
+            interaction,
+            Language,
+            new Promise((respond, error) => {
+                try {
+                    respond(this.message(id, Language))
+                } catch (e) {
+                    error(e)
+                }
+            })
+        )
     }
 
     message(id: string, language: Languages): InteractionReplyOptions {

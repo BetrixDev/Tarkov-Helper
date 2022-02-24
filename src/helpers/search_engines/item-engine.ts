@@ -4,7 +4,7 @@ import fuse from 'fuse.js'
 import { container } from 'tsyringe'
 import { fetchData } from '../../data/cache'
 import { Item } from '../../data/classes/item'
-import { ServerDatabase } from '../../database/server'
+import { queryDatabase } from '../../database/server'
 
 interface ExtraOptions {
     types?: ItemType[]
@@ -98,8 +98,7 @@ export const itemSearchEngine = (input: string, language: Languages, extras?: Ex
 }
 
 export const autoCompleteResults = async (interaction: AutocompleteInteraction, extras?: ExtraOptions) => {
-    const db = container.resolve(ServerDatabase)
-    const serverData = await db.query(interaction.guildId ?? '')
+    const serverData = await queryDatabase(interaction.guildId ?? '')
 
     const input = interaction.options.getFocused(true).value.toString()
 
