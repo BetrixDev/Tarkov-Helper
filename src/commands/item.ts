@@ -51,10 +51,10 @@ export class ItemCommand {
             } else if (action === 'game') {
                 interaction.update(this.statsMessage(id, language))
             } else {
-                interaction.update(this.message(id, language))
+                interaction.update(ItemCommand.message(id, language))
             }
         } catch {
-            interaction.update(this.message(id, language))
+            interaction.update(ItemCommand.message(id, language))
         }
     }
 
@@ -92,7 +92,7 @@ export class ItemCommand {
             Language,
             new Promise((respond, error) => {
                 try {
-                    respond(this.message(id, Language))
+                    respond(ItemCommand.message(id, Language))
                 } catch (e) {
                     error(e)
                 }
@@ -100,7 +100,7 @@ export class ItemCommand {
         )
     }
 
-    message(id: string, language: Languages): InteractionReplyOptions {
+    static message(id: string, language: Languages): InteractionReplyOptions {
         const t = translation(language)
 
         // Make sure item is a real item
@@ -250,7 +250,7 @@ export class ItemCommand {
                     .setFields(fields)
                     .setThumbnail(getItemImage(id))
             ],
-            components: [this.menu(language, id, 'general')]
+            components: [menu(language, id, 'general')]
         }
     }
 
@@ -313,7 +313,7 @@ export class ItemCommand {
                         .setDescription(`[Wiki Link](${item.wikiLink})\nNo Barters`)
                         .addFields(fields)
                 ],
-                components: [this.menu(language, id, 'barter')]
+                components: [menu(language, id, 'barter')]
             }
         }
 
@@ -325,7 +325,7 @@ export class ItemCommand {
                     .setDescription(`[Wiki Link](${item.wikiLink})`)
                     .setFields(...barterData.barterMessage.slice(page * 9, page * 9 + 9), ...fields)
             ],
-            components: [this.menu(language, id, 'barter')]
+            components: [menu(language, id, 'barter')]
         }
 
         if (barterData.barters.length > 1) {
@@ -342,7 +342,7 @@ export class ItemCommand {
                         .setDisabled(page === pages - 1)
                         .setStyle('PRIMARY')
                 ),
-                this.menu(language, id, 'barter')
+                menu(language, id, 'barter')
             ]
         }
 
@@ -428,44 +428,44 @@ export class ItemCommand {
                             }
                         )
                 ],
-                components: [this.menu(language, id, 'price')]
+                components: [menu(language, id, 'price')]
             }
         }
     }
+}
 
-    menu(language: Languages, id: string, currentMessage: MenuActions) {
-        const t = translation(language)
+function menu(language: Languages, id: string, currentMessage: MenuActions) {
+    const t = translation(language)
 
-        return new MessageActionRow().addComponents(
-            new MessageSelectMenu()
-                .setCustomId(`itemmenu__${language}__${id}`)
-                .setPlaceholder(t('Select a Catagorey'))
-                .setOptions(
-                    {
-                        label: t('General Stats'),
-                        value: 'general',
-                        description: t('Basic stats of all catagories'),
-                        default: currentMessage === 'general'
-                    },
-                    {
-                        label: t('Game Stats'),
-                        value: 'game',
-                        description: t('Stats about how the item functions in game'),
-                        default: currentMessage === 'game'
-                    },
-                    {
-                        label: t('Price Stats'),
-                        value: 'price',
-                        description: t('Price stats about the item'),
-                        default: currentMessage === 'price'
-                    },
-                    {
-                        label: t('Barter Stats'),
-                        value: 'barter',
-                        description: t('Find how much barters for this item cost'),
-                        default: currentMessage === 'barter'
-                    }
-                )
-        )
-    }
+    return new MessageActionRow().addComponents(
+        new MessageSelectMenu()
+            .setCustomId(`itemmenu__${language}__${id}`)
+            .setPlaceholder(t('Select a Catagorey'))
+            .setOptions(
+                {
+                    label: t('General Stats'),
+                    value: 'general',
+                    description: t('Basic stats of all catagories'),
+                    default: currentMessage === 'general'
+                },
+                {
+                    label: t('Game Stats'),
+                    value: 'game',
+                    description: t('Stats about how the item functions in game'),
+                    default: currentMessage === 'game'
+                },
+                {
+                    label: t('Price Stats'),
+                    value: 'price',
+                    description: t('Price stats about the item'),
+                    default: currentMessage === 'price'
+                },
+                {
+                    label: t('Barter Stats'),
+                    value: 'barter',
+                    description: t('Find how much barters for this item cost'),
+                    default: currentMessage === 'barter'
+                }
+            )
+    )
 }

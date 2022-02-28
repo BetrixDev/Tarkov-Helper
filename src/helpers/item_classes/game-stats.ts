@@ -1,7 +1,7 @@
 import { EmbedFieldData, MessageEmbedImage } from 'discord.js'
 import { fetchData } from '../../data/cache'
 import { Item } from '../../data/classes/item'
-import { TranslationFunction, round } from '../../lib'
+import { TranslationFunction, round, capitalizeWords } from '../../lib'
 import { BallisticsCalculator } from '../simulator/ballistics'
 
 interface ArmorMaterial {
@@ -19,7 +19,7 @@ interface ContainerSize {
 interface ItemField {
     gameName: keyof RawItemProps
     displayName: string
-    format: (value: any, data: RawItemProps, t: TranslationFunction, item: Item) => string
+    format?: (value: any, data: RawItemProps, t: TranslationFunction, item: Item) => string
     position?: number
 }
 
@@ -158,30 +158,170 @@ const itemFields: ItemField[] = [
                 t(`Class {0}: {1}%`, 6, round(class6, '00'))
             ].join('\n')
         }
+    },
+    {
+        gameName: 'isSecured',
+        displayName: 'Secure Container?',
+        format: (value: boolean, data, t) => `${value ? t('Yes') : t('No')}`
+    },
+    {
+        gameName: 'explDelay',
+        displayName: 'Fuse Time',
+        format: (value: number) => `${value}s`
+    },
+    {
+        gameName: 'MinExplosionDistance',
+        displayName: 'Explosion Distance',
+        format: (value, data) => `${data.MinExplosionDistance}/${data.MaxExplosionDistance}m`
+    },
+    {
+        gameName: 'FragmentsCount',
+        displayName: 'Fragment Count',
+        format: (value: number) => `${value}`
+    },
+    {
+        gameName: 'Strength',
+        displayName: 'Fragment Damage',
+        format: (value: number) => `${value}`
+    },
+    {
+        gameName: 'Strength',
+        displayName: 'Max Damage',
+        format: (value, data) => `${Number(data.FragmentsCount) * Number(data.Strength)}`
+    },
+    {
+        gameName: 'Distortion',
+        displayName: 'Distortion',
+        format: (value: number) => `${value}`
+    },
+    {
+        gameName: 'CompressorTreshold',
+        displayName: 'Compressor Treshold',
+        format: (value: number) => `${value}`
+    },
+    {
+        gameName: 'CompressorAttack',
+        displayName: 'Compressor Attack',
+        format: (value: number) => `${value}`
+    },
+    {
+        gameName: 'CompressorRelease',
+        displayName: 'Compressor Release',
+        format: (value: number) => `${value}`
+    },
+    {
+        gameName: 'CompressorGain',
+        displayName: 'Compressor Gain',
+        format: (value: number) => `${value}`
+    },
+    {
+        gameName: 'CompressorVolume',
+        displayName: 'Compressor Volume',
+        format: (value: number) => `${value}`
+    },
+    {
+        gameName: 'AmbientVolume',
+        displayName: 'Ambient Volume',
+        format: (value: number) => `${value}`
+    },
+    {
+        gameName: 'DryVolume',
+        displayName: 'Dry Volume',
+        format: (value: number) => `${value}`
+    },
+    {
+        gameName: 'CutoffFreq',
+        displayName: 'Cutoff Frequency',
+        format: (value: number) => `${value}`
+    },
+    {
+        gameName: 'Resonance',
+        displayName: 'Resonance',
+        format: (value: number) => `${value}`
+    },
+    {
+        gameName: 'RecoilForceUp',
+        displayName: 'Vertical Recoil',
+        format: (value: number) => `${value}`
+    },
+    {
+        gameName: 'RecoilForceBack',
+        displayName: 'Horizontal Recoil',
+        format: (value: number) => `${value}`
+    },
+    {
+        gameName: 'weapFireType',
+        displayName: 'zFire Modes',
+        format: (value: string[]) => value.map((str) => capitalizeWords(str)).join('\n')
+    },
+    {
+        gameName: 'bFirerate',
+        displayName: 'Fire Rate',
+        format: (value: number) => `${value}`
+    },
+    {
+        gameName: 'Caliber',
+        displayName: 'Caliber',
+        format: (value: string) => value.replace('Caliber', '')
+    },
+    {
+        gameName: 'weapClass',
+        displayName: 'Weapon Type',
+        format: (value: string) => capitalizeWords(value)
+    },
+    {
+        gameName: 'Cartridges',
+        displayName: 'Mag Size',
+        format: (value: any[]) => `${value[0]._max_count}`
+    },
+    {
+        gameName: 'CheckTimeModifier',
+        displayName: 'Check Time',
+        format: (value: number) => `${value}%`
+    },
+    {
+        gameName: 'LoadUnloadModifier',
+        displayName: 'Load/Unload Time',
+        format: (value: number) => `+${value}%`
+    },
+    {
+        gameName: 'Loudness',
+        displayName: 'Loudness',
+        format: (value: number) => `${value !== 0 ? value : ''}`
+    },
+    {
+        gameName: 'buckshotBullets',
+        displayName: 'Pellets',
+        format: (value: number) => `${value}`
     }
 ]
 
 export const getItemFields = (item: Item, t: TranslationFunction): EmbedFieldData[] => {
     const itemProps = item.props
 
-    return (
-        itemFields
-            .filter(({ gameName }) => itemProps[gameName] !== undefined)
-            // Sort fields so the placement is consistent in the message
-            .sort((a, b) => (a.displayName < b.displayName ? -1 : 1))
-            .map(({ gameName, displayName, format }) => {
-                const value = itemProps[gameName]
+    let fields = itemFields
+        .filter(({ gameName }) => itemProps[gameName] !== undefined)
+        // Sort fields so the placement is consistent in the message
+        .sort((a, b) => (a.displayName < b.displayName ? -1 : 1))
+        .map(({ gameName, displayName, format }) => {
+            const value = itemProps[gameName]
 
-                return {
-                    // Some fields start with z to make them be placed at the end of the embed, so we remove it
-                    name: t(displayName.startsWith('z') ? displayName.substring(1) : displayName),
-                    value: format(value, itemProps, t, item),
-                    inline: true
-                }
-            })
-            // Some format functions return '' to indicate not to show them even though the props matched
-            .filter(({ value }) => value !== '')
-    )
+            return {
+                // Some fields start with z to make them be placed at the end of the embed, so we remove it
+                name: t(displayName.startsWith('z') ? displayName.substring(1) : displayName),
+                value: format ? format(value, itemProps, t, item) : `${value}`,
+                inline: true
+            }
+        })
+        // Some format functions return '' to indicate not to show them even though the props matched
+        .filter(({ value }) => value !== '')
+
+    // Make the length of the array dvisible by 3 so the fields line up nicely
+    while (fields.length % 3 !== 0) {
+        fields.push({ name: '\u200b', value: '\u200b', inline: true })
+    }
+
+    return fields
 }
 
 // For some items, we want to display images of their functionality

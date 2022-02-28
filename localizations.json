@@ -111,6 +111,13 @@
         "xp": "xp",
         "Experience Gap from {0}xp to {1}": "Experience Gap from {0}xp to {1}",
         "Both level values are the same": "Both level values are the same",
-        "There was an error with the level values inputed": "There was an error with the level values inputed"
+        "There was an error with the level values inputed": "There was an error with the level values inputed",
+        "Please enter a valid level between 1 and {0}": "Please enter a valid level between 1 and {0}",
+        "Dogtag Price": "Dogtag Price",
+        "Level of Dogtag": "Level of Dogtag",
+        "Price of Dogtag": "Price of Dogtag",
+        "Secure Container?": "Secure Container?",
+        "Yes": "Yes",
+        "No": "No"
     }
 }

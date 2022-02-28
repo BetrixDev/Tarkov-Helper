@@ -32,58 +32,58 @@ export class MapCommand {
         client: Client,
         { serverData: { Language } }: GuardData
     ) {
-        handleCommandInteraction(
-            interaction,
-            Language,
-            new Promise((respond, error) => {
-                const t = translation(Language)
-                const map = new Location(mapName as Maps, Language)
+        handleCommandInteraction(interaction, Language, MapCommand.message(mapName, Language))
+    }
 
-                respond({
-                    embeds: [
-                        new THEmbed()
-                            .setTitle(map.name)
-                            .setThumbnail(`${mapUrlPrefix}/${map.name.toLowerCase()}.png`)
-                            .setDescription(map.description)
-                            .setFooter({ text: t('Click the buttons below to view maps') })
-                            .setFields(
-                                {
-                                    name: t('Raid Time'),
-                                    value: t('{0} minutes', map.raidTime),
-                                    inline: true
-                                },
-                                {
-                                    name: t('Player Count'),
-                                    value: `${map.playerCount.min} - ${map.playerCount.max}`,
-                                    inline: true
-                                },
-                                {
-                                    name: t('Has Insurance?'),
-                                    value: map.hasInsurance ? t('yes') : t('no'),
-                                    inline: true
-                                },
-                                {
-                                    name: t('Exits'),
-                                    value: '\u200b',
-                                    inline: true
-                                },
-                                {
-                                    name: '\u200b',
-                                    value: '\u200b',
-                                    inline: true
-                                },
-                                {
-                                    name: '\u200b',
-                                    value: '\u200b',
-                                    inline: true
-                                },
-                                ...map.exfilInfo
-                            )
-                    ],
-                    components: [new MessageActionRow().addComponents(map.mapButtons)]
-                })
+    static message(mapName: string, language: Languages): Promise<InteractionReplyOptions> {
+        return new Promise((respond, error) => {
+            const t = translation(language)
+            const map = new Location(mapName as Maps, language)
+
+            respond({
+                embeds: [
+                    new THEmbed()
+                        .setTitle(map.name)
+                        .setThumbnail(`${mapUrlPrefix}/${map.name.toLowerCase()}.png`)
+                        .setDescription(map.description)
+                        .setFooter({ text: t('Click the buttons below to view maps') })
+                        .setFields(
+                            {
+                                name: t('Raid Time'),
+                                value: t('{0} minutes', map.raidTime),
+                                inline: true
+                            },
+                            {
+                                name: t('Player Count'),
+                                value: `${map.playerCount.min} - ${map.playerCount.max}`,
+                                inline: true
+                            },
+                            {
+                                name: t('Has Insurance?'),
+                                value: map.hasInsurance ? t('yes') : t('no'),
+                                inline: true
+                            },
+                            {
+                                name: t('Exits'),
+                                value: '\u200b',
+                                inline: true
+                            },
+                            {
+                                name: '\u200b',
+                                value: '\u200b',
+                                inline: true
+                            },
+                            {
+                                name: '\u200b',
+                                value: '\u200b',
+                                inline: true
+                            },
+                            ...map.exfilInfo
+                        )
+                ],
+                components: [new MessageActionRow().addComponents(map.mapButtons)]
             })
-        )
+        })
     }
 
     @ButtonComponent(/^map__/)
