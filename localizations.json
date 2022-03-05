@@ -118,6 +118,8 @@
         "Price of Dogtag": "Price of Dogtag",
         "Secure Container?": "Secure Container?",
         "Yes": "Yes",
-        "No": "No"
+        "No": "No",
+        "Trader restock times": "Trader restock times",
+        "Data from tarkov-tools.com": "Data from tarkov-tools.com"
     }
 }
