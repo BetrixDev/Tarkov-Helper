@@ -7,8 +7,16 @@ export class Trader {
     constructor(name: string, language: Languages) {
         const traderNames = fetchData<Locales>(language).trading
 
-        const traderData = Object.values(traderNames).find((data) => data.Nickname === name) as Trading
+        const [id] = this.traderObject(name)
 
-        this.name = traderData.Nickname
+        this.name = traderNames[id].Nickname
+    }
+
+    private traderObject(name: string) {
+        const traderNames = fetchData<Locales>('en').trading
+
+        const traderData = Object.entries(traderNames).find(([id, data]) => data.Nickname === name) as [string, Trading]
+
+        return traderData
     }
 }
