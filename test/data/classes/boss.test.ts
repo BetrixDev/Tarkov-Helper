@@ -1,7 +1,7 @@
 import { Boss } from '../../../src/data/classes/boss'
 import { updateData } from '../../../src/data/cache'
 
-const bosses = ['gluhar', 'killa', 'reshala', 'sanitar', 'shturman', 'tagilla']
+const bosses = ['bossGluhar', 'bossKilla', 'bossBully', 'bossSanitar', 'bossKojaniy', 'bossTagilla']
 
 describe('Boss Class Tests', () => {
     beforeAll(() => {
@@ -10,9 +10,17 @@ describe('Boss Class Tests', () => {
 
     bosses.forEach((name) => {
         it(`should grab data for ${name}`, () => {
-            const boss = new Boss(name as BossName, 'en')
+            const boss = new Boss(name as any, 'en')
 
-            expect(boss.name.toLowerCase()).toEqual(name)
+            expect(boss.name).toBeDefined()
+            expect(boss.hitpoints).toBeDefined()
+            expect(boss.attributes.length).toEqual(2)
+
+            if (name !== 'bossTagilla' && name !== 'bossKilla') {
+                expect(boss.followersAmount).toBeGreaterThan(0)
+            } else {
+                expect(boss.followersAmount).toEqual(0)
+            }
         })
     })
 })
