@@ -1,4 +1,4 @@
-enum Maps {
+const enum Maps {
     Customs = 'customs',
     Factory = 'factory',
     Interchange = 'interchange',
@@ -8,7 +8,7 @@ enum Maps {
     Woods = 'woods'
 }
 
-enum ArmorMaterial {
+const enum ArmorMaterial {
     Aluminium = 'Aluminium',
     Aramid = 'Aramid',
     ArmoredSteel = 'ArmoredSteel',
@@ -19,7 +19,7 @@ enum ArmorMaterial {
     Uhmwpe = 'UHMWPE'
 }
 
-enum BackgroundColor {
+const enum BackgroundColor {
     Black = 'black',
     Blue = 'blue',
     Default = 'default',
@@ -31,53 +31,53 @@ enum BackgroundColor {
     Yellow = 'yellow'
 }
 
-enum CartridgeName {
+const enum CartridgeName {
     Cartridges = 'cartridges'
 }
 
-enum CartridgeProto {
+const enum CartridgeProto {
     The5748538B2459770Af276A261 = '5748538b2459770af276a261'
 }
 
-enum ChamberName {
+const enum ChamberName {
     PatronInWeapon = 'patron_in_weapon',
     PatronInWeapon000 = 'patron_in_weapon_000',
     PatronInWeapon001 = 'patron_in_weapon_001'
 }
 
-enum ChamberProto {
+const enum ChamberProto {
     The55D30C394Bdc2Dae468B4577 = '55d30c394bdc2dae468b4577',
     The55D30C4C4Bdc2Db4468B457E = '55d30c4c4bdc2db4468b457e',
     The55D4Af244Bdc2D962F8B4571 = '55d4af244bdc2d962f8b4571',
     The55D721144Bdc2D89028B456F = '55d721144bdc2d89028b456f'
 }
 
-enum CustomAimPlane {
+const enum CustomAimPlane {
     AkThermal = 'ak_thermal',
     Default = 'default',
     Empty = ''
 }
 
-enum DeafStrength {
+const enum DeafStrength {
     High = 'High',
     Low = 'Low',
     None = 'None'
 }
 
-enum ExplosionType {
+const enum ExplosionType {
     BigRoundImpact = 'big_round_impact',
     BigRoundImpactExplosive = 'big_round_impact_explosive',
     Empty = '',
     SmallgrenadeExpl = 'smallgrenade_expl'
 }
 
-enum FaceShieldMask {
+const enum FaceShieldMask {
     Narrow = 'Narrow',
     NoMask = 'NoMask',
     Wide = 'Wide'
 }
 
-enum FoldedSlot {
+const enum FoldedSlot {
     Empty = '',
     ModStock = 'mod_stock',
     ModStock001 = 'mod_stock_001',
@@ -85,14 +85,14 @@ enum FoldedSlot {
     ModStockAxis = 'mod_stock_axis'
 }
 
-enum FragmentType {
+const enum FragmentType {
     The5485A8684Bdc2Da71D8B4567 = '5485a8684bdc2da71d8b4567',
     The5996F6Cb86F774678763A6CA = '5996f6cb86f774678763a6ca',
     The5996F6D686F77467977Ba6Cc = '5996f6d686f77467977ba6cc',
     The5996F6Fc86F7745E585B4De3 = '5996f6fc86f7745e585b4de3'
 }
 
-enum GridLayoutName {
+const enum GridLayoutName {
     Empty = '',
     F4Term = 'f4_term',
     Gunslinger1 = 'gunslinger1',
@@ -100,11 +100,11 @@ enum GridLayoutName {
     Paratus = 'Paratus'
 }
 
-enum GridProto {
+const enum GridProto {
     The55D329C24Bdc2D892F8B4567 = '55d329c24bdc2d892f8b4567'
 }
 
-enum ItemSound {
+const enum ItemSound {
     AmmoLauncher = 'ammo_launcher',
     AmmoPackGeneric = 'ammo_pack_generic',
     AmmoShotgun = 'ammo_shotgun',
@@ -153,19 +153,19 @@ enum ItemSound {
     WeapRifle = 'weap_rifle'
 }
 
-enum MaterialType {
+const enum MaterialType {
     BodyArmor = 'BodyArmor',
     GlassVisor = 'GlassVisor',
     Helmet = 'Helmet'
 }
 
-enum ReloadM {
+const enum ReloadM {
     ExternalMagazine = 'ExternalMagazine',
     InternalMagazine = 'InternalMagazine',
     OnlyBarrel = 'OnlyBarrel'
 }
 
-enum SearchSound {
+const enum SearchSound {
     CashregisterLooting = 'cashregister_looting',
     DrawerMetalLooting = 'drawer_metal_looting',
     DrawerWoodLooting = 'drawer_wood_looting',
@@ -178,13 +178,13 @@ enum SearchSound {
     WoodboxLooting = 'woodbox_looting'
 }
 
-enum ThrowType {
+const enum ThrowType {
     FlashGrenade = 'flash_grenade',
     FragGrenade = 'frag_grenade',
     SmokeGrenade = 'smoke_grenade'
 }
 
-enum TracerColor {
+const enum TracerColor {
     Green = 'green',
     Red = 'red',
     TracerGreen = 'tracerGreen',
@@ -192,20 +192,20 @@ enum TracerColor {
     TracerYellow = 'tracerYellow'
 }
 
-enum UnlootableFromSide {
+const enum UnlootableFromSide {
     Bear = 'Bear',
     Savage = 'Savage',
     Usec = 'Usec'
 }
 
-enum UnlootableFromSlot {
+const enum UnlootableFromSlot {
     ArmBand = 'ArmBand',
     Compass = 'Compass',
     FirstPrimaryWeapon = 'FirstPrimaryWeapon',
     Scabbard = 'Scabbard'
 }
 
-enum VisibleAmmoRangesString {
+const enum VisibleAmmoRangesString {
     Empty = '',
     The111830 = '1-1;18-30',
     The112 = '1-12',
@@ -219,19 +219,19 @@ enum VisibleAmmoRangesString {
     The141220 = '1-4;12-20'
 }
 
-enum AmmoSfx {
+const enum AmmoSfx {
     Standart = 'standart',
     Tracer = 'tracer',
     TracerRed = 'tracer_red'
 }
 
-enum AmmoType {
+const enum AmmoType {
     Buckshot = 'buckshot',
     Bullet = 'bullet',
     Grenade = 'grenade'
 }
 
-enum ArmorZone {
+const enum ArmorZone {
     Chest = 'Chest',
     Head = 'Head',
     LeftArm = 'LeftArm',
@@ -239,7 +239,7 @@ enum ArmorZone {
     Stomach = 'Stomach'
 }
 
-enum CasingSounds {
+const enum CasingSounds {
     PistolSmall = 'pistol_small',
     Rifle556 = 'rifle556',
     Rifle762 = 'rifle762',
@@ -250,12 +250,12 @@ enum CasingSounds {
     The50Cal = '50cal'
 }
 
-enum DEffectType {
+const enum DEffectType {
     AfterUse = 'afterUse',
     DuringUse = 'duringUse'
 }
 
-enum HeadSegment {
+const enum HeadSegment {
     Ears = 'Ears',
     Eyes = 'Eyes',
     Jaws = 'Jaws',
@@ -264,7 +264,7 @@ enum HeadSegment {
     Top = 'Top'
 }
 
-enum MuzzleModType {
+const enum MuzzleModType {
     Brake = 'brake',
     Conpensator = 'conpensator',
     MuzzleCombo = 'muzzleCombo',
@@ -272,14 +272,14 @@ enum MuzzleModType {
     Silencer = 'silencer'
 }
 
-enum SightModType {
+const enum SightModType {
     Hybrid = 'hybrid',
     Iron = 'iron',
     Optic = 'optic',
     Reflex = 'reflex'
 }
 
-enum WeapClass {
+const enum WeapClass {
     AssaultCarbine = 'assaultCarbine',
     AssaultRifle = 'assaultRifle',
     GrenadeLauncher = 'grenadeLauncher',
@@ -292,7 +292,7 @@ enum WeapClass {
     SpecialWeapon = 'specialWeapon'
 }
 
-enum WeapFireType {
+const enum WeapFireType {
     Burst = 'burst',
     Doubleaction = 'doubleaction',
     Doublet = 'doublet',
@@ -300,17 +300,17 @@ enum WeapFireType {
     Single = 'single'
 }
 
-enum WeapUseType {
+const enum WeapUseType {
     Primary = 'primary',
     Secondary = 'secondary'
 }
 
-enum Type {
+const enum Type {
     Item = 'Item',
     Node = 'Node'
 }
 
-enum Floor {
+const enum Floor {
     Basement = 'Basement',
     Bunkers = 'Bunkers',
     FirstFloor = 'First_Floor',
@@ -319,13 +319,13 @@ enum Floor {
     SecondFloor = 'Second_Floor'
 }
 
-enum Tool {
+const enum Tool {
     The5991B51486F77447B112D44F = '5991b51486f77447b112d44f',
     The5Ac78A9B86F7741Cca0Bbd8D = '5ac78a9b86f7741cca0bbd8d',
     The5B4391A586F7745321235Ab2 = '5b4391a586f7745321235ab2'
 }
 
-enum ObjectiveType {
+const enum ObjectiveType {
     Build = 'build',
     Collect = 'collect',
     Find = 'find',
@@ -340,7 +340,7 @@ enum ObjectiveType {
     Warning = 'warning'
 }
 
-enum Name {
+const enum Name {
     Durability = 'durability',
     Ergonomics = 'ergonomics',
     ExtendedMagazine = 'Extended magazine',
@@ -352,14 +352,14 @@ enum Name {
     Weight = 'weight'
 }
 
-enum WithType {
+const enum WithType {
     Attachment = 'attachment',
     Cells = 'cells',
     Part = 'part',
     Stat = 'stat'
 }
 
-enum TraderName {
+const enum TraderName {
     Prapor = 'prapor',
     Therapist = 'therapist',
     Fence = 'fence',
@@ -371,7 +371,7 @@ enum TraderName {
     FleaMarket = 'fleaMarket'
 }
 
-enum ItemSourceName {
+const enum ItemSourceName {
     Prapor = 'prapor',
     Therapist = 'therapist',
     Fence = 'fence',
@@ -383,24 +383,24 @@ enum ItemSourceName {
     FleaMarket = 'fleaMarket'
 }
 
-enum RequirementType {
+const enum RequirementType {
     PlayerLevel = 'playerLevel',
     LoyaltyLevel = 'loyaltyLevel',
     QuestCompleted = 'questCompleted'
 }
 
-enum StatusCode {
+const enum StatusCode {
     Ok = 'OK',
     Updating = 'Updating',
     Unstable = 'Unstable',
     Down = 'Down'
 }
 
-enum LanguageCode {
+const enum LanguageCode {
     En = 'en'
 }
 
-enum TarkovToolsTypes {
+const enum TarkovToolsTypes {
     Ammo = 'ammo',
     AmmoBox = 'ammoBox',
     Armor = 'armor',
@@ -426,26 +426,26 @@ enum TarkovToolsTypes {
     Wearable = 'wearable'
 }
 
-enum Category {
+const enum Category {
     Bot = 'Bot',
     Player = 'Player'
 }
 
-enum Parent {
+const enum Parent {
     SpawnBoxParams = 'SpawnBoxParams',
     SpawnSphereParams = 'SpawnSphereParams'
 }
 
-enum Side {
+const enum Side {
     All = 'All',
     Savage = 'Savage'
 }
 
-enum Infiltration {
+const enum Infiltration {
     Common = 'Common',
     Empty = ''
 }
 
-enum WildSpawnType {
+const enum WildSpawnType {
     Assault = 'assault'
 }
