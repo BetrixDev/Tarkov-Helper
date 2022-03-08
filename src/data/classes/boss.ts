@@ -5,7 +5,7 @@ type Attributes = {
     [key in keyof Core]?: (value: any) => string
 }
 const ATTRIBUTES: Attributes = {
-    VisibleAngle: (value: number) => `FOV: ${value}`,
+    VisibleAngle: (value: number) => `FOV: ${value}°`,
     VisibleDistance: (value: number) => `View Distance: ${value}m`
 }
 
