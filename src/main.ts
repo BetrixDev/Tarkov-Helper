@@ -10,7 +10,8 @@ import logger from './config/logger'
 import cron from './data/cron'
 import { isDev } from './lib'
 import { updateData } from './data/cache'
-import { initEngines } from './helpers/search_engines/item-engine'
+import { initEngines as initItemEngine } from './helpers/search_engines/item-engine'
+import { initEngines as initQuestEngine } from './helpers/search_engines/quest-engine'
 import { existsSync } from 'fs'
 import { InjectServerData } from './guards/inject-data'
 
@@ -23,7 +24,7 @@ DIService.container = container
 const client = new Client({
     intents: [Intents.FLAGS.GUILDS],
     // If you only want to use global commands only, comment this line
-    // botGuilds: [(client) => client.guilds.cache.map((guild) => guild.id)],
+    botGuilds: [(client) => client.guilds.cache.map((guild) => guild.id)],
     guards: [InjectServerData]
 })
 
@@ -66,7 +67,10 @@ async function run() {
         if (!existsSync('./data/')) await cron()
     }
 
-    await updateData().then(() => initEngines())
+    await updateData().then(() => {
+        initItemEngine()
+        initQuestEngine()
+    })
 
     let botToken = process.env.BOT_TOKEN_DEV
 

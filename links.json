@@ -94,5 +94,9 @@
     {
         "name": "maps",
         "link": "https://raw.githubusercontent.com/Tarkov-Helper/Database/main/maps.json"
+    },
+    {
+        "name": "quest-guides",
+        "link": "https://raw.githubusercontent.com/Tarkov-Helper/mock-database/main/quests.json"
     }
 ]

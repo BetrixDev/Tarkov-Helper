@@ -1,5 +1,7 @@
+import { AutocompleteInteraction } from 'discord.js'
 import fuse from 'fuse.js'
 import { fetchData } from '../../data/cache'
+import { queryDatabase } from '../../database/server'
 
 interface EngineParams {
     id: string
@@ -39,4 +41,14 @@ export const initEngines = () => {
 
 export const questSearchEngine = (input: string, language: Languages): SearchResult => {
     return engines[language].search<EngineParams>(input).slice(0, 24)
+}
+
+export const autoCompleteResults = async (interaction: AutocompleteInteraction) => {
+    const serverData = await queryDatabase(interaction.guildId ?? '')
+
+    const input = interaction.options.getFocused(true).value.toString()
+
+    const results = questSearchEngine(input, serverData.Language)
+
+    interaction.respond(results.map((r) => ({ name: r.item.name, value: r.item.id })))
 }
