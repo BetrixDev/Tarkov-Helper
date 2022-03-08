@@ -1,7 +1,6 @@
 import 'reflect-metadata'
 import { AutocompleteInteraction } from 'discord.js'
 import fuse from 'fuse.js'
-import { container } from 'tsyringe'
 import { fetchData } from '../../data/cache'
 import { Item } from '../../data/classes/item'
 import { queryDatabase } from '../../database/server'
