@@ -42,8 +42,6 @@ export class StatusCommand {
                 const reponse = await request<{ status: ServerStatus }>('https://tarkov-tools.com/graphql', query)
                 const status = reponse.status
 
-                console.log(status)
-
                 respond({
                     embeds: [
                         new THEmbed()
