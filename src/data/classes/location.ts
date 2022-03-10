@@ -43,11 +43,13 @@ export class Location {
     }
 
     get exfilInfo(): EmbedFieldData[] {
+        const locales = fetchData<Locales>(this.language).interface
+
         let exits: EmbedFieldData[] = this.data.exits.map((exit) => {
             let extras = [`*Chance:* \`${exit.Chance}%\``, `*Time:* \`${exit.ExfiltrationTime}s\``]
 
             return {
-                name: exit.Name.replaceAll('_', '').replace('lab', '').replace('EXFIL', ''),
+                name: locales[exit.Name] ?? exit.Name,
                 value: extras.join('\n'),
                 inline: true
             }
