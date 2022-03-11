@@ -27,6 +27,7 @@ import {
     translation
 } from '../lib'
 import { getItemFields, getStatImage } from '../helpers/item_classes/game-stats'
+import { HideoutModule } from '../types/game/hideout'
 
 type MenuActions = 'general' | 'game' | 'price' | 'barter'
 
@@ -45,11 +46,11 @@ export class ItemCommand {
 
         try {
             if (action === 'price') {
-                interaction.update(this.priceMessage(id, language))
+                interaction.update(ItemCommand.priceMessage(id, language))
             } else if (action === 'barter') {
-                interaction.update(this.barterMessage(id, language))
+                interaction.update(ItemCommand.barterMessage(id, language))
             } else if (action === 'game') {
-                interaction.update(this.statsMessage(id, language))
+                interaction.update(ItemCommand.statsMessage(id, language))
             } else {
                 interaction.update(ItemCommand.message(id, language))
             }
@@ -60,18 +61,19 @@ export class ItemCommand {
 
     @ButtonComponent(/^itembarter__/)
     async button(interaction: ButtonInteraction) {
-        const [, l, action, id, p] = interaction.customId.split('__')
+        const [, l, action, id, p, m] = interaction.customId.split('__')
         const page = Number(p)
         const language = l as Languages
+        const useMenu = m === 'yes'
 
         try {
             if (action === 'b') {
-                interaction.update(this.barterMessage(id, language, page - 1))
+                interaction.update(ItemCommand.barterMessage(id, language, page - 1, useMenu))
             } else {
-                interaction.update(this.barterMessage(id, language, page + 1))
+                interaction.update(ItemCommand.barterMessage(id, language, page + 1, useMenu))
             }
         } catch {
-            interaction.update(this.barterMessage(id, language))
+            interaction.update(ItemCommand.barterMessage(id, language, 0, useMenu))
         }
     }
 
@@ -112,7 +114,7 @@ export class ItemCommand {
 
         let desc = `
             [Wiki Link](${item.wikiLink})
-            "*${item.description.length < 150 ? item.description : item.description.slice(0, 150).concat('...')}*"
+            "${item.description.length < 150 ? item.description : item.description.slice(0, 150).concat('...')}"
         `
 
         const quests = questData.getDependents()
@@ -254,7 +256,7 @@ export class ItemCommand {
         }
     }
 
-    statsMessage(id: string, language: Languages): InteractionReplyOptions {
+    static statsMessage(id: string, language: Languages): InteractionReplyOptions {
         const t = translation(language)
 
         const item = new Item(id, language)
@@ -280,7 +282,7 @@ export class ItemCommand {
         }
     }
 
-    barterMessage(id: string, language: Languages, page = 0): InteractionReplyOptions {
+    static barterMessage(id: string, language: Languages, page = 0, useMenu = true): InteractionReplyOptions {
         const t = translation(language)
 
         const item = new Item(id, language)
@@ -310,10 +312,10 @@ export class ItemCommand {
                     new THEmbed()
                         .setThumbnail(getItemImage(item.id))
                         .setTitle(`${item.shortName} Barters`)
-                        .setDescription(`[Wiki Link](${item.wikiLink})\nNo Barters`)
+                        .setDescription(`${t('[Wiki Link]({0})', item.wikiLink)}\n${t('No Barters')}`)
                         .addFields(fields)
                 ],
-                components: [menu(language, id, 'barter')]
+                components: useMenu ? [menu(language, id, 'barter')] : []
             }
         }
 
@@ -325,31 +327,31 @@ export class ItemCommand {
                     .setDescription(`[Wiki Link](${item.wikiLink})`)
                     .setFields(...barterData.barterMessage.slice(page * 9, page * 9 + 9), ...fields)
             ],
-            components: [menu(language, id, 'barter')]
+            components: useMenu ? [menu(language, id, 'barter')] : []
         }
 
         if (barterData.barters.length > 1) {
             msg.components = [
                 new MessageActionRow().addComponents(
                     new MessageButton()
-                        .setCustomId(`itembarter__${language}__b__${id}__${page}`)
+                        .setCustomId(`itembarter__${language}__b__${id}__${page}__${useMenu ? 'yes' : ''}`)
                         .setLabel('Last Barter')
                         .setDisabled(page === 0)
                         .setStyle('PRIMARY'),
                     new MessageButton()
-                        .setCustomId(`itembarter__${language}__f__${id}__${page}`)
+                        .setCustomId(`itembarter__${language}__f__${id}__${page}__${useMenu ? 'yes' : ''}`)
                         .setLabel('Next Barter')
                         .setDisabled(page === pages - 1)
                         .setStyle('PRIMARY')
                 ),
-                menu(language, id, 'barter')
+                ...(useMenu ? [menu(language, id, 'barter')] : [])
             ]
         }
 
         return msg
     }
 
-    priceMessage(id: string, language: Languages): InteractionReplyOptions {
+    static priceMessage(id: string, language: Languages): InteractionReplyOptions {
         const t = translation(language)
 
         const item = new Item(id, language)
@@ -377,10 +379,14 @@ export class ItemCommand {
                            ${t('**This item has no offers on the Flea Market**')}
                         `
                         )
-                        .addFields({
-                            name: t('Best Sells'),
-                            value: t('{0} at {1}/each', sellingPrices[0].source, sellingPrices[0].price)
-                        })
+                        .addFields(
+                            sellingPrices.length > 0
+                                ? {
+                                      name: t('Best Sells'),
+                                      value: t('{0} at {1}/each', sellingPrices[0].source, sellingPrices[0].price)
+                                  }
+                                : { name: '\u200b', value: '\u200b' }
+                        )
                 ]
             }
         } else {
@@ -411,14 +417,19 @@ export class ItemCommand {
                                 inline: true
                             },
                             {
-                                name: t('Best Sells'),
-                                value: t(
-                                    '**{0}** at **{1}**/each or {2} at {3}/each',
-                                    sellingPrices[0].source,
-                                    sellingPrices[0].price,
-                                    sellingPrices[1].source,
-                                    sellingPrices[1].price
-                                ),
+                                name: t('Best Sell'),
+                                value:
+                                    sellingPrices.length > 1
+                                        ? // Show if the item can be sold in multiple places
+                                          t(
+                                              '**{0}** at **{1}**/each or {2} at {3}/each',
+                                              sellingPrices[0].source,
+                                              sellingPrices[0].price,
+                                              sellingPrices[1].source,
+                                              sellingPrices[1].price
+                                          )
+                                        : // Show if the item can only be sold at one place
+                                          t('**{0}** at **{1}**/each', sellingPrices[0].source, sellingPrices[0].price),
                                 inline: true
                             },
                             {

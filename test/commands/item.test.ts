@@ -1,3 +1,4 @@
+import { TarkovToolsItem } from '../../src/types/game/item'
 import { ItemCommand, ErrorMessages } from '../../src/commands/item'
 import { fetchData, updateData } from '../../src/data/cache'
 
@@ -15,6 +16,7 @@ describe('Item Command Tests', () => {
                     expect(message.embeds[0].title).toEqual(`${shortName} Information`)
                 }
             } catch (e) {
+                // The only error we expect should be one for auto completion when the item passed in doesn't exists in itemProps
                 expect(e).toEqual(new Error(ErrorMessages.USE_AUTO_COMPLETE))
             }
         })
