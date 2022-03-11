@@ -34,7 +34,7 @@
         "**Alot of quests** (*{0} quests*)": "**Alot of quests** (*{0} quests*)",
         "Used in barters": "Used in barters",
         "**x{0}** in {1}": "**x{0}** in {1}",
-        "Best Sells": "Best Sells",
+        "Best Sell": "Best Sell",
         "{0} at {1}/each": "{0} at {1}/each",
         "{0} Price Data - {1}": "{0} Price Data - {1}",
         "Price Right Now": "Price Right Now",
@@ -120,6 +120,7 @@
         "Yes": "Yes",
         "No": "No",
         "Trader restock times": "Trader restock times",
-        "Data from tarkov-tools.com": "Data from tarkov-tools.com"
+        "Data from tarkov-tools.com": "Data from tarkov-tools.com",
+        "[Wiki Link]({0})": "[Wiki Link]({0})"
     }
 }
