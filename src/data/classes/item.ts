@@ -1,5 +1,7 @@
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
+import { ItemType, RawItem, RawItemProps, TarkovToolsItem } from '../../types/game/item'
+import { Locales } from '../../types/game/locales'
 import { fetchData, getRawItem } from '../cache'
 
 dayjs.extend(relativeTime)

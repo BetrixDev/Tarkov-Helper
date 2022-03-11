@@ -1,3 +1,4 @@
+import { Locales, Trading } from '../../types/game/locales'
 import { fetchData } from '../cache'
 
 /**Used for grabbing the name of the trader in the correct language */

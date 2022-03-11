@@ -3,6 +3,7 @@ import { Discord, Slash } from 'discordx'
 import request, { gql } from 'graphql-request'
 import botConfig from '../config/bot-config'
 import { handleCommandInteraction, THEmbed, translation } from '../lib'
+import { ServerStatus } from '../types/game/status'
 
 const query = gql`
     {

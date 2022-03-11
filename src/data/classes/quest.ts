@@ -1,3 +1,5 @@
+import { Locales } from '../../types/game/locales'
+import { RawQuest } from '../../types/game/quest'
 import { fetchData } from '../cache'
 import { Trader } from './trader'
 
@@ -47,7 +49,5 @@ export class Quest {
         this.questImage = `https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/images/quests/${rawQuest.image
             .replace('/files/quest/icon/', '')
             .replace('.jpg', '')}.png`
-
-        delete this.quest.locales
     }
 }

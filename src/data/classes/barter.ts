@@ -1,5 +1,6 @@
 import { EmbedFieldData } from 'discord.js'
 import { capitalizeWords, formatPrice, lowestPrice, translation } from '../../lib'
+import { ContainedItem, RawBarter } from '../../types/game/barter'
 import { fetchData, getBarter } from '../cache'
 import { Item } from './item'
 
@@ -149,7 +150,11 @@ export class Barter {
             barter.requiredItems.forEach(({ item, count }) => {
                 if (item.id === this.itemId) {
                     dependents.push({
-                        name: t('{0} from {1}', barter.rewardItems[0].item.shortName, capitalizeWords(barter.source)),
+                        name: t(
+                            '{0} from {1}',
+                            barter.rewardItems[0].item.shortName ?? '',
+                            capitalizeWords(barter.source)
+                        ),
                         count: count
                     })
                 }

@@ -1,4 +1,7 @@
 import { capitalizeWords } from '../../lib'
+import { Core, RawBoss } from '../../types/game/boss'
+import { Locales } from '../../types/game/locales'
+import { BossLocationSpawn, RawMapData } from '../../types/game/location'
 import { fetchData } from '../cache'
 
 type Attributes = {

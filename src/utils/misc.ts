@@ -1,4 +1,5 @@
 import { Item } from '../data/classes/item'
+import { ItemPrice, RequirementType, TraderName } from '../types/game/item'
 
 export const lowestPrice = (item: Item): ItemPrice => {
     if (item.priceData.lastLowPrice && item.priceData.lastLowPrice !== 0) {

@@ -6,6 +6,7 @@ import { capitalizeWords, handleCommandInteraction, THEmbed, translation } from 
 import botConfig from '../config/bot-config'
 import dayjs from 'dayjs'
 import { Trader } from '../data/classes/trader'
+import { TraderReset } from '../types/game/restock'
 
 const query = gql`
     {

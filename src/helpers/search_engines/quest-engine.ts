@@ -2,6 +2,8 @@ import { AutocompleteInteraction } from 'discord.js'
 import fuse from 'fuse.js'
 import { fetchData } from '../../data/cache'
 import { queryDatabase } from '../../database/server'
+import { Locales } from '../../types/game/locales'
+import { RawQuest } from '../../types/game/quest'
 
 interface EngineParams {
     id: string

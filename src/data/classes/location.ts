@@ -1,5 +1,8 @@
 import { EmbedFieldData, MessageButton } from 'discord.js'
 import { capitalizeWords, translation } from '../../lib'
+import { Locales, MapLocale } from '../../types/game/locales'
+import { RawMapData } from '../../types/game/location'
+import { MapImageData, Maps } from '../../types/maps'
 import { fetchData } from '../cache'
 
 const mapImages = fetchData<MapImageData>('maps')

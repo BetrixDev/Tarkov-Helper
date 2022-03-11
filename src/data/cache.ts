@@ -1,5 +1,7 @@
 import { readFileSync } from 'jsonfile'
 import { readdirSync } from 'fs'
+import { RawBarter } from '../types/game/barter'
+import { RawItem, TarkovToolsItem } from '../types/game/item'
 
 // Raw game data and/or other data is stored in this object
 // files are also stored on disk to speed of start times for dev enviroments

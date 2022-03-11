@@ -1,5 +1,6 @@
 import { Location } from '../../../src/data/classes/location'
 import { updateData } from '../../../src/data/cache'
+import { Maps } from '../../../src/types/maps'
 
 const maps = ['woods', 'shoreline', 'labs', 'factory', 'customs', 'reserve', 'lighthouse', 'interchange']
 

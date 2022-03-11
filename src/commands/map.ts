@@ -5,6 +5,7 @@ import { fetchData } from '../data/cache'
 import { ButtonInteraction, Client, CommandInteraction, InteractionReplyOptions, MessageActionRow } from 'discord.js'
 import { Location } from '../data/classes/location'
 import { handleCommandInteraction, THEmbed, translation } from '../lib'
+import { MapImageData, MapImage, Maps } from '../types/maps'
 
 const mapImages = fetchData<MapImageData>('maps')
 const mapUrlPrefix = 'https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/map_icons'

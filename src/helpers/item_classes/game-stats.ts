@@ -2,6 +2,7 @@ import { EmbedFieldData, MessageEmbedImage } from 'discord.js'
 import { fetchData } from '../../data/cache'
 import { Item } from '../../data/classes/item'
 import { TranslationFunction, round, capitalizeWords } from '../../lib'
+import { Grid, RawItemProps } from '../../types/game/item'
 import { BallisticsCalculator } from '../simulator/ballistics'
 
 interface ArmorMaterial {
@@ -76,8 +77,8 @@ const itemFields: ItemField[] = [
         format: (value: number, data) => {
             const globals = fetchData<any>('globals')
 
-            const { Destructibility } = globals.config.ArmorMaterials[data.ArmorMaterial ?? ''] as ArmorMaterial
-            return `${value / Destructibility}`
+            const armorConfig = globals.config.ArmorMaterials[data.ArmorMaterial ?? ''] as ArmorMaterial
+            return `${value / armorConfig?.Destructibility ?? 1}`
         }
     },
     {

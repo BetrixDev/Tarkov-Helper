@@ -4,6 +4,7 @@ import fuse from 'fuse.js'
 import { fetchData } from '../../data/cache'
 import { Item } from '../../data/classes/item'
 import { queryDatabase } from '../../database/server'
+import { ItemType, RawItem, TarkovToolsItem } from '../../types/game/item'
 
 interface ExtraOptions {
     types?: ItemType[]
@@ -29,7 +30,7 @@ export const initEngines = () => {
     const itemProps = fetchData<{ [key: string]: RawItem }>('itemProps')
 
     itemData
-        .filter((i) => !i.types.includes(TarkovToolsTypes.Disabled) && itemProps[i.id] !== undefined)
+        .filter((i) => !i.types.includes('disabled') && itemProps[i.id] !== undefined)
         .forEach((i) => {
             const enItem = new Item(i.id, 'en')
             const esItem = new Item(i.id, 'es')
