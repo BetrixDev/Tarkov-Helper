@@ -1,4 +1,4 @@
-type Languages = 'en' | 'es' | 'ru' | 'ge'
+type Languages = 'en' | 'es'
 
 interface ServerData {
     ServerID: string

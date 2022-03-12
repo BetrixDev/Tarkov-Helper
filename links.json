@@ -20,14 +20,6 @@
         "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/locales/global/es.json"
     },
     {
-        "name": "ru",
-        "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/locales/global/ru.json"
-    },
-    {
-        "name": "ge",
-        "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/locales/global/ge.json"
-    },
-    {
         "name": "globals",
         "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/globals.json"
     },

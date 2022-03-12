@@ -20,9 +20,7 @@ export class LanguageCommand {
     })
     async language(
         @SlashChoice('English', 'en')
-        @SlashChoice('pусский', 'ru')
         @SlashChoice('Español', 'es')
-        @SlashChoice('Deutsch', 'ge')
         @SlashOption('language', { description: 'Language that TarkovHelper will respond in' })
         language: string,
         interaction: CommandInteraction,
