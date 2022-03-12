@@ -26,23 +26,23 @@ describe('Item search engine tests', () => {
         expect(results[0].item.id).toEqual('59e690b686f7746c9f75e848')
     })
 
-    it('should complete a search for M995 in russian', () => {
-        const results = itemSearchEngine('m995', 'ru')
-        expect(results[0].item.id).toEqual('59e690b686f7746c9f75e848')
-    })
+    // it('should complete a search for M995 in russian', () => {
+    //     const results = itemSearchEngine('m995', 'ru')
+    //     expect(results[0].item.id).toEqual('59e690b686f7746c9f75e848')
+    // })
 
-    it('should complete a search for M995 in german', () => {
-        const results = itemSearchEngine('m995', 'ge')
-        expect(results[0].item.id).toEqual('59e690b686f7746c9f75e848')
-    })
+    // it('should complete a search for M995 in german', () => {
+    //     const results = itemSearchEngine('m995', 'ge')
+    //     expect(results[0].item.id).toEqual('59e690b686f7746c9f75e848')
+    // })
 
-    it('should complete a search for RedRebel in russian', () => {
-        const results = itemSearchEngine('Ледоруб Red Rebel', 'ru')
-        expect(results[0].item.id).toEqual('5c0126f40db834002a125382')
-    })
+    // it('should complete a search for RedRebel in russian', () => {
+    //     const results = itemSearchEngine('Ледоруб Red Rebel', 'ru')
+    //     expect(results[0].item.id).toEqual('5c0126f40db834002a125382')
+    // })
 
-    it('should complete a search for Mosin Rifle 7.62x54R sawn-off 200mm barrel in russian', () => {
-        const results = itemSearchEngine('Обрез ствола 200мм для', 'ru')
-        expect(results[0].item.id).toEqual('5bfd4cc90db834001d23e846')
-    })
+    // it('should complete a search for Mosin Rifle 7.62x54R sawn-off 200mm barrel in russian', () => {
+    //     const results = itemSearchEngine('Обрез ствола 200мм для', 'ru')
+    //     expect(results[0].item.id).toEqual('5bfd4cc90db834001d23e846')
+    // })
 })

@@ -23,8 +23,6 @@ let engines: { [key: string]: fuse<EngineParams> } = {}
 export const initEngines = () => {
     let enValues: EngineParams[] = []
     let esValues: EngineParams[] = []
-    let ruValues: EngineParams[] = []
-    let geValues: EngineParams[] = []
 
     const itemData = fetchData<TarkovToolsItem[]>('itemData')
     const itemProps = fetchData<{ [key: string]: RawItem }>('itemProps')
@@ -34,8 +32,6 @@ export const initEngines = () => {
         .forEach((i) => {
             const enItem = new Item(i.id, 'en')
             const esItem = new Item(i.id, 'es')
-            const ruItem = new Item(i.id, 'ru')
-            const geItem = new Item(i.id, 'ge')
 
             enValues.push({
                 id: enItem.id,
@@ -49,24 +45,10 @@ export const initEngines = () => {
                 name: esItem.name,
                 shortName: esItem.shortName
             })
-            ruValues.push({
-                id: ruItem.id,
-                types: ruItem.types,
-                name: ruItem.name,
-                shortName: ruItem.shortName
-            })
-            geValues.push({
-                id: geItem.id,
-                types: geItem.types,
-                name: geItem.name,
-                shortName: geItem.shortName
-            })
         })
 
     engines['en'] = new fuse(enValues, { keys: ['id', 'name', 'shortName'] })
     engines['es'] = new fuse(esValues, { keys: ['id', 'name', 'shortName'] })
-    engines['ru'] = new fuse(ruValues, { keys: ['id', 'name', 'shortName'] })
-    engines['ge'] = new fuse(geValues, { keys: ['id', 'name', 'shortName'] })
 
     Object.freeze(engines)
 }

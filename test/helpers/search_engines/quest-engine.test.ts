@@ -22,18 +22,18 @@ describe('Quest Search Engine Tests', () => {
         expect(questSearchEngine('ojo de halcón', 'es')[0].item.id).toEqual('60')
     })
 
-    it('should make quest searches in german', () => {
-        expect(questSearchEngine('debüt', 'ge')[0].item.id).toEqual('0')
-        expect(questSearchEngine('überprüfung', 'ge')[0].item.id).toEqual('1')
-        expect(questSearchEngine('adlerauge', 'ge')[0].item.id).toEqual('60')
-    })
+    // it('should make quest searches in german', () => {
+    //     expect(questSearchEngine('debüt', 'ge')[0].item.id).toEqual('0')
+    //     expect(questSearchEngine('überprüfung', 'ge')[0].item.id).toEqual('1')
+    //     expect(questSearchEngine('adlerauge', 'ge')[0].item.id).toEqual('60')
+    // })
 
-    it('should make quest searches in russian', () => {
-        expect(questSearchEngine('Проба пера', 'ru')[0].item.id).toEqual('0')
-        expect(questSearchEngine('Проба', 'ru')[0].item.id).toEqual('0')
-        expect(questSearchEngine('Проверка на вшивость', 'ru')[0].item.id).toEqual('1')
-        expect(questSearchEngine('Глаз орла', 'ru')[0].item.id).toEqual('60')
+    // it('should make quest searches in russian', () => {
+    //     expect(questSearchEngine('Проба пера', 'ru')[0].item.id).toEqual('0')
+    //     expect(questSearchEngine('Проба', 'ru')[0].item.id).toEqual('0')
+    //     expect(questSearchEngine('Проверка на вшивость', 'ru')[0].item.id).toEqual('1')
+    //     expect(questSearchEngine('Глаз орла', 'ru')[0].item.id).toEqual('60')
 
-        expect(questSearchEngine('Оружейник', 'ru')[0].item.id).not.toEqual('1')
-    })
+    //     expect(questSearchEngine('Оружейник', 'ru')[0].item.id).not.toEqual('1')
+    // })
 })

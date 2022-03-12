@@ -16,13 +16,13 @@ describe('Quest class tests', () => {
         expect(quest.quest.title).toEqual('El Debut')
     })
 
-    it('should retrieve Debut in german', () => {
-        const quest = new Quest(0, 'ge')
-        expect(quest.quest.title).toEqual('Debüt')
-    })
+    // it('should retrieve Debut in german', () => {
+    //     const quest = new Quest(0, 'ge')
+    //     expect(quest.quest.title).toEqual('Debüt')
+    // })
 
-    it('should retrieve Debut in russian', () => {
-        const quest = new Quest(0, 'ru')
-        expect(quest.quest.title).toEqual('Проба пера')
-    })
+    // it('should retrieve Debut in russian', () => {
+    //     const quest = new Quest(0, 'ru')
+    //     expect(quest.quest.title).toEqual('Проба пера')
+    // })
 })

@@ -24,11 +24,11 @@ describe('Trader Class Tests', () => {
         })
     })
 
-    traders.forEach((name) => {
-        it(`should grab the data for ${name} in russian`, () => {
-            const data = new Trader(name, 'ru')
+    // traders.forEach((name) => {
+    //     it(`should grab the data for ${name} in russian`, () => {
+    //         const data = new Trader(name, 'ru')
 
-            expect(data.name).toBeDefined()
-        })
-    })
+    //         expect(data.name).toBeDefined()
+    //     })
+    // })
 })
