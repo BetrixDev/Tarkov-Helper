@@ -46,6 +46,20 @@ export class Item {
         return this.priceData.avg24hPrice / size
     }
 
+    get iconURL() {
+        return `https://assets.tarkov-tools.com/${this.id}-base-image.png`
+    }
+
+    get keyData() {
+        if (this.types.includes('Key')) {
+            const lootData = fetchData<{ [key: string]: string[] | undefined }>('keys')
+
+            return lootData[this.id]
+        } else {
+            return undefined
+        }
+    }
+
     private getTypes(i: RawItem) {
         if (i && i._parent !== '') {
             const type = fetchData<{ [key: string]: {} }>('itemTypes')[i._parent] as ItemType
