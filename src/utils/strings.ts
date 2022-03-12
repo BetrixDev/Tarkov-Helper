@@ -1,4 +1,6 @@
 import { readFileSync } from 'jsonfile'
+import dotenv from 'dotenv'
+dotenv.config()
 
 export type TranslationFunction = (translationKey: string, ...args: Array<string | number>) => string
 
