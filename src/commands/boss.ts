@@ -2,7 +2,7 @@ import 'reflect-metadata'
 import { CommandInteraction } from 'discord.js'
 import { Client, Discord, Slash, SlashChoice, SlashOption } from 'discordx'
 import { Boss, BossToMap } from '../data/classes/boss'
-import { handleCommandInteraction, THEmbed, translation } from '../lib'
+import { DATABASE_LOCATION, handleCommandInteraction, THEmbed, translation } from '../lib'
 
 enum Bosses {
     Gluhkar = 'bossGluhar',
@@ -41,9 +41,7 @@ export class BossCommand {
                     embeds: [
                         new THEmbed()
                             .setTitle(`${boss.name} Information`)
-                            .setThumbnail(
-                                `https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/boss_images/${bossName}.png`
-                            )
+                            .setThumbnail(`${DATABASE_LOCATION}/images/boss_images/${bossName}.png`)
                             .addFields(
                                 {
                                     name: t('Spawns on'),

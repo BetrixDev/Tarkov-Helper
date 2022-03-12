@@ -11,7 +11,7 @@ import 'reflect-metadata'
 import { injectable } from 'tsyringe'
 import { Quest } from '../data/classes/quest'
 import { autoCompleteResults, questSearchEngine } from '../helpers/search_engines/quest-engine'
-import { handleCommandInteraction, THEmbed, translation } from '../lib'
+import { DATABASE_LOCATION, handleCommandInteraction, THEmbed, translation } from '../lib'
 
 @Discord()
 @injectable()
@@ -84,9 +84,7 @@ export class QuestCommand {
                             )
                             .setFields({ name: t('Required for Kappa?'), value: t(quest.kappa) })
                             .setThumbnail(quest.questImage ?? '')
-                            .setImage(
-                                `https://raw.githubusercontent.com/Tarkov-Helper/mock-database/main/images/quests/${id}.png`
-                            )
+                            .setImage(`${DATABASE_LOCATION}/images/quests/${id}.png`)
                     ]
                 }
 

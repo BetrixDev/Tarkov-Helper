@@ -1,7 +1,7 @@
 import { EmbedFieldData, MessageEmbedImage } from 'discord.js'
 import { fetchData } from '../../data/cache'
 import { Item } from '../../data/classes/item'
-import { TranslationFunction, round, capitalizeWords } from '../../lib'
+import { TranslationFunction, round, capitalizeWords, DATABASE_LOCATION } from '../../lib'
 import { Grid, RawItemProps } from '../../types/game/item'
 import { BallisticsCalculator } from '../simulator/ballistics'
 
@@ -331,15 +331,15 @@ export const getStatImage = (item: Item): MessageEmbedImage => {
 
     if (itemTypes.includes('ArmoredEquipment')) {
         return {
-            url: `https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/rig_images/${item.id}.png`
+            url: `${DATABASE_LOCATION}/images/rig_images/${item.id}.png`
         }
     } else if (itemTypes.includes('SpecialScope') && itemTypes.includes('FunctionalMod')) {
         return {
-            url: `https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/thermal_ingame/${item.id}.png`
+            url: `${DATABASE_LOCATION}/images/thermal_ingame/${item.id}.png`
         }
     } else if (itemTypes.includes('SpecialScope') && itemTypes.includes('NightVision')) {
         return {
-            url: `https://raw.githubusercontent.com/Tarkov-Helper/Image-Database/main/nvg_ingame/${item.id}.png`
+            url: `${DATABASE_LOCATION}/images/nvg_ingame/${item.id}.png`
         }
     } else {
         return {

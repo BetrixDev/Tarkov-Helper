@@ -1,3 +1,5 @@
+import { DATABASE_LOCATION } from '../lib'
+
 const color: [number, number, number] = [21, 36, 46]
 const altColor: [number, number, number] = [221, 204, 76]
 const errorColor: [number, number, number] = [255, 36, 36]
@@ -9,41 +11,23 @@ export default {
         errorColor
     },
     images: {
-        logo250: 'https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/Logo250x250.png',
-        secondBanner:
-            'https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/SecondBanner3000x1000.png',
-        slashBanner: 'https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/SlashCommand.png',
-        author: 'https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/Logo50x50SmallText.png',
+        logo250: `${DATABASE_LOCATION}/images/assets/Logo250x250.png`,
+        secondBanner: ` ${DATABASE_LOCATION}/images/assets/SecondBanner3000x1000.png`,
+        slashBanner: `${DATABASE_LOCATION}/images/assets/Media/SlashCommand.png`,
+        author: `${DATABASE_LOCATION}/images/assets/Logo50x50SmallText.png`,
         thumbnails: {
-            search: 'https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/SearchLogo.png',
-            error: 'https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/ErrorLogo.png',
-            map: 'https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/MapLogo.png',
-            bitcoinfarm:
-                'https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/BitcoinFarmLogo.png',
-            settings:
-                'https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/SettingsLogo.png',
-            experience:
-                'https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/ExperienceLogo.png',
-            priceperslot:
-                'https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/PricePerSlotLogo.png',
-            question:
-                'https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/QuestionLogo.png',
-            spawnchance:
-                'https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/SpawnChance.png',
-            exchangerate:
-                'https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/ExchangeLogo.png',
-            pricenotify:
-                'https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/PriceNotifyLogo.png',
-            notifyremove:
-                'https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/NotifyRemoveLogo.png',
-            compare: 'https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/CompareLogo.png',
-            roulette:
-                'https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/RouletteLogo.png',
-            chart: 'https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/ChartLogo.png',
-            status: 'https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/StatusLogo.png',
-            trader: 'https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/TraderLogo.png'
+            search: `${DATABASE_LOCATION}/images/assets/SearchLogo.png`,
+            error: `${DATABASE_LOCATION}/images/assets/ErrorLogo.png`,
+            map: `${DATABASE_LOCATION}/images/assets/MapLogo.png`,
+            bitcoinfarm: `${DATABASE_LOCATION}/images/assets/BitcoinFarmLogo.png`,
+            settings: `${DATABASE_LOCATION}/images/assets/SettingsLogo.png`,
+            experience: `${DATABASE_LOCATION}/images/assets/ExperienceLogo.png`,
+            priceperslot: `${DATABASE_LOCATION}/images/assets/PricePerSlotLogo.png`,
+            question: `${DATABASE_LOCATION}/images/assets/QuestionLogo.png`,
+            exchangerate: `${DATABASE_LOCATION}/images/assets/ExchangeLogo.png`,
+            roulette: `${DATABASE_LOCATION}/images/assets/RouletteLogo.png`,
+            status: `${DATABASE_LOCATION}/images/assets/StatusLogo.png`,
+            trader: `${DATABASE_LOCATION}/images/assets/TraderLogo.png`
         }
-    },
-    itemArrayLink: 'https://gist.github.com/BetrixDev/58aa8d985e4690b9a540467af30ec909',
-    caliberArrayLink: 'https://gist.github.com/BetrixDev/16c20db88feb4aefd22dbac6e257e290'
+    }
 }
