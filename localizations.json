@@ -121,6 +121,9 @@
         "No": "No",
         "Trader restock times": "Trader restock times",
         "Data from tarkov-tools.com": "Data from tarkov-tools.com",
-        "[Wiki Link]({0})": "[Wiki Link]({0})"
+        "[Wiki Link]({0})": "[Wiki Link]({0})",
+        "Dollars": "Dollars",
+        "Roubles": "Roubles",
+        "Euros": "Euros"
     }
 }
