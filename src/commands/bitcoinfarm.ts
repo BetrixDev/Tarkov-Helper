@@ -86,7 +86,7 @@ export class BitcoinFarmCommand {
                                 value: `${Math.abs(farm.gpus - farm2.gpus)} *(${farm.gpus} - ${farm2.gpus})*`
                             },
                             {
-                                name: t('Difference in Per Day'),
+                                name: t('Difference in Bitcoins Per Day'),
                                 value: '₿ ' + round(Math.abs(farm.bitcoinsPerDay - farm2.bitcoinsPerDay), '000')
                             },
                             {
