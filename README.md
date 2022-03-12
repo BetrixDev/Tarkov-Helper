@@ -1,4 +1,4 @@
-<img width="160" height="160" align="left" style="float: left; margin: 0 10px 0 0;" alt="Tarkov Helper" src="https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/Logo250x250.png">
+<img width="160" height="160" align="left" style="float: left; margin: 0 10px 0 0;" alt="Tarkov Helper" src="https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/Logo250x250.png" />
 
 # Tarkov Helper
 
@@ -20,11 +20,11 @@
 # Adding the Bot
 
 **Click the invite image to add the bot to your server**
-<br>
-[<img width="320" height="" align="left" style="float: left; margin: 0 10px 0 0;" alt="Tarkov Helper" src="https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/InviteBanner.png">](https://discord.com/api/oauth2/authorize?client_id=797600238449590334&permissions=128&scope=bot%20applications.commands)
-<br><br><br><br><br>
-[<img src="https://discordapp.com/api/guilds/797601083589001227/widget.png?style=banner2">](https://discord.gg/CHhE5vQ3zT)
-<br>
+<br />
+[<img width="320" height="" align="left" style="float: left; margin: 0 10px 0 0;" alt="Tarkov Helper" src="https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/InviteBanner.png" />](https://discord.com/api/oauth2/authorize?client_id=797600238449590334&permissions=128&scope=bot%20applications.commands)
+<br /><br/><br/><br/><br/>
+[<img src="https://discordapp.com/api/guilds/797601083589001227/widget.png?style=banner2" />](https://discord.gg/CHhE5vQ3zT)
+<br/>
 **You can also join the Tarkov Helper Discord Server to try out the bot**
 
 # Building Yourself
@@ -49,16 +49,24 @@ Per the specifed [license](https://github.com/BetrixDev/Tarkov-Helper/blob/maste
 
 ### **Setup**
 
-Open the Tarkov-Helper directory and run configure.sh
+#### **Enviroment Variables**
+Tarkov-Helper makes use a [enviroment variables](https://nodejs.dev/learn/how-to-read-environment-variables-from-nodejs) to make configuration very easy
 
-    bash configure.sh
+What each variable means
+-   **BOT_TOKEN**: The token for your Discord bot
+-   **BOT_TOKEN_DEV**: An optional token used for a development bot (used when `npm run dev` is used if defined)
+-   **MONGO_URL**: A MongoDB Atlas Uri for storing server related data
+-   **TOPGG_TOKEN**: An optional Top.gg Token for [posting bot stats](https://docs.top.gg/libraries/javascript/#posting-bot-stats) to their website
+-   **PRICE_HISTORY_URL**: An API url to interface with the [item-price-logger](https://github.com/BetrixDev/item-price-logger) _(ex: http://localhost:8000)_
+-   **DATABASE_URL**: A link to where all assets used within Tarkov-Helper are stored _(ex: https://raw.githubusercontent.com/Tarkov-Helper/mock-database/main)_
 
-Enter your bot's token when prompted to. <br>
-To configure a dev bot, open **config.json5** under `src/data/bot/config.json5`.
+#### **Running The Bot**
 
-Run init.sh to automatically download all needed files
+To run the bot in a production enviroment, run the following commands:
+-   `npm run init`: To download necessary game data
+-   `npm run build`: To compile the code into Javascript
+-   `npm run start`: To run the bot using [PM2](https://pm2.keymetrics.io)
 
-    bash init.sh
-
-Run the bot using `npm start`. <br>
-Or compile to the bot using `tsc` and use a [process manager](https://www.npmjs.com/package/pm2) to run the bot in production enviroments.
+To run the bot in a development enviroment, run the following commands:
+-   `npm run init`: To download necessary game data
+-   `npm run dev`: To start the bot using [ts-node](https://typestrong.org/ts-node/)
