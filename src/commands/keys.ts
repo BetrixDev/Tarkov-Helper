@@ -87,12 +87,16 @@ export class KeysCommand {
         const rawMap = WikiMaptoMap[map] as Maps
         const location = new Location(rawMap, language)
 
+        const t = translation(language)
+
         return {
             embeds: [
                 new THEmbed()
                     .setTitle(`${location.name} Keys`)
                     .setThumbnail(`${mapUrlPrefix}/${rawMap}.png`)
-                    .setDescription(`${location.description}\n\nUse the menu below to view what loots the keys have`)
+                    .setDescription(
+                        `${location.description}\n\n${t('Use the menu below to view what loots the keys have')}`
+                    )
             ],
             components: [new MessageActionRow().addComponents(KeysCommand.menu(map, page, language))]
         }
