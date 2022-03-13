@@ -18,14 +18,6 @@ describe('Location Class Tests', () => {
     })
 
     maps.forEach((mapName) => {
-        it(`should grab data for ${mapName} in russian`, () => {
-            const data = new Location(mapName as Maps, 'ru')
-
-            expect(data).toBeDefined()
-        })
-    })
-
-    maps.forEach((mapName) => {
         it(`should grab data for ${mapName} in spanish`, () => {
             const data = new Location(mapName as Maps, 'es')
 
