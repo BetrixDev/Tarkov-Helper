@@ -1,9 +1,12 @@
 import { EmbedFieldData, MessageButton } from 'discord.js'
+import { readFileSync } from 'jsonfile'
 import { capitalizeWords, translation } from '../../lib'
 import { Locales, MapLocale } from '../../types/game/locales'
 import { RawMapData } from '../../types/game/location'
 import { MapImageData, Maps } from '../../types/maps'
 import { fetchData } from '../cache'
+
+const EN_LOCALES = (readFileSync('./data/en.json') as Locales).locations
 
 const mapImages = fetchData<MapImageData>('maps')
 
@@ -23,11 +26,16 @@ export class Location {
 
     constructor(mapName: Maps, language: Languages) {
         const data = fetchData<RawMapData>(mapName)
+        const locales = fetchData<Locales>(language).locations
 
         this.data = data
         this.language = language
 
-        this.name = capitalizeWords(mapName)
+        const mapId = Object.entries(EN_LOCALES).find(
+            ([id, { Name }]) => Name === capitalizeWords(mapName)
+        )?.[0] as string
+
+        this.name = locales[mapId].Name
         this.playerCount = { min: data.MinPlayers, max: data.MaxPlayers }
         this.hasInsurance = data.Insurance
         this.raidTime = data.escape_time_limit
@@ -46,10 +54,12 @@ export class Location {
     }
 
     get exfilInfo(): EmbedFieldData[] {
+        const t = translation(this.language)
+
         const locales = fetchData<Locales>(this.language).interface
 
         let exits: EmbedFieldData[] = this.data.exits.map((exit) => {
-            let extras = [`*Chance:* \`${exit.Chance}%\``, `*Time:* \`${exit.ExfiltrationTime}s\``]
+            let extras = [t(`*Chance:* \`{0}%\``, exit.Chance), t(`*Time:* \`{0}s\``, exit.ExfiltrationTime)]
 
             return {
                 name: locales[exit.Name] ?? exit.Name,
