@@ -32,7 +32,7 @@ export class Location {
         this.language = language
 
         const mapId = Object.entries(EN_LOCALES).find(
-            ([id, { Name }]) => Name === capitalizeWords(mapName)
+            ([id, { Name }]) => Name === capitalizeWords(mapName === 'labs' ? 'the lab' : mapName)
         )?.[0] as string
 
         this.name = locales[mapId].Name

@@ -5,7 +5,8 @@ export enum Maps {
     Lighthouse = 'lighthouse',
     Reserve = 'reserve',
     Shoreline = 'shoreline',
-    Woods = 'woods'
+    Woods = 'woods',
+    Labs = 'labs'
 }
 
 export interface MapImageData {
