@@ -9,9 +9,13 @@ import {
 import { ButtonComponent, Client, Discord, Slash, SlashOption } from 'discordx'
 import 'reflect-metadata'
 import { injectable } from 'tsyringe'
+import { fetchData } from '../data/cache'
 import { Quest } from '../data/classes/quest'
 import { autoCompleteResults, questSearchEngine } from '../helpers/search_engines/quest-engine'
 import { DATABASE_LOCATION, handleCommandInteraction, THEmbed, translation } from '../lib'
+import { RawQuest } from '../types/game/quest'
+
+const QUEST_NUMBER = fetchData<RawQuest[]>('questData').length
 
 @Discord()
 @injectable()
@@ -55,7 +59,7 @@ export class QuestCommand {
             autocomplete: async (interaction: AutocompleteInteraction) => await autoCompleteResults(interaction),
             type: 'STRING'
         })
-        id: string,
+        i: string,
         interaction: CommandInteraction,
         client: Client,
         { serverData: { Language } }: GuardData
@@ -65,6 +69,13 @@ export class QuestCommand {
             Language,
             new Promise((repond, error) => {
                 const t = translation(Language)
+
+                const id = Number(i)
+
+                if (id === NaN || id > QUEST_NUMBER) {
+                    error('Please use the auto complete function to complete your search')
+                    return
+                }
 
                 const quest = new Quest(Number(id), Language)
 
