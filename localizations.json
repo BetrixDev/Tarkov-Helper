@@ -184,9 +184,15 @@
         "Required for Kappa?": "Required for Kappa?",
         "Image from the official wiki": "Image from the official wiki",
         "Text from the official wiki": "Text from the official wiki",
+        "Level": "Level",
         "*Chance:* `{0}%`": "*Chance:* `{0}%`",
         "*Time:* `{0}s`": "*Time:* `{0}s`",
-        "Use the menu below to view what loots the keys have": "Use the menu below to view what loots the keys have"
+        "Use the menu below to view what loots the keys have": "Use the menu below to view what loots the keys have",
+        "{0} Level {1} Upgrade Requirements": "{0} Level {1} Upgrade Requirements",
+        "Items": "Items",
+        "Total Cost": "Total Cost",
+        "Required Modules": "Required Modules",
+        "{0} Level {1}": "{0} Level {1}"
     },
     "es": {
         "Info Command Description": "• Un bot de Discord para facilitar el acceso a la información dentro de Escape From Tarkov.\n• Inicie un comando escribiendo `/` en el cuadro de mensaje y siga la guía de cada comando\n• Si no ve nada, asegúrese de tener habilitados los comandos de barra inclinada yendo a **Ajustes de usuario > Texto e Imágenes**, y habilitar \"Usar comandos de barra...\"\n• Si aún no ve nada, pregunte al propietario del servidor o a los administradores si los comandos de barra están habilitados en ese canal específico o DM Tarkov Helper para usar los comandos en su lugar.",
@@ -372,6 +378,7 @@
         "Fuse Time": "Fuse Time",
         "Required for Kappa?": "¿Requerido para Kappa?",
         "Image from the official wiki": "Imagen de la wiki oficial",
-        "Text from the official wiki": "Texto de la wiki oficial"
+        "Text from the official wiki": "Texto de la wiki oficial",
+        "Level": "Nivel"
     }
 }

@@ -12,6 +12,7 @@ import { isDev } from './lib'
 import { updateData } from './data/cache'
 import { initEngines as initItemEngine } from './helpers/search_engines/item-engine'
 import { initEngines as initQuestEngine } from './helpers/search_engines/quest-engine'
+import { initEngines as initModuleEngine } from './helpers/search_engines/module-engine'
 import { existsSync } from 'fs'
 import { InjectServerData } from './guards/inject-data'
 
@@ -69,9 +70,12 @@ async function run() {
         if (!existsSync('./data/')) await cron()
     }
 
+    // Load data into memory
     await updateData().then(() => {
+        // Initialize search engines
         initItemEngine()
         initQuestEngine()
+        initModuleEngine()
     })
 
     let botToken = process.env.BOT_TOKEN_DEV

@@ -60,6 +60,15 @@ export class Item {
         }
     }
 
+    get lowestBuyPrice() {
+        if (this.id === '5449016a4bdc2d6f028b456f') {
+            // Roubles have a value of one
+            return 1
+        } else {
+            return this.priceData.buyFor.sort((a, b) => b.price - a.price)[0]?.price ?? 0
+        }
+    }
+
     private getTypes(i: RawItem) {
         if (i && i._parent !== '') {
             const type = fetchData<{ [key: string]: {} }>('itemTypes')[i._parent] as ItemType
