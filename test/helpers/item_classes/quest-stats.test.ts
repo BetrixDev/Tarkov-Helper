@@ -1,5 +1,5 @@
 import { Item } from '../../../src/data/classes/item'
-import { QuestStats } from '../../../src/helpers/item_classes/quest-stats'
+import { QuestStats } from '../../../src/helpers/item_command_classes/quest-stats'
 import { updateData } from '../../../src/data/cache'
 
 describe('QuestStats class tests', () => {

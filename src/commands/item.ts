@@ -16,7 +16,7 @@ import { autoCompleteResults } from '../helpers/search_engines/item-engine'
 import { fetchData, isId } from '../data/cache'
 import { Item } from '../data/classes/item'
 import { Barter } from '../data/classes/barter'
-import { QuestStats } from '../helpers/item_classes/quest-stats'
+import { QuestStats } from '../helpers/item_command_classes/quest-stats'
 import {
     capitalizeWords,
     formatNumber,
@@ -26,7 +26,7 @@ import {
     THEmbed,
     translation
 } from '../lib'
-import { getItemFields, getStatImage } from '../helpers/item_classes/game-stats'
+import { getItemFields, getStatImage } from '../helpers/item_command_classes/game-stats'
 import { HideoutModule } from '../types/game/hideout'
 
 type MenuActions = 'general' | 'game' | 'price' | 'barter'

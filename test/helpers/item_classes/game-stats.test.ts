@@ -1,5 +1,5 @@
 import { Item } from '../../../src/data/classes/item'
-import { getItemFields } from '../../../src/helpers/item_classes/game-stats'
+import { getItemFields } from '../../../src/helpers/item_command_classes/game-stats'
 import { updateData } from '../../../src/data/cache'
 import { translation } from '../../../src/lib'
 
