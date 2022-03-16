@@ -1,6 +1,6 @@
-build
-node_modules
-.vscode
-.env
+build/
+node_modules/
+*.vscode
+*.env
 
-/data
+data/
