@@ -1,0 +1,102 @@
+[
+    {
+        "name": "itemProps",
+        "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/templates/items.json"
+    },
+    {
+        "name": "questData",
+        "link": "https://raw.githubusercontent.com/TarkovTracker/tarkovdata/master/quests.json"
+    },
+    {
+        "name": "ammoData",
+        "link": "https://raw.githack.com/TarkovTracker/tarkovdata/master/ammunition.json"
+    },
+    {
+        "name": "en",
+        "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/locales/global/en.json"
+    },
+    {
+        "name": "es",
+        "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/locales/global/es.json"
+    },
+    {
+        "name": "globals",
+        "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/globals.json"
+    },
+    {
+        "name": "quests",
+        "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/templates/quests.json"
+    },
+    {
+        "name": "reshala",
+        "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/bots/types/bossbully.json"
+    },
+    {
+        "name": "gluhar",
+        "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/bots/types/bossgluhar.json"
+    },
+    {
+        "name": "killa",
+        "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/bots/types/bosskilla.json"
+    },
+    {
+        "name": "shturman",
+        "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/bots/types/bosskojaniy.json"
+    },
+    {
+        "name": "sanitar",
+        "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/bots/types/bosssanitar.json"
+    },
+    {
+        "name": "tagilla",
+        "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/bots/types/bosstagilla.json"
+    },
+    {
+        "name": "customs",
+        "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/locations/bigmap/base.json"
+    },
+    {
+        "name": "factory",
+        "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/locations/factory4_day/base.json"
+    },
+    {
+        "name": "interchange",
+        "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/locations/interchange/base.json"
+    },
+    {
+        "name": "labs",
+        "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/locations/laboratory/base.json"
+    },
+    {
+        "name": "lighthouse",
+        "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/locations/lighthouse/base.json"
+    },
+    {
+        "name": "reserve",
+        "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/locations/rezervbase/base.json"
+    },
+    {
+        "name": "shoreline",
+        "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/locations/shoreline/base.json"
+    },
+    {
+        "name": "woods",
+        "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/locations/woods/base.json"
+    },
+    {
+        "name": "maps",
+        "link": "https://raw.githubusercontent.com/Tarkov-Helper/Database/main/maps.json"
+    },
+    {
+        "name": "quest-guides",
+        "link": "https://raw.githubusercontent.com/Tarkov-Helper/mock-database/main/quests.json"
+    },
+    {
+        "name": "keys",
+        "link": "https://raw.githubusercontent.com/Tarkov-Helper/mock-database/main/keys.json"
+    },
+    {
+        "name": "mapKeys",
+        "link": "https://raw.githubusercontent.com/Tarkov-Helper/mock-database/main/mapkeys.json"
+    }
+]

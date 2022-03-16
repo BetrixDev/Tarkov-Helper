@@ -1,9 +1,12 @@
 import 'reflect-metadata'
-import { CommandInteraction, InteractionReplyOptions } from 'discord.js'
-import { Discord, Slash } from 'discordx'
-import { gql, request } from 'graphql-request'
-import moment from 'moment-timezone'
-import { Cache, CapitalizeWords, ErrorReponse, THEmbed } from '../lib'
+import { Client, Discord, Slash } from 'discordx'
+import request, { gql } from 'graphql-request'
+import { CommandInteraction } from 'discord.js'
+import { capitalizeWords, handleCommandInteraction, THEmbed, translation } from '../lib'
+import botConfig from '../config/bot-config'
+import dayjs from 'dayjs'
+import { Trader } from '../data/classes/trader'
+import { TraderReset } from '../types/game/restock'
 
 const query = gql`
     {
@@ -19,49 +22,41 @@ export class RestockCommand {
     @Slash('restocks', {
         description: 'Returns the time left till each trader restocks'
     })
-    async restocks(interaction: CommandInteraction) {
-        try {
-            interaction.reply(await this.message(interaction))
-        } catch (e) {
-            console.log(e)
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
-        }
-    }
+    async restocks(interaction: CommandInteraction, client: Client, { serverData: { Language } }: GuardData) {
+        handleCommandInteraction(
+            interaction,
+            Language,
+            new Promise(async (respond, error) => {
+                const t = translation(Language)
 
-    async message(interaction: CommandInteraction): Promise<InteractionReplyOptions> {
-        return new Promise(async (resolve) => {
-            const { traderResetTimes } = await request<{ traderResetTimes: TraderReset[] }>(
-                'https://tarkov-tools.com/graphql',
-                query
-            )
+                const { traderResetTimes } = await request<{ traderResetTimes: TraderReset[] }>(
+                    'https://tarkov-tools.com/graphql',
+                    query
+                )
 
-            resolve({
-                embeds: [
-                    new THEmbed()
-                        .setTitle('Trader restock times')
-                        .setThumbnail(Cache.config.images.thumbnails.trader)
-                        .addFields(
-                            ...traderResetTimes.map((reset) => {
-                                return {
-                                    name: CapitalizeWords(reset.name),
-                                    value: `<t:${moment(reset.resetTimestamp).unix()}:R>`,
+                respond({
+                    embeds: [
+                        new THEmbed()
+                            .setTitle(t('Trader restock times'))
+                            .setThumbnail(botConfig.images.thumbnails.trader)
+                            .addFields(
+                                ...traderResetTimes.map((reset) => {
+                                    return {
+                                        name: new Trader(capitalizeWords(reset.name), Language).name,
+                                        value: `<t:${dayjs(reset.resetTimestamp).unix()}:R>`,
+                                        inline: true
+                                    }
+                                }),
+                                {
+                                    name: '\u200b',
+                                    value: '\u200b',
                                     inline: true
                                 }
-                            }),
-                            {
-                                name: '\u200b',
-                                value: '\u200b',
-                                inline: true
-                            }
-                        )
-                        .setFooter('Data from tarkov-tools.com')
-                ]
+                            )
+                            .setFooter({ text: t('Data from tarkov-tools.com') })
+                    ]
+                })
             })
-
-            // We have 3 seconds before the interaction fails
-            setTimeout(() => {
-                resolve(ErrorReponse('Failed to recieve a response', interaction))
-            }, 2750)
-        })
+        )
     }
 }

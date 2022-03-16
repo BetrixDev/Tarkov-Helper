@@ -1,8 +1,9 @@
-import 'reflect-metadata'
+import { Client, CommandInteraction } from 'discord.js'
 import { Discord, Slash } from 'discordx'
-import { CommandInteraction, InteractionReplyOptions } from 'discord.js'
-import { gql, request } from 'graphql-request'
-import { Cache, ErrorReponse, THEmbed } from '../lib'
+import request, { gql } from 'graphql-request'
+import botConfig from '../config/bot-config'
+import { handleCommandInteraction, THEmbed, translation } from '../lib'
+import { ServerStatus } from '../types/game/status'
 
 const query = gql`
     {
@@ -32,38 +33,38 @@ export class StatusCommand {
     @Slash('status', {
         description: 'Returns information regarding server status and stability'
     })
-    async status(interaction: CommandInteraction) {
-        try {
-            interaction.reply(await this.message(interaction))
-        } catch (e) {
-            console.log(e)
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
-        }
-    }
+    async status(interaction: CommandInteraction, client: Client, { serverData: { Language } }: GuardData) {
+        handleCommandInteraction(
+            interaction,
+            Language,
+            new Promise(async (respond, error) => {
+                const t = translation(Language)
 
-    async message(interaction: CommandInteraction): Promise<InteractionReplyOptions> {
-        return new Promise(async (resolve) => {
-            const reponse = await request<{ status: ServerStatus }>('https://tarkov-tools.com/graphql', query)
-            const status = reponse.status
+                const reponse = await request<{ status: ServerStatus }>('https://tarkov-tools.com/graphql', query)
+                const status = reponse.status
 
-            resolve({
-                embeds: [
-                    new THEmbed()
-                        .setTitle(`${status.generalStatus.name} Status: ${status.generalStatus.statusCode}`)
-                        .setDescription(`*"${status.messages[0].content}"*`)
-                        .setThumbnail(Cache.config.images.thumbnails.status)
-                        .addFields(
-                            status.currentStatuses.map((s) => {
-                                return { name: s.name, value: s.statusCode.replace('OK', 'Stable'), inline: true }
-                            })
-                        )
-                ]
+                respond({
+                    embeds: [
+                        new THEmbed()
+                            .setTitle(`${status.generalStatus.name} Status: ${status.generalStatus.statusCode}`)
+                            .setDescription(status.messages.length > 0 ? `*"${status.messages[0].content}"*` : '\u200b')
+                            .setThumbnail(botConfig.images.thumbnails.status)
+                            .addFields(
+                                status.currentStatuses.map((s) => {
+                                    return {
+                                        name: s.name,
+                                        value: s.statusCode.replace('OK', 'Stable'),
+                                        inline: true
+                                    }
+                                })
+                            )
+                    ]
+                })
+
+                setTimeout(() => {
+                    error(t('Failed to recieve a response'))
+                }, 2500)
             })
-
-            // We have 3 seconds before the interaction fails
-            setTimeout(() => {
-                resolve(ErrorReponse('Failed to recieve a response', interaction))
-            }, 2750)
-        })
+        )
     }
 }

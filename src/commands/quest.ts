@@ -1,5 +1,3 @@
-import 'reflect-metadata'
-import { ButtonComponent, Discord, Slash, SlashOption } from 'discordx'
 import {
     AutocompleteInteraction,
     ButtonInteraction,
@@ -8,147 +6,118 @@ import {
     MessageActionRow,
     MessageButton
 } from 'discord.js'
-import { ErrorReponse, GetQuest, ReadJson, THEmbed } from '../lib'
-import SearchEngine from '../helpers/search_engines/quest-engine'
+import { ButtonComponent, Client, Discord, Slash, SlashOption } from 'discordx'
+import 'reflect-metadata'
+import { injectable } from 'tsyringe'
+import { fetchData } from '../data/cache'
+import { Quest } from '../data/classes/quest'
+import { autoCompleteResults, questSearchEngine } from '../helpers/search_engines/quest-engine'
+import { DATABASE_LOCATION, handleCommandInteraction, THEmbed, translation } from '../lib'
+import { RawQuest } from '../types/game/quest'
 
-let QuestGuides = ReadJson<QuestGuide>('game_data/questguide.json')
-
-enum Traders {
-    'Prapor',
-    'Therapist',
-    'Skier',
-    'Peackeeper',
-    'Mechanic',
-    'Ragman',
-    'Jaeger',
-    'Fence'
-}
+const QUEST_NUMBER = fetchData<RawQuest[]>('questData').length
 
 @Discord()
+@injectable()
 export class QuestCommand {
-    @Slash('quest', { description: 'Retrieves information about a quest and how to complete it' })
-    quest(
-        @SlashOption('quest', {
-            description: 'name of the quest (start typing to search)',
-            autocomplete: (interaction: AutocompleteInteraction) => {
-                const input = interaction.options.getFocused(true)
-
-                const results = SearchEngine(input.value.toString())
-
-                interaction.respond(
-                    results.map((result) => {
-                        return { name: result.item.name, value: result.item.id }
-                    })
-                )
-            },
-            type: 'STRING'
-        })
-        id: string,
-        interaction: CommandInteraction
-    ) {
-        try {
-            if (Number(id) === NaN) {
-                interaction.reply(
-                    ErrorReponse('Please use the auto complete function to complete your search', interaction)
-                )
-                return
-            }
-
-            interaction.reply(this.message(Number(id)))
-        } catch (e) {
-            console.log(e)
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
-        }
-    }
-
-    message(id: number) {
-        const quest = GetQuest(id)
-        const questData = new QuestData(quest)
-
-        let message: InteractionReplyOptions = {
-            embeds: [
-                new THEmbed()
-                    .setTitle(`${quest.title} - ${Traders[Number(quest.giver)]}`)
-                    .setDescription(
-                        `
-                    ${questData.description}
-
-                    ${QuestGuides[quest.title].steps
-                        .map((str) => `• ${str}`)
-                        .join('\n')
-                        .slice(0, 3000)}
-
-                    
-                    ${QuestGuides[quest.title]?.images[0]?.text ?? ''}
-                    `
-                    )
-                    .setFields({ name: 'Required for Kappa?', value: quest.nokappa === true ? 'no' : 'yes' })
-                    .setImage(QuestGuides[quest.title]?.images[0]?.link ?? '')
-            ]
-        }
-
-        let buttons = new Array()
-
-        if (QuestGuides[quest.title] !== undefined) {
-            buttons.push(
-                new MessageButton().setLabel('Guide Images').setCustomId(`guide__${quest.id}`).setStyle('PRIMARY')
-            )
-        }
-
-        buttons.push(new MessageButton().setLabel('Full Guide').setURL(`${quest.wiki}#Guide`).setStyle('LINK'))
-
-        message.components = [new MessageActionRow().addComponents(buttons)]
-
-        return message
-    }
-
     @ButtonComponent(/^guide__/)
-    async mapButton(interaction: ButtonInteraction) {
-        const [_, i] = interaction.customId.split('__')
-        const index = Number(i)
+    async button(interaction: ButtonInteraction) {
+        const [_, i, language] = interaction.customId.split('__')
+        const id = Number(i)
 
-        const quest: TrackerQuest = GetQuest(index)
-        const guide = QuestGuides[quest.title]
+        const quest = new Quest(id, language as Languages)
+        const t = translation(language)
 
         let message: InteractionReplyOptions = { embeds: [], ephemeral: true }
 
-        message.embeds?.push(
-            new THEmbed()
-                .setTitle(`Steps`)
-                .setDescription(guide.steps.join('\n'))
-                .setFooter('Text from the official wiki')
-        )
-
-        guide.images?.forEach((image, i) => {
+        if (quest.guide.length > 0) {
             message.embeds?.push(
                 new THEmbed()
-                    .setTitle(`Image #${i + 1}`)
-                    .setDescription(image?.text ?? '...')
-                    .setImage(image.link)
-                    .setFooter('Image from the official wiki')
+                    .setTitle(t('Steps'))
+                    .setDescription(quest.guide.map((str) => `• ${str}`).join('\n'))
+                    .setFooter({ text: t('Text from the official wiki') })
+            )
+        }
+
+        quest.guideImages.forEach((image, i) => {
+            message.embeds?.push(
+                new THEmbed()
+                    .setTitle(t('Image #{0}', i + 1))
+                    .setDescription(image.caption ?? '\u200b')
+                    .setImage(image.url)
+                    .setFooter({ text: t('Image from the official wiki') })
             )
         })
 
         interaction.reply(message)
     }
-}
 
-class QuestData {
-    gameID: string
+    @Slash('quest', { description: 'Retrieves information about a quest and how to complete it' })
+    quest(
+        @SlashOption('quest', {
+            description: 'name of the quest (start typing to search)',
+            autocomplete: async (interaction: AutocompleteInteraction) => await autoCompleteResults(interaction),
+            type: 'STRING'
+        })
+        i: string,
+        interaction: CommandInteraction,
+        client: Client,
+        { serverData: { Language } }: GuardData
+    ) {
+        handleCommandInteraction(
+            interaction,
+            Language,
+            new Promise((repond, error) => {
+                const t = translation(Language)
 
-    description: string
+                const id = Number(i)
 
-    constructor(quest: TrackerQuest) {
-        let Locals = ReadJson<any>('./game_data/database/locales/global/en.json')
+                if (id === NaN || id > QUEST_NUMBER) {
+                    error('Please use the auto complete function to complete your search')
+                    return
+                }
 
-        this.gameID = quest.gameId
+                const quest = new Quest(Number(id), Language)
 
-        if (this.gameID == 'unknown') {
-            this.description = ''
-        } else {
-            const localObject = Locals.quest[this.gameID]
+                let message: InteractionReplyOptions = {
+                    embeds: [
+                        new THEmbed()
+                            .setTitle(`${quest.quest.title} - ${quest.giver}`)
+                            .setDescription(
+                                `
+                                ${quest.description}
 
-            this.description = `*"${Locals.mail[localObject.description].substr(0, 150).concat('...')}"*`
-        }
+                                ${quest.guide
+                                    .map((str) => `• ${str}`)
+                                    .join('\n')
+                                    .slice(0, 3000)}
+                            `
+                            )
+                            .setFields({ name: t('Required for Kappa?'), value: t(quest.kappa) })
+                            .setThumbnail(quest.questImage ?? '')
+                            .setImage(`${DATABASE_LOCATION}/images/quests/${id}.png`)
+                    ]
+                }
+
+                let buttons = new Array()
+
+                if (quest.guideImages.length > 0) {
+                    buttons.push(
+                        new MessageButton()
+                            .setLabel(t('Guide Images'))
+                            .setCustomId(`guide__${id}__${Language}`)
+                            .setStyle('PRIMARY')
+                    )
+                }
+
+                buttons.push(
+                    new MessageButton().setLabel(t('Full Guide')).setURL(`${quest.wikiLink}#Guide`).setStyle('LINK')
+                )
+
+                message.components = [new MessageActionRow().addComponents(buttons)]
+
+                repond(message)
+            })
+        )
     }
 }

@@ -1,15 +1,16 @@
-import { Clamp, GetDBItem, Random, ReadJson } from '../../lib'
+import { fetchData } from '../../data/cache'
+import { Item } from '../../data/classes/item'
+import { clamp, random } from '../../lib'
 
-let ArmorMaterials = ReadJson<any>('game_data/database/globals.json').config.ArmorMaterials
-
-type Result = {
+interface Result {
     chance: number
     durability: number
     penned: boolean
     rolled: number
 }
 
-type ArmorData = {
+interface ArmorData {
+    id: string
     class: number
     durability: number
     currentDurability: number
@@ -17,7 +18,8 @@ type ArmorData = {
     resistance: number
 }
 
-type BulletData = {
+interface BulletData {
+    id: string
     penetration: number
     armorDamage: number
     damage: number
@@ -27,25 +29,28 @@ export class BallisticsCalculator {
     armorData: ArmorData
     bulletData: BulletData
 
-    constructor(armor: string, bullet: string) {
-        const armorData = GetDBItem(armor).raw
-        const bulletData = GetDBItem(bullet).raw
+    constructor(armor: Item, bullet: Item) {
+        const armorMaterials = fetchData<any>('globals').config.ArmorMaterials
 
+        // Using Number() to force the value to be defined, since we know they will be due to only accepting armors and bullets
         this.armorData = {
-            class: armorData.armorClass,
-            durability: armorData.Durability,
-            currentDurability: armorData.Durability,
-            destructibility: ArmorMaterials[armorData.ArmorMaterial].Destructibility,
+            id: armor.id,
+            class: Number(armor.props.armorClass),
+            durability: Number(armor.props.MaxDurability),
+            currentDurability: Number(armor.props.MaxDurability),
+            destructibility: armorMaterials[armor.props.ArmorMaterial ?? 'Aluminium'].Destructibility,
             resistance: 10
         }
 
         this.bulletData = {
-            penetration: bulletData.PenetrationPower,
-            armorDamage: bulletData.ArmorDamage,
-            damage: bulletData.Damage
+            id: bullet.id,
+            penetration: Number(bullet.props.PenetrationPower),
+            armorDamage: Number(bullet.props.ArmorDamage),
+            damage: Number(bullet.props.Damage)
         }
     }
-    get CurrentChance(): number {
+
+    get currentChance(): number {
         let penetrationChance: number
 
         const armorData = this.armorData
@@ -60,20 +65,17 @@ export class BallisticsCalculator {
         if (n < a - 15) {
             penetrationChance = 0
         } else if (n < a) {
-            const line = (x: number) => {
-                return ((4 / 10) * Math.pow(a - x - 15, 2)) / 100
-            }
-            penetrationChance = line(n) * 100
+            const f = (x: number) => ((4 / 10) * Math.pow(a - x - 15, 2)) / 100
+            penetrationChance = f(n) * 100
         } else {
-            const line = (x: number) => {
-                return (100 + x / (0.9 * a - x)) / 100
-            }
-            penetrationChance = line(n) * 100
+            const f = (x: number) => (100 + x / (0.9 * a - x)) / 100
+            penetrationChance = f(n) * 100
         }
 
         return penetrationChance
     }
-    DamageArmor(penetrated: boolean) {
+
+    damageArmor(penetrated: boolean): void {
         let bulletArmorDamage = this.bulletData.armorDamage
         let bulletPenetration = this.bulletData.penetration
 
@@ -85,14 +87,14 @@ export class BallisticsCalculator {
             armorDamage =
                 (bulletPenetration *
                     bulletArmorDamage *
-                    Clamp(bulletPenetration / this.armorData.resistance, 0.5, 0.9) *
+                    clamp(bulletPenetration / this.armorData.resistance, 0.5, 0.9) *
                     this.armorData.destructibility) /
                 100
         } else {
             armorDamage =
                 (bulletPenetration *
                     bulletArmorDamage *
-                    Clamp(bulletPenetration / this.armorData.resistance, 0.6, 1.1) *
+                    clamp(bulletPenetration / this.armorData.resistance, 0.6, 1.1) *
                     this.armorData.destructibility) /
                 100
         }
@@ -105,7 +107,8 @@ export class BallisticsCalculator {
 
         this.armorData.currentDurability -= armorDamage
     }
-    get DurabilityPenchanceData() {
+
+    get durabilityPenchanceData() {
         let data: { durability: number; penChance: number }[] = new Array()
 
         const maxDurability = this.armorData.durability
@@ -113,7 +116,7 @@ export class BallisticsCalculator {
         for (let i = 0; i < maxDurability; i++) {
             data.push({
                 durability: this.armorData.currentDurability,
-                penChance: this.CurrentChance
+                penChance: this.currentChance
             })
 
             this.armorData.currentDurability--
@@ -121,7 +124,8 @@ export class BallisticsCalculator {
 
         return data
     }
-    Simulate() {
+
+    simulate() {
         const iterations = 1000
 
         let simResults: Result[][] = new Array()
@@ -132,15 +136,15 @@ export class BallisticsCalculator {
             while (this.armorData.currentDurability > 0) {
                 if (this.armorData.currentDurability < 0) this.armorData.currentDurability = 0
 
-                let penChance = this.CurrentChance
+                let penChance = this.currentChance
 
-                let random = Random(1, 100)
+                let randomChance = random(1, 100)
                 let penned = true
 
-                if (penChance > random) {
-                    this.DamageArmor(true)
+                if (penChance > randomChance) {
+                    this.damageArmor(true)
                 } else {
-                    this.DamageArmor(false)
+                    this.damageArmor(false)
                     penned = false
                 }
 
@@ -149,7 +153,12 @@ export class BallisticsCalculator {
                     penChance = 100
                 }
 
-                result.push({ chance: penChance, durability: this.armorData.currentDurability, penned, rolled: random })
+                result.push({
+                    chance: penChance,
+                    durability: this.armorData.currentDurability,
+                    penned,
+                    rolled: randomChance
+                })
             }
 
             simResults.push(result)
@@ -178,5 +187,9 @@ export class BallisticsCalculator {
         report.averageShotsToPen = report.averageShotsToPen / simResults.length
 
         return report
+    }
+
+    get stringifiedData(): string {
+        return `${this.armorData.id}|${this.bulletData.id}|${this.armorData.currentDurability}`
     }
 }

@@ -1,53 +1,42 @@
 import 'reflect-metadata'
-import { Discord, Slash, SlashOption } from 'discordx'
 import { AutocompleteInteraction, CommandInteraction, InteractionReplyOptions } from 'discord.js'
-import SearchEngine from '../helpers/search_engines/item-engine'
-import { ErrorReponse, isID, isShortName } from '../lib'
+import { Client, Discord, Slash, SlashOption } from 'discordx'
+import { autoCompleteResults } from '../helpers/search_engines/item-engine'
+import { handleCommandInteraction, translation } from '../lib'
+import { ErrorMessages, ItemCommand } from './item'
+import { isId } from '../data/cache'
 
 @Discord()
-export class PriceCommand {
-    @Slash('stat', {
-        description: 'Returns information about a specified item'
-    })
-    stat(
+export class StatCommand {
+    @Slash('stat', { description: 'Returns information about the specified item' })
+    async stat(
         @SlashOption('item', {
-            description: 'item to get info of (start typing to search)',
-            autocomplete: (interaction: AutocompleteInteraction) => {
-                const input = interaction.options.getFocused(true)
-
-                const results = SearchEngine(input.value.toString())
-
-                interaction.respond(
-                    results.map((result) => {
-                        return { name: result.item.name, value: result.item.id }
-                    })
-                )
-            },
-            type: 'STRING'
+            description: 'item to get stats of (start typing to search)',
+            type: 'STRING',
+            autocomplete: async (interaction: AutocompleteInteraction) => await autoCompleteResults(interaction)
         })
         id: string,
-        interaction: CommandInteraction
+        interaction: CommandInteraction,
+        client: Client,
+        { serverData: { Language } }: GuardData
     ) {
-        try {
-            if (!isID(id)) {
-                const isShort = isShortName(id)
-                if (isShort) {
-                    id = isShort.id
-                } else {
-                    interaction.reply(
-                        ErrorReponse('Please use the auto complete function to complete your search', interaction)
-                    )
-                    return
-                }
-            }
-            interaction.reply(this.message())
-        } catch (e) {
-            console.log(e)
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
-        }
+        handleCommandInteraction(
+            interaction,
+            Language,
+            new Promise((respond, error) => {
+                respond(ItemCommand.statsMessage(id, Language))
+            })
+        )
     }
 
-    message(): InteractionReplyOptions {
-        return { content: 'Please use the /item command to access stats for this item', ephemeral: true }
+    static message(id: string, language: Languages): InteractionReplyOptions {
+        const t = translation(language)
+
+        // Make sure item is a real item
+        if (!isId(id)) {
+            throw new Error(t(ErrorMessages.USE_AUTO_COMPLETE))
+        }
+
+        return ItemCommand.statsMessage(id, language)
     }
 }

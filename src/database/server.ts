@@ -1,48 +1,55 @@
 import 'reflect-metadata'
 import { serverModel } from '../models/server-model'
 import { singleton } from 'tsyringe'
-import { Interaction } from 'discord.js'
+import logger from '../config/logger'
 
-@singleton()
-export class ServerDatabase {
-    constructor() {}
+const Namespace = 'ServerDatabase'
 
-    async query(guildId: string): Promise<ServerData> {
-        let data
-        try {
-            data = await serverModel.findOne({ ServerID: guildId })
-            if (!data) {
-                data = {
-                    ServerID: guildId,
-                    AdminRole: '',
-                    Cooldown: 3,
-                    ChannelLock: ''
-                }
+const defaultData: ServerData = {
+    ServerID: '',
+    Language: 'en',
+    Cooldown: 3,
+    ChannelLock: ''
+}
 
-                const server = await serverModel.create(data)
-                server.save()
+export async function queryDatabase(guildId: string): Promise<ServerData> {
+    if (guildId === '') return defaultData
+
+    let data
+    try {
+        data = await serverModel.findOne({ ServerID: guildId })
+        if (!data) {
+            data = {
+                ServerID: guildId,
+                AdminRole: '',
+                Cooldown: 3,
+                ChannelLock: '',
+                Language: 'en'
             }
-        } catch (e) {
-            console.log(e)
-        }
-        return data
-    }
 
-    async set(guildId: string | null, key: keyof ServerData, data: any) {
-        try {
-            await serverModel.findOneAndUpdate(
-                {
-                    ServerID: guildId ?? ''
-                },
-                {
-                    $set: {
-                        [key]: data
-                    }
-                }
-            )
-            return true
-        } catch (e) {
-            return false
+            const server = await serverModel.create(data)
+            server.save()
         }
+    } catch (e) {
+        logger.error(Namespace, 'Error fetching server data', e)
+    }
+    return data
+}
+
+export async function setDatabase(guildId: string | null, key: keyof ServerData, data: any) {
+    try {
+        await serverModel.findOneAndUpdate(
+            {
+                ServerID: guildId ?? ''
+            },
+            {
+                $set: {
+                    [key]: data
+                }
+            }
+        )
+        return true
+    } catch (e) {
+        return false
     }
 }

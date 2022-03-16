@@ -1,14 +1,67 @@
 import 'reflect-metadata'
-import { Discord, Slash, SlashChoice, SlashOption } from 'discordx'
-import { CommandInteraction } from 'discord.js'
-import { Cache, ErrorReponse, ResolveStrings, THEmbed } from '../lib'
+import { Client, Discord, Slash, SlashChoice, SlashOption } from 'discordx'
+import { CommandInteraction, InteractionReplyOptions } from 'discord.js'
+import { handleCommandInteraction, THEmbed, translation } from '../lib'
+import botConfig from '../config/bot-config'
+
+// https://escapefromtarkov.fandom.com/wiki/Currency
+// Should automate these using the item prices
+const CONVERSIONS: { [key: string]: { [key: string]: { ratio: number; operation: string } } } = {
+    rub: {
+        usd: {
+            ratio: 172,
+            operation: '/'
+        },
+        eur: {
+            ratio: 194,
+            operation: '/'
+        }
+    },
+    usd: {
+        rub: {
+            ratio: 172,
+            operation: '*'
+        },
+        eur: {
+            ratio: 0.887,
+            operation: '*'
+        }
+    },
+    eur: {
+        rub: {
+            ratio: 194,
+            operation: '*'
+        },
+        usd: {
+            ratio: 0.887,
+            operation: '/'
+        }
+    }
+}
+
+const NAMES: { [key: string]: string } = {
+    usd: 'Dollars',
+    rub: 'Roubles',
+    eur: 'Euros'
+}
+
+function formatPrice(currency: string, price: number) {
+    return new Intl.NumberFormat('en-EN', {
+        style: 'currency',
+        currency: currency.toUpperCase(),
+        maximumSignificantDigits: 6
+    })
+        .format(Number(price))
+        .replace('RUB', '₽')
+        .replace(' ', '')
+}
 
 @Discord()
 export class ExchangeRateCommand {
     @Slash('exchangerate', {
         description: 'Convert a currency to the others'
     })
-    async price(
+    async exchangerate(
         @SlashChoice('Euros', 'eur')
         @SlashChoice('Dollars', 'usd')
         @SlashChoice('Rubles', 'rub')
@@ -16,23 +69,28 @@ export class ExchangeRateCommand {
             description: 'Currency to convert',
             type: 'STRING'
         })
-        currency: Currencies,
+        currency: string,
         @SlashOption('amount', {
             description: 'Amount of the currency'
         })
         amount: number,
-        interaction: CommandInteraction
+        interaction: CommandInteraction,
+        client: Client,
+        { serverData: { Language } }: GuardData
     ) {
-        try {
-            interaction.reply(this.message(currency, amount))
-        } catch (e) {
-            console.log(e)
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
-        }
+        handleCommandInteraction(
+            interaction,
+            Language,
+            new Promise((respond, error) => {
+                respond(ExchangeRateCommand.message(currency, amount, Language))
+            })
+        )
     }
 
-    message(currency: Currencies, amount: number) {
-        const conversionData: { [key: string]: { operation: string; ratio: number } } = Conversions[currency]
+    static message(currency: string, amount: number, language: Languages): InteractionReplyOptions {
+        const t = translation(language)
+
+        const conversionData = CONVERSIONS[currency]
 
         let conversions: string[] = []
 
@@ -40,7 +98,7 @@ export class ExchangeRateCommand {
             let otherData = conversionData[otherCurrency]
 
             conversions.push(
-                `**${Names[otherCurrency]}**: ${FormatPrice(
+                `**${t(NAMES[otherCurrency])}**: ${formatPrice(
                     otherCurrency,
                     Math.round(eval(`${amount} ${otherData.operation} ${otherData.ratio}`) * 100) / 100
                 )}`
@@ -50,70 +108,16 @@ export class ExchangeRateCommand {
         return {
             embeds: [
                 new THEmbed()
-                    .setTitle(`Conversion Rate from ${FormatPrice(currency, amount)}`)
-                    .setThumbnail(Cache.config.images.thumbnails.exchangerate)
-                    .setDescription(`Below will show the value of ${Names[currency]} in other currencies`)
-                    .addFields(
-                        ResolveStrings([
-                            {
-                                name: 'Conversions',
-                                value: conversions
-                            }
-                        ])
+                    .setTitle(t(`Conversion Rate from {0}`, formatPrice(currency, amount)))
+                    .setThumbnail(botConfig.images.thumbnails.exchangerate)
+                    .setDescription(
+                        `*${t(`Below will show the value of {0} in other currencies`, t(NAMES[currency]))}*`
                     )
+                    .addFields({
+                        name: t('Conversions'),
+                        value: conversions.join('\n')
+                    })
             ]
         }
     }
-}
-
-type Currencies = keyof typeof Conversions
-
-const Conversions = {
-    rub: {
-        usd: {
-            ratio: 114,
-            operation: '/'
-        },
-        eur: {
-            ratio: 127,
-            operation: '/'
-        }
-    },
-    usd: {
-        rub: {
-            ratio: 114,
-            operation: '*'
-        },
-        eur: {
-            ratio: 0.897,
-            operation: '*'
-        }
-    },
-    eur: {
-        rub: {
-            ratio: 127,
-            operation: '*'
-        },
-        usd: {
-            ratio: 0.897,
-            operation: '/'
-        }
-    }
-}
-
-const Names: { [key: string]: {} } = {
-    usd: 'Dollars',
-    rub: 'Roubles',
-    eur: 'Euros'
-}
-
-function FormatPrice(currency: string, price: number) {
-    return new Intl.NumberFormat('en-EN', {
-        style: 'currency',
-        currency: currency.toUpperCase(),
-        maximumSignificantDigits: 6
-    })
-        .format(Number(price))
-        .replace('RUB', '₽')
-        .replace(' ', '')
 }

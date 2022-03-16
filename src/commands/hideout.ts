@@ -1,87 +1,72 @@
-import { AutocompleteInteraction, CommandInteraction, Interaction, InteractionReplyOptions } from 'discord.js'
-import { Discord, Slash, SlashOption } from 'discordx'
-import SearchEngine from '../helpers/search_engines/hideout-engine'
-import { ErrorReponse, Cache, GetItem, THEmbed, FormatPrice, FormatNumber } from '../lib'
+import 'reflect-metadata'
+import { AutocompleteInteraction, CommandInteraction, InteractionReplyOptions } from 'discord.js'
+import { Client, Discord, Slash, SlashOption } from 'discordx'
+import { autoCompleteResults } from '../helpers/search_engines/module-engine'
+import { formatNumber, formatPrice, handleCommandInteraction, THEmbed, translation } from '../lib'
+import { readFileSync } from 'jsonfile'
+import { HideoutModule } from '../data/classes/module'
+import { Item } from '../data/classes/item'
+
+const HIDEOUT_MODULE_COUNT = readFileSync('./data/hideoutData.json').length as number
+
+export enum ErrorMessages {
+    USE_AUTO_COMPLETE = 'Please use the auto complete function to complete your search'
+}
 
 @Discord()
 export class HideoutCommand {
     @Slash('hideout', { description: 'Retrieve the cost for upgrading a hideout module' })
     async hideout(
         @SlashOption('module', {
-            description: 'name of the module to grab.  ex: BitcoinFarm',
-            autocomplete: (interaction: AutocompleteInteraction) => {
-                const input = interaction.options.getFocused(true)
-
-                const results = SearchEngine(input.value.toString())
-
-                interaction.respond(
-                    results.map((result) => {
-                        return { name: result.item.name, value: result.item.key }
-                    })
-                )
-            },
-            type: 'STRING'
+            description: 'name of the module to grab. ex: "Bitcoin Farm"',
+            type: 'STRING',
+            autocomplete: async (interaction: AutocompleteInteraction) => await autoCompleteResults(interaction)
         })
         i: string,
-        interaction: CommandInteraction
+        interaction: CommandInteraction,
+        client: Client,
+        { serverData: { Language } }: GuardData
     ) {
-        try {
-            const id = Number(i)
+        handleCommandInteraction(
+            interaction,
+            Language,
+            new Promise((respond, error) => {
+                const id = Number(i)
 
-            if (id === NaN || id > Cache.hideoutData.length) {
-                interaction.reply(
-                    ErrorReponse('Please use the auto complete function to complete your search', interaction)
-                )
-                return
-            }
-            interaction.reply(this.message(id, interaction))
-        } catch (e) {
-            console.log(e)
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
-        }
+                if (isNaN(id) || id > HIDEOUT_MODULE_COUNT) {
+                    error(translation(Language)(ErrorMessages.USE_AUTO_COMPLETE))
+                }
+
+                respond(HideoutCommand.message(id, Language))
+            })
+        )
     }
 
-    message(id: number, interaction: Interaction): InteractionReplyOptions {
-        const module = Cache.hideoutData.find((m) => m.id === id)
-        if (!module) return ErrorReponse('Unable to grab the specified module', interaction)
+    static message(id: number, language: Languages): InteractionReplyOptions {
+        const t = translation(language)
 
-        const requiredItems = module.itemRequirements.map((i) => {
-            return { item: GetItem(i.item.id), count: i.count }
-        })
+        const module = new HideoutModule(id, language)
 
-        let totalPrice = 0
-        requiredItems.forEach((i) => {
-            const price =
-                i.item.id === '5449016a4bdc2d6f028b456f' // Roubles have a price of 1
-                    ? 1
-                    : i.item.buyFor.sort((a, b) => {
-                          return b.price - a.price
-                      })[0].price
-
-            totalPrice += price * i.count
+        const requiredItems = module.data.itemRequirements.map((i) => {
+            return { item: new Item(i.item.id, language), count: i.count }
         })
 
         return {
             embeds: [
-                new THEmbed().setTitle(`${module.name} Level ${module.level} Upgrade Requirements`).addFields(
+                new THEmbed().setTitle(t('{0} Level {1} Upgrade Requirements', module.name, module.level)).addFields(
                     {
-                        name: 'Items',
+                        name: t('Items'),
                         value:
                             requiredItems.length > 0
                                 ? requiredItems
-                                      .map((i) => {
-                                          return `**x${FormatNumber(i.count)}**[ ${i.item.shortName}](${
-                                              i.item.wikiLink
-                                          } "${i.item.name}") - ${FormatPrice(
-                                              i.item.id === '5449016a4bdc2d6f028b456f'
-                                                  ? 1 * i.count
-                                                  : i.item.buyFor.sort((a, b) => {
-                                                        return b.price - a.price
-                                                    })[0].price * i.count
-                                          )}`
-                                      })
+                                      .map(
+                                          ({ item, count }) =>
+                                              `**x${formatNumber(count)}** [${item.shortName}](${item.wikiLink} "${
+                                                  item.name
+                                              }") - ${formatPrice(item.lowestBuyPrice * count)}`
+                                      )
                                       .join('\n')
-                                : 'None',
+                                : t('None'),
                         inline: true
                     },
                     {
@@ -90,20 +75,20 @@ export class HideoutCommand {
                         inline: true
                     },
                     {
-                        name: 'Total Cost',
-                        value: FormatPrice(totalPrice),
+                        name: t('Total Cost'),
+                        value: formatPrice(module.upgradeCost),
                         inline: true
                     },
                     {
-                        name: 'Required Modules',
+                        name: t('Required Modules'),
                         value:
-                            module.moduleRequirements.length > 0
-                                ? module.moduleRequirements
-                                      .map((m) => {
-                                          return `${m.name} Level ${m.level}`
-                                      })
+                            module.data.moduleRequirements.length > 0
+                                ? module.data.moduleRequirements
+                                      .map(({ id, level }) =>
+                                          t('{0} Level {1}', new HideoutModule(id, language).name, level)
+                                      )
                                       .join('\n')
-                                : 'None',
+                                : t('None'),
                         inline: true
                     }
                 )

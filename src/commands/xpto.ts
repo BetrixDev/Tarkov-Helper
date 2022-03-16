@@ -1,82 +1,90 @@
-import { CommandInteraction, MessageEmbed } from 'discord.js'
-import { Discord, Slash, SlashOption } from 'discordx'
-import { Cache, ErrorReponse, FormatNumber, ReadJson, THEmbed } from '../lib'
+import 'reflect-metadata'
+import { Client, Discord, Slash, SlashOption } from 'discordx'
+import { CommandInteraction, InteractionReplyOptions } from 'discord.js'
+import { readFileSync } from 'jsonfile'
+import { formatNumber, handleCommandInteraction, THEmbed, translation } from '../lib'
+import botConfig from '../config/bot-config'
 
-type EXP = { fromPrevious: number; total: number }
+interface ExperiencePoint {
+    fromPrevious: number
+    total: number
+}
 
-let levelData: { exp: number }[] = ReadJson<any>('game_data/database/globals.json').config.exp.level.exp_table
+const LEVEL_DATA: { exp: number }[] = readFileSync('./data/globals.json').config.exp.level.exp_table
+const MAX_LEVEL = LEVEL_DATA.length
 
-function ExperienceData(): EXP[] {
+const getExperienceData = (): ExperiencePoint[] => {
     let total = 0
-    let table: EXP[] = new Array()
+    let table: ExperiencePoint[] = []
 
-    levelData.forEach((level: { exp: number }) => {
-        total += level.exp
-        table.push({ fromPrevious: level.exp, total })
+    LEVEL_DATA.forEach(({ exp }) => {
+        total += exp
+        table.push({ fromPrevious: exp, total })
     })
 
     return table
 }
 
-let MaxLevel = levelData.length
+const experienceData = getExperienceData()
 
 @Discord()
-export abstract class Command {
+export class XptoCommand {
     @Slash('xpto', {
         description: 'Calculate the experience needed to reach a certain levelm'
     })
     async xpto(
         @SlashOption('current', {
-            description: 'Current Level. Can also be Experience Amount'
+            description: 'Current Level. Can also be experience Amount'
         })
         current: number,
         @SlashOption('end', {
             description: 'Level to end at'
         })
         end: number,
-        interaction: CommandInteraction
+        interaction: CommandInteraction,
+        client: Client,
+        { serverData: { Language } }: GuardData
     ) {
-        try {
-            interaction.reply(this.message(interaction, current, end))
-        } catch (e) {
-            console.log(e)
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
-        }
+        handleCommandInteraction(interaction, Language, XptoCommand.message(current, end, Language))
     }
 
-    message(interaction: CommandInteraction, current: number, end: number) {
-        const data = ExperienceData()
+    static message(current: number, end: number, language: Languages): Promise<InteractionReplyOptions> {
+        return new Promise((respond, error) => {
+            const t = translation(language)
 
-        if (current <= MaxLevel && end <= MaxLevel && current != end) {
-            // 'current' value is level
-            return {
-                embeds: [
-                    new THEmbed()
-                        .setTitle('Experience Calculator')
-                        .setThumbnail(Cache.config.images.thumbnails.experience)
-                        .addField(
-                            `Experience Gap from ${current} to ${end}`,
-                            `${FormatNumber(Math.abs(data[current - 1].total - data[end - 1].total))}xp`
-                        )
-                ]
+            if (current <= MAX_LEVEL && end <= MAX_LEVEL && current !== end) {
+                // 'current' value is level
+                respond({
+                    embeds: [
+                        new THEmbed()
+                            .setTitle(t('Experience Calculator'))
+                            .setThumbnail(botConfig.images.thumbnails.experience)
+                            .addField(
+                                t(`Experience Gap from {0} to {1}`, current, end),
+                                formatNumber(
+                                    Math.abs(experienceData[current - 1].total - experienceData[end - 1].total)
+                                ) + t('xp')
+                            )
+                    ]
+                })
+            } else if (current > MAX_LEVEL && end <= MAX_LEVEL) {
+                // 'current' value is experience points
+                respond({
+                    embeds: [
+                        new THEmbed()
+                            .setTitle(t('Experience Calculator'))
+                            .setThumbnail(botConfig.images.thumbnails.experience)
+                            .addField(
+                                t(`Experience Gap from {0}xp to {1}`, current, end),
+                                formatNumber(Math.abs(current - experienceData[end - 1].total)) + t('xp')
+                            )
+                    ]
+                })
+            } else if (current === end) {
+                error(t('Both level values are the same'))
+            } else {
+                error(t('There was an error with the level values inputed'))
             }
-        } else if (current > MaxLevel && end <= MaxLevel) {
-            // 'current' value is experience points
-            return {
-                embeds: [
-                    new THEmbed()
-                        .setTitle('Experience Calculator')
-                        .setThumbnail(Cache.config.images.thumbnails.experience)
-                        .addField(
-                            `Experience Gap from ${current}xp to ${end}`,
-                            FormatNumber(Math.abs(current - data[end - 1].total)) + 'xp'
-                        )
-                ]
-            }
-        } else if (current == end) {
-            return ErrorReponse('Both level values are the same', interaction)
-        } else {
-            return ErrorReponse('There was an error the level values inputed', interaction)
-        }
+        })
     }
 }

@@ -1,9 +1,12 @@
 import 'reflect-metadata'
-import { Discord, Slash, SlashOption } from 'discordx'
-import { CommandInteraction } from 'discord.js'
-import { ErrorReponse, FormatPrice, ItemImage, ReadJson, ResolveStrings, THEmbed } from '../lib'
+import { CommandInteraction, InteractionReplyOptions } from 'discord.js'
+import { Client, Discord, Slash, SlashOption } from 'discordx'
+import { fetchData } from '../data/cache'
+import { formatPrice, getItemImage, handleCommandInteraction, THEmbed, translation } from '../lib'
+import { readFileSync } from 'jsonfile'
 
-let MaxLevel: number = ReadJson<any>('game_data/database/globals.json').config.exp.level.exp_table.length
+export const MAX_LEVEL: number = readFileSync('./data/globals.json').config.exp.level.exp_table.length
+const DOGTAG_PRICE_PER_LEVEL = 378
 
 @Discord()
 export class DogtagCommand {
@@ -12,42 +15,41 @@ export class DogtagCommand {
     })
     dogtag(
         @SlashOption('level', {
-            description: `Level of the dogtag (1-${MaxLevel})`
+            description: `Level of the dogtag (1-${MAX_LEVEL})`
         })
         level: number,
-        interaction: CommandInteraction
+        interaction: CommandInteraction,
+        client: Client,
+        { serverData: { Language } }: GuardData
     ) {
-        try {
-            interaction.reply(this.message(level, interaction))
-        } catch (e) {
-            console.log(e)
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
-        }
+        handleCommandInteraction(interaction, Language, DogtagCommand.message(level, Language))
     }
 
-    message(level: number, interaction: CommandInteraction) {
-        if (level > MaxLevel || level < 1) {
-            return ErrorReponse(`Please enter a valid level between 1 and ${MaxLevel}`, interaction)
-        } else {
-            return {
-                embeds: [
-                    new THEmbed()
-                        .setTitle('Dogtag Price')
-                        .setThumbnail(ItemImage('59f32c3b86f77472a31742f0'))
-                        .addFields(
-                            ResolveStrings([
+    static message(level: number, language: Languages): Promise<InteractionReplyOptions> {
+        return new Promise((respond, error) => {
+            const t = translation(language)
+
+            if (level > MAX_LEVEL || level < 1) {
+                error(t('Please enter a valid level between 1 and {0}', MAX_LEVEL))
+            } else {
+                respond({
+                    embeds: [
+                        new THEmbed()
+                            .setTitle(t('Dogtag Price'))
+                            .setThumbnail(getItemImage('59f32c3b86f77472a31742f0'))
+                            .setFields(
                                 {
-                                    name: 'Level of Dogtag',
-                                    value: level
+                                    name: t('Level of Dogtag'),
+                                    value: level.toString()
                                 },
                                 {
-                                    name: 'Price of Dogtag',
-                                    value: FormatPrice(level * 378)
+                                    name: t('Price of Dogtag'),
+                                    value: formatPrice(level * DOGTAG_PRICE_PER_LEVEL)
                                 }
-                            ])
-                        )
-                ]
+                            )
+                    ]
+                })
             }
-        }
+        })
     }
 }

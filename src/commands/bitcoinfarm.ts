@@ -1,7 +1,9 @@
 import 'reflect-metadata'
-import { Discord, Slash, SlashOption } from 'discordx'
-import { CommandInteraction } from 'discord.js'
-import { Cache, ErrorReponse, FormatPrice, GetItem, ResolveStrings, Round, THEmbed } from '../lib'
+import { CommandInteraction, InteractionReplyOptions } from 'discord.js'
+import { Client, Discord, Slash, SlashOption } from 'discordx'
+import { Item } from '../data/classes/item'
+import { formatPrice, handleCommandInteraction, round, THEmbed, translation } from '../lib'
+import botConfig from '../config/bot-config'
 
 @Discord()
 export class BitcoinFarmCommand {
@@ -16,74 +18,81 @@ export class BitcoinFarmCommand {
             required: false
         })
         compare: number,
-        interaction: CommandInteraction
+        interaction: CommandInteraction,
+        client: Client,
+        { serverData: { Language } }: GuardData
     ) {
-        try {
-            interaction.reply(this.message(gpus, compare))
-        } catch (e) {
-            console.log(e)
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
-        }
+        handleCommandInteraction(
+            interaction,
+            Language,
+            new Promise((respond, error) => {
+                if (gpus === compare) {
+                    const t = translation(Language)
+
+                    error(t('Please make sure both input fields are not the same'))
+                } else {
+                    respond(BitcoinFarmCommand.message(Language, gpus, compare))
+                }
+            })
+        )
     }
 
-    message(gpus: number, compare: number) {
-        if (compare == undefined) {
+    static message(language: Languages, gpus: number, compare?: number): InteractionReplyOptions {
+        const t = translation(language)
+
+        if (compare === undefined) {
             const farm = new BitcoinFarm(gpus)
 
             return {
                 embeds: [
                     new THEmbed()
-                        .setTitle('Bitcoin Farm Calculator')
-                        .setThumbnail(Cache.config.images.thumbnails.bitcoinfarm)
-                        .addFields(
-                            ResolveStrings([
-                                {
-                                    name: 'Bitcoin Price',
-                                    value: FormatPrice(farm.BTCPrice)
-                                },
-                                {
-                                    name: 'Amount of GPUs',
-                                    value: farm.gpus
-                                },
-                                {
-                                    name: 'Bitcoins Per Day',
-                                    value: '₿ ' + Round(farm.BitcoinDay, '000')
-                                },
-                                {
-                                    name: 'Roubles Per Day',
-                                    value: FormatPrice(farm.RUBDay)
-                                }
-                            ])
+                        .setTitle(t('Bitcoin Farm Calculator'))
+                        .setThumbnail(botConfig.images.thumbnails.bitcoinfarm)
+                        .setDescription(`*${t('This calculator does not account for any special bonuses')}*`)
+                        .setFields(
+                            { name: t('Bitcoin Price'), value: formatPrice(farm.btcPrice) },
+                            {
+                                name: t('Amount of GPUS'),
+                                value: farm.gpus.toString()
+                            },
+                            {
+                                name: t('Bitcoins Per Day'),
+                                value: `₿ ${round(farm.bitcoinsPerDay, '000')}`
+                            },
+                            {
+                                name: t('Roubles Per Day'),
+                                value: formatPrice(farm.rubPerDay)
+                            }
                         )
                 ]
             }
         } else {
             const farm = new BitcoinFarm(gpus)
             const farm2 = new BitcoinFarm(compare)
+
             return {
                 embeds: [
                     new THEmbed()
-                        .setTitle('Bitcoin Farm Calculator')
-                        .setThumbnail(Cache.config.images.thumbnails.bitcoinfarm)
+                        .setTitle(t('Bitcoin Farm Calculator'))
+                        .setThumbnail(botConfig.images.thumbnails.bitcoinfarm)
+                        .setDescription(`*${t('This calculator does not account for any special bonuses')}*`)
                         .addFields(
-                            ResolveStrings([
-                                {
-                                    name: 'Bitcoin Price',
-                                    value: FormatPrice(farm.BTCPrice)
-                                },
-                                {
-                                    name: 'Difference in GPUs',
-                                    value: `${Math.abs(farm.gpus - farm2.gpus)} *(${farm.gpus} - ${farm2.gpus})*`
-                                },
-                                {
-                                    name: 'Difference in Per Day',
-                                    value: '₿ ' + Round(Math.abs(farm.BitcoinDay - farm2.BitcoinDay), '000')
-                                },
-                                {
-                                    name: 'Difference in RUB Per Day',
-                                    value: FormatPrice(Math.abs(farm.RUBDay - farm2.RUBDay))
-                                }
-                            ])
+                            {
+                                name: t('Bitcoin Price'),
+                                value: formatPrice(farm.btcPrice)
+                            },
+                            {
+                                name: t('Difference in GPUs'),
+                                value: `${Math.abs(farm.gpus - farm2.gpus)} *(${farm.gpus} - ${farm2.gpus})*`
+                            },
+                            {
+                                name: t('Difference in Bitcoins Per Day'),
+                                value: '₿ ' + round(Math.abs(farm.bitcoinsPerDay - farm2.bitcoinsPerDay), '000')
+                            },
+                            {
+                                name: t('Difference in RUB Per Day'),
+                                value: formatPrice(Math.abs(farm.rubPerDay - farm2.rubPerDay))
+                            }
                         )
                 ]
             }
@@ -91,24 +100,25 @@ export class BitcoinFarmCommand {
     }
 }
 
-class BitcoinFarm {
+export class BitcoinFarm {
     gpus: number
-    BTCPrice: number
+    btcPrice: number
 
     constructor(gpus: number) {
         this.gpus = gpus
-        // Finds the best trader to sell bitcoin to
-        this.BTCPrice = GetItem('59faff1d86f7746c51718c9c').sellFor.sort((a, b) => {
+
+        // Get the highest selling price
+        this.btcPrice = new Item('59faff1d86f7746c51718c9c', 'en').priceData.sellFor.sort((a, b) => {
             return b.price - a.price
         })[0].price
     }
 
-    get BitcoinDay() {
-        // Calculates the amount of bitcoin produced everyday for a given amount of gpus
+    get bitcoinsPerDay() {
+        // https://escapefromtarkov.fandom.com/wiki/Hideout#Additional_Information
         return (1 / (145000 / (1 + (this.gpus - 1) * 0.041225) / 3600)) * 24
     }
 
-    get RUBDay() {
-        return Math.round(this.BitcoinDay * this.BTCPrice)
+    get rubPerDay() {
+        return Math.round(this.bitcoinsPerDay * this.btcPrice)
     }
 }

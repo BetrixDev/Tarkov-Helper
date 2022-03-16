@@ -1,7 +1,6 @@
-config.json
-game_data
 build
 node_modules
 .vscode
+.env
 
-src/data/pricehistory
+/data

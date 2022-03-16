@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import {
     ButtonInteraction,
     CommandInteraction,
@@ -5,11 +6,15 @@ import {
     MessageActionRow,
     MessageButton
 } from 'discord.js'
-import { ButtonComponent, Discord, Slash, SlashOption } from 'discordx'
-import { Cache, ErrorReponse, FormatPrice, ResolveStrings, THEmbed } from '../lib'
+import { ButtonComponent, Client, Discord, Slash, SlashOption } from 'discordx'
+import { fetchData } from '../data/cache'
+import { TarkovToolsItem } from '../types/game/item'
+import { formatPrice, handleCommandInteraction, THEmbed, translation } from '../lib'
+import botConfig from '../config/bot-config'
+import { Item } from '../data/classes/item'
 
 @Discord()
-class PricePerSlotCommand {
+export class PricePerSlotCommand {
     @Slash('priceperslot', {
         description: 'Returns all items within the specified price per slot range'
     })
@@ -22,72 +27,89 @@ class PricePerSlotCommand {
             description: 'Maximum price per slot'
         })
         maximum: number,
-        interaction: CommandInteraction
+        interaction: CommandInteraction,
+        client: Client,
+        { serverData: { Language } }: GuardData
     ) {
-        try {
-            interaction.reply(this.message(interaction, minimum, maximum))
-        } catch (e) {
-            console.log(e)
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
-        }
-    }
+        handleCommandInteraction(
+            interaction,
+            Language,
+            new Promise((respond, error) => {
+                const t = translation(Language)
 
-    message(interaction: CommandInteraction, minimum: number, maximum: number): InteractionReplyOptions {
-        const validItems = this.getValidItems(minimum, maximum)
+                const validItems = PricePerSlotCommand.getValidItems(minimum, maximum)
 
-        if (validItems.length == 0) {
-            return ErrorReponse('No items were found in the specified priceperslot range', interaction)
-        } else if (validItems.length > 999) {
-            return ErrorReponse(
-                `Too many items were found within the specified range *(${validItems.length})*`,
-                interaction
-            )
-        }
+                if (validItems.length == 0) {
+                    error(t('No items were found in the specified priceperslot range'))
+                } else if (validItems.length > 999) {
+                    error(t(`Too many items were found within the specified range ({0})`, validItems.length))
+                }
 
-        return this.getMessage(validItems, 0, minimum, maximum)
+                respond(PricePerSlotCommand.message(validItems, Language, 0, minimum, maximum))
+            })
+        )
     }
 
     @ButtonComponent(/^priceperslot__/)
     async mapButton(interaction: ButtonInteraction) {
-        const [_, method, p, minimum, maximum, date] = interaction.customId.split('__')
+        const [_, method, p, minimum, maximum, language] = interaction.customId.split('__')
 
         let page = Number(p)
-        if (method === 'b') page--
-        else page++
+        if (method === 'b') {
+            page--
+        } else {
+            page++
+        }
 
-        const validItems = this.getValidItems(Number(minimum), Number(maximum))
+        const validItems = PricePerSlotCommand.getValidItems(Number(minimum), Number(maximum))
 
-        interaction.update(this.getMessage(validItems, Number(page), Number(minimum), Number(maximum)))
+        interaction.update(
+            PricePerSlotCommand.message(
+                validItems,
+                language as Languages,
+                Number(page),
+                Number(minimum),
+                Number(maximum)
+            )
+        )
     }
 
-    getMessage(validItems: Item[], page: number, minimum: number, maximum: number) {
+    static message(
+        validItems: TarkovToolsItem[],
+        language: Languages,
+        page: number,
+        minimum: number,
+        maximum: number
+    ): InteractionReplyOptions {
         const totalPages = Math.ceil(validItems.length / 15)
         const displayedPortion = this.getDisplayedItems(validItems, page)
+
+        const t = translation(language)
 
         return {
             embeds: [
                 new THEmbed()
-                    .setThumbnail(Cache.config.images.thumbnails.priceperslot)
-                    .setTitle(`Price Per Slot Range: ${FormatPrice(minimum)} - ${FormatPrice(maximum)}`)
-                    .addFields(
-                        ResolveStrings([
-                            {
-                                name: `Items (${validItems.length})`,
-                                value: displayedPortion
-                                    .map((item, i) => {
-                                        const priceperslot = Math.round(item.lastLowPrice / (item.width * item.height))
-                                        return `\`${i + 1 + page * 15}\` - ${FormatPrice(priceperslot)} - ${item.name}`
-                                    })
-                                    .join('\n')
-                            }
-                        ])
-                    )
+                    .setThumbnail(botConfig.images.thumbnails.priceperslot)
+                    .setTitle(t(`Price Per Slot Range: {0}-{1}`, formatPrice(minimum), formatPrice(maximum)))
+                    .addFields({
+                        name: `Items (${validItems.length})`,
+                        value: displayedPortion
+                            .map((item, i) => {
+                                const priceperslot = Math.round(
+                                    (item.lastLowPrice ?? item.avg24hPrice) / (item.width * item.height)
+                                )
+                                return `\`${i + 1 + page * 15}\` - ${formatPrice(priceperslot)} - ${
+                                    new Item(item.id, language).name
+                                }`
+                            })
+                            .join('\n')
+                    })
             ],
             components: [
                 new MessageActionRow().addComponents([
                     new MessageButton()
-                        .setCustomId(`priceperslot__b__${page}__${minimum}__${maximum}`)
-                        .setLabel('Previous')
+                        .setCustomId(`priceperslot__b__${page}__${minimum}__${maximum}__${language}`)
+                        .setLabel(t('Previous'))
                         .setStyle('PRIMARY')
                         .setDisabled(page == 0),
                     new MessageButton()
@@ -96,8 +118,8 @@ class PricePerSlotCommand {
                         .setStyle('SECONDARY')
                         .setDisabled(true),
                     new MessageButton()
-                        .setCustomId(`priceperslot__f__${page}__${minimum}__${maximum}`)
-                        .setLabel('Next')
+                        .setCustomId(`priceperslot__f__${page}__${minimum}__${maximum}__${language}`)
+                        .setLabel(t('Next'))
                         .setStyle('PRIMARY')
                         .setDisabled(page + 1 == totalPages)
                 ])
@@ -105,26 +127,27 @@ class PricePerSlotCommand {
         }
     }
 
-    getDisplayedItems(validItems: Item[], page: number) {
-        const totalPages = Math.ceil(validItems.length / 15)
-
+    static getDisplayedItems(validItems: TarkovToolsItem[], page: number) {
         return validItems
             .sort((a, b) => {
-                return b.lastLowPrice - a.lastLowPrice
+                return (
+                    (a.lastLowPrice ?? a.avg24hPrice) / (a.width * a.height) -
+                    (b.lastLowPrice ?? b.avg24hPrice) / (b.width * b.height)
+                )
             })
             .slice(page * 15, (page + 1) * 15)
     }
 
-    getValidItems(minimum: number, maximum: number) {
-        let validItems: Item[] = []
+    static getValidItems(minimum: number, maximum: number) {
+        let validItems: TarkovToolsItem[] = []
 
-        const ItemData = Cache.itemData
+        const ItemData = fetchData<TarkovToolsItem[]>('itemData')
 
         for (let i = 0; i < ItemData.length; i++) {
             try {
                 const item = ItemData[i]
 
-                const pricePerSlot = item.lastLowPrice / (item.width * item.height)
+                const pricePerSlot = (item.lastLowPrice ?? item.avg24hPrice) / (item.width * item.height)
 
                 if (pricePerSlot > minimum && pricePerSlot < maximum) validItems.push(item)
             } catch {}

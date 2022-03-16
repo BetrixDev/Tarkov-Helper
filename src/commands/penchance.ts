@@ -1,108 +1,95 @@
 import 'reflect-metadata'
-import { Discord, Slash, SlashOption } from 'discordx'
-import { ChartJSNodeCanvas } from 'chartjs-node-canvas'
-import { AutocompleteInteraction, CommandInteraction, MessageAttachment } from 'discord.js'
-import { Cache, ErrorReponse, GetItem, isID, ResolveStrings, Round, THEmbed } from '../lib'
-import SearchEngine from '../helpers/search_engines/item-engine'
+import { AutocompleteInteraction, CommandInteraction, InteractionReplyOptions, MessageAttachment } from 'discord.js'
+import { Client, Discord, Slash, SlashOption } from 'discordx'
+import { injectable } from 'tsyringe'
+import { isId } from '../data/cache'
+import { Item } from '../data/classes/item'
+import { autoCompleteResults } from '../helpers/search_engines/item-engine'
 import { BallisticsCalculator } from '../helpers/simulator/ballistics'
+import { handleCommandInteraction, round, THEmbed, translation, TranslationFunction } from '../lib'
+import { ChartJSNodeCanvas } from 'chartjs-node-canvas'
+
+export enum ErrorMessages {
+    USE_AUTO_COMPLETE = 'Please use the auto complete function to complete your search'
+}
 
 @Discord()
+@injectable()
 export class PenChanceCommand {
-    @Slash('penchance', {
-        description: 'Calculates the chance for a bullet to penetrate a piece of armor'
-    })
-    async quest(
+    @Slash('penchance', { description: 'A penetration chance calculator' })
+    async penChance(
         @SlashOption('bullet', {
             description: 'Bullet to simulate with',
-            autocomplete: (interaction: AutocompleteInteraction) => {
-                const input = interaction.options.getFocused(true)
-
-                const results = SearchEngine(input.value.toString(), { types: ['ammo'], excludedTypes: ['grenade'] })
-
-                interaction.respond(
-                    results.map((result) => {
-                        return { name: result.item.name, value: result.item.id }
-                    })
-                )
-            },
+            autocomplete: async (interaction: AutocompleteInteraction) =>
+                await autoCompleteResults(interaction, { types: ['Ammo'] }),
             type: 'STRING'
         })
-        bullet: string,
+        bulletId: string,
         @SlashOption('armor', {
             description: 'Can be a helmet, body armor or armored rig',
-            autocomplete: (interaction: AutocompleteInteraction) => {
-                const input = interaction.options.getFocused(true)
-
-                const results = SearchEngine(input.value.toString(), {
-                    types: ['armor', 'helmet']
-                })
-
-                interaction.respond(
-                    results.map((result) => {
-                        return { name: result.item.name, value: result.item.id }
-                    })
-                )
-            },
+            autocomplete: async (interaction: AutocompleteInteraction) =>
+                await autoCompleteResults(interaction, { types: ['Armor'] }),
             type: 'STRING'
         })
-        armor: string,
-        interaction: CommandInteraction
+        armorId: string,
+        interaction: CommandInteraction,
+        client: Client,
+        { serverData: { Language } }: GuardData
     ) {
-        try {
-            if (!isID(bullet) || !isID(armor)) {
-                interaction.reply(
-                    ErrorReponse('Please use the auto complete function to complete your search', interaction)
-                )
-                return
-            }
+        handleCommandInteraction(
+            interaction,
+            Language,
+            new Promise(async (respond, error) => {
+                const t = translation(Language)
 
-            interaction.reply(await this.message(bullet, armor))
-        } catch (e) {
-            console.log(e)
-            interaction.reply(ErrorReponse('There was an unknown error executing this command', interaction))
-        }
-    }
+                // Make sure item ids are actual ids
+                if (!isId(bulletId) || !isId(armorId)) error(t(ErrorMessages.USE_AUTO_COMPLETE))
 
-    async message(bulletID: string, armorID: string) {
-        const bullet = GetItem(bulletID)
-        const armor = GetItem(armorID)
+                const bullet = new Item(bulletId, Language)
+                const armor = new Item(armorId, Language)
+                const simulator = new BallisticsCalculator(armor, bullet)
 
-        const ballisticData = new BallisticsCalculator(armorID, bulletID)
-        const simResults = ballisticData.Simulate()
-        const chart = await Chart(ballisticData.DurabilityPenchanceData, bullet, armor)
+                const simResults = simulator.simulate()
+                const chart = await createChart(simulator.durabilityPenchanceData, bullet, armor, t)
 
-        return {
-            embeds: [
-                new THEmbed()
-                    .setTitle(`Penetration Calculator`)
-                    .setImage('attachment://chart.png')
-                    .setColor(Cache.config.botSettings.color)
-                    .addFields(
-                        ResolveStrings([
-                            {
-                                name: 'Average Shots to Pen',
-                                value: Math.round(simResults.averageShotsToPen * 10000) / 10000,
-                                inline: true
-                            },
-                            {
-                                name: 'Average Shots to Zero',
-                                value: Math.round(simResults.averageShotsToZero * 10000) / 10000,
-                                inline: true
-                            }
-                        ])
-                    )
-            ],
-            files: [new MessageAttachment(chart, 'chart.png')]
-        }
+                respond({
+                    embeds: [
+                        new THEmbed()
+                            .setTitle(t('Penetration Calculator'))
+                            .setImage('attachment://chart.png')
+                            .addFields(
+                                {
+                                    name: t('Average Shots to Pen'),
+                                    value: (Math.round(simResults.averageShotsToPen * 10000) / 10000).toString(),
+                                    inline: true
+                                },
+                                {
+                                    name: t('Average Shots to Zero'),
+                                    value: (Math.round(simResults.averageShotsToZero * 10000) / 10000).toString(),
+                                    inline: true
+                                }
+                            )
+                    ],
+                    files: [new MessageAttachment(chart, 'chart.png')]
+                })
+            })
+        )
     }
 }
 
-type Point = {
+interface Point {
+    /**X coordinate*/
     durability: number
+    /**Y coordinate*/
     penChance: number
 }
 
-export async function Chart(data: any[], bullet: Item, armor: Item): Promise<Buffer> {
+export const createChart = async (
+    data: Point[],
+    bullet: Item,
+    armor: Item,
+    t: TranslationFunction
+): Promise<Buffer> => {
     const chart = new ChartJSNodeCanvas({
         width: 1600,
         height: 900,
@@ -119,11 +106,11 @@ export async function Chart(data: any[], bullet: Item, armor: Item): Promise<Buf
         }
     })
 
-    let labels = data.map((point: Point) => {
+    let labels = data.map((point) => {
         return point.durability % 5 > 0 ? '' : point.durability
     })
-    let points = data.map((point: Point) => {
-        return Round(point.penChance, '00')
+    let points = data.map((point) => {
+        return round(point.penChance, '00')
     })
 
     return await chart.renderToBuffer({
@@ -132,7 +119,7 @@ export async function Chart(data: any[], bullet: Item, armor: Item): Promise<Buf
             labels: labels,
             datasets: [
                 {
-                    label: 'Penetration Curve',
+                    label: t('Penetration Curve'),
                     data: points,
                     backgroundColor: 'rgba(21, 36, 46, 1)',
                     borderColor: 'rgba(221, 204, 76, 1)',
@@ -145,7 +132,7 @@ export async function Chart(data: any[], bullet: Item, armor: Item): Promise<Buf
                 x: {
                     title: {
                         display: true,
-                        text: 'Durability'
+                        text: t('Durability')
                     }
                 },
                 y: {
@@ -154,14 +141,14 @@ export async function Chart(data: any[], bullet: Item, armor: Item): Promise<Buf
                     },
                     title: {
                         display: true,
-                        text: 'Chance'
+                        text: t('Chance')
                     }
                 }
             },
             plugins: {
                 title: {
                     display: true,
-                    text: `${bullet.shortName} & ${armor.shortName} Pentration Chances`,
+                    text: t('{0} & {1} Pentration Chances', bullet.shortName, armor.shortName),
                     font: {
                         size: 30
                     }
