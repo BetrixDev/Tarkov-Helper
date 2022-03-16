@@ -4,6 +4,7 @@ import { Client, DIService } from 'discordx'
 import { container } from 'tsyringe'
 import { importx } from '@discordx/importer'
 import { connect } from 'mongoose'
+import { existsSync } from 'fs'
 import AutoPoster from 'topgg-autoposter'
 import dotenv from 'dotenv'
 import logger from './config/logger'
@@ -13,8 +14,8 @@ import { updateData } from './data/cache'
 import { initEngines as initItemEngine } from './helpers/search_engines/item-engine'
 import { initEngines as initQuestEngine } from './helpers/search_engines/quest-engine'
 import { initEngines as initModuleEngine } from './helpers/search_engines/module-engine'
-import { existsSync } from 'fs'
 import { InjectServerData } from './guards/inject-data'
+import { RateLimiterGuard } from './guards/rate-limiter'
 
 const Namespace = 'Main'
 
@@ -26,7 +27,7 @@ const client = new Client({
     intents: [Intents.FLAGS.GUILDS],
     // If you only want to use global commands only, comment this line
     botGuilds: isDev ? [(client) => client.guilds.cache.map((guild) => guild.id)] : undefined,
-    guards: [InjectServerData]
+    guards: [InjectServerData, RateLimiterGuard]
 })
 
 client.once('ready', async () => {

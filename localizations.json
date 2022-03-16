@@ -192,7 +192,8 @@
         "Items": "Items",
         "Total Cost": "Total Cost",
         "Required Modules": "Required Modules",
-        "{0} Level {1}": "{0} Level {1}"
+        "{0} Level {1}": "{0} Level {1}",
+        "**Cooldown**: Please wait {0} seconds before making another request": "**Cooldown**: Please wait {0} seconds before making another request"
     },
     "es": {
         "Info Command Description": "• Un bot de Discord para facilitar el acceso a la información dentro de Escape From Tarkov.\n• Inicie un comando escribiendo `/` en el cuadro de mensaje y siga la guía de cada comando\n• Si no ve nada, asegúrese de tener habilitados los comandos de barra inclinada yendo a **Ajustes de usuario > Texto e Imágenes**, y habilitar \"Usar comandos de barra...\"\n• Si aún no ve nada, pregunte al propietario del servidor o a los administradores si los comandos de barra están habilitados en ese canal específico o DM Tarkov Helper para usar los comandos en su lugar.",
