@@ -130,7 +130,10 @@ export class PricePerSlotCommand {
     static getDisplayedItems(validItems: TarkovToolsItem[], page: number) {
         return validItems
             .sort((a, b) => {
-                return (b.lastLowPrice ?? b.avg24hPrice) - (a.lastLowPrice ?? a.avg24hPrice)
+                return (
+                    (a.lastLowPrice ?? a.avg24hPrice) / (a.width * a.height) -
+                    (b.lastLowPrice ?? b.avg24hPrice) / (b.width * b.height)
+                )
             })
             .slice(page * 15, (page + 1) * 15)
     }
