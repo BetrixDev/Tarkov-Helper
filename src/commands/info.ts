@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import { Client, CommandInteraction, InteractionReplyOptions, MessageActionRow, MessageButton } from 'discord.js'
+import { Client, CommandInteraction, MessageActionRow, MessageButton } from 'discord.js'
 import { Discord, Slash } from 'discordx'
 import botConfig from '../config/bot-config'
 import { handleCommandInteraction, THEmbed, translation } from '../lib'
