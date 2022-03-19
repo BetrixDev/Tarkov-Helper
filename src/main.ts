@@ -16,6 +16,7 @@ import { initEngines as initQuestEngine } from './helpers/search_engines/quest-e
 import { initEngines as initModuleEngine } from './helpers/search_engines/module-engine'
 import { InjectServerData } from './guards/inject-data'
 import { RateLimiterGuard } from './guards/rate-limiter'
+import { ChannelLockGuard } from './guards/channel-lock'
 
 const Namespace = 'Main'
 
@@ -27,7 +28,7 @@ const client = new Client({
     intents: [Intents.FLAGS.GUILDS],
     // If you only want to use global commands only, comment this line
     botGuilds: isDev ? [(client) => client.guilds.cache.map((guild) => guild.id)] : undefined,
-    guards: [InjectServerData, RateLimiterGuard]
+    guards: [InjectServerData, ChannelLockGuard, RateLimiterGuard]
 })
 
 client.once('ready', async () => {
