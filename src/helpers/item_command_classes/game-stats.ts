@@ -293,7 +293,18 @@ const itemFields: ItemField[] = [
     {
         gameName: 'buckshotBullets',
         displayName: 'Pellets',
+        // Regular bullets have this prop, but we don't want to show it, show we give an empty string if 0
+        format: (value: number) => `${value !== 0 ? value : ''}`
+    },
+    {
+        gameName: 'MaximumNumberOfUsage',
+        displayName: 'zMax Uses',
         format: (value: number) => `${value}`
+    },
+    {
+        gameName: 'MaximumNumberOfUsage',
+        displayName: 'Behind the Lock',
+        format: (value: number, data, t, item) => `${new Item(item.id, 'en').keyData?.join('\n')}`
     }
 ]
 
