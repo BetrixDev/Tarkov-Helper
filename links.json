@@ -89,14 +89,14 @@
     },
     {
         "name": "quest-guides",
-        "link": "https://raw.githubusercontent.com/Tarkov-Helper/mock-database/main/quests.json"
+        "link": "https://raw.githubusercontent.com/Tarkov-Helper/Database/main/quests.json"
     },
     {
         "name": "keys",
-        "link": "https://raw.githubusercontent.com/Tarkov-Helper/mock-database/main/keys.json"
+        "link": "https://raw.githubusercontent.com/Tarkov-Helper/Database/main/keys.json"
     },
     {
         "name": "mapKeys",
-        "link": "https://raw.githubusercontent.com/Tarkov-Helper/mock-database/main/mapkeys.json"
+        "link": "https://raw.githubusercontent.com/Tarkov-Helper/Database/main/mapkeys.json"
     }
 ]
