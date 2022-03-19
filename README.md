@@ -1,4 +1,4 @@
-<img width="160" height="160" align="left" style="float: left; margin: 0 10px 0 0;" alt="Tarkov Helper" src="https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/Logo250x250.png" />
+<img width="160" height="160" align="left" style="float: left; margin: 0 10px 0 0;" alt="Tarkov Helper" src="https://raw.githubusercontent.com/Tarkov-Helper/Database/main/images/assets/Logo250x250.png" />
 
 # Tarkov Helper
 
@@ -21,7 +21,7 @@
 
 **Click the invite image to add the bot to your server**
 <br />
-[<img width="320" height="" align="left" style="float: left; margin: 0 10px 0 0;" alt="Tarkov Helper" src="https://raw.githubusercontent.com/Tarkov-Helper/Tarkov-Helper-Assets/main/Media/InviteBanner.png" />](https://discord.com/api/oauth2/authorize?client_id=797600238449590334&permissions=128&scope=bot%20applications.commands)
+[<img width="320" height="" align="left" style="float: left; margin: 0 10px 0 0;" alt="Tarkov Helper" src="https://raw.githubusercontent.com/Tarkov-Helper/Database/main/images/assets/InviteBanner.png" />](https://discord.com/api/oauth2/authorize?client_id=797600238449590334&permissions=128&scope=bot%20applications.commands)
 <br /><br/><br/><br/><br/>
 [<img src="https://discordapp.com/api/guilds/797601083589001227/widget.png?style=banner2" />](https://discord.gg/CHhE5vQ3zT)
 <br/>
