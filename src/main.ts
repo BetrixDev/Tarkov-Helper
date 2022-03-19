@@ -14,6 +14,7 @@ import { updateData } from './data/cache'
 import { initEngines as initItemEngine } from './helpers/search_engines/item-engine'
 import { initEngines as initQuestEngine } from './helpers/search_engines/quest-engine'
 import { initEngines as initModuleEngine } from './helpers/search_engines/module-engine'
+import { initEngines as initCaliberEngine } from './helpers/search_engines/caliber-engine'
 import { InjectServerData } from './guards/inject-data'
 import { RateLimiterGuard } from './guards/rate-limiter'
 import { ChannelLockGuard } from './guards/channel-lock'
@@ -78,6 +79,7 @@ async function run() {
         initItemEngine()
         initQuestEngine()
         initModuleEngine()
+        initCaliberEngine()
     })
 
     let botToken = process.env.BOT_TOKEN_DEV

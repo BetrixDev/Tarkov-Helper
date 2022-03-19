@@ -36,6 +36,15 @@ export class Item {
         this.priceData.updated = dayjs(this.priceData.updated).fromNow()
     }
 
+    static getLocales(id: string, language: Languages) {
+        const locales = fetchData<Locales>(language).templates[id]
+
+        return {
+            name: String(locales.Name),
+            shortName: String(locales.ShortName)
+        }
+    }
+
     get description() {
         // Makes the description a quote and shrinks the text if its too long
         return this._description.length > 150 ? `*${this._description.substring(0, 150)}*...` : `*${this._description}*`
