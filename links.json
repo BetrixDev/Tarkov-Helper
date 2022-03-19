@@ -1,7 +1,7 @@
 [
     {
         "name": "itemProps",
-        "link": "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/templates/items.json"
+        "link": "https://raw.githubusercontent.com/Tarkov-Helper/Database/main/items.json"
     },
     {
         "name": "questData",
