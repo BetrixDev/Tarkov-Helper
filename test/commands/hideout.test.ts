@@ -12,8 +12,6 @@ describe('Hideout Command Tests', () => {
 
     it('should return a message for every module', () => {
         HIDEOUT_DATA.forEach((module) => {
-            console.log(module.name, module.level)
-
             const message = HideoutCommand.message(module.id, 'en')
 
             expect(message.embeds).toBeDefined()
