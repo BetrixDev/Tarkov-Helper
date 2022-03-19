@@ -9,6 +9,7 @@ import { ItemType, RawItem, TarkovToolsItem } from '../../types/game/item'
 interface ExtraOptions {
     types?: ItemType[]
     excludedTypes?: ItemType[]
+    guard?: (item: Item) => boolean
 }
 
 interface EngineParams {
@@ -65,17 +66,25 @@ export const itemSearchEngine = (input: string, language: Languages, extras?: Ex
         const types = extras.types ?? []
         const excludedTypes = extras.excludedTypes ?? []
 
-        return results.filter((r) => {
-            const rTypes = r.item.types
+        return results
+            .filter((r) => {
+                const rTypes = r.item.types
 
-            const bad = rTypes.filter((value) => excludedTypes.includes(value))
-            const good = rTypes.filter((value) => types.includes(value))
+                const bad = rTypes.filter((value) => excludedTypes.includes(value))
+                const good = rTypes.filter((value) => types.includes(value))
 
-            if (bad.length > 0) return false
-            if (good.length > 0) return true
-            if (types.length > 0 && good.length < 1) return false
-            return true
-        })
+                if (bad.length > 0) return false
+                if (good.length > 0) return true
+                if (types.length > 0 && good.length < 1) return false
+                return true
+            })
+            .filter((r) => {
+                if (extras.guard) {
+                    return extras.guard(new Item(r.item.id, 'en'))
+                }
+
+                return true
+            })
     }
 }
 

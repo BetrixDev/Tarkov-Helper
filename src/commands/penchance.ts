@@ -28,7 +28,16 @@ export class PenChanceCommand {
         @SlashOption('armor', {
             description: 'Can be a helmet, body armor or armored rig',
             autocomplete: async (interaction: AutocompleteInteraction) =>
-                await autoCompleteResults(interaction, { types: ['Armor'] }),
+                await autoCompleteResults(interaction, {
+                    guard: (item) => {
+                        return (
+                            item.props.MaxDurability !== undefined &&
+                            item.props.MaxDurability > 0 &&
+                            item.props.armorClass !== undefined &&
+                            item.props.armorClass > 0
+                        )
+                    }
+                }),
             type: 'STRING'
         })
         armorId: string,
