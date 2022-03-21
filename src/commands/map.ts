@@ -47,6 +47,7 @@ export class MapCommand {
                         .setTitle(map.name)
                         .setThumbnail(`${mapUrlPrefix}/${map.name.toLowerCase()}.png`)
                         .setDescription(map.description)
+                        .setImage(mapImages[mapName.toLowerCase()][0].link)
                         .setFooter({ text: t('Click the buttons below to view maps') })
                         .setFields(
                             {
@@ -63,23 +64,23 @@ export class MapCommand {
                                 name: t('Has Insurance?'),
                                 value: map.hasInsurance ? t('yes') : t('no'),
                                 inline: true
-                            },
-                            {
-                                name: t('Exits'),
-                                value: '\u200b',
-                                inline: true
-                            },
-                            {
-                                name: '\u200b',
-                                value: '\u200b',
-                                inline: true
-                            },
-                            {
-                                name: '\u200b',
-                                value: '\u200b',
-                                inline: true
-                            },
-                            ...map.exfilInfo
+                            }
+                            // {
+                            //     name: t('Exits'),
+                            //     value: '\u200b',
+                            //     inline: true
+                            // },
+                            // {
+                            //     name: '\u200b',
+                            //     value: '\u200b',
+                            //     inline: true
+                            // },
+                            // {
+                            //     name: '\u200b',
+                            //     value: '\u200b',
+                            //     inline: true
+                            // },
+                            // ...map.exfilInfo
                         )
                 ],
                 components: [new MessageActionRow().addComponents(map.mapButtons)]
