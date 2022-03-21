@@ -1,11 +1,18 @@
 import { readFileSync } from 'jsonfile'
 import dotenv from 'dotenv'
+import { readdirSync } from 'fs'
 dotenv.config()
 
 export type TranslationFunction = (translationKey: string, ...args: Array<string | number>) => string
 
+// https://stackoverflow.com/questions/4215737/convert-array-to-object
+const LOCALES: Record<string, Record<string, string>> = readdirSync('./lang/').reduce(
+    (a, v) => ({ ...a, [v.replace('.json', '')]: readFileSync(`./lang/${v}`) }),
+    {}
+)
+
 export const translation = (language: Languages | string): TranslationFunction => {
-    const translations: { [key: string]: string } = readFileSync('localizations.json')[language]
+    const translations = LOCALES[language]
 
     return (str: string, ...args: Array<string | number>) => {
         let text = str
