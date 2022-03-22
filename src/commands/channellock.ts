@@ -41,8 +41,6 @@ export class ChannelLockCommand {
                     error(t(ErrorMessages.MUST_BE_OWNER))
                 }
 
-                const db = container.resolve(ChannelLockCommand)
-
                 if (channel) {
                     const success = await setDatabase(interaction.guildId, 'ChannelLock', channel)
 
