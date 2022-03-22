@@ -1,7 +1,6 @@
 import 'reflect-metadata'
-import { serverModel } from '../models/server-model'
-import { singleton } from 'tsyringe'
 import logger from '../config/logger'
+import { serverModel } from '../models/server-model'
 
 const Namespace = 'ServerDatabase'
 
@@ -37,6 +36,8 @@ export async function queryDatabase(guildId: string): Promise<ServerData> {
 }
 
 export async function setDatabase(guildId: string | null, key: keyof ServerData, data: any) {
+    if (!guildId) { return false }
+
     try {
         await serverModel.findOneAndUpdate(
             {
