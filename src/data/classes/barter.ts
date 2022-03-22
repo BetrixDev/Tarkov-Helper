@@ -1,5 +1,5 @@
 import { EmbedFieldData } from 'discord.js'
-import { capitalizeWords, formatPrice, lowestPrice, translation } from '../../lib'
+import { capitalizeWords, formatPrice, translation } from '../../lib'
 import { ContainedItem, RawBarter } from '../../types/game/barter'
 import { fetchData, getBarter } from '../cache'
 import { Item } from './item'
@@ -75,12 +75,12 @@ export class Barter {
             let barterTotal = 0
 
             const requiredItems = barter.requiredItems.map(({ count, item }) => {
-                const itemLowestPrice = lowestPrice(item)
+                const itemLowestPrice = item.buyingPrice()
 
-                barterTotal += itemLowestPrice.price * count
+                barterTotal += itemLowestPrice?.price ?? 0 * count
 
                 return `x**${count}** - [${item.shortName}](${item.wikiLink} "${item.name}") - ${formatPrice(
-                    itemLowestPrice.price * count
+                    itemLowestPrice?.price ?? 0 * count
                 )}`
             })
 
@@ -114,7 +114,7 @@ export class Barter {
                 },
                 {
                     name: 'Flea Market Price',
-                    value: formatPrice(item.lowestBuyPrice),
+                    value: formatPrice(item.buyingPrice()?.price ?? 0),
                     inline: true
                 },
                 {
@@ -129,7 +129,7 @@ export class Barter {
                 },
                 {
                     name: 'Barter Profit',
-                    value: formatPrice(item.lowestBuyPrice - barterTotal),
+                    value: formatPrice(item.buyingPrice()?.price ?? 0 - barterTotal),
                     inline: true
                 }
             )

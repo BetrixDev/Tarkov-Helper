@@ -32,7 +32,7 @@ export class HideoutModule {
 
     get upgradeCost(): number {
         return this.data.itemRequirements
-            .map(({ item: { id }, count }) => new Item(id, 'en').lowestBuyPrice * count)
+            .map(({ item: { id }, count }) => new Item(id, 'en').buyingPrice()?.price ?? 0 * count)
             .reduce((cost, i) => cost + i, 0)
     }
 }

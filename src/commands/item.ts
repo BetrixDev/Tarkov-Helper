@@ -142,10 +142,8 @@ export class ItemCommand {
             fields.push({ name: t('Price on Flea'), value: t("Can't be sold"), inline: true })
         }
 
-        if (item.priceData.sellFor.length) {
-            let highestSell = item.priceData.sellFor.sort((a, b) => {
-                return b.price - a.price
-            })[0]
+        let highestSell = item.sellingPrice()
+        if (highestSell) {
 
             fields.push({
                 name: t('Highest Selling Price'),
@@ -160,8 +158,8 @@ export class ItemCommand {
             })
         }
 
-        if (item.priceData.buyFor.length > 0) {
-            const lowestBuy = item.priceData.buyFor.sort((a, b) => b.price - a.price)[0]
+        const lowestBuy = item.buyingPrice()
+        if (lowestBuy) {
             fields.push({
                 name: t('Lowest Buying Price'),
                 value: formatPrice(lowestBuy.price, lowestBuy.source),
@@ -295,15 +293,15 @@ export class ItemCommand {
         fields.push(
             barterData.barterDependents.length > 0
                 ? {
-                      name: t('Used in barters'),
-                      value: barterData.barterDependents.map((d) => t('**x{0}** in {1}', d.count, d.name)).join('\n'),
-                      inline: true
-                  }
+                    name: t('Used in barters'),
+                    value: barterData.barterDependents.map((d) => t('**x{0}** in {1}', d.count, d.name)).join('\n'),
+                    inline: true
+                }
                 : {
-                      name: t('Used in barters'),
-                      value: t('None'),
-                      inline: true
-                  }
+                    name: t('Used in barters'),
+                    value: t('None'),
+                    inline: true
+                }
         )
 
         if (pages === 0) {
@@ -382,9 +380,9 @@ export class ItemCommand {
                         .addFields(
                             sellingPrices.length > 0
                                 ? {
-                                      name: t('Best Sells'),
-                                      value: t('{0} at {1}/each', sellingPrices[0].source, sellingPrices[0].price)
-                                  }
+                                    name: t('Best Sells'),
+                                    value: t('{0} at {1}/each', sellingPrices[0].source, sellingPrices[0].price)
+                                }
                                 : { name: '\u200b', value: '\u200b' }
                         )
                 ]
@@ -411,9 +409,8 @@ export class ItemCommand {
                             },
                             {
                                 name: t('Avg 24hr Price'),
-                                value: `${formatPrice(item.priceData.avg24hPrice)} (${
-                                    item.priceData.changeLast48hPercent
-                                }%)`,
+                                value: `${formatPrice(item.priceData.avg24hPrice)} (${item.priceData.changeLast48hPercent
+                                    }%)`,
                                 inline: true
                             },
                             {
@@ -421,15 +418,15 @@ export class ItemCommand {
                                 value:
                                     sellingPrices.length > 1
                                         ? // Show if the item can be sold in multiple places
-                                          t(
-                                              '**{0}** at **{1}**/each or {2} at {3}/each',
-                                              sellingPrices[0].source,
-                                              sellingPrices[0].price,
-                                              sellingPrices[1].source,
-                                              sellingPrices[1].price
-                                          )
+                                        t(
+                                            '**{0}** at **{1}**/each or {2} at {3}/each',
+                                            sellingPrices[0].source,
+                                            sellingPrices[0].price,
+                                            sellingPrices[1].source,
+                                            sellingPrices[1].price
+                                        )
                                         : // Show if the item can only be sold at one place
-                                          t('**{0}** at **{1}**/each', sellingPrices[0].source, sellingPrices[0].price),
+                                        t('**{0}** at **{1}**/each', sellingPrices[0].source, sellingPrices[0].price),
                                 inline: true
                             },
                             {

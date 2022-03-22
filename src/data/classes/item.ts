@@ -1,24 +1,20 @@
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
-import { ItemType, RawItem, RawItemProps, TarkovToolsItem } from '../../types/game/item'
-import { Locales } from '../../types/game/locales'
 import { fetchData, getRawItem } from '../cache'
-
-dayjs.extend(relativeTime)
+import { Locales } from '../../types/game/locales'
+import { ItemPrice, ItemType, RawItem, RawItemProps, TarkovToolsItem, TraderName } from '../../types/game/item'
 
 /**A class to contain all needed data for an item */
 export class Item {
     id: string
     name: string
-    shortName: string
-    private _description: string
     wikiLink: string
+    shortName: string
+    props: RawItemProps
     types: ItemType[] = []
     priceData: TarkovToolsItem
-    props: RawItemProps
+    private _description: string
 
     constructor(id: string, language: Languages) {
-        const rawData = fetchData<{ [key: string]: RawItem }>('itemProps')[id]
+        const rawData = fetchData<Record<string, RawItem>>('itemProps')[id]
         const locales = fetchData<Locales>(language).templates[id]
         const data = fetchData<TarkovToolsItem[]>('itemData')[fetchData<{ [key: string]: number }>('itemMap')[id]]
 
@@ -31,9 +27,6 @@ export class Item {
         this.wikiLink = data.wikiLink
         this.priceData = data
         this.props = rawData._props
-
-        // Change updated value to relative time
-        this.priceData.updated = dayjs(this.priceData.updated).fromNow()
     }
 
     static getLocales(id: string, language: Languages) {
@@ -51,8 +44,7 @@ export class Item {
     }
 
     get pricePerSlot() {
-        const size = this.priceData.width * this.priceData.height
-        return this.priceData.avg24hPrice / size
+        return this.priceData.avg24hPrice / (this.priceData.width * this.priceData.height)
     }
 
     get iconURL() {
@@ -69,13 +61,24 @@ export class Item {
         }
     }
 
-    get lowestBuyPrice() {
+    /**Sorted least to greatest */
+    buyingPrice(index = 0): ItemPrice | undefined {
         if (this.id === '5449016a4bdc2d6f028b456f') {
-            // Roubles have a value of one
-            return 1
-        } else {
-            return this.priceData.buyFor.sort((a, b) => b.price - a.price)[0]?.price ?? 0
+            // We say roubles have a buy value of 1 since although they can't be bought, we need them to have a value
+            return {
+                price: 1,
+                // Arbitrary trader name
+                source: TraderName.Fence,
+                requirements: []
+            }
         }
+
+        return this.priceData.buyFor.sort((a, b) => b.price - a.price)[index]
+    }
+
+    /**Sorted greatest to least */
+    sellingPrice(index = 0): ItemPrice | undefined {
+        return this.priceData.sellFor.sort((a, b) => a.price - b.price)[index]
     }
 
     private getTypes(i: RawItem) {
