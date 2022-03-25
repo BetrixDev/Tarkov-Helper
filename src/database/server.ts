@@ -36,7 +36,9 @@ export async function queryDatabase(guildId: string): Promise<ServerData> {
 }
 
 export async function setDatabase(guildId: string | null, key: keyof ServerData, data: any) {
-    if (!guildId) { return false }
+    if (!guildId) {
+        return false
+    }
 
     try {
         await serverModel.findOneAndUpdate(

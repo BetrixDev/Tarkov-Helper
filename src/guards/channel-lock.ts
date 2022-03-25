@@ -8,7 +8,13 @@ const isOwner = (interaction: Interaction) => interaction.guild?.ownerId === int
 export const ChannelLockGuard: GuardFunction<CommandInteraction, GuardData> = async (arg, client, next, guardData) => {
     const interaction = arg instanceof Array ? arg[0] : arg
 
-    if (interaction instanceof CommandInteraction && interaction.guild && !isOwner(interaction) && guardData.serverData.ChannelLock && guardData.serverData.ChannelLock !== '') {
+    if (
+        interaction instanceof CommandInteraction &&
+        interaction.guild &&
+        !isOwner(interaction) &&
+        guardData.serverData.ChannelLock &&
+        guardData.serverData.ChannelLock !== ''
+    ) {
         if (interaction.channelId !== guardData.serverData.ChannelLock) {
             const channelName = await interaction.guild.channels.fetch(guardData.serverData.ChannelLock)
 

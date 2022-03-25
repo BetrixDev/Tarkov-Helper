@@ -59,12 +59,13 @@ export class HideoutCommand {
                         value:
                             requiredItems.length > 0
                                 ? requiredItems
-                                    .map(
-                                        ({ item, count }) =>
-                                            `**x${formatNumber(count)}** [${item.shortName}](${item.wikiLink} "${item.name
-                                            }") - ${formatPrice(item.buyingPrice()?.price ?? 0 * count)}`
-                                    )
-                                    .join('\n')
+                                      .map(
+                                          ({ item, count }) =>
+                                              `**x${formatNumber(count)}** [${item.shortName}](${item.wikiLink} "${
+                                                  item.name
+                                              }") - ${formatPrice(item.buyingPrice()?.price ?? 0 * count)}`
+                                      )
+                                      .join('\n')
                                 : t('None'),
                         inline: true
                     },
@@ -83,10 +84,10 @@ export class HideoutCommand {
                         value:
                             module.data.moduleRequirements.length > 0
                                 ? module.data.moduleRequirements
-                                    .map(({ id, level }) =>
-                                        t('{0} Level {1}', new HideoutModule(id, language).name, level)
-                                    )
-                                    .join('\n')
+                                      .map(({ id, level }) =>
+                                          t('{0} Level {1}', new HideoutModule(id, language).name, level)
+                                      )
+                                      .join('\n')
                                 : t('None'),
                         inline: true
                     }
