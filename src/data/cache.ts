@@ -56,4 +56,31 @@ export const getBarter = (rewardItem: string) => {
     })
 }
 
-export const isId = (id: string) => data['itemProps'][id] !== undefined
+export const itemIdFromString = (str: string): string | undefined => {
+    let id: string | undefined
+
+    if (data['itemProps'][str] !== undefined) {
+        id = str
+    }
+
+    if (id === undefined) {
+        const itemData = data['itemData'] as TarkovToolsItem[]
+
+        for (let i = 0; i < itemData.length; i++) {
+            if (id !== undefined) break
+
+            const item = itemData[i]
+
+            if (
+                item.shortName.toLocaleLowerCase() === str.toLocaleLowerCase() &&
+                itemData.filter((item) => item.shortName.toLocaleLowerCase() === str.toLocaleLowerCase()).length === 1
+            ) {
+                id = item.id
+            } else if (item.name.toLocaleLowerCase() === str.toLocaleLowerCase()) {
+                id = item.id
+            }
+        }
+    }
+
+    return id
+}

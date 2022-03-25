@@ -13,7 +13,7 @@ import {
 import { ButtonComponent, Client, Discord, SelectMenuComponent, Slash, SlashOption } from 'discordx'
 import { injectable } from 'tsyringe'
 import { autoCompleteResults } from '../helpers/search_engines/item-engine'
-import { fetchData, isId } from '../data/cache'
+import { fetchData, itemIdFromString } from '../data/cache'
 import { Item } from '../data/classes/item'
 import { Barter } from '../data/classes/barter'
 import { QuestStats } from '../helpers/item_command_classes/quest-stats'
@@ -102,11 +102,12 @@ export class ItemCommand {
         )
     }
 
-    static message(id: string, language: Languages): InteractionReplyOptions {
+    static message(input: string, language: Languages): InteractionReplyOptions {
         const t = translation(language)
 
         // Make sure item is a real item
-        if (!isId(id)) throw new Error(t(ErrorMessages.USE_AUTO_COMPLETE))
+        const id = itemIdFromString(input)
+        if (!id) throw new Error(t(ErrorMessages.USE_AUTO_COMPLETE))
 
         const item = new Item(id, language)
         const barterData = new Barter(item.id, language)

@@ -2,7 +2,7 @@ import 'reflect-metadata'
 import { AutocompleteInteraction, CommandInteraction, InteractionReplyOptions, MessageAttachment } from 'discord.js'
 import { Client, Discord, Slash, SlashOption } from 'discordx'
 import { injectable } from 'tsyringe'
-import { isId } from '../data/cache'
+import { itemIdFromString } from '../data/cache'
 import { Item } from '../data/classes/item'
 import { autoCompleteResults } from '../helpers/search_engines/item-engine'
 import { BallisticsCalculator } from '../helpers/simulator/ballistics'
@@ -24,7 +24,7 @@ export class PenChanceCommand {
                 await autoCompleteResults(interaction, { types: ['Ammo'] }),
             type: 'STRING'
         })
-        bulletId: string,
+        bulletInput: string,
         @SlashOption('armor', {
             description: 'Can be a helmet, body armor or armored rig',
             autocomplete: async (interaction: AutocompleteInteraction) =>
@@ -40,7 +40,7 @@ export class PenChanceCommand {
                 }),
             type: 'STRING'
         })
-        armorId: string,
+        armorInput: string,
         interaction: CommandInteraction,
         client: Client,
         { serverData: { Language } }: GuardData
@@ -52,7 +52,13 @@ export class PenChanceCommand {
                 const t = translation(Language)
 
                 // Make sure item ids are actual ids
-                if (!isId(bulletId) || !isId(armorId)) error(t(ErrorMessages.USE_AUTO_COMPLETE))
+                const bulletId = itemIdFromString(bulletInput)
+                const armorId = itemIdFromString(armorInput)
+
+                if (bulletId === undefined || armorId === undefined) {
+                    error(t(ErrorMessages.USE_AUTO_COMPLETE))
+                    return
+                }
 
                 const bullet = new Item(bulletId, Language)
                 const armor = new Item(armorId, Language)

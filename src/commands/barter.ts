@@ -4,7 +4,7 @@ import { Client, Discord, Slash, SlashOption } from 'discordx'
 import { autoCompleteResults } from '../helpers/search_engines/item-engine'
 import { handleCommandInteraction, translation } from '../lib'
 import { ErrorMessages, ItemCommand } from './item'
-import { isId } from '../data/cache'
+import { itemIdFromString } from '../data/cache'
 
 @Discord()
 export class BarterCommand {
@@ -29,13 +29,12 @@ export class BarterCommand {
         )
     }
 
-    static message(id: string, language: Languages): InteractionReplyOptions {
+    static message(input: string, language: Languages): InteractionReplyOptions {
         const t = translation(language)
 
-        // Make sure item is a real item
-        if (!isId(id)) {
-            throw new Error(t(ErrorMessages.USE_AUTO_COMPLETE))
-        }
+        // // Make sure item is a real item
+        const id = itemIdFromString(input)
+        if (!id) throw new Error(t(ErrorMessages.USE_AUTO_COMPLETE))
 
         return ItemCommand.barterMessage(id, language, 0, false)
     }
