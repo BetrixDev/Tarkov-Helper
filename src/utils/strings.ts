@@ -61,9 +61,8 @@ export function formatPrice(price: number | string, source?: string) {
     }
 }
 
-// Thanks Tarkov-Tools :)
 export function getItemImage(id: string): string {
-    return `https://assets.tarkov-tools.com/${id}-base-image.png`
+    return `https://assets.tarkov.dev/${id}-base-image.png`
 }
 
 export const DATABASE_LOCATION = process.env.DATABASE_URL as string

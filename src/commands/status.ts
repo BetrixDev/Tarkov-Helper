@@ -40,7 +40,7 @@ export class StatusCommand {
             new Promise(async (respond, error) => {
                 const t = translation(Language)
 
-                const reponse = await request<{ status: ServerStatus }>('https://tarkov-tools.com/graphql', query)
+                const reponse = await request<{ status: ServerStatus }>('https://api.tarkov.dev/graphql', query)
                 const status = reponse.status
 
                 respond({

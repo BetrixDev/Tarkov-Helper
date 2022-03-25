@@ -30,7 +30,7 @@ export class RestockCommand {
                 const t = translation(Language)
 
                 const { traderResetTimes } = await request<{ traderResetTimes: TraderReset[] }>(
-                    'https://tarkov-tools.com/graphql',
+                    'https://api.tarkov.dev/graphql',
                     query
                 )
 
