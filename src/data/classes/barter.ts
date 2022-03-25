@@ -77,10 +77,10 @@ export class Barter {
             const requiredItems = barter.requiredItems.map(({ count, item }) => {
                 const itemLowestPrice = item.buyingPrice()
 
-                barterTotal += itemLowestPrice?.price ?? 0 * count
+                barterTotal += (itemLowestPrice?.price ?? 0) * count
 
                 return `x**${count}** - [${item.shortName}](${item.wikiLink} "${item.name}") - ${formatPrice(
-                    itemLowestPrice?.price ?? 0 * count
+                    (itemLowestPrice?.price ?? 0) * count
                 )}`
             })
 
