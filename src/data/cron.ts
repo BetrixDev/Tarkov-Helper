@@ -12,7 +12,7 @@ const Namespace = 'Cron'
 
 const links = readFileSync('links.json') as { name: string; link: string }[]
 
-const endpoint = 'https://tarkov-tools.com/graphql'
+const endpoint = 'https://api.tarkov.dev/graphql'
 const query = gql`
     {
         itemsByType(type: any) {
