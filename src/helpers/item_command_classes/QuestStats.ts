@@ -1,5 +1,5 @@
-import { fetchData } from '../../data/Cache'
-import { Item } from '../../data/classes/Item'
+import { fetchData } from '../../Cache'
+import { Item } from '../../lib/game/Item'
 import { RawQuest } from '../../types/game/Quest'
 
 interface GameQuestData {

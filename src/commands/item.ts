@@ -11,12 +11,12 @@ import {
     SelectMenuInteraction
 } from 'discord.js'
 import { ButtonComponent, Client, Discord, SelectMenuComponent, Slash, SlashOption } from 'discordx'
-import { fetchData, itemIdFromString } from '../data/Cache'
-import { Barter } from '../data/classes/Barter'
-import { Item } from '../data/classes/Item'
+import { fetchData, itemIdFromString } from '../Cache'
+import { Barter } from '../lib/game/Barter'
+import { Item } from '../lib/game/Item'
 import { getItemFields, getStatImage } from '../helpers/item_command_classes/GameStats'
 import { QuestStats } from '../helpers/item_command_classes/QuestStats'
-import { autoCompleteResults } from '../helpers/search_engines/ItemEngine'
+import { autoCompleteResults } from '../lib/search_engines/ItemEngine'
 import {
     capitalizeWords,
     formatNumber,

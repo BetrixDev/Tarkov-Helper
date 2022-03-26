@@ -5,7 +5,7 @@ import { CommandInteraction } from 'discord.js'
 import { capitalizeWords, handleCommandInteraction, THEmbed, translation } from '../Lib'
 import botConfig from '../config/BotConfig'
 import dayjs from 'dayjs'
-import { Trader } from '../data/classes/Trader'
+import { Trader } from '../lib/game/Trader'
 import { TraderReset } from '../types/game/Restock'
 
 const query = gql`

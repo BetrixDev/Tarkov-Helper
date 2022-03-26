@@ -1,9 +1,9 @@
 import { EmbedFieldData, MessageEmbedImage } from 'discord.js'
-import { fetchData } from '../../data/Cache'
-import { Item } from '../../data/classes/Item'
+import { fetchData } from '../../Cache'
+import { Item } from '../../lib/game/Item'
 import { TranslationFunction, round, capitalizeWords, DATABASE_LOCATION } from '../../Lib'
 import { Grid, RawItemProps } from '../../types/game/Item'
-import { BallisticsCalculator } from '../simulator/Ballistics'
+import { BallisticsCalculator } from '../../lib/simulator/Ballistics'
 
 interface ArmorMaterial {
     Destructibility: number

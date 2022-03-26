@@ -1,4 +1,4 @@
-import { updateData } from '../../src/data/Cache'
+import { updateData } from '../../src/Cache'
 import { getCalibers } from '../../src/helpers/CaliberGrabber'
 
 describe('Caliber Grabber Test', () => {

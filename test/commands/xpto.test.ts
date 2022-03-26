@@ -1,4 +1,4 @@
-import { updateData } from '../../src/data/Cache'
+import { updateData } from '../../src/Cache'
 import { XptoCommand } from '../../src/commands/Xpto'
 
 describe('Xpto Command Tests', () => {

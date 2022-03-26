@@ -7,11 +7,11 @@ import {
     MessageButton
 } from 'discord.js'
 import { ButtonComponent, Client, Discord, Slash, SlashOption } from 'discordx'
-import { fetchData } from '../data/Cache'
+import { fetchData } from '../Cache'
 import { TarkovToolsItem } from '../types/game/Item'
 import { formatPrice, handleCommandInteraction, THEmbed, translation } from '../Lib'
 import botConfig from '../config/BotConfig'
-import { Item } from '../data/classes/Item'
+import { Item } from '../lib/game/Item'
 
 @Discord()
 export abstract class PricePerSlotCommand {

@@ -1,7 +1,7 @@
 import { TarkovToolsItem } from '../../src/types/game/Item'
 import { ErrorMessages } from '../../src/commands/Item'
 import { PriceCommand } from '../../src/commands/Price'
-import { fetchData, updateData } from '../../src/data/Cache'
+import { fetchData, updateData } from '../../src/Cache'
 
 describe('Price Command Tests', () => {
     beforeAll(() => {

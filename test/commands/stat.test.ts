@@ -1,7 +1,7 @@
 import { TarkovToolsItem } from '../../src/types/game/Item'
 import { ErrorMessages } from '../../src/commands/Item'
 import { StatCommand } from '../../src/commands/Stat'
-import { fetchData, updateData } from '../../src/data/Cache'
+import { fetchData, updateData } from '../../src/Cache'
 
 describe('Barter Command Tests', () => {
     beforeAll(() => {

@@ -1,8 +1,8 @@
 import 'reflect-metadata'
 import { ButtonComponent, Discord, Slash, SlashChoice, SlashOption } from 'discordx'
-import { fetchData } from '../data/Cache'
+import { fetchData } from '../Cache'
 import { ButtonInteraction, Client, CommandInteraction, InteractionReplyOptions, MessageActionRow } from 'discord.js'
-import { Location } from '../data/classes/Location'
+import { Location } from '../lib/game/Location'
 import { DATABASE_LOCATION, handleCommandInteraction, THEmbed, translation } from '../Lib'
 import { MapImageData, MapImage, Maps } from '../types/Maps'
 

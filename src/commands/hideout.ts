@@ -1,11 +1,11 @@
 import 'reflect-metadata'
 import { AutocompleteInteraction, CommandInteraction, InteractionReplyOptions } from 'discord.js'
 import { Client, Discord, Slash, SlashOption } from 'discordx'
-import { autoCompleteResults } from '../helpers/search_engines/ModuleEngine'
+import { autoCompleteResults } from '../lib/search_engines/ModuleEngine'
 import { formatNumber, formatPrice, handleCommandInteraction, THEmbed, translation } from '../Lib'
 import { readFileSync } from 'jsonfile'
-import { HideoutModule } from '../data/classes/Module'
-import { Item } from '../data/classes/Item'
+import { HideoutModule } from '../lib/game/Module'
+import { Item } from '../lib/game/Item'
 
 const HIDEOUT_MODULE_COUNT = readFileSync('./data/hideoutData.json').length as number
 

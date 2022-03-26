@@ -1,5 +1,5 @@
 import { PricePerSlotCommand } from '../../src/commands/PricePerSlot'
-import { updateData } from '../../src/data/Cache'
+import { updateData } from '../../src/Cache'
 
 describe('PricePerSlot Command Tests', () => {
     beforeAll(() => {

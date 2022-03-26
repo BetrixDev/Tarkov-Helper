@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import { CommandInteraction, InteractionReplyOptions } from 'discord.js'
 import { Client, Discord, Slash, SlashOption } from 'discordx'
-import { Item } from '../data/classes/Item'
+import { Item } from '../lib/game/Item'
 import { formatPrice, handleCommandInteraction, round, THEmbed, translation } from '../Lib'
 import botConfig from '../config/BotConfig'
 

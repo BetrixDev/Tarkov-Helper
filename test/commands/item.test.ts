@@ -1,6 +1,6 @@
 import { TarkovToolsItem } from '../../src/types/game/Item'
 import { ItemCommand, ErrorMessages } from '../../src/commands/Item'
-import { fetchData, updateData } from '../../src/data/Cache'
+import { fetchData, updateData } from '../../src/Cache'
 
 describe('Item Command Tests', () => {
     beforeAll(() => {

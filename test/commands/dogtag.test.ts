@@ -1,4 +1,4 @@
-import { updateData } from '../../src/data/Cache'
+import { updateData } from '../../src/Cache'
 import { MAX_LEVEL, DogtagCommand } from '../../src/commands/Dogtag'
 
 describe('Dogtag Command Tests', () => {

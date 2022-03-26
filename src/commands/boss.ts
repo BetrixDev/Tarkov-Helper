@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import { CommandInteraction } from 'discord.js'
 import { Client, Discord, Slash, SlashChoice, SlashOption } from 'discordx'
-import { Boss, BossToMap } from '../data/classes/Boss'
+import { Boss, BossToMap } from '../lib/game/Boss'
 import { DATABASE_LOCATION, handleCommandInteraction, THEmbed, translation } from '../Lib'
 
 enum Bosses {

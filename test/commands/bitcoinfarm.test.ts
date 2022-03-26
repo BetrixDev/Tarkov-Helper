@@ -1,5 +1,5 @@
 import { BitcoinFarm, BitcoinFarmCommand } from '../../src/commands/BitcoinFarm'
-import { updateData } from '../../src/data/Cache'
+import { updateData } from '../../src/Cache'
 
 describe('Bitcoin Farm Command Test', () => {
     beforeAll(() => {

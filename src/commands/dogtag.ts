@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import { CommandInteraction, InteractionReplyOptions } from 'discord.js'
 import { Client, Discord, Slash, SlashOption } from 'discordx'
-import { fetchData } from '../data/Cache'
+import { fetchData } from '../Cache'
 import { formatPrice, getItemImage, handleCommandInteraction, THEmbed, translation } from '../Lib'
 import { readFileSync } from 'jsonfile'
 

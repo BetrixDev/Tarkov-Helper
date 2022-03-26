@@ -9,9 +9,9 @@ import {
     SelectMenuInteraction
 } from 'discord.js'
 import { Client, Discord, SelectMenuComponent, Slash, SlashChoice, SlashOption } from 'discordx'
-import { fetchData } from '../data/Cache'
-import { Item } from '../data/classes/Item'
-import { Location } from '../data/classes/Location'
+import { fetchData } from '../Cache'
+import { Item } from '../lib/game/Item'
+import { Location } from '../lib/game/Location'
 import { DATABASE_LOCATION, formatPrice, handleCommandInteraction, THEmbed, translation } from '../Lib'
 import { Maps } from '../types/Maps'
 

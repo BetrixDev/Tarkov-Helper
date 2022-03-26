@@ -8,9 +8,9 @@ import {
     MessageButton
 } from 'discord.js'
 import { ButtonComponent, Client, Discord, Slash, SlashOption } from 'discordx'
-import { fetchData } from '../data/Cache'
-import { Quest } from '../data/classes/Quest'
-import { autoCompleteResults, questSearchEngine } from '../helpers/search_engines/QuestEngine'
+import { fetchData } from '../Cache'
+import { Quest } from '../lib/game/Quest'
+import { autoCompleteResults, questSearchEngine } from '../lib/search_engines/QuestEngine'
 import { DATABASE_LOCATION, handleCommandInteraction, THEmbed, translation } from '../Lib'
 import { RawQuest } from '../types/game/Quest'
 

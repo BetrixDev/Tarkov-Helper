@@ -1,4 +1,4 @@
-import { fetchData } from '../data/Cache'
+import { fetchData } from '../Cache'
 import { RawAmmo } from '../types/game/Ammo'
 
 export const getCalibers = () => {
