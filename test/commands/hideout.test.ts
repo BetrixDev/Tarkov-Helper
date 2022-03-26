@@ -1,7 +1,7 @@
 import { readFileSync } from 'jsonfile'
-import { HideoutModule } from '../../src/types/game/hideout'
-import { updateData } from '../../src/data/cache'
-import { HideoutCommand } from '../../src/commands/hideout'
+import { HideoutModule } from '../../src/types/game/Hideout'
+import { updateData } from '../../src/data/Cache'
+import { HideoutCommand } from '../../src/commands/Hideout'
 
 const HIDEOUT_DATA = readFileSync('./data/hideoutData.json') as HideoutModule[]
 

@@ -1,5 +1,5 @@
-import { caliberSearchEngine, initEngines } from '../../../src/helpers/search_engines/caliber-engine'
-import { updateData } from '../../../src/data/cache'
+import { caliberSearchEngine, initEngines } from '../../../src/helpers/search_engines/CaliberEngine'
+import { updateData } from '../../../src/data/Cache'
 
 describe('Caliber Search Engine Tests', () => {
     beforeAll(() => {

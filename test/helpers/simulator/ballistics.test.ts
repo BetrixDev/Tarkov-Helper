@@ -1,6 +1,6 @@
-import { BallisticsCalculator } from '../../../src/helpers/simulator/ballistics'
-import { updateData } from '../../../src/data/cache'
-import { Item } from '../../../src/data/classes/item'
+import { BallisticsCalculator } from '../../../src/helpers/simulator/Ballistics'
+import { updateData } from '../../../src/data/Cache'
+import { Item } from '../../../src/data/classes/Item'
 
 // Testing values are from Battle Buddy
 // https://github.com/VeritasDev/BattleBuddy

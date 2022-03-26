@@ -1,5 +1,5 @@
-import { updateData } from '../../src/data/cache'
-import { getCalibers } from '../../src/helpers/caliber-grabber'
+import { updateData } from '../../src/data/Cache'
+import { getCalibers } from '../../src/helpers/CaliberGrabber'
 
 describe('Caliber Grabber Test', () => {
     beforeAll(() => {

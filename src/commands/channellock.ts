@@ -1,9 +1,8 @@
 import 'reflect-metadata'
 import { TextChannel, CommandInteraction, InteractionReplyOptions, Client } from 'discord.js'
 import { Discord, Slash, SlashOption } from 'discordx'
-import { container, injectable } from 'tsyringe'
-import { handleCommandInteraction, translation } from '../lib'
-import { setDatabase } from '../database/server'
+import { handleCommandInteraction, translation } from '../Lib'
+import { setDatabase } from '../database/Server'
 
 enum ErrorMessages {
     MUST_BE_OWNER = 'You must be the owner of this server to use this command',
@@ -12,8 +11,7 @@ enum ErrorMessages {
 }
 
 @Discord()
-@injectable()
-export class ChannelLockCommand {
+export abstract class ChannelLockCommand {
     private isOwner(interaction: CommandInteraction) {
         return interaction.user.id === interaction.guild?.ownerId
     }

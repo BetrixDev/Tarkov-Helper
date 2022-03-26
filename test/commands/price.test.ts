@@ -1,7 +1,7 @@
-import { TarkovToolsItem } from '../../src/types/game/item'
-import { ErrorMessages } from '../../src/commands/item'
-import { PriceCommand } from '../../src/commands/price'
-import { fetchData, updateData } from '../../src/data/cache'
+import { TarkovToolsItem } from '../../src/types/game/Item'
+import { ErrorMessages } from '../../src/commands/Item'
+import { PriceCommand } from '../../src/commands/Price'
+import { fetchData, updateData } from '../../src/data/Cache'
 
 describe('Price Command Tests', () => {
     beforeAll(() => {

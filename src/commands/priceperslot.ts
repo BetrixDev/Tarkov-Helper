@@ -7,14 +7,14 @@ import {
     MessageButton
 } from 'discord.js'
 import { ButtonComponent, Client, Discord, Slash, SlashOption } from 'discordx'
-import { fetchData } from '../data/cache'
-import { TarkovToolsItem } from '../types/game/item'
-import { formatPrice, handleCommandInteraction, THEmbed, translation } from '../lib'
-import botConfig from '../config/bot-config'
-import { Item } from '../data/classes/item'
+import { fetchData } from '../data/Cache'
+import { TarkovToolsItem } from '../types/game/Item'
+import { formatPrice, handleCommandInteraction, THEmbed, translation } from '../Lib'
+import botConfig from '../config/BotConfig'
+import { Item } from '../data/classes/Item'
 
 @Discord()
-export class PricePerSlotCommand {
+export abstract class PricePerSlotCommand {
     @Slash('priceperslot', {
         description: 'Returns all items within the specified price per slot range'
     })
@@ -98,9 +98,8 @@ export class PricePerSlotCommand {
                                 const priceperslot = Math.round(
                                     (item.lastLowPrice ?? item.avg24hPrice) / (item.width * item.height)
                                 )
-                                return `\`${i + 1 + page * 15}\` - ${formatPrice(priceperslot)} - ${
-                                    new Item(item.id, language).name
-                                }`
+                                return `\`${i + 1 + page * 15}\` - ${formatPrice(priceperslot)} - ${new Item(item.id, language).name
+                                    }`
                             })
                             .join('\n')
                     })
@@ -150,7 +149,7 @@ export class PricePerSlotCommand {
                 const pricePerSlot = (item.lastLowPrice ?? item.avg24hPrice) / (item.width * item.height)
 
                 if (pricePerSlot > minimum && pricePerSlot < maximum) validItems.push(item)
-            } catch {}
+            } catch { }
         }
 
         return validItems

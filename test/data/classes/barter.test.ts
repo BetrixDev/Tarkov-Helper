@@ -1,5 +1,5 @@
-import { Barter } from '../../../src/data/classes/barter'
-import { updateData } from '../../../src/data/cache'
+import { Barter } from '../../../src/data/classes/Barter'
+import { updateData } from '../../../src/data/Cache'
 
 describe('Barter Class Tests', () => {
     beforeAll(() => {

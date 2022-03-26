@@ -1,5 +1,5 @@
-import { Trader } from '../../../src/data/classes/trader'
-import { updateData } from '../../../src/data/cache'
+import { Trader } from '../../../src/data/classes/Trader'
+import { updateData } from '../../../src/data/Cache'
 
 const traders = ['Prapor', 'Therapist', 'Skier', 'Mechanic', 'Fence', 'Peacekeeper', 'Jaeger', 'Ragman']
 

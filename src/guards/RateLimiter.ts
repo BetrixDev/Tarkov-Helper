@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import { GuardFunction } from 'discordx'
 import { CommandInteraction, Interaction } from 'discord.js'
-import { round, translation } from '../lib'
+import { round, translation } from '../Lib'
 
 // One the first message from a user, they have a set amount of commands they can issue within a time period before they are on a cooldown
 

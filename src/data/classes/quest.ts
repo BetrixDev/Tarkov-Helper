@@ -1,7 +1,7 @@
-import { Locales } from '../../types/game/locales'
-import { RawQuest } from '../../types/game/quest'
-import { fetchData } from '../cache'
-import { Trader } from './trader'
+import { Locales } from '../../types/game/Locales'
+import { RawQuest } from '../../types/game/Quest'
+import { fetchData } from '../Cache'
+import { Trader } from './Trader'
 
 const Traders = ['Prapor', 'Therapist', 'Fence', 'Peacekeeper', 'Mechanic', 'Skier', 'Jaeger', 'Ragman']
 

@@ -1,9 +1,9 @@
 import { Client, CommandInteraction } from 'discord.js'
 import { Discord, Slash } from 'discordx'
 import request, { gql } from 'graphql-request'
-import botConfig from '../config/bot-config'
-import { handleCommandInteraction, THEmbed, translation } from '../lib'
-import { ServerStatus } from '../types/game/status'
+import botConfig from '../config/BotConfig'
+import { handleCommandInteraction, THEmbed, translation } from '../Lib'
+import { ServerStatus } from '../types/game/Status'
 
 const query = gql`
     {
@@ -29,7 +29,7 @@ const query = gql`
 `
 
 @Discord()
-export class StatusCommand {
+export abstract class StatusCommand {
     @Slash('status', {
         description: 'Returns information regarding server status and stability'
     })

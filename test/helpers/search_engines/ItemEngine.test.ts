@@ -1,5 +1,5 @@
-import { updateData } from '../../../src/data/cache'
-import { initEngines, itemSearchEngine } from '../../../src/helpers/search_engines/item-engine'
+import { updateData } from '../../../src/data/Cache'
+import { initEngines, itemSearchEngine } from '../../../src/helpers/search_engines/ItemEngine'
 
 describe('Item search engine tests', () => {
     beforeAll(() => {

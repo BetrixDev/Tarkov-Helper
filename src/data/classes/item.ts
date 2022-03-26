@@ -1,6 +1,6 @@
-import { fetchData, getRawItem } from '../cache'
-import { Locales } from '../../types/game/locales'
-import { ItemPrice, ItemType, RawItem, RawItemProps, TarkovToolsItem, TraderName } from '../../types/game/item'
+import { fetchData, getRawItem } from '../Cache'
+import { Locales } from '../../types/game/Locales'
+import { ItemPrice, ItemType, RawItem, RawItemProps, TarkovToolsItem, TraderName } from '../../types/game/Item'
 
 /**A class to contain all needed data for an item */
 export class Item {

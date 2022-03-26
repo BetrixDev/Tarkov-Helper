@@ -1,6 +1,6 @@
-import { fetchData } from '../../data/cache'
-import { Item } from '../../data/classes/item'
-import { clamp, random } from '../../lib'
+import { fetchData } from '../../data/Cache'
+import { Item } from '../../data/classes/Item'
+import { clamp, random } from '../../Lib'
 
 interface Result {
     chance: number

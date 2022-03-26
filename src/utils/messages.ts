@@ -1,7 +1,7 @@
 import { CommandInteraction, Interaction, InteractionReplyOptions, MessageEmbed } from 'discord.js'
-import botConfig from '../config/bot-config'
-import logger from '../config/logger'
-import { translation } from '../lib'
+import botConfig from '../config/BotConfig'
+import logger from '../config/Logger'
+import { translation } from '../Lib'
 
 const Namespace = 'Messages'
 
@@ -69,8 +69,7 @@ export const handleCommandInteraction = (
         .finally(() => {
             logger.info(
                 'Messages',
-                `Completed Interaction in ${Date.now() - interaction.createdTimestamp}ms and got the message in ${
-                    end - start
+                `Completed Interaction in ${Date.now() - interaction.createdTimestamp}ms and got the message in ${end - start
                 }ms`
             )
         })

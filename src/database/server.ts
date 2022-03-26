@@ -1,6 +1,6 @@
 import 'reflect-metadata'
-import logger from '../config/logger'
-import { serverModel } from '../models/server-model'
+import logger from '../config/Logger'
+import { serverModel } from '../models/ServerModel'
 
 const Namespace = 'ServerDatabase'
 

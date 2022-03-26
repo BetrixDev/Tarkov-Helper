@@ -1,12 +1,12 @@
 import 'reflect-metadata'
 import { CommandInteraction, InteractionReplyOptions } from 'discord.js'
 import { Client, Discord, Slash, SlashOption } from 'discordx'
-import { Item } from '../data/classes/item'
-import { formatPrice, handleCommandInteraction, round, THEmbed, translation } from '../lib'
-import botConfig from '../config/bot-config'
+import { Item } from '../data/classes/Item'
+import { formatPrice, handleCommandInteraction, round, THEmbed, translation } from '../Lib'
+import botConfig from '../config/BotConfig'
 
 @Discord()
-export class BitcoinFarmCommand {
+export abstract class BitcoinFarmCommand {
     @Slash('bitcoinfarm', { description: 'Calculates the price and profit of a specified barter' })
     price(
         @SlashOption('gpus', {

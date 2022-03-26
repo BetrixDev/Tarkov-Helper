@@ -9,11 +9,11 @@ import {
     SelectMenuInteraction
 } from 'discord.js'
 import { Client, Discord, SelectMenuComponent, Slash, SlashChoice, SlashOption } from 'discordx'
-import { fetchData } from '../data/cache'
-import { Item } from '../data/classes/item'
-import { Location } from '../data/classes/location'
-import { DATABASE_LOCATION, formatPrice, handleCommandInteraction, THEmbed, translation } from '../lib'
-import { Maps } from '../types/maps'
+import { fetchData } from '../data/Cache'
+import { Item } from '../data/classes/Item'
+import { Location } from '../data/classes/Location'
+import { DATABASE_LOCATION, formatPrice, handleCommandInteraction, THEmbed, translation } from '../Lib'
+import { Maps } from '../types/Maps'
 
 const mapUrlPrefix = `${DATABASE_LOCATION}/images/map_icons`
 
@@ -39,7 +39,7 @@ const WikiMaptoMap: { [key in WikiMap]: string } = {
 }
 
 @Discord()
-export class KeysCommand {
+export abstract class KeysCommand {
     @Slash('keys', {
         description: 'Returns all keys on a specified map and what loot is behind them'
     })

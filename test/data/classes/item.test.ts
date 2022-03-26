@@ -1,5 +1,5 @@
-import { Item } from '../../../src/data/classes/item'
-import { updateData } from '../../../src/data/cache'
+import { Item } from '../../../src/data/classes/Item'
+import { updateData } from '../../../src/data/Cache'
 
 describe('Item class tests', () => {
     beforeAll(() => {

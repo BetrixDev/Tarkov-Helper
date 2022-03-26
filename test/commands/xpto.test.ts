@@ -1,5 +1,5 @@
-import { updateData } from '../../src/data/cache'
-import { XptoCommand } from '../../src/commands/xpto'
+import { updateData } from '../../src/data/Cache'
+import { XptoCommand } from '../../src/commands/Xpto'
 
 describe('Xpto Command Tests', () => {
     beforeAll(() => {

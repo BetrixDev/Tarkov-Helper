@@ -1,8 +1,8 @@
 import { readFileSync } from 'jsonfile'
-import { Locales } from '../../types/game/locales'
-import { fetchData } from '../cache'
-import { HideoutModule as RawHideoutModule } from '../../types/game/hideout'
-import { Item } from './item'
+import { Locales } from '../../types/game/Locales'
+import { fetchData } from '../Cache'
+import { HideoutModule as RawHideoutModule } from '../../types/game/Hideout'
+import { Item } from './Item'
 
 const EN_LOCALES = (readFileSync('./data/en.json') as Locales).interface
 const HIDEOUT_DATA = readFileSync('./data/hideoutData.json') as RawHideoutModule[]

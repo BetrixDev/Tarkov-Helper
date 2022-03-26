@@ -1,5 +1,5 @@
-import { updateData } from '../../../src/data/cache'
-import { initEngines, moduleSearchEngine } from '../../../src/helpers/search_engines/module-engine'
+import { updateData } from '../../../src/data/Cache'
+import { initEngines, moduleSearchEngine } from '../../../src/helpers/search_engines/ModuleEngine'
 
 const searches = ['bitcoin', 'vents', 'filtering', 'unit', 'booze', 'water', 'lavatory', 'lava', 'nutrition']
 

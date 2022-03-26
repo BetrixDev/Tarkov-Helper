@@ -1,4 +1,4 @@
-import { DATABASE_LOCATION } from '../lib'
+import { DATABASE_LOCATION } from '../Lib'
 
 const color: [number, number, number] = [21, 36, 46]
 const altColor: [number, number, number] = [221, 204, 76]

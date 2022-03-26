@@ -1,20 +1,19 @@
 import { AutocompleteInteraction, CommandInteraction, InteractionReplyOptions } from 'discord.js'
 import { Client, Discord, Slash, SlashOption } from 'discordx'
 import 'reflect-metadata'
-import { fetchData } from '../data/cache'
-import { Item } from '../data/classes/item'
-import { getCalibers } from '../helpers/caliber-grabber'
-import { autoCompleteResults } from '../helpers/search_engines/caliber-engine'
-import { handleCommandInteraction, THEmbed, translation } from '../lib'
-import { RawAmmo } from '../types/game/ammo'
-import { ErrorMessages } from './hideout'
+import { fetchData } from '../data/Cache'
+import { Item } from '../data/classes/Item'
+import { getCalibers } from '../helpers/CaliberGrabber'
+import { autoCompleteResults } from '../helpers/search_engines/CaliberEngine'
+import { handleCommandInteraction, THEmbed, translation } from '../Lib'
+import { RawAmmo } from '../types/game/Ammo'
+import { ErrorMessages } from './Hideout'
 import { table as tableConstructor } from 'table'
 
 const getBulletDamage = (bullet: RawAmmo): string => {
     if (bullet.projectileCount > 1) {
-        return `${bullet.projectileCount * bullet.ballistics.damage} (${bullet.ballistics.damage}x${
-            bullet.projectileCount
-        })`
+        return `${bullet.projectileCount * bullet.ballistics.damage} (${bullet.ballistics.damage}x${bullet.projectileCount
+            })`
     } else {
         return bullet.ballistics.damage.toString()
     }

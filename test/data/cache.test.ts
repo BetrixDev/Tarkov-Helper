@@ -1,4 +1,4 @@
-import { fetchData, getBarter, getRawItem, updateData } from '../../src/data/cache'
+import { fetchData, getBarter, getRawItem, updateData } from '../../src/data/Cache'
 
 describe('Cache tests', () => {
     beforeAll(() => {

@@ -1,4 +1,4 @@
-import { TarkovToolsItem } from './item'
+import { TarkovToolsItem } from './Item'
 
 export interface RawBarter {
     source: string

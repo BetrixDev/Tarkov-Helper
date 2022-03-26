@@ -1,5 +1,5 @@
-import { fetchData } from '../data/cache'
-import { RawAmmo } from '../types/game/ammo'
+import { fetchData } from '../data/Cache'
+import { RawAmmo } from '../types/game/Ammo'
 
 export const getCalibers = () => {
     const data = fetchData<Record<string, RawAmmo>>('ammoData')

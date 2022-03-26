@@ -1,7 +1,7 @@
-import { Item } from '../../../src/data/classes/item'
-import { getItemFields } from '../../../src/helpers/item_command_classes/game-stats'
-import { updateData } from '../../../src/data/cache'
-import { translation } from '../../../src/lib'
+import { Item } from '../../../src/data/classes/Item'
+import { getItemFields } from '../../../src/helpers/item_command_classes/GameStats'
+import { updateData } from '../../../src/data/Cache'
+import { translation } from '../../../src/Lib'
 
 describe('ItemStats class tests', () => {
     beforeAll(() => {

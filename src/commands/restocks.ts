@@ -2,11 +2,11 @@ import 'reflect-metadata'
 import { Client, Discord, Slash } from 'discordx'
 import request, { gql } from 'graphql-request'
 import { CommandInteraction } from 'discord.js'
-import { capitalizeWords, handleCommandInteraction, THEmbed, translation } from '../lib'
-import botConfig from '../config/bot-config'
+import { capitalizeWords, handleCommandInteraction, THEmbed, translation } from '../Lib'
+import botConfig from '../config/BotConfig'
 import dayjs from 'dayjs'
-import { Trader } from '../data/classes/trader'
-import { TraderReset } from '../types/game/restock'
+import { Trader } from '../data/classes/Trader'
+import { TraderReset } from '../types/game/Restock'
 
 const query = gql`
     {
@@ -18,7 +18,7 @@ const query = gql`
 `
 
 @Discord()
-export class RestockCommand {
+export abstract class RestockCommand {
     @Slash('restocks', {
         description: 'Returns the time left till each trader restocks'
     })

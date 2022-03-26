@@ -1,15 +1,15 @@
 import 'reflect-metadata'
 import { CommandInteraction, InteractionReplyOptions } from 'discord.js'
 import { Client, Discord, Slash, SlashOption } from 'discordx'
-import { fetchData } from '../data/cache'
-import { formatPrice, getItemImage, handleCommandInteraction, THEmbed, translation } from '../lib'
+import { fetchData } from '../data/Cache'
+import { formatPrice, getItemImage, handleCommandInteraction, THEmbed, translation } from '../Lib'
 import { readFileSync } from 'jsonfile'
 
 export const MAX_LEVEL: number = readFileSync('./data/globals.json').config.exp.level.exp_table.length
 const DOGTAG_PRICE_PER_LEVEL = 378
 
 @Discord()
-export class DogtagCommand {
+export abstract class DogtagCommand {
     @Slash('dogtag', {
         description: 'Gets the price of a dog tag at a certain level'
     })

@@ -1,8 +1,8 @@
-import { capitalizeWords } from '../../lib'
-import { Core, RawBoss } from '../../types/game/boss'
-import { Locales } from '../../types/game/locales'
-import { BossLocationSpawn, RawMapData } from '../../types/game/location'
-import { fetchData } from '../cache'
+import { capitalizeWords } from '../../Lib'
+import { Core, RawBoss } from '../../types/game/Boss'
+import { Locales } from '../../types/game/Locales'
+import { BossLocationSpawn, RawMapData } from '../../types/game/Location'
+import { fetchData } from '../Cache'
 
 type Attributes = {
     [key in keyof Core]?: (value: any) => string

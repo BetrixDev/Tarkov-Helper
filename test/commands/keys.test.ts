@@ -1,5 +1,5 @@
-import { Key, KeysCommand } from '../../src/commands/keys'
-import { fetchData, updateData } from '../../src/data/cache'
+import { Key, KeysCommand } from '../../src/commands/Keys'
+import { fetchData, updateData } from '../../src/data/Cache'
 
 describe('Keys Command Tests', () => {
     beforeAll(() => {

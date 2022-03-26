@@ -1,8 +1,8 @@
 import 'reflect-metadata'
 import { Client, Discord, Slash, SlashChoice, SlashOption } from 'discordx'
 import { CommandInteraction, InteractionReplyOptions } from 'discord.js'
-import { handleCommandInteraction, THEmbed, translation } from '../lib'
-import botConfig from '../config/bot-config'
+import { handleCommandInteraction, THEmbed, translation } from '../Lib'
+import botConfig from '../config/BotConfig'
 
 // https://escapefromtarkov.fandom.com/wiki/Currency
 // Should automate these using the item prices
@@ -57,7 +57,7 @@ function formatPrice(currency: string, price: number) {
 }
 
 @Discord()
-export class ExchangeRateCommand {
+export abstract class ExchangeRateCommand {
     @Slash('exchangerate', {
         description: 'Convert a currency to the others'
     })

@@ -1,13 +1,11 @@
 import 'reflect-metadata'
 import { Client, CommandInteraction, MessageActionRow, MessageButton } from 'discord.js'
 import { Discord, Slash } from 'discordx'
-import botConfig from '../config/bot-config'
-import { handleCommandInteraction, THEmbed, translation } from '../lib'
-import { injectable } from 'tsyringe'
+import botConfig from '../config/BotConfig'
+import { handleCommandInteraction, THEmbed, translation } from '../Lib'
 
 @Discord()
-@injectable()
-export class InfoCommand {
+export abstract class InfoCommand {
     @Slash('info', {
         description: 'Returns basic info on how to use Tarkov Helper'
     })

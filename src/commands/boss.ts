@@ -1,8 +1,8 @@
 import 'reflect-metadata'
 import { CommandInteraction } from 'discord.js'
 import { Client, Discord, Slash, SlashChoice, SlashOption } from 'discordx'
-import { Boss, BossToMap } from '../data/classes/boss'
-import { DATABASE_LOCATION, handleCommandInteraction, THEmbed, translation } from '../lib'
+import { Boss, BossToMap } from '../data/classes/Boss'
+import { DATABASE_LOCATION, handleCommandInteraction, THEmbed, translation } from '../Lib'
 
 enum Bosses {
     Gluhkar = 'bossGluhar',
@@ -14,7 +14,7 @@ enum Bosses {
 }
 
 @Discord()
-export class BossCommand {
+export abstract class BossCommand {
     @Slash('boss', {
         description: 'Returns information on the specified boss'
     })

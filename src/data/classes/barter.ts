@@ -1,8 +1,8 @@
 import { EmbedFieldData } from 'discord.js'
-import { capitalizeWords, formatPrice, translation } from '../../lib'
-import { ContainedItem, RawBarter } from '../../types/game/barter'
-import { fetchData, getBarter } from '../cache'
-import { Item } from './item'
+import { capitalizeWords, formatPrice, translation } from '../../Lib'
+import { ContainedItem, RawBarter } from '../../types/game/Barter'
+import { fetchData, getBarter } from '../Cache'
+import { Item } from './Item'
 
 interface BarterItem {
     count: number

@@ -1,10 +1,10 @@
 import { EmbedFieldData, MessageButton } from 'discord.js'
 import { readFileSync } from 'jsonfile'
-import { capitalizeWords, translation } from '../../lib'
-import { Locales, MapLocale } from '../../types/game/locales'
-import { RawMapData } from '../../types/game/location'
-import { MapImageData, Maps } from '../../types/maps'
-import { fetchData } from '../cache'
+import { capitalizeWords, translation } from '../../Lib'
+import { Locales, MapLocale } from '../../types/game/Locales'
+import { RawMapData } from '../../types/game/Location'
+import { MapImageData, Maps } from '../../types/Maps'
+import { fetchData } from '../Cache'
 
 const EN_LOCALES = (readFileSync('./data/en.json') as Locales).locations
 

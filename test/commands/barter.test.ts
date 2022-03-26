@@ -1,7 +1,7 @@
-import { TarkovToolsItem } from '../../src/types/game/item'
-import { ErrorMessages } from '../../src/commands/item'
-import { BarterCommand } from '../../src/commands/barter'
-import { fetchData, updateData } from '../../src/data/cache'
+import { TarkovToolsItem } from '../../src/types/game/Item'
+import { ErrorMessages } from '../../src/commands/Item'
+import { BarterCommand } from '../../src/commands/Barter'
+import { fetchData, updateData } from '../../src/data/Cache'
 
 describe('Barter Command Tests', () => {
     beforeAll(() => {

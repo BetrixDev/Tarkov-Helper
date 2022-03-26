@@ -1,6 +1,6 @@
-import { getCalibers } from '../../src/helpers/caliber-grabber'
-import { updateData } from '../../src/data/cache'
-import { CaliberCommand } from '../../src/commands/caliber'
+import { getCalibers } from '../../src/helpers/CaliberGrabber'
+import { updateData } from '../../src/data/Cache'
+import { CaliberCommand } from '../../src/commands/Caliber'
 
 describe('Caliber Command Tests', () => {
     beforeAll(() => {

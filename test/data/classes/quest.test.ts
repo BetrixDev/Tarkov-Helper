@@ -1,5 +1,5 @@
-import { updateData } from '../../../src/data/cache'
-import { Quest } from '../../../src/data/classes/quest'
+import { updateData } from '../../../src/data/Cache'
+import { Quest } from '../../../src/data/classes/Quest'
 
 describe('Quest class tests', () => {
     beforeAll(() => {

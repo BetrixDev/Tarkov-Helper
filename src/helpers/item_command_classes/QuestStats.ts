@@ -1,6 +1,6 @@
-import { fetchData } from '../../data/cache'
-import { Item } from '../../data/classes/item'
-import { RawQuest } from '../../types/game/quest'
+import { fetchData } from '../../data/Cache'
+import { Item } from '../../data/classes/Item'
+import { RawQuest } from '../../types/game/Quest'
 
 interface GameQuestData {
     [key: string]: { QuestName: string; rewards?: { Success: any[] } }

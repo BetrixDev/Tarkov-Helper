@@ -1,5 +1,5 @@
-import { initEngines, questSearchEngine } from '../../../src/helpers/search_engines/quest-engine'
-import { updateData } from '../../../src/data/cache'
+import { initEngines, questSearchEngine } from '../../../src/helpers/search_engines/QuestEngine'
+import { updateData } from '../../../src/data/Cache'
 
 describe('Quest Search Engine Tests', () => {
     beforeAll(() => {

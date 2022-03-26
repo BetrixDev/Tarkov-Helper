@@ -1,10 +1,10 @@
 import { AutocompleteInteraction } from 'discord.js'
 import fuse from 'fuse.js'
-import { fetchData } from '../../data/cache'
-import { HideoutModule } from '../../data/classes/module'
-import { queryDatabase } from '../../database/server'
-import { translation } from '../../lib'
-import { HideoutModule as RawHideoutModule } from '../../types/game/hideout'
+import { fetchData } from '../../data/Cache'
+import { HideoutModule } from '../../data/classes/Module'
+import { queryDatabase } from '../../database/Server'
+import { translation } from '../../Lib'
+import { HideoutModule as RawHideoutModule } from '../../types/game/Hideout'
 
 interface EngineParams {
     id: string

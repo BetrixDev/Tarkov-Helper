@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import {
     AutocompleteInteraction,
     ButtonInteraction,
@@ -7,19 +8,16 @@ import {
     MessageButton
 } from 'discord.js'
 import { ButtonComponent, Client, Discord, Slash, SlashOption } from 'discordx'
-import 'reflect-metadata'
-import { injectable } from 'tsyringe'
-import { fetchData } from '../data/cache'
-import { Quest } from '../data/classes/quest'
-import { autoCompleteResults, questSearchEngine } from '../helpers/search_engines/quest-engine'
-import { DATABASE_LOCATION, handleCommandInteraction, THEmbed, translation } from '../lib'
-import { RawQuest } from '../types/game/quest'
+import { fetchData } from '../data/Cache'
+import { Quest } from '../data/classes/Quest'
+import { autoCompleteResults, questSearchEngine } from '../helpers/search_engines/QuestEngine'
+import { DATABASE_LOCATION, handleCommandInteraction, THEmbed, translation } from '../Lib'
+import { RawQuest } from '../types/game/Quest'
 
 const QUEST_NUMBER = fetchData<RawQuest[]>('questData').length
 
 @Discord()
-@injectable()
-export class QuestCommand {
+export abstract class QuestCommand {
     @ButtonComponent(/^guide__/)
     async button(interaction: ButtonInteraction) {
         const [_, i, language] = interaction.customId.split('__')

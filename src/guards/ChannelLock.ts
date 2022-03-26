@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import { GuardFunction } from 'discordx'
 import { CommandInteraction, Interaction } from 'discord.js'
-import { translation } from '../lib'
+import { translation } from '../Lib'
 
 const isOwner = (interaction: Interaction) => interaction.guild?.ownerId === interaction.user.id
 

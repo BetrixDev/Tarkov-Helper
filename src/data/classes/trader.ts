@@ -1,5 +1,5 @@
-import { Locales, Trading } from '../../types/game/locales'
-import { fetchData } from '../cache'
+import { Locales, Trading } from '../../types/game/Locales'
+import { fetchData } from '../Cache'
 
 /**Used for grabbing the name of the trader in the correct language */
 export class Trader {

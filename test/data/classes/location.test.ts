@@ -1,6 +1,6 @@
-import { Location } from '../../../src/data/classes/location'
-import { updateData } from '../../../src/data/cache'
-import { Maps } from '../../../src/types/maps'
+import { Location } from '../../../src/data/classes/Location'
+import { updateData } from '../../../src/data/Cache'
+import { Maps } from '../../../src/types/Maps'
 
 const maps = ['woods', 'shoreline', 'labs', 'factory', 'customs', 'reserve', 'lighthouse', 'interchange']
 

@@ -1,8 +1,8 @@
 import 'reflect-metadata'
 import { CommandInteraction } from 'discord.js'
 import { Client, Discord, Slash, SlashChoice, SlashOption } from 'discordx'
-import { handleCommandInteraction, translation } from '../lib'
-import { setDatabase } from '../database/server'
+import { handleCommandInteraction, translation } from '../Lib'
+import { setDatabase } from '../database/Server'
 
 enum ErrorMessages {
     MUST_BE_OWNER = 'You must be the owner of this server to use this command',
@@ -10,7 +10,7 @@ enum ErrorMessages {
 }
 
 @Discord()
-export class LanguageCommand {
+export abstract class LanguageCommand {
     private isOwner(interaction: CommandInteraction) {
         return interaction.user.id === interaction.guild?.ownerId
     }

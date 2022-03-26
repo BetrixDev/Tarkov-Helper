@@ -11,12 +11,12 @@ import {
     SelectMenuInteraction
 } from 'discord.js'
 import { ButtonComponent, Client, Discord, SelectMenuComponent, Slash, SlashOption } from 'discordx'
-import { injectable } from 'tsyringe'
-import { autoCompleteResults } from '../helpers/search_engines/item-engine'
-import { fetchData, itemIdFromString } from '../data/cache'
-import { Item } from '../data/classes/item'
-import { Barter } from '../data/classes/barter'
-import { QuestStats } from '../helpers/item_command_classes/quest-stats'
+import { fetchData, itemIdFromString } from '../data/Cache'
+import { Barter } from '../data/classes/Barter'
+import { Item } from '../data/classes/Item'
+import { getItemFields, getStatImage } from '../helpers/item_command_classes/GameStats'
+import { QuestStats } from '../helpers/item_command_classes/QuestStats'
+import { autoCompleteResults } from '../helpers/search_engines/ItemEngine'
 import {
     capitalizeWords,
     formatNumber,
@@ -25,9 +25,8 @@ import {
     handleCommandInteraction,
     THEmbed,
     translation
-} from '../lib'
-import { getItemFields, getStatImage } from '../helpers/item_command_classes/game-stats'
-import { HideoutModule } from '../types/game/hideout'
+} from '../Lib'
+import { HideoutModule } from '../types/game/Hideout'
 
 type MenuActions = 'general' | 'game' | 'price' | 'barter'
 
@@ -36,8 +35,7 @@ export enum ErrorMessages {
 }
 
 @Discord()
-@injectable()
-export class ItemCommand {
+export abstract class ItemCommand {
     @SelectMenuComponent(/^itemmenu/)
     async itemMenu(interaction: SelectMenuInteraction) {
         const [, l, id] = interaction.customId.split('__')
@@ -293,15 +291,15 @@ export class ItemCommand {
         fields.push(
             barterData.barterDependents.length > 0
                 ? {
-                      name: t('Used in barters'),
-                      value: barterData.barterDependents.map((d) => t('**x{0}** in {1}', d.count, d.name)).join('\n'),
-                      inline: true
-                  }
+                    name: t('Used in barters'),
+                    value: barterData.barterDependents.map((d) => t('**x{0}** in {1}', d.count, d.name)).join('\n'),
+                    inline: true
+                }
                 : {
-                      name: t('Used in barters'),
-                      value: t('None'),
-                      inline: true
-                  }
+                    name: t('Used in barters'),
+                    value: t('None'),
+                    inline: true
+                }
         )
 
         if (pages === 0) {
@@ -380,9 +378,9 @@ export class ItemCommand {
                         .addFields(
                             sellingPrices.length > 0
                                 ? {
-                                      name: t('Best Sells'),
-                                      value: t('{0} at {1}/each', sellingPrices[0].source, sellingPrices[0].price)
-                                  }
+                                    name: t('Best Sells'),
+                                    value: t('{0} at {1}/each', sellingPrices[0].source, sellingPrices[0].price)
+                                }
                                 : { name: '\u200b', value: '\u200b' }
                         )
                 ]
@@ -409,9 +407,8 @@ export class ItemCommand {
                             },
                             {
                                 name: t('Avg 24hr Price'),
-                                value: `${formatPrice(item.priceData.avg24hPrice)} (${
-                                    item.priceData.changeLast48hPercent
-                                }%)`,
+                                value: `${formatPrice(item.priceData.avg24hPrice)} (${item.priceData.changeLast48hPercent
+                                    }%)`,
                                 inline: true
                             },
                             {
@@ -419,15 +416,15 @@ export class ItemCommand {
                                 value:
                                     sellingPrices.length > 1
                                         ? // Show if the item can be sold in multiple places
-                                          t(
-                                              '**{0}** at **{1}**/each or {2} at {3}/each',
-                                              sellingPrices[0].source,
-                                              sellingPrices[0].price,
-                                              sellingPrices[1].source,
-                                              sellingPrices[1].price
-                                          )
+                                        t(
+                                            '**{0}** at **{1}**/each or {2} at {3}/each',
+                                            sellingPrices[0].source,
+                                            sellingPrices[0].price,
+                                            sellingPrices[1].source,
+                                            sellingPrices[1].price
+                                        )
                                         : // Show if the item can only be sold at one place
-                                          t('**{0}** at **{1}**/each', sellingPrices[0].source, sellingPrices[0].price),
+                                        t('**{0}** at **{1}**/each', sellingPrices[0].source, sellingPrices[0].price),
                                 inline: true
                             },
                             {

@@ -1,5 +1,5 @@
-import { Boss } from '../../../src/data/classes/boss'
-import { updateData } from '../../../src/data/cache'
+import { Boss } from '../../../src/data/classes/Boss'
+import { updateData } from '../../../src/data/Cache'
 
 const bosses = ['bossGluhar', 'bossKilla', 'bossBully', 'bossSanitar', 'bossKojaniy', 'bossTagilla']
 

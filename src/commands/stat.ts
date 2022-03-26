@@ -1,13 +1,13 @@
 import 'reflect-metadata'
 import { AutocompleteInteraction, CommandInteraction, InteractionReplyOptions } from 'discord.js'
 import { Client, Discord, Slash, SlashOption } from 'discordx'
-import { autoCompleteResults } from '../helpers/search_engines/item-engine'
-import { handleCommandInteraction, translation } from '../lib'
-import { ErrorMessages, ItemCommand } from './item'
-import { itemIdFromString } from '../data/cache'
+import { autoCompleteResults } from '../helpers/search_engines/ItemEngine'
+import { handleCommandInteraction, translation } from '../Lib'
+import { ErrorMessages, ItemCommand } from './Item'
+import { itemIdFromString } from '../data/Cache'
 
 @Discord()
-export class StatCommand {
+export abstract class StatCommand {
     @Slash('stat', { description: 'Returns information about the specified item' })
     async stat(
         @SlashOption('item', {

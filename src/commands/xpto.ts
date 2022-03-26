@@ -2,8 +2,8 @@ import 'reflect-metadata'
 import { Client, Discord, Slash, SlashOption } from 'discordx'
 import { CommandInteraction, InteractionReplyOptions } from 'discord.js'
 import { readFileSync } from 'jsonfile'
-import { formatNumber, handleCommandInteraction, THEmbed, translation } from '../lib'
-import botConfig from '../config/bot-config'
+import { formatNumber, handleCommandInteraction, THEmbed, translation } from '../Lib'
+import botConfig from '../config/BotConfig'
 
 interface ExperiencePoint {
     fromPrevious: number
@@ -28,7 +28,7 @@ const getExperienceData = (): ExperiencePoint[] => {
 const experienceData = getExperienceData()
 
 @Discord()
-export class XptoCommand {
+export abstract class XptoCommand {
     @Slash('xpto', {
         description: 'Calculate the experience needed to reach a certain levelm'
     })

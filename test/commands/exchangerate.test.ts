@@ -1,4 +1,4 @@
-import { ExchangeRateCommand } from '../../src/commands/exchangerate'
+import { ExchangeRateCommand } from '../../src/commands/ExchangeRate'
 
 describe('Exchange Rate Tests', () => {
     it('should return a message for specified amounts', () => {

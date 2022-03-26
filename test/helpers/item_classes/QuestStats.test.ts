@@ -1,6 +1,6 @@
-import { Item } from '../../../src/data/classes/item'
-import { QuestStats } from '../../../src/helpers/item_command_classes/quest-stats'
-import { updateData } from '../../../src/data/cache'
+import { Item } from '../../../src/data/classes/Item'
+import { QuestStats } from '../../../src/helpers/item_command_classes/QuestStats'
+import { updateData } from '../../../src/data/Cache'
 
 describe('QuestStats class tests', () => {
     beforeAll(() => {

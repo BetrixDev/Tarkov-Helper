@@ -1,11 +1,11 @@
 import 'reflect-metadata'
 import { ArgsOf, Client, Discord, On } from 'discordx'
-import logger from '../config/logger'
+import logger from '../config/Logger'
 
 const Namespace = 'InteractionCreate'
 
 @Discord()
-export class InteractionCreateEvent {
+export abstract class InteractionCreateEvent {
     @On('interactionCreate')
     async interactionCreate([interaction]: ArgsOf<'interactionCreate'>, client: Client) {
         if (interaction.isCommand()) {

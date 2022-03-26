@@ -1,5 +1,5 @@
-import { HideoutModule } from '../../../src/data/classes/module'
-import { updateData } from '../../../src/data/cache'
+import { HideoutModule } from '../../../src/data/classes/Module'
+import { updateData } from '../../../src/data/Cache'
 
 describe('Module Class Tests', () => {
     beforeAll(() => {

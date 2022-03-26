@@ -1,18 +1,16 @@
 import 'reflect-metadata'
 import { ButtonComponent, Discord, Slash, SlashChoice, SlashOption } from 'discordx'
-import { injectable } from 'tsyringe'
-import { fetchData } from '../data/cache'
+import { fetchData } from '../data/Cache'
 import { ButtonInteraction, Client, CommandInteraction, InteractionReplyOptions, MessageActionRow } from 'discord.js'
-import { Location } from '../data/classes/location'
-import { DATABASE_LOCATION, handleCommandInteraction, THEmbed, translation } from '../lib'
-import { MapImageData, MapImage, Maps } from '../types/maps'
+import { Location } from '../data/classes/Location'
+import { DATABASE_LOCATION, handleCommandInteraction, THEmbed, translation } from '../Lib'
+import { MapImageData, MapImage, Maps } from '../types/Maps'
 
 const mapImages = fetchData<MapImageData>('maps')
 const mapUrlPrefix = `${DATABASE_LOCATION}/images/map_icons`
 
 @Discord()
-@injectable()
-export class MapCommand {
+export abstract class MapCommand {
     @Slash('map', {
         description: 'Returns information and maps of a certain location'
     })

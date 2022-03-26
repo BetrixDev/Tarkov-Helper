@@ -1,11 +1,11 @@
 import 'reflect-metadata'
 import { AutocompleteInteraction, CommandInteraction, InteractionReplyOptions } from 'discord.js'
 import { Client, Discord, Slash, SlashOption } from 'discordx'
-import { autoCompleteResults } from '../helpers/search_engines/module-engine'
-import { formatNumber, formatPrice, handleCommandInteraction, THEmbed, translation } from '../lib'
+import { autoCompleteResults } from '../helpers/search_engines/ModuleEngine'
+import { formatNumber, formatPrice, handleCommandInteraction, THEmbed, translation } from '../Lib'
 import { readFileSync } from 'jsonfile'
-import { HideoutModule } from '../data/classes/module'
-import { Item } from '../data/classes/item'
+import { HideoutModule } from '../data/classes/Module'
+import { Item } from '../data/classes/Item'
 
 const HIDEOUT_MODULE_COUNT = readFileSync('./data/hideoutData.json').length as number
 
@@ -14,7 +14,7 @@ export enum ErrorMessages {
 }
 
 @Discord()
-export class HideoutCommand {
+export abstract class HideoutCommand {
     @Slash('hideout', { description: 'Retrieve the cost for upgrading a hideout module' })
     async hideout(
         @SlashOption('module', {
@@ -59,13 +59,12 @@ export class HideoutCommand {
                         value:
                             requiredItems.length > 0
                                 ? requiredItems
-                                      .map(
-                                          ({ item, count }) =>
-                                              `**x${formatNumber(count)}** [${item.shortName}](${item.wikiLink} "${
-                                                  item.name
-                                              }") - ${formatPrice(item.buyingPrice()?.price ?? 0 * count)}`
-                                      )
-                                      .join('\n')
+                                    .map(
+                                        ({ item, count }) =>
+                                            `**x${formatNumber(count)}** [${item.shortName}](${item.wikiLink} "${item.name
+                                            }") - ${formatPrice(item.buyingPrice()?.price ?? 0 * count)}`
+                                    )
+                                    .join('\n')
                                 : t('None'),
                         inline: true
                     },
@@ -84,10 +83,10 @@ export class HideoutCommand {
                         value:
                             module.data.moduleRequirements.length > 0
                                 ? module.data.moduleRequirements
-                                      .map(({ id, level }) =>
-                                          t('{0} Level {1}', new HideoutModule(id, language).name, level)
-                                      )
-                                      .join('\n')
+                                    .map(({ id, level }) =>
+                                        t('{0} Level {1}', new HideoutModule(id, language).name, level)
+                                    )
+                                    .join('\n')
                                 : t('None'),
                         inline: true
                     }

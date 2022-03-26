@@ -1,7 +1,7 @@
 import { AutocompleteInteraction } from 'discord.js'
 import fuse from 'fuse.js'
-import { queryDatabase } from '../../database/server'
-import { getCalibers } from '../caliber-grabber'
+import { queryDatabase } from '../../database/Server'
+import { getCalibers } from '../CaliberGrabber'
 
 interface EngineParams {
     key: string

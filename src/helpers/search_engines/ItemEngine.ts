@@ -1,10 +1,10 @@
 import 'reflect-metadata'
 import { AutocompleteInteraction } from 'discord.js'
 import fuse from 'fuse.js'
-import { fetchData } from '../../data/cache'
-import { Item } from '../../data/classes/item'
-import { queryDatabase } from '../../database/server'
-import { ItemType, RawItem, TarkovToolsItem } from '../../types/game/item'
+import { fetchData } from '../../data/Cache'
+import { Item } from '../../data/classes/Item'
+import { queryDatabase } from '../../database/Server'
+import { ItemType, RawItem, TarkovToolsItem } from '../../types/game/Item'
 
 interface ExtraOptions {
     types?: ItemType[]

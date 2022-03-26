@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync } from 'fs'
 import { rm } from 'fs/promises'
-import logger from './config/logger'
-import cron from './data/cron'
+import logger from './config/Logger'
+import cron from './data/Cron'
 
 const Namespace = 'Initialization'
 
