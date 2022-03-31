@@ -1,12 +1,11 @@
 import 'reflect-metadata'
 import { AutocompleteInteraction, CommandInteraction, InteractionReplyOptions, MessageAttachment } from 'discord.js'
 import { Client, Discord, Slash, SlashOption } from 'discordx'
-import { injectable } from 'tsyringe'
-import { itemIdFromString } from '../data/cache'
-import { Item } from '../data/classes/item'
-import { autoCompleteResults } from '../helpers/search_engines/item-engine'
-import { BallisticsCalculator } from '../helpers/simulator/ballistics'
-import { handleCommandInteraction, round, THEmbed, translation, TranslationFunction } from '../lib'
+import { itemIdFromString } from '../Cache'
+import { Item } from '../lib/game/Item'
+import { autoCompleteResults } from '../lib/search_engines/ItemEngine'
+import { BallisticsCalculator } from '../lib/simulator/Ballistics'
+import { handleCommandInteraction, round, THEmbed, translation, TranslationFunction } from '../Lib'
 import { ChartJSNodeCanvas } from 'chartjs-node-canvas'
 
 export enum ErrorMessages {
@@ -14,8 +13,7 @@ export enum ErrorMessages {
 }
 
 @Discord()
-@injectable()
-export class PenChanceCommand {
+export abstract class PenChanceCommand {
     @Slash('penchance', { description: 'A penetration chance calculator' })
     async penChance(
         @SlashOption('bullet', {
