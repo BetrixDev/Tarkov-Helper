@@ -1,6 +1,7 @@
 import { fetchData, getRawItem } from '../cache'
 import { Locales } from '../../types/game/locales'
 import { ItemPrice, ItemType, RawItem, RawItemProps, TarkovToolsItem, TraderName } from '../../types/game/item'
+import { Globals } from '../../types/game/Globals'
 
 /**A class to contain all needed data for an item */
 export class Item {
@@ -59,6 +60,12 @@ export class Item {
         } else {
             return undefined
         }
+    }
+
+    get inRaidCarryLimit(): number | undefined {
+        const globals = fetchData<Globals>('globals')
+
+        return globals.config.RestrictionsInRaid.find((i) => i.TemplateId === this.id)?.Value
     }
 
     /**Sorted least to greatest */

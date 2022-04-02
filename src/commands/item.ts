@@ -188,6 +188,13 @@ export class ItemCommand {
             inline: true
         })
 
+        const carryLimit = item.inRaidCarryLimit
+        fields.push({
+            name: t('Carry Limit'),
+            value: carryLimit ? carryLimit.toString() : t('None'),
+            inline: true
+        })
+
         if (barterData.barters.length > 0) {
             let barterCost = 0
             barterData.barters[0].requiredItems.forEach((i: any) => {
