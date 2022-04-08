@@ -37,17 +37,51 @@ export abstract class QuestCommand {
             )
         }
 
-        quest.guideImages.forEach((image, i) => {
-            message.embeds?.push(
-                new THEmbed()
-                    .setTitle(t('Image #{0}', i + 1))
-                    .setDescription(image.caption ?? '\u200b')
-                    .setImage(image.url)
-                    .setFooter({ text: t('Image from the official wiki') })
-            )
-        })
+        // Discord only allows 10 embeds per reponse, and since every image is an embed, sometimes we need to split of the embeds across multiple responses
+        const messages = Math.ceil(quest.guideImages.length / 10)
 
-        interaction.reply(message)
+        if (messages === 1) {
+            quest.guideImages.forEach((image, i) => {
+                message.embeds?.push(
+                    new THEmbed()
+                        .setTitle(t('Image #{0}', i + 1))
+                        .setDescription(image.caption ?? '\u200b')
+                        .setImage(image.url)
+                        .setFooter({ text: t('Image from the official wiki') })
+                )
+            })
+
+            await interaction.reply(message)
+        } else if (messages > 1) {
+            // send initial message
+            quest.guideImages.slice(0, 9).forEach((image, i) => {
+                message.embeds?.push(
+                    new THEmbed()
+                        .setTitle(t('Image #{0}', i + 1))
+                        .setDescription(image.caption ?? '\u200b')
+                        .setImage(image.url)
+                        .setFooter({ text: t('Image from the official wiki') })
+                )
+            })
+
+            await interaction.reply(message)
+
+            for (let i = 1; i <= messages - 1; i++) {
+                let extraMessage: InteractionReplyOptions = { embeds: [], ephemeral: true }
+
+                quest.guideImages.slice(i * 9, i * 9 + 9).forEach((image, o) => {
+                    extraMessage.embeds?.push(
+                        new THEmbed()
+                            .setTitle(t('Image #{0}', (o + 10) * i))
+                            .setDescription(image.caption ?? '\u200b')
+                            .setImage(image.url)
+                            .setFooter({ text: t('Image from the official wiki') })
+                    )
+                })
+
+                await interaction.followUp(extraMessage)
+            }
+        }
     }
 
     @Slash('quest', { description: 'Retrieves information about a quest and how to complete it' })
