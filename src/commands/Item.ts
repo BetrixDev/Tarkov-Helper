@@ -159,7 +159,7 @@ export abstract class ItemCommand {
         if (lowestBuy) {
             fields.push({
                 name: t('Lowest Buying Price'),
-                value: formatPrice(lowestBuy.price, lowestBuy.source),
+                value: `${formatPrice(lowestBuy.price, lowestBuy.source)} *(${capitalizeWords(lowestBuy.source)})*`,
                 inline: true
             })
         } else {
