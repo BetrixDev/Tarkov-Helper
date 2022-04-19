@@ -80,12 +80,12 @@ export class Item {
             }
         }
 
-        return this.priceData.buyFor.sort((a, b) => b.price - a.price)[index]
+        return this.priceData.buyFor.sort((a, b) => a.price - b.price)[index]
     }
 
     /**Sorted greatest to least */
     sellingPrice(index = 0): ItemPrice | undefined {
-        return this.priceData.sellFor.sort((a, b) => a.price - b.price)[index]
+        return this.priceData.sellFor.sort((a, b) => b.price - a.price)[index]
     }
 
     private getTypes(i: RawItem) {
