@@ -111,10 +111,18 @@ export abstract class ItemCommand {
         const barterData = new Barter(item.id, language)
         const questData = new QuestStats(item)
 
+        let title = t('{0} Information {1}', item.shortName, formatPrice(item.priceData.avg24hPrice))
+        // let desc = `
+        //     [Wiki Link](${item.wikiLink})
+        //     "${item.description.length < 150 ? item.description : item.description.slice(0, 150).concat('...')}"
+        // `
         let desc = `
             [Wiki Link](${item.wikiLink})
-            "${item.description.length < 150 ? item.description : item.description.slice(0, 150).concat('...')}"
         `
+
+        if (item.props.CanSellOnRagfair === false) {
+            title = t('{0} Information - {1}', item.shortName, t('[BANNED ON FLEA]'))
+        }
 
         const quests = questData.getDependents()
 
@@ -130,22 +138,13 @@ export abstract class ItemCommand {
         }
 
         let fields: EmbedFieldData[] = []
-
-        if (item.props.CanSellOnRagfair === true) {
-            fields.push({
-                name: t('Price on Flea'),
-                value: formatPrice(item.priceData.lastLowPrice ?? 0),
-                inline: true
-            })
-        } else {
-            fields.push({ name: t('Price on Flea'), value: t("Can't be sold"), inline: true })
-        }
-
         let highestSell = item.sellingPrice()
         if (highestSell) {
             fields.push({
                 name: t('Highest Selling Price'),
-                value: formatPrice(highestSell.price, highestSell.source),
+                value: `${formatPrice(highestSell.price, highestSell.source)} *(${capitalizeWords(
+                    highestSell.source
+                )})*`,
                 inline: true
             })
         } else {
@@ -249,11 +248,7 @@ export abstract class ItemCommand {
 
         return {
             embeds: [
-                new THEmbed()
-                    .setTitle(t('{0} Information', item.shortName))
-                    .setDescription(desc)
-                    .setFields(fields)
-                    .setThumbnail(getItemImage(id))
+                new THEmbed().setTitle(title).setDescription(desc).setFields(fields).setThumbnail(getItemImage(id))
             ],
             components: [menu(language, id, 'general')]
         }
