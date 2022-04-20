@@ -112,20 +112,17 @@ export abstract class ItemCommand {
         const questData = new QuestStats(item)
 
         let title = t('{0} Information {1}', item.shortName, formatPrice(item.priceData.avg24hPrice))
-        // let desc = `
-        //     [Wiki Link](${item.wikiLink})
-        //     "${item.description.length < 150 ? item.description : item.description.slice(0, 150).concat('...')}"
-        // `
+        let fields: EmbedFieldData[] = []
         let desc = `
             [Wiki Link](${item.wikiLink})
         `
 
+        // Change title according to if the item is able to be listed in the Flea Market
         if (item.props.CanSellOnRagfair === false) {
             title = t('{0} Information - {1}', item.shortName, t('[BANNED ON FLEA]'))
         }
 
         const quests = questData.getDependents()
-
         if (quests.length > 0) {
             desc = `
                 ${desc}
@@ -137,7 +134,6 @@ export abstract class ItemCommand {
             `
         }
 
-        let fields: EmbedFieldData[] = []
         let highestSell = item.sellingPrice()
         if (highestSell) {
             fields.push({
@@ -148,6 +144,7 @@ export abstract class ItemCommand {
                 inline: true
             })
         } else {
+            // Some items such as secure containers and roubles can't be sold
             fields.push({
                 name: t('Highest Selling Price'),
                 value: t("Can't be sold"),
@@ -156,10 +153,40 @@ export abstract class ItemCommand {
         }
 
         const lowestBuy = item.buyingPrice()
-        if (lowestBuy) {
+        if (lowestBuy && barterData.barters.length > 0) {
+            let barterCost = 0
+            barterData.barters[0].requiredItems.forEach((i: any) => {
+                barterCost += i.item.priceData.lastLowPrice * i.count
+            })
+
+            if (barterCost < lowestBuy.price) {
+                fields.push({
+                    name: t('Lowest Buying Price'),
+                    value: `${capitalizeWords(barterData.barters[0].source)} Barter *(${formatPrice(barterCost)})*`,
+                    inline: true
+                })
+            } else {
+                fields.push({
+                    name: t('Lowest Buying Price'),
+                    value: `${formatPrice(lowestBuy.price, lowestBuy.source)} *(${capitalizeWords(lowestBuy.source)})*`,
+                    inline: true
+                })
+            }
+        } else if (lowestBuy) {
             fields.push({
                 name: t('Lowest Buying Price'),
                 value: `${formatPrice(lowestBuy.price, lowestBuy.source)} *(${capitalizeWords(lowestBuy.source)})*`,
+                inline: true
+            })
+        } else if (barterData.barters.length > 0) {
+            let barterCost = 0
+            barterData.barters[0].requiredItems.forEach((i: any) => {
+                barterCost += i.item.priceData.lastLowPrice * i.count
+            })
+
+            fields.push({
+                name: t('Lowest Buying Price'),
+                value: `${capitalizeWords(barterData.barters[0].source)} Barter *(${formatPrice(barterCost)})*`,
                 inline: true
             })
         } else {
@@ -187,29 +214,10 @@ export abstract class ItemCommand {
 
         const carryLimit = item.inRaidCarryLimit
         fields.push({
-            name: t('Carry Limit'),
+            name: t('In Raid Carry Limit'),
             value: carryLimit ? carryLimit.toString() : t('None'),
             inline: true
         })
-
-        if (barterData.barters.length > 0) {
-            let barterCost = 0
-            barterData.barters[0].requiredItems.forEach((i: any) => {
-                barterCost += i.item.priceData.lastLowPrice * i.count
-            })
-
-            fields.push({
-                name: t('Cheapest Barter'),
-                value: `${formatPrice(barterCost)} from ${capitalizeWords(barterData.barters[0].source)}`,
-                inline: true
-            })
-        } else {
-            fields.push({
-                name: t('Cheapest Barter'),
-                value: t('No barters'),
-                inline: true
-            })
-        }
 
         fields.push({ name: '\u200b', value: '\u200b', inline: true })
 

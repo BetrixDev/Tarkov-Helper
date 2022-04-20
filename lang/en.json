@@ -192,5 +192,6 @@
     "Total Cost": "Total Cost",
     "Required Modules": "Required Modules",
     "{0} Level {1}": "{0} Level {1}",
-    "**Cooldown**: Please wait {0} seconds before making another request": "**Cooldown**: Please wait {0} seconds before making another request"
+    "**Cooldown**: Please wait {0} seconds before making another request": "**Cooldown**: Please wait {0} seconds before making another request",
+    "In Raid Carry Limit": "In Raid Carry Limit"
 }
