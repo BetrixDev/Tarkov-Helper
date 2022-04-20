@@ -98,8 +98,9 @@ export abstract class PricePerSlotCommand {
                                 const priceperslot = Math.round(
                                     (item.lastLowPrice ?? item.avg24hPrice) / (item.width * item.height)
                                 )
-                                return `\`${i + 1 + page * 15}\` - ${formatPrice(priceperslot)} - ${new Item(item.id, language).name
-                                    }`
+                                return `\`${i + 1 + page * 15}\` - ${formatPrice(priceperslot)} - ${
+                                    new Item(item.id, language).name
+                                }`
                             })
                             .join('\n')
                     })
@@ -149,7 +150,7 @@ export abstract class PricePerSlotCommand {
                 const pricePerSlot = (item.lastLowPrice ?? item.avg24hPrice) / (item.width * item.height)
 
                 if (pricePerSlot > minimum && pricePerSlot < maximum) validItems.push(item)
-            } catch { }
+            } catch {}
         }
 
         return validItems

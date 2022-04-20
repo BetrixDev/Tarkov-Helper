@@ -12,8 +12,9 @@ import { table as tableConstructor } from 'table'
 
 const getBulletDamage = (bullet: RawAmmo): string => {
     if (bullet.projectileCount > 1) {
-        return `${bullet.projectileCount * bullet.ballistics.damage} (${bullet.ballistics.damage}x${bullet.projectileCount
-            })`
+        return `${bullet.projectileCount * bullet.ballistics.damage} (${bullet.ballistics.damage}x${
+            bullet.projectileCount
+        })`
     } else {
         return bullet.ballistics.damage.toString()
     }
