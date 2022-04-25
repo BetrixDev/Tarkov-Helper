@@ -3,7 +3,7 @@ export const round = (num: number, place: string): number => {
 }
 
 export const random = (min: number, max: number): number => {
-    return Math.floor(Math.random() * max) + min
+    return Math.floor(Math.random() * (max - min) + min)
 }
 
 export const clamp = (num: number, min: number, max: number): number => {
