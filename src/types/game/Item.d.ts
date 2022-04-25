@@ -150,6 +150,7 @@ export interface TarkovToolsItem {
 export interface ItemPrice {
     source: TraderName
     price: number
+    priceRUB: number
     requirements: Requirement[]
 }
 

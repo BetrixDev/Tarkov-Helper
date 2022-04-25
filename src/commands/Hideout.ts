@@ -63,7 +63,7 @@ export abstract class HideoutCommand {
                                           ({ item, count }) =>
                                               `**x${formatNumber(count)}** [${item.shortName}](${item.wikiLink} "${
                                                   item.name
-                                              }") - ${formatPrice(item.buyingPrice()?.price ?? 0 * count)}`
+                                              }") - ${formatPrice(item.buyingPrice()?.priceRUB ?? 0 * count)}`
                                       )
                                       .join('\n')
                                 : t('None'),

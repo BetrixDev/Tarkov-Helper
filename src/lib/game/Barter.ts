@@ -52,15 +52,15 @@ export class Barter {
 
             a.requiredItems.forEach(({ item, count }) => {
                 if (item.priceData.buyFor.length > 0) {
-                    const lowestBuy = item.priceData.buyFor.sort((c, d) => d.price - c.price)[0]
-                    aCost += lowestBuy.price * count
+                    const lowestBuy = item.priceData.buyFor.sort((c, d) => d.priceRUB - c.priceRUB)[0]
+                    aCost += lowestBuy.priceRUB * count
                 }
             })
 
             b.requiredItems.forEach(({ item, count }) => {
                 if (item.priceData.buyFor.length > 0) {
-                    const lowestBuy = item.priceData.buyFor.sort((c, d) => d.price - c.price)[0]
-                    bCost += lowestBuy.price * count
+                    const lowestBuy = item.priceData.buyFor.sort((c, d) => d.priceRUB - c.priceRUB)[0]
+                    bCost += lowestBuy.priceRUB * count
                 }
             })
 
@@ -114,7 +114,7 @@ export class Barter {
                 },
                 {
                     name: 'Flea Market Price',
-                    value: formatPrice(item.buyingPrice()?.price ?? 0),
+                    value: formatPrice(item.buyingPrice()?.priceRUB ?? 0),
                     inline: true
                 },
                 {
@@ -129,7 +129,7 @@ export class Barter {
                 },
                 {
                     name: 'Barter Profit',
-                    value: formatPrice(item.buyingPrice()?.price ?? 0 - barterTotal),
+                    value: formatPrice(item.buyingPrice()?.priceRUB ?? 0 - barterTotal),
                     inline: true
                 }
             )

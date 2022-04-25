@@ -138,7 +138,7 @@ export abstract class ItemCommand {
         if (highestSell) {
             fields.push({
                 name: t('Highest Selling Price'),
-                value: `${formatPrice(highestSell.price, highestSell.source)} *(${capitalizeWords(
+                value: `${formatPrice(highestSell.priceRUB, highestSell.source)} *(${capitalizeWords(
                     highestSell.source
                 )})*`,
                 inline: true
@@ -159,7 +159,7 @@ export abstract class ItemCommand {
                 barterCost += i.item.priceData.lastLowPrice * i.count
             })
 
-            if (barterCost < lowestBuy.price) {
+            if (barterCost < lowestBuy.priceRUB) {
                 fields.push({
                     name: t('Lowest Buying Price'),
                     value: `${capitalizeWords(barterData.barters[0].source)} Barter *(${formatPrice(barterCost)})*`,
@@ -168,14 +168,16 @@ export abstract class ItemCommand {
             } else {
                 fields.push({
                     name: t('Lowest Buying Price'),
-                    value: `${formatPrice(lowestBuy.price, lowestBuy.source)} *(${capitalizeWords(lowestBuy.source)})*`,
+                    value: `${formatPrice(lowestBuy.priceRUB, lowestBuy.source)} *(${capitalizeWords(
+                        lowestBuy.source
+                    )})*`,
                     inline: true
                 })
             }
         } else if (lowestBuy) {
             fields.push({
                 name: t('Lowest Buying Price'),
-                value: `${formatPrice(lowestBuy.price, lowestBuy.source)} *(${capitalizeWords(lowestBuy.source)})*`,
+                value: `${formatPrice(lowestBuy.priceRUB, lowestBuy.source)} *(${capitalizeWords(lowestBuy.source)})*`,
                 inline: true
             })
         } else if (barterData.barters.length > 0) {
@@ -363,7 +365,7 @@ export abstract class ItemCommand {
         const item = new Item(id, language)
 
         const buyingPrices = item.priceData.buyFor
-            .sort((a, b) => a.price - b.price)
+            .sort((a, b) => a.priceRUB - b.priceRUB)
             .map((offer) => {
                 return { source: capitalizeWords(offer.source), price: formatPrice(offer.price, offer.source) }
             })

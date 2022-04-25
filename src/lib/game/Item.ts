@@ -76,16 +76,17 @@ export class Item {
                 price: 1,
                 // Arbitrary trader name
                 source: TraderName.Fence,
+                priceRUB: 1,
                 requirements: []
             }
         }
 
-        return this.priceData.buyFor.sort((a, b) => a.price - b.price)[index]
+        return this.priceData.buyFor.sort((a, b) => a.priceRUB - b.priceRUB)[index]
     }
 
     /**Sorted greatest to least */
     sellingPrice(index = 0): ItemPrice | undefined {
-        return this.priceData.sellFor.sort((a, b) => b.price - a.price)[index]
+        return this.priceData.sellFor.sort((a, b) => b.priceRUB - a.priceRUB)[index]
     }
 
     private getTypes(i: RawItem) {

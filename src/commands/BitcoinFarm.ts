@@ -108,7 +108,7 @@ export class BitcoinFarm {
         this.gpus = gpus
 
         // Get the highest selling price
-        this.btcPrice = new Item('59faff1d86f7746c51718c9c', 'en').sellingPrice()?.price as number
+        this.btcPrice = new Item('59faff1d86f7746c51718c9c', 'en').sellingPrice()?.priceRUB as number
     }
 
     get bitcoinsPerDay() {
