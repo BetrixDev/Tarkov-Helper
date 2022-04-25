@@ -15,11 +15,11 @@ export class Item {
     private _description: string
 
     constructor(id: string, language: Languages) {
-        const rawData = fetchData<Record<string, RawItem>>('itemProps')[id]
+        const rawData = fetchData<Record<string, RawItemProps>>('itemProps')[id]
         const locales = fetchData<Locales>(language).templates[id]
         const data = fetchData<TarkovToolsItem[]>('itemData')[fetchData<{ [key: string]: number }>('itemMap')[id]]
 
-        this.getTypes(rawData)
+        this.getTypes(fetchData<Record<string, RawItem>>('rawItems')[id])
 
         this.id = id
         this.name = locales?.Name ?? ''
@@ -27,7 +27,7 @@ export class Item {
         this._description = locales?.Description ?? ''
         this.wikiLink = data.wikiLink
         this.priceData = data
-        this.props = rawData._props
+        this.props = rawData
     }
 
     static getLocales(id: string, language: Languages) {

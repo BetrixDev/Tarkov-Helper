@@ -1,6 +1,6 @@
 [
     {
-        "name": "itemProps",
+        "name": "rawItems",
         "link": "https://raw.githubusercontent.com/Tarkov-Helper/Database/main/items.json"
     },
     {
