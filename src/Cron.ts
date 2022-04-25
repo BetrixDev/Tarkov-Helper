@@ -7,6 +7,11 @@ import { RawBarter } from './types/game/Barter'
 import { HideoutModule } from './types/game/Hideout'
 import { TarkovToolsItem } from './types/game/Item'
 import { updateData } from './Cache'
+import dotenv from 'dotenv'
+
+dotenv.config()
+
+const TARKOV_CHANGES_TOKEN = process.env.TARKOV_CHANGES_TOKEN as string
 
 const Namespace = 'Cron'
 
@@ -30,6 +35,7 @@ const query = gql`
             sellFor {
                 source
                 price
+                priceRUB
                 requirements {
                     type
                     value
@@ -38,6 +44,7 @@ const query = gql`
             buyFor {
                 source
                 price
+                priceRUB
                 requirements {
                     type
                     value
@@ -87,6 +94,23 @@ interface Response {
     hideoutModules: HideoutModule[]
 }
 
+const queryTarkovChanges = async () => {
+    await axios('https://api.tarkov-changes.com/v1/items', {
+        headers: { AUTH_TOKEN: TARKOV_CHANGES_TOKEN }
+    }).then((res) => {
+        const data = res.data.results as {
+            Name: string
+            'Item ID': string
+            props: string
+        }[]
+
+        // https://stackoverflow.com/questions/4215737/convert-array-to-object
+        const formattedData = data.reduce((a, v) => ({ ...a, [v['Item ID']]: JSON.parse(v.props) }), {})
+
+        writeFileSync('./data/itemProps.json', formattedData, { spaces: 4 })
+    })
+}
+
 const queryTarkovTools = async () => {
     try {
         const { itemsByType, barters, hideoutModules } = await request<Response>(endpoint, query)
@@ -95,7 +119,7 @@ const queryTarkovTools = async () => {
         writeFileSync('./data/barterData.json', barters, { spaces: 4 })
         writeFileSync('./data/hideoutData.json', hideoutModules, { spaces: 4 })
     } catch (e) {
-        logger.error(Namespace, 'Error grabbing Tarkov-Tools data', e)
+        logger.error(Namespace, 'Error grabbing Tarkov.dev data', e)
     }
 }
 
@@ -115,8 +139,7 @@ export default async () => {
     logger.info(Namespace, 'Grabbing data')
 
     try {
-        await queryTarkovTools()
-        await queryMisc()
+        await Promise.all([queryTarkovChanges(), queryTarkovTools(), queryMisc()])
 
         scheduleJob('*/30 * * * *', async () => {
             logger.info(Namespace, `Caching new data`)
@@ -127,7 +150,7 @@ export default async () => {
         })
 
         scheduleJob('0 */6 * * *', async () => {
-            queryMisc()
+            await Promise.all([queryTarkovChanges(), queryMisc()])
         })
     } catch (e) {
         logger.error(Namespace, 'Error grabbing data', e)

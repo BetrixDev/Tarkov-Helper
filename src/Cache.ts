@@ -42,7 +42,7 @@ export const fetchData = <T>(key: string): T => {
 }
 
 export const getRawItem = (id: string) => {
-    return data['itemProps'][id] as RawItem
+    return data['rawItems'][id] as RawItem
 }
 
 /**Returns all barters that give rewardItem as a reward */
