@@ -13,18 +13,8 @@ describe('Item class tests', () => {
 
     it('should retrieve M995 in spanish', () => {
         const item = new Item('59e690b686f7746c9f75e848', 'es')
-        expect(item.name).toEqual('Munición M995 de 5,56x45 mm')
+        expect(item.shortName).toEqual('M995')
     })
-
-    // it('should retrieve M995 in russian', () => {
-    //     const item = new Item('59e690b686f7746c9f75e848', 'ru')
-    //     expect(item.name).toEqual('5.56x45мм M995')
-    // })
-
-    // it('should retrieve M995 in german', () => {
-    //     const item = new Item('59e690b686f7746c9f75e848', 'ge')
-    //     expect(item.name).toEqual('5,56 x 45 mm M995')
-    // })
 
     it('should retrieve all item types for a Fast MT (Black)', () => {
         const item = new Item('5a154d5cfcdbcb001a3b00da', 'en')

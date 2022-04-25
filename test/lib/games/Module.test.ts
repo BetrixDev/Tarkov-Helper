@@ -9,7 +9,7 @@ describe('Module Class Tests', () => {
     it('should grab data for Bitcoin farm in english', () => {
         const module = new HideoutModule(1, 'en')
 
-        expect(module.name).toEqual('Bitcoin farm')
+        expect(module.name).toEqual('Bitcoin Farm')
         expect(module.data).toBeDefined()
     })
 
