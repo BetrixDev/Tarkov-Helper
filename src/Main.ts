@@ -70,7 +70,7 @@ async function run() {
             })
         }
 
-        if (!existsSync('./data/')) await cron()
+        await cron()
     }
 
     // Load data into memory
