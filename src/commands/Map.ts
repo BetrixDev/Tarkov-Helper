@@ -5,9 +5,12 @@ import { ButtonInteraction, Client, CommandInteraction, InteractionReplyOptions,
 import { Location } from '../lib/game/Location'
 import { DATABASE_LOCATION, handleCommandInteraction, THEmbed, translation } from '../Lib'
 import { MapImageData, MapImage, Maps } from '../types/Maps'
+import { realTimeToTarkovTime } from '../helpers/MapTimeResolver'
 
 const mapImages = fetchData<MapImageData>('maps')
 const mapUrlPrefix = `${DATABASE_LOCATION}/images/map_icons`
+
+const factoryTime = ['15:28:00', '03:28:00']
 
 @Discord()
 export abstract class MapCommand {
@@ -39,10 +42,18 @@ export abstract class MapCommand {
             const t = translation(language)
             const map = new Location(mapName as Maps, language)
 
+            let mapTime: string[] = ['', '']
+
+            if (mapName === 'factory') {
+                mapTime = factoryTime
+            } else if (mapName !== 'thelab') {
+                mapTime = [realTimeToTarkovTime(new Date(), 'left'), realTimeToTarkovTime(new Date(), 'right')]
+            }
+
             respond({
                 embeds: [
                     new THEmbed()
-                        .setTitle(map.name)
+                        .setTitle(`${map.name} ${mapTime !== ['', ''] ? '-' : ''} ${mapTime[0]} | ${mapTime[1]}`)
                         .setThumbnail(`${mapUrlPrefix}/${map.name.toLowerCase()}.png`)
                         .setDescription(map.description)
                         .setImage(mapImages[mapName.toLowerCase()][0].link)
@@ -63,22 +74,6 @@ export abstract class MapCommand {
                                 value: map.hasInsurance ? t('yes') : t('no'),
                                 inline: true
                             }
-                            // {
-                            //     name: t('Exits'),
-                            //     value: '\u200b',
-                            //     inline: true
-                            // },
-                            // {
-                            //     name: '\u200b',
-                            //     value: '\u200b',
-                            //     inline: true
-                            // },
-                            // {
-                            //     name: '\u200b',
-                            //     value: '\u200b',
-                            //     inline: true
-                            // },
-                            // ...map.exfilInfo
                         )
                 ],
                 components: [new MessageActionRow().addComponents(map.mapButtons)]
