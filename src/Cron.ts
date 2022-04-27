@@ -125,11 +125,15 @@ const queryTarkovTools = async () => {
 
 const queryMisc = async () => {
     try {
-        for (let l of links) {
-            const { data } = await axios(l.link)
+        await Promise.all(
+            links.map(async (l) => {
+                const { data } = await axios(l.link)
 
-            writeFileSync(`./data/${l.name}.json`, data, { spaces: 4 })
-        }
+                writeFileSync(`./data/${l.name}.json`, data, { spaces: 4 })
+
+                return
+            })
+        )
     } catch (e) {
         logger.error(Namespace, 'Error grabbing misc data', e)
     }
