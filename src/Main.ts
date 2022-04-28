@@ -4,12 +4,11 @@ import { Client, DIService } from 'discordx'
 import { container } from 'tsyringe'
 import { importx } from '@discordx/importer'
 import { connect } from 'mongoose'
-import { existsSync } from 'fs'
 import AutoPoster from 'topgg-autoposter'
 import dotenv from 'dotenv'
 import logger from './config/Logger'
-import cron from './Cron'
-import { isDev } from './Lib'
+import cron, { getEventData } from './Cron'
+import { formatPrice, isDev } from './Lib'
 import { updateData } from './Cache'
 import { initEngines as initItemEngine } from './lib/search_engines/ItemEngine'
 import { initEngines as initQuestEngine } from './lib/search_engines/QuestEngine'
@@ -31,6 +30,17 @@ const client = new Client({
     botGuilds: isDev ? [(client) => client.guilds.cache.map((guild) => guild.id)] : undefined,
     guards: [InjectServerData, ChannelLockGuard, RateLimiterGuard]
 })
+
+export function setStatus(data: { goal: number; current: number } | undefined) {
+    if (data) {
+        client.user?.setPresence({
+            activities: [
+                { name: `[EVENT] ${formatPrice(data.current)} / ${formatPrice(data.goal)}`, type: 'WATCHING' }
+            ],
+            status: 'online'
+        })
+    }
+}
 
 client.once('ready', async () => {
     // make sure all guilds are in cache
@@ -91,10 +101,12 @@ async function run() {
 
     if (botToken) {
         await importx(__dirname + '/{commands,events}/*.{ts,js}')
-        client.login(botToken)
+        await client.login(botToken)
     } else {
         throw new Error('Please set your bot\'s token in the "BOT_TOKEN" field in .env')
     }
+
+    setStatus(await getEventData())
 }
 
 run()
