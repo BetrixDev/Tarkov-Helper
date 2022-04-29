@@ -2,7 +2,7 @@
     "author": "Betrix",
     "scripts": {
         "build": "tsc",
-        "dev": "cross-env NODE_ENV=dev ts-node --files src/main.ts",
+        "dev": "cross-env NODE_ENV=dev ts-node --files src/Main.ts",
         "init": "ts-node --files src/init.ts",
         "start": "npx pm2 start --name tarkovhelper ./build/src/Main.js",
         "format": "prettier --config .prettierrc \"./src/*/*.ts\" --write",
