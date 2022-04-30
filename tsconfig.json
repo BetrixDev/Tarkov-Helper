@@ -3,7 +3,7 @@
         "target": "ESNext",
         "module": "commonjs",
         "outDir": "./build",
-        "rootDirs": ["./src"],
+        "rootDirs": ["./src", "./test"],
         "strict": true,
         "esModuleInterop": true,
         "moduleResolution": "Node",
@@ -15,5 +15,6 @@
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
         "lib": ["esnext"]
-    }
+    },
+    "include": ["./src"]
 }
