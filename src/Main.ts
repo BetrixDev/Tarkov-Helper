@@ -16,7 +16,6 @@ import { initEngines as initModuleEngine } from './lib/search_engines/ModuleEngi
 import { initEngines as initCaliberEngine } from './lib/search_engines/CaliberEngine'
 import { InjectServerData } from './guards/InjectData'
 import { RateLimiterGuard } from './guards/RateLimiter'
-import { ChannelLockGuard } from './guards/ChannelLock'
 
 const Namespace = 'Main'
 
@@ -28,7 +27,7 @@ const client = new Client({
     intents: [Intents.FLAGS.GUILDS],
     // If you only want to use global commands only, comment this line
     botGuilds: isDev ? [(client) => client.guilds.cache.map((guild) => guild.id)] : undefined,
-    guards: [InjectServerData, ChannelLockGuard, RateLimiterGuard]
+    guards: [InjectServerData, RateLimiterGuard]
 })
 
 export function setStatus(data: { goal: number; current: number } | undefined) {
