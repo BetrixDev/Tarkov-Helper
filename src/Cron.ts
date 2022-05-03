@@ -8,7 +8,6 @@ import { HideoutModule } from './types/game/Hideout'
 import { TarkovToolsItem } from './types/game/Item'
 import { updateData } from './Cache'
 import dotenv from 'dotenv'
-import { setStatus } from './Main'
 
 dotenv.config()
 
@@ -154,11 +153,6 @@ export default async () => {
             })
         })
 
-        scheduleJob('*/15 * * * *', async () => {
-            // UPDATE EVENT DATA
-            setStatus(await getEventData())
-        })
-
         scheduleJob('0 */6 * * *', async () => {
             await Promise.all([queryTarkovChanges(), queryMisc()])
         })
@@ -167,31 +161,4 @@ export default async () => {
     }
 
     logger.info(Namespace, 'Successfully retrieved data')
-}
-
-export async function getEventData() {
-    const response = await axios('https://www.escapefromtarkov.com/cash').then((res) => res.data as string)
-
-    const variables = response.match(/[a-zA-Z] = [0-9]+,/gm)?.filter((i) => i.includes('x') || i.includes('y'))
-
-    if (variables) {
-        let current: number | undefined
-        let goal: number | undefined
-
-        variables.forEach((v) => {
-            if (v.includes('x')) {
-                current = Number(v.replace('x = ', '').replace(',', ''))
-            } else if (v.includes('y')) {
-                goal = Number(v.replace('y = ', '').replace(',', ''))
-            }
-        })
-
-        if (!current || !goal) {
-            return
-        }
-
-        const output = { current, goal }
-
-        return output
-    }
 }
