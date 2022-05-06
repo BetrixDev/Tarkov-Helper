@@ -31,6 +31,7 @@ export class RouletteCommand {
         if (buttonAction === 'all') {
             const rouletteData = this.generateRouletteData()
 
+            this.rouletteData.setData(interaction.user.id, rouletteData)
             interaction.update(this.getMessage(language, rouletteData))
             return
         }
