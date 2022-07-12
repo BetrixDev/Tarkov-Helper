@@ -11,6 +11,7 @@ export class Craft {
     private dataService = container.resolve(TarkovDataService);
 
     craftCost: number;
+    craftValue: number;
     requiredItems: Item[];
     duration: number; // seconds
     reward: Item;
@@ -35,6 +36,22 @@ export class Craft {
             }
 
             return itemPrice * craftItem.count + prevCost;
+        }, 0);
+
+        this.craftValue = craftData.rewardItems.reduce((prevValue, craftItem) => {
+            const itemData = new Item(craftItem.item.id, language);
+
+            let itemPrice = itemData.buyingPrice().priceRUB;
+
+            if (itemData.id === "59f32bb586f774757e1e8442" || itemData.id === "59f32c3b86f77472a31742f0") {
+                if (craftItem.attributes && craftItem.attributes[0]) {
+                    // Dog tags will get a price equal to the selling price of the lowest possible level tag for the craft
+                    // We can directly index the array since there is only 1 possible attribute currently
+                    itemPrice = Number(craftItem.attributes[0].value) * 378;
+                }
+            }
+
+            return itemPrice * craftItem.count + prevValue;
         }, 0);
 
         this.requiredItems = craftData.requiredItems.map((i) => new Item(i.item.id, language));

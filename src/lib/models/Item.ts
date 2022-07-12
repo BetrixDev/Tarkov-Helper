@@ -36,9 +36,10 @@ export class Item {
         const itemData = dataService.fetchData("items-tarkov-dev")[id];
 
         this.id = id;
-        this.name = locales.Name;
-        this.shortName = `${locales.ShortName}`;
-        this._description = locales.Description;
+        // fallback to default english names if there isn't an entry in the locales data
+        this.name = locales?.Name ?? itemData.name;
+        this.shortName = `${locales?.ShortName ?? itemData.shortName}`;
+        this._description = locales?.Description ?? "";
         this.wikiLink = itemData.wikiLink;
         this.data = itemData;
         this.props = itemProps;

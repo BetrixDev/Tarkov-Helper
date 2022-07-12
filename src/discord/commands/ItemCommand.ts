@@ -117,7 +117,7 @@ export class ItemCommand extends BaseCommand {
                                     ? bartersUsingItem
                                           .map(
                                               (barter) =>
-                                                  `${barter.reward.shortName} *(${formatPrice(barter.barterCost)})*`
+                                                  `• ${barter.reward.shortName} *(${formatPrice(barter.barterCost)})*`
                                           )
                                           .join("\n")
                                     : t("None"),
@@ -130,7 +130,7 @@ export class ItemCommand extends BaseCommand {
                                     ? bartersGivingItem
                                           .map(
                                               (barter) =>
-                                                  `${barter.traderData.name} LL${
+                                                  `• ${barter.traderData.name} LL${
                                                       barter.traderData.level
                                                   } *(${formatPrice(barter.barterCost)})*`
                                           )
@@ -144,7 +144,8 @@ export class ItemCommand extends BaseCommand {
                                 craftsUsingItem.length > 0
                                     ? craftsUsingItem
                                           .map(
-                                              (craft) => `${craft.reward.shortName} *(${formatPrice(craft.craftCost)})*`
+                                              (craft) =>
+                                                  `• ${craft.reward.shortName} *(${formatPrice(craft.craftCost)})*`
                                           )
                                           .join("\n")
                                     : t("None"),
@@ -155,7 +156,12 @@ export class ItemCommand extends BaseCommand {
                             value:
                                 craftsGivingItem.length > 0
                                     ? craftsGivingItem
-                                          .map((craft) => `${craft.station.name} *(${formatPrice(craft.craftCost)})*`)
+                                          .map(
+                                              (craft) =>
+                                                  `• ${craft.station.name} *(${formatPrice(
+                                                      craft.craftCost
+                                                  )})* *(${formatPrice(craft.craftValue)})*`
+                                          )
                                           .join("\n")
                                     : t("None"),
                             inline: true
