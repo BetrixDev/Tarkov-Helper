@@ -51,24 +51,23 @@ export interface TaskObjective {
     foundInRaid?: boolean;
 }
 
-export enum Type {
-    BuildWeapon = "buildWeapon",
-    Experience = "experience",
-    Extract = "extract",
-    FindItem = "findItem",
-    FindQuestItem = "findQuestItem",
-    GiveItem = "giveItem",
-    GiveQuestItem = "giveQuestItem",
-    Mark = "mark",
-    PlantItem = "plantItem",
-    PlantQuestItem = "plantQuestItem",
-    PlayerLevel = "playerLevel",
-    Shoot = "shoot",
-    Skill = "skill",
-    TaskStatus = "taskStatus",
-    TraderLevel = "traderLevel",
-    Visit = "visit"
-}
+export type Type =
+    | "buildWeapon"
+    | "experience"
+    | "extract"
+    | "findItem"
+    | "findQuestItem"
+    | "giveItem"
+    | "giveQuestItem"
+    | "mark"
+    | "plantItem"
+    | "plantQuestItem"
+    | "playerLevel"
+    | "shoot"
+    | "skill"
+    | "taskStatus"
+    | "traderLevel"
+    | "visit";
 
 export interface TaskRequirement {
     task: Trader;

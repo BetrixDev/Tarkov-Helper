@@ -3,7 +3,6 @@ import "reflect-metadata";
 import { injectable, container } from "tsyringe";
 import { BaseCommand } from "../../lib/BaseCommand";
 import { CommandInteraction, AutocompleteInteraction, InteractionReplyOptions } from "discord.js";
-import { TarkovDataService } from "../../services/TarkovDataService";
 import { ItemSearchEngine } from "../../lib/search_engines/ItemSearchEngine";
 import { LanguageCode } from "../../../types/common";
 import { Item } from "../../lib/models/Item";
@@ -71,7 +70,7 @@ export class ItemCommand extends BaseCommand {
             // all this does is return the amount of times the item is needed for the quest
             const resolveQuestObjectives = (objective: TaskObjective[]): number => {
                 return objective.reduce((prevCount, obj) => {
-                    if (obj.item && obj.item.id === item.id && obj.count) {
+                    if (obj.item && obj.item.id === item.id && obj.count && !obj.optional && obj.type !== "findItem") {
                         return prevCount + obj.count;
                     }
 
@@ -81,7 +80,7 @@ export class ItemCommand extends BaseCommand {
 
             description = `
                 ${description}
-                \u200b
+                \n
                 ${item.shortName} is needed for the following quests:
                 ${questsUsingItem.map((q) => `**${q.name}** - **x${resolveQuestObjectives(q.objectives)}**`).join("\n")}
             `;
