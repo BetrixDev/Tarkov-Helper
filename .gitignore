@@ -1,6 +1,7 @@
 build/
 node_modules/
+data/
+idea/
+converage/
 *.vscode
 *.env
-
-data/
