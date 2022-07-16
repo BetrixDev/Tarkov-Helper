@@ -86,6 +86,9 @@ export class ItemCommand extends BaseCommand {
             `;
         }
 
+        // slightly safer to call this method here and check if it's defined instead of the other method I was using
+        const itemBuyingPrice = item.buyingPrice();
+
         return {
             embeds: [
                 this.createEmbed()
@@ -103,10 +106,8 @@ export class ItemCommand extends BaseCommand {
                         {
                             name: t("Best Place to Buy"),
                             value:
-                                item.data.buyFor.length > 0
-                                    ? `${item.buyingPrice().vendor.name} *(${formatPrice(
-                                          item.buyingPrice().priceRUB
-                                      )})*`
+                                itemBuyingPrice !== undefined
+                                    ? `${itemBuyingPrice.vendor.name} *(${formatPrice(itemBuyingPrice.priceRUB)})*`
                                     : t("Can't be bought"),
                             inline: true
                         },

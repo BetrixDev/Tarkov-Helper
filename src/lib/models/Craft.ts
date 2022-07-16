@@ -25,7 +25,8 @@ export class Craft {
         this.craftCost = craftData.requiredItems.reduce((prevCost, craftItem) => {
             const itemData = new Item(craftItem.item.id, language);
 
-            let itemPrice = itemData.buyingPrice().priceRUB;
+            const itemBuyingPrice = itemData.buyingPrice();
+            let itemPrice = itemBuyingPrice ? itemBuyingPrice.priceRUB : itemData.data.avg24hPrice;
 
             if (itemData.id === "59f32bb586f774757e1e8442" || itemData.id === "59f32c3b86f77472a31742f0") {
                 if (craftItem.attributes && craftItem.attributes[0]) {
@@ -41,7 +42,8 @@ export class Craft {
         this.craftValue = craftData.rewardItems.reduce((prevValue, craftItem) => {
             const itemData = new Item(craftItem.item.id, language);
 
-            let itemPrice = itemData.buyingPrice().priceRUB;
+            const itemBuyingPrice = itemData.buyingPrice();
+            let itemPrice = itemBuyingPrice ? itemBuyingPrice.priceRUB : itemData.data.avg24hPrice;
 
             if (itemData.id === "59f32bb586f774757e1e8442" || itemData.id === "59f32c3b86f77472a31742f0") {
                 if (craftItem.attributes && craftItem.attributes[0]) {

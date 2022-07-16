@@ -65,7 +65,7 @@ export class Item {
     }
 
     /**Sorted least to greatest */
-    buyingPrice(index = 0): ItemPrice {
+    buyingPrice(index = 0): ItemPrice | undefined {
         if (
             this.id === "5449016a4bdc2d6f028b456f" || //  Roubles
             this.id === "59f32bb586f774757e1e8442" || //  Bear Dog tag
