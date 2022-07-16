@@ -52,6 +52,7 @@ export interface ApiResponses {
     "bots/types/followerbigpipe": GameBot;
     "bots/types/followerbirdeye": GameBot;
     "bots/types/bossknight": GameBot;
+    "bots/types/assault": GameBot;
     "bots/types/exusec": GameBot;
     "locales/global/en": GameLocales;
     "locales/global/es": GameLocales;

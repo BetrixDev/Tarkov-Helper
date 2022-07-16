@@ -302,7 +302,7 @@ const CONFIGS = {
     },
     SP_TARKOV_CONFIG: {
         type: "REST",
-        url: "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/18969/project/assets/database/{ENDPOINT}.json",
+        url: "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/19047/project/assets/database/{ENDPOINT}.json",
         // these are ugly
         endpoints: [
             "globals",
@@ -315,6 +315,7 @@ const CONFIGS = {
             "bots/types/followerbirdeye",
             "bots/types/bossknight",
             "bots/types/exusec",
+            "bots/types/assault",
             "locales/global/en",
             "locales/global/es",
             "locations/bigmap/base",
