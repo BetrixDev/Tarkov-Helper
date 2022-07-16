@@ -1,4 +1,4 @@
-export interface TopLevel {
+export interface Globals {
     config: Config;
     bot_presets: BotPreset[];
     BotWeaponScatterings: BotWeaponScattering[];
