@@ -1,0 +1,26 @@
+{
+    "name": {
+        "en-US": "exchangerate"
+    },
+    "description": {
+        "en-US": "Convert a currency to the others"
+    },
+    "options": {
+        "currency": {
+            "name": {
+                "en-US": "currency"
+            },
+            "description": {
+                "en-US": "Currency to convert"
+            }
+        },
+        "amount": {
+            "name": {
+                "en-US": "amount"
+            },
+            "description": {
+                "en-US": "Amount of the currency"
+            }
+        }
+    }
+}
