@@ -22,7 +22,7 @@ export class Item {
     private _description: string;
     private _dataService: TarkovDataService;
 
-    constructor(id: string, language: LanguageCode) {
+    constructor(id: string, language: LanguageCode = "en") {
         if (id === "customdogtags12345678910") {
             // when a barter can use either faction's dog tags for a barter, tarkov.dev's api returns the string above as the id, so we filter that to just use one of the dog tags
             id = "59f32bb586f774757e1e8442";
