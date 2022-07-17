@@ -41,14 +41,13 @@ export class ItemCommand extends BaseCommand {
     }
 
     command(id: string, language: LanguageCode): InteractionReplyOptions {
+        const t = translation(language);
         const [success, itemId] = this.validateItemInput(id);
 
         // Second condition is for type guarding and to make typescript happy
         if (!success || typeof itemId !== "string") {
-            throw Error("Input not valid, please use the auto complete function to complete your search");
+            throw Error(t("Input not valid, please use the auto complete function to complete your search"));
         }
-
-        const t = translation(language);
 
         const item = new Item(itemId, language);
 
