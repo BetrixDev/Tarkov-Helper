@@ -6,6 +6,7 @@ import { ApplicationCommandOptions, SlashOptionOptions } from "discordx";
 import { container } from "tsyringe";
 import { TarkovDataService } from "../services/TarkovDataService";
 import { TarkovDevItem } from "../../types/tarkov.dev/TarkovDevItem";
+import { LanguageCode } from "../../types/common";
 
 interface ILocalizationData {
     name: Record<string, string>;
@@ -117,5 +118,10 @@ export class BaseCommand {
 
         // the input was either a unique shortname or valid name
         return [true, results[0].id];
+    }
+
+    /** Simple macro function for the appropriate language from an interaction */
+    getLanguage(interaction: Interaction): LanguageCode {
+        return interaction.locale.split("-")[0] as LanguageCode;
     }
 }
