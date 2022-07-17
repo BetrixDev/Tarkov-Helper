@@ -16,10 +16,11 @@ export const translation = (language: LanguageCode | string): TranslationFunctio
         let text = str;
         if (translations && translations[str]) text = translations[str];
 
-        if (args)
+        if (args) {
             args.forEach((arg, i) => {
                 text = text.replaceAll(`{${i}}`, arg.toString());
             });
+        }
 
         return text;
     };
