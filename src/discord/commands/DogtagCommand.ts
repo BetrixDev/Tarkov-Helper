@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { Discord, Slash, SlashOption } from "discordx";
-import { CommandInteraction, InteractionReplyOptions } from "discord.js";
+import { ApplicationCommandOptionType, CommandInteraction, InteractionReplyOptions } from "discord.js";
 import { BaseCommand } from "../../lib/BaseCommand";
 import { translation } from "../../lib/util/translation";
 import { LanguageCode } from "../../../types/common";
@@ -25,7 +25,7 @@ export class DogtagCommand extends BaseCommand {
         @SlashOption(
             "level",
             BaseCommand.resolveOptions(COMMAND_NAME, "level", {
-                type: "INTEGER"
+                type: ApplicationCommandOptionType.Integer
             })
         )
         level: number,

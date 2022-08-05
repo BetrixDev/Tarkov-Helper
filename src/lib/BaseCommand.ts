@@ -1,4 +1,11 @@
-import { CommandInteraction, Interaction, InteractionReplyOptions, Message, MessageEmbed } from "discord.js";
+import {
+    CommandInteraction,
+    Embed,
+    EmbedBuilder,
+    Interaction,
+    InteractionReplyOptions,
+    MessageComponentInteraction
+} from "discord.js";
 import { translation } from "./util/translation";
 import { config } from "../config";
 import { readJson } from "./util/files";
@@ -59,7 +66,7 @@ export class BaseCommand {
         };
     }
 
-    errorReply(message: string, interaction: Interaction): InteractionReplyOptions {
+    errorReply(message: string, interaction: CommandInteraction | Interaction): InteractionReplyOptions {
         const t = translation(interaction.locale);
 
         if (interaction.isCommand()) {
@@ -69,12 +76,12 @@ export class BaseCommand {
 
             return {
                 embeds: [
-                    new MessageEmbed()
+                    new EmbedBuilder()
                         .setAuthor({ name: config.bot.name })
                         .setColor(config.bot.errorColor)
                         .setTitle(t("The command issued had and error"))
                         .setDescription(`\`${message}\``)
-                        .addField("Args", args.length > 0 ? args.join("\n") : "none")
+                        .addFields({ name: "Args", value: args.length > 0 ? args.join("\n") : "none" })
                         .setFooter({ text: t("Command issued: {0}", interaction.commandName) })
                 ],
                 ephemeral: true
@@ -82,7 +89,7 @@ export class BaseCommand {
         } else {
             return {
                 embeds: [
-                    new MessageEmbed()
+                    new EmbedBuilder()
                         .setAuthor({ name: config.bot.name })
                         .setColor(config.bot.errorColor)
                         .setTitle(t("The command issued had and error"))
@@ -95,8 +102,8 @@ export class BaseCommand {
     }
 
     /** A simple method to generate consistent embeds, and to keep code less repetitive */
-    createEmbed(): MessageEmbed {
-        return new MessageEmbed().setColor("#152424");
+    createEmbed(): EmbedBuilder {
+        return new EmbedBuilder().setColor("#152424");
     }
 
     validateItemInput(input: string): [success: true, output: string] | [success: false] {
@@ -121,7 +128,7 @@ export class BaseCommand {
     }
 
     /** Simple macro function for the appropriate language from an interaction */
-    getLanguage(interaction: Interaction): LanguageCode {
+    getLanguage(interaction: CommandInteraction | MessageComponentInteraction): LanguageCode {
         return interaction.locale.split("-")[0] as LanguageCode;
     }
 }

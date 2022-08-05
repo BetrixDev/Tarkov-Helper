@@ -1,14 +1,16 @@
 import "reflect-metadata";
-import { ButtonComponent, Discord, Slash, SlashOption } from "discordx";
+import { Discord, Slash, SlashOption, ButtonComponent } from "discordx";
 import {
+    ActionRowBuilder,
+    ApplicationCommandOptionType,
     AutocompleteInteraction,
     ButtonInteraction,
     CommandInteraction,
-    EmbedFieldData,
+    EmbedField,
     InteractionReplyOptions,
     InteractionUpdateOptions,
-    MessageActionRow,
-    MessageButton
+    ButtonBuilder,
+    ButtonStyle
 } from "discord.js";
 import { BaseCommand } from "../../lib/BaseCommand";
 import { LanguageCode } from "../../../types/common";
@@ -28,7 +30,7 @@ export class BarterCommand extends BaseCommand {
         @SlashOption(
             "item",
             BaseCommand.resolveOptions(COMMAND_NAME, "item", {
-                type: "STRING",
+                type: ApplicationCommandOptionType.String,
                 autocomplete: (interaction: AutocompleteInteraction) => {
                     container.resolve(ItemSearchEngine).handleAutoComplete(interaction);
                 }
@@ -73,7 +75,7 @@ export class BarterCommand extends BaseCommand {
         const bartersUsingItem = Barter.fromRequiredItem(item, language);
 
         const pages = barters.length;
-        const fields: EmbedFieldData[] = [];
+        const fields: EmbedField[] = [];
 
         fields.push(
             bartersUsingItem.length > 0
@@ -127,22 +129,22 @@ export class BarterCommand extends BaseCommand {
                 // only display the buttons if there is more than 1 barter
                 pages !== 1
                     ? [
-                          new MessageActionRow().addComponents(
-                              new MessageButton()
+                          new ActionRowBuilder<ButtonBuilder>().addComponents(
+                              new ButtonBuilder()
                                   .setCustomId(`barter__b__${id}__${page}`)
                                   .setLabel(t("Last Barter"))
                                   .setDisabled(page === 0) // disable button if on the first page
-                                  .setStyle("PRIMARY"),
-                              new MessageButton()
+                                  .setStyle(ButtonStyle.Primary),
+                              new ButtonBuilder()
                                   .setCustomId("no_id")
                                   .setLabel(`${page + 1} / ${pages}`)
                                   .setDisabled(true)
-                                  .setStyle("SECONDARY"),
-                              new MessageButton()
+                                  .setStyle(ButtonStyle.Secondary),
+                              new ButtonBuilder()
                                   .setCustomId(`barter__f__${id}__${page}`)
                                   .setLabel(t("Next Barter"))
                                   .setDisabled(page === pages - 1) // disable button if on the last page
-                                  .setStyle("PRIMARY")
+                                  .setStyle(ButtonStyle.Primary)
                           )
                       ]
                     : []

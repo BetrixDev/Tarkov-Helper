@@ -1,8 +1,13 @@
-import { Discord, Slash, SlashOption } from "discordx";
 import "reflect-metadata";
+import { Discord, Slash, SlashOption } from "discordx";
 import { injectable, container } from "tsyringe";
 import { BaseCommand } from "../../lib/BaseCommand";
-import { CommandInteraction, AutocompleteInteraction, InteractionReplyOptions } from "discord.js";
+import {
+    CommandInteraction,
+    AutocompleteInteraction,
+    InteractionReplyOptions,
+    ApplicationCommandOptionType
+} from "discord.js";
 import { ItemSearchEngine } from "../../lib/search_engines/ItemSearchEngine";
 import { LanguageCode } from "../../../types/common";
 import { Item } from "../../lib/models/Item";
@@ -23,7 +28,7 @@ export class ItemCommand extends BaseCommand {
         @SlashOption(
             "item",
             BaseCommand.resolveOptions(COMMAND_NAME, "item", {
-                type: "STRING",
+                type: ApplicationCommandOptionType.String,
                 autocomplete: (interaction: AutocompleteInteraction) => {
                     container.resolve(ItemSearchEngine).handleAutoComplete(interaction);
                 }

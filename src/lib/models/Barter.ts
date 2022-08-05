@@ -4,7 +4,7 @@ import { container } from "tsyringe";
 import { TarkovDataService } from "../../services/TarkovDataService";
 import { Item } from "./Item";
 import { TarkovDevBarter } from "../../../types/tarkov.dev/TarkovDevBarter";
-import { EmbedFieldData } from "discord.js";
+import { Embed, EmbedField } from "discord.js";
 import { translation } from "../util/translation";
 import { formatPrice } from "../util/string";
 
@@ -67,7 +67,7 @@ export class Barter {
         return this.requiredItems.find((i) => i.item.id === item.id) as RequiredItem;
     }
 
-    generateEmbedFields(): EmbedFieldData[] {
+    generateEmbedFields(): EmbedField[] {
         const t = translation(this.language);
 
         const barterItems = this.requiredItems.map(

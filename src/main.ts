@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { Client, DIService } from "discordx";
-import { Intents } from "discord.js";
+import {IntentsBitField } from "discord.js";
 import { importx } from "@discordx/importer";
 import dotenv from "dotenv";
 import { container } from "tsyringe";
@@ -14,11 +14,11 @@ const isDev = config.process.isDev;
 const isTest = config.process.isTest;
 
 // Dependency Injection Setup
-DIService.container = container;
+// DIService.container = container;
 
 export const client = new Client({
     botGuilds: isDev ? [(client) => client.guilds.cache.map((guild) => guild.id)] : undefined,
-    intents: [Intents.FLAGS.GUILDS]
+    intents: [IntentsBitField.Flags.Guilds]
 });
 
 client.once("ready", async () => {
@@ -28,14 +28,12 @@ client.once("ready", async () => {
     // init all application commands
     await client.initApplicationCommands();
 
-    // init permissions; enabled log to see changes
-    await client.initApplicationPermissions();
-
     if (!isDev) {
         // uncomment this line to clear all guild commands,
         // useful when moving to global commands from guild commands
         await client.clearApplicationCommands(...client.guilds.cache.map((g) => g.id));
     }
+    
     console.log("Tarkov Helper started");
 });
 

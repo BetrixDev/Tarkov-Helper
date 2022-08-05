@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { CommandInteraction, InteractionReplyOptions } from "discord.js";
+import { ApplicationCommandOptionType, CommandInteraction, InteractionReplyOptions } from "discord.js";
 import { Discord, Slash, SlashChoice, SlashOption } from "discordx";
 import { BaseCommand } from "../../lib/BaseCommand";
 import { LanguageCode } from "../../../types/common";
@@ -53,9 +53,15 @@ export class ExchangeRateCommand extends BaseCommand {
         @SlashChoice({ name: "Roubles", value: "rub" })
         @SlashChoice({ name: "Dollars", value: "usd" })
         @SlashChoice({ name: "Euros", value: "eur" })
-        @SlashOption("currency", BaseCommand.resolveOptions(COMMAND_NAME, "currency", { type: "STRING" }))
+        @SlashOption(
+            "currency",
+            BaseCommand.resolveOptions(COMMAND_NAME, "currency", { type: ApplicationCommandOptionType.String })
+        )
         currency: Currency,
-        @SlashOption("amount", BaseCommand.resolveOptions(COMMAND_NAME, "amount", { type: "INTEGER" }))
+        @SlashOption(
+            "amount",
+            BaseCommand.resolveOptions(COMMAND_NAME, "amount", { type: ApplicationCommandOptionType.Integer })
+        )
         amount: number,
         interaction: CommandInteraction
     ): void {
