@@ -41,9 +41,5 @@
     "topgg-autoposter": "^2.0.1",
     "tsyringe": "^4.6.0",
     "whatwg-url": "^11.0.0"
-  },
-  "engines": {
-    "node": "^18.0.x"
-  },
-  "engineStrict": true
+  }
 }
