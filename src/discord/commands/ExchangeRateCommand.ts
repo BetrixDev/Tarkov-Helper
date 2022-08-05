@@ -123,7 +123,7 @@ export class ExchangeRateCommand extends BaseCommand {
                 // all conversions from usd are multiplication
                 // and for eur, the rouble conversion is multiplication and the usd conversion is division
                 const operation =
-                    currency.id === "rub" ? "/" : currency.id === "usd" ? "*" : c.id === "rub" ? "*" : "/";
+                    currency.id === "rub" ? "*" : currency.id === "usd" ? "*" : c.id === "rub" ? "*" : "/";
 
                 data[c.id] = {
                     operation,
