@@ -1,4 +1,3 @@
-import { EmbedFieldData, MessageEmbedImage } from "discord.js";
 import { Grid, ItemProps } from "../../../types/game/ItemProps";
 import { BallisticsCalculator } from "../simulators/BallisticsSimulator";
 import { container } from "tsyringe";
@@ -8,6 +7,7 @@ import { TranslationFunction } from "../util/translation";
 import { round } from "../util/math";
 import { config } from "../../config";
 import { capitalizeWords } from "../util/string";
+import { EmbedField, EmbedImageData } from "discord.js";
 
 interface ArmorMaterial {
     Destructibility: number;
@@ -81,8 +81,12 @@ const itemFields: ItemField[] = [
         format: (value: number, data) => {
             const globals = container.resolve(TarkovDataService).fetchData("globals");
 
-            const armorConfig = globals.config.ArmorMaterials[data.ArmorMaterial ?? ""];
-            return `${value / armorConfig?.destructibility ?? 1}`;
+            if (data.ArmorMaterial) {
+                const armorConfig = globals.config.ArmorMaterials[data.ArmorMaterial];
+                return `${value / armorConfig?.Destructibility ?? 1}`;
+            }
+
+            return "N/A";
         }
     },
     {
@@ -312,7 +316,7 @@ const itemFields: ItemField[] = [
     }
 ];
 
-export const getItemFields = (item: Item, t: TranslationFunction): EmbedFieldData[] => {
+export const getItemFields = (item: Item, t: TranslationFunction): EmbedField[] => {
     const itemProps = item.props;
 
     let fields = itemFields
@@ -341,7 +345,7 @@ export const getItemFields = (item: Item, t: TranslationFunction): EmbedFieldDat
 };
 
 // For some items, we want to display images of their functionality
-export const getStatImage = (item: Item): MessageEmbedImage => {
+export const getStatImage = (item: Item): EmbedImageData => {
     const itemTypes = item.types;
     const databaseURL = config.env.databaseURL;
 
