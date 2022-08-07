@@ -34,6 +34,7 @@ export class Quest {
     rewards: QuestRewards;
     objectives: TaskObjective[];
     imageURL: string;
+    wikiLink: string;
 
     /**
      * @param id integer value id and not bsg style id
@@ -53,6 +54,7 @@ export class Quest {
         this.objectives = taskData.objectives;
         this.guide = guideData.steps;
         this.guideImages = guideData.images;
+        this.wikiLink = taskData.wikiLink;
 
         this.rewards = {
             start: {

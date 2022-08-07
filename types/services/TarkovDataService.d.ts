@@ -199,10 +199,7 @@ export interface TarkovDataQuest {
     unlocks: string[];
     reputation: Reputation[];
     objectives: Objective[];
-    gameID: string;
-    reputationFailure?: Reputation[];
-    alternatives?: number[];
-    nokappa?: boolean;
+    gameId: string;
 }
 
 interface Locales {

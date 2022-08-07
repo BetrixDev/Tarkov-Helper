@@ -7,6 +7,7 @@ import { container, Lifecycle } from "tsyringe";
 import { config } from "./config";
 import { TarkovDataService } from "./services/TarkovDataService";
 import { ItemSearchEngine } from "./lib/search_engines/ItemSearchEngine";
+import { QuestSearchEngine } from "./lib/search_engines/QuestSearchEngine";
 
 dotenv.config();
 
@@ -49,6 +50,7 @@ export async function main(): Promise<void> {
     }
 
     container.resolve(ItemSearchEngine).init();
+    container.resolve(QuestSearchEngine).init();
 
     await importx(__dirname + "/discord/{events,commands}/*.{ts,js}");
 
