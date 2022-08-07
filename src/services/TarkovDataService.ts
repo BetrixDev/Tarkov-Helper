@@ -385,30 +385,30 @@ export class TarkovDataService {
             // Resolve all endpoints
             .map((apiConfig) => {
                 return apiConfig.endpoints.map((endpoint) => {
-                    return new Promise<TestData>(async (resolve) => {
+                    return new Promise<TestData>((resolve) => {
                         try {
-                            let data = await this.resolveEndpoint(endpoint)();
+                            this.resolveEndpoint(endpoint)().then((data) => {
+                                // clean up some of the responses
+                                if (endpoint === "items-tarkov-changes") {
+                                    const rawData = data as ApiResponses["items-tarkov-changes"];
 
-                            // clean up some of the responses
-                            if (endpoint === "items-tarkov-changes") {
-                                const rawData = data as ApiResponses["items-tarkov-changes"];
+                                    data = rawData.results.reduce<Record<string, unknown>>((prev, curr) => {
+                                        return { ...prev, [curr["Item ID"]]: JSON.parse(curr.props) };
+                                    }, {});
+                                } else if (endpoint === "items-tarkov-dev") {
+                                    const rawData = data as ApiResponses["items-tarkov-dev"];
 
-                                data = rawData.results.reduce<Record<string, any>>((prev, curr) => {
-                                    return { ...prev, [curr["Item ID"]]: JSON.parse(curr.props) };
-                                }, {});
-                            } else if (endpoint === "items-tarkov-dev") {
-                                const rawData = data as ApiResponses["items-tarkov-dev"];
+                                    data = rawData.reduce<Record<string, TarkovDevItem>>((prev, curr) => {
+                                        return { ...prev, [curr.id]: curr };
+                                    }, {});
+                                }
 
-                                data = rawData.reduce<Record<string, TarkovDevItem>>((prev, curr) => {
-                                    return { ...prev, [curr.id]: curr };
-                                }, {});
-                            }
+                                this.cache.set(endpoint, { data, time: Date.now() });
 
-                            this.cache.set(endpoint, { data, time: Date.now() });
-
-                            resolve({
-                                data: data,
-                                name: endpoint
+                                resolve({
+                                    data: data,
+                                    name: endpoint
+                                });
                             });
                         } catch (e) {
                             console.log(e);
@@ -443,7 +443,7 @@ export class TarkovDataService {
     private resolveEndpoint(e: Endpoint) {
         const endpoint = e.split("-")[0];
         const apiConfig = Object.values(CONFIGS).find((config) => {
-            const endpoints = config.endpoints as unknown as any[];
+            const endpoints = config.endpoints as unknown as unknown[];
             return endpoints.includes(e);
         }) as ApiData;
 
