@@ -38,8 +38,6 @@ client.once("ready", async () => {
 });
 
 export async function main(): Promise<void> {
-    container.register("TarkovDataService", { useClass: TarkovDataService }, { lifecycle: Lifecycle.Singleton });
-
     // Cache initial data
     const dataService = container.resolve(TarkovDataService);
 
