@@ -20,7 +20,6 @@ type SearchResult = fuse.FuseResult<EngineParams>[];
 const NAMESPACE = "ItemSearchEngine";
 
 @singleton()
-@injectable()
 export class ItemSearchEngine {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     constructor(private dataService: TarkovDataService) {}
