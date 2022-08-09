@@ -2,6 +2,6 @@ build/
 node_modules/
 data/
 idea/
-converage/
+coverage/
 *.vscode
 *.env
