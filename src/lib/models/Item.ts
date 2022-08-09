@@ -88,7 +88,7 @@ export class Item {
         return this.data.sellFor.sort((a, b) => b.priceRUB - a.priceRUB)[index];
     }
 
-    get bestPlaceToSell(): ItemPrice | FleaMarketPrice {
+    get bestPlaceToSell(): ItemPrice | FleaMarketPrice | undefined {
         // This function will take the flea market fee off the final price so that it better reflects the actual profit
         const resolvePrice = (i: ItemPrice): number => {
             let price = i.priceRUB;
@@ -101,6 +101,10 @@ export class Item {
 
             return price;
         };
+
+        if (this.data.sellFor.length === 0) {
+            return;
+        }
 
         const bestSell = this.data.sellFor.sort((a, b) => {
             const rA = resolvePrice(a);

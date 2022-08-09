@@ -13,7 +13,7 @@ import { LanguageCode } from "../../../types/common";
 import { Item } from "../../lib/models/Item";
 import { Barter } from "../../lib/models/Barter";
 import { formatPrice } from "../../lib/util/string";
-import { translation } from "../../lib/util/translation";
+import { translation, TranslationFunction } from "../../lib/util/translation";
 import { Craft } from "../../lib/models/Craft";
 import { Quest } from "../../lib/models/Quest";
 import { TaskObjective } from "../../../types/tarkov.dev/TarkovDevTask";
@@ -30,7 +30,9 @@ export class ItemCommand extends BaseCommand {
             BaseCommand.resolveOptions(COMMAND_NAME, "item", {
                 type: ApplicationCommandOptionType.String,
                 autocomplete: (interaction: AutocompleteInteraction) => {
-                    container.resolve(ItemSearchEngine).handleAutoComplete(interaction);
+                    container
+                        .resolve(ItemSearchEngine)
+                        .handleAutoComplete(interaction, (item) => !item.types.includes("preset"));
                 }
             })
         )
@@ -102,9 +104,12 @@ export class ItemCommand extends BaseCommand {
                     .setFields(
                         {
                             name: t("Best Place to Sell"),
-                            value: `${item.bestPlaceToSell.vendor.name} *(${formatPrice(
-                                item.bestPlaceToSell.priceRUB
-                            )})*`,
+                            value:
+                                item.bestPlaceToSell !== undefined
+                                    ? `${item.bestPlaceToSell.vendor.name} *(${formatPrice(
+                                          item.bestPlaceToSell.priceRUB
+                                      )})*`
+                                    : t("Can't be sold"),
                             inline: true
                         },
                         {
@@ -173,11 +178,22 @@ export class ItemCommand extends BaseCommand {
                         },
                         {
                             name: t("Given from quests"),
-                            value:
-                                questsGivingItem.length > 0 ? questsGivingItem.map((q) => q.name).join("\n") : t("None")
+                            value: this.generateQuestRewardInfo(questsGivingItem, t)
                         }
                     )
             ]
         };
+    }
+
+    generateQuestRewardInfo(quests: Quest[], t: TranslationFunction): string {
+        if (quests.length === 0) {
+            return t("None");
+        }
+
+        if (quests.length < 10) {
+            return quests.map((q) => q.name).join("\n");
+        }
+
+        return t("{0} quests", quests.length);
     }
 }

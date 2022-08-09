@@ -14,5 +14,6 @@
         "forceConsistentCasingInFileNames": true,
         "lib": ["esnext"]
     },
-    "include": ["./src"]
+    "include": ["./src"],
+    "exclude": ["src/**/*.spec.ts"]
 }

@@ -29,8 +29,8 @@ export class Quest {
     /** The trader who gives the quest */
     trader: Trader;
     mainMap: string | undefined;
-    guide: string[];
-    guideImages: GuideImages[];
+    guide: string[] = [];
+    guideImages: GuideImages[] = [];
     rewards: QuestRewards;
     objectives: TaskObjective[];
     imageURL: string;
@@ -41,6 +41,8 @@ export class Quest {
      * @param language language to retrieve names in
      */
     constructor(id: number, language: LanguageCode) {
+        //console.log(`Retrieving data for quest id: ${id}`);
+
         const tasks = this.dataService.fetchData("tasks");
 
         const taskData = tasks.find((t) => t.tarkovDataId === id) as TarkovDevTask;
@@ -52,9 +54,12 @@ export class Quest {
         this.trader = new Trader(taskData.trader.name, language);
         this.mainMap = taskData.map?.name;
         this.objectives = taskData.objectives;
-        this.guide = guideData.steps;
-        this.guideImages = guideData.images;
         this.wikiLink = taskData.wikiLink;
+
+        if (guideData) {
+            this.guide = guideData.steps;
+            this.guideImages = guideData.images;
+        }
 
         this.rewards = {
             start: {
@@ -73,9 +78,13 @@ export class Quest {
             }
         };
 
-        this.imageURL = `https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/images/quests/${rawQuestData.image
-            .replace("/files/quest/icon/", "")
-            .replace(".jpg", "")}.png`;
+        if (rawQuestData) {
+            this.imageURL = `https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/images/quests/${rawQuestData.image
+                .replace("/files/quest/icon/", "")
+                .replace(".jpg", "")}.png`;
+        } else {
+            this.imageURL = "";
+        }
     }
 
     /** Returns all quests that give the specified item as a reward either for starting or completing the quest */
