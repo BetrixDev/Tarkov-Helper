@@ -9,7 +9,8 @@
         "prettier/prettier": [
             "error",
             {
-                "endOfLine": "auto"
+                "endOfLine": "auto",
+                "printWidth": 120
             }
         ],
         "linebreak-style": ["error", "windows"]
