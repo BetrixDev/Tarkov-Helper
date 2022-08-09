@@ -28,4 +28,8 @@ describe("Item command tests", () => {
             itemCommand.command("123456", "en");
         }).toThrow("Input not valid, please use the auto complete function to complete your search");
     });
+
+    it("should return a message when passed with a short name", () => {
+        expect(itemCommand.command("M995", "en")).toBeDefined();
+    });
 });
