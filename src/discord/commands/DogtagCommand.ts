@@ -7,14 +7,12 @@ import { LanguageCode } from "../../../types/common";
 import { TarkovDataService } from "../../services/TarkovDataService";
 import { Item } from "../../lib/models/Item";
 import { formatPrice } from "../../lib/util/string";
-import { injectable } from "tsyringe";
 
 const COMMAND_NAME = "dogtag";
 // dot tag prices scale linearly with the level
 const DOGTAG_PRICE_PER_LEVEL = 378;
 
 @Discord()
-@injectable()
 export class DogtagCommand extends BaseCommand {
     constructor(private dataService: TarkovDataService) {
         super();

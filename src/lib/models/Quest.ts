@@ -33,7 +33,7 @@ export class Quest {
     guideImages: GuideImages[] = [];
     rewards: QuestRewards;
     objectives: TaskObjective[];
-    imageURL: string;
+    imageURL?: string;
     wikiLink: string;
 
     /**
@@ -82,8 +82,6 @@ export class Quest {
             this.imageURL = `https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/images/quests/${rawQuestData.image
                 .replace("/files/quest/icon/", "")
                 .replace(".jpg", "")}.png`;
-        } else {
-            this.imageURL = "";
         }
     }
 
