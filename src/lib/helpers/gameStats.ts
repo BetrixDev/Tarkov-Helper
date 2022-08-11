@@ -29,7 +29,7 @@ interface ItemField {
 }
 
 const getContainerSize = (grid: Grid[]) => {
-    let containerSize: ContainerSize = { width: 0, height: 0 };
+    const containerSize: ContainerSize = { width: 0, height: 0 };
 
     grid.forEach((cell) => {
         containerSize.width += cell._props.cellsH;
@@ -312,7 +312,27 @@ const itemFields: ItemField[] = [
     {
         gameName: "MaximumNumberOfUsage",
         displayName: "Behind the Lock",
-        format: (value: number, data, t, item) => `${new Item(item.id, "en").keyData?.join("\n")}`
+        format: (value: number, data, t, item) => {
+            const keyData = new Item(item.id, "en").keyData;
+
+            if (!keyData) return "";
+            if (keyData.join("\n").length > 900) {
+                // removes one element at a time until the length of the string is short enough to fit in the embed field
+                const longestPossibleLength = keyData;
+
+                while (longestPossibleLength.join("\n").length > 900) {
+                    longestPossibleLength.pop();
+
+                    if (longestPossibleLength.join("\n").length < 900) {
+                        break;
+                    }
+                }
+
+                return [...longestPossibleLength, t("**...And more**")].join("\n");
+            }
+
+            return keyData.join("\n");
+        }
     }
 ];
 
@@ -345,7 +365,7 @@ export const getItemFields = (item: Item, t: TranslationFunction): EmbedField[] 
 };
 
 // For some items, we want to display images of their functionality
-export const getStatImage = (item: Item): EmbedImageData => {
+export const getStatImage = (item: Item): EmbedImageData | { url: null } => {
     const itemTypes = item.types;
     const databaseURL = config.env.databaseURL;
 
@@ -367,7 +387,7 @@ export const getStatImage = (item: Item): EmbedImageData => {
     } else {
         // No special image, return an empty string
         return {
-            url: ""
+            url: null
         };
     }
 };
