@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { LanguageCode } from "../../../types/common";
 import { container } from "tsyringe";
-import { TarkovDataService } from "../../../src/services/TarkovDataService";
+import { TarkovDataService } from "../../services/TarkovDataService";
 import { ItemProps } from "../../../types/game/ItemProps";
 import { calculateFleaFee } from "../util/math";
 import { ItemPrice, TarkovDevItem, TarkovDevTypes } from "../../../types/tarkov.dev/TarkovDevItem";

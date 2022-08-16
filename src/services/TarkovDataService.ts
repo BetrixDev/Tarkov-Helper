@@ -381,7 +381,9 @@ export class TarkovDataService {
     /** When invoked, will run `queryAll` every 30 minutes */
     async cron() {
         scheduleJob("*/30 * * * *", async () => {
-            this.queryAll();
+            logger.info(NAMESPACE, "Fetching new data");
+            await this.queryAll();
+            logger.info(NAMESPACE, "Data fetched successfully");
         });
     }
 
