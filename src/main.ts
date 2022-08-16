@@ -8,8 +8,12 @@ import { config } from "./config";
 import { TarkovDataService } from "./services/TarkovDataService";
 import { ItemSearchEngine } from "./lib/search_engines/ItemSearchEngine";
 import { QuestSearchEngine } from "./lib/search_engines/QuestSearchEngine";
+import { rateLimiterGuard } from "./discord/guards/rateLimiterGuard";
+import logger from "./logger";
 
 dotenv.config();
+
+const NAMESPACE = "MAIN";
 
 const isDev = config.process.isDev;
 const isTest = config.process.isTest;
@@ -19,15 +23,13 @@ DIService.engine = tsyringeDependencyRegistryEngine.setInjector(container);
 
 export const client = new Client({
     botGuilds: isDev ? [(client) => client.guilds.cache.map((guild) => guild.id)] : undefined,
-    intents: [IntentsBitField.Flags.Guilds]
+    intents: [IntentsBitField.Flags.Guilds],
+    guards: [rateLimiterGuard]
 });
 
 client.once("ready", async () => {
     // make sure all guilds are in cache
     await client.guilds.fetch();
-
-    // init all application commands
-    await client.initApplicationCommands();
 
     if (!isDev) {
         // uncomment this line to clear all guild commands,
@@ -35,7 +37,13 @@ client.once("ready", async () => {
         await client.clearApplicationCommands(...client.guilds.cache.map((g) => g.id));
     }
 
-    console.log("Tarkov Helper started");
+    // init all application commands
+    await client.initApplicationCommands();
+
+    logger.info(
+        NAMESPACE,
+        `Initialized Tarkov Helper with ${client.applicationCommandSlashes.length} commands and ${client.buttonComponents.length} button listeners`
+    );
 });
 
 export async function main(): Promise<void> {
@@ -52,7 +60,7 @@ export async function main(): Promise<void> {
     container.resolve(ItemSearchEngine).init();
     container.resolve(QuestSearchEngine).init();
 
-    await importx(__dirname + "/discord/{events,commands}/*.{ts,js}");
+    await importx(__dirname + "/discord/{events,commands,guards}/*.{ts,js}");
 
     const botToken = config.env.botToken;
 
