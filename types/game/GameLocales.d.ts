@@ -22,7 +22,7 @@ export interface GameLocales {
     customization: { [key: string]: Customization };
     repeatableQuest: { [key: string]: string };
     templates: { [key: string]: Template };
-    locations: Locations;
+    locations: Record<string, LocationLocale>;
     banners: Banners;
     trading: { [key: string]: Trading };
 }
@@ -38,9 +38,9 @@ interface Banners {
     the5C1B857086F77465F465Faa4: The5C1B857086F77465F465Faa4;
 }
 
-interface The5464_E0404Bdc2D2A708B4567 {
-    name: string;
-    description: string;
+interface LocationLocale {
+    Name: string;
+    Description: string;
 }
 
 interface The5C1B857086F77465F465Faa4 {
@@ -49,12 +49,6 @@ interface The5C1B857086F77465F465Faa4 {
     description: string;
     the5C1B857086F77465F465Faa4Description: string;
     the5C1B857086F77465F465Faa4Name: string;
-}
-
-interface Customization {
-    name: string;
-    shortName: null | string;
-    description: string;
 }
 
 interface Error {
@@ -75,25 +69,6 @@ interface Error {
     backendErrorMessage: string;
     backendErrorHeader: string;
     backendErrorUnknownError: string;
-}
-
-interface Locations {
-    the55F2D3Fd4Bdc2D5F408B4567: The55_F2D3Fd4Bdc2D5F408B4567;
-    the56Db0B3Bd2720Bb0678B4567: The55_F2D3Fd4Bdc2D5F408B4567;
-    the56F40101D2720B2A4D8B45D6: The55_F2D3Fd4Bdc2D5F408B4567;
-    the5704E3C2D2720Bac5B8B4567: The55_F2D3Fd4Bdc2D5F408B4567;
-    the5704E47Ed2720Bb35B8B4568: The55_F2D3Fd4Bdc2D5F408B4567;
-    the5704E4Dad2720Bb55B8B4567: The55_F2D3Fd4Bdc2D5F408B4567;
-    the5704E554D2720Bac5B8B456E: The55_F2D3Fd4Bdc2D5F408B4567;
-    the5704E5A4D2720Bb45B8B4567: The55_F2D3Fd4Bdc2D5F408B4567;
-    the5704E5Fad2720Bc05B8B4567: The55_F2D3Fd4Bdc2D5F408B4567;
-    the5704E64Ad2720Bb55B8B456E: The55_F2D3Fd4Bdc2D5F408B4567;
-    the5714Dbc024597771384A510D: The55_F2D3Fd4Bdc2D5F408B4567;
-    the5714Dc342459777137212E0B: The55_F2D3Fd4Bdc2D5F408B4567;
-    the5714Dc692459777137212E12: The55_F2D3Fd4Bdc2D5F408B4567;
-    the599319C986F7740Dca3070A6: The55_F2D3Fd4Bdc2D5F408B4567;
-    the59Fc81D786F774390775787E: The55_F2D3Fd4Bdc2D5F408B4567;
-    the5B0Fc42D86F7744A585F9105: Customization;
 }
 
 interface The55_F2D3Fd4Bdc2D5F408B4567 {

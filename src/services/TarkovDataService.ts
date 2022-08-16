@@ -7,9 +7,12 @@ import { config } from "../config";
 import { existsSync } from "fs";
 import { readJson } from "../lib/util/files";
 import { TarkovDevItem } from "../../types/tarkov.dev/TarkovDevItem";
+import logger from "../logger";
 
 // This file attempts to make the data collection layer as easy as possible by abstracting the data querying behind simple functions
 // don't look too closely or you might be able to taste the spaghetti
+
+const NAMESPACE = "TarkovDataService";
 
 const TARKOV_DEV_QUERIES: Record<string, string> = {
     "items-tarkov-dev": `
@@ -325,13 +328,14 @@ const CONFIGS = {
             "locations/laboratory/base",
             "locations/lighthouse/base",
             "locations/rezervbase/base",
+            "locations/shoreline/base",
             "locations/woods/base",
             "templates/quests"
         ]
     }
 } as const;
 
-type Endpoint =
+export type Endpoint =
     | typeof CONFIGS.TARKOV_CHANGES_CONFIG.endpoints[number]
     | typeof CONFIGS.TARKOV_DEV_CONFIG.endpoints[number]
     | typeof CONFIGS.TARKOV_DATA_CONFIG.endpoints[number]
@@ -347,6 +351,7 @@ export class TarkovDataService {
 
     /** Query initial data and store in the cache */
     async init() {
+        logger.info(NAMESPACE, "Initializing Service");
         await this.queryAll();
     }
 
@@ -385,6 +390,7 @@ export class TarkovDataService {
             // Resolve all endpoints
             .map((apiConfig) => {
                 return apiConfig.endpoints.map((endpoint) => {
+                    logger.info(NAMESPACE, `Fetching data for endpoint ${endpoint}`);
                     return new Promise<TestData>((resolve) => {
                         try {
                             this.resolveEndpoint(endpoint)().then((data) => {

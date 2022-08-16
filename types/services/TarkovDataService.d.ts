@@ -63,6 +63,7 @@ export interface ApiResponses {
     "locations/laboratory/base": GameMap;
     "locations/lighthouse/base": GameMap;
     "locations/rezervbase/base": GameMap;
+    "locations/shoreline/base": GameMap;
     "locations/woods/base": GameMap;
     "templates/quests": Record<string, any>; // type safe :)
 }
@@ -383,16 +384,7 @@ export interface GuideImages {
 
 // map images
 
-export interface TarkovDatabaseMapImages {
-    thelab: MapImageData[];
-    interchange: MapImageData[];
-    woods: MapImageData[];
-    customs: MapImageData[];
-    factory: MapImageData[];
-    reserve: MapImageData[];
-    shoreline: MapImageData[];
-    lighthouse: MapImageData[];
-}
+export type TarkovDatabaseMapImages = Record<string, MapImageData[]>;
 
 interface MapImageData {
     name: string;

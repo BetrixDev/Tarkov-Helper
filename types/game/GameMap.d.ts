@@ -1,233 +1,228 @@
 export interface GameMap {
-    enabled: boolean;
-    locked: boolean;
-    insurance: boolean;
-    safeLocation: boolean;
-    name: string;
-    description?: string;
-    scene: Preview;
-    area: number;
-    requiredPlayerLevel: number;
-    minPlayers: number;
-    maxPlayers: number;
-    exitCount: number;
-    exitAccessTime: number;
-    exitTime: number;
-    preview?: Preview;
-    iconX: number;
-    iconY: number;
-    filterEx?: any[];
+    Enabled: boolean;
+    EnabledCoop: boolean;
+    Locked: boolean;
+    Insurance: boolean;
+    SafeLocation: boolean;
+    Name: string;
+    Description: string;
+    Scene: Preview;
+    Area: number;
+    RequiredPlayerLevel: number;
+    PmcMaxPlayersInGroup: number;
+    ScavMaxPlayersInGroup: number;
+    MinPlayers: number;
+    MaxCoopGroup: number;
+    MaxPlayers: number;
+    exit_count: number;
+    exit_access_time: number;
+    exit_time: number;
+    Preview: Preview;
+    IconX: number;
+    IconY: number;
+    filter_ex: any[];
     waves: Wave[];
     limits: any[];
-    averagePlayTime: number;
-    averagePlayerLevel: number;
-    escapeTimeLimit: number;
-    rules: string;
-    isSecret: boolean;
+    AveragePlayTime: number;
+    AveragePlayerLevel: number;
+    EscapeTimeLimit: number;
+    EscapeTimeLimitCoop: number;
+    Rules: string;
+    IsSecret: boolean;
     doors: any[];
-    tmpLocationFieldRemoveMe: number;
-    minDistToExitPoint: number;
-    maxDistToFreePoint: number;
-    minDistToFreePoint: number;
-    maxBotPerZone: number;
-    openZones: string;
-    occulsionCullingEnabled: boolean;
-    globalLootChanceModifier: number;
-    oldSpawn: boolean;
-    newSpawn: boolean;
-    botMax: number;
-    botStart: number;
-    botStop: number;
-    botMaxTimePlayer: number;
-    botSpawnTimeOnMin: number;
-    botSpawnTimeOnMax: number;
-    botSpawnTimeOffMin: number;
-    botSpawnTimeOffMax: number;
-    botMaxPlayer: number;
-    botEasy: number;
-    botNormal: number;
-    botHard: number;
-    botImpossible: number;
-    botAssault: number;
-    botMarksman: number;
-    disabledScavExits: string;
-    accessKeys: string[];
-    unixDateTime: number;
-    usersGatherSeconds: number;
-    usersSpawnSecondsN: number;
-    usersSpawnSecondsN2: number;
-    usersSummonSeconds: number;
-    savSummonSeconds: number;
-    matchingMinSeconds: number;
-    minMaxBots: MinMaxBot[];
-    botLocationModifier: BotLocationModifier;
+    tmp_location_field_remove_me: number;
+    MinDistToExitPoint: number;
+    MaxDistToFreePoint: number;
+    MinDistToFreePoint: number;
+    MaxBotPerZone: number;
+    OpenZones: string;
+    OcculsionCullingEnabled: boolean;
+    GlobalLootChanceModifier: number;
+    OldSpawn: boolean;
+    NewSpawn: boolean;
+    BotMax: number;
+    BotStart: number;
+    BotStop: number;
+    BotMaxTimePlayer: number;
+    BotSpawnTimeOnMin: number;
+    BotSpawnTimeOnMax: number;
+    BotSpawnTimeOffMin: number;
+    BotSpawnTimeOffMax: number;
+    BotMaxPlayer: number;
+    BotEasy: number;
+    BotNormal: number;
+    BotHard: number;
+    BotImpossible: number;
+    BotAssault: number;
+    BotMarksman: number;
+    DisabledScavExits: string;
+    AccessKeys: any[];
+    UnixDateTime: number;
+    users_gather_seconds: number;
+    users_spawn_seconds_n: number;
+    users_spawn_seconds_n2: number;
+    users_summon_seconds: number;
+    sav_summon_seconds: number;
+    matching_min_seconds: number;
+    MinMaxBots: any[];
+    BotLocationModifier: BotLocationModifier;
     exits: Exit[];
-    disabledForScav: boolean;
-    bossLocationSpawn: BossLocationSpawn[];
-    spawnPointParams: SpawnPointParam[];
-    maxItemCountInLocation: MaxItemCountInLocation[];
-    id: string;
-    gameMapID: string;
-    loot: any[];
-    banners: Banner[];
+    DisabledForScav: boolean;
+    BossLocationSpawn: BossLocationSpawn[];
+    SpawnPointParams: SpawnPointParam[];
+    maxItemCountInLocation: any[];
+    Id: string;
+    _Id: string;
+    Loot: any[];
+    Banners: Banner[];
+    GenerateLocalLootCache: boolean;
+    AirdropParameters: AirdropParameter[];
 }
 
-interface Banner {
+export interface AirdropParameter {
+    PlaneAirdropStartMin: number;
+    PlaneAirdropStartMax: number;
+    PlaneAirdropEnd: number;
+    PlaneAirdropChance: number;
+    PlaneAirdropMax: number;
+    PlaneAirdropCooldownMin: number;
+    PlaneAirdropCooldownMax: number;
+    AirdropPointDeactivateDistance: number;
+    MinPlayersCountToSpawnAirdrop: number;
+    UnsuccessfulTryPenalty: number;
+}
+
+export interface Banner {
     id: string;
     pic: Preview;
 }
 
-interface Preview {
+export interface Preview {
     path: string;
     rcid: string;
 }
 
-interface BossLocationSpawn {
-    bossName: string;
-    bossChance: number;
-    bossZone: string;
-    bossPlayer: boolean;
-    bossDifficult: BossDifficult;
-    bossEscortType: string;
-    bossEscortDifficult: BossDifficult;
-    bossEscortAmount: string;
-    time: number;
-    triggerID?: string;
-    triggerName?: TriggerName;
-    delay?: number;
-    supports?: Support[] | null;
+export interface BossLocationSpawn {
+    BossName: string;
+    BossChance: number;
+    BossZone: string;
+    BossPlayer: boolean;
+    BossDifficult: BossDifficult;
+    BossEscortType: string;
+    BossEscortDifficult: BossDifficult;
+    BossEscortAmount: string;
+    Time: number;
+    TriggerId: string;
+    TriggerName: string;
+    Supports: Support[] | null;
+    RandomTimeSpawn: boolean;
 }
 
-declare enum BossDifficult {
-    Easy = "easy",
+export enum BossDifficult {
     Hard = "hard",
     Normal = "normal"
 }
 
-interface Support {
-    bossEscortType: string;
-    bossEscortDifficult: BossDifficult[];
-    bossEscortAmount: string;
+export interface Support {
+    BossEscortType: string;
+    BossEscortDifficult: BossDifficult[];
+    BossEscortAmount: string;
 }
 
-declare enum TriggerName {
-    Empty = "",
-    InteractObject = "interactObject"
+export interface BotLocationModifier {
+    AccuracySpeed: number;
+    Scattering: number;
+    GainSight: number;
+    MarksmanAccuratyCoef: number;
+    VisibleDistance: number;
+    DistToPersueAxemanCoef: number;
+    DistToSleep: number;
+    DistToActivate: number;
+    KhorovodChance: number;
 }
 
-interface BotLocationModifier {
-    accuracySpeed: number;
-    scattering: number;
-    gainSight: number;
-    marksmanAccuratyCoef: number;
-    visibleDistance: number;
-    distToActivate?: number;
-    distToSleep?: number;
-    magnetPower?: number;
-    distToPersueAxemanCoef: number;
-    khorovodChance: number;
+export interface SpawnPointParam {
+    Id: string;
+    Position: Position;
+    Rotation: number;
+    Sides: Side[];
+    Categories: Category[];
+    Infiltration: Infiltration;
+    DelayToCanSpawnSec: number;
+    ColliderParams: ColliderParams;
+    BotZoneName: string;
 }
 
-interface Exit {
-    name: string;
-    entryPoints: string;
-    chance: number;
-    minTime: number;
-    maxTime: number;
-    playersCount: number;
-    exfiltrationTime: number;
-    passageRequirement?: string;
-    exfiltrationType?: ExfiltrationType;
-    id: string;
-    count?: number;
-    requirementTip?: string;
-    requiredSlot?: RequiredSlot;
-}
-
-declare enum ExfiltrationType {
-    Individual = "Individual",
-    Manual = "Manual",
-    SharedTimer = "SharedTimer"
-}
-
-declare enum RequiredSlot {
-    Backpack = "Backpack",
-    FirstPrimaryWeapon = "FirstPrimaryWeapon"
-}
-
-interface MaxItemCountInLocation {
-    templateID: string;
-    value: number;
-}
-
-interface MinMaxBot {
-    min: number;
-    max: number;
-    wildSpawnType: WildSpawnType;
-}
-
-declare enum WildSpawnType {
-    Assault = "assault",
-    Marksman = "marksman"
-}
-
-interface SpawnPointParam {
-    id: string;
-    position: Position;
-    rotation: number;
-    sides: Side[];
-    categories: Category[];
-    infiltration: string;
-    delayToCanSpawnSEC: number;
-    colliderParams: ColliderParams;
-    botZoneName: string;
-}
-
-declare enum Category {
+export enum Category {
     Boss = "Boss",
     Bot = "Bot",
+    Coop = "Coop",
     Player = "Player"
 }
 
-interface ColliderParams {
-    parent: Parent;
-    props: Props;
+export interface ColliderParams {
+    _parent: Parent;
+    _props: Props;
 }
 
-declare enum Parent {
-    SpawnBoxParams = "SpawnBoxParams",
+export enum Parent {
     SpawnSphereParams = "SpawnSphereParams"
 }
 
-interface Props {
-    center: Position;
-    radius?: number;
-    size?: Position;
+export interface Props {
+    Center: Position;
+    Radius: number;
 }
 
-interface Position {
+export interface Position {
     x: number;
     y: number;
     z: number;
 }
 
-declare enum Side {
+export enum Infiltration {
+    Empty = "",
+    North = "North",
+    Tunnel = "Tunnel"
+}
+
+export enum Side {
     All = "All",
     Bear = "Bear",
     Savage = "Savage",
     Usec = "Usec"
 }
 
-interface Wave {
+export interface Exit {
+    Name: string;
+    EntryPoints: string;
+    Chance: number;
+    MinTime: number;
+    MaxTime: number;
+    PlayersCount: number;
+    ExfiltrationTime: number;
+    PassageRequirement: string;
+    ExfiltrationType: string;
+    RequiredSlot: string;
+    Id: string;
+    RequirementTip: string;
+    Count: number;
+}
+
+export interface Wave {
     number: number;
-    timeMin: number;
-    timeMax: number;
-    slotsMin: number;
-    slotsMax: number;
-    spawnPoints: string;
-    botSide: Side;
-    botPreset: BossDifficult;
-    wildSpawnType: WildSpawnType;
+    time_min: number;
+    time_max: number;
+    slots_min: number;
+    slots_max: number;
+    SpawnPoints: string;
+    BotSide: Side;
+    BotPreset: BossDifficult;
+    WildSpawnType: WildSpawnType;
     isPlayers: boolean;
-    openZones?: string;
+}
+
+export enum WildSpawnType {
+    Assault = "assault",
+    Marksman = "marksman"
 }
