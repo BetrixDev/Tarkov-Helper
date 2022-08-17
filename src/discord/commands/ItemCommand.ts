@@ -24,6 +24,7 @@ const COMMAND_NAME = "item";
 @injectable()
 export class ItemCommand extends BaseCommand {
     @Slash(COMMAND_NAME, BaseCommand.resolveCommandOptions(COMMAND_NAME))
+    @Slash("price", BaseCommand.resolveCommandOptions("price"))
     item(
         @SlashOption(
             "item",
