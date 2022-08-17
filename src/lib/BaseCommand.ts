@@ -15,6 +15,9 @@ import { container } from "tsyringe";
 import { TarkovDataService } from "../services/TarkovDataService";
 import { TarkovDevItem } from "../../types/tarkov.dev/TarkovDevItem";
 import { LanguageCode } from "../../types/common";
+import logger from "../logger";
+
+const NAMESPACE = "BaseCommand";
 
 interface ILocalizationData {
     name: Record<string, string>;
@@ -29,10 +32,18 @@ export class BaseCommand {
     ): Promise<void> {
         await messageFunc
             .then(async (response) => {
+                logger.info(
+                    NAMESPACE,
+                    `interaction (${interaction.id}) was fulfilled (${Date.now() - interaction.createdTimestamp}ms)`
+                );
                 await interaction.reply(response);
             })
             .catch(async (error) => {
-                console.log(error);
+                logger.warn(
+                    NAMESPACE,
+                    `interaction (${interaction.id}) errored (${Date.now() - interaction.createdTimestamp}ms)`,
+                    error
+                );
                 await interaction.reply(this.errorReply(error, interaction));
             });
     }

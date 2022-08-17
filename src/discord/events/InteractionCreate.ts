@@ -11,7 +11,7 @@ export class InteractionCreate {
         if (interaction.isCommand()) {
             logger.info(
                 NAMESPACE,
-                `New command interaction (${interaction.commandName}) (${interaction.locale})`,
+                `New command interaction (${interaction.commandName}) (${interaction.id}) (${interaction.locale})`,
                 interaction.options.data.map((a) => ({ name: a.name, value: a.value }))
             );
 
@@ -19,7 +19,7 @@ export class InteractionCreate {
         } else if (interaction.isAutocomplete()) {
             logger.info(
                 NAMESPACE,
-                `New auto complete interaction (${interaction.commandName}) (${interaction.locale})`,
+                `New auto complete interaction (${interaction.id}) (${interaction.commandName}) (${interaction.locale})`,
                 interaction.options.data.map((a) => ({ name: a.name, value: a.value }))
             );
 
@@ -27,7 +27,7 @@ export class InteractionCreate {
         } else if (interaction.isMessageComponent()) {
             logger.info(
                 NAMESPACE,
-                `New message component interaction (${interaction.customId}) (${interaction.locale})`
+                `New message component interaction (${interaction.id}) (${interaction.customId}) (${interaction.locale})`
             );
 
             client.executeInteraction(interaction);

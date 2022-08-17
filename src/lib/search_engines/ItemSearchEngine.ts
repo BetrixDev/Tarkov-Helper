@@ -71,7 +71,12 @@ export class ItemSearchEngine {
         const engine = this.engines[language];
         const results = engine.search<EngineParams>(input).slice(0, 24);
 
-        logger.info(NAMESPACE, `Searching for ${input}`);
+        logger.info(
+            NAMESPACE,
+            `Searching for "${input}" (${results.length} results) ${
+                results.length > 0 ? `("${results[0].item.name}" top)` : ""
+            }`
+        );
 
         if (!guard) {
             return results;
