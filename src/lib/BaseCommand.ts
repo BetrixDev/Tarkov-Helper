@@ -1,4 +1,5 @@
 import {
+    ButtonInteraction,
     CommandInteraction,
     Embed,
     EmbedBuilder,
@@ -128,7 +129,7 @@ export class BaseCommand {
     }
 
     /** Simple macro function for the appropriate language from an interaction */
-    getLanguage(interaction: CommandInteraction | MessageComponentInteraction): LanguageCode {
+    getLanguage(interaction: CommandInteraction | MessageComponentInteraction | ButtonInteraction): LanguageCode {
         return interaction.locale.split("-")[0] as LanguageCode;
     }
 }

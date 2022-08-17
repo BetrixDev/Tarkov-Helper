@@ -60,6 +60,13 @@ export class BarterCommand extends BaseCommand {
         }
     }
 
+    @ButtonComponent(/item-barter__(.*)/)
+    button2(interaction: ButtonInteraction) {
+        const [_, id] = interaction.customId.split("__");
+
+        interaction.followUp({ ...this.command(id, this.getLanguage(interaction)), ephemeral: true });
+    }
+
     command(id: string, language: LanguageCode, page = 0): InteractionReplyOptions {
         const [success, itemId] = this.validateItemInput(id);
 

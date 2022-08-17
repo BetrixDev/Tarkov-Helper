@@ -6,7 +6,9 @@ import {
     CommandInteraction,
     AutocompleteInteraction,
     InteractionReplyOptions,
-    ApplicationCommandOptionType
+    ApplicationCommandOptionType,
+    ActionRowBuilder,
+    ButtonStyle
 } from "discord.js";
 import { ItemSearchEngine } from "../../lib/search_engines/ItemSearchEngine";
 import { LanguageCode } from "../../../types/common";
@@ -17,6 +19,7 @@ import { translation, TranslationFunction } from "../../lib/util/translation";
 import { Craft } from "../../lib/models/Craft";
 import { Quest } from "../../lib/models/Quest";
 import { TaskObjective } from "../../../types/tarkov.dev/TarkovDevTask";
+import { ButtonBuilder } from "discord.js";
 
 const COMMAND_NAME = "item";
 
@@ -182,6 +185,18 @@ export class ItemCommand extends BaseCommand {
                             value: this.generateQuestRewardInfo(questsGivingItem, t)
                         }
                     )
+            ],
+            components: [
+                new ActionRowBuilder<ButtonBuilder>().addComponents(
+                    new ButtonBuilder()
+                        .setStyle(ButtonStyle.Primary)
+                        .setCustomId(`stat__${item.id}`)
+                        .setLabel(t("View Stats")),
+                    new ButtonBuilder()
+                        .setStyle(ButtonStyle.Primary)
+                        .setCustomId(`item-barter__${item.id}`)
+                        .setLabel(t("View Barters"))
+                )
             ]
         };
     }

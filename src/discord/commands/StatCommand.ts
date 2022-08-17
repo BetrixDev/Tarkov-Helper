@@ -1,19 +1,21 @@
 import "reflect-metadata";
-import { Discord, Slash, SlashOption } from "discordx";
+import { ButtonComponent, Discord, Slash, SlashOption } from "discordx";
 import { BaseCommand } from "../../lib/BaseCommand";
 import {
     ApplicationCommandOptionType,
     AutocompleteInteraction,
+    ButtonInteraction,
     CommandInteraction,
     InteractionReplyOptions
 } from "discord.js";
-import { container } from "tsyringe";
+import { container, injectable } from "tsyringe";
 import { ItemSearchEngine } from "../../lib/search_engines/ItemSearchEngine";
 import { LanguageCode } from "../../../types/common";
 import { translation } from "../../lib/util/translation";
 import { Item } from "../../lib/models/Item";
 import { getItemFields, getStatImage } from "../../lib/helpers/gameStats";
-import { EmbedField } from "discord.js";
+import { EmbedField, Interaction } from "discord.js";
+import { ItemCommand } from "./ItemCommand";
 
 const COMMAND_NAME = "stat";
 
@@ -41,6 +43,16 @@ export class StatCommand extends BaseCommand {
                 resolve(this.command(id, this.getLanguage(interaction)));
             })
         );
+    }
+
+    @ButtonComponent(/stat__/)
+    button(interaction: ButtonInteraction) {
+        const [_, id] = interaction.customId.split("__");
+
+        interaction.followUp({
+            ...this.command(id, this.getLanguage(interaction)),
+            ephemeral: true
+        });
     }
 
     command(id: string, language: LanguageCode): InteractionReplyOptions {
