@@ -82,7 +82,7 @@ export class MapCommand extends BaseCommand {
                                 .map(
                                     (boss) =>
                                         `**${boss.name}** ${boss.chance ? `*(${boss.chance}%)*` : ""} ${
-                                            boss.averageAmount ? `*(x${round(boss.averageAmount, "00")})*` : ""
+                                            boss.averageAmount ? `*(x${round(boss.averageAmount, "")})*` : ""
                                         }`
                                 )
                                 .join("\n"),
