@@ -30,20 +30,14 @@ export class BaseCommand {
         interaction: CommandInteraction,
         messageFunc: Promise<InteractionReplyOptions | string>
     ): Promise<void> {
+        const start = Date.now();
         await messageFunc
             .then(async (response) => {
-                logger.info(
-                    NAMESPACE,
-                    `interaction (${interaction.id}) was fulfilled (${Date.now() - interaction.createdTimestamp}ms)`
-                );
+                logger.info(NAMESPACE, `interaction (${interaction.id}) was fulfilled (${Date.now() - start}ms)`);
                 await interaction.reply(response);
             })
             .catch(async (error) => {
-                logger.warn(
-                    NAMESPACE,
-                    `interaction (${interaction.id}) errored (${Date.now() - interaction.createdTimestamp}ms)`,
-                    error
-                );
+                logger.warn(NAMESPACE, `interaction (${interaction.id}) errored (${Date.now() - start}ms)`, error);
                 await interaction.reply(this.errorReply(error, interaction));
             });
     }
