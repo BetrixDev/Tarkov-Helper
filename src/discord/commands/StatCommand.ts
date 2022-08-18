@@ -49,7 +49,7 @@ export class StatCommand extends BaseCommand {
     button(interaction: ButtonInteraction) {
         const [_, id] = interaction.customId.split("__");
 
-        interaction.followUp({
+        interaction.reply({
             ...this.command(id, this.getLanguage(interaction)),
             ephemeral: true
         });

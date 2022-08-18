@@ -64,7 +64,7 @@ export class BarterCommand extends BaseCommand {
     button2(interaction: ButtonInteraction) {
         const [_, id] = interaction.customId.split("__");
 
-        interaction.followUp({ ...this.command(id, this.getLanguage(interaction)), ephemeral: true });
+        interaction.reply({ ...this.command(id, this.getLanguage(interaction)), ephemeral: true });
     }
 
     command(id: string, language: LanguageCode, page = 0): InteractionReplyOptions {
