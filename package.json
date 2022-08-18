@@ -2,6 +2,13 @@
     "author": "Betrix",
     "scripts": {
         "build": "tsc",
+        "dev": "cross-env NODE_ENV=dev nodemon src/main.ts",
+        "start": "node ./build/main.js",
+        "start:pm2": "npx pm2 start --name tarkovhelper ./build/main.js",
+        "format": "prettier --config .prettierrc \"./{src,test}/**/*.ts\" --write",
+        "test": "cross-env NODE_ENV=test jest",
+        "test:coverage": "cross-env NODE_ENV=test jest --coverage",
+        "init:dev": "ts-node ./src/scripts/grabTestData.ts"
         "dev": "cross-env NODE_ENV=dev ts-node --files src/Main.ts",
         "init": "ts-node --files src/Init.ts",
         "start": "npx pm2 start --name tarkovhelper ./build/Main.js",
@@ -13,37 +20,39 @@
         "@types/jsonfile": "^6.1.0",
         "@types/node": "*",
         "@types/node-schedule": "^1.3.2",
-        "prettier": "^2.5.1",
+        "@typescript-eslint/eslint-plugin": "^5.32.0",
+        "eslint": "^8.15.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "nodemon": "^2.0.19",
+        "prettier": "^2.6.2",
         "ts-jest": "^27.1.3",
         "ts-node": "^10.4.0",
         "typescript": "^4.5.5"
     },
     "dependencies": {
-        "@discordx/importer": "^1.1.2",
-        "@discordx/utilities": "^3.1.5",
-        "axios": "^0.24.0",
+        "@discordjs/rest": "^1.0.1",
+        "@discordx/importer": "^1.1.10",
+        "@discordx/utilities": "^5.0.0",
+        "axios": "^0.27.2",
         "chart.js": "^3.7.0",
         "chartjs-node-canvas": "^4.1.6",
         "cross-env": "^7.0.3",
         "dayjs": "^1.10.7",
-        "discord.js": "^13.3.1",
-        "discordx": "^9.2.2",
+        "discord-api-types": "^0.37.1",
+        "discord.js": "^14.1.2",
+        "discordx": "^11.0.4",
         "dotenv": "^10.0.0",
         "fuse.js": "^6.5.2",
         "graphql": "^16.2.0",
-        "graphql-request": "^3.7.0",
         "jest": "^27.4.7",
-        "jsonfile": "^6.1.0",
-        "mongoose": "^6.2.2",
-        "node-cache": "^5.1.2",
+        "node-fetch": "^2.6.7",
         "node-schedule": "^2.1.0",
         "reflect-metadata": "^0.1.13",
         "table": "^6.8.0",
         "topgg-autoposter": "^2.0.1",
+        "tsyringe": "^4.6.0",
+        "whatwg-url": "^11.0.0"
         "tsyringe": "^4.6.0"
-    },
-    "engines": {
-        "node": "17.5.x"
-    },
-    "engineStrict": true
+    }
 }

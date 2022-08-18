@@ -1,0 +1,8 @@
+{
+    "name": {
+        "en-US": "status"
+    },
+    "description": {
+        "en-US": "Returns information regarding server status and stability"
+    }
+}

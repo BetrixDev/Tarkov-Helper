@@ -1,0 +1,26 @@
+{
+    "name": {
+        "en-US": "experience"
+    },
+    "description": {
+        "en-US": "Calculate the experience needed to reach a certain level"
+    },
+    "options": {
+        "current": {
+            "name": {
+                "en-US": "current"
+            },
+            "description": {
+                "en-US": "Current Level. Can also be experience Amount"
+            }
+        },
+        "end": {
+            "name": {
+                "en-US": "end"
+            },
+            "description": {
+                "en-US": "Level to end at"
+            }
+        }
+    }
+}

@@ -3,18 +3,17 @@
         "target": "ESNext",
         "module": "commonjs",
         "outDir": "./build",
-        "rootDirs": ["./src", "./test"],
+        "rootDir": "./src",
         "strict": true,
         "esModuleInterop": true,
         "moduleResolution": "Node",
         "noImplicitAny": true,
-
-        "experimentalDecorators": true /* Enables experimental support for ES7 decorators. */,
-        "emitDecoratorMetadata": true /* Enables experimental support for emitting type metadata for decorators. */,
-
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
         "lib": ["esnext"]
     },
-    "include": ["./src"]
+    "include": ["./src"],
+    "exclude": ["src/**/*.spec.ts"]
 }
