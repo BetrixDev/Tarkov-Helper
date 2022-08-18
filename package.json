@@ -9,6 +9,11 @@
         "test": "cross-env NODE_ENV=test jest",
         "test:coverage": "cross-env NODE_ENV=test jest --coverage",
         "init:dev": "ts-node ./src/scripts/grabTestData.ts"
+        "dev": "cross-env NODE_ENV=dev ts-node --files src/Main.ts",
+        "init": "ts-node --files src/Init.ts",
+        "start": "npx pm2 start --name tarkovhelper ./build/Main.js",
+        "format": "prettier --config .prettierrc \"./src/*/*.ts\" --write",
+        "test": "cross-env NODE_ENV=test jest"
     },
     "devDependencies": {
         "@types/jest": "^27.4.0",
@@ -48,5 +53,6 @@
         "topgg-autoposter": "^2.0.1",
         "tsyringe": "^4.6.0",
         "whatwg-url": "^11.0.0"
+        "tsyringe": "^4.6.0"
     }
 }
