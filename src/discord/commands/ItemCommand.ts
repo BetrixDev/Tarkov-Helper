@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { Discord, Slash, SlashOption } from "discordx";
+import { ButtonComponent, Discord, Slash, SlashOption } from "discordx";
 import { injectable, container } from "tsyringe";
 import { BaseCommand } from "../../lib/BaseCommand";
 import {
@@ -8,7 +8,8 @@ import {
     InteractionReplyOptions,
     ApplicationCommandOptionType,
     ActionRowBuilder,
-    ButtonStyle
+    ButtonStyle,
+    ButtonInteraction
 } from "discord.js";
 import { ItemSearchEngine } from "../../lib/search_engines/ItemSearchEngine";
 import { LanguageCode } from "../../../types/common";
@@ -20,12 +21,19 @@ import { Craft } from "../../lib/models/Craft";
 import { Quest } from "../../lib/models/Quest";
 import { TaskObjective } from "../../../types/tarkov.dev/TarkovDevTask";
 import { ButtonBuilder } from "discord.js";
+import { TarkovDataService } from "../../services/TarkovDataService";
+import logger from "../../logger";
 
 const COMMAND_NAME = "item";
+const NAMESPACE = "ItemCommand";
 
 @Discord()
 @injectable()
 export class ItemCommand extends BaseCommand {
+    constructor(private dataService: TarkovDataService) {
+        super();
+    }
+
     @Slash(COMMAND_NAME, BaseCommand.resolveCommandOptions(COMMAND_NAME))
     @Slash("price", BaseCommand.resolveCommandOptions("price"))
     item(
@@ -49,6 +57,58 @@ export class ItemCommand extends BaseCommand {
                 resolve(this.command(id, interaction.locale.split("-")[0] as LanguageCode));
             })
         );
+    }
+
+    @ButtonComponent(/locations__(.*)/)
+    locations(interaction: ButtonInteraction) {
+        const id = interaction.customId.split("__")[1];
+
+        const t = translation(this.getLanguage(interaction));
+        const item = new Item(id, this.getLanguage(interaction));
+        const locations = this.dataService.fetchData("itemLocations");
+
+        if (locations[id] === undefined) {
+            logger.warn(NAMESPACE, `Unable to retrieve spawning data for ${item.id}`);
+            interaction.reply({ ephemeral: true, content: `Unable to retrieve spawning data for ${item.shortName}` });
+            return;
+        }
+
+        const data = locations[id];
+
+        if (data.length === 1) {
+            interaction.reply({
+                ephemeral: true,
+                content: `${item.shortName} has no specific spawning locations.\nThere may be more information on the wiki\n${item.wikiLink}`
+            });
+            return;
+        }
+
+        const formattedData = data.map((line) => {
+            if (line.startsWith("-")) {
+                return `**${line.replace("-", "•")}**`;
+            } else if (line.startsWith("    -")) {
+                return line.replace("    -", "> •");
+            }
+        });
+
+        // very rare edge case
+        if (formattedData.join("\n").length < 4096) {
+            interaction.reply({
+                ephemeral: true,
+                embeds: [
+                    this.createEmbed()
+                        .setTitle(t("{0} Spawning Locations", item.shortName))
+                        .setDescription(formattedData.join("\n"))
+                        .setThumbnail(item.iconURL)
+                        .setFooter({ text: t("Data from the wiki") })
+                ]
+            });
+        } else {
+            interaction.reply({
+                ephemeral: true,
+                content: `${item.shortName} spawning data is too long to display.\nCheck the wiki for more information\n${item.wikiLink}`
+            });
+        }
     }
 
     command(id: string, language: LanguageCode): InteractionReplyOptions {
@@ -195,7 +255,11 @@ export class ItemCommand extends BaseCommand {
                     new ButtonBuilder()
                         .setStyle(ButtonStyle.Primary)
                         .setCustomId(`item-barter__${item.id}`)
-                        .setLabel(t("View Barters"))
+                        .setLabel(t("View Barters")),
+                    new ButtonBuilder()
+                        .setStyle(ButtonStyle.Primary)
+                        .setCustomId(`locations__${item.id}`)
+                        .setLabel(t("Spawn Locations"))
                 )
             ]
         };

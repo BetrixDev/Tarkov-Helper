@@ -41,6 +41,7 @@ export interface ApiResponses {
     keys: TarkovDatabaseKeys;
     questGuides: TarkovDatabaseQuestGuides;
     mapImages: TarkovDatabaseMapImages;
+    itemLocations: Record<string, string[]>;
 
     // sp tarkov
     globals: Globals;

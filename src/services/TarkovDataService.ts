@@ -301,7 +301,7 @@ const CONFIGS = {
     TARKOV_DATABASE_CONFIG: {
         type: "REST",
         url: "https://raw.githubusercontent.com/Tarkov-Helper/Database/main/{ENDPOINT}.json",
-        endpoints: ["mapkeys", "keys", "questGuides", "mapImages"] // TODO: Rename these in the repo
+        endpoints: ["mapkeys", "keys", "questGuides", "mapImages", "itemLocations"] // TODO: Rename these in the repo
     },
     SP_TARKOV_CONFIG: {
         type: "REST",
