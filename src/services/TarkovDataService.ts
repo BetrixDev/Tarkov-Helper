@@ -309,16 +309,6 @@ const CONFIGS = {
         // these are ugly
         endpoints: [
             "globals",
-            "bots/types/bossbully",
-            "bots/types/bossgluhar",
-            "bots/types/bosskilla",
-            "bots/types/bosskojaniy",
-            "bots/types/bosstagilla",
-            "bots/types/followerbigpipe",
-            "bots/types/followerbirdeye",
-            "bots/types/bossknight",
-            "bots/types/exusec",
-            "bots/types/assault",
             "locales/global/en",
             "locales/global/es",
             "locations/bigmap/base",

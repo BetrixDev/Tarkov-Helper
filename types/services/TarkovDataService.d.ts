@@ -45,16 +45,6 @@ export interface ApiResponses {
 
     // sp tarkov
     globals: Globals;
-    "bots/types/bossbully": GameBot;
-    "bots/types/bossgluhar": GameBot;
-    "bots/types/bosskilla": GameBot;
-    "bots/types/bosskojaniy": GameBot;
-    "bots/types/bosstagilla": GameBot;
-    "bots/types/followerbigpipe": GameBot;
-    "bots/types/followerbirdeye": GameBot;
-    "bots/types/bossknight": GameBot;
-    "bots/types/assault": GameBot;
-    "bots/types/exusec": GameBot;
     "locales/global/en": GameLocales;
     "locales/global/es": GameLocales;
     "locations/bigmap/base": GameMap;
