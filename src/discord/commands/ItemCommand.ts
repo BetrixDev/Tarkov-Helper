@@ -149,6 +149,7 @@ export class ItemCommand extends BaseCommand {
             };
 
             description = `
+                [Wiki Link](${item.wikiLink})
                 ${description}
                 \n
                 ${item.shortName} is needed for the following quests:
