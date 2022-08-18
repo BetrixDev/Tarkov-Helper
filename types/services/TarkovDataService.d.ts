@@ -167,7 +167,7 @@ export interface Status {
 
 interface CurrentStatus {
     name: string;
-    statusCode: StatusCode;
+    statusCode: string;
 }
 
 export enum StatusCode {
@@ -371,7 +371,7 @@ interface MapKeyData {
 
 // keys
 
-export interface TarkovDatabaseKeys extends Record<string, string[]> {}
+export type TarkovDatabaseKeys = Record<string, string[]>;
 
 // quest guides
 
