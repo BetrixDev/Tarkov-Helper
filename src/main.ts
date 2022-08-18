@@ -39,6 +39,8 @@ client.once("ready", async () => {
 
         if (typeof config.env.topGGToken === "string") {
             AutoPoster(config.env.topGGToken, client);
+        } else {
+            logger.info(NAMESPACE, "No token for top.gg detected... skipping");
         }
     }
 
