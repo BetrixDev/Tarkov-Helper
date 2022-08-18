@@ -10,6 +10,7 @@ import { ItemSearchEngine } from "./lib/search_engines/ItemSearchEngine";
 import { QuestSearchEngine } from "./lib/search_engines/QuestSearchEngine";
 import { rateLimiterGuard } from "./discord/guards/rateLimiterGuard";
 import logger from "./logger";
+import AutoPoster from "topgg-autoposter";
 
 dotenv.config();
 
@@ -35,6 +36,10 @@ client.once("ready", async () => {
         // uncomment this line to clear all guild commands,
         // useful when moving to global commands from guild commands
         await client.clearApplicationCommands(...client.guilds.cache.map((g) => g.id));
+
+        if (typeof config.env.topGGToken === "string") {
+            AutoPoster(config.env.topGGToken, client);
+        }
     }
 
     // init all application commands

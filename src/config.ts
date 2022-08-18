@@ -24,7 +24,8 @@ export const config = {
     env: {
         botToken: botToken,
         tarkovChangesToken: tarkovChangesToken,
-        databaseURL: databaseURL
+        databaseURL: databaseURL,
+        topGGToken: process.env.TOPGG_TOKEN
     },
     process: {
         isDev: process.env.NODE_ENV === "dev",
