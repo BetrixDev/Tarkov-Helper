@@ -54,7 +54,7 @@ export class ItemCommand extends BaseCommand {
         this.handleCommandInteraction(
             interaction,
             new Promise((resolve, reject) => {
-                resolve(this.command(id, interaction.locale.split("-")[0] as LanguageCode));
+                resolve(this.command(id, this.getLanguage(interaction)));
             })
         );
     }

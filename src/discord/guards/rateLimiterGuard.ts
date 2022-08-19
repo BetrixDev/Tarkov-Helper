@@ -4,6 +4,7 @@ import { round } from "../../lib/util/math";
 import { translation } from "../../lib/util/translation";
 import { LanguageCode } from "../../../types/common";
 import logger from "../../logger";
+import { BaseCommand } from "../../lib/BaseCommand";
 
 const COOLDOWN_LENGTH = 5 * 1000;
 const NAMESPACE = "RateLimiter";
@@ -34,7 +35,7 @@ export const rateLimiterGuard: GuardFunction<CommandInteraction> = async (arg, c
                 return;
             } else {
                 const coolDownTimeLeft = (userData.firstMessage + COOLDOWN_LENGTH - Date.now()) / 1000;
-                const language = interaction.locale.split("-")[0] as LanguageCode;
+                const language = new BaseCommand().getLanguage(interaction);
 
                 logger.info(NAMESPACE, `Limiting user for ${coolDownTimeLeft}s`);
 

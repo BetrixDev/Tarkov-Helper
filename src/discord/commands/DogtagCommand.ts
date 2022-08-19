@@ -32,7 +32,7 @@ export class DogtagCommand extends BaseCommand {
         await this.handleCommandInteraction(
             interaction,
             new Promise((respond) => {
-                respond(this.command(level, interaction.locale.split("-")[0] as LanguageCode));
+                respond(this.command(level, this.getLanguage(interaction)));
             })
         );
     }

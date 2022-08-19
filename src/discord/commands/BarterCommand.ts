@@ -42,7 +42,7 @@ export class BarterCommand extends BaseCommand {
         this.handleCommandInteraction(
             interaction,
             new Promise((resolve) => {
-                resolve(this.command(id, interaction.locale.split("-")[0] as LanguageCode));
+                resolve(this.command(id, this.getLanguage(interaction)));
             })
         );
     }
@@ -51,7 +51,7 @@ export class BarterCommand extends BaseCommand {
     button(interaction: ButtonInteraction): void {
         const [, action, id, p] = interaction.customId.split("__");
         const page = Number(p);
-        const language = interaction.locale.split("-")[0] as LanguageCode;
+        const language = this.getLanguage(interaction);
 
         if (action === "b") {
             interaction.update(this.command(id, language, page - 1) as InteractionUpdateOptions);

@@ -16,6 +16,7 @@ import { TarkovDataService } from "../services/TarkovDataService";
 import { TarkovDevItem } from "../../types/tarkov.dev/TarkovDevItem";
 import { LanguageCode } from "../../types/common";
 import logger from "../logger";
+import { AutocompleteInteraction } from "discord.js";
 
 const NAMESPACE = "BaseCommand";
 
@@ -134,7 +135,15 @@ export class BaseCommand {
     }
 
     /** Simple macro function for the appropriate language from an interaction */
-    getLanguage(interaction: CommandInteraction | MessageComponentInteraction | ButtonInteraction): LanguageCode {
-        return interaction.locale.split("-")[0] as LanguageCode;
+    getLanguage(
+        interaction: CommandInteraction | MessageComponentInteraction | ButtonInteraction | AutocompleteInteraction
+    ): LanguageCode {
+        const language = interaction.locale.split("-")[0];
+
+        if (["es", "en"].includes(language)) {
+            return language as LanguageCode;
+        }
+
+        return "en";
     }
 }
