@@ -4,13 +4,12 @@ import {
     ApplicationCommandOptionType,
     AutocompleteInteraction,
     ButtonBuilder,
-    ButtonComponent,
     ButtonInteraction,
     ButtonStyle,
     CommandInteraction,
     InteractionReplyOptions
 } from "discord.js";
-import { Discord, Slash, SlashOption, ButtonComponent as ButtonX } from "discordx";
+import { Discord, Slash, SlashOption, ButtonComponent } from "discordx";
 import { container, injectable } from "tsyringe";
 import { LanguageCode } from "../../../types/common";
 import { BaseCommand } from "../../lib/BaseCommand";
@@ -96,7 +95,7 @@ export class QuestCommand extends BaseCommand {
         };
     }
 
-    @ButtonX(/^guide__/)
+    @ButtonComponent(/^guide__/)
     async button(interaction: ButtonInteraction) {
         const [_, i, language] = interaction.customId.split("__");
         const id = Number(i);
@@ -116,7 +115,7 @@ export class QuestCommand extends BaseCommand {
         }
 
         // Discord only allows 10 embeds per response, and since every image is an embed, sometimes we need to split of the embeds across multiple responses
-        const messages = Math.ceil(quest.guideImages.length / 10);
+        const messages = Math.ceil(quest.guideImages.length / 9);
 
         if (messages === 1) {
             quest.guideImages.forEach((image, i) => {
@@ -132,7 +131,7 @@ export class QuestCommand extends BaseCommand {
             await interaction.reply(message);
         } else if (messages > 1) {
             // send initial message
-            quest.guideImages.slice(0, 9).forEach((image, i) => {
+            quest.guideImages.slice(0, 8).forEach((image, i) => {
                 message.embeds?.push(
                     this.createEmbed()
                         .setTitle(t("Image #{0}", i + 1))
