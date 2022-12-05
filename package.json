@@ -2,12 +2,12 @@
     "author": "Betrix",
     "scripts": {
         "build": "tsc",
-        "dev": "cross-env NODE_ENV=dev nodemon src/main.ts",
+        "dev": "cross-env NODE_ENV=development nodemon src/main.ts",
         "start": "node ./build/main.js",
         "start:pm2": "npx pm2 start --name tarkovhelper ./build/main.js",
         "format": "prettier --config .prettierrc \"./{src,test}/**/*.ts\" --write",
-        "test": "cross-env NODE_ENV=test jest",
-        "test:coverage": "cross-env NODE_ENV=test jest --coverage",
+        "test": "cross-env NODE_ENV=testing jest",
+        "test:coverage": "cross-env NODE_ENV=testing jest --coverage",
         "init:dev": "ts-node ./src/scripts/grabTestData.ts"
     },
     "devDependencies": {
@@ -42,7 +42,8 @@
         "node-schedule": "^2.1.0",
         "reflect-metadata": "^0.1.13",
         "topgg-autoposter": "^2.0.1",
+        "tsyringe": "^4.6.0",
         "whatwg-url": "^11.0.0",
-        "tsyringe": "^4.6.0"
+        "zod": "^3.19.1"
     }
 }

@@ -1,35 +1,18 @@
 import { HexColorString } from "discord.js";
-import dotenv from "dotenv";
+import { env } from "./env";
 
-dotenv.config();
-
-const databaseURL = process.env.DATABASE_URL;
-const botToken = process.env.BOT_TOKEN;
-const tarkovChangesToken = process.env.TARKOV_CHANGES_TOKEN;
-
-// Check for environment variables existing
-if (databaseURL === undefined) {
-    throw Error("DATABASE_URL not set in env");
-}
-
-if (botToken === undefined) {
-    throw Error("BOT_TOKEN not set in env");
-}
-
-if (tarkovChangesToken === undefined) {
-    throw Error("TARKOV_CHANGES_TOKEN not set in env, get an access token from tarkov-changes.com");
-}
+const databaseURL = env.DATABASE_URL;
 
 export const config = {
     env: {
-        botToken: botToken,
-        tarkovChangesToken: tarkovChangesToken,
-        databaseURL: databaseURL,
-        topGGToken: process.env.TOPGG_TOKEN
+        botToken: env.BOT_TOKEN,
+        tarkovChangesToken: env.TARKOV_CHANGES_TOKEN,
+        databaseURL,
+        topGGToken: env.TOPGG_TOKEN
     },
     process: {
-        isDev: process.env.NODE_ENV === "dev",
-        isTest: process.env.NODE_ENV === "test"
+        isDev: env.NODE_ENV === "development",
+        isTest: env.NODE_ENV === "testing"
     },
     bot: {
         name: "Tarkov Helper",

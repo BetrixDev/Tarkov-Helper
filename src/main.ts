@@ -11,6 +11,7 @@ import { QuestSearchEngine } from "./lib/search_engines/QuestSearchEngine";
 import { rateLimiterGuard } from "./discord/guards/rateLimiterGuard";
 import logger from "./logger";
 import AutoPoster from "topgg-autoposter";
+import { env } from "./env";
 
 dotenv.config();
 
@@ -37,7 +38,7 @@ client.once("ready", async () => {
         // useful when moving to global commands from guild commands
         await client.clearApplicationCommands(...client.guilds.cache.map((g) => g.id));
 
-        if (typeof config.env.topGGToken === "string") {
+        if (config.env.topGGToken) {
             AutoPoster(config.env.topGGToken, client);
         } else {
             logger.info(NAMESPACE, "No token for top.gg detected... skipping");
