@@ -6,14 +6,13 @@ import fuse from "fuse.js";
 import { LanguageCode } from "../../../types/common";
 import { AutocompleteInteraction } from "discord.js";
 import logger from "../../logger";
-import { TarkovDevTypes, TarkovDevItem } from "../../../types/tarkov.dev/TarkovDevItem";
+import { TarkovDevItem } from "../../../types/tarkov.dev/TarkovDevItem";
 import { BaseCommand } from "../BaseCommand";
 
 interface EngineParams {
     id: string;
     name: string;
     shortName: string;
-    types: TarkovDevTypes[];
 }
 
 type SearchResult = fuse.FuseResult<EngineParams>[];
@@ -42,13 +41,11 @@ export class ItemSearchEngine {
 
                 enValues.push({
                     id: enItem.id,
-                    types: enItem.data.types,
                     name: enItem.name,
                     shortName: enItem.shortName
                 });
                 esValues.push({
                     id: esItem.id,
-                    types: esItem.data.types,
                     name: esItem.name,
                     shortName: esItem.shortName
                 });

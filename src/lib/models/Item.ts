@@ -4,7 +4,7 @@ import { container } from "tsyringe";
 import { TarkovDataService } from "../../services/TarkovDataService";
 import { ItemProps } from "../../../types/game/ItemProps";
 import { calculateFleaFee } from "../util/math";
-import { ItemPrice, TarkovDevItem, TarkovDevTypes } from "../../../types/tarkov.dev/TarkovDevItem";
+import { ItemPrice, TarkovDevItem, TarkovDevBasicType } from "../../../types/tarkov.dev/TarkovDevItem";
 import { TarkovLocaleService } from "../../services/TarkovLocaleService";
 
 interface FleaMarketPrice extends ItemPrice {
@@ -18,7 +18,7 @@ export class Item {
     shortName: string;
     props: ItemProps;
     data: TarkovDevItem;
-    types: TarkovDevTypes[];
+    types: TarkovDevBasicType[];
 
     private _description: string;
     private _dataService: TarkovDataService;
