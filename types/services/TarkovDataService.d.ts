@@ -1,7 +1,6 @@
 import { ItemProps } from "../game/ItemProps";
 import { Globals } from "../game/Globals";
 import { GameBot } from "../game/GameBot";
-import { GameLocales } from "../game/GameLocales";
 import { GameMap } from "../game/GameMap";
 import { TarkovDevTask } from "../tarkov.dev/TarkovDevTask";
 import { TarkovDevItem } from "../tarkov.dev/TarkovDevItem";
@@ -45,8 +44,8 @@ export interface ApiResponses {
 
     // sp tarkov
     globals: Globals;
-    "locales/global/en": GameLocales;
-    "locales/global/es": GameLocales;
+    "locales/global/en": Record<string, string>;
+    "locales/global/es": Record<string, string>;
     "locations/bigmap/base": GameMap;
     "locations/factory4_day/base": GameMap;
     "locations/factory4_night/base": GameMap;

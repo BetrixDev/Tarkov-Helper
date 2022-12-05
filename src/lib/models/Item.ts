@@ -5,6 +5,7 @@ import { TarkovDataService } from "../../services/TarkovDataService";
 import { ItemProps } from "../../../types/game/ItemProps";
 import { calculateFleaFee } from "../util/math";
 import { ItemPrice, TarkovDevItem, TarkovDevTypes } from "../../../types/tarkov.dev/TarkovDevItem";
+import { TarkovLocaleService } from "../../services/TarkovLocaleService";
 
 interface FleaMarketPrice extends ItemPrice {
     fee: number;
@@ -31,15 +32,17 @@ export class Item {
         const dataService = container.resolve(TarkovDataService);
         this._dataService = dataService;
 
+        const localeService = container.resolve(TarkovLocaleService);
+
         const itemProps = dataService.fetchData("items-tarkov-changes")[id];
-        const locales = dataService.fetchData(`locales/global/${language}`).templates[id];
+        const locales = localeService.getItemLocale(id, language);
         const itemData = dataService.fetchData("items-tarkov-dev")[id];
 
         this.id = id;
         // fallback to default english names if there isn't an entry in the locales data
-        this.name = locales?.Name ?? itemData.name;
-        this.shortName = `${locales?.ShortName ?? itemData.shortName}`;
-        this._description = locales?.Description ?? "";
+        this.name = locales.name ?? itemData.name;
+        this.shortName = locales.shortName ?? itemData.shortName;
+        this._description = locales.description ?? "";
         this.wikiLink = itemData.wikiLink;
         this.data = itemData;
         this.props = itemProps;

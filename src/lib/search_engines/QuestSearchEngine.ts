@@ -6,6 +6,7 @@ import { LanguageCode } from "../../../types/common";
 import { Quest } from "../models/Quest";
 import { AutocompleteInteraction } from "discord.js";
 import { BaseCommand } from "../BaseCommand";
+import { TarkovLocaleService } from "../../services/TarkovLocaleService";
 
 interface EngineParams {
     id: number;
@@ -18,7 +19,7 @@ const NAMESPACE = "QuestSearchEngine";
 
 @singleton()
 export class QuestSearchEngine {
-    constructor(private dataService: TarkovDataService) {}
+    constructor(private dataService: TarkovDataService, private localeService: TarkovLocaleService) {}
 
     private engines: Record<string, fuse<EngineParams>> = {};
 
@@ -27,13 +28,11 @@ export class QuestSearchEngine {
         const esValues: EngineParams[] = [];
 
         const questData = this.dataService.fetchData("quests");
-        const enLocales = this.dataService.fetchData("locales/global/en").quest;
-        const esLocales = this.dataService.fetchData("locales/global/es").quest;
 
         questData.forEach(({ gameId, id }) => {
             if (gameId && id) {
-                esValues.push({ name: esLocales[gameId].name, id: id });
-                enValues.push({ name: enLocales[gameId].name, id: id });
+                esValues.push({ name: this.localeService.getQuestLocale(gameId, "en").name, id: id });
+                enValues.push({ name: this.localeService.getQuestLocale(gameId, "es").name, id: id });
             }
         });
 

@@ -2,10 +2,8 @@ import "reflect-metadata";
 import { LanguageCode } from "../../../types/common";
 import { container } from "tsyringe";
 import { Endpoint, TarkovDataService } from "../../services/TarkovDataService";
-import { LocationLocale, GameLocales } from "../../../types/game/GameLocales";
 import { translation } from "../util/translation";
 import { GameMap } from "../../../types/game/GameMap";
-import { capitalizeWords, formatNumber } from "../util/string";
 import { ButtonBuilder, ButtonStyle } from "discord.js";
 import dayjs from "dayjs";
 import { MapImageData } from "../../../types/services/TarkovDataService";
@@ -38,15 +36,12 @@ export const MAP_METADATA = [
 export type MapID = typeof MAP_METADATA[number]["id"];
 
 export class Location {
-    private localeData: LocationLocale;
     private mapId: string;
-    private dataService: TarkovDataService;
-    private locales: GameLocales;
+    private dataService = container.resolve(TarkovDataService);
     private language: LanguageCode;
     private mapData: GameMap;
 
     displayName: string;
-    description: string;
     raidTime: number;
     maxPlayers: number;
 
@@ -55,26 +50,23 @@ export class Location {
         this.language = language;
         const t = translation(language);
 
-        const dataService = container.resolve(TarkovDataService);
-        this.dataService = dataService;
-
         const metaData = MAP_METADATA.find(({ id }) => id === map) as MapMetaData;
 
-        const enLocales = dataService.fetchData("locales/global/en");
-        const locales = dataService.fetchData(`locales/global/${language}`);
-        this.locales = locales;
+        const locales = this.dataService.fetchData(`locales/global/${language}`);
 
-        const localeData = Object.entries(enLocales.locations).find(([, data]) => data.Name === metaData.name) as [
-            string,
-            LocationLocale
-        ];
-        this.localeData = locales.locations[localeData[0]];
+        const mapName = locales[metaData.name];
 
-        this.description =
-            this.localeData.Description.length > 200
-                ? `"*${this.localeData.Description}*"`
-                : `"*${this.localeData.Description.substring(0, 197)}...*"`;
-        this.displayName = `${this.localeData.Name} ${metaData.variant ? t(metaData.variant) : ""}`;
+        // const localeData = Object.entries(enLocales.locations).find(([, data]) => data.Name === metaData.name) as [
+        //     string,
+        //     LocationLocale
+        // ];
+        // this.localeData = locales.locations[localeData[0]];
+
+        // this.description =
+        //     this.localeData.Description.length > 200
+        //         ? `"*${this.localeData.Description}*"`
+        //         : `"*${this.localeData.Description.substring(0, 197)}...*"`;
+        this.displayName = `${mapName} ${metaData.variant ? t(metaData.variant) : ""}`;
 
         const mapData = this.dataService.fetchData<Endpoint, GameMap>(`locations/${this.mapId}/base` as Endpoint);
         this.mapData = mapData;
@@ -107,27 +99,15 @@ export class Location {
                 if (bossName === "bossKnight") {
                     bossData.push({ name: "Rogue Bosses", chance: spawns[0].BossChance, averageAmount: 3 });
                 } else if (bossName.includes("boss")) {
-                    const name = this.locales.interface[`QuestCondition/Elimination/Kill/BotRole/${bossName}`];
-
-                    if (name) {
-                        bossData.push({ name, chance: spawns[0].BossChance });
-                    }
+                    bossData.push({ name: "UNKNOWN", chance: spawns[0].BossChance });
                 } else if (bossName === "sectantPriest") {
-                    const name = this.locales.interface[`QuestCondition/Elimination/Kill/BotRole/${bossName}`];
-
-                    if (name) {
-                        bossData.push({
-                            name,
-                            chance: spawns[0].BossChance,
-                            averageAmount: Number(spawns[0].BossEscortAmount) + 1
-                        });
-                    }
+                    bossData.push({
+                        name: "Preist",
+                        chance: spawns[0].BossChance,
+                        averageAmount: Number(spawns[0].BossEscortAmount) + 1
+                    });
                 }
             }
-
-            const name = this.locales.interface[`ScavRole/${capitalizeWords(bossName)}`];
-
-            if (!name) return;
 
             const averageAmount = spawns.reduce((prev, curr) => {
                 const length = curr.BossEscortAmount.split(",").length;
@@ -139,7 +119,7 @@ export class Location {
                 return prev + sum / length;
             }, 0);
 
-            bossData.push({ name, averageAmount });
+            bossData.push({ name: "UNKNOWN", averageAmount });
         });
 
         return bossData;

@@ -72,7 +72,6 @@ export class MapCommand extends BaseCommand {
                 this.createEmbed()
                     .setTitle(`${map.displayName} - ${map.currentTimes.join(" | ")}`)
                     .setThumbnail(map.iconURL)
-                    .setDescription(map.description)
                     .setImage(map.maps.length > 0 ? map.maps[0].link : null)
                     .setFooter({ text: t("Click the buttons below to view maps") })
                     .setFields(

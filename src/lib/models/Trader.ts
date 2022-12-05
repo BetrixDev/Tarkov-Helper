@@ -2,26 +2,27 @@ import "reflect-metadata";
 import { LanguageCode } from "../../../types/common";
 import { container } from "tsyringe";
 import { TarkovDataService } from "../../services/TarkovDataService";
-import { Trading } from "../../../types/game/GameLocales";
+import { TarkovLocaleService } from "../../services/TarkovLocaleService";
 
 export class Trader {
+    private dataService = container.resolve(TarkovDataService);
+    private localeService = container.resolve(TarkovLocaleService);
+
     name: string;
 
     constructor(name: string, language: LanguageCode) {
-        const dataService = container.resolve(TarkovDataService);
+        const traderNames = this.dataService.fetchData(`locales/global/${language}`).trading;
 
-        const traderNames = dataService.fetchData(`locales/global/${language}`).trading;
+        const locales = this.localeService.getTraderLocale(this.fetchTraderID(name));
 
-        const [id] = this.fetchTraderObject(name, dataService);
-
-        this.name = traderNames[id].Nickname;
+        this.name = locales.name;
     }
 
-    private fetchTraderObject(name: string, dataService: TarkovDataService) {
-        const traderNames = dataService.fetchData("locales/global/en").trading;
+    private fetchTraderID(name: string) {
+        const enLocales = this.dataService.fetchData("locales/global/en");
 
-        const traderData = Object.entries(traderNames).find(([id, data]) => data.Nickname === name);
+        const traderData = Object.entries(enLocales).find(([id, value]) => value === name) as [string, string];
 
-        return traderData as [string, Trading];
+        return traderData[0];
     }
 }

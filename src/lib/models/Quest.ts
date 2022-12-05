@@ -6,6 +6,7 @@ import { TaskRewards, TarkovDevTask, TaskObjective } from "../../../types/tarkov
 import { GuideImages } from "../../../types/services/TarkovDataService";
 import { Trader } from "./Trader";
 import { Item } from "./Item";
+import { TarkovLocaleService } from "../../services/TarkovLocaleService";
 
 interface ItemRewards {
     count: number;
@@ -24,6 +25,7 @@ interface QuestRewards {
 
 export class Quest {
     private dataService = container.resolve(TarkovDataService);
+    private localeService = container.resolve(TarkovLocaleService);
 
     name: string;
     /** The trader who gives the quest */
@@ -48,7 +50,7 @@ export class Quest {
         const taskData = tasks.find((t) => t.tarkovDataId === id) as TarkovDevTask;
         const rawQuestData = this.dataService.fetchData("templates/quests")[taskData.id];
         const guideData = this.dataService.fetchData("questGuides")[Number(taskData.tarkovDataId)];
-        const locales = this.dataService.fetchData(`locales/global/${language}`).quest[taskData.id];
+        const locales = this.localeService.getQuestLocale(taskData.id, language);
 
         this.name = locales.name;
         this.trader = new Trader(taskData.trader.name, language);
