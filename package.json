@@ -3,8 +3,7 @@
     "scripts": {
         "build": "tsc",
         "dev": "cross-env NODE_ENV=development nodemon src/main.ts",
-        "start": "node ./build/main.js",
-        "start:pm2": "npx pm2 start --name tarkovhelper ./build/main.js",
+        "start": "cross-env NODE_ENV=production node ./build/main.js",
         "format": "prettier --config .prettierrc \"./{src,test}/**/*.ts\" --write",
         "test": "cross-env NODE_ENV=testing jest",
         "test:coverage": "cross-env NODE_ENV=testing jest --coverage",
