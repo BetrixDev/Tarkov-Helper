@@ -31,8 +31,8 @@ export class QuestSearchEngine {
 
         questData.forEach(({ gameId, id }) => {
             if (gameId && id) {
-                esValues.push({ name: this.localeService.getQuestLocale(gameId, "en").name, id: id });
-                enValues.push({ name: this.localeService.getQuestLocale(gameId, "es").name, id: id });
+                esValues.push({ name: this.localeService.getQuestLocale(gameId, "es").name, id: id });
+                enValues.push({ name: this.localeService.getQuestLocale(gameId, "en").name, id: id });
             }
         });
 
