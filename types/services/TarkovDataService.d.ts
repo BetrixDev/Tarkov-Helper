@@ -3,25 +3,18 @@ import { Globals } from "../game/Globals";
 import { GameBot } from "../game/GameBot";
 import { GameMap } from "../game/GameMap";
 import { TarkovDevTask } from "../tarkov.dev/TarkovDevTask";
-import { TarkovDevItem } from "../tarkov.dev/TarkovDevItem";
+import { TarkovDevItem } from "../../src/typings/TarkovDevItem";
 import { TarkovDevBarter } from "../tarkov.dev/TarkovDevBarter";
 import { GameQuest } from "../game/GameQuest";
 
 /** Some of api the data gets formatted to better fit our needs right of the bot */
 export interface DataResponses extends ApiResponses {
-    // tarkov changes
-    "items-tarkov-changes": Record<string, ItemProps>;
-    ammo: any;
-
     // tarkov dev
     "items-tarkov-dev": Record<string, TarkovDevItem>;
 }
 
 /** Type definitions for the responses of all apis we call */
 export interface ApiResponses {
-    // tarkov changes
-    "items-tarkov-changes": TarkovChangesResponse;
-
     // tarkov dev
     "items-tarkov-dev": TarkovDevItem[];
     barters: TarkovDevBarter[];
@@ -56,20 +49,6 @@ export interface ApiResponses {
     "locations/shoreline/base": GameMap;
     "locations/woods/base": GameMap;
     "templates/quests": Record<string, any>; // type safe :)
-}
-
-// tarkov changes
-
-interface TarkovChangesResponse {
-    status: string;
-    msg: string;
-    results: TarkovChangesItemsResponse[];
-}
-
-interface TarkovChangesItemsResponse {
-    Name: string;
-    "Item ID": string;
-    props: string;
 }
 
 // tarkov dev

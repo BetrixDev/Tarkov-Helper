@@ -11,8 +11,6 @@ export class Trader {
     name: string;
 
     constructor(name: string, language: LanguageCode) {
-        const traderNames = this.dataService.fetchData(`locales/global/${language}`).trading;
-
         const locales = this.localeService.getTraderLocale(this.fetchTraderID(name));
 
         this.name = locales.name;

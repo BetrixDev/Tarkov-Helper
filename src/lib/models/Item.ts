@@ -4,20 +4,28 @@ import { container } from "tsyringe";
 import { TarkovDataService } from "../../services/TarkovDataService";
 import { ItemProps } from "../../../types/game/ItemProps";
 import { calculateFleaFee } from "../util/math";
-import { ItemPrice, TarkovDevItem, TarkovDevBasicType } from "../../../types/tarkov.dev/TarkovDevItem";
+import {
+    ItemPrice,
+    TarkovDevItem,
+    TarkovDevBasicType,
+    TarkovDevItemType,
+    TarkovDevItemProperties
+} from "../../typings/TarkovDevItem";
 import { TarkovLocaleService } from "../../services/TarkovLocaleService";
 
 interface FleaMarketPrice extends ItemPrice {
     fee: number;
 }
 
-export class Item {
+export class Item<T extends TarkovDevItemProperties = TarkovDevItemProperties> {
     id: string;
     name: string;
     wikiLink: string;
     shortName: string;
-    props: ItemProps;
+    props: T;
     data: TarkovDevItem;
+    type?: TarkovDevItemType;
+    canSellOnFlea: boolean;
     types: TarkovDevBasicType[];
 
     private _description: string;
@@ -34,7 +42,6 @@ export class Item {
 
         const localeService = container.resolve(TarkovLocaleService);
 
-        const itemProps = dataService.fetchData("items-tarkov-changes")[id];
         const locales = localeService.getItemLocale(id, language);
         const itemData = dataService.fetchData("items-tarkov-dev")[id];
 
@@ -45,8 +52,11 @@ export class Item {
         this._description = locales.description ?? "";
         this.wikiLink = itemData.wikiLink;
         this.data = itemData;
-        this.props = itemProps;
+        this.props = itemData.properties as T;
         this.types = itemData.types;
+        this.canSellOnFlea = !itemData.types.includes("noFlea");
+
+        this.type = itemData.properties?.__typename;
     }
 
     get description(): string {

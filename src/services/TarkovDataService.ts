@@ -6,7 +6,7 @@ import { scheduleJob } from "node-schedule";
 import { config } from "../config";
 import { existsSync } from "fs";
 import { readJson } from "../lib/util/files";
-import { TarkovDevItem } from "../../types/tarkov.dev/TarkovDevItem";
+import { TarkovDevItem } from "../typings/TarkovDevItem";
 import logger from "../logger";
 
 // This file attempts to make the data collection layer as easy as possible by abstracting the data querying behind simple functions
@@ -79,6 +79,7 @@ const TARKOV_DEV_QUERIES: Record<string, string> = {
               turnPenalty
               ergoPenalty
               material {
+                destructibility
                 name
               }
               headZones
@@ -106,6 +107,7 @@ const TARKOV_DEV_QUERIES: Record<string, string> = {
               ergoPenalty
               zones
               material {
+                destructibility
                 name
               }
               capacity
@@ -140,6 +142,7 @@ const TARKOV_DEV_QUERIES: Record<string, string> = {
               durability
               blindnessProtection
               material {
+                destructibility
                 name
               }
             }
@@ -159,6 +162,7 @@ const TARKOV_DEV_QUERIES: Record<string, string> = {
               ergoPenalty
               headZones
               material {
+                destructibility
                 name
               }
               deafening
@@ -518,12 +522,6 @@ interface GraphQLApiData {
 type ApiData = RestApiData | GraphQLApiData;
 
 const CONFIGS = {
-    TARKOV_CHANGES_CONFIG: {
-        type: "REST",
-        url: "https://api.tarkov-changes.com/v1/{ENDPOINT}",
-        endpoints: ["items-tarkov-changes", "ammo"],
-        token: config.env.tarkovChangesToken
-    },
     TARKOV_DEV_CONFIG: {
         type: "GRAPHQL",
         url: "https://api.tarkov.dev/graphql",
@@ -563,7 +561,6 @@ const CONFIGS = {
 } as const;
 
 export type Endpoint =
-    | typeof CONFIGS.TARKOV_CHANGES_CONFIG.endpoints[number]
     | typeof CONFIGS.TARKOV_DEV_CONFIG.endpoints[number]
     | typeof CONFIGS.TARKOV_DATA_CONFIG.endpoints[number]
     | typeof CONFIGS.TARKOV_DATABASE_CONFIG.endpoints[number]
@@ -624,13 +621,7 @@ export class TarkovDataService {
                         try {
                             this.resolveEndpoint(endpoint)().then((data) => {
                                 // clean up some of the responses
-                                if (endpoint === "items-tarkov-changes") {
-                                    const rawData = data as ApiResponses["items-tarkov-changes"];
-
-                                    data = rawData.results.reduce<Record<string, unknown>>((prev, curr) => {
-                                        return { ...prev, [curr["Item ID"]]: JSON.parse(curr.props) };
-                                    }, {});
-                                } else if (endpoint === "items-tarkov-dev") {
+                                if (endpoint === "items-tarkov-dev") {
                                     const rawData = data as ApiResponses["items-tarkov-dev"];
 
                                     data = rawData.reduce<Record<string, TarkovDevItem>>((prev, curr) => {
@@ -711,13 +702,7 @@ export class TarkovDataService {
             };
         } else {
             return async () => {
-                const response = await axios(apiConfig.url.replace("{ENDPOINT}", endpoint), {
-                    headers: apiConfig.token
-                        ? {
-                              "AUTH-TOKEN": apiConfig.token
-                          }
-                        : {}
-                });
+                const response = await axios(apiConfig.url.replace("{ENDPOINT}", endpoint));
                 return response.data;
             };
         }

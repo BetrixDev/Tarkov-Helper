@@ -10,8 +10,6 @@ const ENVIROMENT = z.object({
         .default(""),
     /** Client token for logging in your bot */
     BOT_TOKEN: z.string(),
-    /** tarkov-changes.com token for grabbing up-to-date item properties */
-    TARKOV_CHANGES_TOKEN: z.string(),
     /** Optional token provided to top.gg to upload your bots stats to their website */
     TOPGG_TOKEN: z.string().optional(),
     /** Provided */

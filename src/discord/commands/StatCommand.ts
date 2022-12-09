@@ -8,15 +8,12 @@ import {
     CommandInteraction,
     InteractionReplyOptions
 } from "discord.js";
-import { container, injectable } from "tsyringe";
+import { container } from "tsyringe";
 import { ItemSearchEngine } from "../../lib/search_engines/ItemSearchEngine";
 import { LanguageCode } from "../../../types/common";
 import { translation } from "../../lib/util/translation";
 import { Item } from "../../lib/models/Item";
-import { getItemFields, getStatImage } from "../../lib/helpers/gameStats";
-import { EmbedField, Interaction } from "discord.js";
-import { ItemCommand } from "./ItemCommand";
-
+import { getItemStats } from "../../lib/helpers/getItemStats";
 const COMMAND_NAME = "stat";
 
 @Discord()
@@ -65,10 +62,7 @@ export class StatCommand extends BaseCommand {
         }
 
         const item = new Item(itemId, language);
-        const itemFields = getItemFields(item, t);
-
-        const fields: EmbedField[] =
-            itemFields.length > 0 ? itemFields : [{ name: "\u200b", value: "No special stats", inline: true }];
+        const itemProps = getItemStats(item, t);
 
         return {
             embeds: [
@@ -81,8 +75,8 @@ export class StatCommand extends BaseCommand {
                         `
                     )
                     .setThumbnail(item.iconURL)
-                    .addFields(fields)
-                    .setImage(getStatImage(item).url)
+                    .addFields(itemProps.fields)
+                    .setImage(itemProps?.imgURL ?? null)
             ]
         };
     }

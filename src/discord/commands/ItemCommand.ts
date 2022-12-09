@@ -129,7 +129,7 @@ export class ItemCommand extends BaseCommand {
         const questsUsingItem = Quest.fromRequiredItem(item, language);
         const questsGivingItem = Quest.fromRewardItem(item, language);
 
-        const title = item.props.CanSellOnRagfair
+        const title = item.canSellOnFlea
             ? t("{0} Information - {1}", item.shortName, formatPrice(item.data.avg24hPrice))
             : t("{0} Information - {1}", item.shortName, t("[BANNED ON FLEA]"));
 

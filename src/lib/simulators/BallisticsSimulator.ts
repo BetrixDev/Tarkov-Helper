@@ -3,6 +3,7 @@ import { Item } from "../models/Item";
 import { container } from "tsyringe";
 import { TarkovDataService } from "../../services/TarkovDataService";
 import { clamp, random } from "../util/math";
+import { ItemPropertiesAmmo, ItemPropertiesArmor } from "../../typings/TarkovDevItem";
 
 interface Result {
     chance: number;
@@ -31,26 +32,21 @@ export class BallisticsCalculator {
     armorData: ArmorData;
     bulletData: BulletData;
 
-    constructor(armor: Item, bullet: Item) {
-        const dataService = container.resolve(TarkovDataService);
-
-        const armorMaterials = dataService.fetchData("globals").config.ArmorMaterials;
-
-        // Using Number() to force the value to be defined, since we know they will be due to only accepting armors and bullets
+    constructor(armor: Item<ItemPropertiesArmor>, bullet: Item<ItemPropertiesAmmo>) {
         this.armorData = {
             id: armor.id,
-            class: Number(armor.props.armorClass),
-            durability: Number(armor.props.MaxDurability),
-            currentDurability: Number(armor.props.MaxDurability),
-            destructibility: armorMaterials[armor.props.ArmorMaterial ?? "Aluminium"].Destructibility,
+            class: armor.props.class,
+            durability: armor.props.durability,
+            currentDurability: armor.props.durability,
+            destructibility: armor.props.material.destructibility,
             resistance: 10
         };
 
         this.bulletData = {
             id: bullet.id,
-            penetration: Number(bullet.props.PenetrationPower),
-            armorDamage: Number(bullet.props.ArmorDamage),
-            damage: Number(bullet.props.Damage)
+            penetration: bullet.props.penetrationPower,
+            armorDamage: bullet.props.armorDamage,
+            damage: bullet.props.damage
         };
     }
 

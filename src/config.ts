@@ -6,7 +6,6 @@ const databaseURL = env.DATABASE_URL;
 export const config = {
     env: {
         botToken: env.BOT_TOKEN,
-        tarkovChangesToken: env.TARKOV_CHANGES_TOKEN,
         databaseURL,
         topGGToken: env.TOPGG_TOKEN
     },

@@ -42,7 +42,7 @@ export class RestocksCommand extends BaseCommand {
                     .setFields(
                         ...traderData.map((trader) => {
                             return {
-                                name: new Trader(capitalizeWords(trader.name), language).name,
+                                name: trader.name,
                                 value: `<t:${dayjs(trader.resetTime).unix()}:R>`,
                                 inline: true
                             };

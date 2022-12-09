@@ -1,4 +1,8 @@
-export interface TarkovDevItem {
+export type KeysOf<T extends object> = {
+    [Key in keyof T]: T extends Record<Key, T[Key]> ? Key : never;
+}[keyof T];
+
+export type TarkovDevItem = {
     id: string;
     shortName: string;
     name: string;
@@ -12,7 +16,7 @@ export interface TarkovDevItem {
     sellFor: ItemPrice[];
     buyFor: ItemPrice[];
     properties: TarkovDevItemProperties;
-}
+};
 
 export enum TarkovDevItemType {
     ItemPropertiesWeapon = "ItemPropertiesWeapon",
@@ -35,11 +39,14 @@ export enum TarkovDevItemType {
     ItemPropertiesHelmet = "ItemPropertiesHelmet",
     ItemPropertiesArmor = "ItemPropertiesArmor",
     ItemPropertiesContainer = "ItemPropertiesContainer",
-    ItemPropertiesGlasses = "ItemPropertiesGlasses"
+    ItemPropertiesGlasses = "ItemPropertiesGlasses",
+    ItemPropertiesChestRig = "ItemPropertiesChestRig",
+    ItemPropertiesBackpack = "ItemPropertiesBackpack"
 }
 
 export type TarkovDevItemProperties =
     | null
+    | ItemProperties
     | ItemPropertiesWeapon
     | ItemPropertiesKey
     | ItemPropertiesGrenade
@@ -60,9 +67,47 @@ export type TarkovDevItemProperties =
     | ItemPropertiesHelmet
     | ItemPropertiesArmor
     | ItemPropertiesContainer
-    | ItemPropertiesGlasses;
+    | ItemPropertiesGlasses
+    | ItemPropertiesBackpack
+    | ItemPropertiesChestRig;
 
-export interface ItemPropertiesWeapon {
+export type CombinedItemProps =
+    | KeysOf<ItemPropertiesWeapon>
+    | KeysOf<ItemPropertiesKey>
+    | KeysOf<ItemPropertiesGrenade>
+    | KeysOf<ItemPropertiesWeaponMod>
+    | KeysOf<ItemPropertiesAmmo>
+    | KeysOf<ItemPropertiesPreset>
+    | KeysOf<ItemPropertiesBarrel>
+    | KeysOf<ItemPropertiesMagazine>
+    | KeysOf<ItemPropertiesFoodDrink>
+    | KeysOf<ItemPropertiesStim>
+    | KeysOf<ItemPropertiesMedKit>
+    | KeysOf<ItemPropertiesMedicalItem>
+    | KeysOf<ItemPropertiesMelee>
+    | KeysOf<ItemPropertiesNightVision>
+    | KeysOf<ItemPropertiesPainkiller>
+    | KeysOf<ItemPropertiesScope>
+    | KeysOf<ItemPropertiesSurgicalKit>
+    | KeysOf<ItemPropertiesHelmet>
+    | KeysOf<ItemPropertiesArmor>
+    | KeysOf<ItemPropertiesContainer>
+    | KeysOf<ItemPropertiesGlasses>
+    | KeysOf<ItemPropertiesBackpack>;
+
+export type ItemProperties = {
+    __typename: TarkovDevItemType;
+};
+
+export type ItemPropertiesBackpack = ItemProperties & {
+    capacity: number;
+    grids: {
+        width: number;
+        height: number;
+    };
+};
+
+export type ItemPropertiesWeapon = ItemProperties & {
     __typename: TarkovDevItemType.ItemPropertiesWeapon;
     caliber: string;
     defaultAmmo: {
@@ -80,15 +125,15 @@ export interface ItemPropertiesWeapon {
             recoilHorizontal: number;
             moa: number;
         };
-    };
-}
+    } | null;
+};
 
-export interface ItemPropertiesKey {
+export type ItemPropertiesKey = ItemProperties & {
     __typename: TarkovDevItemType.ItemPropertiesKey;
     uses: number;
-}
+};
 
-export interface ItemPropertiesGrenade {
+export type ItemPropertiesGrenade = ItemProperties & {
     __typename: TarkovDevItemType.ItemPropertiesGrenade;
     type: GrenadeType;
     fuse: number;
@@ -96,17 +141,17 @@ export interface ItemPropertiesGrenade {
     maxExplosionDistance: number;
     fragments: number;
     contusionRadius: number;
-}
+};
 
-export interface ItemPropertiesWeaponMod {
+export type ItemPropertiesWeaponMod = ItemProperties & {
     __typename: TarkovDevItemType.ItemPropertiesWeaponMod;
     ergonomics: number;
     recoilModifier: number;
     accuracyModifier: number;
     slots: ItemSlot[];
-}
+};
 
-export interface ItemPropertiesAmmo {
+export type ItemPropertiesAmmo = ItemProperties & {
     __typename: TarkovDevItemType.ItemPropertiesAmmo;
     caliber: string;
     stackMaxSize: number;
@@ -125,21 +170,21 @@ export interface ItemPropertiesAmmo {
     heavyBleedModifier: number;
     durabilityBurnFactor: number;
     heatFactor: number;
-}
+};
 
 /** We currently ignore weapon presets */
-export interface ItemPropertiesPreset {
+export type ItemPropertiesPreset = ItemProperties & {
     __typename: TarkovDevItemType.ItemPropertiesPreset;
-}
+};
 
-export interface ItemPropertiesBarrel {
+export type ItemPropertiesBarrel = ItemProperties & {
     __typename: TarkovDevItemType.ItemPropertiesBarrel;
     ergonomics: number;
     recoilModifier: number;
     slots: ItemSlot[];
-}
+};
 
-export interface ItemPropertiesMagazine {
+export type ItemPropertiesMagazine = ItemProperties & {
     __typename: TarkovDevItemType.ItemPropertiesMagazine;
     ergonomics: number;
     recoilModifier: number;
@@ -148,24 +193,24 @@ export interface ItemPropertiesMagazine {
     ammoCheckModifier: number;
     malfultionChance: number;
     allowedAmmo: AllowBullet[];
-}
+};
 
-export interface ItemPropertiesFoodDrink {
+export type ItemPropertiesFoodDrink = ItemProperties & {
     __typename: TarkovDevItemType.ItemPropertiesFoodDrink;
     energy: number;
     hydration: number;
     units: number;
     stimEffects: StimEffect[];
-}
+};
 
-export interface ItemPropertiesStim {
+export type ItemPropertiesStim = ItemProperties & {
     __typename: TarkovDevItemType.ItemPropertiesStim;
     useTime: number;
     cures: HealthCure[];
     stimEffects: StimEffect[];
-}
+};
 
-export interface ItemPropertiesMedKit {
+export type ItemPropertiesMedKit = ItemProperties & {
     __typename: TarkovDevItemType.ItemPropertiesMedKit;
     hitpoints: number;
     useTIme: number;
@@ -173,31 +218,31 @@ export interface ItemPropertiesMedKit {
     cures: HealthCure[];
     hpCostLightBleeding: number;
     hpCostHeavyBleeding: number;
-}
+};
 
-export interface ItemPropertiesMedicalItem {
+export type ItemPropertiesMedicalItem = ItemProperties & {
     __typename: TarkovDevItemType.ItemPropertiesMedicalItem;
     uses: number;
     useTime: number;
     cures: HealthCure[];
-}
+};
 
-export interface ItemPropertiesMelee {
+export type ItemPropertiesMelee = ItemProperties & {
     __typename: TarkovDevItemType.ItemPropertiesMelee;
     slashDamage: number;
     stabDamage: number;
     hitRadius: number;
-}
+};
 
-export interface ItemPropertiesNightVision {
+export type ItemPropertiesNightVision = ItemProperties & {
     __typename: TarkovDevItemType.ItemPropertiesNightVision;
     intensity: number;
     noiseIntensity: number;
     noiseScale: number;
     diffuseItensity: number;
-}
+};
 
-export interface ItemPropertiesPainkiller {
+export type ItemPropertiesPainkiller = ItemProperties & {
     __typename: TarkovDevItemType.ItemPropertiesPainkiller;
     uses: number;
     useTime: number;
@@ -205,27 +250,27 @@ export interface ItemPropertiesPainkiller {
     painkillerDuration: number;
     energyImpact: number;
     hydrationImpact: number;
-}
+};
 
-export interface ItemPropertiesScope {
+export type ItemPropertiesScope = ItemProperties & {
     ergonomics: number;
     sightModes: number[];
     sightingRange: number;
     recoilModifier: number;
     slots: ItemSlot[];
     zoomLevels: number[][];
-}
+};
 
-export interface ItemPropertiesSurgicalKit {
+export type ItemPropertiesSurgicalKit = ItemProperties & {
     __typename: TarkovDevItemType.ItemPropertiesSurgicalKit;
     uses: number;
     useTime: number;
     cures: HealthCure[];
     minLimbHealth: number;
     maxLimbHealth: number;
-}
+};
 
-export interface ItemPropertiesHelmet {
+export type ItemPropertiesHelmet = ItemProperties & {
     __typename: TarkovDevItemType.ItemPropertiesHelmet;
     class: number;
     durability: number;
@@ -233,55 +278,69 @@ export interface ItemPropertiesHelmet {
     turnPenalty: number;
     ergoPenalty: number;
     headZones: HeadZone[];
-    material: {
-        name: string;
-    };
+    material: ArmorMaterial;
     deafening: Deafening;
     blocksHeadsets: boolean;
     slots: ItemSlot[];
-}
+};
 
-export interface ItemPropertiesArmor {
+export type ItemPropertiesArmor = ItemProperties & {
     __typename: TarkovDevItemType.ItemPropertiesArmor;
     class: number;
     durability: number;
     speedPenalty: number;
     turnPenalty: number;
     ergoPenalty: number;
-    material: {
-        name: string;
-    };
+    material: ArmorMaterial;
     zones: ArmorZone[];
-}
+};
 
-export interface ItemPropertiesContainer {
+export type ItemPropertiesContainer = ItemProperties & {
     __typename: TarkovDevItemType.ItemPropertiesContainer;
     capacity: number;
     grids: GridSlot[];
-}
+};
 
-export interface ItemPropertiesGlasses {
+export type ItemPropertiesGlasses = ItemProperties & {
     __typename: TarkovDevItemType.ItemPropertiesGlasses;
     class: number;
     durability: number;
     blindnessProtection: number;
     material: null;
-}
+};
 
-interface AllowBullet {
+export type ItemPropertiesChestRig = {
+    __typename: TarkovDevItemType.ItemPropertiesChestRig;
+    class: number | null;
+    durability: number | null;
+    speedPenalty: number | null;
+    turnPenalty: number | null;
+    ergoPenalty: number | null;
+    material: ArmorMaterial | null;
+    zones: ArmorZone[] | null;
+    capacity: number;
+    grids: { width: number; height: number }[];
+};
+
+type ArmorMaterial = {
+    name: string;
+    destructibility: number;
+};
+
+type AllowBullet = {
     properties: {
         caliber: string;
     };
-}
+};
 
-interface GridSlot {
+type GridSlot = {
     width: number;
     height: number;
-}
+};
 
-interface ItemSlot {
+type ItemSlot = {
     name: string;
-}
+};
 
 type StimEffect = {
     type: SkillEffectType;
@@ -296,14 +355,14 @@ type StimEffect = {
     skillName: string;
 };
 
-export interface ItemPrice {
+export type ItemPrice = {
     vendor: Vendor;
     priceRUB: number;
-}
+};
 
-interface Vendor {
+type Vendor = {
     name: string;
-}
+};
 
 type WeaponFireMode = "Single Fire" | "Full Auto" | "Semi-auto" | "Double-Tap" | "Burst fire" | "Double action";
 type GrenadeType = "Grenade" | "Flashbang" | "Smoke" | "Impact Grenade";

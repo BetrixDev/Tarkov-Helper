@@ -6,7 +6,7 @@ import fuse from "fuse.js";
 import { LanguageCode } from "../../../types/common";
 import { AutocompleteInteraction } from "discord.js";
 import logger from "../../logger";
-import { TarkovDevItem } from "../../../types/tarkov.dev/TarkovDevItem";
+import { TarkovDevItem } from "../../typings/TarkovDevItem";
 import { BaseCommand } from "../BaseCommand";
 
 interface EngineParams {
@@ -31,25 +31,22 @@ export class ItemSearchEngine {
         const esValues: EngineParams[] = [];
 
         const itemData: TarkovDevItem[] = Object.values(this.dataService.fetchData("items-tarkov-dev"));
-        const itemProps = this.dataService.fetchData("items-tarkov-changes");
 
-        itemData
-            .filter((i) => itemProps[i.id] !== undefined)
-            .forEach((i) => {
-                const enItem = new Item(i.id, "en");
-                const esItem = new Item(i.id, "es");
+        itemData.forEach((i) => {
+            const enItem = new Item(i.id, "en");
+            const esItem = new Item(i.id, "es");
 
-                enValues.push({
-                    id: enItem.id,
-                    name: enItem.name,
-                    shortName: enItem.shortName
-                });
-                esValues.push({
-                    id: esItem.id,
-                    name: esItem.name,
-                    shortName: esItem.shortName
-                });
+            enValues.push({
+                id: enItem.id,
+                name: enItem.name,
+                shortName: enItem.shortName
             });
+            esValues.push({
+                id: esItem.id,
+                name: esItem.name,
+                shortName: esItem.shortName
+            });
+        });
 
         this.engines["en"] = new fuse(enValues, { keys: ["id", "name", "shortName"] });
         this.engines["es"] = new fuse(esValues, { keys: ["id", "name", "shortName"] });

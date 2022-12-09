@@ -108,9 +108,7 @@ export class Barter {
             },
             {
                 name: t("Flea Market Price"),
-                value: barterReward.props.CanSellOnRagfair
-                    ? formatPrice(barterReward.data.avg24hPrice)
-                    : t("Can't be bought"),
+                value: barterReward.canSellOnFlea ? formatPrice(barterReward.data.avg24hPrice) : t("Can't be bought"),
                 inline: true
             },
             {
