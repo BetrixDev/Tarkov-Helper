@@ -6,6 +6,7 @@ import { LanguageCode } from "../../../types/common";
 import { translation } from "../../lib/util/translation";
 import { injectable } from "tsyringe";
 import { TarkovDataService } from "../../services/TarkovDataService";
+import { getLanguage } from "../../lib/helpers/getLanguage";
 
 const COMMAND_NAME = "status";
 
@@ -21,7 +22,7 @@ export class StatusCommand extends BaseCommand {
         this.handleCommandInteraction(
             interaction,
             new Promise((respond) => {
-                respond(this.command(this.getLanguage(interaction), interaction.locale));
+                respond(this.command(getLanguage(interaction), interaction.locale));
             })
         );
     }

@@ -5,6 +5,7 @@ import { injectable } from "tsyringe";
 import { LanguageCode } from "../../../types/common";
 import { config } from "../../config";
 import { BaseCommand } from "../../lib/BaseCommand";
+import { getLanguage } from "../../lib/helpers/getLanguage";
 import { formatNumber } from "../../lib/util/string";
 import { translation } from "../../lib/util/translation";
 import { TarkovDataService } from "../../services/TarkovDataService";
@@ -45,7 +46,7 @@ export class ExperienceCommand extends BaseCommand {
         this.handleCommandInteraction(
             interaction,
             new Promise((respond) => {
-                respond(this.command(current, end, this.getLanguage(interaction)));
+                respond(this.command(current, end, getLanguage(interaction)));
             })
         );
     }

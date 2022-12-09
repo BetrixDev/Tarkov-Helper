@@ -8,6 +8,7 @@ import { TarkovDataService } from "../../services/TarkovDataService";
 import { Item } from "../../lib/models/Item";
 import { formatPrice } from "../../lib/util/string";
 import { injectable } from "tsyringe";
+import { getLanguage } from "../../lib/helpers/getLanguage";
 
 const COMMAND_NAME = "dogtag";
 // dot tag prices scale linearly with the level
@@ -34,7 +35,7 @@ export class DogtagCommand extends BaseCommand {
         await this.handleCommandInteraction(
             interaction,
             new Promise((respond) => {
-                respond(this.command(level, this.getLanguage(interaction)));
+                respond(this.command(level, getLanguage(interaction)));
             })
         );
     }

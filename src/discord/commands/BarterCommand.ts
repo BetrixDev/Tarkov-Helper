@@ -20,6 +20,7 @@ import { Item } from "../../lib/models/Item";
 import { Barter } from "../../lib/models/Barter";
 import { translation } from "../../lib/util/translation";
 import { formatPrice } from "../../lib/util/string";
+import { getLanguage } from "../../lib/helpers/getLanguage";
 
 const COMMAND_NAME = "barter";
 
@@ -42,7 +43,7 @@ export class BarterCommand extends BaseCommand {
         this.handleCommandInteraction(
             interaction,
             new Promise((resolve) => {
-                resolve(this.command(id, this.getLanguage(interaction)));
+                resolve(this.command(id, getLanguage(interaction)));
             })
         );
     }
@@ -51,7 +52,7 @@ export class BarterCommand extends BaseCommand {
     button(interaction: ButtonInteraction): void {
         const [, action, id, p] = interaction.customId.split("__");
         const page = Number(p);
-        const language = this.getLanguage(interaction);
+        const language = getLanguage(interaction);
 
         if (action === "b") {
             interaction.update(this.command(id, language, page - 1) as InteractionUpdateOptions);
@@ -64,7 +65,7 @@ export class BarterCommand extends BaseCommand {
     button2(interaction: ButtonInteraction) {
         const [_, id] = interaction.customId.split("__");
 
-        interaction.reply({ ...this.command(id, this.getLanguage(interaction)), ephemeral: true });
+        interaction.reply({ ...this.command(id, getLanguage(interaction)), ephemeral: true });
     }
 
     command(id: string, language: LanguageCode, page = 0): InteractionReplyOptions {

@@ -8,6 +8,7 @@ import { Item } from "../../lib/models/Item";
 import { config } from "../../config";
 import { round } from "../../lib/util/math";
 import { formatPrice } from "../../lib/util/string";
+import { getLanguage } from "../../lib/helpers/getLanguage";
 
 const COMMAND_NAME = "bitcoinfarm";
 
@@ -33,7 +34,7 @@ export class BitcoinFarmCommand extends BaseCommand {
         this.handleCommandInteraction(
             interaction,
             new Promise((resolve, reject) => {
-                resolve(this.command(this.getLanguage(interaction), gpus, compare));
+                resolve(this.command(getLanguage(interaction), gpus, compare));
             })
         );
     }

@@ -14,6 +14,7 @@ import { LanguageCode } from "../../../types/common";
 import { translation } from "../../lib/util/translation";
 import { Item } from "../../lib/models/Item";
 import { getItemStats } from "../../lib/helpers/getItemStats";
+import { getLanguage } from "../../lib/helpers/getLanguage";
 const COMMAND_NAME = "stat";
 
 @Discord()
@@ -37,7 +38,7 @@ export class StatCommand extends BaseCommand {
         this.handleCommandInteraction(
             interaction,
             new Promise((resolve, reject) => {
-                resolve(this.command(id, this.getLanguage(interaction)));
+                resolve(this.command(id, getLanguage(interaction)));
             })
         );
     }
@@ -47,7 +48,7 @@ export class StatCommand extends BaseCommand {
         const [_, id] = interaction.customId.split("__");
 
         interaction.reply({
-            ...this.command(id, this.getLanguage(interaction)),
+            ...this.command(id, getLanguage(interaction)),
             ephemeral: true
         });
     }

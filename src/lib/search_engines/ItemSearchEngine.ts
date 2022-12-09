@@ -8,6 +8,7 @@ import { AutocompleteInteraction } from "discord.js";
 import logger from "../../logger";
 import { TarkovDevItem } from "../../typings/TarkovDevItem";
 import { BaseCommand } from "../BaseCommand";
+import { getLanguage } from "../helpers/getLanguage";
 
 interface EngineParams {
     id: string;
@@ -84,7 +85,7 @@ export class ItemSearchEngine {
 
     handleAutoComplete(interaction: AutocompleteInteraction, guard?: (item: Item) => boolean): void {
         const input = interaction.options.getFocused(true).value.toString();
-        const language = new BaseCommand().getLanguage(interaction);
+        const language = getLanguage(interaction);
 
         const results = this.search(input, language, guard);
 

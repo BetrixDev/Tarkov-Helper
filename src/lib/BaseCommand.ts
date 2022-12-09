@@ -133,17 +133,4 @@ export class BaseCommand {
         // the input was either a unique shortname or valid name
         return [true, results[0].id];
     }
-
-    /** Simple macro function for the appropriate language from an interaction */
-    getLanguage(
-        interaction: CommandInteraction | MessageComponentInteraction | ButtonInteraction | AutocompleteInteraction
-    ): LanguageCode {
-        const language = interaction.locale.split("-")[0];
-
-        if (["es", "en"].includes(language)) {
-            return language as LanguageCode;
-        }
-
-        return "en";
-    }
 }

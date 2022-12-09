@@ -15,6 +15,7 @@ import { TarkovDataService } from "../../services/TarkovDataService";
 import { MapImageData } from "../../../types/services/TarkovDataService";
 import { injectable } from "tsyringe";
 import { round } from "../../lib/util/math";
+import { getLanguage } from "../../lib/helpers/getLanguage";
 
 const COMMAND_NAME = "map";
 
@@ -35,7 +36,7 @@ export class MapCommand extends BaseCommand {
         this.handleCommandInteraction(
             interaction,
             new Promise((respond) => {
-                respond(this.command(map, this.getLanguage(interaction)));
+                respond(this.command(map, getLanguage(interaction)));
             })
         );
     }

@@ -6,6 +6,7 @@ import { LanguageCode } from "../../../types/common";
 import { Item } from "../../lib/models/Item";
 import { translation } from "../../lib/util/translation";
 import { config } from "../../config";
+import { getLanguage } from "../../lib/helpers/getLanguage";
 
 const COMMAND_NAME = "exchangerate";
 
@@ -68,7 +69,7 @@ export class ExchangeRateCommand extends BaseCommand {
         this.handleCommandInteraction(
             interaction,
             new Promise((resolve, reject) => {
-                resolve(this.command(currency, amount, this.getLanguage(interaction)));
+                resolve(this.command(currency, amount, getLanguage(interaction)));
             })
         );
     }

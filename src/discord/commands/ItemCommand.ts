@@ -23,6 +23,7 @@ import { TaskObjective } from "../../../types/tarkov.dev/TarkovDevTask";
 import { ButtonBuilder } from "discord.js";
 import { TarkovDataService } from "../../services/TarkovDataService";
 import logger from "../../logger";
+import { getLanguage } from "../../lib/helpers/getLanguage";
 
 const COMMAND_NAME = "item";
 const NAMESPACE = "ItemCommand";
@@ -54,7 +55,7 @@ export class ItemCommand extends BaseCommand {
         this.handleCommandInteraction(
             interaction,
             new Promise((resolve, reject) => {
-                resolve(this.command(id, this.getLanguage(interaction)));
+                resolve(this.command(id, getLanguage(interaction)));
             })
         );
     }
@@ -63,8 +64,8 @@ export class ItemCommand extends BaseCommand {
     locations(interaction: ButtonInteraction) {
         const id = interaction.customId.split("__")[1];
 
-        const t = translation(this.getLanguage(interaction));
-        const item = new Item(id, this.getLanguage(interaction));
+        const t = translation(getLanguage(interaction));
+        const item = new Item(id, getLanguage(interaction));
         const locations = this.dataService.fetchData("itemLocations");
 
         if (locations[id] === undefined) {

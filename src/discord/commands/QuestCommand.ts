@@ -18,6 +18,7 @@ import { TarkovDataService } from "../../services/TarkovDataService";
 import { translation } from "../../lib/util/translation";
 import { Quest } from "../../lib/models/Quest";
 import { config } from "../../config";
+import { getLanguage } from "../../lib/helpers/getLanguage";
 
 const COMMAND_NAME = "quest";
 
@@ -45,7 +46,7 @@ export class QuestCommand extends BaseCommand {
         this.handleCommandInteraction(
             interaction,
             new Promise((resolve) => {
-                resolve(this.command(id, this.getLanguage(interaction)));
+                resolve(this.command(id, getLanguage(interaction)));
             })
         );
     }

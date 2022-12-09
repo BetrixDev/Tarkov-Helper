@@ -10,6 +10,7 @@ import { config } from "../../config";
 import { Trader } from "../../lib/models/Trader";
 import dayjs from "dayjs";
 import { capitalizeWords } from "../../lib/util/string";
+import { getLanguage } from "../../lib/helpers/getLanguage";
 
 const COMMAND_NAME = "restocks";
 
@@ -25,7 +26,7 @@ export class RestocksCommand extends BaseCommand {
         this.handleCommandInteraction(
             interaction,
             new Promise((resolve) => {
-                resolve(this.command(this.getLanguage(interaction)));
+                resolve(this.command(getLanguage(interaction)));
             })
         );
     }

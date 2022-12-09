@@ -5,8 +5,8 @@ import logger from "../../logger";
 import { LanguageCode } from "../../../types/common";
 import { Quest } from "../models/Quest";
 import { AutocompleteInteraction } from "discord.js";
-import { BaseCommand } from "../BaseCommand";
 import { TarkovLocaleService } from "../../services/TarkovLocaleService";
+import { getLanguage } from "../helpers/getLanguage";
 
 interface EngineParams {
     id: number;
@@ -72,7 +72,7 @@ export class QuestSearchEngine {
 
     handleAutoComplete(interaction: AutocompleteInteraction, guard?: (quest: Quest) => boolean): void {
         const input = interaction.options.getFocused(true).value.toString();
-        const language = new BaseCommand().getLanguage(interaction);
+        const language = getLanguage(interaction);
 
         const results = this.search(input, language, guard);
 
