@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { injectable, singleton } from "tsyringe";
-import { LanguageCode } from "../../types/common";
+import { LanguageCode } from "../typings/common";
 import { TarkovDataService } from "./TarkovDataService";
 
 @singleton()

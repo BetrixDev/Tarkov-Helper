@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { Discord, Slash, SlashOption } from "discordx";
 import { BaseCommand } from "../../lib/BaseCommand";
 import { ApplicationCommandOptionType, CommandInteraction, InteractionReplyOptions } from "discord.js";
-import { LanguageCode } from "../../../types/common";
+import { LanguageCode } from "../../typings/common";
 import { translation } from "../../lib/util/translation";
 import { Item } from "../../lib/models/Item";
 import { config } from "../../config";

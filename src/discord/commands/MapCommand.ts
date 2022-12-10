@@ -1,7 +1,7 @@
 import { ButtonComponent, Discord, Slash, SlashChoice, SlashOption } from "discordx";
 import "reflect-metadata";
 import { BaseCommand } from "../../lib/BaseCommand";
-import { LanguageCode } from "../../../types/common";
+import { LanguageCode } from "../../typings/common";
 import {
     InteractionReplyOptions,
     CommandInteraction,
@@ -12,7 +12,7 @@ import {
 import { MAP_METADATA, MapID, Location } from "../../lib/models/Location";
 import { translation } from "../../lib/util/translation";
 import { TarkovDataService } from "../../services/TarkovDataService";
-import { MapImageData } from "../../../types/services/TarkovDataService";
+import { MapImageData } from "../../typings/services/TarkovDataService";
 import { injectable } from "tsyringe";
 import { round } from "../../lib/util/math";
 import { getLanguage } from "../../lib/helpers/getLanguage";

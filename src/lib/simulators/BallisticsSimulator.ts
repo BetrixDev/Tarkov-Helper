@@ -3,7 +3,7 @@ import { Item } from "../models/Item";
 import { container } from "tsyringe";
 import { TarkovDataService } from "../../services/TarkovDataService";
 import { clamp, random } from "../util/math";
-import { ItemPropertiesAmmo, ItemPropertiesArmor } from "../../typings/TarkovDevItem";
+import { ItemPropertiesAmmo, ItemPropertiesArmor } from "../../typings/tarkov.dev/TarkovDevItem";
 
 interface Result {
     chance: number;

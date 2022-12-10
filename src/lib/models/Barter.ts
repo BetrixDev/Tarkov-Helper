@@ -1,9 +1,9 @@
 import "reflect-metadata";
-import { LanguageCode } from "../../../types/common";
+import { LanguageCode } from "../../typings/common";
 import { container } from "tsyringe";
 import { TarkovDataService } from "../../services/TarkovDataService";
 import { Item } from "./Item";
-import { TarkovDevBarter } from "../../../types/tarkov.dev/TarkovDevBarter";
+import { TarkovDevBarter } from "../../typings/tarkov.dev/TarkovDevBarter";
 import { Embed, EmbedField } from "discord.js";
 import { translation } from "../util/translation";
 import { formatPrice } from "../util/string";

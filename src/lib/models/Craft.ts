@@ -1,8 +1,8 @@
 import "reflect-metadata";
 import { container } from "tsyringe";
-import { LanguageCode } from "../../../types/common";
+import { LanguageCode } from "../../typings/common";
 import { TarkovDataService } from "../../services/TarkovDataService";
-import { HideoutStations, TarkovDevCraft } from "../../../types/services/TarkovDataService";
+import { HideoutStations, TarkovDevCraft } from "../../typings/services/TarkovDataService";
 import { Item } from "./Item";
 
 // Similar setup to the Barter class

@@ -11,7 +11,7 @@ import {
 } from "discord.js";
 import { Discord, Slash, SlashOption, ButtonComponent } from "discordx";
 import { container, injectable } from "tsyringe";
-import { LanguageCode } from "../../../types/common";
+import { LanguageCode } from "../../typings/common";
 import { BaseCommand } from "../../lib/BaseCommand";
 import { QuestSearchEngine } from "../../lib/search_engines/QuestSearchEngine";
 import { TarkovDataService } from "../../services/TarkovDataService";

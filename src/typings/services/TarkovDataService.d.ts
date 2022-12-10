@@ -3,7 +3,7 @@ import { Globals } from "../game/Globals";
 import { GameBot } from "../game/GameBot";
 import { GameMap } from "../game/GameMap";
 import { TarkovDevTask } from "../tarkov.dev/TarkovDevTask";
-import { TarkovDevItem } from "../../src/typings/TarkovDevItem";
+import { TarkovDevItem } from "../tarkov.dev/TarkovDevItem";
 import { TarkovDevBarter } from "../tarkov.dev/TarkovDevBarter";
 import { GameQuest } from "../game/GameQuest";
 

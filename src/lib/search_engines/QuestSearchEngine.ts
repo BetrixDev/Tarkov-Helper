@@ -2,7 +2,7 @@ import fuse from "fuse.js";
 import { singleton } from "tsyringe";
 import { TarkovDataService } from "../../services/TarkovDataService";
 import logger from "../../logger";
-import { LanguageCode } from "../../../types/common";
+import { LanguageCode } from "../../typings/common";
 import { Quest } from "../models/Quest";
 import { AutocompleteInteraction } from "discord.js";
 import { TarkovLocaleService } from "../../services/TarkovLocaleService";

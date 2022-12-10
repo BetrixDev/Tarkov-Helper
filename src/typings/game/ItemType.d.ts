@@ -103,4 +103,4 @@ export type ItemType =
     | "Info"
     | "Key"
     | "FoodDrink"
-    | "Meds"
+    | "Meds";

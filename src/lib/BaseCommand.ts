@@ -13,8 +13,8 @@ import { readJson } from "./util/files";
 import { ApplicationCommandOptions, SlashOptionOptions } from "discordx";
 import { container } from "tsyringe";
 import { TarkovDataService } from "../services/TarkovDataService";
-import { TarkovDevItem } from "../typings/TarkovDevItem";
-import { LanguageCode } from "../../types/common";
+import { TarkovDevItem } from "../typings/tarkov.dev/TarkovDevItem";
+import { LanguageCode } from "../typings/common";
 import logger from "../logger";
 import { AutocompleteInteraction } from "discord.js";
 

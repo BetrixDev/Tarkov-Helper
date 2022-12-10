@@ -11,10 +11,10 @@ import {
     ItemPropertiesContainer,
     ItemPropertiesBackpack,
     ItemPropertiesGrenade
-} from "../../typings/TarkovDevItem";
+} from "../../typings/tarkov.dev/TarkovDevItem";
 import { round } from "../util/math";
 import { BallisticsCalculator } from "../simulators/BallisticsSimulator";
-import { ItemPropertiesMagazine } from "../../typings/TarkovDevItem";
+import { ItemPropertiesMagazine } from "../../typings/tarkov.dev/TarkovDevItem";
 
 // 🍝 spaghetti 🍝
 

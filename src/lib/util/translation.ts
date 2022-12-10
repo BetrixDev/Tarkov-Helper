@@ -1,4 +1,4 @@
-import { LanguageCode } from "../../../types/common";
+import { LanguageCode } from "../../typings/common";
 import { readJson } from "./files";
 import { readdirSync } from "fs";
 

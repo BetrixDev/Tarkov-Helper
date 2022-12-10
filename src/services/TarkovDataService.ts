@@ -1,12 +1,12 @@
 import "reflect-metadata";
 import axios from "axios";
 import { injectable, singleton } from "tsyringe";
-import { ApiResponses, DataResponses } from "../../types/services/TarkovDataService";
+import { ApiResponses, DataResponses } from "../typings/services/TarkovDataService";
 import { scheduleJob } from "node-schedule";
 import { config } from "../config";
 import { existsSync } from "fs";
 import { readJson } from "../lib/util/files";
-import { TarkovDevItem } from "../typings/TarkovDevItem";
+import { TarkovDevItem } from "../typings/tarkov.dev/TarkovDevItem";
 import logger from "../logger";
 
 // This file attempts to make the data collection layer as easy as possible by abstracting the data querying behind simple functions

@@ -1,9 +1,9 @@
 import "reflect-metadata";
-import { LanguageCode } from "../../../types/common";
+import { LanguageCode } from "../../typings/common";
 import { container } from "tsyringe";
 import { TarkovDataService } from "../../services/TarkovDataService";
-import { TaskRewards, TarkovDevTask, TaskObjective } from "../../../types/tarkov.dev/TarkovDevTask";
-import { GuideImages } from "../../../types/services/TarkovDataService";
+import { TaskRewards, TarkovDevTask, TaskObjective } from "../../typings/tarkov.dev/TarkovDevTask";
+import { GuideImages } from "../../typings/services/TarkovDataService";
 import { Trader } from "./Trader";
 import { Item } from "./Item";
 import { TarkovLocaleService } from "../../services/TarkovLocaleService";

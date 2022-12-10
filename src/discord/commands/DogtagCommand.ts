@@ -3,7 +3,7 @@ import { Discord, Slash, SlashOption } from "discordx";
 import { ApplicationCommandOptionType, CommandInteraction, InteractionReplyOptions } from "discord.js";
 import { BaseCommand } from "../../lib/BaseCommand";
 import { translation } from "../../lib/util/translation";
-import { LanguageCode } from "../../../types/common";
+import { LanguageCode } from "../../typings/common";
 import { TarkovDataService } from "../../services/TarkovDataService";
 import { Item } from "../../lib/models/Item";
 import { formatPrice } from "../../lib/util/string";

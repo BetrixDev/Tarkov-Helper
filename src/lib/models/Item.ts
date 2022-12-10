@@ -1,8 +1,8 @@
 import "reflect-metadata";
-import { LanguageCode } from "../../../types/common";
+import { LanguageCode } from "../../typings/common";
 import { container } from "tsyringe";
 import { TarkovDataService } from "../../services/TarkovDataService";
-import { ItemProps } from "../../../types/game/ItemProps";
+import { ItemProps } from "../../typings/game/ItemProps";
 import { calculateFleaFee } from "../util/math";
 import {
     ItemPrice,
@@ -10,7 +10,7 @@ import {
     TarkovDevBasicType,
     TarkovDevItemType,
     TarkovDevItemProperties
-} from "../../typings/TarkovDevItem";
+} from "../../typings/tarkov.dev/TarkovDevItem";
 import { TarkovLocaleService } from "../../services/TarkovLocaleService";
 
 interface FleaMarketPrice extends ItemPrice {

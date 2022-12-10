@@ -2,7 +2,7 @@ import { ApplicationCommandOptionType, CommandInteraction, InteractionReplyOptio
 import { Discord, Slash, SlashOption } from "discordx";
 import "reflect-metadata";
 import { injectable } from "tsyringe";
-import { LanguageCode } from "../../../types/common";
+import { LanguageCode } from "../../typings/common";
 import { config } from "../../config";
 import { BaseCommand } from "../../lib/BaseCommand";
 import { getLanguage } from "../../lib/helpers/getLanguage";

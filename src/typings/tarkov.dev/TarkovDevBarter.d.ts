@@ -1,4 +1,4 @@
-import { VendorName } from "../../src/typings/TarkovDevItem";
+import { VendorName } from "./TarkovDevItem";
 
 export interface TarkovDevBarter {
     id: string;

@@ -10,7 +10,7 @@ import {
 } from "discord.js";
 import { container } from "tsyringe";
 import { ItemSearchEngine } from "../../lib/search_engines/ItemSearchEngine";
-import { LanguageCode } from "../../../types/common";
+import { LanguageCode } from "../../typings/common";
 import { translation } from "../../lib/util/translation";
 import { Item } from "../../lib/models/Item";
 import { getItemStats } from "../../lib/helpers/getItemStats";

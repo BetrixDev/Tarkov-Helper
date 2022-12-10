@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { LanguageCode } from "../../../types/common";
+import { LanguageCode } from "../../typings/common";
 import { container } from "tsyringe";
 import { TarkovDataService } from "../../services/TarkovDataService";
 import { TarkovLocaleService } from "../../services/TarkovLocaleService";

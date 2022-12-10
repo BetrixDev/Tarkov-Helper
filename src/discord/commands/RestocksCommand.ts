@@ -4,7 +4,7 @@ import { BaseCommand } from "../../lib/BaseCommand";
 import { autoInjectable, inject, injectable } from "tsyringe";
 import { TarkovDataService } from "../../services/TarkovDataService";
 import { CommandInteraction, InteractionReplyOptions } from "discord.js";
-import { LanguageCode } from "../../../types/common";
+import { LanguageCode } from "../../typings/common";
 import { translation } from "../../lib/util/translation";
 import { config } from "../../config";
 import { Trader } from "../../lib/models/Trader";

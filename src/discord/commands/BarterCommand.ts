@@ -13,7 +13,7 @@ import {
     ButtonStyle
 } from "discord.js";
 import { BaseCommand } from "../../lib/BaseCommand";
-import { LanguageCode } from "../../../types/common";
+import { LanguageCode } from "../../typings/common";
 import { container } from "tsyringe";
 import { ItemSearchEngine } from "../../lib/search_engines/ItemSearchEngine";
 import { Item } from "../../lib/models/Item";

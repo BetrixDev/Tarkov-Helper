@@ -4,7 +4,7 @@ import {
     ButtonInteraction,
     AutocompleteInteraction
 } from "discord.js";
-import { LanguageCode } from "../../../types/common";
+import { LanguageCode } from "../../typings/common";
 
 export const getLanguage = (
     interaction: CommandInteraction | MessageComponentInteraction | ButtonInteraction | AutocompleteInteraction
