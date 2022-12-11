@@ -42,7 +42,7 @@ export class Item<T extends TarkovDevItemProperties = TarkovDevItemProperties> {
         const localeService = container.resolve(TarkovLocaleService);
 
         const locales = localeService.getItemLocale(id, language);
-        const itemData = dataService.fetchData("items-tarkov-dev")[id];
+        const itemData = dataService.fetchData("items")[id];
 
         this.id = id;
         // fallback to default english names if there isn't an entry in the locales data

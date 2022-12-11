@@ -30,7 +30,7 @@ export class ItemSearchEngine {
         const enValues: EngineParams[] = [];
         const esValues: EngineParams[] = [];
 
-        const itemData: TarkovDevItem[] = Object.values(this.dataService.fetchData("items-tarkov-dev"));
+        const itemData: TarkovDevItem[] = Object.values(this.dataService.fetchData("items"));
 
         itemData.forEach((i) => {
             const enItem = new Item(i.id, "en");

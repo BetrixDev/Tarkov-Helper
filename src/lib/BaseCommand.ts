@@ -103,7 +103,7 @@ export class BaseCommand {
     }
 
     validateItemInput(input: string): [success: true, output: string] | [success: false] {
-        const items = container.resolve(TarkovDataService).fetchData("items-tarkov-dev");
+        const items = container.resolve(TarkovDataService).fetchData("items");
 
         if (items[input]) {
             // the input was a valid item id

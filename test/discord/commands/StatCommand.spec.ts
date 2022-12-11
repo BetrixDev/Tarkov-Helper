@@ -12,7 +12,7 @@ describe("Item command tests", () => {
     });
 
     test("Test stat command against every item in the game", () => {
-        const data = dataService.fetchData("items-tarkov-dev");
+        const data = dataService.fetchData("items");
 
         Object.values(data).forEach((item) => {
             if (item.types.includes("preset")) return;

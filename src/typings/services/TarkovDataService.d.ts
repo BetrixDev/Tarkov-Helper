@@ -10,13 +10,13 @@ import { GameQuest } from "../game/GameQuest";
 /** Some of api the data gets formatted to better fit our needs right of the bot */
 export interface DataResponses extends ApiResponses {
     // tarkov dev
-    "items-tarkov-dev": Record<string, TarkovDevItem>;
+    items: Record<string, TarkovDevItem>;
 }
 
 /** Type definitions for the responses of all apis we call */
 export interface ApiResponses {
     // tarkov dev
-    "items-tarkov-dev": TarkovDevItem[];
+    items: TarkovDevItem[];
     barters: TarkovDevBarter[];
     hideoutStations: HideoutStations[];
     traders: Trader[];

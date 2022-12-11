@@ -16,7 +16,7 @@ import { readFromBucketJSON } from "../lib/s3";
 const NAMESPACE = "TarkovDataService";
 
 const TARKOV_DEV_QUERIES: Record<string, string> = {
-    "items-tarkov-dev": `
+    items: `
     {
         items {
           id
@@ -530,7 +530,7 @@ const CONFIGS = {
     TARKOV_DEV_CONFIG: {
         type: "GRAPHQL",
         url: "https://api.tarkov.dev/graphql",
-        endpoints: ["items-tarkov-dev", "barters", "hideoutStations", "traders", "status", "crafts", "tasks"],
+        endpoints: ["items", "barters", "hideoutStations", "traders", "status", "crafts", "tasks"],
         queries: TARKOV_DEV_QUERIES
     },
     TARKOV_DATA_CONFIG: {
@@ -626,8 +626,8 @@ export class TarkovDataService {
                         try {
                             this.resolveEndpoint(endpoint)().then((data) => {
                                 // clean up some of the responses
-                                if (endpoint === "items-tarkov-dev") {
-                                    const rawData = data as ApiResponses["items-tarkov-dev"];
+                                if (endpoint === "items") {
+                                    const rawData = data as ApiResponses["items"];
 
                                     data = rawData.reduce<Record<string, TarkovDevItem>>((prev, curr) => {
                                         return { ...prev, [curr.id]: curr };
