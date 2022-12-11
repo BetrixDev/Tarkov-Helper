@@ -295,12 +295,12 @@ const itemFields: ItemField[] = [
 ];
 
 const getItemImage = (item: Item) => {
-    const dbURL = config.env.databaseURL;
+    const imgURL = config.env.imageURL;
 
     switch (item.type) {
         case ItemType.ItemPropertiesNightVision:
-            return `${dbURL}/images/nvg_ingame/${item.id}.png`;
+            return `${imgURL}/nvg_ingame/${item.id}.png`;
         case ItemType.ItemPropertiesChestRig:
-            return `${dbURL}/images/rig_images/${item.id}.png`;
+            return `${imgURL}/rig_images/${item.id}.png`;
     }
 };

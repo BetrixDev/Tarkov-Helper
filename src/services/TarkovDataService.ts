@@ -8,6 +8,7 @@ import { existsSync } from "fs";
 import { readJson } from "../lib/files";
 import { TarkovDevItem } from "../typings/tarkov.dev/TarkovDevItem";
 import logger from "../logger";
+import { readFromBucketJSON } from "../lib/s3";
 
 // This file attempts to make the data collection layer as easy as possible by abstracting the data querying behind simple functions
 // don't look too closely or you might be able to taste the spaghetti
@@ -519,7 +520,11 @@ interface GraphQLApiData {
     queries: Record<string, string>;
 }
 
-type ApiData = RestApiData | GraphQLApiData;
+interface S3ApiData {
+    type: "S3";
+}
+
+type ApiData = RestApiData | GraphQLApiData | S3ApiData;
 
 const CONFIGS = {
     TARKOV_DEV_CONFIG: {
@@ -699,6 +704,10 @@ export class TarkovDataService {
                 });
 
                 return response.data["data"][endpoint];
+            };
+        } else if (apiConfig.type === "S3") {
+            return async () => {
+                return await readFromBucketJSON(`${endpoint}.json`);
             };
         } else {
             return async () => {

@@ -89,7 +89,7 @@ export class QuestCommand extends BaseCommand {
                         `
                     )
                     .setThumbnail(quest.imageURL ?? null)
-                    .setImage(`${config.env.databaseURL}/images/quests/${id}.png`)
+                    .setImage(`${config.env.imageURL}/quests/${id}.png`)
             ],
             components: [new ActionRowBuilder<ButtonBuilder>().addComponents(buttons)]
         };

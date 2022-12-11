@@ -1,12 +1,12 @@
 import { HexColorString } from "discord.js";
 import { env } from "./env";
 
-const databaseURL = env.DATABASE_URL;
+const imageURL = `https://${env.S3_NAME}.${env.S3_ENDPOINT}/images`;
 
 export const config = {
     env: {
         botToken: env.BOT_TOKEN,
-        databaseURL,
+        imageURL: imageURL,
         topGGToken: env.TOPGG_TOKEN
     },
     process: {
@@ -20,22 +20,22 @@ export const config = {
         altColor: "#ddcc4c" as HexColorString,
         errorColor: "#ff2424" as HexColorString,
         images: {
-            search: `${databaseURL}/images/assets/SearchLogo.png`,
-            error: `${databaseURL}/images/assets/ErrorLogo.png`,
-            map: `${databaseURL}/images/assets/MapLogo.png`,
-            bitcoinFarm: `${databaseURL}/images/assets/BitcoinFarmLogo.png`,
-            settings: `${databaseURL}/images/assets/SettingsLogo.png`,
-            experience: `${databaseURL}/images/assets/ExperienceLogo.png`,
-            pricePerSlot: `${databaseURL}/images/assets/PricePerSlotLogo.png`,
-            question: `${databaseURL}/images/assets/QuestionLogo.png`,
-            exchangeRate: `${databaseURL}/images/assets/ExchangeLogo.png`,
-            roulette: `${databaseURL}/images/assets/RouletteLogo.png`,
-            status: `${databaseURL}/images/assets/StatusLogo.png`,
-            trader: `${databaseURL}/images/assets/TraderLogo.png`,
-            logo250: `${databaseURL}/images/assets/Logo250x250.png`,
-            secondBanner: `${databaseURL}/images/assets/SecondBanner3000x1000.png`,
-            slashBanner: `${databaseURL}/images/assets/Media/SlashCommand.png`,
-            author: `${databaseURL}/images/assets/Logo50x50SmallText.png`
+            search: `${imageURL}/assets/SearchLogo.png`,
+            error: `${imageURL}/assets/ErrorLogo.png`,
+            map: `${imageURL}/assets/MapLogo.png`,
+            bitcoinFarm: `${imageURL}/assets/BitcoinFarmLogo.png`,
+            settings: `${imageURL}/assets/SettingsLogo.png`,
+            experience: `${imageURL}/assets/ExperienceLogo.png`,
+            pricePerSlot: `${imageURL}/assets/PricePerSlotLogo.png`,
+            question: `${imageURL}/assets/QuestionLogo.png`,
+            exchangeRate: `${imageURL}/assets/ExchangeLogo.png`,
+            roulette: `${imageURL}/assets/RouletteLogo.png`,
+            status: `${imageURL}/assets/StatusLogo.png`,
+            trader: `${imageURL}/assets/TraderLogo.png`,
+            logo250: `${imageURL}/assets/Logo250x250.png`,
+            secondBanner: `${imageURL}/assets/SecondBanner3000x1000.png`,
+            slashBanner: `${imageURL}/assets/Media/SlashCommand.png`,
+            author: `${imageURL}/assets/Logo50x50SmallText.png`
         }
     }
 };

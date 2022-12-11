@@ -13,8 +13,14 @@ const ENVIROMENT = z.object({
     BOT_TOKEN: z.string(),
     /** Optional token provided to top.gg to upload your bots stats to their website */
     TOPGG_TOKEN: z.string().optional(),
-    /** Provided */
-    DATABASE_URL: z.string().url()
+    /** S3 Configuration */
+    S3_ENDPOINT: z.string(),
+    /** S3 Configuration */
+    S3_KEY: z.string(),
+    /** S3 Configuration */
+    S3_SECRET: z.string(),
+    /** S3 Configuration */
+    S3_NAME: z.string()
 });
 
 const parsed = ENVIROMENT.safeParse(process.env);
