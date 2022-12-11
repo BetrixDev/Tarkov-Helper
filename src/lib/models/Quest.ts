@@ -53,7 +53,7 @@ export class Quest {
         const locales = this.localeService.getQuestLocale(taskData.id, language);
 
         this.name = locales.name;
-        this.trader = new Trader(taskData.trader.name, language);
+        this.trader = new Trader(taskData.trader.id, language);
         this.mainMap = taskData.map?.name;
         this.objectives = taskData.objectives;
         this.wikiLink = taskData.wikiLink;

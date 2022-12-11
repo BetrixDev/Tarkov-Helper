@@ -1,5 +1,3 @@
-import { VendorName } from "./TarkovDevItem";
-
 export interface TarkovDevBarter {
     id: string;
     trader: Trader;
@@ -26,5 +24,5 @@ export interface Item {
 }
 
 export interface Trader {
-    name: VendorName;
+    id: string;
 }

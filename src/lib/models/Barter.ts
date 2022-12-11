@@ -7,6 +7,7 @@ import { TarkovDevBarter } from "../../typings/tarkov.dev/TarkovDevBarter";
 import { EmbedField } from "discord.js";
 import { translation } from "../language";
 import { formatPrice } from "../string";
+import { Trader } from "./Trader";
 
 interface TraderData {
     name: string;
@@ -50,7 +51,7 @@ export class Barter {
         }, 0);
 
         this.traderData = {
-            name: barterData.trader.name,
+            name: new Trader(barterData.trader.id, language).name,
             level: barterData.level
         };
 

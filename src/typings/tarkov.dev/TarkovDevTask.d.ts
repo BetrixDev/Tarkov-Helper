@@ -3,7 +3,7 @@ export interface TarkovDevTask {
     tarkovDataId: number;
     name: string;
     trader: Trader;
-    map: Trader | null;
+    map: { name: string };
     experience: number;
     wikiLink: string;
     minPlayerLevel: number | null;
@@ -37,7 +37,7 @@ export interface OfferUnlock {
 }
 
 export interface Trader {
-    name: string;
+    id: string;
 }
 
 export interface TaskObjective {

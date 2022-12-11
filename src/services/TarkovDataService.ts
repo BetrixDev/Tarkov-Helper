@@ -291,7 +291,7 @@ const TARKOV_DEV_QUERIES: Record<string, string> = {
         barters {
             id
             trader {
-                name
+                id
             }
             level
             requiredItems {
@@ -352,7 +352,7 @@ const TARKOV_DEV_QUERIES: Record<string, string> = {
     traders: `
         {
             traders {
-                name
+                id
                 resetTime
             }
         }
@@ -417,7 +417,7 @@ const TARKOV_DEV_QUERIES: Record<string, string> = {
           tarkovDataId
           name
           trader {
-            name
+            id
           }
           map {
             name
@@ -434,7 +434,7 @@ const TARKOV_DEV_QUERIES: Record<string, string> = {
           traderLevelRequirements {
             id
             trader {
-              name
+              id
             }
             level
           }
@@ -466,7 +466,7 @@ const TARKOV_DEV_QUERIES: Record<string, string> = {
             }
             offerUnlock {
               trader {
-                name
+                id
               }
               level
               item {
@@ -475,7 +475,7 @@ const TARKOV_DEV_QUERIES: Record<string, string> = {
               }
             }
             traderUnlock {
-              name
+              id
             }
           }
           finishRewards {
@@ -488,7 +488,7 @@ const TARKOV_DEV_QUERIES: Record<string, string> = {
             }
             offerUnlock {
               trader {
-                name
+                id
               }
               level
               item {
@@ -497,7 +497,7 @@ const TARKOV_DEV_QUERIES: Record<string, string> = {
               }
             }
             traderUnlock {
-              name
+              id
             }
           }
         }
