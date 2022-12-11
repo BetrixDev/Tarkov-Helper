@@ -1,5 +1,6 @@
 import { z } from "zod";
 import dotenv from "dotenv";
+import logger from "./logger";
 
 dotenv.config();
 
@@ -19,7 +20,7 @@ const ENVIROMENT = z.object({
 const parsed = ENVIROMENT.safeParse(process.env);
 
 if (!parsed.success) {
-    parsed.error.errors.forEach((e) => console.error(e.code, e.path));
+    parsed.error.errors.forEach((e) => logger.error("ENV", `${e.message} @ ${e.path} > ${e.code}`));
     throw new Error(`Enviroment variables appear to be malformed`);
 }
 
