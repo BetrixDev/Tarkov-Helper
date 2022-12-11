@@ -4,7 +4,6 @@ import { Item } from "./models/Item";
 import { TranslationFunction } from "./language";
 import {
     CombinedItemProps,
-    ItemPropertiesArmor,
     ItemPropertiesChestRig,
     ItemPropertiesWeapon,
     TarkovDevItemType as ItemType,

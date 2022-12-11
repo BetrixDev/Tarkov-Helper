@@ -1,5 +1,5 @@
-import { ButtonComponent, Discord, Slash, SlashChoice, SlashOption } from "discordx";
 import "reflect-metadata";
+import { ButtonComponent, Discord, Slash, SlashChoice, SlashOption } from "discordx";
 import { BaseCommand } from "../../lib/BaseCommand";
 import { LanguageCode } from "../../typings/common";
 import {

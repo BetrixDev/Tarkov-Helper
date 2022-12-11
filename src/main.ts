@@ -3,7 +3,7 @@ import { Client, DIService, tsyringeDependencyRegistryEngine } from "discordx";
 import { IntentsBitField } from "discord.js";
 import { importx } from "@discordx/importer";
 import dotenv from "dotenv";
-import { container, Lifecycle } from "tsyringe";
+import { container } from "tsyringe";
 import { config } from "./config";
 import { TarkovDataService } from "./services/TarkovDataService";
 import { ItemSearchEngine } from "./lib/search_engines/ItemSearchEngine";
@@ -11,7 +11,6 @@ import { QuestSearchEngine } from "./lib/search_engines/QuestSearchEngine";
 import { rateLimiterGuard } from "./discord/guards/rateLimiterGuard";
 import logger from "./logger";
 import AutoPoster from "topgg-autoposter";
-import { env } from "./env";
 
 dotenv.config();
 
