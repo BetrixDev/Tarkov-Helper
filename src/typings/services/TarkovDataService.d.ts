@@ -23,6 +23,7 @@ export interface ApiResponses {
     status: Status;
     crafts: TarkovDevCraft[];
     tasks: TarkovDevTask[];
+    maps: TarkovDevMap[];
 
     // tarkov data
     quests: TarkovDataQuest[];
@@ -39,15 +40,6 @@ export interface ApiResponses {
     globals: Globals;
     "locales/global/en": Record<string, string>;
     "locales/global/es": Record<string, string>;
-    "locations/bigmap/base": GameMap;
-    "locations/factory4_day/base": GameMap;
-    "locations/factory4_night/base": GameMap;
-    "locations/interchange/base": GameMap;
-    "locations/laboratory/base": GameMap;
-    "locations/lighthouse/base": GameMap;
-    "locations/rezervbase/base": GameMap;
-    "locations/shoreline/base": GameMap;
-    "locations/woods/base": GameMap;
     "templates/quests": Record<string, any>; // type safe :)
 }
 
@@ -123,7 +115,7 @@ interface Station {
 // traders
 
 export interface Trader {
-    name: string;
+    id: string;
     resetTime: Date;
 }
 

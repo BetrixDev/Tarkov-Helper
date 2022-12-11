@@ -44,4 +44,29 @@ export class TarkovLocaleService {
             description: locales[`${id} Description`]
         };
     }
+
+    getLocationLocale(id: string, lang: LanguageCode = "en") {
+        const locales = this.localized(lang);
+
+        return {
+            name: locales[`${id} Name`],
+            description: locales[`${id} Description`]
+        };
+    }
+
+    getBotName(enName: string, lang: LanguageCode = "en") {
+        if (lang === "en") {
+            return enName;
+        }
+
+        const enLocales = this.localized("en");
+
+        const entry = Object.entries(enLocales).find(([k, v]) => v === enName);
+
+        if (!entry) return enName;
+
+        const locales = this.localized(lang);
+
+        return locales[entry[0]];
+    }
 }

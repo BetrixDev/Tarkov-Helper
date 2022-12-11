@@ -8,6 +8,7 @@ import { CommandInteraction, InteractionReplyOptions } from "discord.js";
 import { LanguageCode } from "../../typings/common";
 import { translation, getLanguage } from "../../lib/language";
 import { config } from "../../config";
+import { Trader } from "../../lib/models/Trader";
 
 const COMMAND_NAME = "restocks";
 
@@ -38,10 +39,12 @@ export class RestocksCommand extends BaseCommand {
                     .setTitle(t("Trader Restock Times"))
                     .setThumbnail(config.bot.images.trader)
                     .setFields(
-                        ...traderData.map((trader) => {
+                        ...traderData.map((t) => {
+                            const trader = new Trader(t.id, language);
+
                             return {
                                 name: trader.name,
-                                value: `<t:${dayjs(trader.resetTime).unix()}:R>`,
+                                value: `<t:${dayjs(t.resetTime).unix()}:R>`,
                                 inline: true
                             };
                         }),

@@ -16,340 +16,339 @@ import { readFromBucketJSON } from "../lib/s3";
 const NAMESPACE = "TarkovDataService";
 
 const TARKOV_DEV_QUERIES: Record<string, string> = {
-    items: `
-    {
-        items {
-          id
-          shortName
-          name
-          image512pxLink
-          types
-          width
-          height
-          wikiLink
-          basePrice
-          avg24hPrice
-          sellFor {
-            vendor {
-              name
-            }
-            priceRUB
-          }
-          buyFor {
-            vendor {
-              name
-            }
-            priceRUB
-          }
-          properties {
-            __typename
-            ... on ItemPropertiesAmmo {
-              caliber
-              stackMaxSize
-              tracer
-              tracerColor
-              ammoType
-              projectileCount
-              damage
-              armorDamage
-              fragmentationChance
-              penetrationPower
-              accuracyModifier
-              recoilModifier
-              initialSpeed
-              lightBleedModifier
-              heavyBleedModifier
-              durabilityBurnFactor
-              heatFactor
-            }
-            ... on ItemPropertiesArmor {
-              class
-              durability
-              speedPenalty
-              turnPenalty
-              ergoPenalty
-              zones
-              material {
-                name
-              }
-            }
-            ... on ItemPropertiesArmorAttachment {
-              class
-              durability
-              speedPenalty
-              turnPenalty
-              ergoPenalty
-              material {
-                destructibility
-                name
-              }
-              headZones
-              blindnessProtection
-            }
-            ... on ItemPropertiesBackpack {
-              capacity
-              grids {
-                width
-                height
-              }
-            }
-            ... on ItemPropertiesBarrel {
-              ergonomics
-              recoilModifier
-              slots {
-                name
-              }
-            }
-            ... on ItemPropertiesChestRig {
-              class
-              durability
-              speedPenalty
-              turnPenalty
-              ergoPenalty
-              zones
-              material {
-                destructibility
-                name
-              }
-              capacity
-              grids {
-                width
-                height
-              }
-            }
-            ... on ItemPropertiesContainer {
-              capacity
-              grids {
-                width
-                height
-              }
-            }
-            ... on ItemPropertiesFoodDrink {
-              energy
-              hydration
-              units
-              stimEffects {
-                type
-                chance
-                delay
-                duration
-                value
-                percent
-                skillName
-              }
-            }
-            ... on ItemPropertiesGlasses {
-              class
-              durability
-              blindnessProtection
-              material {
-                destructibility
-                name
-              }
-            }
-            ... on ItemPropertiesGrenade {
-              type
-              fuse
-              minExplosionDistance
-              maxExplosionDistance
-              fragments
-              contusionRadius
-            }
-            ... on ItemPropertiesHelmet {
-              class
-              durability
-              speedPenalty
-              turnPenalty
-              ergoPenalty
-              headZones
-              material {
-                destructibility
-                name
-              }
-              deafening
-              blocksHeadset
-              slots {
-                name
-              }
-            }
-            ... on ItemPropertiesKey {
-              uses
-            }
-            ... on ItemPropertiesMagazine {
-              ergonomics
-              recoilModifier
-              capacity
-              loadModifier
-              ammoCheckModifier
-              malfunctionChance
-              allowedAmmo {
-                properties {
-                  ... on ItemPropertiesAmmo {
-                    caliber
-                  }
-                }
-              }
-            }
-            ... on ItemPropertiesMedicalItem {
-              uses
-              useTime
-              cures
-            }
-            ... on ItemPropertiesMelee {
-              slashDamage
-              stabDamage
-              hitRadius
-            }
-            ... on ItemPropertiesMedKit {
-              hitpoints
-              useTime
-              maxHealPerUse
-              cures
-              hpCostLightBleeding
-              hpCostHeavyBleeding
-            }
-            ... on ItemPropertiesNightVision {
-              intensity
-              noiseIntensity
-              noiseScale
-              diffuseIntensity
-            }
-            ... on ItemPropertiesPainkiller {
-              uses
-              useTime
-              cures
-              painkillerDuration
-              energyImpact
-            hydrationImpact
-            }
-            ... on ItemPropertiesScope {
-              ergonomics
-              sightModes
-              sightingRange
-              recoilModifier
-              slots {
-                name
-            }
-              zoomLevels
-            }
-            ... on ItemPropertiesSurgicalKit {
-              uses
-              useTime
-              cures
-              minLimbHealth
-              maxLimbHealth
-            }
-            ... on ItemPropertiesWeapon {
-              caliber
-              defaultAmmo {
+    items: /* GraphQL */ `
+        {
+            items {
                 id
                 shortName
-              }
-              effectiveDistance
-              fireModes
-              fireRate
-              maxDurability
-              defaultPreset {
-                properties {
-                  ... on ItemPropertiesPreset {
-                    ergonomics
-                    recoilVertical
-                    recoilHorizontal
-                    moa
-                  }
-                }
-              }
-            }
-            ... on ItemPropertiesWeaponMod {
-              ergonomics
-              recoilModifier
-              accuracyModifier
-              slots {
                 name
-              }
+                image512pxLink
+                types
+                width
+                height
+                wikiLink
+                basePrice
+                avg24hPrice
+                sellFor {
+                    vendor {
+                        name
+                    }
+                    priceRUB
+                }
+                buyFor {
+                    vendor {
+                        name
+                    }
+                    priceRUB
+                }
+                properties {
+                    __typename
+                    ... on ItemPropertiesAmmo {
+                        caliber
+                        stackMaxSize
+                        tracer
+                        tracerColor
+                        ammoType
+                        projectileCount
+                        damage
+                        armorDamage
+                        fragmentationChance
+                        penetrationPower
+                        accuracyModifier
+                        recoilModifier
+                        initialSpeed
+                        lightBleedModifier
+                        heavyBleedModifier
+                        durabilityBurnFactor
+                        heatFactor
+                    }
+                    ... on ItemPropertiesArmor {
+                        class
+                        durability
+                        speedPenalty
+                        turnPenalty
+                        ergoPenalty
+                        zones
+                        material {
+                            name
+                        }
+                    }
+                    ... on ItemPropertiesArmorAttachment {
+                        class
+                        durability
+                        speedPenalty
+                        turnPenalty
+                        ergoPenalty
+                        material {
+                            destructibility
+                            name
+                        }
+                        headZones
+                        blindnessProtection
+                    }
+                    ... on ItemPropertiesBackpack {
+                        capacity
+                        grids {
+                            width
+                            height
+                        }
+                    }
+                    ... on ItemPropertiesBarrel {
+                        ergonomics
+                        recoilModifier
+                        slots {
+                            name
+                        }
+                    }
+                    ... on ItemPropertiesChestRig {
+                        class
+                        durability
+                        speedPenalty
+                        turnPenalty
+                        ergoPenalty
+                        zones
+                        material {
+                            destructibility
+                            name
+                        }
+                        capacity
+                        grids {
+                            width
+                            height
+                        }
+                    }
+                    ... on ItemPropertiesContainer {
+                        capacity
+                        grids {
+                            width
+                            height
+                        }
+                    }
+                    ... on ItemPropertiesFoodDrink {
+                        energy
+                        hydration
+                        units
+                        stimEffects {
+                            type
+                            chance
+                            delay
+                            duration
+                            value
+                            percent
+                            skillName
+                        }
+                    }
+                    ... on ItemPropertiesGlasses {
+                        class
+                        durability
+                        blindnessProtection
+                        material {
+                            destructibility
+                            name
+                        }
+                    }
+                    ... on ItemPropertiesGrenade {
+                        type
+                        fuse
+                        minExplosionDistance
+                        maxExplosionDistance
+                        fragments
+                        contusionRadius
+                    }
+                    ... on ItemPropertiesHelmet {
+                        class
+                        durability
+                        speedPenalty
+                        turnPenalty
+                        ergoPenalty
+                        headZones
+                        material {
+                            destructibility
+                            name
+                        }
+                        deafening
+                        blocksHeadset
+                        slots {
+                            name
+                        }
+                    }
+                    ... on ItemPropertiesKey {
+                        uses
+                    }
+                    ... on ItemPropertiesMagazine {
+                        ergonomics
+                        recoilModifier
+                        capacity
+                        loadModifier
+                        ammoCheckModifier
+                        malfunctionChance
+                        allowedAmmo {
+                            properties {
+                                ... on ItemPropertiesAmmo {
+                                    caliber
+                                }
+                            }
+                        }
+                    }
+                    ... on ItemPropertiesMedicalItem {
+                        uses
+                        useTime
+                        cures
+                    }
+                    ... on ItemPropertiesMelee {
+                        slashDamage
+                        stabDamage
+                        hitRadius
+                    }
+                    ... on ItemPropertiesMedKit {
+                        hitpoints
+                        useTime
+                        maxHealPerUse
+                        cures
+                        hpCostLightBleeding
+                        hpCostHeavyBleeding
+                    }
+                    ... on ItemPropertiesNightVision {
+                        intensity
+                        noiseIntensity
+                        noiseScale
+                        diffuseIntensity
+                    }
+                    ... on ItemPropertiesPainkiller {
+                        uses
+                        useTime
+                        cures
+                        painkillerDuration
+                        energyImpact
+                        hydrationImpact
+                    }
+                    ... on ItemPropertiesScope {
+                        ergonomics
+                        sightModes
+                        sightingRange
+                        recoilModifier
+                        slots {
+                            name
+                        }
+                        zoomLevels
+                    }
+                    ... on ItemPropertiesSurgicalKit {
+                        uses
+                        useTime
+                        cures
+                        minLimbHealth
+                        maxLimbHealth
+                    }
+                    ... on ItemPropertiesWeapon {
+                        caliber
+                        defaultAmmo {
+                            id
+                            shortName
+                        }
+                        effectiveDistance
+                        fireModes
+                        fireRate
+                        maxDurability
+                        defaultPreset {
+                            properties {
+                                ... on ItemPropertiesPreset {
+                                    ergonomics
+                                    recoilVertical
+                                    recoilHorizontal
+                                    moa
+                                }
+                            }
+                        }
+                    }
+                    ... on ItemPropertiesWeaponMod {
+                        ergonomics
+                        recoilModifier
+                        accuracyModifier
+                        slots {
+                            name
+                        }
+                    }
+                    ... on ItemPropertiesStim {
+                        useTime
+                        cures
+                        stimEffects {
+                            type
+                            chance
+                            delay
+                            duration
+                            value
+                            percent
+                            skillName
+                        }
+                    }
+                }
             }
-            ... on ItemPropertiesStim {
-              useTime
-              cures
-              stimEffects {
-                type
-                chance
-                delay
-                duration
-                value
-                percent
-                skillName
-              }
-            }
-          }
         }
-      }
-           
     `,
-    barters: `
-    {
-        barters {
-            id
-            trader {
+    barters: /* GraphQL */ `
+        {
+            barters {
                 id
-            }
-            level
-            requiredItems {
-                count
-                item {
+                trader {
                     id
-                    name
                 }
-                attributes {
-                    type
-                    name
-                    value
-                }
-            }
-            rewardItems {
-                count
-                item {
-                    id
-                    name
-                }
-                attributes {
-                    type
-                    name
-                    value
-                }
-            }
-        }
-    }      
-    `,
-    hideoutStations: `
-    {
-        hideoutStations {
-            id
-            name
-            levels {
-                id
                 level
-                constructionTime
-                itemRequirements {
-                    id
+                requiredItems {
+                    count
                     item {
                         id
                         name
                     }
+                    attributes {
+                        type
+                        name
+                        value
+                    }
+                }
+                rewardItems {
+                    count
+                    item {
+                        id
+                        name
+                    }
+                    attributes {
+                        type
+                        name
+                        value
+                    }
+                }
+            }
+        }
+    `,
+    hideoutStations: /* GraphQL */ `
+        {
+            hideoutStations {
+                id
+                name
+                levels {
+                    id
+                    level
+                    constructionTime
+                    itemRequirements {
+                        id
+                        item {
+                            id
+                            name
+                        }
                         count
                     }
                     stationLevelRequirements {
                         id
-                    station {
-                        name
+                        station {
+                            name
+                        }
+                        level
                     }
-                    level
                 }
             }
         }
-    }      
     `,
-    traders: `
+    traders: /* GraphQL */ `
         {
             traders {
                 id
@@ -357,7 +356,7 @@ const TARKOV_DEV_QUERIES: Record<string, string> = {
             }
         }
     `,
-    status: `
+    status: /* GraphQL */ `
         {
             status {
                 currentStatuses {
@@ -373,135 +372,164 @@ const TARKOV_DEV_QUERIES: Record<string, string> = {
             }
         }
     `,
-    crafts: `
-    {
-        crafts {
-            id
-            station {
+    crafts: /* GraphQL */ `
+        {
+            crafts {
                 id
-                name
-            }
-            level
-            duration
-            requiredItems {
-                count
-                item {
+                station {
                     id
                     name
                 }
-                attributes {
-                    type
-                    name
-                    value
+                level
+                duration
+                requiredItems {
+                    count
+                    item {
+                        id
+                        name
+                    }
+                    attributes {
+                        type
+                        name
+                        value
+                    }
                 }
-            }
-            rewardItems {
-                count
-                item {
-                    id
-                    name
-                }
-                attributes {
-                    type
-                    name
-                    value
+                rewardItems {
+                    count
+                    item {
+                        id
+                        name
+                    }
+                    attributes {
+                        type
+                        name
+                        value
+                    }
                 }
             }
         }
-    }
     `,
-    tasks: `
-    {
-        tasks {
-          id
-          tarkovDataId
-          name
-          trader {
-            id
-          }
-          map {
-            name
-          }
-          experience
-          wikiLink
-          minPlayerLevel
-          taskRequirements {
-            task {
-              name
-            }
-            status
-          }
-          traderLevelRequirements {
-            id
-            trader {
-              id
-            }
-            level
-          }
-          objectives {
-            id
-            type
-            description
-            maps {
-              name
-            }
-            optional
-            ... on TaskObjectiveItem {
-              id
-              item {
+    tasks: /* GraphQL */ `
+        {
+            tasks {
                 id
+                tarkovDataId
                 name
-              }
-              count
-              foundInRaid
+                trader {
+                    id
+                }
+                map {
+                    name
+                }
+                experience
+                wikiLink
+                minPlayerLevel
+                taskRequirements {
+                    task {
+                        name
+                    }
+                    status
+                }
+                traderLevelRequirements {
+                    id
+                    trader {
+                        id
+                    }
+                    level
+                }
+                objectives {
+                    id
+                    type
+                    description
+                    maps {
+                        name
+                    }
+                    optional
+                    ... on TaskObjectiveItem {
+                        id
+                        item {
+                            id
+                            name
+                        }
+                        count
+                        foundInRaid
+                    }
+                }
+                startRewards {
+                    items {
+                        item {
+                            id
+                            name
+                        }
+                        count
+                    }
+                    offerUnlock {
+                        trader {
+                            id
+                        }
+                        level
+                        item {
+                            id
+                            name
+                        }
+                    }
+                    traderUnlock {
+                        id
+                    }
+                }
+                finishRewards {
+                    items {
+                        item {
+                            id
+                            name
+                        }
+                        count
+                    }
+                    offerUnlock {
+                        trader {
+                            id
+                        }
+                        level
+                        item {
+                            id
+                            name
+                        }
+                    }
+                    traderUnlock {
+                        id
+                    }
+                }
             }
-          }
-          startRewards {
-            items {
-              item {
-                id
-                name
-              }
-              count
-            }
-            offerUnlock {
-              trader {
-                id
-              }
-              level
-              item {
-                id
-                name
-              }
-            }
-            traderUnlock {
-              id
-            }
-          }
-          finishRewards {
-            items {
-              item {
-                id
-                name
-              }
-              count
-            }
-            offerUnlock {
-              trader {
-                id
-              }
-              level
-              item {
-                id
-                name
-              }
-            }
-            traderUnlock {
-              id
-            }
-          }
         }
-      }      
+    `,
+    maps: /* GraphQL */ `
+        {
+            maps {
+                id
+                name
+                normalizedName
+                wiki
+                enemies
+                raidDuration
+                players
+                bosses {
+                    name
+                    spawnChance
+                    spawnLocations {
+                        name
+                        chance
+                    }
+                    escorts {
+                        name
+                        amount {
+                            count
+                            chance
+                        }
+                    }
+                }
+                nameId
+            }
+        }
     `
 };
 
@@ -530,7 +558,7 @@ const CONFIGS = {
     TARKOV_DEV_CONFIG: {
         type: "GRAPHQL",
         url: "https://api.tarkov.dev/graphql",
-        endpoints: ["items", "barters", "hideoutStations", "traders", "status", "crafts", "tasks"],
+        endpoints: ["items", "barters", "hideoutStations", "traders", "status", "crafts", "tasks", "maps"],
         queries: TARKOV_DEV_QUERIES
     },
     TARKOV_DATA_CONFIG: {
@@ -547,21 +575,7 @@ const CONFIGS = {
         type: "REST",
         url: "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/{ENDPOINT}.json",
         // these are ugly
-        endpoints: [
-            "globals",
-            "locales/global/en",
-            "locales/global/es",
-            "locations/bigmap/base",
-            "locations/factory4_day/base",
-            "locations/factory4_night/base",
-            "locations/interchange/base",
-            "locations/laboratory/base",
-            "locations/lighthouse/base",
-            "locations/rezervbase/base",
-            "locations/shoreline/base",
-            "locations/woods/base",
-            "templates/quests"
-        ]
+        endpoints: ["globals", "locales/global/en", "locales/global/es", "templates/quests"]
     }
 } as const;
 

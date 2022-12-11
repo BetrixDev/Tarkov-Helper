@@ -11,8 +11,6 @@ export class Trader {
     constructor(id: string, language: LanguageCode) {
         const locales = this.localeService.getTraderLocale(id, language);
 
-        console.log(id);
-
         this.name = locales.name;
     }
 }

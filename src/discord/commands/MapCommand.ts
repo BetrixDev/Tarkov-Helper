@@ -9,12 +9,11 @@ import {
     ButtonBuilder,
     ButtonInteraction
 } from "discord.js";
-import { MAP_METADATA, MapID, Location } from "../../lib/models/Location";
+import { Location } from "../../lib/models/Location";
 import { translation, getLanguage } from "../../lib/language";
 import { TarkovDataService } from "../../services/TarkovDataService";
 import { MapImageData } from "../../typings/services/TarkovDataService";
-import { injectable } from "tsyringe";
-import { round } from "../../lib/math";
+import { injectable, container } from "tsyringe";
 
 const COMMAND_NAME = "map";
 
@@ -27,9 +26,14 @@ export class MapCommand extends BaseCommand {
 
     @Slash(COMMAND_NAME, BaseCommand.resolveCommandOptions(COMMAND_NAME))
     map(
-        @SlashChoice(...MAP_METADATA.map((m) => ({ name: `${m.name} ${m.variant ? m.variant : ""}`, value: m.id })))
+        @SlashChoice(
+            ...container
+                .resolve(TarkovDataService)
+                .fetchData("maps")
+                .map((map) => ({ name: map.name as string, value: map.id as string }))
+        )
         @SlashOption("map", BaseCommand.resolveOptions(COMMAND_NAME, "map"))
-        map: MapID,
+        map: string,
         interaction: CommandInteraction
     ) {
         this.handleCommandInteraction(
@@ -43,7 +47,7 @@ export class MapCommand extends BaseCommand {
     @ButtonComponent(/^map__/)
     mapButton(interaction: ButtonInteraction) {
         const [, l, m, type] = interaction.customId.split("__");
-        const map = m as MapID;
+        const map = m;
         const language = l as LanguageCode;
 
         const t = translation(language);
@@ -63,14 +67,14 @@ export class MapCommand extends BaseCommand {
         });
     }
 
-    command(mapId: MapID, language: LanguageCode): InteractionReplyOptions {
+    command(mapId: string, language: LanguageCode): InteractionReplyOptions {
         const t = translation(language);
         const map = new Location(mapId, language);
 
         return {
             embeds: [
                 this.createEmbed()
-                    .setTitle(`${map.displayName} - ${map.currentTimes.join(" | ")}`)
+                    .setTitle(`${map.name} - ${map.currentTimes.join(" | ")}`)
                     .setThumbnail(map.iconURL)
                     .setImage(map.maps.length > 0 ? map.maps[0].link : null)
                     .setFooter({ text: t("Click the buttons below to view maps") })
@@ -78,12 +82,7 @@ export class MapCommand extends BaseCommand {
                         {
                             name: t("Bosses"),
                             value: map.bossData
-                                .map(
-                                    (boss) =>
-                                        `**${boss.name}** ${boss.chance ? `*(${boss.chance}%)*` : ""} ${
-                                            boss.averageAmount ? `*(x${round(boss.averageAmount, "")})*` : ""
-                                        }`
-                                )
+                                .map((boss) => `**${boss.name}** ${boss.chance ? `*(${boss.chance}%)*` : ""} `)
                                 .join("\n"),
                             inline: true
                         },
@@ -93,8 +92,13 @@ export class MapCommand extends BaseCommand {
                             inline: true
                         },
                         {
-                            name: t("Max Players"),
-                            value: map.maxPlayers.toString(),
+                            name: t("Players"),
+                            value: map.players,
+                            inline: true
+                        },
+                        {
+                            name: t("Enemie Types"),
+                            value: map.enemies.join("\n"),
                             inline: true
                         }
                     )
