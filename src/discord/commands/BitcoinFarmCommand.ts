@@ -3,13 +3,11 @@ import { Discord, Slash, SlashOption } from "discordx";
 import { BaseCommand } from "../../lib/BaseCommand";
 import { ApplicationCommandOptionType, CommandInteraction, InteractionReplyOptions } from "discord.js";
 import { LanguageCode } from "../../typings/common";
-import { translation } from "../../lib/util/translation";
+import { translation, getLanguage } from "../../lib/language";
 import { Item } from "../../lib/models/Item";
 import { config } from "../../config";
-import { round } from "../../lib/util/math";
-import { formatPrice } from "../../lib/util/string";
-import { getLanguage } from "../../lib/helpers/getLanguage";
-
+import { round } from "../../lib/math";
+import { formatPrice } from "../../lib/string";
 const COMMAND_NAME = "bitcoinfarm";
 
 @Discord()

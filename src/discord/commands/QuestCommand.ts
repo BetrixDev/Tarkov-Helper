@@ -15,10 +15,9 @@ import { LanguageCode } from "../../typings/common";
 import { BaseCommand } from "../../lib/BaseCommand";
 import { QuestSearchEngine } from "../../lib/search_engines/QuestSearchEngine";
 import { TarkovDataService } from "../../services/TarkovDataService";
-import { translation } from "../../lib/util/translation";
+import { translation, getLanguage } from "../../lib/language";
 import { Quest } from "../../lib/models/Quest";
 import { config } from "../../config";
-import { getLanguage } from "../../lib/helpers/getLanguage";
 
 const COMMAND_NAME = "quest";
 

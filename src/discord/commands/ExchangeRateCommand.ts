@@ -4,9 +4,8 @@ import { Discord, Slash, SlashChoice, SlashOption } from "discordx";
 import { BaseCommand } from "../../lib/BaseCommand";
 import { LanguageCode } from "../../typings/common";
 import { Item } from "../../lib/models/Item";
-import { translation } from "../../lib/util/translation";
+import { translation, getLanguage } from "../../lib/language";
 import { config } from "../../config";
-import { getLanguage } from "../../lib/helpers/getLanguage";
 
 const COMMAND_NAME = "exchangerate";
 

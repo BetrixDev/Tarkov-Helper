@@ -11,10 +11,10 @@ import {
 import { container } from "tsyringe";
 import { ItemSearchEngine } from "../../lib/search_engines/ItemSearchEngine";
 import { LanguageCode } from "../../typings/common";
-import { translation } from "../../lib/util/translation";
+import { translation, getLanguage } from "../../lib/language";
 import { Item } from "../../lib/models/Item";
-import { getItemStats } from "../../lib/helpers/getItemStats";
-import { getLanguage } from "../../lib/helpers/getLanguage";
+import { getItemStats } from "../../lib/getItemStats";
+
 const COMMAND_NAME = "stat";
 
 @Discord()

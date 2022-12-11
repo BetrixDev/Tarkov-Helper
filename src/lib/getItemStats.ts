@@ -1,7 +1,7 @@
 import { EmbedField } from "discord.js";
-import { config } from "../../config";
-import { Item } from "../models/Item";
-import { TranslationFunction } from "../util/translation";
+import { config } from "../config";
+import { Item } from "./models/Item";
+import { TranslationFunction } from "./language";
 import {
     CombinedItemProps,
     ItemPropertiesArmor,
@@ -11,10 +11,10 @@ import {
     ItemPropertiesContainer,
     ItemPropertiesBackpack,
     ItemPropertiesGrenade
-} from "../../typings/tarkov.dev/TarkovDevItem";
-import { round } from "../util/math";
-import { BallisticsCalculator } from "../simulators/BallisticsSimulator";
-import { ItemPropertiesMagazine } from "../../typings/tarkov.dev/TarkovDevItem";
+} from "../typings/tarkov.dev/TarkovDevItem";
+import { round } from "./math";
+import { BallisticsCalculator } from "./simulators/BallisticsSimulator";
+import { ItemPropertiesMagazine } from "../typings/tarkov.dev/TarkovDevItem";
 
 // 🍝 spaghetti 🍝
 

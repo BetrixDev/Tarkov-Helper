@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { injectable, singleton } from "tsyringe";
+import { singleton } from "tsyringe";
 import { TarkovDataService } from "../../services/TarkovDataService";
 import { Item } from "../models/Item";
 import fuse from "fuse.js";
@@ -7,8 +7,7 @@ import { LanguageCode } from "../../typings/common";
 import { AutocompleteInteraction } from "discord.js";
 import logger from "../../logger";
 import { TarkovDevItem } from "../../typings/tarkov.dev/TarkovDevItem";
-import { BaseCommand } from "../BaseCommand";
-import { getLanguage } from "../helpers/getLanguage";
+import { getLanguage } from "../language";
 
 interface EngineParams {
     id: string;

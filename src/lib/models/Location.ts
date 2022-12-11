@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { LanguageCode } from "../../typings/common";
 import { container } from "tsyringe";
 import { Endpoint, TarkovDataService } from "../../services/TarkovDataService";
-import { translation } from "../util/translation";
+import { translation } from "../language";
 import { GameMap } from "../../typings/game/GameMap";
 import { ButtonBuilder, ButtonStyle } from "discord.js";
 import dayjs from "dayjs";

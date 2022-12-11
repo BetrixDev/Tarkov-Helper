@@ -1,4 +1,4 @@
-import { Item } from "../models/Item";
+import { Item } from "./models/Item";
 
 export const round = (num: number, place: string): number => {
     return Math.round(num * Number(`1${place}`)) / Number(`1${place}`);

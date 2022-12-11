@@ -1,13 +1,12 @@
+import "reflect-metadata";
 import { ApplicationCommandOptionType, CommandInteraction, InteractionReplyOptions } from "discord.js";
 import { Discord, Slash, SlashOption } from "discordx";
-import "reflect-metadata";
 import { injectable } from "tsyringe";
 import { LanguageCode } from "../../typings/common";
 import { config } from "../../config";
 import { BaseCommand } from "../../lib/BaseCommand";
-import { getLanguage } from "../../lib/helpers/getLanguage";
-import { formatNumber } from "../../lib/util/string";
-import { translation } from "../../lib/util/translation";
+import { formatNumber } from "../../lib/string";
+import { translation, getLanguage } from "../../lib/language";
 import { TarkovDataService } from "../../services/TarkovDataService";
 
 interface ExperiencePoint {

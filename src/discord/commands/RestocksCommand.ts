@@ -1,16 +1,13 @@
 import "reflect-metadata";
+import dayjs from "dayjs";
 import { Discord, Slash } from "discordx";
 import { BaseCommand } from "../../lib/BaseCommand";
-import { autoInjectable, inject, injectable } from "tsyringe";
+import { injectable } from "tsyringe";
 import { TarkovDataService } from "../../services/TarkovDataService";
 import { CommandInteraction, InteractionReplyOptions } from "discord.js";
 import { LanguageCode } from "../../typings/common";
-import { translation } from "../../lib/util/translation";
+import { translation, getLanguage } from "../../lib/language";
 import { config } from "../../config";
-import { Trader } from "../../lib/models/Trader";
-import dayjs from "dayjs";
-import { capitalizeWords } from "../../lib/util/string";
-import { getLanguage } from "../../lib/helpers/getLanguage";
 
 const COMMAND_NAME = "restocks";
 

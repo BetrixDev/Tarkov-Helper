@@ -2,13 +2,12 @@ import "reflect-metadata";
 import { Discord, Slash, SlashOption } from "discordx";
 import { ApplicationCommandOptionType, CommandInteraction, InteractionReplyOptions } from "discord.js";
 import { BaseCommand } from "../../lib/BaseCommand";
-import { translation } from "../../lib/util/translation";
+import { translation, getLanguage } from "../../lib/language";
 import { LanguageCode } from "../../typings/common";
 import { TarkovDataService } from "../../services/TarkovDataService";
 import { Item } from "../../lib/models/Item";
-import { formatPrice } from "../../lib/util/string";
+import { formatPrice } from "../../lib/string";
 import { injectable } from "tsyringe";
-import { getLanguage } from "../../lib/helpers/getLanguage";
 
 const COMMAND_NAME = "dogtag";
 // dot tag prices scale linearly with the level

@@ -7,9 +7,9 @@ import {
     InteractionReplyOptions,
     MessageComponentInteraction
 } from "discord.js";
-import { translation } from "./util/translation";
+import { translation } from "./language";
 import { config } from "../config";
-import { readJson } from "./util/files";
+import { readJson } from "./files";
 import { ApplicationCommandOptions, SlashOptionOptions } from "discordx";
 import { container } from "tsyringe";
 import { TarkovDataService } from "../services/TarkovDataService";

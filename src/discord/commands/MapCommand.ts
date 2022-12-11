@@ -10,12 +10,11 @@ import {
     ButtonInteraction
 } from "discord.js";
 import { MAP_METADATA, MapID, Location } from "../../lib/models/Location";
-import { translation } from "../../lib/util/translation";
+import { translation, getLanguage } from "../../lib/language";
 import { TarkovDataService } from "../../services/TarkovDataService";
 import { MapImageData } from "../../typings/services/TarkovDataService";
 import { injectable } from "tsyringe";
-import { round } from "../../lib/util/math";
-import { getLanguage } from "../../lib/helpers/getLanguage";
+import { round } from "../../lib/math";
 
 const COMMAND_NAME = "map";
 

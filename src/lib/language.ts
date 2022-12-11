@@ -1,6 +1,12 @@
-import { LanguageCode } from "../../typings/common";
+import { LanguageCode } from "../typings/common";
 import { readJson } from "./files";
 import { readdirSync } from "fs";
+import {
+    CommandInteraction,
+    MessageComponentInteraction,
+    ButtonInteraction,
+    AutocompleteInteraction
+} from "discord.js";
 
 export type TranslationFunction = (translationKey: string, ...args: Array<string | number>) => string;
 
@@ -24,4 +30,16 @@ export const translation = (language: LanguageCode | string): TranslationFunctio
 
         return text;
     };
+};
+
+export const getLanguage = (
+    interaction: CommandInteraction | MessageComponentInteraction | ButtonInteraction | AutocompleteInteraction
+): LanguageCode => {
+    const language = interaction.locale.split("-")[0];
+
+    if (["es", "en"].includes(language)) {
+        return language as LanguageCode;
+    }
+
+    return "en";
 };

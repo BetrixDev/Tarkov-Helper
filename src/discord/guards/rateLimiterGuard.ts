@@ -1,10 +1,8 @@
 import { CommandInteraction } from "discord.js";
 import { GuardFunction } from "discordx";
-import { round } from "../../lib/util/math";
-import { translation } from "../../lib/util/translation";
+import { round } from "../../lib/math";
 import logger from "../../logger";
-import { BaseCommand } from "../../lib/BaseCommand";
-import { getLanguage } from "../../lib/helpers/getLanguage";
+import { getLanguage, translation } from "../../lib/language";
 
 const COOLDOWN_LENGTH = 3 * 1000;
 const NAMESPACE = "RateLimiter";

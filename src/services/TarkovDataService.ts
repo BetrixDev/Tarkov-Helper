@@ -5,7 +5,7 @@ import { ApiResponses, DataResponses } from "../typings/services/TarkovDataServi
 import { scheduleJob } from "node-schedule";
 import { config } from "../config";
 import { existsSync } from "fs";
-import { readJson } from "../lib/util/files";
+import { readJson } from "../lib/files";
 import { TarkovDevItem } from "../typings/tarkov.dev/TarkovDevItem";
 import logger from "../logger";
 

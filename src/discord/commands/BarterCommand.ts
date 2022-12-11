@@ -18,9 +18,8 @@ import { container } from "tsyringe";
 import { ItemSearchEngine } from "../../lib/search_engines/ItemSearchEngine";
 import { Item } from "../../lib/models/Item";
 import { Barter } from "../../lib/models/Barter";
-import { translation } from "../../lib/util/translation";
-import { formatPrice } from "../../lib/util/string";
-import { getLanguage } from "../../lib/helpers/getLanguage";
+import { translation, getLanguage } from "../../lib/language";
+import { formatPrice } from "../../lib/string";
 
 const COMMAND_NAME = "barter";
 

@@ -6,7 +6,7 @@ import { LanguageCode } from "../../typings/common";
 import { Quest } from "../models/Quest";
 import { AutocompleteInteraction } from "discord.js";
 import { TarkovLocaleService } from "../../services/TarkovLocaleService";
-import { getLanguage } from "../helpers/getLanguage";
+import { getLanguage } from "../language";
 
 interface EngineParams {
     id: number;

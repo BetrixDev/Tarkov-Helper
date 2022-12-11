@@ -3,10 +3,9 @@ import { Discord, Slash } from "discordx";
 import { BaseCommand } from "../../lib/BaseCommand";
 import { CommandInteraction, InteractionReplyOptions, Locale } from "discord.js";
 import { LanguageCode } from "../../typings/common";
-import { translation } from "../../lib/util/translation";
+import { translation, getLanguage } from "../../lib/language";
 import { injectable } from "tsyringe";
 import { TarkovDataService } from "../../services/TarkovDataService";
-import { getLanguage } from "../../lib/helpers/getLanguage";
 
 const COMMAND_NAME = "status";
 
