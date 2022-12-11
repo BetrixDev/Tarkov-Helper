@@ -7,6 +7,7 @@ import { GameMap } from "../../typings/game/GameMap";
 import { ButtonBuilder, ButtonStyle } from "discord.js";
 import dayjs from "dayjs";
 import { MapImageData } from "../../typings/services/TarkovDataService";
+import { config } from "../../config";
 
 interface MapMetaData {
     id: string;
@@ -76,9 +77,7 @@ export class Location {
     }
 
     get iconURL(): string {
-        return `https://raw.githubusercontent.com/Tarkov-Helper/Database/main/images/map_icons/${this.displayName
-            .replaceAll(/(day|night| )/g, "")
-            .toLowerCase()}.png`;
+        return `${config.env.imageURL}/maps/${this.displayName.replaceAll(/(day|night| )/g, "").toLowerCase()}.png`;
     }
 
     get bossData(): BossData[] {
