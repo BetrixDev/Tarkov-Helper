@@ -567,9 +567,8 @@ const CONFIGS = {
         endpoints: ["quests"]
     },
     TARKOV_DATABASE_CONFIG: {
-        type: "REST",
-        url: "https://raw.githubusercontent.com/Tarkov-Helper/Database/main/{ENDPOINT}.json",
-        endpoints: ["mapkeys", "keys", "questGuides", "mapImages", "itemLocations"] // TODO: Rename these in the repo
+        type: "S3",
+        endpoints: ["mapkeys", "keys", "questGuides", "mapImages", "itemLocations"]
     },
     SP_TARKOV_CONFIG: {
         type: "REST",
@@ -721,7 +720,7 @@ export class TarkovDataService {
             };
         } else if (apiConfig.type === "S3") {
             return async () => {
-                return await readFromBucketJSON(`${endpoint}.json`);
+                return await readFromBucketJSON(endpoint);
             };
         } else {
             return async () => {
