@@ -97,7 +97,7 @@ export class MapCommand extends BaseCommand {
                             inline: true
                         },
                         {
-                            name: t("Enemie Types"),
+                            name: t("Enemy Types"),
                             value: map.enemies.join("\n"),
                             inline: true
                         }
