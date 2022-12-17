@@ -3,7 +3,7 @@ import { Credentials } from "aws-sdk";
 import { env } from "../env";
 
 const client = new S3({
-    endpoint: env.S3_ENDPOINT,
+    endpoint: `https://${env.S3_ENDPOINT}`,
     credentials: new Credentials(env.S3_KEY, env.S3_SECRET),
     useAccelerateEndpoint: false,
     region: "us-east-1"
