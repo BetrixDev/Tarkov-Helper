@@ -11,7 +11,7 @@ import { injectable } from "tsyringe";
 
 const COMMAND_NAME = "dogtag";
 // dot tag prices scale linearly with the level
-const DOGTAG_PRICE_PER_LEVEL = 4200;
+const DOGTAG_PRICE_PER_LEVEL = 2648;
 
 @Discord()
 @injectable()
