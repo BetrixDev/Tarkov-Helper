@@ -1,6 +1,6 @@
 build/
 node_modules/
-data/
+runtime_data/
 idea/
 coverage/
 *.vscode

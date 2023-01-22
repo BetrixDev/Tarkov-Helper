@@ -693,7 +693,7 @@ export class TarkovDataService {
 
         if (config.process.isTest || config.process.isDev) {
             return async () => {
-                const filePath = `./data/${e.replaceAll("/", "_")}.json`;
+                const filePath = `./runtime_data/${e.replaceAll("/", "_")}.json`;
 
                 if (!existsSync(filePath)) {
                     throw new Error("Error locating file for test data. Run `npm run init:dev` to cache test data");
