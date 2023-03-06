@@ -572,7 +572,7 @@ const CONFIGS = {
     },
     SP_TARKOV_CONFIG: {
         type: "REST",
-        url: "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/development/project/assets/database/{ENDPOINT}.json",
+        url: "https://dev.sp-tarkov.com/SPT-AKI/Server/raw/branch/master/project/assets/database/{ENDPOINT}.json",
         // these are ugly
         endpoints: ["globals", "locales/global/en", "locales/global/es", "templates/quests"]
     }
