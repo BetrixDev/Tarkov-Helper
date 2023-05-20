@@ -557,7 +557,7 @@ type ApiData = RestApiData | GraphQLApiData | S3ApiData;
 const CONFIGS = {
     TARKOV_DEV_CONFIG: {
         type: "GRAPHQL",
-        url: "https://api.tarkov.dev/graphql",
+        url: "https://api.tarkov.dev",
         endpoints: ["items", "barters", "hideoutStations", "traders", "status", "crafts", "tasks", "maps"],
         queries: TARKOV_DEV_QUERIES
     },
