@@ -1,0 +1,2 @@
+export const USEC_DOGTAG_ITEM_ID = "59f32c3b86f77472a31742f0";
+export const BEAR_DOGTAG_ITEM_ID = "59f32bb586f774757e1e8442";
