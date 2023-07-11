@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "build": "tsc",
+    "start": "cross-env NODE_ENV=production node ./build/index.js",
     "typecheck": "tsc --noEmit",
     "dev": "cross-env NODE_ENV=development nodemon --exec ts-node-esm src/bot.ts",
     "format": "prettier . --write"
@@ -14,8 +15,7 @@
     "nodemon": "^2.0.22",
     "prettier": "^2.5.1",
     "ts-node": "^10.9.1",
-    "typescript": "^5.1.6",
-    "vitest": "^0.33.0"
+    "typescript": "^5.1.6"
   },
   "dependencies": {
     "@discordx/importer": "^1.2.2",

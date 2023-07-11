@@ -74,6 +74,7 @@ export const initCache = async () => {
       );
     });
   } else {
+    await updateCache();
     // https://crontab.guru/every-30-minutes
     schedule("*/30 * * * *", updateCache);
     console.log("crons started");

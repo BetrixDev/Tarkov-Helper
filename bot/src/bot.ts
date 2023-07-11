@@ -5,8 +5,10 @@ import { getInfo } from "discord-hybrid-sharding";
 import "./env";
 
 const client = new Client({
-  // shards: getInfo().SHARD_LIST,
-  // shardCount: getInfo().TOTAL_SHARDS,
+  shards:
+    process.env.NODE_ENV === "production" ? getInfo().SHARD_LIST : undefined,
+  shardCount:
+    process.env.NODE_ENV === "production" ? getInfo().TOTAL_SHARDS : undefined,
   intents: [],
   botGuilds:
     process.env.NODE_ENV === "development"

@@ -5,6 +5,7 @@
   "scripts": {
     "build": "tsc",
     "typecheck": "tsc --noEmit",
+    "start": "cross-env NODE_ENV=production node ./build/src/index.js",
     "dev": "cross-env NODE_ENV=development nodemon --exec ts-node-esm src/index.ts",
     "codegen": "graphql-codegen --config codegen.ts",
     "format": "prettier . --write",
