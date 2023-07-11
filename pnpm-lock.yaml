@@ -150,6 +150,13 @@ importers:
       zod:
         specifier: ^3.21.4
         version: 3.21.4
+    devDependencies:
+      '@types/node':
+        specifier: ^20.4.0
+        version: 20.4.0
+      typescript:
+        specifier: ^5.1.6
+        version: 5.1.6
 
 packages:
 
