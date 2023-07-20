@@ -16,19 +16,11 @@ const client = new Client({
       : [],
 });
 
-client.on("ready", async () => {
-  console.log("Tarkov Helper started");
-
-  await client.guilds.fetch();
-  await client.initApplicationCommands();
-});
-
-client.on("interactionCreate", (interaction) => {
-  client.executeInteraction(interaction);
-});
+import "./client-events";
 
 async function main() {
   await importx(__dirname + "/{events,commands}/**/*.{ts,js}");
+  // await importx(__dirname + "/**/*.{ts,js}");
 
   await client.login(process.env.BOT_TOKEN);
 }

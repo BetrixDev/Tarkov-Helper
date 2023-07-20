@@ -1,9 +1,11 @@
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import cors from "cors";
-import { appRouter } from "./routers/_app";
 import express from "express";
+
+import { appRouter } from "./routers/_app";
 import { initCache } from "./cache";
 import { refreshSearchEngines } from "./search-engines";
+import { logger } from "./log";
 
 const app = express();
 
@@ -20,6 +22,6 @@ initCache().then(() => {
   refreshSearchEngines();
 
   app.listen(3000, () => {
-    console.log("backend listening");
+    logger.info("Backend listening");
   });
 });

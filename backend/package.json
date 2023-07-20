@@ -30,11 +30,13 @@
     "axios": "^1.4.0",
     "common": "workspace:*",
     "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "fuse.js": "^6.6.2",
     "graphql": "^16.7.1",
     "graphql-request": "^6.1.0",
     "graphql-tag": "^2.12.6",
+    "logger": "workspace:*",
     "node-cron": "^3.0.2",
     "zod": "^3.21.4"
   }

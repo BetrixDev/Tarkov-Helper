@@ -4,6 +4,7 @@ import { tarkovDev } from "./gql/client";
 import { AllQuery } from "./gql/generated";
 import { fetchLocales } from "./data-sources/locales";
 import { SUPPORTED_LOCALES } from "common";
+import { logger } from "./log";
 
 interface CacheEntries {
   items: AllQuery["items"];
@@ -54,7 +55,7 @@ export const fetchData = async () => {
 };
 
 const updateCache = async () => {
-  console.log("fetching new data");
+  logger.info("Fetching new data");
 
   const initialData = await fetchData();
 
@@ -65,7 +66,7 @@ const updateCache = async () => {
 
 export const initCache = async () => {
   if (process.env.NODE_ENV === "development") {
-    console.log("reading .dev");
+    logger.info("Reading .dev cache");
     const files = readdirSync(".dev");
 
     files.forEach((file) => {
@@ -77,7 +78,7 @@ export const initCache = async () => {
     await updateCache();
     // https://crontab.guru/every-30-minutes
     schedule("*/30 * * * *", updateCache);
-    console.log("crons started");
+    logger.info("Crons started");
   }
 };
 
