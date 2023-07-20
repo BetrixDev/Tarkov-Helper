@@ -7,12 +7,16 @@ import {
   CommandInteraction,
   EmbedField,
   InteractionReplyOptions,
-  InteractionUpdateOptions,
 } from "discord.js";
 import { ButtonComponent, Discord, Slash, SlashOption } from "discordx";
 import { trpc } from "../trpc";
 import { EMTPY_EMBED_FIELD, SupportLocale, ZERO_WIDTH } from "common";
-import { embedBuilder, formatPrice, getUserLocale } from "../utils";
+import {
+  embedBuilder,
+  formatPrice,
+  getUserLocale,
+  handleInteraction,
+} from "../utils";
 
 @Discord()
 export abstract class BarterCommand {
@@ -27,13 +31,11 @@ export abstract class BarterCommand {
       required: true,
       type: ApplicationCommandOptionType.String,
       autocomplete: async (interaction) => {
-        const query = interaction.options.getFocused();
-
-        const results = await trpc.items.search.query({ query });
-
-        interaction.respond(
-          results.map((r) => ({ name: r.item.name, value: r.item.id }))
-        );
+        handleInteraction(interaction, async () => {
+          const query = interaction.options.getFocused();
+          const results = await trpc.items.search.query({ query });
+          return results.map((r) => ({ name: r.item.name, value: r.item.id }));
+        });
       },
     })
     itemInput: string,
@@ -41,24 +43,22 @@ export abstract class BarterCommand {
   ) {
     const userLocale = getUserLocale(interaction);
 
-    this.command(itemInput, userLocale).then((res) => interaction.reply(res));
+    handleInteraction(interaction, () => this.command(itemInput, userLocale));
   }
 
   @ButtonComponent({ id: /barter__(b|f)__(.*)__[0-9]+/ })
   async button(interaction: ButtonInteraction) {
-    const [, action, id, p] = interaction.customId.split("__");
-    const page = Number(p);
-    const userLocale = getUserLocale(interaction);
+    handleInteraction(interaction, () => {
+      const [, action, id, p] = interaction.customId.split("__");
+      const page = Number(p);
+      const userLocale = getUserLocale(interaction);
 
-    if (action === "b") {
-      this.command(id, userLocale, page - 1).then((res) =>
-        interaction.update(res as InteractionUpdateOptions)
-      );
-    } else {
-      this.command(id, userLocale, page + 1).then((res) =>
-        interaction.update(res as InteractionUpdateOptions)
-      );
-    }
+      if (action === "b") {
+        return this.command(id, userLocale, page - 1);
+      } else {
+        return this.command(id, userLocale, page + 1);
+      }
+    });
   }
 
   async command(

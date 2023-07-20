@@ -5,7 +5,12 @@ import {
 } from "discord.js";
 import { Discord, Slash, SlashOption } from "discordx";
 import { SupportLocale, USEC_DOGTAG_ITEM_ID } from "common";
-import { embedBuilder, formatPrice, getUserLocale } from "../utils";
+import {
+  embedBuilder,
+  formatPrice,
+  getUserLocale,
+  handleInteraction,
+} from "../utils";
 import { trpc } from "../trpc";
 
 @Discord()
@@ -34,11 +39,11 @@ export abstract class DogtagCommand {
   ) {
     const userLocale = getUserLocale(interaction);
 
-    interaction.reply(await dogtagCommand(level, userLocale));
+    handleInteraction(interaction, () => dogtagCommand(level, userLocale));
   }
 }
 
-export async function dogtagCommand(
+async function dogtagCommand(
   level: number,
   locale: SupportLocale
 ): Promise<InteractionReplyOptions> {

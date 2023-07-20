@@ -1,7 +1,7 @@
 import { ApplicationCommandOptionType, CommandInteraction } from "discord.js";
 import { Discord, Slash, SlashOption } from "discordx";
 import { trpc } from "../trpc";
-import { getUserLocale } from "../utils";
+import { THError, getUserLocale, handleInteraction } from "../utils";
 
 @Discord()
 export abstract class ItemCommand {
@@ -17,31 +17,27 @@ export abstract class ItemCommand {
       required: true,
       type: ApplicationCommandOptionType.String,
       autocomplete: async (interaction) => {
-        const query = interaction.options.getFocused();
-
-        const results = await trpc.items.search.query({ query });
-
-        interaction.respond(
-          results.map((r) => ({ name: r.item.name, value: r.item.id }))
-        );
+        handleInteraction(interaction, async () => {
+          const query = interaction.options.getFocused();
+          const results = await trpc.items.search.query({ query });
+          return results.map((r) => ({ name: r.item.name, value: r.item.id }));
+        });
       },
     })
     itemInput: string,
     interaction: CommandInteraction
   ) {
-    const userLocale = getUserLocale(interaction);
-    const validInput = await trpc.items.tryItemInput.query({
-      query: itemInput,
-    });
-
-    if (!validInput) {
-      interaction.reply({
-        content: "invalid item name or id",
-        ephemeral: true,
+    handleInteraction(interaction, async () => {
+      const userLocale = getUserLocale(interaction);
+      const validInput = await trpc.items.tryItemInput.query({
+        query: itemInput,
       });
-      return;
-    }
 
-    interaction.reply({ content: "⚠️ This command is under construction ⚠️" });
+      if (!validInput) {
+        throw new THError("Invalid item name or id");
+      }
+
+      return { content: "⚠️ This command is under construction ⚠️" };
+    });
   }
 }
