@@ -6,6 +6,34 @@ import { SupportLocale, localesSchema } from "common";
 import { fetchTraderData } from "./traders";
 import { AllQuery } from "../gql/generated";
 
+export function fetchItemData(itemId: string, locale: SupportLocale) {
+  const itemData = get("items").find((i) => i.id === itemId)!;
+
+  const localeData = get(`locale-${locale}`);
+
+  const sellFor = formatBuySellFor(itemData.sellFor, locale);
+  const buyFor = formatBuySellFor(itemData.buyFor, locale);
+  const highestSell = sellFor.sort((a, b) => b.priceRUB - a.priceRUB).at(0);
+  const lowestBuy = buyFor.sort((a, b) => a.priceRUB - b.priceRUB).at(0);
+
+  return {
+    iconLink: itemData.image512pxLink,
+    wikiLink: itemData.wikiLink,
+    id: itemData.id,
+    name: localeData[`${itemData.id} Name`] ?? "item_name",
+    shortName: localeData[`${itemData.id} ShortName`] ?? "item_short_name",
+    highestSell,
+    lowestBuy,
+    sellFor,
+    buyFor,
+    width: itemData.width,
+    height: itemData.height,
+    props: itemData.properties,
+    canSellOnFlea: !itemData.types.includes("noFlea"),
+    avg24hFleaPrice: itemData.avg24hPrice,
+  };
+}
+
 const formatBuySellFor = (
   obj: AllQuery["items"][number]["buyFor"],
   locale: SupportLocale
@@ -39,39 +67,14 @@ export const itemsRouter = router({
     }),
   fetchItemData: procedure
     .input(z.object({ locale: localesSchema, itemId: z.string() }))
-    .query(({ input }) => {
-      const itemData = get("items").find((i) => i.id === input.itemId)!;
-
-      const localeData = get(`locale-${input.locale}`);
-
-      const sellFor = formatBuySellFor(itemData.sellFor, input.locale);
-      const buyFor = formatBuySellFor(itemData.buyFor, input.locale);
-      const highestSell = sellFor.sort((a, b) => b.priceRUB - a.priceRUB)[0];
-      const lowestBuy = buyFor.sort((a, b) => a.priceRUB - b.priceRUB)[0];
-
-      return {
-        iconLink: itemData.image512pxLink,
-        wikiLink: itemData.wikiLink,
-        id: itemData.id,
-        name: localeData[`${itemData.id} Name`] ?? "item_name",
-        shortName: localeData[`${itemData.id} Shortname`] ?? "item_short_name",
-        highestSell,
-        lowestBuy,
-        sellFor,
-        buyFor,
-        width: itemData.width,
-        height: itemData.height,
-        props: itemData.properties,
-      };
-    }),
+    .query(({ input }) => fetchItemData(input.itemId, input.locale)),
   tryItemInput: procedure
     .input(
       z.object({
         query: z.string(),
-        locale: localesSchema,
       })
     )
     .query(({ input }) => {
-      return get(`itemsMap-${input.locale}`)[input.query.toLowerCase()];
+      return get("itemsMap-en")[input.query.toLowerCase()];
     }),
 });

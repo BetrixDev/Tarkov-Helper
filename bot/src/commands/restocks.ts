@@ -8,12 +8,6 @@ import { embedBuilder, getUserLocale } from "../utils";
 export abstract class RestockCommand {
   @Slash({
     name: "restocks",
-    nameLocalizations: {
-      "en-US": "restocks",
-    },
-    descriptionLocalizations: {
-      "en-US": "Returns the time left till each trader restocks",
-    },
     description: "Returns the time left till each trader restocks",
   })
   async command(interaction: CommandInteraction) {

@@ -8,6 +8,16 @@ export const fetchTraderData = (
   traderIdOrName: string,
   locale: SupportLocale
 ) => {
+  if (traderIdOrName === "flea-market") {
+    return {
+      id: "Flea Market",
+      nickName: "Flea Market",
+      firstName: "Flea Market",
+      lastName: "Flea Market",
+      description: "Flea Market",
+    };
+  }
+
   const traderData = get("traders").find(
     (t) => t.id === traderIdOrName || t.normalizedName === traderIdOrName
   )!;

@@ -47,7 +47,7 @@ export async function dogtagCommand(
     itemId: USEC_DOGTAG_ITEM_ID,
   });
 
-  const pricePerLevel = dogtag.highestSell.priceRUB;
+  const pricePerLevel = dogtag.highestSell!.priceRUB;
 
   const sellingPrice = formatPrice(pricePerLevel * level);
 

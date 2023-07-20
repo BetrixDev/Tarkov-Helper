@@ -10,7 +10,7 @@ interface SearchCatagories {
   };
 }
 
-type CatagoryKeys = keyof SearchCatagories;
+type CatagoryKey = keyof SearchCatagories;
 
 const engines: Record<string, Fuse<any>> = {};
 
@@ -31,7 +31,7 @@ export const refreshSearchEngines = () => {
   });
 };
 
-export const searchCatagory = <T extends CatagoryKeys>(
+export const searchCatagory = <T extends CatagoryKey>(
   catagory: T,
   query: string,
   locale = "en"

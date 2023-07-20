@@ -7,26 +7,13 @@ import { getUserLocale } from "../utils";
 export abstract class ItemCommand {
   @Slash({
     name: "item",
-    nameLocalizations: {
-      "en-US": "item",
-    },
     description: "Get information about any item in the game",
-    descriptionLocalizations: {
-      "en-US": "Get information about any item in the game",
-    },
   })
   async command(
     @SlashOption({
       name: "item",
-      nameLocalizations: {
-        "en-US": "item",
-      },
       description:
         "Item to fetch information about (start typing to search for an item)",
-      descriptionLocalizations: {
-        "en-US":
-          "Item to fetch information about (start typing to search for an item)",
-      },
       required: true,
       type: ApplicationCommandOptionType.String,
       autocomplete: async (interaction) => {
@@ -45,11 +32,13 @@ export abstract class ItemCommand {
     const userLocale = getUserLocale(interaction);
     const validInput = await trpc.items.tryItemInput.query({
       query: itemInput,
-      locale: userLocale,
     });
 
     if (!validInput) {
-      interaction.reply({ content: "invalid item name or id" });
+      interaction.reply({
+        content: "invalid item name or id",
+        ephemeral: true,
+      });
       return;
     }
 

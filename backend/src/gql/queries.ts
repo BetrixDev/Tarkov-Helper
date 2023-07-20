@@ -48,6 +48,7 @@ gql`
       width
       height
       wikiLink
+      avg24hPrice
       sellFor {
         vendor {
           normalizedName
