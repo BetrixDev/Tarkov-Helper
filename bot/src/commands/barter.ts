@@ -10,7 +10,7 @@ import {
 } from "discord.js";
 import { ButtonComponent, Discord, Slash, SlashOption } from "discordx";
 import { trpc } from "../trpc";
-import { EMTPY_EMBED_FIELD, SupportLocale, ZERO_WIDTH } from "common";
+import { EMTPY_EMBED_FIELD, SupportedLocale, ZERO_WIDTH } from "common";
 import {
   embedBuilder,
   formatPrice,
@@ -63,7 +63,7 @@ export abstract class BarterCommand {
 
   async command(
     itemId: string,
-    locale: SupportLocale,
+    locale: SupportedLocale,
     page = 0
   ): Promise<InteractionReplyOptions> {
     const validInput = await trpc.items.tryItemInput.query({

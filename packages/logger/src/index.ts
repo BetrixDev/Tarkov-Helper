@@ -16,9 +16,9 @@ const logLevelColors = {
   debug: "magenta",
 } as const;
 
-const colourLevel = (level: keyof typeof logLevelColors) => {
-  const colour = logLevelColors[level];
-  return chalk[colour](level);
+const colorLevel = (level: keyof typeof logLevelColors) => {
+  const color = logLevelColors[level];
+  return chalk[color](level);
 };
 
 declare const splatSymbol: unique symbol;
@@ -83,7 +83,7 @@ export class Logger {
                   timestamp as string
                 ).toLocaleTimeString("en");
                 const serviceName = (service as string) ?? "app";
-                const formattedLevel = colourLevel(
+                const formattedLevel = colorLevel(
                   level as keyof typeof logLevelColors
                 );
                 const formattedMeta = formatMeta(meta as Meta);

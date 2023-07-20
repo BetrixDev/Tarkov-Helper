@@ -4,7 +4,7 @@ import {
   InteractionReplyOptions,
 } from "discord.js";
 import { Discord, Slash, SlashOption } from "discordx";
-import { SupportLocale, USEC_DOGTAG_ITEM_ID } from "common";
+import { SupportedLocale, USEC_DOGTAG_ITEM_ID } from "common";
 import {
   embedBuilder,
   formatPrice,
@@ -45,7 +45,7 @@ export abstract class DogtagCommand {
 
 async function dogtagCommand(
   level: number,
-  locale: SupportLocale
+  locale: SupportedLocale
 ): Promise<InteractionReplyOptions> {
   const dogtag = await trpc.items.fetchItemData.query({
     locale,

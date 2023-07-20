@@ -5,7 +5,7 @@ import { trpc } from "../trpc";
 import { embedBuilder, getUserLocale, handleInteraction } from "../utils";
 
 @Discord()
-export abstract class RestockCommand {
+export abstract class RestocksCommand {
   @Slash({
     name: "restocks",
     description: "Returns the time left till each trader restocks",

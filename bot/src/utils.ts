@@ -8,11 +8,11 @@ import {
   InteractionUpdateOptions,
   MessageComponentInteraction,
 } from "discord.js";
-import { localesSchema, SupportLocale } from "common";
+import { localesSchema, SupportedLocale } from "common";
 import { logger } from "./log";
 
 /** Attempts to match the user's selected locale to a supported locale else defaults to "en" */
-export function getUserLocale(interaction: BaseInteraction): SupportLocale {
+export function getUserLocale(interaction: BaseInteraction): SupportedLocale {
   const userLocale = interaction.locale;
 
   const supportedLocale = localesSchema.safeParse(userLocale);
@@ -141,3 +141,5 @@ export async function handleInteraction<
     }
   }
 }
+
+export function t(locale: SupportedLocale) {}

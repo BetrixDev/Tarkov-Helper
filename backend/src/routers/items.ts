@@ -2,11 +2,11 @@ import z from "zod";
 import { get } from "../cache";
 import { procedure, router } from "../trpc";
 import { searchCatagory } from "../search-engines";
-import { SupportLocale, localesSchema } from "common";
+import { SupportedLocale, localesSchema } from "common";
 import { fetchTraderData } from "./traders";
 import { AllQuery } from "../gql/generated";
 
-export function fetchItemData(itemId: string, locale: SupportLocale) {
+export function fetchItemData(itemId: string, locale: SupportedLocale) {
   const itemData = get("items").find((i) => i.id === itemId)!;
 
   const localeData = get(`locale-${locale}`);
@@ -36,7 +36,7 @@ export function fetchItemData(itemId: string, locale: SupportLocale) {
 
 const formatBuySellFor = (
   obj: AllQuery["items"][number]["buyFor"],
-  locale: SupportLocale
+  locale: SupportedLocale
 ) => {
   return obj.map((s) => {
     const traderData = fetchTraderData(s.vendor.normalizedName, locale);

@@ -1,7 +1,12 @@
 import { ApplicationCommandOptionType, CommandInteraction } from "discord.js";
 import { Discord, Slash, SlashOption } from "discordx";
 import { trpc } from "../trpc";
-import { THError, getUserLocale, handleInteraction } from "../utils";
+import {
+  THError,
+  embedBuilder,
+  getUserLocale,
+  handleInteraction,
+} from "../utils";
 
 @Discord()
 export abstract class ItemCommand {
@@ -36,6 +41,8 @@ export abstract class ItemCommand {
       if (!validInput) {
         throw new THError("Invalid item name or id");
       }
+
+      const embed = embedBuilder();
 
       return { content: "⚠️ This command is under construction ⚠️" };
     });

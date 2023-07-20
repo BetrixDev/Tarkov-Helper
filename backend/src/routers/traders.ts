@@ -1,12 +1,12 @@
 import { z } from "zod";
 import { procedure, router } from "../trpc";
-import { SupportLocale, localesSchema } from "common";
+import { SupportedLocale, localesSchema } from "common";
 import { get } from "../cache";
 import { tarkovDev } from "../gql/client";
 
 export const fetchTraderData = (
   traderIdOrName: string,
-  locale: SupportLocale
+  locale: SupportedLocale
 ) => {
   if (traderIdOrName === "flea-market") {
     return {

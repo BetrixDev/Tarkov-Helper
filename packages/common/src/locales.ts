@@ -6,4 +6,4 @@ export const localesSchema = z
 
 export const SUPPORTED_LOCALES = ["en", "es", "ru", "ge"] as const;
 
-export type SupportLocale = z.infer<typeof localesSchema>;
+export type SupportedLocale = z.infer<typeof localesSchema>;

@@ -2,7 +2,7 @@ import { z } from "zod";
 import { procedure, router } from "../trpc";
 import {
   BEAR_DOGTAG_ITEM_ID,
-  SupportLocale,
+  SupportedLocale,
   USEC_DOGTAG_ITEM_ID,
   localesSchema,
 } from "common";
@@ -10,7 +10,7 @@ import { get } from "../cache";
 import { fetchItemData } from "./items";
 import { fetchTraderData } from "./traders";
 
-function fetchBarter(barterId: string, locale: SupportLocale) {
+function fetchBarter(barterId: string, locale: SupportedLocale) {
   const barterData = get("barters").find((b) => b.id === barterId)!;
 
   const barterCost = barterData.requiredItems.reduce((prevCost, barterItem) => {
