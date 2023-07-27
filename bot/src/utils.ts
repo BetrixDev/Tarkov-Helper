@@ -43,6 +43,14 @@ export function formatPrice(
   }).format(amount);
 }
 
+export function formatNumber(amount: number, locale: SupportedLocale = "en") {
+  return new Intl.NumberFormat(locale).format(amount);
+}
+
+export function clamp(num: number, min: number, max: number) {
+  return Math.min(Math.max(num, min), max);
+}
+
 export const embedBuilder = () => new EmbedBuilder().setColor("#101720");
 
 const errorEmbedBuilder = (description: string, commandName?: string) =>

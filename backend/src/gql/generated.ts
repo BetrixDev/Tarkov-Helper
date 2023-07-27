@@ -1769,6 +1769,11 @@ export type AllQueryVariables = Exact<{ [key: string]: never }>;
 
 export type AllQuery = {
   readonly __typename?: "Query";
+  readonly playerLevels: ReadonlyArray<{
+    readonly __typename?: "PlayerLevel";
+    readonly exp: number;
+    readonly level: number;
+  }>;
   readonly barters: ReadonlyArray<{
     readonly __typename?: "Barter";
     readonly id: string;
@@ -2194,6 +2199,10 @@ export type TraderRestocksQuery = {
 
 export const AllDocument = gql`
   query all {
+    playerLevels {
+      exp
+      level
+    }
     barters {
       id
       trader {

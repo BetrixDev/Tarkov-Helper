@@ -2,6 +2,11 @@ import gql from "graphql-tag";
 
 gql`
   query all {
+    playerLevels {
+      exp
+      level
+    }
+
     barters {
       id
       trader {

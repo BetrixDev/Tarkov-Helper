@@ -10,6 +10,7 @@ interface CacheEntries {
   items: AllQuery["items"];
   traders: AllQuery["traders"];
   barters: AllQuery["barters"];
+  playerLevels: AllQuery["playerLevels"];
   "locale-en": Record<string, string>;
   "locale-es": Record<string, string>;
   "locale-ru": Record<string, string>;
