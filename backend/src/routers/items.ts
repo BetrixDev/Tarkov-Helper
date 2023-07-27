@@ -6,7 +6,7 @@ import { SupportedLocale, localesSchema } from "common";
 import { fetchTraderData } from "./traders";
 import { AllQuery } from "../gql/generated";
 
-export function fetchItemData(itemId: string, locale: SupportedLocale) {
+export function fetchItemData(itemId: string, locale: SupportedLocale = "en") {
   const itemData = get("items").find((i) => i.id === itemId)!;
 
   const localeData = get(`locale-${locale}`);

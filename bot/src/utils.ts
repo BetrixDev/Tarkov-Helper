@@ -8,7 +8,7 @@ import {
   InteractionUpdateOptions,
   MessageComponentInteraction,
 } from "discord.js";
-import { localesSchema, SupportedLocale } from "common";
+import { Currency, localesSchema, SupportedLocale } from "common";
 import { logger } from "./log";
 
 /** Attempts to match the user's selected locale to a supported locale else defaults to "en" */
@@ -24,7 +24,24 @@ export function getUserLocale(interaction: BaseInteraction): SupportedLocale {
   return supportedLocale.data;
 }
 
-export const formatPrice = new Intl.NumberFormat("en-US").format;
+type FormatPriceOptions = {
+  currency?: Currency;
+  locale?: SupportedLocale;
+};
+
+export function formatPrice(
+  amount: number,
+  { currency, locale }: FormatPriceOptions = {
+    currency: "rub",
+    locale: "en",
+  }
+) {
+  return new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency: currency!.toUpperCase(),
+    currencyDisplay: "narrowSymbol",
+  }).format(amount);
+}
 
 export const embedBuilder = () => new EmbedBuilder().setColor("#101720");
 
@@ -34,7 +51,8 @@ const errorEmbedBuilder = (description: string, commandName?: string) =>
     .setColor("#ff2424")
     .setTitle("The command issued had an error")
     .setDescription(`\`${description}\``)
-    .setFooter(commandName ? { text: `Command issued ${commandName}` } : null);
+    .setFooter(commandName ? { text: `Command issued ${commandName}` } : null)
+    .setThumbnail(s3Image("error"));
 
 export class THError extends Error {
   name = "therror";
@@ -128,7 +146,24 @@ export async function handleInteraction<
         }
       );
 
-      if (!interaction.isAutocomplete()) {
+      if (interaction.isCommand()) {
+        const args = interaction.options.data.map(
+          (arg) => `${arg.name}: ${arg.value ?? "*undefined*"}`
+        );
+
+        interaction.reply({
+          ephemeral: true,
+          embeds: [
+            errorEmbedBuilder(
+              "An unknown error occurred when attempting to respond",
+              interaction.commandName
+            ).setFields({
+              name: "Args",
+              value: args.length > 0 ? args.join("\n") : "none",
+            }),
+          ],
+        });
+      } else if (!interaction.isAutocomplete()) {
         interaction.reply({
           ephemeral: true,
           embeds: [
@@ -142,4 +177,14 @@ export async function handleInteraction<
   }
 }
 
-export function t(locale: SupportedLocale) {}
+type KnownImage =
+  | "bitcoin"
+  | "error"
+  | "exchange-rate"
+  | "map"
+  | "restocks"
+  | "xp";
+
+export function s3Image(imgKey: KnownImage) {
+  return `https://tarkov-helper-s3.nyc3.cdn.digitaloceanspaces.com/images/${imgKey}.png`;
+}

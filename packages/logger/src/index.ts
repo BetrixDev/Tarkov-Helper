@@ -99,15 +99,27 @@ export class Logger {
   }
 
   debug(message: string, meta?: Record<string, unknown>) {
-    this.logger.debug(message, meta);
+    if (meta) {
+      this.logger.debug(message, meta);
+    } else {
+      this.logger.debug(message);
+    }
   }
 
   info(message: string, meta?: Record<string, unknown>) {
-    this.logger.info(message, meta);
+    if (meta) {
+      this.logger.info(message, meta);
+    } else {
+      this.logger.info(message);
+    }
   }
 
   warn(message: string, meta?: Record<string, unknown>) {
-    this.logger.warn(message, meta);
+    if (meta) {
+      this.logger.warn(message, meta);
+    } else {
+      this.logger.warn(message);
+    }
   }
 
   error(
@@ -123,6 +135,10 @@ export class Logger {
 
     // Also log errors to stderr for now
     // This needs to remain until the issue with winston not serialising errors is fixed
-    console.log(message, meta);
+    if (meta) {
+      console.log(message, meta);
+    } else {
+      console.log(message);
+    }
   }
 }
