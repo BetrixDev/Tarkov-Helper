@@ -31,7 +31,6 @@ export const economyRouter = router({
       const exchangeRates: { id: Currency; amount: number }[] = [];
 
       const currencyPrice = getCurrencyPrice(input.currency);
-      console.log(currencyPrice, input.currency);
 
       const othersCurrencies = CURRENCIES.filter(
         (c) => c.id !== input.currency
@@ -39,7 +38,6 @@ export const economyRouter = router({
 
       othersCurrencies.forEach((otherCurr) => {
         const otherCurrPrice = getCurrencyPrice(otherCurr.id);
-        console.log(otherCurr, otherCurrPrice);
 
         if (!currencyPrice || !otherCurrPrice) {
           throw new TRPCError({
@@ -61,4 +59,62 @@ export const economyRouter = router({
 
       return exchangeRates;
     }),
+  cumulativeHighestSellFor: procedure
+    .input(
+      z.object({
+        items: z.array(z.string()),
+      })
+    )
+    .query(({ input }) => cumulativeHighestSellFor(input.items)),
+  cumulativeLowestBuyFor: procedure
+    .input(
+      z.object({
+        items: z.array(z.string()),
+      })
+    )
+    .query(({ input }) => cumulativeLowestBuyFor(input.items)),
 });
+
+// Some items cannot be bought and/or sold, so the cumulative prices may become incomplete
+
+export function cumulativeHighestSellFor(items: string[]) {
+  let incomplete = true;
+
+  const cumulative = items.reduce((prev, item) => {
+    const itemData = fetchItemData(item);
+    let highestSell = itemData.highestSell?.priceRUB;
+
+    if (!highestSell) {
+      highestSell = 0;
+      incomplete = true;
+    }
+
+    return prev + highestSell;
+  }, 0);
+
+  return {
+    cumulative,
+    incomplete,
+  };
+}
+
+export function cumulativeLowestBuyFor(items: string[]) {
+  let incomplete = false;
+
+  const cumulative = items.reduce((prev, item) => {
+    const itemData = fetchItemData(item);
+    let lowestBuy = itemData.lowestBuy?.priceRUB;
+
+    if (!lowestBuy) {
+      lowestBuy = 0;
+      incomplete = true;
+    }
+
+    return prev + lowestBuy;
+  }, 0);
+
+  return {
+    cumulative,
+    incomplete,
+  };
+}
