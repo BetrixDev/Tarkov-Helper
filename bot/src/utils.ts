@@ -31,7 +31,7 @@ type FormatPriceOptions = {
 
 export function formatPrice(
   amount: number,
-  { currency, locale }: FormatPriceOptions = {
+  { currency = "rub", locale = "en" }: FormatPriceOptions = {
     currency: "rub",
     locale: "en",
   }

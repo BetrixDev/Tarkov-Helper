@@ -21,7 +21,7 @@ app.use(
 initCache().then(() => {
   refreshSearchEngines();
 
-  app.listen(3000, () => {
+  app.listen(8080, () => {
     logger.info("Backend listening");
   });
 });

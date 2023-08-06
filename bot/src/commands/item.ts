@@ -4,6 +4,7 @@ import { trpc } from "../trpc";
 import {
   THError,
   embedBuilder,
+  formatPrice,
   getUserLocale,
   handleInteraction,
 } from "../utils";
@@ -39,12 +40,27 @@ export abstract class ItemCommand {
       });
 
       if (!validInput) {
-        throw new THError("Invalid item name or id");
+        throw new THError(
+          "Invalid item name or id. Please use the auto complete feature for accurate searching"
+        );
       }
 
-      const embed = embedBuilder();
+      const itemData = await trpc.items.fetchItemData.query({
+        itemId: validInput,
+        locale: userLocale,
+      });
 
-      return { content: "⚠️ This command is under construction ⚠️" };
+      const embed = embedBuilder()
+        .setTitle(
+          `${itemData.shortName} Information - ${
+            itemData.canSellOnFlea
+              ? formatPrice(itemData.avg24hFleaPrice, { locale: userLocale })
+              : "[BANNED ON FLEA]"
+          }`
+        )
+        .setThumbnail(itemData.iconLink);
+
+      return { embeds: [embed] };
     });
   }
 }

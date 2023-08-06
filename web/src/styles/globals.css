@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.fade-image {
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), transparent);
+}
