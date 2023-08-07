@@ -2184,6 +2184,249 @@ export type AllQuery = {
           }>;
         };
   }>;
+  readonly tasks: ReadonlyArray<{
+    readonly __typename?: "Task";
+    readonly id: string;
+    readonly tarkovDataId: number;
+    readonly name: string;
+    readonly experience: number;
+    readonly wikiLink: string;
+    readonly minPlayerLevel: number;
+    readonly trader: { readonly __typename?: "Trader"; readonly id: string };
+    readonly map: { readonly __typename?: "Map"; readonly name: string };
+    readonly taskRequirements: ReadonlyArray<{
+      readonly __typename?: "TaskStatusRequirement";
+      readonly status: ReadonlyArray<string>;
+      readonly task: { readonly __typename?: "Task"; readonly name: string };
+    }>;
+    readonly traderLevelRequirements: ReadonlyArray<{
+      readonly __typename?: "RequirementTrader";
+      readonly id: string;
+      readonly level: number;
+      readonly trader: { readonly __typename?: "Trader"; readonly id: string };
+    }>;
+    readonly objectives: ReadonlyArray<
+      | {
+          readonly __typename?: "TaskObjectiveBasic";
+          readonly id: string;
+          readonly type: string;
+          readonly description: string;
+          readonly optional: boolean;
+          readonly maps: ReadonlyArray<{
+            readonly __typename?: "Map";
+            readonly name: string;
+          }>;
+        }
+      | {
+          readonly __typename?: "TaskObjectiveBuildItem";
+          readonly id: string;
+          readonly type: string;
+          readonly description: string;
+          readonly optional: boolean;
+          readonly maps: ReadonlyArray<{
+            readonly __typename?: "Map";
+            readonly name: string;
+          }>;
+        }
+      | {
+          readonly __typename?: "TaskObjectiveExperience";
+          readonly id: string;
+          readonly type: string;
+          readonly description: string;
+          readonly optional: boolean;
+          readonly maps: ReadonlyArray<{
+            readonly __typename?: "Map";
+            readonly name: string;
+          }>;
+        }
+      | {
+          readonly __typename?: "TaskObjectiveExtract";
+          readonly id: string;
+          readonly type: string;
+          readonly description: string;
+          readonly optional: boolean;
+          readonly maps: ReadonlyArray<{
+            readonly __typename?: "Map";
+            readonly name: string;
+          }>;
+        }
+      | {
+          readonly __typename?: "TaskObjectiveItem";
+          readonly id: string;
+          readonly count: number;
+          readonly foundInRaid: boolean;
+          readonly type: string;
+          readonly description: string;
+          readonly optional: boolean;
+          readonly item: {
+            readonly __typename?: "Item";
+            readonly id: string;
+            readonly name: string;
+          };
+          readonly maps: ReadonlyArray<{
+            readonly __typename?: "Map";
+            readonly name: string;
+          }>;
+        }
+      | {
+          readonly __typename?: "TaskObjectiveMark";
+          readonly id: string;
+          readonly type: string;
+          readonly description: string;
+          readonly optional: boolean;
+          readonly maps: ReadonlyArray<{
+            readonly __typename?: "Map";
+            readonly name: string;
+          }>;
+        }
+      | {
+          readonly __typename?: "TaskObjectivePlayerLevel";
+          readonly id: string;
+          readonly type: string;
+          readonly description: string;
+          readonly optional: boolean;
+          readonly maps: ReadonlyArray<{
+            readonly __typename?: "Map";
+            readonly name: string;
+          }>;
+        }
+      | {
+          readonly __typename?: "TaskObjectiveQuestItem";
+          readonly id: string;
+          readonly type: string;
+          readonly description: string;
+          readonly optional: boolean;
+          readonly maps: ReadonlyArray<{
+            readonly __typename?: "Map";
+            readonly name: string;
+          }>;
+        }
+      | {
+          readonly __typename?: "TaskObjectiveShoot";
+          readonly id: string;
+          readonly type: string;
+          readonly description: string;
+          readonly optional: boolean;
+          readonly maps: ReadonlyArray<{
+            readonly __typename?: "Map";
+            readonly name: string;
+          }>;
+        }
+      | {
+          readonly __typename?: "TaskObjectiveSkill";
+          readonly id: string;
+          readonly type: string;
+          readonly description: string;
+          readonly optional: boolean;
+          readonly maps: ReadonlyArray<{
+            readonly __typename?: "Map";
+            readonly name: string;
+          }>;
+        }
+      | {
+          readonly __typename?: "TaskObjectiveTaskStatus";
+          readonly id: string;
+          readonly type: string;
+          readonly description: string;
+          readonly optional: boolean;
+          readonly maps: ReadonlyArray<{
+            readonly __typename?: "Map";
+            readonly name: string;
+          }>;
+        }
+      | {
+          readonly __typename?: "TaskObjectiveTraderLevel";
+          readonly id: string;
+          readonly type: string;
+          readonly description: string;
+          readonly optional: boolean;
+          readonly maps: ReadonlyArray<{
+            readonly __typename?: "Map";
+            readonly name: string;
+          }>;
+        }
+      | {
+          readonly __typename?: "TaskObjectiveTraderStanding";
+          readonly id: string;
+          readonly type: string;
+          readonly description: string;
+          readonly optional: boolean;
+          readonly maps: ReadonlyArray<{
+            readonly __typename?: "Map";
+            readonly name: string;
+          }>;
+        }
+      | {
+          readonly __typename?: "TaskObjectiveUseItem";
+          readonly id: string;
+          readonly type: string;
+          readonly description: string;
+          readonly optional: boolean;
+          readonly maps: ReadonlyArray<{
+            readonly __typename?: "Map";
+            readonly name: string;
+          }>;
+        }
+    >;
+    readonly startRewards: {
+      readonly __typename?: "TaskRewards";
+      readonly items: ReadonlyArray<{
+        readonly __typename?: "ContainedItem";
+        readonly count: number;
+        readonly item: {
+          readonly __typename?: "Item";
+          readonly id: string;
+          readonly name: string;
+        };
+      }>;
+      readonly offerUnlock: ReadonlyArray<{
+        readonly __typename?: "OfferUnlock";
+        readonly level: number;
+        readonly trader: {
+          readonly __typename?: "Trader";
+          readonly id: string;
+        };
+        readonly item: {
+          readonly __typename?: "Item";
+          readonly id: string;
+          readonly name: string;
+        };
+      }>;
+      readonly traderUnlock: ReadonlyArray<{
+        readonly __typename?: "Trader";
+        readonly id: string;
+      }>;
+    };
+    readonly finishRewards: {
+      readonly __typename?: "TaskRewards";
+      readonly items: ReadonlyArray<{
+        readonly __typename?: "ContainedItem";
+        readonly count: number;
+        readonly item: {
+          readonly __typename?: "Item";
+          readonly id: string;
+          readonly name: string;
+        };
+      }>;
+      readonly offerUnlock: ReadonlyArray<{
+        readonly __typename?: "OfferUnlock";
+        readonly level: number;
+        readonly trader: {
+          readonly __typename?: "Trader";
+          readonly id: string;
+        };
+        readonly item: {
+          readonly __typename?: "Item";
+          readonly id: string;
+          readonly name: string;
+        };
+      }>;
+      readonly traderUnlock: ReadonlyArray<{
+        readonly __typename?: "Trader";
+        readonly id: string;
+      }>;
+    };
+  }>;
 };
 
 export type TraderRestocksQueryVariables = Exact<{ [key: string]: never }>;
@@ -2195,6 +2438,27 @@ export type TraderRestocksQuery = {
     readonly id: string;
     readonly resetTime: string;
   }>;
+};
+
+export type ServerStatusQueryVariables = Exact<{ [key: string]: never }>;
+
+export type ServerStatusQuery = {
+  readonly __typename?: "Query";
+  readonly status: {
+    readonly __typename?: "ServerStatus";
+    readonly currentStatuses: ReadonlyArray<{
+      readonly __typename?: "Status";
+      readonly name: string;
+      readonly statusCode: string;
+    }>;
+    readonly generalStatus: {
+      readonly __typename?: "Status";
+      readonly name: string;
+      readonly message: string;
+      readonly status: number;
+      readonly statusCode: string;
+    };
+  };
 };
 
 export const AllDocument = gql`
@@ -2504,6 +2768,95 @@ export const AllDocument = gql`
         }
       }
     }
+    tasks {
+      id
+      tarkovDataId
+      name
+      trader {
+        id
+      }
+      map {
+        name
+      }
+      experience
+      wikiLink
+      minPlayerLevel
+      taskRequirements {
+        task {
+          name
+        }
+        status
+      }
+      traderLevelRequirements {
+        id
+        trader {
+          id
+        }
+        level
+      }
+      objectives {
+        id
+        type
+        description
+        maps {
+          name
+        }
+        optional
+        ... on TaskObjectiveItem {
+          id
+          item {
+            id
+            name
+          }
+          count
+          foundInRaid
+        }
+      }
+      startRewards {
+        items {
+          item {
+            id
+            name
+          }
+          count
+        }
+        offerUnlock {
+          trader {
+            id
+          }
+          level
+          item {
+            id
+            name
+          }
+        }
+        traderUnlock {
+          id
+        }
+      }
+      finishRewards {
+        items {
+          item {
+            id
+            name
+          }
+          count
+        }
+        offerUnlock {
+          trader {
+            id
+          }
+          level
+          item {
+            id
+            name
+          }
+        }
+        traderUnlock {
+          id
+        }
+      }
+    }
   }
 `;
 export const TraderRestocksDocument = gql`
@@ -2511,6 +2864,22 @@ export const TraderRestocksDocument = gql`
     traders {
       id
       resetTime
+    }
+  }
+`;
+export const ServerStatusDocument = gql`
+  query serverStatus {
+    status {
+      currentStatuses {
+        name
+        statusCode
+      }
+      generalStatus {
+        name
+        message
+        status
+        statusCode
+      }
     }
   }
 `;
@@ -2558,6 +2927,20 @@ export function getSdk(
             { ...requestHeaders, ...wrappedRequestHeaders }
           ),
         "traderRestocks",
+        "query"
+      );
+    },
+    serverStatus(
+      variables?: ServerStatusQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders
+    ): Promise<ServerStatusQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<ServerStatusQuery>(ServerStatusDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        "serverStatus",
         "query"
       );
     },

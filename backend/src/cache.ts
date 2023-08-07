@@ -11,6 +11,7 @@ interface CacheEntries {
   traders: AllQuery["traders"];
   barters: AllQuery["barters"];
   playerLevels: AllQuery["playerLevels"];
+  tasks: AllQuery["tasks"];
   "locale-en": Record<string, string>;
   "locale-es": Record<string, string>;
   "locale-ru": Record<string, string>;

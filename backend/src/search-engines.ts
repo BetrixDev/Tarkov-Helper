@@ -8,6 +8,10 @@ interface SearchCatagories {
     name: string;
     shortName: string;
   };
+  quests: {
+    id: number;
+    name: string;
+  };
 }
 
 type CatagoryKey = keyof SearchCatagories;
@@ -27,6 +31,16 @@ export const refreshSearchEngines = () => {
         };
       }),
       { keys: ["name", "shortName"] }
+    );
+
+    engines[`quests-${locale}`] = new Fuse(
+      get("tasks").map((quest) => {
+        return {
+          id: quest.id,
+          name: localeData[`${quest.id} name`],
+        };
+      }),
+      { keys: ["name"] }
     );
   });
 };

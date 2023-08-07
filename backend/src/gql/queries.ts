@@ -310,6 +310,96 @@ gql`
         }
       }
     }
+
+    tasks {
+      id
+      tarkovDataId
+      name
+      trader {
+        id
+      }
+      map {
+        name
+      }
+      experience
+      wikiLink
+      minPlayerLevel
+      taskRequirements {
+        task {
+          name
+        }
+        status
+      }
+      traderLevelRequirements {
+        id
+        trader {
+          id
+        }
+        level
+      }
+      objectives {
+        id
+        type
+        description
+        maps {
+          name
+        }
+        optional
+        ... on TaskObjectiveItem {
+          id
+          item {
+            id
+            name
+          }
+          count
+          foundInRaid
+        }
+      }
+      startRewards {
+        items {
+          item {
+            id
+            name
+          }
+          count
+        }
+        offerUnlock {
+          trader {
+            id
+          }
+          level
+          item {
+            id
+            name
+          }
+        }
+        traderUnlock {
+          id
+        }
+      }
+      finishRewards {
+        items {
+          item {
+            id
+            name
+          }
+          count
+        }
+        offerUnlock {
+          trader {
+            id
+          }
+          level
+          item {
+            id
+            name
+          }
+        }
+        traderUnlock {
+          id
+        }
+      }
+    }
   }
 `;
 
@@ -318,6 +408,23 @@ gql`
     traders {
       id
       resetTime
+    }
+  }
+`;
+
+gql`
+  query serverStatus {
+    status {
+      currentStatuses {
+        name
+        statusCode
+      }
+      generalStatus {
+        name
+        message
+        status
+        statusCode
+      }
     }
   }
 `;
