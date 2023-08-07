@@ -5,6 +5,7 @@ import { Fira_Code } from "next/font/google";
 import { Dot, ExternalLinkIcon, GithubIcon } from "lucide-react";
 import { Balancer } from "react-wrap-balancer";
 import Link from "next/link";
+import z from "zod";
 
 import BackgroundImage from "../../public/imgs/EscapeFromTarkov 2022-12-15 19-51-22.jpg";
 import {
@@ -13,13 +14,40 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/accordion";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 
 const firaCode = Fira_Code({ subsets: ["latin"] });
 const tasaOrbiter = localFont({
   src: "../../public/fonts/TASAOrbiterVF.woff2",
 });
 
-export default function Home() {
+const format = new Intl.NumberFormat().format;
+
+const topggSchema = z.object({
+  server_count: z.number(),
+});
+
+export const getStaticProps: GetStaticProps<
+  z.infer<typeof topggSchema>
+> = async () => {
+  const res = await fetch("https://top.gg/api/bots/797600238449590334", {
+    headers: {
+      Authorization: process.env.TOPGG_TOKEN!,
+    },
+  });
+
+  const data = topggSchema.parse(await res.json());
+
+  return {
+    props: data,
+    // Revalidate every 30 minutes
+    revalidate: 60 * 30,
+  };
+};
+
+export default function Home(
+  botData: InferGetStaticPropsType<typeof getStaticProps>,
+) {
   return (
     <main
       className={clsx(
@@ -44,17 +72,23 @@ export default function Home() {
             </Balancer>
           </div>
 
-          <div className="flex w-full justify-center md:justify-start">
+          <div className="flex w-full flex-col justify-center gap-4 md:flex-row md:justify-start">
             <Link
               className="justify-center md:justify-start"
-              href="https://discord.com/oauth2/authorize?client_id=797600238449590334&permissions=128&scope=bot%20applications.commands"
+              href="https://top.gg/bot/797600238449590334/invite"
               target="__blank"
             >
-              <button className="flex h-12 w-72 items-center justify-center gap-2 rounded-md bg-black/10 px-4 py-2 outline outline-1 outline-white/20 backdrop-blur-sm hover:bg-white/5">
+              <button className="min-w-72 flex h-12 w-full items-center justify-center gap-2 rounded-md bg-black/10 px-4 py-2 outline outline-1 outline-white/20 backdrop-blur-sm hover:bg-white/5">
                 <ExternalLinkIcon />
                 <p>Invite to Your Server</p>
               </button>
             </Link>
+            <div className="flex h-12 items-center justify-center gap-2 rounded-md bg-black/10 px-4 py-2 outline outline-1 outline-white/20 backdrop-blur-sm">
+              <span className="font-semibold">
+                {format(botData.server_count)}
+              </span>
+              servers
+            </div>
           </div>
 
           <div className="flex justify-center gap-4 md:justify-start">
