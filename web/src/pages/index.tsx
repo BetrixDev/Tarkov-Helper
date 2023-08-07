@@ -75,7 +75,7 @@ export default function Home(
           <div className="flex w-full flex-col justify-center gap-4 md:flex-row md:justify-start">
             <Link
               className="justify-center md:justify-start"
-              href="https://top.gg/bot/797600238449590334/invite"
+              href="https://discord.com/api/oauth2/authorize?client_id=797600238449590334&permissions=2147483648&scope=bot"
               target="__blank"
             >
               <button className="min-w-72 flex h-12 w-full items-center justify-center gap-2 rounded-md bg-black/10 px-4 py-2 outline outline-1 outline-white/20 backdrop-blur-sm hover:bg-white/5">
