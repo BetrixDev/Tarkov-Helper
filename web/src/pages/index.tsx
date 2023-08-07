@@ -6,14 +6,13 @@ import { Dot, ExternalLinkIcon, GithubIcon } from "lucide-react";
 import { Balancer } from "react-wrap-balancer";
 import Link from "next/link";
 
-import BackgroundImage from "../../public/imgs/EscapeFromTarkov 2022-12-15 19-51-22.png";
+import BackgroundImage from "../../public/imgs/EscapeFromTarkov 2022-12-15 19-51-22.jpg";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/accordion";
-import { ListBulletIcon } from "@radix-ui/react-icons";
 
 const firaCode = Fira_Code({ subsets: ["latin"] });
 const tasaOrbiter = localFont({
@@ -68,7 +67,7 @@ export default function Home() {
           </div>
         </div>
         <Image
-          className="fade-image absolute left-0 top-0 h-[32rem] object-cover brightness-50 md:brightness-100"
+          className="fade-image absolute left-0 top-0 h-[32rem] w-full object-cover brightness-50 md:brightness-100"
           src={BackgroundImage}
           alt="Background image"
           quality={100}
