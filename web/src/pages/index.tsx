@@ -56,7 +56,11 @@ export default function Home(
       <Head>
         <title>Tarkov Helper</title>
         <meta property="og:title" content="Tarkov Helper" key="title" />
-        <meta property="og:site_name" content="Tarkov Helper" key="title" />
+        <meta property="og:site_name" content="Tarkov Helper" />
+        <meta
+          property="og:image"
+          content="https://tarkov-helper-s3.nyc3.cdn.digitaloceanspaces.com/images/Logo250x250.png"
+        />
         <meta
           property="og:description"
           content="A Discord bot that gives instantaneous access to information in Escape from Tarkov"
