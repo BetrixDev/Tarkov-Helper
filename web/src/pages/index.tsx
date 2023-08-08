@@ -163,7 +163,11 @@ export default function Home(
                 commandName="Barter"
                 commandDescription="Lists every barter for the specified item and the barters the item is used in"
               >
-                <Image src={BarterImage} alt="/barter command preview image" />
+                <Image
+                  src={BarterImage}
+                  alt="/barter command preview image"
+                  placeholder="blur"
+                />
               </AccordionChild>
               <AccordionChild
                 commandName="BitcoinFarm"
@@ -172,13 +176,18 @@ export default function Home(
                 <Image
                   src={BitcoinFarmImage}
                   alt="/bitcoinfarm command preview image"
+                  placeholder="blur"
                 />
               </AccordionChild>
               <AccordionChild
                 commandName="Dogtag"
                 commandDescription="Calculates the cost of a dogtag given its level"
               >
-                <Image src={DogtagImage} alt="/dogtag command preview image" />
+                <Image
+                  src={DogtagImage}
+                  alt="/dogtag command preview image"
+                  placeholder="blur"
+                />
               </AccordionChild>
               <AccordionChild
                 commandName="ExchangeRate"
@@ -187,6 +196,7 @@ export default function Home(
                 <Image
                   src={ExchangeRateImage}
                   alt="/exchangerate command preview image"
+                  placeholder="blur"
                 />
               </AccordionChild>
               <AccordionChild
@@ -196,6 +206,7 @@ export default function Home(
                 <Image
                   src={ExperienceImage}
                   alt="/experience command preview image"
+                  placeholder="blur"
                 />
               </AccordionChild>
               <AccordionChild
@@ -211,6 +222,7 @@ export default function Home(
                 <Image
                   src={RestocksImage}
                   alt="/restocks command preview image"
+                  placeholder="blur"
                 />
               </AccordionChild>
               <AccordionChild
@@ -223,7 +235,11 @@ export default function Home(
                 commandName="Status"
                 commandDescription="Returns the current server status given from status.escapefromtarkov.com"
               >
-                <Image src={StatusImage} alt="/status command preview image" />
+                <Image
+                  src={StatusImage}
+                  alt="/status command preview image"
+                  placeholder="blur"
+                />
               </AccordionChild>
               <AccordionChild
                 commandName="Map"
