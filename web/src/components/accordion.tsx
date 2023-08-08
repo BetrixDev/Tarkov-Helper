@@ -5,7 +5,10 @@ import { ChevronDownIcon } from "@radix-ui/react-icons";
 const titleFont = Montserrat({ subsets: ["latin"], weight: "700" });
 
 import { clsx } from "clsx";
-import { Montserrat } from "next/font/google";
+import { Fira_Code, Montserrat } from "next/font/google";
+import { Dot } from "lucide-react";
+
+const firaCode = Fira_Code({ subsets: ["latin"] });
 
 const Accordion = AccordionPrimitive.Root;
 
@@ -60,4 +63,40 @@ const AccordionContent = React.forwardRef<
 ));
 AccordionContent.displayName = AccordionPrimitive.Content.displayName;
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
+interface AccordionChildProps {
+  commandName: string;
+  commandDescription: string;
+  children: React.ReactNode | string;
+}
+
+const AccordionChild: React.FC<AccordionChildProps> = ({
+  commandDescription,
+  commandName,
+  children,
+}) => {
+  return (
+    <AccordionItem
+      value={commandName}
+      className="rounded-md outline outline-1 outline-white/20"
+    >
+      <AccordionTrigger>
+        /{commandName}
+        <Dot />
+        <p className={clsx("font-light text-stone-50/80", firaCode.className)}>
+          {commandDescription}
+        </p>
+      </AccordionTrigger>
+      <AccordionContent className="flex items-center justify-center gap-2">
+        {children}
+      </AccordionContent>
+    </AccordionItem>
+  );
+};
+
+export {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+  AccordionChild,
+};

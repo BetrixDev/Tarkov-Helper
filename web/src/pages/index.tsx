@@ -2,18 +2,20 @@ import Image from "next/image";
 import localFont from "next/font/local";
 import { clsx } from "clsx";
 import { Fira_Code } from "next/font/google";
-import { Dot, ExternalLinkIcon, GithubIcon } from "lucide-react";
+import { ExternalLinkIcon, GithubIcon } from "lucide-react";
 import { Balancer } from "react-wrap-balancer";
 import Link from "next/link";
 import z from "zod";
 
+import RestocksImage from "../../public/imgs/commands/restocks.png";
+import BarterImage from "../../public/imgs/commands/barter.png";
+import BitcoinFarmImage from "../../public/imgs/commands/bitcoinfarm.png";
+import DogtagImage from "../../public/imgs/commands/dogtag.png";
+import ExchangeRateImage from "../../public/imgs/commands/exchangerate.png";
+import ExperienceImage from "../../public/imgs/commands/experience.png";
+import StatusImage from "../../public/imgs/commands/status.png";
 import BackgroundImage from "../../public/imgs/EscapeFromTarkov 2022-12-15 19-51-22.jpg";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/accordion";
+import { Accordion, AccordionChild } from "@/components/accordion";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import Head from "next/head";
 
@@ -151,129 +153,86 @@ export default function Home(
               collapsible
               className="mx-2 flex flex-col gap-4"
             >
-              <AccordionItem
-                value="item"
-                className="rounded-md outline outline-1 outline-white/20"
+              <AccordionChild
+                commandName="Item"
+                commandDescription="Lists every possible statistic for an item along with its spawning locations, quest involvements and barters"
               >
-                <AccordionTrigger className="">
-                  /Item
-                  <Dot />
-                  <p
-                    className={clsx(
-                      "font-light text-stone-50/80",
-                      firaCode.className,
-                    )}
-                  >
-                    Lists every possible statistic for an item along with its
-                    spawning locations, quest involvements and barters
-                  </p>
-                </AccordionTrigger>
-                <AccordionContent>PLACEHOLDER TEXT</AccordionContent>
-              </AccordionItem>
-              <AccordionItem
-                value="barter"
-                className="rounded-md outline outline-1 outline-white/20"
+                THIS COMMAND IS STILL UNDER CONSTRUCTION
+              </AccordionChild>
+              <AccordionChild
+                commandName="Barter"
+                commandDescription="Lists every barter for the specified item and the barters the item is used in"
               >
-                <AccordionTrigger className="">
-                  /Barter
-                  <Dot />
-                  <p
-                    className={clsx(
-                      "font-light text-stone-50/80",
-                      firaCode.className,
-                    )}
-                  >
-                    Lists every barter for the specified item and the barters
-                    the item is used in
-                  </p>
-                </AccordionTrigger>
-                <AccordionContent>PLACEHOLDER TEXT</AccordionContent>
-              </AccordionItem>
-              <AccordionItem
-                value="bitcoinfarm"
-                className="rounded-md outline outline-1 outline-white/20"
+                <Image src={BarterImage} alt="/barter command preview image" />
+              </AccordionChild>
+              <AccordionChild
+                commandName="BitcoinFarm"
+                commandDescription="Calculates the amount of bitcoins and roubles made per day for a specified amount of GPUs in the farm"
               >
-                <AccordionTrigger className="">
-                  /BitcoinFarm
-                  <Dot />
-                  <p
-                    className={clsx(
-                      "font-light text-stone-50/80",
-                      firaCode.className,
-                    )}
-                  >
-                    Calculates the amount of bitcoins and roubles made per day
-                    for a specified amount of GPUs in the farm
-                  </p>
-                </AccordionTrigger>
-                <AccordionContent>PLACEHOLDER TEXT</AccordionContent>
-              </AccordionItem>
-              <AccordionItem
-                value="dogtag"
-                className="rounded-md outline outline-1 outline-white/20"
+                <Image
+                  src={BitcoinFarmImage}
+                  alt="/bitcoinfarm command preview image"
+                />
+              </AccordionChild>
+              <AccordionChild
+                commandName="Dogtag"
+                commandDescription="Calculates the cost of a dogtag given its level"
               >
-                <AccordionTrigger className="">
-                  /Dogtag
-                  <Dot />
-                  <p
-                    className={clsx(
-                      "font-light text-stone-50/80",
-                      firaCode.className,
-                    )}
-                  >
-                    Calculates the cost of a dogtag given its level
-                  </p>
-                </AccordionTrigger>
-                <AccordionContent>PLACEHOLDER TEXT</AccordionContent>
-              </AccordionItem>
-              <AccordionItem
-                value="exchangerate"
-                className="rounded-md outline outline-1 outline-white/20"
+                <Image src={DogtagImage} alt="/dogtag command preview image" />
+              </AccordionChild>
+              <AccordionChild
+                commandName="ExchangeRate"
+                commandDescription="Converts the specified currency and the amount to the other two currencies in the game"
               >
-                <AccordionTrigger className="">
-                  /ExchangeRate
-                  <Dot />
-                  <p
-                    className={clsx(
-                      "font-light text-stone-50/80",
-                      firaCode.className,
-                    )}
-                  >
-                    Converts the specified currency and the amount to the other
-                    two currencies in the game
-                  </p>
-                </AccordionTrigger>
-                <AccordionContent>PLACEHOLDER TEXT</AccordionContent>
-              </AccordionItem>
+                <Image
+                  src={ExchangeRateImage}
+                  alt="/exchangerate command preview image"
+                />
+              </AccordionChild>
+              <AccordionChild
+                commandName="Experience"
+                commandDescription="Calculates the amount of xp needed to reach a specified level from a starting level or xp amount"
+              >
+                <Image
+                  src={ExperienceImage}
+                  alt="/experience command preview image"
+                />
+              </AccordionChild>
+              <AccordionChild
+                commandName="Quest"
+                commandDescription="Returns basic information about the specified quest as well as the step-by-step instructions from the wiki"
+              >
+                THIS COMMAND IS STILL UNDER CONSTRUCTION
+              </AccordionChild>
+              <AccordionChild
+                commandName="Restocks"
+                commandDescription="Lists the time until every trader will restock their inventory"
+              >
+                <Image
+                  src={RestocksImage}
+                  alt="/restocks command preview image"
+                />
+              </AccordionChild>
+              <AccordionChild
+                commandName="Stats"
+                commandDescription="Returns every possible statistic for the specified item (even the hidden stats)"
+              >
+                THIS COMMAND IS STILL UNDER CONSTRUCTION
+              </AccordionChild>
+              <AccordionChild
+                commandName="Status"
+                commandDescription="Returns the current server status given from status.escapefromtarkov.com"
+              >
+                <Image src={StatusImage} alt="/status command preview image" />
+              </AccordionChild>
+              <AccordionChild
+                commandName="Map"
+                commandDescription="Returns basic information about the specified location and some useful map images to view"
+              >
+                THIS COMMAND IS STILL UNDER CONSTRUCTION
+              </AccordionChild>
             </Accordion>
           </div>
-
-          {/* <div className="mb-32 flex flex-wrap justify-center gap-8">
-          <CommandCard
-            name="Experience"
-            description="Calculates the amount of xp needed to reach a specified level from a starting level or xp amount"
-          />
-          <CommandCard
-            name="Map"
-            description="Returns basic information about the specified location and some useful map images to view"
-          />
-          <CommandCard
-            name="Quest"
-            description="Returns basic information about the specified quest as well as the step-by-step instructions from the wiki"
-          />
-          <CommandCard
-            name="Restocks"
-            description="Lists the time until every trader will restock their inventory"
-          />
-          <CommandCard
-            name="Stat"
-            description="Returns every possible statistic for the specified item (even the hidden stats)"
-          />
-          <CommandCard
-            name="Status"
-            description="Returns the current server status given from status.escapefromtarkov.com"
-          />
-        </div> */}
         </div>
       </main>
     </>
