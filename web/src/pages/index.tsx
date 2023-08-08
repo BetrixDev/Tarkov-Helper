@@ -65,6 +65,10 @@ export default function Home(
           property="og:description"
           content="A Discord bot that gives instantaneous access to information in Escape from Tarkov"
         />
+        <meta
+          name="description"
+          content="A Discord bot that gives instantaneous access to information in Escape from Tarkov"
+        />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.tarkov-helper.net" />
       </Head>
