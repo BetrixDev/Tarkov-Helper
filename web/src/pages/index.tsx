@@ -106,6 +106,19 @@ export default function Home(
               </div>
             </div>
 
+            <div className="flex w-full flex-col justify-center gap-4 md:flex-row md:justify-start">
+              <Link
+                className="justify-center md:justify-start"
+                href="https://top.gg/bot/797600238449590334/vote"
+                target="__blank"
+              >
+                <button className="min-w-72 flex h-12 w-full items-center justify-center gap-2 rounded-md bg-black/10 px-4 py-2 outline outline-1 outline-white/20 backdrop-blur-sm hover:bg-white/5">
+                  <ExternalLinkIcon />
+                  <p>Vote on top.gg</p>
+                </button>
+              </Link>
+            </div>
+
             <div className="flex justify-center gap-4 md:justify-start">
               <Link
                 href="https://github.com/BetrixDev/Tarkov-Helper"
