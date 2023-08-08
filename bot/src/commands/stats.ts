@@ -1,27 +1,20 @@
 import { ApplicationCommandOptionType, CommandInteraction } from "discord.js";
 import { Discord, Slash, SlashOption } from "discordx";
+import { THError, getUserLocale, handleInteraction } from "../utils";
 import { trpc } from "../trpc";
-import {
-  THError,
-  embedBuilder,
-  formatPrice,
-  getUserLocale,
-  handleInteraction,
-} from "../utils";
 
 @Discord()
-export abstract class ItemCommand {
+export abstract class StatsCommand {
   @Slash({
-    name: "item",
-    description: "Get information about any item in the game",
+    name: "stats",
+    description: "Returns all useful statistics about the specified item",
   })
   async command(
     @SlashOption({
       name: "item",
-      description:
-        "Item to fetch information about (start typing to search for an item)",
-      required: true,
+      description: "Item to get the stats of (start typing to search)",
       type: ApplicationCommandOptionType.String,
+      required: true,
       autocomplete: async (interaction) => {
         handleInteraction(interaction, async () => {
           const query = interaction.options.getFocused();
@@ -49,23 +42,6 @@ export abstract class ItemCommand {
         content: "⚠️ This Command is Under Construction ⚠️",
         ephemeral: true,
       };
-
-      const itemData = await trpc.items.fetchItemData.query({
-        itemId: validInput,
-        locale: userLocale,
-      });
-
-      const embed = embedBuilder()
-        .setTitle(
-          `${itemData.shortName} Information - ${
-            itemData.canSellOnFlea
-              ? formatPrice(itemData.avg24hFleaPrice, { locale: userLocale })
-              : "[BANNED ON FLEA]"
-          }`
-        )
-        .setThumbnail(itemData.iconLink);
-
-      return { embeds: [embed] };
     });
   }
 }
