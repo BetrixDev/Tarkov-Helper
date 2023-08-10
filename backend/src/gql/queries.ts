@@ -338,6 +338,7 @@ gql`
         level
       }
       objectives {
+        __typename
         id
         type
         description

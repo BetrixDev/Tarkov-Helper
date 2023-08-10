@@ -487,6 +487,7 @@ export type ItemCategoryName =
   | "Handgun"
   | "Headphones"
   | "Headwear"
+  | "HideoutAreaContainer"
   | "HouseholdGoods"
   | "Info"
   | "Ironsight"
@@ -2207,7 +2208,7 @@ export type AllQuery = {
     }>;
     readonly objectives: ReadonlyArray<
       | {
-          readonly __typename?: "TaskObjectiveBasic";
+          readonly __typename: "TaskObjectiveBasic";
           readonly id: string;
           readonly type: string;
           readonly description: string;
@@ -2218,7 +2219,7 @@ export type AllQuery = {
           }>;
         }
       | {
-          readonly __typename?: "TaskObjectiveBuildItem";
+          readonly __typename: "TaskObjectiveBuildItem";
           readonly id: string;
           readonly type: string;
           readonly description: string;
@@ -2229,7 +2230,7 @@ export type AllQuery = {
           }>;
         }
       | {
-          readonly __typename?: "TaskObjectiveExperience";
+          readonly __typename: "TaskObjectiveExperience";
           readonly id: string;
           readonly type: string;
           readonly description: string;
@@ -2240,7 +2241,7 @@ export type AllQuery = {
           }>;
         }
       | {
-          readonly __typename?: "TaskObjectiveExtract";
+          readonly __typename: "TaskObjectiveExtract";
           readonly id: string;
           readonly type: string;
           readonly description: string;
@@ -2251,7 +2252,7 @@ export type AllQuery = {
           }>;
         }
       | {
-          readonly __typename?: "TaskObjectiveItem";
+          readonly __typename: "TaskObjectiveItem";
           readonly id: string;
           readonly count: number;
           readonly foundInRaid: boolean;
@@ -2269,7 +2270,7 @@ export type AllQuery = {
           }>;
         }
       | {
-          readonly __typename?: "TaskObjectiveMark";
+          readonly __typename: "TaskObjectiveMark";
           readonly id: string;
           readonly type: string;
           readonly description: string;
@@ -2280,7 +2281,7 @@ export type AllQuery = {
           }>;
         }
       | {
-          readonly __typename?: "TaskObjectivePlayerLevel";
+          readonly __typename: "TaskObjectivePlayerLevel";
           readonly id: string;
           readonly type: string;
           readonly description: string;
@@ -2291,7 +2292,7 @@ export type AllQuery = {
           }>;
         }
       | {
-          readonly __typename?: "TaskObjectiveQuestItem";
+          readonly __typename: "TaskObjectiveQuestItem";
           readonly id: string;
           readonly type: string;
           readonly description: string;
@@ -2302,7 +2303,7 @@ export type AllQuery = {
           }>;
         }
       | {
-          readonly __typename?: "TaskObjectiveShoot";
+          readonly __typename: "TaskObjectiveShoot";
           readonly id: string;
           readonly type: string;
           readonly description: string;
@@ -2313,7 +2314,7 @@ export type AllQuery = {
           }>;
         }
       | {
-          readonly __typename?: "TaskObjectiveSkill";
+          readonly __typename: "TaskObjectiveSkill";
           readonly id: string;
           readonly type: string;
           readonly description: string;
@@ -2324,7 +2325,7 @@ export type AllQuery = {
           }>;
         }
       | {
-          readonly __typename?: "TaskObjectiveTaskStatus";
+          readonly __typename: "TaskObjectiveTaskStatus";
           readonly id: string;
           readonly type: string;
           readonly description: string;
@@ -2335,7 +2336,7 @@ export type AllQuery = {
           }>;
         }
       | {
-          readonly __typename?: "TaskObjectiveTraderLevel";
+          readonly __typename: "TaskObjectiveTraderLevel";
           readonly id: string;
           readonly type: string;
           readonly description: string;
@@ -2346,7 +2347,7 @@ export type AllQuery = {
           }>;
         }
       | {
-          readonly __typename?: "TaskObjectiveTraderStanding";
+          readonly __typename: "TaskObjectiveTraderStanding";
           readonly id: string;
           readonly type: string;
           readonly description: string;
@@ -2357,7 +2358,7 @@ export type AllQuery = {
           }>;
         }
       | {
-          readonly __typename?: "TaskObjectiveUseItem";
+          readonly __typename: "TaskObjectiveUseItem";
           readonly id: string;
           readonly type: string;
           readonly description: string;
@@ -2795,6 +2796,7 @@ export const AllDocument = gql`
         level
       }
       objectives {
+        __typename
         id
         type
         description

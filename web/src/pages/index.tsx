@@ -9,6 +9,7 @@ import z from "zod";
 
 import RestocksImage from "../../public/imgs/commands/restocks.png";
 import BarterImage from "../../public/imgs/commands/barter.png";
+import NFQImage from "../../public/imgs/commands/needforquest.png";
 import CaliberImage from "../../public/imgs/commands/caliber.png";
 import BitcoinFarmImage from "../../public/imgs/commands/bitcoinfarm.png";
 import DogtagImage from "../../public/imgs/commands/dogtag.png";
@@ -175,6 +176,16 @@ export default function Home(
               collapsible
               className="mx-2 flex flex-col gap-4"
             >
+              <AccordionChild
+                commandName="NeedForQuest"
+                commandDescription="Returns how many of the specified item is needed for what quests and in what state"
+              >
+                <Image
+                  src={NFQImage}
+                  alt="/needforquest command preview image"
+                  placeholder="blur"
+                />
+              </AccordionChild>
               <AccordionChild
                 commandName="Item"
                 commandDescription="Lists every possible statistic for an item along with its spawning locations, quest involvements and barters"

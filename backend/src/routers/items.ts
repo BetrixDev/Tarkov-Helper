@@ -57,6 +57,52 @@ export const itemsRouter = router({
     .query(({ input }) => {
       return get("itemsMap-en")[input.query.toLowerCase()];
     }),
+  needForQuest: procedure
+    .input(
+      z.object({
+        locale: localesSchema,
+        itemId: z.string(),
+      })
+    )
+    .query(({ input }) => {
+      const data = {
+        quests: [] as { name: string; amount: number }[],
+        foundInRaid: 0,
+        nonFir: 0,
+        place: 0,
+      };
+
+      function pushQuest(id: string, amount: number) {
+        data.quests.push({
+          name: get(`locale-${input.locale}`)[`${id} name`],
+          amount,
+        });
+      }
+
+      get("tasks").forEach((quest) => {
+        quest.objectives.forEach((obj) => {
+          if (
+            obj.__typename === "TaskObjectiveItem" &&
+            obj.item.id === input.itemId
+          ) {
+            if (obj.type === "plantItem") {
+              data.place += obj.count;
+              pushQuest(quest.id, obj.count);
+            } else if (obj.type === "giveItem") {
+              if (obj.foundInRaid) {
+                data.foundInRaid += obj.count;
+              } else {
+                data.nonFir += obj.count;
+              }
+
+              pushQuest(quest.id, obj.count);
+            }
+          }
+        });
+      });
+
+      return data;
+    }),
 });
 
 export function fetchItemData(itemId: string, locale: SupportedLocale = "en") {
