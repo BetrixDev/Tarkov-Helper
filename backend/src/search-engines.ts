@@ -12,6 +12,10 @@ interface SearchCatagories {
     id: number;
     name: string;
   };
+  calibers: {
+    name: string;
+    id: string;
+  };
 }
 
 type CatagoryKey = keyof SearchCatagories;
@@ -43,6 +47,28 @@ export const refreshSearchEngines = () => {
       { keys: ["name"] }
     );
   });
+
+  engines["calibers-en"] = new Fuse(
+    Object.entries(
+      get("items")
+        .filter((item) => item.properties?.__typename === "ItemPropertiesAmmo")
+        .reduce((acc, item) => {
+          // Make typescript happy
+          if (item.properties.__typename !== "ItemPropertiesAmmo") return acc;
+
+          const caliber = item.properties.caliber;
+
+          return {
+            ...acc,
+            [caliber]: caliber.replace("Caliber", ""),
+          };
+        }, {})
+    ).map(([key, value]) => ({
+      id: key,
+      name: value,
+    })),
+    { keys: ["name"] }
+  );
 };
 
 export const searchCatagory = <T extends CatagoryKey>(

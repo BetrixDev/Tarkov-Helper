@@ -21,6 +21,30 @@ export const itemsRouter = router({
         input.maxResults - 1
       );
     }),
+  searchCalibers: procedure
+    .input(z.object({ query: z.string(), maxResults: z.number().default(25) }))
+    .query(({ input }) => {
+      return searchCatagory("calibers", input.query).slice(
+        0,
+        input.maxResults - 1
+      );
+    }),
+  fetchCaliberData: procedure
+    .input(
+      z.object({
+        caliberId: z.string(),
+        locale: localesSchema,
+      })
+    )
+    .query(({ input }) => {
+      const bullets = get("items").filter(
+        (item) =>
+          item.properties?.__typename === "ItemPropertiesAmmo" &&
+          item.properties.caliber === input.caliberId
+      );
+
+      return bullets;
+    }),
   fetchItemData: procedure
     .input(z.object({ locale: localesSchema, itemId: z.string() }))
     .query(({ input }) => fetchItemData(input.itemId, input.locale)),

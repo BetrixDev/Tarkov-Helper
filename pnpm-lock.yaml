@@ -122,6 +122,9 @@ importers:
       dotenv:
         specifier: ^16.3.1
         version: 16.3.1
+      embed-table:
+        specifier: ^4.2.3
+        version: 4.2.3
       logger:
         specifier: workspace:*
         version: link:../packages/logger
@@ -3698,6 +3701,10 @@ packages:
 
   /electron-to-chromium@1.4.454:
     resolution: {integrity: sha512-pmf1rbAStw8UEQ0sr2cdJtWl48ZMuPD9Sto8HVQOq9vx9j2WgDEN6lYoaqFvqEHYOmGA9oRGn7LqWI9ta0YugQ==}
+
+  /embed-table@4.2.3:
+    resolution: {integrity: sha512-0gih74lcY63zaeo5WfgS4iLNZER24JPHYmeCeK5pltbtCo+MQsK8YQGDNDb1mgiXMXx6hfQO6lzV/6ATqJTGbw==}
+    dev: false
 
   /emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}

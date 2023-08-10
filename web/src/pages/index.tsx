@@ -9,6 +9,7 @@ import z from "zod";
 
 import RestocksImage from "../../public/imgs/commands/restocks.png";
 import BarterImage from "../../public/imgs/commands/barter.png";
+import CaliberImage from "../../public/imgs/commands/caliber.png";
 import BitcoinFarmImage from "../../public/imgs/commands/bitcoinfarm.png";
 import DogtagImage from "../../public/imgs/commands/dogtag.png";
 import ExchangeRateImage from "../../public/imgs/commands/exchangerate.png";
@@ -179,6 +180,16 @@ export default function Home(
                 commandDescription="Lists every possible statistic for an item along with its spawning locations, quest involvements and barters"
               >
                 THIS COMMAND IS STILL UNDER CONSTRUCTION
+              </AccordionChild>
+              <AccordionChild
+                commandName="Caliber"
+                commandDescription="Returns the stats for every bullet in the specified caliber"
+              >
+                <Image
+                  src={CaliberImage}
+                  alt="/caliber command preview image"
+                  placeholder="blur"
+                />
               </AccordionChild>
               <AccordionChild
                 commandName="Barter"
