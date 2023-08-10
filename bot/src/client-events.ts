@@ -25,6 +25,7 @@ export abstract class ClientEvents {
     client: Client
   ) {
     logger.info("New interaction created", {
+      event: "inteactionCreate",
       id: interaction.id,
       type: APPLICATION_COMMAND_MAP[interaction.type],
       name: interaction.isCommand() ? interaction.commandName : undefined,
@@ -38,5 +39,25 @@ export abstract class ClientEvents {
     });
 
     client.executeInteraction(interaction);
+  }
+
+  @On({ event: "guildCreate" })
+  async onGuildCreate(_: ArgsOf<"guildCreate">, client: Client) {
+    const guilds = await client.guilds.fetch();
+
+    logger.info("Added to a server", {
+      event: "guildCreate",
+      newTotal: guilds.size,
+    });
+  }
+
+  @On({ event: "guildDelete" })
+  async onGuildDelete(_: ArgsOf<"guildDelete">, client: Client) {
+    const guilds = await client.guilds.fetch();
+
+    logger.info("Removed from a server", {
+      event: "guildDelete",
+      newTotal: guilds.size,
+    });
   }
 }

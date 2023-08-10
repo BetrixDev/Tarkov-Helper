@@ -5,7 +5,6 @@ import {
   THError,
   embedBuilder,
   formatNumber,
-  formatPrice,
   getUserLocale,
   handleInteraction,
 } from "../utils";

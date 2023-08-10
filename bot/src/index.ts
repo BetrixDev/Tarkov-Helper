@@ -14,4 +14,5 @@ manager.on("clusterCreate", (cluster) => {
     totalShards: cluster.totalShards,
   });
 });
+
 manager.spawn();
