@@ -17,8 +17,12 @@ export abstract class StatsCommand {
       required: true,
       autocomplete: async (interaction) => {
         handleInteraction(interaction, async () => {
+          const userLocale = getUserLocale(interaction);
           const query = interaction.options.getFocused();
-          const results = await trpc.items.search.query({ query });
+          const results = await trpc.items.search.query({
+            query,
+            locale: userLocale,
+          });
           return results.map((r) => ({ name: r.item.name, value: r.item.id }));
         });
       },

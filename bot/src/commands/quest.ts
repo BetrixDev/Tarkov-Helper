@@ -1,6 +1,6 @@
 import { ApplicationCommandOptionType, CommandInteraction } from "discord.js";
 import { Discord, Slash, SlashOption } from "discordx";
-import { THError, handleInteraction } from "../utils";
+import { THError, getUserLocale, handleInteraction } from "../utils";
 import { trpc } from "../trpc";
 
 @Discord()
@@ -17,8 +17,12 @@ export abstract class QuestCommand {
       required: true,
       autocomplete: async (interaction) => {
         handleInteraction(interaction, async () => {
+          const userLocale = getUserLocale(interaction);
           const query = interaction.options.getFocused();
-          const results = await trpc.quests.search.query({ query });
+          const results = await trpc.quests.search.query({
+            query,
+            locale: userLocale,
+          });
           return results.map((r) => ({
             name: r.item.name,
             value: r.item.id.toString(),
