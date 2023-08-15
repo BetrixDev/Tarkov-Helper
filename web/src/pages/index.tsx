@@ -184,6 +184,7 @@ export default function Home(
                   src={NFQImage}
                   alt="/needforquest command preview image"
                   placeholder="blur"
+                  quality={100}
                 />
               </AccordionChild>
               <AccordionChild
@@ -200,6 +201,7 @@ export default function Home(
                   src={CaliberImage}
                   alt="/caliber command preview image"
                   placeholder="blur"
+                  quality={100}
                 />
               </AccordionChild>
               <AccordionChild
@@ -210,6 +212,7 @@ export default function Home(
                   src={BarterImage}
                   alt="/barter command preview image"
                   placeholder="blur"
+                  quality={100}
                 />
               </AccordionChild>
               <AccordionChild
@@ -240,6 +243,7 @@ export default function Home(
                   src={ExchangeRateImage}
                   alt="/exchangerate command preview image"
                   placeholder="blur"
+                  quality={100}
                 />
               </AccordionChild>
               <AccordionChild
@@ -250,6 +254,7 @@ export default function Home(
                   src={ExperienceImage}
                   alt="/experience command preview image"
                   placeholder="blur"
+                  quality={100}
                 />
               </AccordionChild>
               <AccordionChild
@@ -266,6 +271,7 @@ export default function Home(
                   src={RestocksImage}
                   alt="/restocks command preview image"
                   placeholder="blur"
+                  quality={100}
                 />
               </AccordionChild>
               <AccordionChild
@@ -282,6 +288,7 @@ export default function Home(
                   src={StatusImage}
                   alt="/status command preview image"
                   placeholder="blur"
+                  quality={100}
                 />
               </AccordionChild>
               <AccordionChild
