@@ -223,6 +223,7 @@ export default function Home(
                   src={BitcoinFarmImage}
                   alt="/bitcoinfarm command preview image"
                   placeholder="blur"
+                  quality={100}
                 />
               </AccordionChild>
               <AccordionChild
@@ -233,6 +234,7 @@ export default function Home(
                   src={DogtagImage}
                   alt="/dogtag command preview image"
                   placeholder="blur"
+                  quality={100}
                 />
               </AccordionChild>
               <AccordionChild
