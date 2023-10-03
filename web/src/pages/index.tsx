@@ -61,7 +61,7 @@ export default function Home(
         <meta property="og:site_name" content="Tarkov Helper" />
         <meta
           property="og:image"
-          content="https://tarkov-helper-s3.nyc3.cdn.digitaloceanspaces.com/images/Logo250x250.png"
+          content="https://link.storjshare.io/s/jxjz4asyfbx4pyisqwo2ziitbvya/images/Logo250x250.png?wrap=0"
         />
         <meta
           property="og:description"
