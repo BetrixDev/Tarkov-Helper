@@ -97,6 +97,7 @@ gql`
           ergoPenalty
           zones
           material {
+            destructibility
             name
           }
         }
@@ -113,8 +114,12 @@ gql`
           headZones
           blindnessProtection
         }
+
         ... on ItemPropertiesBackpack {
           capacity
+          ergoPenalty
+          speedPenalty
+          turnPenalty
           grids {
             width
             height

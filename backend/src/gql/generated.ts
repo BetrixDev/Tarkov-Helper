@@ -1886,6 +1886,7 @@ export type AllQuery = {
           readonly zones: ReadonlyArray<string>;
           readonly material: {
             readonly __typename?: "ArmorMaterial";
+            readonly destructibility: number;
             readonly name: string;
           };
         }
@@ -1907,6 +1908,9 @@ export type AllQuery = {
       | {
           readonly __typename: "ItemPropertiesBackpack";
           readonly capacity: number;
+          readonly ergoPenalty: number;
+          readonly speedPenalty: number;
+          readonly turnPenalty: number;
           readonly grids: ReadonlyArray<{
             readonly __typename?: "ItemStorageGrid";
             readonly width: number;
@@ -2556,6 +2560,7 @@ export const AllDocument = gql`
           ergoPenalty
           zones
           material {
+            destructibility
             name
           }
         }
@@ -2574,6 +2579,9 @@ export const AllDocument = gql`
         }
         ... on ItemPropertiesBackpack {
           capacity
+          ergoPenalty
+          speedPenalty
+          turnPenalty
           grids {
             width
             height

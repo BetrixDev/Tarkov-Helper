@@ -7,6 +7,8 @@ import {
   InteractionReplyOptions,
   InteractionUpdateOptions,
   MessageComponentInteraction,
+  RestOrArray,
+  normalizeArray,
 } from "discord.js";
 import { Currency, localesSchema, SupportedLocale } from "common";
 import { logger } from "./log";
@@ -49,6 +51,18 @@ export function formatNumber(amount: number, locale: SupportedLocale = "en") {
 
 export function clamp(num: number, min: number, max: number) {
   return Math.min(Math.max(num, min), max);
+}
+
+export type LooseEmbedField = {
+  name: string;
+  value: string | number;
+  inline?: boolean;
+};
+
+export function inlined(
+  ...fields: RestOrArray<LooseEmbedField>
+): LooseEmbedField[] {
+  return normalizeArray(fields).map((f) => ({ ...f, inline: true }));
 }
 
 export const embedBuilder = () => new EmbedBuilder().setColor("#101720");
