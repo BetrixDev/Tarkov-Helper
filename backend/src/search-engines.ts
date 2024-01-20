@@ -1,8 +1,11 @@
 import Fuse from "fuse.js";
 import { get } from "./cache";
-import { SUPPORTED_LOCALES } from "common";
+import { SUPPORTED_LOCALES, SupportedLocale } from "common";
+import { Redis } from "@upstash/redis";
+import { env } from "./env";
+import { algoliaItemsIndex } from "./algolia";
 
-interface SearchCatagories {
+interface SearchCategories {
   items: {
     id: string;
     name: string;
@@ -18,7 +21,7 @@ interface SearchCatagories {
   };
 }
 
-type CatagoryKey = keyof SearchCatagories;
+type CategoryKey = keyof SearchCategories;
 
 const engines: Record<string, Fuse<any>> = {};
 
@@ -71,10 +74,45 @@ export const refreshSearchEngines = () => {
   );
 };
 
-export const searchCatagory = <T extends CatagoryKey>(
-  catagory: T,
+export const searchCatagory = <T extends CategoryKey>(
+  category: T,
   query: string,
   locale = "en"
-): Fuse.FuseResult<SearchCatagories[T]>[] => {
-  return engines[`${catagory}-${locale}`].search(query);
+): Fuse.FuseResult<SearchCategories[T]>[] => {
+  return engines[`${category}-${locale}`].search(query);
 };
+
+const redis = new Redis({
+  url: env.REDIS_URL,
+  token: env.REDIS_TOKEN,
+});
+
+type RedisCacheObject = {
+  results: {
+    name: string;
+    value: string;
+  }[];
+};
+
+export async function searchWithAlgolia<T extends CategoryKey>(
+  category: T,
+  query: string,
+  locale: SupportedLocale = "en"
+) {
+  if (category !== "items") {
+    return searchCatagory(category, query, locale).map((r) => r.item.id);
+  }
+
+  const algoliaResult = await algoliaItemsIndex.search<{
+    id: string;
+    name_en: string;
+    name_es: string;
+    name_ge: string;
+    name_ru: string;
+  }>(query);
+
+  return algoliaResult.hits.map((r) => ({
+    id: r.id,
+    name: r.name_es ?? r.name_ge ?? r.name_ru ?? r.name_en,
+  }));
+}

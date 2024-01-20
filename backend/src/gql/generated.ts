@@ -121,6 +121,7 @@ export type BossSpawn = {
   readonly spawnTime: Maybe<Scalars["Int"]["output"]>;
   readonly spawnTimeRandom: Maybe<Scalars["Boolean"]["output"]>;
   readonly spawnTrigger: Maybe<Scalars["String"]["output"]>;
+  readonly switch: Maybe<MapSwitch>;
 };
 
 /**
@@ -252,6 +253,7 @@ export type HandbookCategoryName =
   | "PistolGrips"
   | "Pistols"
   | "Provisions"
+  | "QuestItems"
   | "ReceiversSlides"
   | "Rounds"
   | "SMGs"
@@ -426,6 +428,36 @@ export type ItemTranslationArgs = {
   languageCode: InputMaybe<LanguageCode>;
 };
 
+export type ItemArmorSlot = {
+  readonly nameId: Maybe<Scalars["String"]["output"]>;
+  readonly zones: Maybe<ReadonlyArray<Maybe<Scalars["String"]["output"]>>>;
+};
+
+export type ItemArmorSlotLocked = ItemArmorSlot & {
+  readonly __typename?: "ItemArmorSlotLocked";
+  readonly armorType: Maybe<Scalars["String"]["output"]>;
+  readonly baseValue: Maybe<Scalars["Int"]["output"]>;
+  readonly bluntThroughput: Maybe<Scalars["Float"]["output"]>;
+  readonly class: Maybe<Scalars["Int"]["output"]>;
+  readonly durability: Maybe<Scalars["Int"]["output"]>;
+  readonly ergoPenalty: Maybe<Scalars["Float"]["output"]>;
+  readonly material: Maybe<ArmorMaterial>;
+  readonly name: Maybe<Scalars["String"]["output"]>;
+  readonly nameId: Maybe<Scalars["String"]["output"]>;
+  readonly repairCost: Maybe<Scalars["Int"]["output"]>;
+  readonly speedPenalty: Maybe<Scalars["Float"]["output"]>;
+  readonly turnPenalty: Maybe<Scalars["Float"]["output"]>;
+  readonly zones: Maybe<ReadonlyArray<Maybe<Scalars["String"]["output"]>>>;
+};
+
+export type ItemArmorSlotOpen = ItemArmorSlot & {
+  readonly __typename?: "ItemArmorSlotOpen";
+  readonly allowedPlates: Maybe<ReadonlyArray<Maybe<Item>>>;
+  readonly name: Maybe<Scalars["String"]["output"]>;
+  readonly nameId: Maybe<Scalars["String"]["output"]>;
+  readonly zones: Maybe<ReadonlyArray<Maybe<Scalars["String"]["output"]>>>;
+};
+
 export type ItemAttribute = {
   readonly __typename?: "ItemAttribute";
   readonly name: Scalars["String"]["output"];
@@ -447,6 +479,7 @@ export type ItemCategoryName =
   | "AmmoContainer"
   | "ArmBand"
   | "Armor"
+  | "ArmorPlate"
   | "ArmoredEquipment"
   | "AssaultCarbine"
   | "AssaultRifle"
@@ -466,6 +499,7 @@ export type ItemCategoryName =
   | "CompactReflexSight"
   | "Compass"
   | "CompoundItem"
+  | "CultistAmulet"
   | "CylinderMagazine"
   | "Drink"
   | "Drug"
@@ -487,7 +521,6 @@ export type ItemCategoryName =
   | "Handgun"
   | "Headphones"
   | "Headwear"
-  | "HideoutAreaContainer"
   | "HouseholdGoods"
   | "Info"
   | "Ironsight"
@@ -534,7 +567,7 @@ export type ItemCategoryName =
   | "StackableItem"
   | "Stimulant"
   | "Stock"
-  | "TermalVision"
+  | "ThermalVision"
   | "ThrowableWeapon"
   | "Tool"
   | "UBGL"
@@ -598,6 +631,9 @@ export type ItemPropertiesAmmo = {
   readonly accuracyModifier: Maybe<Scalars["Float"]["output"]>;
   readonly ammoType: Maybe<Scalars["String"]["output"]>;
   readonly armorDamage: Maybe<Scalars["Int"]["output"]>;
+  readonly ballisticCoeficient: Maybe<Scalars["Float"]["output"]>;
+  readonly bulletDiameterMilimeters: Maybe<Scalars["Float"]["output"]>;
+  readonly bulletMassGrams: Maybe<Scalars["Float"]["output"]>;
   readonly caliber: Maybe<Scalars["String"]["output"]>;
   readonly damage: Maybe<Scalars["Int"]["output"]>;
   readonly durabilityBurnFactor: Maybe<Scalars["Float"]["output"]>;
@@ -621,7 +657,9 @@ export type ItemPropertiesAmmo = {
 
 export type ItemPropertiesArmor = {
   readonly __typename?: "ItemPropertiesArmor";
+  readonly armorSlots: Maybe<ReadonlyArray<Maybe<ItemArmorSlot>>>;
   readonly armorType: Maybe<Scalars["String"]["output"]>;
+  readonly bluntThroughput: Maybe<Scalars["Float"]["output"]>;
   readonly class: Maybe<Scalars["Int"]["output"]>;
   readonly durability: Maybe<Scalars["Int"]["output"]>;
   readonly ergoPenalty: Maybe<Scalars["Int"]["output"]>;
@@ -635,12 +673,14 @@ export type ItemPropertiesArmor = {
 export type ItemPropertiesArmorAttachment = {
   readonly __typename?: "ItemPropertiesArmorAttachment";
   readonly blindnessProtection: Maybe<Scalars["Float"]["output"]>;
+  readonly bluntThroughput: Maybe<Scalars["Float"]["output"]>;
   readonly class: Maybe<Scalars["Int"]["output"]>;
   readonly durability: Maybe<Scalars["Int"]["output"]>;
   readonly ergoPenalty: Maybe<Scalars["Int"]["output"]>;
   readonly headZones: Maybe<ReadonlyArray<Maybe<Scalars["String"]["output"]>>>;
   readonly material: Maybe<ArmorMaterial>;
   readonly repairCost: Maybe<Scalars["Int"]["output"]>;
+  readonly slots: Maybe<ReadonlyArray<Maybe<ItemSlot>>>;
   readonly speedPenalty: Maybe<Scalars["Float"]["output"]>;
   readonly turnPenalty: Maybe<Scalars["Float"]["output"]>;
 };
@@ -672,7 +712,9 @@ export type ItemPropertiesBarrel = {
 
 export type ItemPropertiesChestRig = {
   readonly __typename?: "ItemPropertiesChestRig";
+  readonly armorSlots: Maybe<ReadonlyArray<Maybe<ItemArmorSlot>>>;
   readonly armorType: Maybe<Scalars["String"]["output"]>;
+  readonly bluntThroughput: Maybe<Scalars["Float"]["output"]>;
   readonly capacity: Maybe<Scalars["Int"]["output"]>;
   readonly class: Maybe<Scalars["Int"]["output"]>;
   readonly durability: Maybe<Scalars["Int"]["output"]>;
@@ -704,6 +746,7 @@ export type ItemPropertiesFoodDrink = {
 export type ItemPropertiesGlasses = {
   readonly __typename?: "ItemPropertiesGlasses";
   readonly blindnessProtection: Maybe<Scalars["Float"]["output"]>;
+  readonly bluntThroughput: Maybe<Scalars["Float"]["output"]>;
   readonly class: Maybe<Scalars["Int"]["output"]>;
   readonly durability: Maybe<Scalars["Int"]["output"]>;
   readonly material: Maybe<ArmorMaterial>;
@@ -738,9 +781,11 @@ export type ItemPropertiesHeadphone = {
 
 export type ItemPropertiesHelmet = {
   readonly __typename?: "ItemPropertiesHelmet";
+  readonly armorSlots: Maybe<ReadonlyArray<Maybe<ItemArmorSlot>>>;
   readonly armorType: Maybe<Scalars["String"]["output"]>;
   readonly blindnessProtection: Maybe<Scalars["Float"]["output"]>;
   readonly blocksHeadset: Maybe<Scalars["Boolean"]["output"]>;
+  readonly bluntThroughput: Maybe<Scalars["Float"]["output"]>;
   readonly class: Maybe<Scalars["Int"]["output"]>;
   readonly deafening: Maybe<Scalars["String"]["output"]>;
   readonly durability: Maybe<Scalars["Int"]["output"]>;
@@ -951,6 +996,7 @@ export type ItemType =
   | "ammoBox"
   | "any"
   | "armor"
+  | "armorPlate"
   | "backpack"
   | "barter"
   | "container"
@@ -989,6 +1035,30 @@ export type LanguageCode =
   | "tr"
   | "zh";
 
+export type Lock = {
+  readonly __typename?: "Lock";
+  readonly bottom: Maybe<Scalars["Float"]["output"]>;
+  readonly key: Maybe<Item>;
+  readonly lockType: Maybe<Scalars["String"]["output"]>;
+  readonly needsPower: Maybe<Scalars["Boolean"]["output"]>;
+  readonly outline: Maybe<ReadonlyArray<Maybe<MapPosition>>>;
+  readonly position: Maybe<MapPosition>;
+  readonly top: Maybe<Scalars["Float"]["output"]>;
+};
+
+export type LootContainer = {
+  readonly __typename?: "LootContainer";
+  readonly id: Scalars["ID"]["output"];
+  readonly name: Scalars["String"]["output"];
+  readonly normalizedName: Scalars["String"]["output"];
+};
+
+export type LootContainerPosition = {
+  readonly __typename?: "LootContainerPosition";
+  readonly lootContainer: Maybe<LootContainer>;
+  readonly position: Maybe<MapPosition>;
+};
+
 export type Map = {
   readonly __typename?: "Map";
   readonly accessKeys: ReadonlyArray<Maybe<Item>>;
@@ -996,15 +1066,45 @@ export type Map = {
   readonly bosses: ReadonlyArray<Maybe<BossSpawn>>;
   readonly description: Maybe<Scalars["String"]["output"]>;
   readonly enemies: Maybe<ReadonlyArray<Maybe<Scalars["String"]["output"]>>>;
+  readonly extracts: Maybe<ReadonlyArray<Maybe<MapExtract>>>;
+  readonly hazards: Maybe<ReadonlyArray<Maybe<MapHazard>>>;
   readonly id: Scalars["ID"]["output"];
+  readonly locks: Maybe<ReadonlyArray<Maybe<Lock>>>;
+  readonly lootContainers: Maybe<ReadonlyArray<Maybe<LootContainerPosition>>>;
   readonly name: Scalars["String"]["output"];
   readonly nameId: Maybe<Scalars["String"]["output"]>;
   readonly normalizedName: Scalars["String"]["output"];
   readonly players: Maybe<Scalars["String"]["output"]>;
   readonly raidDuration: Maybe<Scalars["Int"]["output"]>;
   readonly spawns: Maybe<ReadonlyArray<Maybe<MapSpawn>>>;
+  readonly stationaryWeapons: Maybe<
+    ReadonlyArray<Maybe<StationaryWeaponPosition>>
+  >;
+  readonly switches: Maybe<ReadonlyArray<Maybe<MapSwitch>>>;
   readonly tarkovDataId: Maybe<Scalars["ID"]["output"]>;
   readonly wiki: Maybe<Scalars["String"]["output"]>;
+};
+
+export type MapExtract = {
+  readonly __typename?: "MapExtract";
+  readonly bottom: Maybe<Scalars["Float"]["output"]>;
+  readonly faction: Maybe<Scalars["String"]["output"]>;
+  readonly id: Scalars["ID"]["output"];
+  readonly name: Maybe<Scalars["String"]["output"]>;
+  readonly outline: Maybe<ReadonlyArray<Maybe<MapPosition>>>;
+  readonly position: Maybe<MapPosition>;
+  readonly switches: Maybe<ReadonlyArray<Maybe<MapSwitch>>>;
+  readonly top: Maybe<Scalars["Float"]["output"]>;
+};
+
+export type MapHazard = {
+  readonly __typename?: "MapHazard";
+  readonly bottom: Maybe<Scalars["Float"]["output"]>;
+  readonly hazardType: Maybe<Scalars["String"]["output"]>;
+  readonly name: Maybe<Scalars["String"]["output"]>;
+  readonly outline: Maybe<ReadonlyArray<Maybe<MapPosition>>>;
+  readonly position: Maybe<MapPosition>;
+  readonly top: Maybe<Scalars["Float"]["output"]>;
 };
 
 export type MapPosition = {
@@ -1020,6 +1120,30 @@ export type MapSpawn = {
   readonly position: MapPosition;
   readonly sides: Maybe<ReadonlyArray<Maybe<Scalars["String"]["output"]>>>;
   readonly zoneName: Maybe<Scalars["String"]["output"]>;
+};
+
+export type MapSwitch = {
+  readonly __typename?: "MapSwitch";
+  readonly activatedBy: Maybe<MapSwitch>;
+  readonly activates: Maybe<ReadonlyArray<Maybe<MapSwitchOperation>>>;
+  readonly id: Scalars["ID"]["output"];
+  readonly name: Maybe<Scalars["String"]["output"]>;
+  readonly position: Maybe<MapPosition>;
+  readonly switchType: Maybe<Scalars["String"]["output"]>;
+};
+
+export type MapSwitchOperation = {
+  readonly __typename?: "MapSwitchOperation";
+  readonly operation: Maybe<Scalars["String"]["output"]>;
+  readonly target: Maybe<MapSwitchTarget>;
+};
+
+export type MapSwitchTarget = MapExtract | MapSwitch;
+
+export type MapWithPosition = {
+  readonly __typename?: "MapWithPosition";
+  readonly map: Maybe<Map>;
+  readonly positions: Maybe<ReadonlyArray<Maybe<MapPosition>>>;
 };
 
 export type MobInfo = {
@@ -1088,11 +1212,13 @@ export type Query = {
   readonly itemsByName: ReadonlyArray<Maybe<Item>>;
   /** @deprecated Use items instead. */
   readonly itemsByType: ReadonlyArray<Maybe<Item>>;
+  readonly lootContainers: Maybe<ReadonlyArray<Maybe<LootContainer>>>;
   readonly maps: ReadonlyArray<Maybe<Map>>;
   readonly playerLevels: ReadonlyArray<Maybe<PlayerLevel>>;
   readonly questItems: Maybe<ReadonlyArray<Maybe<QuestItem>>>;
   /** @deprecated Use tasks instead. */
   readonly quests: Maybe<ReadonlyArray<Maybe<Quest>>>;
+  readonly stationaryWeapons: Maybe<ReadonlyArray<Maybe<StationaryWeapon>>>;
   readonly status: ServerStatus;
   readonly task: Maybe<Task>;
   readonly tasks: ReadonlyArray<Maybe<Task>>;
@@ -1147,6 +1273,7 @@ export type QueryHideoutStationsArgs = {
 };
 
 export type QueryHistoricalItemPricesArgs = {
+  days: InputMaybe<Scalars["Int"]["input"]>;
   id: Scalars["ID"]["input"];
   lang: InputMaybe<LanguageCode>;
   limit: InputMaybe<Scalars["Int"]["input"]>;
@@ -1205,6 +1332,12 @@ export type QueryItemsByTypeArgs = {
   type: ItemType;
 };
 
+export type QueryLootContainersArgs = {
+  lang: InputMaybe<LanguageCode>;
+  limit: InputMaybe<Scalars["Int"]["input"]>;
+  offset: InputMaybe<Scalars["Int"]["input"]>;
+};
+
 export type QueryMapsArgs = {
   enemies: InputMaybe<ReadonlyArray<Scalars["String"]["input"]>>;
   lang: InputMaybe<LanguageCode>;
@@ -1215,6 +1348,12 @@ export type QueryMapsArgs = {
 
 export type QueryQuestItemsArgs = {
   lang: InputMaybe<LanguageCode>;
+};
+
+export type QueryStationaryWeaponsArgs = {
+  lang: InputMaybe<LanguageCode>;
+  limit: InputMaybe<Scalars["Int"]["input"]>;
+  offset: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type QueryTaskArgs = {
@@ -1376,6 +1515,19 @@ export type SkillLevel = {
   readonly name: Scalars["String"]["output"];
 };
 
+export type StationaryWeapon = {
+  readonly __typename?: "StationaryWeapon";
+  readonly id: Maybe<Scalars["ID"]["output"]>;
+  readonly name: Maybe<Scalars["String"]["output"]>;
+  readonly shortName: Maybe<Scalars["String"]["output"]>;
+};
+
+export type StationaryWeaponPosition = {
+  readonly __typename?: "StationaryWeaponPosition";
+  readonly position: Maybe<MapPosition>;
+  readonly stationaryWeapon: Maybe<StationaryWeapon>;
+};
+
 export type Status = {
   readonly __typename?: "Status";
   readonly message: Maybe<Scalars["String"]["output"]>;
@@ -1421,6 +1573,7 @@ export type Task = {
   readonly map: Maybe<Map>;
   readonly minPlayerLevel: Maybe<Scalars["Int"]["output"]>;
   readonly name: Scalars["String"]["output"];
+  /** @deprecated Use requiredKeys on objectives instead. */
   readonly neededKeys: Maybe<ReadonlyArray<Maybe<TaskKey>>>;
   readonly normalizedName: Scalars["String"]["output"];
   readonly objectives: ReadonlyArray<Maybe<TaskObjective>>;
@@ -1458,7 +1611,11 @@ export type TaskObjectiveBasic = TaskObjective & {
   readonly id: Maybe<Scalars["ID"]["output"]>;
   readonly maps: ReadonlyArray<Maybe<Map>>;
   readonly optional: Scalars["Boolean"]["output"];
+  readonly requiredKeys: Maybe<
+    ReadonlyArray<Maybe<ReadonlyArray<Maybe<Item>>>>
+  >;
   readonly type: Scalars["String"]["output"];
+  readonly zones: Maybe<ReadonlyArray<Maybe<TaskZone>>>;
 };
 
 export type TaskObjectiveBuildItem = TaskObjective & {
@@ -1478,6 +1635,7 @@ export type TaskObjectiveBuildItem = TaskObjective & {
 
 export type TaskObjectiveExperience = TaskObjective & {
   readonly __typename?: "TaskObjectiveExperience";
+  readonly count: Scalars["Int"]["output"];
   readonly description: Scalars["String"]["output"];
   readonly healthEffect: HealthEffect;
   readonly id: Maybe<Scalars["ID"]["output"]>;
@@ -1488,12 +1646,16 @@ export type TaskObjectiveExperience = TaskObjective & {
 
 export type TaskObjectiveExtract = TaskObjective & {
   readonly __typename?: "TaskObjectiveExtract";
+  readonly count: Scalars["Int"]["output"];
   readonly description: Scalars["String"]["output"];
   readonly exitName: Maybe<Scalars["String"]["output"]>;
   readonly exitStatus: ReadonlyArray<Maybe<Scalars["String"]["output"]>>;
   readonly id: Maybe<Scalars["ID"]["output"]>;
   readonly maps: ReadonlyArray<Maybe<Map>>;
   readonly optional: Scalars["Boolean"]["output"];
+  readonly requiredKeys: Maybe<
+    ReadonlyArray<Maybe<ReadonlyArray<Maybe<Item>>>>
+  >;
   readonly type: Scalars["String"]["output"];
   readonly zoneNames: ReadonlyArray<Maybe<Scalars["String"]["output"]>>;
 };
@@ -1510,7 +1672,11 @@ export type TaskObjectiveItem = TaskObjective & {
   readonly maxDurability: Maybe<Scalars["Int"]["output"]>;
   readonly minDurability: Maybe<Scalars["Int"]["output"]>;
   readonly optional: Scalars["Boolean"]["output"];
+  readonly requiredKeys: Maybe<
+    ReadonlyArray<Maybe<ReadonlyArray<Maybe<Item>>>>
+  >;
   readonly type: Scalars["String"]["output"];
+  readonly zones: Maybe<ReadonlyArray<Maybe<TaskZone>>>;
 };
 
 export type TaskObjectiveMark = TaskObjective & {
@@ -1520,7 +1686,11 @@ export type TaskObjectiveMark = TaskObjective & {
   readonly maps: ReadonlyArray<Maybe<Map>>;
   readonly markerItem: Item;
   readonly optional: Scalars["Boolean"]["output"];
+  readonly requiredKeys: Maybe<
+    ReadonlyArray<Maybe<ReadonlyArray<Maybe<Item>>>>
+  >;
   readonly type: Scalars["String"]["output"];
+  readonly zones: Maybe<ReadonlyArray<Maybe<TaskZone>>>;
 };
 
 export type TaskObjectivePlayerLevel = TaskObjective & {
@@ -1540,8 +1710,13 @@ export type TaskObjectiveQuestItem = TaskObjective & {
   readonly id: Maybe<Scalars["ID"]["output"]>;
   readonly maps: ReadonlyArray<Maybe<Map>>;
   readonly optional: Scalars["Boolean"]["output"];
+  readonly possibleLocations: Maybe<ReadonlyArray<Maybe<MapWithPosition>>>;
   readonly questItem: QuestItem;
+  readonly requiredKeys: Maybe<
+    ReadonlyArray<Maybe<ReadonlyArray<Maybe<Item>>>>
+  >;
   readonly type: Scalars["String"]["output"];
+  readonly zones: Maybe<ReadonlyArray<Maybe<TaskZone>>>;
 };
 
 export type TaskObjectiveShoot = TaskObjective & {
@@ -1556,6 +1731,9 @@ export type TaskObjectiveShoot = TaskObjective & {
   readonly notWearing: Maybe<ReadonlyArray<Maybe<Item>>>;
   readonly optional: Scalars["Boolean"]["output"];
   readonly playerHealthEffect: Maybe<HealthEffect>;
+  readonly requiredKeys: Maybe<
+    ReadonlyArray<Maybe<ReadonlyArray<Maybe<Item>>>>
+  >;
   readonly shotType: Scalars["String"]["output"];
   /** @deprecated Use targetNames instead. */
   readonly target: Scalars["String"]["output"];
@@ -1569,6 +1747,7 @@ export type TaskObjectiveShoot = TaskObjective & {
   >;
   readonly wearing: Maybe<ReadonlyArray<Maybe<ReadonlyArray<Maybe<Item>>>>>;
   readonly zoneNames: ReadonlyArray<Maybe<Scalars["String"]["output"]>>;
+  readonly zones: Maybe<ReadonlyArray<Maybe<TaskZone>>>;
 };
 
 export type TaskObjectiveSkill = TaskObjective & {
@@ -1623,9 +1802,13 @@ export type TaskObjectiveUseItem = TaskObjective & {
   readonly id: Maybe<Scalars["ID"]["output"]>;
   readonly maps: ReadonlyArray<Maybe<Map>>;
   readonly optional: Scalars["Boolean"]["output"];
+  readonly requiredKeys: Maybe<
+    ReadonlyArray<Maybe<ReadonlyArray<Maybe<Item>>>>
+  >;
   readonly type: Scalars["String"]["output"];
   readonly useAny: ReadonlyArray<Maybe<Item>>;
   readonly zoneNames: ReadonlyArray<Maybe<Scalars["String"]["output"]>>;
+  readonly zones: Maybe<ReadonlyArray<Maybe<TaskZone>>>;
 };
 
 export type TaskRewards = {
@@ -1642,6 +1825,16 @@ export type TaskStatusRequirement = {
   readonly __typename?: "TaskStatusRequirement";
   readonly status: ReadonlyArray<Maybe<Scalars["String"]["output"]>>;
   readonly task: Task;
+};
+
+export type TaskZone = {
+  readonly __typename?: "TaskZone";
+  readonly bottom: Maybe<Scalars["Float"]["output"]>;
+  readonly id: Scalars["ID"]["output"];
+  readonly map: Maybe<Map>;
+  readonly outline: Maybe<ReadonlyArray<Maybe<MapPosition>>>;
+  readonly position: Maybe<MapPosition>;
+  readonly top: Maybe<Scalars["Float"]["output"]>;
 };
 
 export type Trader = {
@@ -1728,6 +1921,11 @@ export type TraderReputationLevel = TraderReputationLevelFence;
 export type TraderReputationLevelFence = {
   readonly __typename?: "TraderReputationLevelFence";
   readonly availableScavExtracts: Maybe<Scalars["Int"]["output"]>;
+  readonly btrCoveringFireDiscount: Maybe<Scalars["Int"]["output"]>;
+  readonly btrDeliveryDiscount: Maybe<Scalars["Int"]["output"]>;
+  readonly btrDeliveryGridSize: Maybe<MapPosition>;
+  readonly btrEnabled: Maybe<Scalars["Boolean"]["output"]>;
+  readonly btrTaxiDiscount: Maybe<Scalars["Int"]["output"]>;
   readonly extractPriceModifier: Maybe<Scalars["Float"]["output"]>;
   readonly hostileBosses: Maybe<Scalars["Boolean"]["output"]>;
   readonly hostileScavs: Maybe<Scalars["Boolean"]["output"]>;
@@ -1763,6 +1961,7 @@ export type Vendor = {
 export type HistoricalPricePoint = {
   readonly __typename?: "historicalPricePoint";
   readonly price: Maybe<Scalars["Int"]["output"]>;
+  readonly priceMin: Maybe<Scalars["Int"]["output"]>;
   readonly timestamp: Maybe<Scalars["String"]["output"]>;
 };
 
@@ -2897,13 +3096,15 @@ export const ServerStatusDocument = gql`
 export type SdkFunctionWrapper = <T>(
   action: (requestHeaders?: Record<string, string>) => Promise<T>,
   operationName: string,
-  operationType?: string
+  operationType?: string,
+  variables?: any
 ) => Promise<T>;
 
 const defaultWrapper: SdkFunctionWrapper = (
   action,
   _operationName,
-  _operationType
+  _operationType,
+  variables
 ) => action();
 
 export function getSdk(
@@ -2922,7 +3123,8 @@ export function getSdk(
             ...wrappedRequestHeaders,
           }),
         "all",
-        "query"
+        "query",
+        variables
       );
     },
     traderRestocks(
@@ -2937,7 +3139,8 @@ export function getSdk(
             { ...requestHeaders, ...wrappedRequestHeaders }
           ),
         "traderRestocks",
-        "query"
+        "query",
+        variables
       );
     },
     serverStatus(
@@ -2951,7 +3154,8 @@ export function getSdk(
             ...wrappedRequestHeaders,
           }),
         "serverStatus",
-        "query"
+        "query",
+        variables
       );
     },
   };

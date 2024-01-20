@@ -13,8 +13,8 @@
   },
   "devDependencies": {
     "@graphql-codegen/cli": "4.0.1",
-    "@graphql-codegen/typescript-graphql-request": "^5.0.0",
     "@graphql-codegen/typescript-operations": "^4.0.1",
+    "@graphql-codegen/typescript-urql": "^4.0.0",
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
     "@types/node": "^20.4.0",
@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@trpc/server": "^10.34.0",
+    "@urql/core": "^4.2.2",
     "axios": "^1.4.0",
     "common": "workspace:*",
     "cors": "^2.8.5",
@@ -38,6 +39,7 @@
     "graphql-tag": "^2.12.6",
     "logger": "workspace:*",
     "node-cron": "^3.0.2",
+    "urql": "^4.0.6",
     "zod": "^3.21.4"
   }
 }
