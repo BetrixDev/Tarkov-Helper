@@ -5,6 +5,8 @@
     "typecheck": "turbo run typecheck",
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "dev:bot": "turbo run dev --filter=backend --filter=bot",
+    "dev:web": "turbo run dev --filter=backend --filter=web",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
