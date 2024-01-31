@@ -6,10 +6,10 @@
     "build": "tsc",
     "typecheck": "tsc --noEmit",
     "start": "cross-env NODE_ENV=production node ./build/src/index.js",
-    "dev": "cross-env NODE_ENV=development nodemon --exec ts-node-esm src/index.ts",
+    "dev": "cross-env NODE_ENV=development nodemon --exec tsx src/index.ts",
     "codegen": "graphql-codegen --config codegen.ts",
     "format": "prettier . --write",
-    "dev:init": "ts-node-esm scripts/dev.ts"
+    "dev:init": "tsx scripts/dev.ts"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "4.0.1",
@@ -22,7 +22,7 @@
     "cross-env": "^7.0.3",
     "nodemon": "^2.0.22",
     "prettier": "^2.5.1",
-    "ts-node": "^10.9.1",
+    "tsx": "^4.7.0",
     "typescript": "^5.1.6"
   },
   "dependencies": {
