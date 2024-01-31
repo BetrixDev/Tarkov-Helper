@@ -256,6 +256,39 @@ export abstract class StatsCommand {
 
           return inlined(fields);
         })
+        .with({ __typename: "ItemPropertiesFoodDrink" }, (props) => {
+          const effects: string[] = [];
+
+          // "(100%) Immunity +1 300s"
+          props.stimEffects.forEach((effect) => {
+            effects.push(
+              `*(${effect.chance * 100}%)* **${effect.skillName}** ${
+                effect.value > 0 ? "+" : ""
+              }${effect.value} ${effect.duration}s`
+            );
+          });
+
+          return inlined(
+            {
+              name: "Energy",
+              value: props.energy,
+            },
+            {
+              name: "Hydration",
+              value: props.hydration,
+            },
+            {
+              name: "Units",
+              value: props.units,
+            },
+            props.stimEffects.length > 0
+              ? {
+                  name: "Effects",
+                  value: effects.join("\n"),
+                }
+              : undefined
+          );
+        })
         .otherwise(() => [{ name: ZERO_WIDTH, value: "**No Specific Stats**" }])
         .map((field) => ({ ...field, value: field.value.toString() }));
 

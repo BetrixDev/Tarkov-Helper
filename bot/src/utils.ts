@@ -60,9 +60,11 @@ export type LooseEmbedField = {
 };
 
 export function inlined(
-  ...fields: RestOrArray<LooseEmbedField>
+  ...fields: RestOrArray<LooseEmbedField | undefined>
 ): LooseEmbedField[] {
-  return normalizeArray(fields).map((f) => ({ ...f, inline: true }));
+  return normalizeArray(fields)
+    .filter((f) => f !== undefined)
+    .map((f) => ({ ...f!, inline: true }));
 }
 
 export const embedBuilder = () => new EmbedBuilder().setColor("#101720");
