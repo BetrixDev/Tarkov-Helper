@@ -8,6 +8,7 @@ import {
   getUserLocale,
   handleInteraction,
 } from "../utils";
+import { statsCommandMessage } from "./stats";
 
 @Discord()
 export abstract class ItemCommand {
@@ -38,38 +39,7 @@ export abstract class ItemCommand {
     interaction: CommandInteraction
   ) {
     handleInteraction(interaction, async () => {
-      const userLocale = getUserLocale(interaction);
-      const validInput = await trpc.items.tryItemInput.query({
-        query: itemInput,
-      });
-
-      if (!validInput) {
-        throw new THError(
-          "Invalid item name or id. Please use the auto complete feature for accurate searching"
-        );
-      }
-
-      return {
-        content: "⚠️ This Command is Under Construction ⚠️",
-        ephemeral: true,
-      };
-
-      const itemData = await trpc.items.fetchItemData.query({
-        itemId: validInput,
-        locale: userLocale,
-      });
-
-      const embed = embedBuilder()
-        .setTitle(
-          `${itemData.shortName} Information - ${
-            itemData.canSellOnFlea
-              ? formatPrice(itemData.avg24hFleaPrice, { locale: userLocale })
-              : "[BANNED ON FLEA]"
-          }`
-        )
-        .setThumbnail(itemData.iconLink);
-
-      return { embeds: [embed] };
+      return statsCommandMessage(itemInput, interaction);
     });
   }
 }
