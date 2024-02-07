@@ -3,3 +3,4 @@ packages:
   - "backend"
   - "bot"
   - "web"
+  - "scanner"
