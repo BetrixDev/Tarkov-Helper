@@ -103,6 +103,13 @@ export const itemsRouter = router({
 
       return data;
     }),
+  all: procedure.query(() => {
+    return get("items").map((item) => ({
+      id: item.id,
+      name: item.name,
+      iconLink: item.image512pxLink,
+    }));
+  }),
 });
 
 export function fetchItemData(itemId: string, locale: SupportedLocale = "en") {
