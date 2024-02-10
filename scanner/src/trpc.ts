@@ -1,14 +1,8 @@
-import { createTRPCProxyClient, httpBatchLink } from "@trpc/client";
-import { AppRouter } from "backend";
-import { fetch } from "undici";
+import { initTRPC } from "@trpc/server";
 
-const globalAny = global as any;
-globalAny.fetch = fetch;
+export const t = initTRPC.create();
 
-export const trpc = createTRPCProxyClient<AppRouter>({
-  links: [
-    httpBatchLink({
-      url: process.env.API_ENDPOINT!,
-    }),
-  ],
-});
+export const router = t.router;
+export const procedure = t.procedure;
+
+export { AppRouter } from "./routers/_app";

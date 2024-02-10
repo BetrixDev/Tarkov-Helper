@@ -1,10 +1,8 @@
-import { readFileSync, readdirSync, writeFileSync } from "fs";
-import phash from "sharp-phash";
+import { readFileSync, readdirSync } from "fs";
 import { db } from "../db";
 import { iconHashesTable } from "../db/tables/icon-hashes";
 import { sql } from "drizzle-orm";
-import { getNearestIconToHash } from "../db/functions";
-
+import { getHash } from "../get-hash";
 export async function generateItemIconHashes() {
   const icons = readdirSync("icons");
 
@@ -13,7 +11,7 @@ export async function generateItemIconHashes() {
   for (const iconPath of icons) {
     const iconBuffer = readFileSync(`icons/${iconPath}`);
 
-    const iconHash = await phash(iconBuffer);
+    const iconHash = await getHash(iconBuffer, "image/png");
 
     hashes.push({ itemId: iconPath.replace(".png", ""), hash: iconHash });
   }
@@ -28,27 +26,4 @@ export async function generateItemIconHashes() {
       .values(slice)
       .onDuplicateKeyUpdate({ set: { itemId: sql`item_id` } });
   }
-
-  process.exit(0);
 }
-
-generateItemIconHashes();
-
-// async function getHash() {
-//   const buffer = readFileSync("61bc85697113f767765c7fe7-512.png");
-
-//   console.log(await phash(buffer));
-// }
-
-// getHash();
-
-// writeFileSync(
-//   "res.json",
-//   JSON.stringify(
-//     await getNearestIconToHash(
-//       "1111011101111111110011100000000100001000111111110101000011100000"
-//     ),
-//     null,
-//     2
-//   )
-// );

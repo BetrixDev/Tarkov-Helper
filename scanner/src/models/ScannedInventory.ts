@@ -1,6 +1,5 @@
 import sharp, { Sharp } from "sharp";
 import { CellIndentifier } from "./CellIndentifier";
-import { Cell } from "./Cell";
 
 export class ScannedInventory {
   private img: Sharp;
@@ -16,7 +15,6 @@ export class ScannedInventory {
     const rawImg = await this.img.raw().toBuffer({ resolveWithObject: true });
 
     const indentifier = new CellIndentifier(
-      this.img,
       imgMetadata,
       rawImg.data.toJSON().data,
       this.buffer

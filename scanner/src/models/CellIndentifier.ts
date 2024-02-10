@@ -1,23 +1,20 @@
-import sharp, { Sharp } from "sharp";
+import sharp from "sharp";
 import { Vector2 } from "three";
-import phash from "sharp-phash";
+import { getHash } from "../get-hash";
 
 const MIN_GRID_COLOR = { r: 73, g: 81, b: 84 };
 const MAX_GRID_COLOR = { r: 152, g: 151, b: 139 };
 
 export class CellIndentifier {
-  private img: Sharp;
   private imgMetadata: sharp.Metadata;
   private pixelData: number[];
   private buffer: Buffer;
 
   constructor(
-    img: Sharp,
     imgMetadata: sharp.Metadata,
     pixelData: number[],
     buffer: Buffer
   ) {
-    this.img = img;
     this.imgMetadata = imgMetadata;
     this.pixelData = pixelData;
     this.buffer = buffer;
@@ -47,7 +44,9 @@ export class CellIndentifier {
               .jpeg({ quality: 100 })
               .toBuffer();
 
-            extractedCellHashes.push(await phash(extractedBuffer));
+            extractedCellHashes.push(
+              await getHash(extractedBuffer, "image/jpeg")
+            );
           } catch {}
         }
       }

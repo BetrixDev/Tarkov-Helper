@@ -1,6 +1,6 @@
-import { mysqlTable, varchar, binary } from "drizzle-orm/mysql-core";
+import { mysqlTable, varchar } from "drizzle-orm/mysql-core";
 
-export const iconHashesTable = mysqlTable("icon-hashes", {
+export const iconHashesTable = mysqlTable("icon_hashes", {
   itemId: varchar("item_id", { length: 24 }).primaryKey(),
-  hash: binary("hash", { length: 64 }).notNull(),
+  hash: varchar("hash", { length: 64 }).notNull(),
 });

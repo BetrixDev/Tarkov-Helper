@@ -1,9 +1,21 @@
-import { ScannedInventory } from "./models/ScannedInventory";
-import { readFileSync } from "fs";
+import { createExpressMiddleware } from "@trpc/server/adapters/express";
+import cors from "cors";
+import express from "express";
 
-async function main() {
-  const scannedInventory = new ScannedInventory(readFileSync("test.png"));
-  scannedInventory.extractCells();
-}
+import { appRouter } from "./routers/_app";
+import { logger } from "./log";
 
-main();
+const app = express();
+
+app.use(cors());
+
+app.use(
+  "/trpc",
+  createExpressMiddleware({
+    router: appRouter,
+  })
+);
+
+app.listen(5000, () => {
+  logger.info("Scanner initialized on port 5000");
+});
