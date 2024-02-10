@@ -1,10 +1,10 @@
 import z from "zod";
-import { get } from "../cache";
-import { procedure, router } from "../trpc";
-import { searchCatagory } from "../search-engines";
+import { get } from "../cache.js";
+import { procedure, router } from "../trpc.js";
+import { searchCatagory } from "../search-engines.js";
 import { SupportedLocale, localesSchema } from "common";
-import { fetchTraderData } from "./traders";
-import { AllQuery } from "../gql/generated";
+import { fetchTraderData } from "./traders.js";
+import { AllQuery } from "../gql/generated.js";
 
 export const itemsRouter = router({
   search: procedure

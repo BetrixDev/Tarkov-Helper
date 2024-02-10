@@ -3,7 +3,7 @@ import {
   MessageContextMenuCommandInteraction,
 } from "discord.js";
 import { ContextMenu, Discord } from "discordx";
-import { trpc } from "../trpc";
+import { trpc } from "../trpc.js";
 
 @Discord()
 export abstract class InventoryScanner {

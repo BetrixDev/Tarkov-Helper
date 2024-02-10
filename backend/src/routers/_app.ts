@@ -1,11 +1,11 @@
-import { tarkovDev } from "../gql/client";
-import { procedure, router } from "../trpc";
-import { bartersRouter } from "./barters";
-import { economyRouter } from "./economy";
-import { itemsRouter } from "./items";
-import { playerRouter } from "./player";
-import { questsRouter } from "./quests";
-import { tradersRouter } from "./traders";
+import { tarkovDev } from "../gql/client.js";
+import { procedure, router } from "../trpc.js";
+import { bartersRouter } from "./barters.js";
+import { economyRouter } from "./economy.js";
+import { itemsRouter } from "./items.js";
+import { playerRouter } from "./player.js";
+import { questsRouter } from "./quests.js";
+import { tradersRouter } from "./traders.js";
 
 export const appRouter = router({
   items: itemsRouter,

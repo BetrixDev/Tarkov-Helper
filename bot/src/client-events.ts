@@ -1,6 +1,6 @@
 import { InteractionType } from "discord.js";
 import { ArgsOf, Client, Discord, On, Once } from "discordx";
-import { logger } from "./log";
+import { logger } from "./log.js";
 
 const APPLICATION_COMMAND_MAP = {
   [InteractionType.ApplicationCommand]: "app-command",

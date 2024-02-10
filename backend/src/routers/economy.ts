@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { procedure, router } from "../trpc";
+import { procedure, router } from "../trpc.js";
 import { CURRENCIES, CURRENCY_IDS, Currency, currencySchema } from "common";
-import { fetchItemData } from "./items";
+import { fetchItemData } from "./items.js";
 import { TRPCError } from "@trpc/server";
 
 const CONVERSION_MAP: Record<string, string> = {

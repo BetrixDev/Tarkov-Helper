@@ -10,8 +10,8 @@ import {
   formatPrice,
   getUserLocale,
   handleInteraction,
-} from "../utils";
-import { trpc } from "../trpc";
+} from "../utils.js";
+import { trpc } from "../trpc.js";
 
 @Discord()
 export abstract class DogtagCommand {

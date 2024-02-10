@@ -1,8 +1,8 @@
 import { CommandInteraction, EmbedBuilder } from "discord.js";
 import { Discord, Slash } from "discordx";
 import dayjs from "dayjs";
-import { trpc } from "../trpc";
-import { embedBuilder, getUserLocale, handleInteraction } from "../utils";
+import { trpc } from "../trpc.js";
+import { embedBuilder, getUserLocale, handleInteraction } from "../utils.js";
 
 @Discord()
 export abstract class RestocksCommand {

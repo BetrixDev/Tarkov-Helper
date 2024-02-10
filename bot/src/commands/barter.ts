@@ -9,14 +9,14 @@ import {
   InteractionReplyOptions,
 } from "discord.js";
 import { ButtonComponent, Discord, Slash, SlashOption } from "discordx";
-import { trpc } from "../trpc";
+import { trpc } from "../trpc.js";
 import { EMTPY_EMBED_FIELD, SupportedLocale, ZERO_WIDTH } from "common";
 import {
   embedBuilder,
   formatPrice,
   getUserLocale,
   handleInteraction,
-} from "../utils";
+} from "../utils.js";
 
 @Discord()
 export abstract class BarterCommand {
@@ -38,7 +38,7 @@ export abstract class BarterCommand {
             query,
             locale: userLocale,
           });
-          return results.map((r) => ({ name: r.item.name, value: r.item.id }));
+          return results.map((r) => ({ name: r.name, value: r.item.id }));
         });
       },
     })

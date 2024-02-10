@@ -1,4 +1,4 @@
-import { fetchData } from "../src/cache";
+import { fetchData } from "../src/cache.js";
 import { existsSync, mkdirSync, rmSync, rmdirSync, writeFileSync } from "fs";
 
 async function main() {

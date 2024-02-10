@@ -1,10 +1,10 @@
 import { readFileSync, readdirSync } from "fs";
 import { schedule } from "node-cron";
-import { tarkovDev } from "./gql/client";
-import { AllQuery } from "./gql/generated";
-import { fetchLocales } from "./data-sources/locales";
+import { tarkovDev } from "./gql/client.js";
+import { AllQuery } from "./gql/generated.js";
+import { fetchLocales } from "./data-sources/locales.js";
 import { SUPPORTED_LOCALES } from "common";
-import { logger } from "./log";
+import { logger } from "./log.js";
 
 interface CacheEntries {
   items: AllQuery["items"];

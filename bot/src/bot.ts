@@ -1,5 +1,5 @@
 import { Client } from "discordx";
-import { importx } from "@discordx/importer";
+import { dirname, importx } from "@discordx/importer";
 import { getInfo } from "discord-hybrid-sharding";
 
 import "./env";
@@ -19,8 +19,7 @@ const client = new Client({
 import "./client-events";
 
 async function main() {
-  await importx(__dirname + "/{events,commands}/**/*.{ts,js}");
-  // await importx(__dirname + "/**/*.{ts,js}");
+  await importx(dirname(import.meta.url) + "/{events,commands}/**/*.{ts,js}");
 
   await client.login(process.env.BOT_TOKEN);
 }

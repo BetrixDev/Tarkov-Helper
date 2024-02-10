@@ -1,14 +1,14 @@
 import { z } from "zod";
-import { procedure, router } from "../trpc";
+import { procedure, router } from "../trpc.js";
 import {
   BEAR_DOGTAG_ITEM_ID,
   SupportedLocale,
   USEC_DOGTAG_ITEM_ID,
   localesSchema,
 } from "common";
-import { get } from "../cache";
-import { fetchItemData } from "./items";
-import { fetchTraderData } from "./traders";
+import { get } from "../cache.js";
+import { fetchItemData } from "./items.js";
+import { fetchTraderData } from "./traders.js";
 
 function fetchBarter(barterId: string, locale: SupportedLocale) {
   const barterData = get("barters").find((b) => b.id === barterId)!;

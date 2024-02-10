@@ -7,8 +7,8 @@ import {
   getUserLocale,
   handleInteraction,
   inlined,
-} from "../utils";
-import { trpc } from "../trpc";
+} from "../utils.js";
+import { trpc } from "../trpc.js";
 import { match } from "ts-pattern";
 import { ZERO_WIDTH } from "common";
 

@@ -11,7 +11,7 @@ import {
   normalizeArray,
 } from "discord.js";
 import { Currency, localesSchema, SupportedLocale } from "common";
-import { logger } from "./log";
+import { logger } from "./log.js";
 
 /** Attempts to match the user's selected locale to a supported locale else defaults to "en" */
 export function getUserLocale(interaction: BaseInteraction): SupportedLocale {

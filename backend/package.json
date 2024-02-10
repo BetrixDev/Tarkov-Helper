@@ -2,14 +2,15 @@
   "name": "backend",
   "private": true,
   "types": "src/trpc.ts",
+  "type": "module",
   "scripts": {
     "build": "tsc",
     "typecheck": "tsc --noEmit",
     "start": "cross-env NODE_ENV=production node ./build/src/index.js",
-    "dev": "cross-env NODE_ENV=development nodemon --exec ts-node-esm src/index.ts",
+    "dev": "cross-env NODE_ENV=development nodemon --exec tsx src/index.ts",
     "codegen": "graphql-codegen --config codegen.ts",
     "format": "prettier . --write",
-    "dev:init": "ts-node-esm scripts/dev.ts"
+    "dev:init": "tsx scripts/dev.ts"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "4.0.1",
@@ -22,22 +23,25 @@
     "cross-env": "^7.0.3",
     "nodemon": "^2.0.22",
     "prettier": "^2.5.1",
-    "ts-node": "^10.9.1",
+    "tsx": "^4.7.0",
     "typescript": "^5.1.6"
   },
   "dependencies": {
     "@trpc/server": "^10.34.0",
+    "@types/lunr": "^2.3.7",
     "@urql/core": "^4.2.2",
     "axios": "^1.4.0",
     "common": "workspace:*",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
+    "envsafe": "^2.0.3",
     "express": "^4.18.2",
     "fuse.js": "^6.6.2",
     "graphql": "^16.7.1",
     "graphql-request": "^6.1.0",
     "graphql-tag": "^2.12.6",
     "logger": "workspace:*",
+    "lunr": "^2.3.9",
     "node-cron": "^3.0.2",
     "urql": "^4.0.6",
     "zod": "^3.21.4"

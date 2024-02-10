@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { get } from "../cache";
-import { procedure, router } from "../trpc";
+import { get } from "../cache.js";
+import { procedure, router } from "../trpc.js";
 import { TRPCError } from "@trpc/server";
 
 export const playerRouter = router({

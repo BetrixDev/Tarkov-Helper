@@ -1,7 +1,7 @@
 import { ApplicationCommandOptionType, CommandInteraction } from "discord.js";
 import { Discord, Slash, SlashOption } from "discordx";
-import { THError, getUserLocale, handleInteraction } from "../utils";
-import { trpc } from "../trpc";
+import { THError, getUserLocale, handleInteraction } from "../utils.js";
+import { trpc } from "../trpc.js";
 
 @Discord()
 export abstract class QuestCommand {

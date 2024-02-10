@@ -1,8 +1,8 @@
 import { z } from "zod";
-import { procedure, router } from "../trpc";
+import { procedure, router } from "../trpc.js";
 import { SupportedLocale, localesSchema } from "common";
-import { get } from "../cache";
-import { tarkovDev } from "../gql/client";
+import { get } from "../cache.js";
+import { tarkovDev } from "../gql/client.js";
 
 export const fetchTraderData = (
   traderIdOrName: string,

@@ -4,14 +4,14 @@ import {
   InteractionReplyOptions,
 } from "discord.js";
 import { Discord, Slash, SlashOption } from "discordx";
-import { trpc } from "../trpc";
+import { trpc } from "../trpc.js";
 import {
   THError,
   embedBuilder,
   formatNumber,
   handleInteraction,
   s3Image,
-} from "../utils";
+} from "../utils.js";
 
 @Discord()
 export abstract class ExperienceCommand {

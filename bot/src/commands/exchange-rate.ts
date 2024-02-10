@@ -4,14 +4,14 @@ import {
   InteractionReplyOptions,
 } from "discord.js";
 import { Discord, Slash, SlashChoice, SlashOption } from "discordx";
-import { trpc } from "../trpc";
+import { trpc } from "../trpc.js";
 import {
   THError,
   embedBuilder,
   formatPrice,
   handleInteraction,
   s3Image,
-} from "../utils";
+} from "../utils.js";
 import { CURRENCIES } from "common";
 
 type Currency = (typeof CURRENCIES)[number]["id"];

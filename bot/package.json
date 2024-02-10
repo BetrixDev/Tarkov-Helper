@@ -1,11 +1,12 @@
 {
   "name": "bot",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "tsc",
     "start": "cross-env NODE_ENV=production node ./build/index.js",
     "typecheck": "tsc --noEmit",
-    "dev": "cross-env NODE_ENV=development nodemon --exec ts-node-esm src/bot.ts",
+    "dev": "cross-env NODE_ENV=development nodemon --exec tsx src/bot.ts",
     "format": "prettier . --write"
   },
   "devDependencies": {
@@ -14,7 +15,7 @@
     "cross-env": "^7.0.3",
     "nodemon": "^2.0.22",
     "prettier": "^2.5.1",
-    "ts-node": "^10.9.1",
+    "tsx": "^4.7.0",
     "typescript": "^5.1.6"
   },
   "dependencies": {

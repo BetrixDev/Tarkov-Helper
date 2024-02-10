@@ -5,8 +5,8 @@ import {
   handleInteraction,
   s3Image,
   formatPrice,
-} from "../utils";
-import { trpc } from "../trpc";
+} from "../utils.js";
+import { trpc } from "../trpc.js";
 import { BITCOIN_ITEM_ID } from "common";
 
 @Discord()

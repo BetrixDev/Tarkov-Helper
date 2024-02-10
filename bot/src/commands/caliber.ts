@@ -5,9 +5,9 @@ import {
   getUserLocale,
   handleInteraction,
   embedBuilder,
-} from "../utils";
+} from "../utils.js";
 import { Table } from "embed-table";
-import { trpc } from "../trpc";
+import { trpc } from "../trpc.js";
 import assert from "assert";
 
 @Discord()

@@ -1,5 +1,5 @@
 import { GraphQLClient } from "graphql-request";
-import { getSdk } from "./generated";
+import { getSdk } from "./generated.js";
 
 const client = new GraphQLClient("https://api.tarkov.dev/graphql", {
   errorPolicy: "ignore",

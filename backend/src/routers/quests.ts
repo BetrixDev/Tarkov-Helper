@@ -1,8 +1,8 @@
 import { z } from "zod";
-import { procedure, router } from "../trpc";
+import { procedure, router } from "../trpc.js";
 import { localesSchema } from "common";
-import { searchCatagory } from "../search-engines";
-import { get } from "../cache";
+import { searchCatagory } from "../search-engines.js";
+import { get } from "../cache.js";
 
 export const questsRouter = router({
   search: procedure

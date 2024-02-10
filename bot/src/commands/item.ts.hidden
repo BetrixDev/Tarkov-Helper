@@ -1,13 +1,13 @@
 import { ApplicationCommandOptionType, CommandInteraction } from "discord.js";
 import { Discord, Slash, SlashOption } from "discordx";
-import { trpc } from "../trpc";
+import { trpc } from "../trpc.js";
 import {
   THError,
   embedBuilder,
   formatPrice,
   getUserLocale,
   handleInteraction,
-} from "../utils";
+} from "../utils.js";
 
 @Discord()
 export abstract class ItemCommand {

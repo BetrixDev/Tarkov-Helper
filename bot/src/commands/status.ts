@@ -1,7 +1,7 @@
 import { CommandInteraction } from "discord.js";
 import { Discord, Slash } from "discordx";
-import { embedBuilder, handleInteraction } from "../utils";
-import { trpc } from "../trpc";
+import { embedBuilder, handleInteraction } from "../utils.js";
+import { trpc } from "../trpc.js";
 
 @Discord()
 export abstract class StatusCommand {

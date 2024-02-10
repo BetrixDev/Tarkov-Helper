@@ -2,10 +2,10 @@ import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import cors from "cors";
 import express from "express";
 
-import { appRouter } from "./routers/_app";
-import { initCache } from "./cache";
-import { refreshSearchEngines } from "./search-engines";
-import { logger } from "./log";
+import { appRouter } from "./routers/_app.js";
+import { initCache } from "./cache.js";
+import { refreshSearchEngines } from "./search-engines.js";
+import { logger } from "./log.js";
 
 const app = express();
 
