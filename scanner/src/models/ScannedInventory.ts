@@ -1,5 +1,5 @@
 import sharp, { Sharp } from "sharp";
-import { CellIndentifier } from "./CellIndentifier";
+import { CellIndentifier } from "./CellIndentifier.js";
 
 export class ScannedInventory {
   private img: Sharp;

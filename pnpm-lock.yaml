@@ -67,6 +67,9 @@ importers:
       node-cron:
         specifier: ^3.0.2
         version: 3.0.2
+      trpc-panel:
+        specifier: ^1.3.4
+        version: 1.3.4(@trpc/server@10.34.0)(zod@3.21.4)
       urql:
         specifier: ^4.0.6
         version: 4.0.6(graphql@16.7.1)(react@18.2.0)
@@ -9309,6 +9312,20 @@ packages:
     engines: {node: '>= 14.0.0'}
     dev: false
 
+  /trpc-panel@1.3.4(@trpc/server@10.34.0)(zod@3.21.4):
+    resolution: {integrity: sha512-u5/dCi/AAp2tpJcCL5ZCfrdJtHHu8hrtm2hzSBZCE7z9Tw6MB1rCcliSQvgMPIEXMQrgwXk4t4IedfWkxioKng==}
+    peerDependencies:
+      '@trpc/server': ^10.0.0
+      zod: ^3.19.1
+    dependencies:
+      '@trpc/server': 10.34.0
+      fuzzysort: 2.0.4
+      path: 0.12.7
+      url: 0.11.3
+      zod: 3.21.4
+      zod-to-json-schema: 3.22.4(zod@3.21.4)
+    dev: false
+
   /trpc-panel@1.3.4(@trpc/server@10.34.0)(zod@3.22.4):
     resolution: {integrity: sha512-u5/dCi/AAp2tpJcCL5ZCfrdJtHHu8hrtm2hzSBZCE7z9Tw6MB1rCcliSQvgMPIEXMQrgwXk4t4IedfWkxioKng==}
     peerDependencies:
@@ -10031,6 +10048,14 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /zod-to-json-schema@3.22.4(zod@3.21.4):
+    resolution: {integrity: sha512-2Ed5dJ+n/O3cU383xSY28cuVi0BCQhF8nYqWU5paEpl7fVdqdAmiLdqLyfblbNdfOFwFfi/mqU4O1pwc60iBhQ==}
+    peerDependencies:
+      zod: ^3.22.4
+    dependencies:
+      zod: 3.21.4
+    dev: false
 
   /zod-to-json-schema@3.22.4(zod@3.22.4):
     resolution: {integrity: sha512-2Ed5dJ+n/O3cU383xSY28cuVi0BCQhF8nYqWU5paEpl7fVdqdAmiLdqLyfblbNdfOFwFfi/mqU4O1pwc60iBhQ==}

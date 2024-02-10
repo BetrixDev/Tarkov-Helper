@@ -1,8 +1,8 @@
 import { readFileSync, readdirSync } from "fs";
-import { db } from "../db";
-import { iconHashesTable } from "../db/tables/icon-hashes";
+import { db } from "../db/index.js";
+import { iconHashesTable } from "../db/tables/icon-hashes.js";
 import { sql } from "drizzle-orm";
-import { getHash } from "../get-hash";
+import { getHash } from "../get-hash.js";
 export async function generateItemIconHashes() {
   const icons = readdirSync("icons");
 

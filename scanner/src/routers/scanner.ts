@@ -1,7 +1,7 @@
-import { backendTrpc } from "../backend-trpc";
-import { getClosestHash } from "../db/functions";
-import { extractIconHashesFromInventory } from "../extract-icon-hashesh";
-import { procedure, router } from "../trpc";
+import { backendTrpc } from "../backend-trpc.js";
+import { getClosestHash } from "../db/functions.js";
+import { extractIconHashesFromInventory } from "../extract-icon-hashes.js";
+import { procedure, router } from "../trpc.js";
 import z from "zod";
 
 export const scannerRouter = router({

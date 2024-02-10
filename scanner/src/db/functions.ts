@@ -1,6 +1,6 @@
 import { asc, sql } from "drizzle-orm";
-import { db } from ".";
-import { iconHashesTable } from "./tables/icon-hashes";
+import { db } from "../db/index.js";
+import { iconHashesTable } from "./tables/icon-hashes.js";
 
 export async function getClosestHash(hash: string) {
   const res = await db

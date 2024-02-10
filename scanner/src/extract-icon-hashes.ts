@@ -1,5 +1,5 @@
 import sharp from "sharp";
-import { CellIndentifier } from "./models/CellIndentifier";
+import { CellIndentifier } from "./models/CellIndentifier.js";
 
 export async function extractIconHashesFromInventory(inputImage: Buffer) {
   const img = sharp(inputImage).removeAlpha();
