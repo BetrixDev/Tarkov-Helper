@@ -12,7 +12,7 @@ export const db = drizzle(connection);
 async function createHashUdf() {
   return await db.execute(sql`
     DELIMITER //
-    CREATE FUNCTION get_hamming_dist(hash1 VARCHAR(64), hash2 VARCHAR(64))
+    CREATE FUNCTION IF NOT EXISTS get_hamming_dist(hash1 VARCHAR(64), hash2 VARCHAR(64))
     RETURNS INT
     BEGIN
         DECLARE i INT DEFAULT 1;
