@@ -6,7 +6,7 @@ export async function getClosestHash(hash: string) {
   const res = await db
     .select({
       itemId: iconHashesTable.itemId,
-      hammingDistance: sql<number>`get_hamming_distance(${hash}, ${iconHashesTable.hash}) as hammingDistance`,
+      hammingDistance: sql<number>`get_hamming_dist(${hash}, ${iconHashesTable.hash}) as hammingDistance`,
     })
     .from(iconHashesTable)
     .orderBy(asc(sql`hammingDistance`))
