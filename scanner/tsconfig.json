@@ -8,8 +8,6 @@
     "moduleDetection": "force",
     "isolatedModules": true,
     "strict": true,
-    "composite": true,
-    "declarationMap": true,
     "moduleResolution": "NodeNext",
     "module": "NodeNext",
     "outDir": "dist",
