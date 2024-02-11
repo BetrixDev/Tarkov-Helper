@@ -224,6 +224,9 @@ importers:
       '@upstash/redis':
         specifier: ^1.28.3
         version: 1.28.3
+      axios:
+        specifier: ^1.4.0
+        version: 1.4.0
       backend:
         specifier: workspace:*
         version: link:../backend

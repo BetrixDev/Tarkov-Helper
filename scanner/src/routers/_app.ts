@@ -1,5 +1,5 @@
 import { router } from "../trpc.js";
-import { scannerRouter } from "./scanner.js";
+import { scannerRouter } from "./scanner/index.js";
 
 export const appRouter = router({
   scanner: scannerRouter,
