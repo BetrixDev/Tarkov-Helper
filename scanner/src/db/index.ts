@@ -9,9 +9,8 @@ const connection = await mysql.createConnection({
 
 export const db = drizzle(connection);
 
-async function createHashUdf() {
+export async function createHashUdf() {
   return await db.execute(sql`
-    DELIMITER //
     CREATE FUNCTION IF NOT EXISTS get_hamming_dist(hash1 VARCHAR(64), hash2 VARCHAR(64))
     RETURNS INT
     BEGIN
@@ -25,9 +24,7 @@ async function createHashUdf() {
 
             SET i = i + 1;
         END WHILE;
-
-        RETURN dist;
-    END //
-    DELIMITER ;
+      RETURN dist;
+    END;
   `);
 }

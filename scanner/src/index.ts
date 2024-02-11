@@ -5,6 +5,7 @@ import express from "express";
 import { appRouter } from "./routers/_app.js";
 import { logger } from "./log.js";
 import { renderTrpcPanel } from "trpc-panel";
+import { createHashUdf } from "./db/index.js";
 
 const app = express();
 
@@ -23,7 +24,9 @@ app.use("/panel", (_, res) => {
   );
 });
 
-app.listen(5000, () => {
+app.listen(5000, async () => {
+  await createHashUdf();
+
   logger.info("Scanner initialized on port 5000");
   logger.info("Scanner panel: http://localhost:5000/panel");
 });
