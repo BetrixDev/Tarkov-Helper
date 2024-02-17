@@ -1,14 +1,6 @@
-import { imageHash } from "image-hash";
+import path from "path";
+import phash from "sharp-phash";
 
-export async function getHash(buffer: Buffer, ext: string) {
-  return new Promise<string>((res) => {
-    imageHash(
-      { ext: ext, data: buffer },
-      16,
-      true,
-      (_: never, data: string) => {
-        res(data);
-      }
-    );
-  });
+export async function getHash(buffer: Buffer) {
+  return await phash(buffer);
 }

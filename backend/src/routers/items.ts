@@ -104,11 +104,16 @@ export const itemsRouter = router({
       return data;
     }),
   all: procedure.query(() => {
-    return get("items").map((item) => ({
+    const items = get("items").map((item) => ({
       id: item.id,
       name: item.name,
       iconLink: item.image512pxLink,
     }));
+
+    return {
+      totalItems: items.length,
+      items,
+    };
   }),
 });
 

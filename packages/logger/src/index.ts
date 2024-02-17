@@ -124,7 +124,7 @@ export class Logger {
 
   error(
     message: string,
-    meta?: { error: unknown; cause?: unknown } & Record<string, unknown>
+    meta?: { error?: unknown; cause?: unknown } & Record<string, unknown>
   ) {
     // If the error isn't an error object make it so
     // This is to prevent issues where something other than an Error is thrown

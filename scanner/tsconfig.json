@@ -12,6 +12,13 @@
     "module": "NodeNext",
     "outDir": "dist",
     "sourceMap": true,
-    "lib": ["es2022"]
+    "lib": ["es2022"],
+    "plugins": [
+      {
+        "name": "@0no-co/graphqlsp",
+        "schema": "https://api.tarkov.dev/graphql",
+        "tadaOutputLocation": "./src/graphql-env.d.ts"
+      }
+    ]
   }
 }
