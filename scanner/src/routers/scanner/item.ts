@@ -16,7 +16,7 @@ export const itemScannerRouter = router({
       });
 
       const imageBuffer = Buffer.from(imageRawResponse.data);
-      const imageHash = await getHash(imageBuffer, "image/png");
+      const imageHash = await getHash(imageBuffer);
       const closestIconHash = await getClosestHash(imageHash);
 
       console.log(closestIconHash);
