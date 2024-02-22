@@ -1,11 +1,9 @@
 import axios from "axios";
-import { writeFileSync } from "fs";
 import { z } from "zod";
-import { backendTrpc } from "../../backend-trpc.js";
-import { getClosestHash } from "../../db/functions.js";
-import { extractIconHashesFromInventory } from "../../extract-icon-hashes.js";
-import { procedure, router } from "../../trpc.js";
-import { getHash } from "../../get-hash.js";
+import { backendTrpc } from "../backend-trpc.js";
+import { getClosestHash } from "../db/functions.js";
+import { procedure, router } from "../trpc.js";
+import { getHash } from "../get-hash.js";
 
 export const itemScannerRouter = router({
   fromUrl: procedure

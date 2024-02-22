@@ -1,10 +1,10 @@
 import { z } from "zod";
-import { procedure, router } from "../../trpc.js";
+import { procedure, router } from "../trpc.js";
 import axios from "axios";
 import { writeFileSync } from "fs";
-import { extractIconHashesFromInventory } from "../../extract-icon-hashes.js";
-import { getClosestHash } from "../../db/functions.js";
-import { backendTrpc } from "../../backend-trpc.js";
+import { extractIconHashesFromInventory } from "../extract-icon-hashes.js";
+import { getClosestHash } from "../db/functions.js";
+import { backendTrpc } from "../backend-trpc.js";
 
 export const inventoryScannerRouter = router({
   fromUrl: procedure
