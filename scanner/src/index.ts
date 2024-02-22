@@ -5,7 +5,6 @@ import express from "express";
 import { appRouter } from "./routers/_app.js";
 import { logger } from "./log.js";
 import { renderTrpcPanel } from "trpc-panel";
-import { createHashUdf } from "./db/index.js";
 
 const app = express();
 

@@ -1,13 +1,12 @@
 import { db } from "../db/index.js";
 import { iconHashesTable } from "../db/tables/icon-hashes.js";
 import { inArray, sql } from "drizzle-orm";
-import { getHash } from "../get-hash.js";
+import { phash } from "../phash.js";
 import AdmZip from "adm-zip";
 import Axios from "axios";
 import { setupCache } from "axios-cache-interceptor";
 import { logger } from "../log.js";
 import { getItemsWithIconLinks } from "../tarkov-dev.js";
-import { writeFileSync } from "fs";
 
 const RAT_SCANNER_DATA_MASTER_DOWNLOAD_URL =
   "https://github.com/RatScanner/RatScannerData/archive/refs/heads/master.zip";
@@ -80,7 +79,6 @@ export async function generateItemIconHashes() {
     iconsToHash.push(item.id);
   }
 
-  writeFileSync("icons.json", JSON.stringify(iconsToHash, null, 2));
   if (iconsToHash.length === 0) {
     logger.info("No new icons to hash");
     return;
@@ -166,7 +164,7 @@ async function getHashedRatScannerIconsFromContents(iconsToHash: string[]) {
         axios(getIconDownloadUrl(iconEntry.path), {
           responseType: "arraybuffer",
         }).then((iconBuffer) => {
-          getHash(iconBuffer.data).then((iconHash) => {
+          phash(iconBuffer.data).then((iconHash) => {
             res({ hash: iconHash, itemId });
           });
         });
@@ -205,7 +203,7 @@ async function getHashedRatScannerIconsFromArchive(iconsToHash: string[]) {
       continue;
     }
 
-    const iconHash = await getHash(entry.getData());
+    const iconHash = await phash(entry.getData());
 
     hashedIcons.push({
       itemId,
@@ -257,7 +255,7 @@ async function getHashedIconsFromTarkovDev(iconsToHash: string[]) {
       responseType: "arraybuffer",
     });
 
-    const iconHash = await getHash(iconBuffer.data);
+    const iconHash = await phash(iconBuffer.data);
 
     hashedIcons.push({ itemId, hash: iconHash });
   }

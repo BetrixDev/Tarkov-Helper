@@ -3,7 +3,7 @@ import { z } from "zod";
 import { backendTrpc } from "../backend-trpc.js";
 import { getClosestHash } from "../db/functions.js";
 import { procedure, router } from "../trpc.js";
-import { getHash } from "../get-hash.js";
+import { phash } from "../phash.js";
 
 export const itemScannerRouter = router({
   fromUrl: procedure
@@ -14,7 +14,7 @@ export const itemScannerRouter = router({
       });
 
       const imageBuffer = Buffer.from(imageRawResponse.data);
-      const imageHash = await getHash(imageBuffer);
+      const imageHash = await phash(imageBuffer);
       const closestIconHash = await getClosestHash(imageHash);
 
       console.log(closestIconHash);

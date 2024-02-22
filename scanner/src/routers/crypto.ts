@@ -3,7 +3,7 @@ import { db } from "../db/index.js";
 import { iconHashesTable } from "../db/tables/icon-hashes.js";
 import { procedure, router } from "../trpc.js";
 import axios from "axios";
-import { getHash } from "../get-hash.js";
+import { phash } from "../phash.js";
 
 const iconHashes = await db.select().from(iconHashesTable).execute();
 
@@ -16,7 +16,7 @@ export const cryptoRouter = router({
       });
       const buffer = Buffer.from(urlReponse.data);
 
-      return await getHash(buffer);
+      return await phash(buffer);
     }),
   getClosestHash: procedure
     .input(z.object({ hash: z.string() }))
@@ -40,7 +40,7 @@ function getClosestHash(input: string) {
     const currentEntry = iconHashes[i];
 
     if (input.length !== currentEntry.hash.length) {
-      continue;
+      return lowest;
     }
 
     let dist = 0;

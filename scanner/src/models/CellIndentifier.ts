@@ -1,6 +1,6 @@
 import sharp from "sharp";
 import { Vector2 } from "three";
-import { getHash } from "../get-hash.js";
+import { phash } from "../phash.js";
 
 const MIN_GRID_COLOR = { r: 73, g: 81, b: 84 };
 const MAX_GRID_COLOR = { r: 152, g: 151, b: 139 };
@@ -44,9 +44,7 @@ export class CellIndentifier {
               .jpeg({ quality: 100 })
               .toBuffer();
 
-            extractedCellHashes.push(
-              await getHash(extractedBuffer, "image/jpeg")
-            );
+            extractedCellHashes.push(await phash(extractedBuffer));
           } catch {}
         }
       }
