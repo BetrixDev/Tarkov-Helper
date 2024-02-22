@@ -25,8 +25,6 @@ app.use("/panel", (_, res) => {
 });
 
 app.listen(5000, async () => {
-  await createHashUdf();
-
   logger.info("Scanner initialized on port 5000");
   logger.info("Scanner panel: http://localhost:5000/panel");
 });

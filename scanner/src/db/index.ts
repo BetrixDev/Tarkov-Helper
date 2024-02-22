@@ -28,5 +28,3 @@ export async function createHashUdf() {
     END;
   `);
 }
-
-createHashUdf();
